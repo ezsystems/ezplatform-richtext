@@ -6,7 +6,8 @@
     "type": "ezplatform-bundle",
     "require": {
         "php": "^7.1",
-        "ext-xsl": "*"
+        "ext-xsl": "*",
+        "symfony/symfony": "^3.4"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "~2.7.1"
