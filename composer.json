@@ -1,0 +1,22 @@
+{
+    "name": "ezsystems/ezplatform-richtext-fieldtype",
+    "description": "eZ Platform RichText FieldType Bundle",
+    "homepage": "https://ezplatform.com",
+    "license": "GPL-2.0-only",
+    "type": "ezplatform-bundle",
+    "require": {
+        "php": "^7.1",
+        "ext-xsl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "EzSystems\\EzPlatformRichTextFieldTypeBundle\\": "src/bundle",
+            "EzSystems\\EzPlatformRichTextFieldType\\": "src/lib"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
