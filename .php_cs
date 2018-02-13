@@ -31,7 +31,7 @@ return PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)
     ->setFinder(
         PhpCsFixer\Finder::create()
-            ->in(__DIR__ . '/src')
+            ->in([__DIR__ . '/src', __DIR__ . '/tests'])
             ->files()->name('*.php')
     )
 ;

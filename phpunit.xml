@@ -1,0 +1,7 @@
+<phpunit bootstrap="vendor/autoload.php">
+  <testsuites>
+    <testsuite name="ezrichtext_field_type">
+      <directory>tests</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>
