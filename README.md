@@ -9,6 +9,33 @@ the `ezsystems/ezpublish-kernel` package.
 This Field Type succeeds the former [XMLText](https://github.com/ezsystems/ezplatform-xmltext-fieldtype)
 Field Type found in eZ Publish 5.x and before.
 
+## Installation
+
+1. In your eZ Platform 2.1+ project, require this package by the Composer.
+
+    ```bash
+        composer require ezsystems/ezplatform-richtext-fieldtype
+    ```
+
+2. Enable the Bundle in `AppKernel.php`:
+
+    ```php
+        public function registerBundles()
+        {
+           $bundles = [
+               // ...
+               new EzSystems\EzPlatformRichTextFieldTypeBundle\EzPlatformRichTextFieldTypeBundle(),
+           ];
+
+           // ...
+        }
+   ```
+
+3. Remember to clear the Symfony Cache (for `SYMFONY_ENV` your project uses).
+    ```bash
+        php bin/console cache:clear
+    ```
+
 ## Background
 
 When looking to find a structured text format for eZ Platform, we wanted to pick something that
