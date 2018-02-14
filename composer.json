@@ -1,0 +1,35 @@
+{
+    "name": "ezsystems/ezplatform-richtext-fieldtype",
+    "description": "eZ Platform RichText FieldType Bundle",
+    "homepage": "https://ezplatform.com",
+    "license": "GPL-2.0-only",
+    "type": "ezplatform-bundle",
+    "require": {
+        "php": "^7.1",
+        "ext-xsl": "*",
+        "symfony/symfony": "^3.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0",
+        "friendsofphp/php-cs-fixer": "~2.7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "EzSystems\\EzPlatformRichTextFieldTypeBundle\\": "src/bundle",
+            "EzSystems\\EzPlatformRichTextFieldType\\": "src/lib"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "EzSystems\\Tests\\EzPlatformRichTextFieldType\\": "tests/lib"
+        }
+    },
+    "scripts": {
+        "fix-cs": "@php ./vendor/bin/php-cs-fixer fix -v --show-progress=estimating"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
