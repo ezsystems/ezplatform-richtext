@@ -1,7 +1,19 @@
-<phpunit bootstrap="vendor/autoload.php">
+<phpunit
+    bootstrap="bootstrap.php"
+    backupGlobals="false"
+    backupStaticAttributes="false"
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+    beStrictAboutTestsThatDoNotTestAnything="false"
+    colors="true"
+>
   <testsuites>
     <testsuite name="ezrichtext_field_type">
-      <directory>tests</directory>
+      <directory>tests/lib</directory>
+      <exclude>
+        <directory>tests/lib/eZ/API</directory>
+      </exclude>
     </testsuite>
   </testsuites>
 </phpunit>

@@ -1,0 +1,11 @@
+services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: false
+
+    EzSystems\EzPlatformRichTextFieldType\eZ\REST\FieldTypeProcessor\RichTextProcessor:
+        arguments:
+            - "@ezrichtext.converter.edit.xhtml5"
+        tags:
+            - { name: ezpublish_rest.field_type_processor, alias: ezrichtext }

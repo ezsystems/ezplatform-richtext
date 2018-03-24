@@ -1,0 +1,6 @@
+services:
+    EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\RichTextStorage:
+        arguments: ['@EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\RichTextStorage\Gateway\DoctrineStorage']
+        tags:
+            - {name: ezpublish.fieldType.externalStorageHandler, alias: ezrichtext}
+        public: true

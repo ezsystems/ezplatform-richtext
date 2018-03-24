@@ -1,0 +1,62 @@
+# Use trusty for better performance (and avoiding mysql/postgres/solr gone issues on precise and container infra)
+dist: trusty
+sudo: required
+
+language: php
+
+services:
+  - mysql
+
+# Mysql isn't installed on trusty (only client is), so we need to specifically install it
+addons:
+  apt:
+    packages:
+    - mysql-server-5.6
+    - mysql-client-core-5.6
+    - mysql-client-5.6
+
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
+matrix:
+  fast_finish: true
+  include:
+# 7.1
+    - php: 7.1
+      env: TEST_CONFIG="phpunit.xml"
+    - php: 7.1
+      env: TEST_CONFIG="phpunit-integration-legacy.xml" DB="mysql" DATABASE="mysql://root@localhost/testdb"
+    - php: 7.1
+      env: CHECK_CS=true
+
+# test only master, stable branches and pull requests
+branches:
+  only:
+    - master
+    - /^\d.\d+$/
+
+# setup requirements for running unit/integration/behat tests
+before_script:
+  # Disable memory_limit for composer
+  - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+  # Prepare system
+  - ./bin/.travis/prepare_unittest.sh
+  # Execute Symfony command if specified
+  - if [ "$SF_CMD" != "" ] ; then cd "$HOME/build/ezplatform"; docker-compose exec --user www-data app sh -c "bin/console $SF_CMD" ; fi
+  # Detecting timezone issues by testing on random timezone
+  - TEST_TIMEZONES=("America/New_York" "Asia/Calcutta" "UTC")
+  - TEST_TIMEZONE=${TEST_TIMEZONES["`shuf -i 0-2 -n 1`"]}
+
+# execute phpunit or behat as the script command
+script:
+  - if [ "$TEST_CONFIG" != "" ] ; then php -d date.timezone=$TEST_TIMEZONE -d memory_limit=-1 vendor/bin/phpunit -c $TEST_CONFIG ; fi
+  - if [ "$CHECK_CS" = "true" ]; then ./vendor/bin/php-cs-fixer fix -v --dry-run --diff --show-progress=estimating; fi
+
+# disable mail notifications
+notifications:
+  email: false
+
+# reduce depth (history) of git checkout
+git:
+  depth: 30
