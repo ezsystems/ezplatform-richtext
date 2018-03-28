@@ -32,6 +32,7 @@ class LegacySetupFactory extends CoreLegacySetupFactory
         $loader->load('storage_engines/legacy/external_storage_gateways.yml');
         $loader->load('storage_engines/legacy/field_value_converters.yml');
 
+        $containerBuilder->addCompilerPass(new Compiler\KernelRichTextPass());
         $containerBuilder->addCompilerPass(new Compiler\RichTextHtml5ConverterPass());
     }
 }

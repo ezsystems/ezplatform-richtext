@@ -25,6 +25,7 @@ class EzPlatformRichTextFieldTypeBundle extends Bundle
     {
         parent::build($container);
         $container->addCompilerPass(new RichTextHtml5ConverterPass());
+        $container->addCompilerPass(new KernelRichTextPass());
         $this->registerConfigParser($container);
     }
 
