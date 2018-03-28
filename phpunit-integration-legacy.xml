@@ -1,0 +1,25 @@
+<?xml version = '1.0' encoding = 'utf-8'?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="bootstrap.php"
+         processIsolation="false"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         beStrictAboutTestsThatDoNotTestAnything="false"
+         colors="true"
+         >
+    <php>
+        <env name="setupFactory" value="EzSystems\IntegrationTests\EzPlatformRichTextFieldType\eZ\API\LegacySetupFactory" />
+        <env name="backendVersion" value="5" />
+        <env name="fixtureDir" value="Legacy" />
+        <ini name="error_reporting" value="-1" />
+    </php>
+    <testsuites>
+        <testsuite name="RichText FieldType">
+            <file>tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php</file>
+            <directory>eZ/Publish/API/Repository/Tests/Values/User/Limitation</directory>
+            <directory>eZ/Publish/API/Repository/Tests/FieldType/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

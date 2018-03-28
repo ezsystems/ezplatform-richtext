@@ -1,0 +1,4 @@
+services:
+    EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\SearchField:
+        tags:
+            - {name: ezpublish.fieldType.indexable, alias: ezrichtext}

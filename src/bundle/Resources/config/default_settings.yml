@@ -1,0 +1,46 @@
+parameters:
+    # Rich Text Custom Tags global configuration
+    ezplatform.ezrichtext.custom_tags: {}
+
+    # Rich Text Custom Tags default scope (for SiteAccess) configuration
+    ezsettings.default.fieldtypes.ezrichtext.custom_tags: []
+
+    # FieldType settings
+    # Default XSL stylesheets for RichText rendering to HTML5.
+    # Built-in stylesheets are treated as custom for the sake of extensibility.
+    ezsettings.default.fieldtypes.ezrichtext.output_custom_xsl:
+        -
+            path: "%kernel.root_dir%/../vendor/ezsystems/ezplatform-richtext-fieldtype/src/lib/eZ/RichText/Resources/stylesheets/docbook/xhtml5/output/core.xsl"
+            priority: 0
+
+    ezsettings.default.fieldtypes.ezrichtext.edit_custom_xsl:
+        -
+            path: "%kernel.root_dir%/../vendor/ezsystems/ezplatform-richtext-fieldtype/src/lib/eZ/RichText/Resources/stylesheets/docbook/xhtml5/edit/core.xsl"
+            priority: 0
+
+    ezsettings.default.fieldtypes.ezrichtext.input_custom_xsl: []
+
+    # RichText field type template tag settings
+    # 'default' and 'default_inline' tag identifiers are reserved for fallback
+    ezsettings.default.fieldtypes.ezrichtext.tags.default:
+        template: EzPlatformRichTextFieldTypeBundle:RichText/tag:default.html.twig
+    ezsettings.default.fieldtypes.ezrichtext.tags.default_inline:
+        template: EzPlatformRichTextFieldTypeBundle:RichText/tag:default_inline.html.twig
+
+    # RichText field type embed settings
+    ezsettings.default.fieldtypes.ezrichtext.embed.content:
+        template: EzPlatformRichTextFieldTypeBundle:RichText/embed:content.html.twig
+    ezsettings.default.fieldtypes.ezrichtext.embed.content_denied:
+        template: EzPlatformRichTextFieldTypeBundle:RichText/embed:content_denied.html.twig
+    ezsettings.default.fieldtypes.ezrichtext.embed.content_inline:
+        template: EzPlatformRichTextFieldTypeBundle:RichText/embed:content_inline.html.twig
+    ezsettings.default.fieldtypes.ezrichtext.embed.content_inline_denied:
+        template: EzPlatformRichTextFieldTypeBundle:RichText/embed:content_inline_denied.html.twig
+    ezsettings.default.fieldtypes.ezrichtext.embed.location:
+        template: EzPlatformRichTextFieldTypeBundle:RichText/embed:location.html.twig
+    ezsettings.default.fieldtypes.ezrichtext.embed.location_denied:
+        template: EzPlatformRichTextFieldTypeBundle:RichText/embed:location_denied.html.twig
+    ezsettings.default.fieldtypes.ezrichtext.embed.location_inline:
+        template: EzPlatformRichTextFieldTypeBundle:RichText/embed:location_inline.html.twig
+    ezsettings.default.fieldtypes.ezrichtext.embed.location_inline_denied:
+        template: EzPlatformRichTextFieldTypeBundle:RichText/embed:location_inline_denied.html.twig

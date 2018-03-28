@@ -1,0 +1,8 @@
+{% trans_default_domain "content_fields" %}
+
+{% extends "EzPublishCoreBundle::content_fields.html.twig" %}
+
+{% block ezrichtext_field %}
+    {%- set field_value = field.value.xml|richtext_to_html5 -%}
+    {{ block( 'simple_block_field' ) }}
+{% endblock %}

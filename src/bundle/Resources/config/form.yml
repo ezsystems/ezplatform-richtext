@@ -1,0 +1,14 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    EzSystems\EzPlatformRichTextFieldType\Form\Type\RichTextFieldType:
+        arguments:
+            $docbookToXhtml5EditConverter: '@ezrichtext.converter.edit.xhtml5'
+
+    EzSystems\EzPlatformRichTextFieldType\Form\Mapper\RichTextFormMapper:
+        tags:
+            - { name: ez.fieldFormMapper.value, fieldType: ezrichtext }
+

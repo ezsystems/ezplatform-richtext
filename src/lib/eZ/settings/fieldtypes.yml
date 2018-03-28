@@ -1,0 +1,12 @@
+services:
+    EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Type:
+        parent: ezpublish.fieldType
+        arguments:
+            - "@ezrichtext.validator.docbook"
+            - "@ezrichtext.converter.input.dispatcher"
+            - "@ezrichtext.normalizer.input"
+            - "@ezrichtext.validator.input.dispatcher"
+            - '@ezrichtext.validator.internal_link'
+            - '@EzSystems\EzPlatformRichTextFieldType\eZ\RichText\CustomTagsValidator'
+        tags:
+            - {name: ezpublish.fieldType, alias: ezrichtext}
