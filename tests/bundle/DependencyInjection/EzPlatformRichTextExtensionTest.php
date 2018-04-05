@@ -12,13 +12,13 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\Tests\EzPlatformRichTextFieldTypeBundle\DependencyInjection;
+namespace EzSystems\Tests\EzPlatformRichTextBundle\DependencyInjection;
 
-use EzSystems\EzPlatformRichTextFieldTypeBundle\DependencyInjection\EzPlatformRichTextFieldTypeExtension;
+use EzSystems\EzPlatformRichTextBundle\DependencyInjection\EzPlatformRichTextExtension;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
 use Symfony\Component\Yaml\Yaml;
 
-class EzPlatformRichTextFieldTypeExtensionTest extends AbstractExtensionTestCase
+class EzPlatformRichTextExtensionTest extends AbstractExtensionTestCase
 {
     /**
      * @var \eZ\Bundle\EzPublishCoreBundle\DependencyInjection\EzPublishCoreExtension
@@ -27,7 +27,7 @@ class EzPlatformRichTextFieldTypeExtensionTest extends AbstractExtensionTestCase
 
     protected function setUp()
     {
-        $this->extension = new EzPlatformRichTextFieldTypeExtension();
+        $this->extension = new EzPlatformRichTextExtension();
 
         parent::setUp();
     }

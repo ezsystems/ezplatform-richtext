@@ -6,10 +6,10 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\IntegrationTests\EzPlatformRichTextFieldType\eZ\API;
+namespace EzSystems\IntegrationTests\EzPlatformRichText\eZ\API;
 
 use eZ\Publish\API\Repository\Tests\SetupFactory\Legacy as CoreLegacySetupFactory;
-use EzSystems\EzPlatformRichTextFieldTypeBundle\DependencyInjection\Compiler;
+use EzSystems\EzPlatformRichTextBundle\DependencyInjection\Compiler;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Config\FileLocator;

@@ -12,10 +12,10 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter;
+namespace EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 
 use DOMDocument;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 
 /**
  * Aggregate converter converts using configured converters in prioritized order.
@@ -25,12 +25,12 @@ class Aggregate implements Converter
     /**
      * An array of converters, sorted by priority.
      *
-     * @var \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter[]
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\Converter[]
      */
     protected $converters = [];
 
     /**
-     * @param \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter[] $converters An array of Converters, sorted by priority
+     * @param \EzSystems\EzPlatformRichText\eZ\RichText\Converter[] $converters An array of Converters, sorted by priority
      */
     public function __construct(array $converters = [])
     {

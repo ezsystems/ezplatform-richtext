@@ -12,17 +12,17 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\Tests\EzPlatformRichTextFieldType\eZ\RichText;
+namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText;
 
 use DOMDocument;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\CustomTagsValidator;
+use EzSystems\EzPlatformRichText\eZ\RichText\CustomTagsValidator;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Yaml\Yaml;
 
 /**
  * Test RichText CustomTagsValidator.
  *
- * @see \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\CustomTagsValidator
+ * @see \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\CustomTagsValidator
  */
 class CustomTagsValidatorTest extends TestCase
 {

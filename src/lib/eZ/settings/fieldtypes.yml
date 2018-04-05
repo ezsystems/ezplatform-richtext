@@ -1,5 +1,5 @@
 services:
-    EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Type:
+    EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Type:
         parent: ezpublish.fieldType
         arguments:
             - "@ezrichtext.validator.docbook"
@@ -7,6 +7,6 @@ services:
             - "@ezrichtext.normalizer.input"
             - "@ezrichtext.validator.input.dispatcher"
             - '@ezrichtext.validator.internal_link'
-            - '@EzSystems\EzPlatformRichTextFieldType\eZ\RichText\CustomTagsValidator'
+            - '@EzSystems\EzPlatformRichText\eZ\RichText\CustomTagsValidator'
         tags:
             - {name: ezpublish.fieldType, alias: ezrichtext}

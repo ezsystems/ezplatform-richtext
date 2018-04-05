@@ -12,9 +12,9 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\Tests\EzPlatformRichTextFieldType\eZ\RichText\Normalizer;
+namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Normalizer;
 
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Normalizer\DocumentTypeDefinition;
+use EzSystems\EzPlatformRichText\eZ\RichText\Normalizer\DocumentTypeDefinition;
 use DOMDocument;
 use PHPUnit\Framework\TestCase;
 

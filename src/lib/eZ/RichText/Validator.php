@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldType\eZ\RichText;
+namespace EzSystems\EzPlatformRichText\eZ\RichText;
 
 use DOMDocument;
 use DOMElement;

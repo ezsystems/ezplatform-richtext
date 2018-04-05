@@ -4,7 +4,7 @@ services:
         autowire: true
         public: false
 
-    EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\RichTextStorage\Gateway\DoctrineStorage:
+    EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage\Gateway\DoctrineStorage:
         arguments:
             - "@ezpublish.fieldType.ezurl.storage_gateway"
             - "@ezpublish.api.storage_engine.legacy.connection"

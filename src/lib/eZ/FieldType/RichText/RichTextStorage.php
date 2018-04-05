@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText;
+namespace EzSystems\EzPlatformRichText\eZ\FieldType\RichText;
 
 use eZ\Publish\SPI\FieldType\GatewayBasedStorage;
 use eZ\Publish\SPI\FieldType\StorageGateway;
@@ -31,7 +31,7 @@ class RichTextStorage extends GatewayBasedStorage
     protected $logger;
 
     /**
-     * @var \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\RichTextStorage\Gateway
+     * @var \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage\Gateway
      */
     protected $gateway;
 

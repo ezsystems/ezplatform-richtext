@@ -12,9 +12,9 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldType\Form\Mapper;
+namespace EzSystems\EzPlatformRichText\Form\Mapper;
 
-use EzSystems\EzPlatformRichTextFieldType\Form\Type\RichTextFieldType;
+use EzSystems\EzPlatformRichText\Form\Type\RichTextFieldType;
 use EzSystems\RepositoryForms\Data\Content\FieldData;
 use EzSystems\RepositoryForms\FieldType\FieldValueFormMapperInterface;
 use Symfony\Component\Form\FormInterface;

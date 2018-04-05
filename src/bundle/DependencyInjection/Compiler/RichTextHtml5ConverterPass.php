@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldTypeBundle\DependencyInjection\Compiler;
+namespace EzSystems\EzPlatformRichTextBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -21,7 +21,7 @@ use Symfony\Component\DependencyInjection\Reference;
 /**
  * Compiler pass for the RichText Aggregate converter tags.
  *
- * @see \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter\Aggregate
+ * @see \EzSystems\EzPlatformRichText\eZ\RichText\Converter\Aggregate
  */
 class RichTextHtml5ConverterPass implements CompilerPassInterface
 {

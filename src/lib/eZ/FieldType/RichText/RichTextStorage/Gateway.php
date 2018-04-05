@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\RichTextStorage;
+namespace EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage;
 
 use eZ\Publish\SPI\FieldType\StorageGateway;
 use eZ\Publish\Core\FieldType\Url\UrlStorage\Gateway as UrlGateway;

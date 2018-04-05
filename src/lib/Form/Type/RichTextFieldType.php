@@ -10,11 +10,11 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldType\Form\Type;
+namespace EzSystems\EzPlatformRichText\Form\Type;
 
 use eZ\Publish\API\Repository\FieldTypeService;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter;
-use EzSystems\EzPlatformRichTextFieldType\Form\DataTransformer\RichTextValueTransformer;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
+use EzSystems\EzPlatformRichText\Form\DataTransformer\RichTextValueTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;

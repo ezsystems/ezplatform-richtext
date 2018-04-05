@@ -14,11 +14,11 @@ declare(strict_types=1);
  * @version //autogentag//
  */
 
-namespace EzSystems\EzPlatformRichTextFieldType\Form\DataTransformer;
+namespace EzSystems\EzPlatformRichText\Form\DataTransformer;
 
 use eZ\Publish\API\Repository\FieldType;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter;
-use EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Value;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
+use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value;
 use Symfony\Component\Form\DataTransformerInterface;
 
 /**
@@ -30,7 +30,7 @@ class RichTextValueTransformer implements DataTransformerInterface
     private $fieldType;
 
     /**
-     * @var \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter Converter
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\Converter Converter
      */
     protected $docbookToXhtml5EditConverter;
 

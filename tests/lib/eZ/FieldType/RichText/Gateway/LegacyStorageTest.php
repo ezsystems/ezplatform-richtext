@@ -12,9 +12,9 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\Tests\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Gateway;
+namespace EzSystems\Tests\EzPlatformRichText\eZ\FieldType\RichText\Gateway;
 
-use EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\RichTextStorage\Gateway\LegacyStorage;
+use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage\Gateway\LegacyStorage;
 use eZ\Publish\Core\FieldType\Url\UrlStorage\Gateway\LegacyStorage as UrlStorageLegacyGateway;
 use eZ\Publish\Core\Persistence\Legacy\Tests\TestCase;
 
@@ -45,14 +45,14 @@ class LegacyStorageTest extends TestCase
     }
 
     /**
-     * @var \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\RichTextStorage\Gateway\LegacyStorage
+     * @var \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage\Gateway\LegacyStorage
      */
     protected $storageGateway;
 
     /**
      * Returns a ready to test LegacyStorage gateway.
      *
-     * @return \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\RichTextStorage\Gateway\LegacyStorage
+     * @return \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage\Gateway\LegacyStorage
      */
     protected function getStorageGateway()
     {

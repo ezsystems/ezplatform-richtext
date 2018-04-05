@@ -12,9 +12,9 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter;
+namespace EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 use eZ\Publish\API\Repository\ContentService;
 use eZ\Publish\API\Repository\LocationService;
 use eZ\Publish\Core\MVC\Symfony\Routing\UrlAliasRouter;

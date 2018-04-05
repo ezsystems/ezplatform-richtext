@@ -12,9 +12,9 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldTypeBundle\eZ\RichText\Converter;
+namespace EzSystems\EzPlatformRichTextBundle\eZ\RichText\Converter;
 
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter\Xslt as XsltConverter;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Xslt as XsltConverter;
 use eZ\Publish\Core\MVC\ConfigResolverInterface;
 
 /**

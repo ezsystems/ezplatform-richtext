@@ -10,7 +10,7 @@
          colors="true"
          >
     <php>
-        <env name="setupFactory" value="EzSystems\IntegrationTests\EzPlatformRichTextFieldType\eZ\API\LegacySetupFactory" />
+        <env name="setupFactory" value="EzSystems\IntegrationTests\EzPlatformRichText\eZ\API\LegacySetupFactory" />
         <env name="backendVersion" value="5" />
         <env name="fixtureDir" value="Legacy" />
         <ini name="error_reporting" value="-1" />

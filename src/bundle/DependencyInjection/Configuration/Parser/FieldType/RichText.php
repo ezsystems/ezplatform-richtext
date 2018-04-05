@@ -12,11 +12,11 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldTypeBundle\DependencyInjection\Configuration\Parser\FieldType;
+namespace EzSystems\EzPlatformRichTextBundle\DependencyInjection\Configuration\Parser\FieldType;
 
 use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\Configuration\Parser\AbstractFieldTypeParser;
 use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\Configuration\SiteAccessAware\ContextualizerInterface;
-use EzSystems\EzPlatformRichTextFieldTypeBundle\DependencyInjection\EzPlatformRichTextFieldTypeExtension;
+use EzSystems\EzPlatformRichTextBundle\DependencyInjection\EzPlatformRichTextExtension;
 use Symfony\Component\Config\Definition\Builder\NodeBuilder;
 use Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
@@ -264,7 +264,7 @@ class RichText extends AbstractFieldTypeParser
         array $enabledCustomTags
     ) {
         $definedCustomTags = array_keys(
-            $container->getParameter(EzPlatformRichTextFieldTypeExtension::RICHTEXT_CUSTOM_TAGS_PARAMETER)
+            $container->getParameter(EzPlatformRichTextExtension::RICHTEXT_CUSTOM_TAGS_PARAMETER)
         );
         foreach ($enabledCustomTags as $customTagName) {
             if (!in_array($customTagName, $definedCustomTags)) {

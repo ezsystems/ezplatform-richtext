@@ -12,11 +12,11 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\Tests\EzPlatformRichTextFieldType\eZ\RichText\Converter;
+namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Converter;
 
 use eZ\Publish\API\Repository\Values\Content\ContentInfo as APIContentInfo;
 use eZ\Publish\API\Repository\Values\Content\Location as APILocation;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter\Link;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Link;
 use eZ\Publish\Core\Repository\ContentService;
 use eZ\Publish\Core\Repository\LocationService;
 use eZ\Publish\Core\MVC\Symfony\Routing\UrlAliasRouter;

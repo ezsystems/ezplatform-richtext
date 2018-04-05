@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldType\eZ\RichText;
+namespace EzSystems\EzPlatformRichText\eZ\RichText;
 
 use eZ\Publish\Core\Base\Exceptions\NotFoundException;
 use DOMDocument;
@@ -25,12 +25,12 @@ class ConverterDispatcher
     /**
      * Mapping of namespaces to converters.
      *
-     * @var \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter[]
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\Converter[]
      */
     protected $mapping = [];
 
     /**
-     * @param \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter[] $converterMap
+     * @param \EzSystems\EzPlatformRichText\eZ\RichText\Converter[] $converterMap
      */
     public function __construct($converterMap)
     {
@@ -43,7 +43,7 @@ class ConverterDispatcher
      * Adds converter mapping.
      *
      * @param string $namespace
-     * @param null|\EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter $converter
+     * @param null|\EzSystems\EzPlatformRichText\eZ\RichText\Converter $converter
      */
     public function addConverter($namespace, Converter $converter = null)
     {

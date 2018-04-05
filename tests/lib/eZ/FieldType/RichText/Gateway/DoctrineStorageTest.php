@@ -12,9 +12,9 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\Tests\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Gateway;
+namespace EzSystems\Tests\EzPlatformRichText\eZ\FieldType\RichText\Gateway;
 
-use EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\RichTextStorage\Gateway\DoctrineStorage;
+use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage\Gateway\DoctrineStorage;
 use eZ\Publish\Core\FieldType\Url\UrlStorage\Gateway\DoctrineStorage as UrlStorageDoctrineGateway;
 use eZ\Publish\Core\Persistence\Legacy\Tests\TestCase;
 
@@ -24,7 +24,7 @@ use eZ\Publish\Core\Persistence\Legacy\Tests\TestCase;
 class DoctrineStorageTest extends TestCase
 {
     /**
-     * @var \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\RichTextStorage\Gateway\DoctrineStorage
+     * @var \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage\Gateway\DoctrineStorage
      */
     protected $storageGateway;
 
@@ -52,7 +52,7 @@ class DoctrineStorageTest extends TestCase
     /**
      * Return a ready to test DoctrineStorage gateway.
      *
-     * @return \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\RichTextStorage\Gateway\DoctrineStorage
+     * @return \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage\Gateway\DoctrineStorage
      */
     protected function getStorageGateway()
     {

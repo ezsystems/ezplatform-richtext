@@ -12,15 +12,15 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\IntegrationTests\EzPlatformRichTextFieldType\eZ\SPI;
+namespace EzSystems\IntegrationTests\EzPlatformRichText\eZ\SPI;
 
 use eZ\Publish\Core\FieldType;
 use eZ\Publish\SPI\Persistence\Content\FieldValue;
 use eZ\Publish\SPI\Persistence\Content\FieldTypeConstraints;
 use eZ\Publish\Core\FieldType\Url\UrlStorage\Gateway\DoctrineStorage as UrlGateway;
 use eZ\Publish\SPI\Tests\FieldType\BaseIntegrationTest;
-use EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\RichTextStorage\Gateway\DoctrineStorage;
-use EzSystems\EzPlatformRichTextFieldType\eZ\Persistence\Legacy\RichTextFieldValueConverter;
+use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage\Gateway\DoctrineStorage;
+use EzSystems\EzPlatformRichText\eZ\Persistence\Legacy\RichTextFieldValueConverter;
 
 /**
  * Integration test for legacy storage field types.

@@ -4,7 +4,7 @@ services:
         autowire: true
         public: false
 
-    EzSystems\EzPlatformRichTextFieldType\eZ\REST\FieldTypeProcessor\RichTextProcessor:
+    EzSystems\EzPlatformRichText\eZ\REST\FieldTypeProcessor\RichTextProcessor:
         arguments:
             - "@ezrichtext.converter.edit.xhtml5"
         tags:

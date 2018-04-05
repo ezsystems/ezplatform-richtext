@@ -12,14 +12,14 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldType\eZ\Persistence\Legacy;
+namespace EzSystems\EzPlatformRichText\eZ\Persistence\Legacy;
 
 use eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter;
 use eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldValue;
 use eZ\Publish\SPI\Persistence\Content\FieldValue;
 use eZ\Publish\SPI\Persistence\Content\Type\FieldDefinition;
 use eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldDefinition;
-use EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Value;
+use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value;
 
 class RichTextFieldValueConverter implements Converter
 {

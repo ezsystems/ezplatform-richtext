@@ -12,12 +12,12 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldTypeBundle\eZ\RichText;
+namespace EzSystems\EzPlatformRichTextBundle\eZ\RichText;
 
 use eZ\Publish\API\Repository\Repository;
 use eZ\Publish\API\Repository\Values\Content\Content;
 use eZ\Publish\Core\MVC\ConfigResolverInterface;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\RendererInterface;
+use EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface;
 use Symfony\Component\Templating\EngineInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use eZ\Publish\Core\MVC\Symfony\Security\Authorization\Attribute as AuthorizationAttribute;

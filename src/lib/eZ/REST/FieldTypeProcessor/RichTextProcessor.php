@@ -12,16 +12,16 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldType\eZ\REST\FieldTypeProcessor;
+namespace EzSystems\EzPlatformRichText\eZ\REST\FieldTypeProcessor;
 
 use eZ\Publish\Core\REST\Common\FieldTypeProcessor;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 use DOMDocument;
 
 class RichTextProcessor extends FieldTypeProcessor
 {
     /**
-     * @var \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\Converter
      */
     protected $docbookToXhtml5EditConverter;
 

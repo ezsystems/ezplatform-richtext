@@ -12,11 +12,11 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\Tests\EzPlatformRichTextFieldType\eZ\RichText\Converter\Render;
+namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Converter\Render;
 
 use PHPUnit\Framework\TestCase;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter\Render\Template;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\RendererInterface;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template;
+use EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface;
 use DOMDocument;
 
 class TemplateTest extends TestCase
@@ -317,7 +317,7 @@ class TemplateTest extends TestCase
     }
 
     /**
-     * @var \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\RendererInterface|\PHPUnit\Framework\MockObject\MockObject
+     * @var \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RendererInterface|\PHPUnit\Framework\MockObject\MockObject
      */
     protected $rendererMock;
 

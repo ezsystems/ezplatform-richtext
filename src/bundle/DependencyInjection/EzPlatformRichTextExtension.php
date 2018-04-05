@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformRichTextFieldTypeBundle\DependencyInjection;
+namespace EzSystems\EzPlatformRichTextBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -17,7 +17,7 @@ use Symfony\Component\Config\FileLocator;
 /**
  * eZ Platform RichText Field Type Bundle extension.
  */
-class EzPlatformRichTextFieldTypeExtension extends Extension implements PrependExtensionInterface
+class EzPlatformRichTextExtension extends Extension implements PrependExtensionInterface
 {
     const RICHTEXT_CUSTOM_TAGS_PARAMETER = 'ezplatform.ezrichtext.custom_tags';
 
@@ -85,13 +85,13 @@ class EzPlatformRichTextFieldTypeExtension extends Extension implements PrependE
             'system' => ['default' => [
                 'field_templates' => [
                     [
-                        'template' => 'EzPlatformRichTextFieldTypeBundle:RichText:content_fields.html.twig',
+                        'template' => 'EzPlatformRichTextBundle:RichText:content_fields.html.twig',
                         'priority' => 0,
                     ],
                 ],
                 'fielddefinition_settings_templates' => [
                     [
-                        'template' => 'EzPlatformRichTextFieldTypeBundle:RichText:fielddefinition_settings.html.twig',
+                        'template' => 'EzPlatformRichTextBundle:RichText:fielddefinition_settings.html.twig',
                         'priority' => 0,
                     ],
                 ],

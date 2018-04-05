@@ -12,11 +12,11 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter;
+namespace EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 
 use DOMElement;
 use DOMNode;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\RendererInterface;
+use EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface;
 
 /**
  * Base class for Render converters.
@@ -24,7 +24,7 @@ use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\RendererInterface;
 abstract class Render
 {
     /**
-     * @var \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\RendererInterface
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface
      */
     protected $renderer;
 

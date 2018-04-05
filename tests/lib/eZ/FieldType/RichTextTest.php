@@ -12,22 +12,22 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\Tests\EzPlatformRichTextFieldType\eZ\FieldType;
+namespace EzSystems\Tests\EzPlatformRichText\eZ\FieldType;
 
 use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition as APIFieldDefinition;
 use eZ\Publish\Core\FieldType\Value as CoreValue;
-use EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Type as RichTextType;
-use EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Value;
+use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Type as RichTextType;
+use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value;
 use eZ\Publish\Core\Base\Exceptions\InvalidArgumentException;
 use eZ\Publish\Core\Base\Exceptions\NotFoundException;
 use eZ\Publish\API\Repository\Values\Content\Relation;
 use eZ\Publish\Core\Persistence\TransformationProcessor;
 use eZ\Publish\Core\FieldType\ValidationError;
 use Exception;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\ConverterDispatcher;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Normalizer\Aggregate;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Validator;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\ValidatorDispatcher;
+use EzSystems\EzPlatformRichText\eZ\RichText\ConverterDispatcher;
+use EzSystems\EzPlatformRichText\eZ\RichText\Normalizer\Aggregate;
+use EzSystems\EzPlatformRichText\eZ\RichText\Validator;
+use EzSystems\EzPlatformRichText\eZ\RichText\ValidatorDispatcher;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -37,7 +37,7 @@ use PHPUnit\Framework\TestCase;
 class RichTextTest extends TestCase
 {
     /**
-     * @return \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Type
+     * @return \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Type
      */
     protected function getFieldType()
     {
@@ -98,7 +98,7 @@ class RichTextTest extends TestCase
     }
 
     /**
-     * @covers \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Type::acceptValue
+     * @covers \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Type::acceptValue
      * @expectedException \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException
      */
     public function testAcceptValueInvalidType()
@@ -258,7 +258,7 @@ class RichTextTest extends TestCase
     }
 
     /**
-     * @covers \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Type::toPersistenceValue
+     * @covers \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Type::toPersistenceValue
      */
     public function testToPersistenceValue()
     {
@@ -277,7 +277,7 @@ class RichTextTest extends TestCase
     }
 
     /**
-     * @covers \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Type::getName
+     * @covers \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Type::getName
      * @dataProvider providerForTestGetName
      */
     public function testGetName($xmlString, $expectedName)
@@ -382,7 +382,7 @@ class RichTextTest extends TestCase
 
     /**
      * @todo handle embeds when implemented
-     * @covers \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Type::getRelations
+     * @covers \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Type::getRelations
      */
     public function testGetRelations()
     {

@@ -12,9 +12,9 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\Tests\EzPlatformRichTextFieldType\eZ\RichText\Validator;
+namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Validator;
 
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Validator;
+use EzSystems\EzPlatformRichText\eZ\RichText\Validator;
 use DOMDocument;
 use PHPUnit\Framework\TestCase;
 
@@ -85,12 +85,12 @@ class DocbookTest extends TestCase
     }
 
     /**
-     * @var \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Validator
+     * @var \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Validator
      */
     protected $validator;
 
     /**
-     * @return \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Validator
+     * @return \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Validator
      */
     protected function getConversionValidator()
     {
