@@ -12,10 +12,10 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\Tests\EzPlatformRichTextFieldType\eZ\REST\FieldTypeProcessor;
+namespace EzSystems\Tests\EzPlatformRichText\eZ\REST\FieldTypeProcessor;
 
-use EzSystems\EzPlatformRichTextFieldType\eZ\REST\FieldTypeProcessor\RichTextProcessor;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter;
+use EzSystems\EzPlatformRichText\eZ\REST\FieldTypeProcessor\RichTextProcessor;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 use PHPUnit\Framework\TestCase;
 use DOMDocument;
 
@@ -60,12 +60,12 @@ EOT;
     }
 
     /**
-     * @var \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter|\PHPUnit\Framework\MockObject\MockObject
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\Converter|\PHPUnit\Framework\MockObject\MockObject
      */
     protected $converter;
 
     /**
-     * @return \EzSystems\EzPlatformRichTextFieldType\eZ\REST\FieldTypeProcessor\RichTextProcessor
+     * @return \EzSystems\EzPlatformRichText\eZ\REST\FieldTypeProcessor\RichTextProcessor
      */
     protected function getProcessor()
     {

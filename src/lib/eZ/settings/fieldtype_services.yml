@@ -11,31 +11,31 @@ services:
         public: false
 
     ezrichtext.converter.input.dispatcher:
-        class: EzSystems\EzPlatformRichTextFieldType\eZ\RichText\ConverterDispatcher
+        class: EzSystems\EzPlatformRichText\eZ\RichText\ConverterDispatcher
         arguments:
             -
                 http://docbook.org/ns/docbook: null
 
     ezrichtext.validator.docbook:
-        class: EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Validator
+        class: EzSystems\EzPlatformRichText\eZ\RichText\Validator
         arguments: ["%ezrichtext.validator.docbook.resources%"]
 
     ezrichtext.validator.input.dispatcher:
-        class: EzSystems\EzPlatformRichTextFieldType\eZ\RichText\ValidatorDispatcher
+        class: EzSystems\EzPlatformRichText\eZ\RichText\ValidatorDispatcher
         arguments:
             -
                 http://docbook.org/ns/docbook: null
 
     ezrichtext.validator.internal_link:
-        class: EzSystems\EzPlatformRichTextFieldType\eZ\RichText\InternalLinkValidator
+        class: EzSystems\EzPlatformRichText\eZ\RichText\InternalLinkValidator
         arguments:
             - '@ezpublish.spi.persistence.cache.contentHandler'
             - '@ezpublish.spi.persistence.cache.locationHandler'
 
     ezrichtext.normalizer.input:
-        class: EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Normalizer\Aggregate
+        class: EzSystems\EzPlatformRichText\eZ\RichText\Normalizer\Aggregate
 
     # Symfony 3.4+ service definitions:
-    EzSystems\EzPlatformRichTextFieldType\eZ\RichText\CustomTagsValidator:
+    EzSystems\EzPlatformRichText\eZ\RichText\CustomTagsValidator:
         public: false
         arguments: ['%ezplatform.ezrichtext.custom_tags%']

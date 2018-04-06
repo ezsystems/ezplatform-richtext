@@ -12,9 +12,9 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldType\Templating\Twig\Extension;
+namespace EzSystems\EzPlatformRichText\Templating\Twig\Extension;
 
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter as RichTextConverterInterface;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter as RichTextConverterInterface;
 use Twig_Extension;
 use Twig_SimpleFilter;
 

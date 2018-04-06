@@ -4,11 +4,11 @@ services:
         autoconfigure: true
         public: false
 
-    EzSystems\EzPlatformRichTextFieldType\Form\Type\RichTextFieldType:
+    EzSystems\EzPlatformRichText\Form\Type\RichTextFieldType:
         arguments:
             $docbookToXhtml5EditConverter: '@ezrichtext.converter.edit.xhtml5'
 
-    EzSystems\EzPlatformRichTextFieldType\Form\Mapper\RichTextFormMapper:
+    EzSystems\EzPlatformRichText\Form\Mapper\RichTextFormMapper:
         tags:
             - { name: ez.fieldFormMapper.value, fieldType: ezrichtext }
 

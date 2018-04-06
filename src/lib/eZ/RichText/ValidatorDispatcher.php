@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldType\eZ\RichText;
+namespace EzSystems\EzPlatformRichText\eZ\RichText;
 
 use eZ\Publish\Core\Base\Exceptions\NotFoundException;
 use DOMDocument;
@@ -25,12 +25,12 @@ class ValidatorDispatcher
     /**
      * Mapping of namespaces to validators.
      *
-     * @var \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Validator[]
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\Validator[]
      */
     protected $mapping = [];
 
     /**
-     * @param \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Validator[] $validatorMap
+     * @param \EzSystems\EzPlatformRichText\eZ\RichText\Validator[] $validatorMap
      */
     public function __construct($validatorMap)
     {
@@ -43,7 +43,7 @@ class ValidatorDispatcher
      * Adds validator mapping.
      *
      * @param string $namespace
-     * @param \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Validator $validator
+     * @param \EzSystems\EzPlatformRichText\eZ\RichText\Validator $validator
      */
     public function addValidator($namespace, Validator $validator = null)
     {

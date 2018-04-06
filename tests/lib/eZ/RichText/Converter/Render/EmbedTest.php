@@ -12,11 +12,11 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\Tests\EzPlatformRichTextFieldType\eZ\RichText\Converter\Render;
+namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Converter\Render;
 
 use PHPUnit\Framework\TestCase;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter\Render\Embed;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\RendererInterface;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Embed;
+use EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface;
 use DOMDocument;
 use Psr\Log\LoggerInterface;
 
@@ -531,12 +531,12 @@ class EmbedTest extends TestCase
     }
 
     /**
-     * @var \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\RendererInterface|\PHPUnit\Framework\MockObject\MockObject
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface|\PHPUnit\Framework\MockObject\MockObject
      */
     protected $rendererMock;
 
     /**
-     * @return \PHPUnit\Framework\MockObject\MockObject|\EzSystems\EzPlatformRichTextFieldType\eZ\RichText\RendererInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|\EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface
      */
     protected function getRendererMock()
     {

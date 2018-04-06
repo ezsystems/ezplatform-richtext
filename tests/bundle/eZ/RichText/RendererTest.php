@@ -12,14 +12,14 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\Tests\EzPlatformRichTextFieldTypeBundle\eZ\RichText;
+namespace EzSystems\Tests\EzPlatformRichTextBundle\eZ\RichText;
 
 use eZ\Publish\Core\Repository\Repository;
 use eZ\Publish\API\Repository\Values\Content\Location;
 use eZ\Publish\API\Repository\Values\Content\Content;
 use eZ\Publish\API\Repository\Values\Content\ContentInfo;
 use eZ\Publish\Core\MVC\ConfigResolverInterface;
-use EzSystems\EzPlatformRichTextFieldTypeBundle\eZ\RichText\Renderer;
+use EzSystems\EzPlatformRichTextBundle\eZ\RichText\Renderer;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use eZ\Publish\Core\Base\Exceptions\NotFoundException;
@@ -1396,7 +1396,7 @@ class RendererTest extends TestCase
     /**
      * @param array $methods
      *
-     * @return \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Renderer|\PHPUnit\Framework\MockObject\MockObject
+     * @return \EzSystems\EzPlatformRichText\eZ\RichText\Renderer|\PHPUnit\Framework\MockObject\MockObject
      */
     protected function getMockedRenderer(array $methods = [])
     {

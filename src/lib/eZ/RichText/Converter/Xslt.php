@@ -12,12 +12,12 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter;
+namespace EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 
 use eZ\Publish\Core\Base\Exceptions\InvalidArgumentException;
 use DOMDocument;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\XmlBase;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
+use EzSystems\EzPlatformRichText\eZ\RichText\XmlBase;
 use XSLTProcessor;
 use RuntimeException;
 

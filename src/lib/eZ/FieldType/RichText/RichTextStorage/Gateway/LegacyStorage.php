@@ -12,14 +12,14 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\RichTextStorage\Gateway;
+namespace EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage\Gateway;
 
-use EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\RichTextStorage\Gateway;
+use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage\Gateway;
 use eZ\Publish\Core\FieldType\Url\UrlStorage\Gateway as UrlGateway;
 use eZ\Publish\Core\Persistence\Database\DatabaseHandler;
 
 /**
- * @deprecated since 6.11. Use {@see EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\RichTextStorage\Gateway\DoctrineStorage} instead.
+ * @deprecated since 6.11. Use {@see EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage\Gateway\DoctrineStorage} instead.
  */
 class LegacyStorage extends Gateway
 {

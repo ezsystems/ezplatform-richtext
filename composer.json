@@ -1,6 +1,6 @@
 {
-    "name": "ezsystems/ezplatform-richtext-fieldtype",
-    "description": "eZ Platform RichText FieldType Bundle",
+    "name": "ezsystems/ezplatform-richtext",
+    "description": "eZ Platform RichText Extension, including the RichText FieldType.",
     "homepage": "https://ezplatform.com",
     "license": "GPL-2.0-only",
     "type": "ezplatform-bundle",
@@ -8,7 +8,7 @@
         "php": "^7.1",
         "ext-xsl": "*",
         "symfony/symfony": "^3.4",
-        "ezsystems/ezpublish-kernel": "^7.0",
+        "ezsystems/ezpublish-kernel": "^7.2@dev",
         "ezsystems/repository-forms": "^2.0"
     },
     "require-dev": {
@@ -18,15 +18,15 @@
     },
     "autoload": {
         "psr-4": {
-            "EzSystems\\EzPlatformRichTextFieldTypeBundle\\": "src/bundle",
-            "EzSystems\\EzPlatformRichTextFieldType\\": "src/lib"
+            "EzSystems\\EzPlatformRichTextBundle\\": "src/bundle",
+            "EzSystems\\EzPlatformRichText\\": "src/lib"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "EzSystems\\Tests\\EzPlatformRichTextFieldType\\": "tests/lib",
-            "EzSystems\\Tests\\EzPlatformRichTextFieldTypeBundle\\": "tests/bundle",
-            "EzSystems\\IntegrationTests\\EzPlatformRichTextFieldType\\": "tests/integration"
+            "EzSystems\\Tests\\EzPlatformRichText\\": "tests/lib",
+            "EzSystems\\Tests\\EzPlatformRichTextBundle\\": "tests/bundle",
+            "EzSystems\\IntegrationTests\\EzPlatformRichText\\": "tests/integration"
         }
     },
     "scripts": {

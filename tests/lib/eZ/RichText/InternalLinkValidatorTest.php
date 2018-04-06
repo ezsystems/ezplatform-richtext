@@ -12,12 +12,12 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\Tests\EzPlatformRichTextFieldType\eZ\RichText;
+namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText;
 
 use eZ\Publish\SPI\Persistence\Content\Handler as ContentHandler;
 use eZ\Publish\SPI\Persistence\Content\Location\Handler as LocationHandler;
 use eZ\Publish\Core\Base\Exceptions\NotFoundException;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\InternalLinkValidator;
+use EzSystems\EzPlatformRichText\eZ\RichText\InternalLinkValidator;
 use PHPUnit\Framework\TestCase;
 
 class InternalLinkValidatorTest extends TestCase
@@ -293,7 +293,7 @@ class InternalLinkValidatorTest extends TestCase
     }
 
     /**
-     * @return \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\InternalLinkValidator|\PHPUnit\Framework\MockObject\MockObject
+     * @return \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\InternalLinkValidator|\PHPUnit\Framework\MockObject\MockObject
      */
     private function getInternalLinkValidator(array $methods = null)
     {

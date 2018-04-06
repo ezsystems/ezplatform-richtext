@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\Tests\EzPlatformRichTextFieldType\eZ\RichText\Converter\Xslt;
+namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Converter\Xslt;
 
 /**
  * Tests conversion from docbook to xhtml5 output format.

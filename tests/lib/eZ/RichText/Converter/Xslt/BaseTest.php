@@ -12,10 +12,10 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\Tests\EzPlatformRichTextFieldType\eZ\RichText\Converter\Xslt;
+namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Converter\Xslt;
 
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Validator;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter\Xslt;
+use EzSystems\EzPlatformRichText\eZ\RichText\Validator;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Xslt;
 use PHPUnit\Framework\TestCase;
 use DOMDocument;
 use DOMXpath;
@@ -26,12 +26,12 @@ use DOMXpath;
 abstract class BaseTest extends TestCase
 {
     /**
-     * @var \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\Converter
      */
     protected $converter;
 
     /**
-     * @var \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Validator
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\Validator
      */
     protected $validator;
 
@@ -170,7 +170,7 @@ abstract class BaseTest extends TestCase
     }
 
     /**
-     * @return \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter\Xslt
+     * @return \EzSystems\EzPlatformRichText\eZ\RichText\Converter\Xslt
      */
     protected function getConverter()
     {
@@ -185,7 +185,7 @@ abstract class BaseTest extends TestCase
     }
 
     /**
-     * @return \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Validator
+     * @return \EzSystems\EzPlatformRichText\eZ\RichText\Validator
      */
     protected function getConversionValidator()
     {

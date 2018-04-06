@@ -12,11 +12,11 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\Tests\EzPlatformRichTextFieldTypeBundle\DependencyInjection\Configuration\Parser\FieldType;
+namespace EzSystems\Tests\EzPlatformRichTextBundle\DependencyInjection\Configuration\Parser\FieldType;
 
 use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\EzPublishCoreExtension;
 use eZ\Bundle\EzPublishCoreBundle\Tests\DependencyInjection\Configuration\Parser\AbstractParserTestCase;
-use EzSystems\EzPlatformRichTextFieldTypeBundle\DependencyInjection\Configuration\Parser\FieldType\RichText as RichTextConfigParser;
+use EzSystems\EzPlatformRichTextBundle\DependencyInjection\Configuration\Parser\FieldType\RichText as RichTextConfigParser;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\Yaml\Yaml;

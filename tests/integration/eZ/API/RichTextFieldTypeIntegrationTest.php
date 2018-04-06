@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\IntegrationTests\EzPlatformRichTextFieldType\eZ\API;
+namespace EzSystems\IntegrationTests\EzPlatformRichText\eZ\API;
 
 use DirectoryIterator;
 use eZ\Publish\API\Repository\Exceptions\ContentFieldValidationException;
@@ -20,7 +20,7 @@ use eZ\Publish\API\Repository\Repository;
 use eZ\Publish\API\Repository\Tests\FieldType\RelationSearchBaseIntegrationTestTrait;
 use eZ\Publish\API\Repository\Tests\FieldType\SearchBaseIntegrationTest;
 use eZ\Publish\API\Repository\Values\Content\Location;
-use EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Value as RichTextValue;
+use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value as RichTextValue;
 use eZ\Publish\API\Repository\Values\Content\Field;
 use DOMDocument;
 use eZ\Publish\Core\Repository\Values\Content\Relation;
@@ -884,7 +884,7 @@ XML
 
     protected function checkSearchEngineSupport()
     {
-        if (ltrim(get_class($this->getSetupFactory()), '\\') === 'EzSystems\\IntegrationTests\\EzPlatformRichTextFieldType\\eZ\\API\\LegacySetupFactory') {
+        if (ltrim(get_class($this->getSetupFactory()), '\\') === 'EzSystems\\IntegrationTests\\EzPlatformRichText\\eZ\\API\\LegacySetupFactory') {
             $this->markTestSkipped(
                 "'ezrichtext' field type is not searchable with Legacy Search Engine"
             );

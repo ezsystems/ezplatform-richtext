@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldTypeBundle\DependencyInjection;
+namespace EzSystems\EzPlatformRichTextBundle\DependencyInjection;
 
 use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\Configuration\SiteAccessAware\Configuration as SiteAccessConfiguration;
 use Symfony\Component\Config\Definition\Builder\NodeBuilder;

@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText;
+namespace EzSystems\EzPlatformRichText\eZ\FieldType\RichText;
 
 use eZ\Publish\Core\FieldType\FieldType;
 use eZ\Publish\Core\Base\Exceptions\InvalidArgumentException;
@@ -24,12 +24,12 @@ use eZ\Publish\Core\FieldType\Value as BaseValue;
 use eZ\Publish\API\Repository\Values\Content\Relation;
 use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
 use DOMDocument;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\ConverterDispatcher;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\CustomTagsValidator;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\InternalLinkValidator;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Normalizer;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Validator;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\ValidatorDispatcher;
+use EzSystems\EzPlatformRichText\eZ\RichText\ConverterDispatcher;
+use EzSystems\EzPlatformRichText\eZ\RichText\CustomTagsValidator;
+use EzSystems\EzPlatformRichText\eZ\RichText\InternalLinkValidator;
+use EzSystems\EzPlatformRichText\eZ\RichText\Normalizer;
+use EzSystems\EzPlatformRichText\eZ\RichText\Validator;
+use EzSystems\EzPlatformRichText\eZ\RichText\ValidatorDispatcher;
 use RuntimeException;
 
 /**
@@ -38,42 +38,42 @@ use RuntimeException;
 class Type extends FieldType
 {
     /**
-     * @var \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\ValidatorDispatcher
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\ValidatorDispatcher
      */
     protected $internalFormatValidator;
 
     /**
-     * @var \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\ConverterDispatcher
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\ConverterDispatcher
      */
     protected $inputConverterDispatcher;
 
     /**
-     * @var \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Normalizer
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\Normalizer
      */
     protected $inputNormalizer;
 
     /**
-     * @var null|\EzSystems\EzPlatformRichTextFieldType\eZ\RichText\ValidatorDispatcher
+     * @var null|\EzSystems\EzPlatformRichText\eZ\RichText\ValidatorDispatcher
      */
     protected $inputValidatorDispatcher;
 
     /**
-     * @var null|\EzSystems\EzPlatformRichTextFieldType\eZ\RichText\InternalLinkValidator
+     * @var null|\EzSystems\EzPlatformRichText\eZ\RichText\InternalLinkValidator
      */
     protected $internalLinkValidator;
 
     /**
-     * @var null|\EzSystems\EzPlatformRichTextFieldType\eZ\RichText\CustomTagsValidator
+     * @var null|\EzSystems\EzPlatformRichText\eZ\RichText\CustomTagsValidator
      */
     private $customTagsValidator;
 
     /**
-     * @param \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Validator $internalFormatValidator
-     * @param \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\ConverterDispatcher $inputConverterDispatcher
-     * @param \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Normalizer|null $inputNormalizer
-     * @param \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\ValidatorDispatcher|null $inputValidatorDispatcher
-     * @param \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\InternalLinkValidator|null $internalLinkValidator
-     * @param \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\CustomTagsValidator|null $customTagsValidator
+     * @param \EzSystems\EzPlatformRichText\eZ\RichText\Validator $internalFormatValidator
+     * @param \EzSystems\EzPlatformRichText\eZ\RichText\ConverterDispatcher $inputConverterDispatcher
+     * @param \EzSystems\EzPlatformRichText\eZ\RichText\Normalizer|null $inputNormalizer
+     * @param \EzSystems\EzPlatformRichText\eZ\RichText\ValidatorDispatcher|null $inputValidatorDispatcher
+     * @param \EzSystems\EzPlatformRichText\eZ\RichText\InternalLinkValidator|null $internalLinkValidator
+     * @param \EzSystems\EzPlatformRichText\eZ\RichText\CustomTagsValidator|null $customTagsValidator
      */
     public function __construct(
         Validator $internalFormatValidator,
@@ -107,7 +107,7 @@ class Type extends FieldType
      * It will be used to generate content name and url alias if current field is designated
      * to be used in the content name/urlAlias pattern.
      *
-     * @param \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Value $value
+     * @param \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value $value
      *
      * @return string
      */
@@ -135,7 +135,7 @@ class Type extends FieldType
      * Returns the fallback default value of field type when no such default
      * value is provided in the field definition in content types.
      *
-     * @return \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Value
+     * @return \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value
      */
     public function getEmptyValue()
     {
@@ -145,7 +145,7 @@ class Type extends FieldType
     /**
      * Returns if the given $value is considered empty by the field type.
      *
-     * @param \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Value $value
+     * @param \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value $value
      *
      * @return bool
      */
@@ -161,9 +161,9 @@ class Type extends FieldType
     /**
      * Inspects given $inputValue and potentially converts it into a dedicated value object.
      *
-     * @param \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Value|\DOMDocument|string $inputValue
+     * @param \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value|\DOMDocument|string $inputValue
      *
-     * @return \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Value the potentially converted and structurally plausible value
+     * @return \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value the potentially converted and structurally plausible value
      */
     protected function createValueFromInput($inputValue)
     {
@@ -241,7 +241,7 @@ class Type extends FieldType
      *
      * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException if the value does not match the expected structure
      *
-     * @param \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Value $value
+     * @param \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value $value
      */
     protected function checkValueStructure(BaseValue $value)
     {
@@ -264,7 +264,7 @@ class Type extends FieldType
      * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException
      *
      * @param \eZ\Publish\API\Repository\Values\ContentType\FieldDefinition $fieldDefinition The field definition of the field
-     * @param \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Value $value The field value for which an action is performed
+     * @param \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value $value The field value for which an action is performed
      *
      * @return \eZ\Publish\SPI\FieldType\ValidationError[]
      */
@@ -302,7 +302,7 @@ class Type extends FieldType
      *
      * @see \eZ\Publish\Core\FieldType
      *
-     * @param \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Value $value
+     * @param \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value $value
      *
      * @return array|bool
      */
@@ -318,7 +318,7 @@ class Type extends FieldType
      *
      * @param mixed $hash
      *
-     * @return \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Value $value
+     * @return \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value $value
      */
     public function fromHash($hash)
     {
@@ -332,7 +332,7 @@ class Type extends FieldType
     /**
      * Converts a $Value to a hash.
      *
-     * @param \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Value $value
+     * @param \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value $value
      *
      * @return mixed
      */
@@ -355,7 +355,7 @@ class Type extends FieldType
     }
 
     /**
-     * @param \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Value $value
+     * @param \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value $value
      *
      * @return \eZ\Publish\SPI\Persistence\Content\FieldValue
      */
@@ -386,7 +386,7 @@ class Type extends FieldType
      * Not intended for \eZ\Publish\API\Repository\Values\Content\Relation::COMMON type relations,
      * there is a service API for handling those.
      *
-     * @param \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Value $fieldValue
+     * @param \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value $fieldValue
      *
      * @return array Hash with relation type as key and array of destination content ids as value.
      *
@@ -409,7 +409,7 @@ class Type extends FieldType
     {
         $relations = [];
 
-        /** @var \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Value $value */
+        /** @var \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value $value */
         if ($value->xml instanceof DOMDocument) {
             $relations = [
                 Relation::LINK => $this->getRelatedObjectIds($value, Relation::LINK),

@@ -6,20 +6,20 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformRichTextFieldTypeBundle;
+namespace EzSystems\EzPlatformRichTextBundle;
 
 use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\EzPublishCoreExtension;
-use EzSystems\EzPlatformRichTextFieldTypeBundle\DependencyInjection\Compiler\KernelRichTextPass;
-use EzSystems\EzPlatformRichTextFieldTypeBundle\DependencyInjection\Compiler\RichTextHtml5ConverterPass;
-use EzSystems\EzPlatformRichTextFieldTypeBundle\DependencyInjection\Configuration\Parser\FieldType\RichText;
-use EzSystems\EzPlatformRichTextFieldTypeBundle\DependencyInjection\EzPlatformRichTextFieldTypeExtension;
+use EzSystems\EzPlatformRichTextBundle\DependencyInjection\Compiler\KernelRichTextPass;
+use EzSystems\EzPlatformRichTextBundle\DependencyInjection\Compiler\RichTextHtml5ConverterPass;
+use EzSystems\EzPlatformRichTextBundle\DependencyInjection\Configuration\Parser\FieldType\RichText;
+use EzSystems\EzPlatformRichTextBundle\DependencyInjection\EzPlatformRichTextExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * eZ Platform RichText FieldType Bundle.
  */
-class EzPlatformRichTextFieldTypeBundle extends Bundle
+class EzPlatformRichTextBundle extends Bundle
 {
     public function build(ContainerBuilder $container)
     {
@@ -47,7 +47,7 @@ class EzPlatformRichTextFieldTypeBundle extends Bundle
     public function getContainerExtension()
     {
         if (!isset($this->extension)) {
-            $this->extension = new EzPlatformRichTextFieldTypeExtension();
+            $this->extension = new EzPlatformRichTextExtension();
         }
 
         return $this->extension;

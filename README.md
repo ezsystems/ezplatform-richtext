@@ -24,7 +24,7 @@ Field Type found in eZ Publish 5.x and before.
         {
            $bundles = [
                // ...
-               new EzSystems\EzPlatformRichTextFieldTypeBundle\EzPlatformRichTextFieldTypeBundle(),
+               new EzSystems\EzPlatformRichTextBundle\EzPlatformRichTextBundle(),
            ];
 
            // ...

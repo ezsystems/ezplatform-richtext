@@ -12,9 +12,9 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\Tests\EzPlatformRichTextFieldType\eZ\FieldType\RichText;
+namespace EzSystems\Tests\EzPlatformRichText\eZ\FieldType\RichText;
 
-use EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\RichTextStorage;
+use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage;
 use eZ\Publish\SPI\FieldType\StorageGateway;
 use eZ\Publish\SPI\Persistence\Content\VersionInfo;
 use eZ\Publish\SPI\Persistence\Content\Field;
@@ -346,7 +346,7 @@ class RichTextStorageTest extends TestCase
     /**
      * @param \eZ\Publish\SPI\FieldType\StorageGateway $gateway
      *
-     * @return \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\RichTextStorage|\PHPUnit\Framework\MockObject\MockObject
+     * @return \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage|\PHPUnit\Framework\MockObject\MockObject
      */
     protected function getPartlyMockedStorage(StorageGateway $gateway)
     {
@@ -389,12 +389,12 @@ class RichTextStorageTest extends TestCase
     }
 
     /**
-     * @var \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\RichTextStorage\Gateway|\PHPUnit\Framework\MockObject\MockObject
+     * @var \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage\Gateway|\PHPUnit\Framework\MockObject\MockObject
      */
     protected $gatewayMock;
 
     /**
-     * @return \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\RichTextStorage\Gateway|\PHPUnit\Framework\MockObject\MockObject
+     * @return \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage\Gateway|\PHPUnit\Framework\MockObject\MockObject
      */
     protected function getGatewayMock()
     {

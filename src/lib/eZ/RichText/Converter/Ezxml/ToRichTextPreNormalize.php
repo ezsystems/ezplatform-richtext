@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter\Ezxml;
+namespace EzSystems\EzPlatformRichText\eZ\RichText\Converter\Ezxml;
 
 use eZ\Publish\Core\FieldType\XmlText\Converter\EmbedLinking;
 use eZ\Publish\Core\FieldType\XmlText\Converter\Expanding;

@@ -12,9 +12,9 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Normalizer;
+namespace EzSystems\EzPlatformRichText\eZ\RichText\Normalizer;
 
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Normalizer;
+use EzSystems\EzPlatformRichText\eZ\RichText\Normalizer;
 
 /**
  * Aggregate normalizer converts using configured normalizers in prioritized order.
@@ -24,12 +24,12 @@ class Aggregate extends Normalizer
     /**
      * An array of normalizers, sorted by priority.
      *
-     * @var \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Normalizer[]
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\Normalizer[]
      */
     protected $normalizers = [];
 
     /**
-     * @param \EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Normalizer[] $normalizers An array of Normalizers, sorted by priority
+     * @param \EzSystems\EzPlatformRichText\eZ\RichText\Normalizer[] $normalizers An array of Normalizers, sorted by priority
      */
     public function __construct(array $normalizers = [])
     {

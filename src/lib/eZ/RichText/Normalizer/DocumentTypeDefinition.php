@@ -12,9 +12,9 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Normalizer;
+namespace EzSystems\EzPlatformRichText\eZ\RichText\Normalizer;
 
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Normalizer;
+use EzSystems\EzPlatformRichText\eZ\RichText\Normalizer;
 
 /**
  * Character entity definition normalizer adds DTD containing character entity definition to

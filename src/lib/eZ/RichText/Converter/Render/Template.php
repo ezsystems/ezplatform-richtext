@@ -12,14 +12,14 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter\Render;
+namespace EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render;
 
 use DOMDocument;
 use DOMElement;
 use DOMNode;
 use DOMXPath;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter;
-use EzSystems\EzPlatformRichTextFieldType\eZ\RichText\Converter\Render;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render;
 
 /**
  * RichText Template converter injects rendered template payloads into template elements.

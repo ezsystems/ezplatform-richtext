@@ -12,13 +12,13 @@ declare(strict_types=1);
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\Tests\EzPlatformRichTextFieldType\eZ\RichText\Converter\Xslt;
+namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Converter\Xslt;
 
-use EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Converter\Aggregate;
+use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Converter\Aggregate;
 use eZ\Publish\Core\FieldType\XmlText\Converter\Expanding;
-use EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Converter\Ezxml\ToRichTextPreNormalize;
+use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Converter\Ezxml\ToRichTextPreNormalize;
 use eZ\Publish\Core\FieldType\XmlText\Converter\EmbedLinking;
-use EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Converter\Xslt;
+use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Converter\Xslt;
 
 /**
  * Tests conversion from legacy ezxml to docbook format.
@@ -35,7 +35,7 @@ class EzxmlToDocbookTest extends BaseTest
     }
 
     /**
-     * @return \EzSystems\EzPlatformRichTextFieldType\eZ\FieldType\RichText\Converter\Xslt
+     * @return \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Converter\Xslt
      */
     protected function getConverter()
     {
