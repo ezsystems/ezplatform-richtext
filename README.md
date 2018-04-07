@@ -14,7 +14,7 @@ Field Type found in eZ Publish 5.x and before.
 1. In your eZ Platform 2.1+ project, require this package by the Composer.
 
     ```bash
-        composer require ezsystems/ezplatform-richtext-fieldtype
+        composer require ezsystems/ezplatform-richtext
     ```
 
 2. Enable the Bundle in `AppKernel.php`:

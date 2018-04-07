@@ -1,7 +1,7 @@
 parameters:
     ezrichtext.tag.namespace: fieldtypes.ezrichtext.tags
     ezrichtext.embed.namespace: fieldtypes.ezrichtext.embed
-    ezrichtext.resources: "%kernel.root_dir%/../vendor/ezsystems/ezplatform-richtext-fieldtype/src/lib/eZ/RichText/Resources"
+    ezrichtext.resources: "%kernel.root_dir%/../vendor/ezsystems/ezplatform-richtext/src/lib/eZ/RichText/Resources"
 
     ezrichtext.converter.input.xhtml5.resources: "%ezrichtext.resources%/stylesheets/xhtml5/edit/docbook.xsl"
     ezrichtext.converter.edit.xhtml5.resources: "%ezrichtext.resources%/stylesheets/docbook/xhtml5/edit/xhtml5.xsl"
