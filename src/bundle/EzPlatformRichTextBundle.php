@@ -13,6 +13,7 @@ use EzSystems\EzPlatformRichTextBundle\DependencyInjection\Compiler\KernelRichTe
 use EzSystems\EzPlatformRichTextBundle\DependencyInjection\Compiler\RichTextHtml5ConverterPass;
 use EzSystems\EzPlatformRichTextBundle\DependencyInjection\Configuration\Parser\FieldType\RichText;
 use EzSystems\EzPlatformRichTextBundle\DependencyInjection\EzPlatformRichTextExtension;
+use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -21,11 +22,16 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class EzPlatformRichTextBundle extends Bundle
 {
+    /**
+     * The kernel pass must execute BEFORE the ones from kernel that register tagged services.
+     */
+    const KERNEL_PASS_PRIORITY = 30;
+
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
         $container->addCompilerPass(new RichTextHtml5ConverterPass());
-        $container->addCompilerPass(new KernelRichTextPass());
+        $container->addCompilerPass(new KernelRichTextPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, self::KERNEL_PASS_PRIORITY);
         $this->registerConfigParser($container);
     }
 
