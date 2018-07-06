@@ -5,12 +5,6 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
-/**
- * File containing the Docbook validation test.
- *
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
- * @license For full copyright and license information view LICENSE file distributed with this source code.
- */
 
 namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Validator;
 
@@ -59,6 +53,25 @@ class DocbookTest extends TestCase
                 '<?xml version="1.0" encoding="UTF-8"?>
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml" xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom" version="5.0-variant ezpublish-1.0">
     <para ezxhtml:class="">Nada Surf - Happy Kid</para>
+</section>
+',
+                [],
+            ],
+            [
+                '<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml"
+         xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom"
+         version="5.0-variant ezpublish-1.0">
+  <blockquote>
+    <para>Some comments to people\'s comments!</para>
+  </blockquote>
+  <blockquote>
+    <title ezxhtml:level="3">Header level 3</title>
+    <title ezxhtml:level="4">Header level 4</title>
+    <para>foobar quote<link xlink:href="ezurl://1044" xlink:show="none">http://ez.no</link> for more info.</para>
+  </blockquote>
 </section>
 ',
                 [],
