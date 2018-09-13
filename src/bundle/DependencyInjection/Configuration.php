@@ -5,12 +5,6 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
-/**
- * File containing the Configuration class.
- *
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
- * @license For full copyright and license information view LICENSE file distributed with this source code.
- */
 
 namespace EzSystems\EzPlatformRichTextBundle\DependencyInjection;
 
@@ -32,7 +26,12 @@ class Configuration extends SiteAccessConfiguration
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('ezrichtext');
 
-        $this->addCustomTagsSection($rootNode->children());
+        $sections = $rootNode->children();
+        $this
+            ->addCustomTagsSection($sections);
+        $this
+            ->addCustomStylesSection($sections)
+            ->end();
 
         return $treeBuilder;
     }
@@ -121,5 +120,39 @@ class Configuration extends SiteAccessConfiguration
                 ->end()
             ->end()
         ;
+    }
+
+    /**
+     * Define RichText Custom Styles Semantic Configuration.
+     *
+     * The configuration is available at:
+     * <code>
+     * ezpublish:
+     *     ezrichtext:
+     *         custom_styles:
+     * </code>
+     *
+     * @param \Symfony\Component\Config\Definition\Builder\NodeBuilder $ezRichTextNode
+     *
+     * @return \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition
+     */
+    private function addCustomStylesSection(NodeBuilder $ezRichTextNode)
+    {
+        return $ezRichTextNode
+                ->arrayNode('custom_styles')
+                // workaround: take into account Custom Styles names when merging configs
+                    ->useAttributeAsKey('style')
+                    ->arrayPrototype()
+                        ->children()
+                            ->scalarNode('template')
+                                ->defaultNull()
+                            ->end()
+                            ->scalarNode('inline')
+                                ->defaultFalse()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ;
     }
 }

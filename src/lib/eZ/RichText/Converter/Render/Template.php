@@ -5,12 +5,6 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
-/**
- * File containing the Template class.
- *
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
- * @license For full copyright and license information view LICENSE file distributed with this source code.
- */
 
 namespace EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render;
 
@@ -20,6 +14,9 @@ use DOMNode;
 use DOMXPath;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render;
+use EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 
 /**
  * RichText Template converter injects rendered template payloads into template elements.
@@ -27,7 +24,35 @@ use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render;
 class Template extends Render implements Converter
 {
     /**
-     * Injects rendered payloads into template tag elements.
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\Converter
+     */
+    private $richTextConverter;
+
+    /**
+     * @var \Psr\Log\LoggerInterface
+     */
+    private $logger;
+
+    /**
+     * RichText Template converter constructor.
+     *
+     * @param \EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface $renderer
+     * @param \EzSystems\EzPlatformRichText\eZ\RichText\Converter $richTextConverter
+     * @param \Psr\Log\LoggerInterface $logger
+     */
+    public function __construct(
+        RendererInterface $renderer,
+        Converter $richTextConverter,
+        LoggerInterface $logger = null
+    ) {
+        $this->richTextConverter = $richTextConverter;
+        $this->logger = $logger ?? new NullLogger();
+
+        parent::__construct($renderer);
+    }
+
+    /**
+     * Injects rendered payloads into template elements.
      *
      * @param \DOMDocument $document
      *
@@ -39,24 +64,24 @@ class Template extends Render implements Converter
         $xpath->registerNamespace('docbook', 'http://docbook.org/ns/docbook');
         $xpathExpression = '//docbook:eztemplate | //docbook:eztemplateinline';
 
-        $tags = $xpath->query($xpathExpression);
-        /** @var \DOMElement[] $tagsSorted */
-        $tagsSorted = [];
+        $templates = $xpath->query($xpathExpression);
+        /** @var \DOMElement[] $templatesSorted */
+        $templatesSorted = [];
         $maxDepth = 0;
 
-        foreach ($tags as $tag) {
-            $depth = $this->getNodeDepth($tag);
+        foreach ($templates as $template) {
+            $depth = $this->getNodeDepth($template);
             if ($depth > $maxDepth) {
                 $maxDepth = $depth;
             }
-            $tagsSorted[$depth][] = $tag;
+            $templatesSorted[$depth][] = $template;
         }
 
-        krsort($tagsSorted, SORT_NUMERIC);
+        ksort($templatesSorted, SORT_NUMERIC);
 
-        foreach ($tagsSorted as $tags) {
-            foreach ($tags as $tag) {
-                $this->processTag($document, $tag);
+        foreach ($templatesSorted as $templates) {
+            foreach ($templates as $template) {
+                $this->processTemplate($document, $template);
             }
         }
 
@@ -64,34 +89,43 @@ class Template extends Render implements Converter
     }
 
     /**
-     * Processes given template $tag in a given $document.
+     * Processes given template $template in a given $document.
      *
      * @param \DOMDocument $document
-     * @param \DOMElement $tag
+     * @param \DOMElement $template
      */
-    protected function processTag(DOMDocument $document, DOMElement $tag)
+    protected function processTemplate(DOMDocument $document, DOMElement $template)
     {
         $content = null;
-        $tagName = $tag->getAttribute('name');
+        $templateName = $template->getAttribute('name');
+        $templateType = $template->hasAttribute('type') ? $template->getAttribute('type') : 'tag';
         $parameters = [
-            'name' => $tagName,
-            'params' => $this->extractConfiguration($tag),
+            'name' => $templateName,
+            'params' => $this->extractConfiguration($template),
         ];
 
-        if ($tag->getElementsByTagName('ezcontent')->length > 0) {
-            $parameters['content'] = $this->saveNodeXML(
-                $tag->getElementsByTagName('ezcontent')->item(0)
-            );
+        if ($template->getElementsByTagName('ezcontent')->length > 0) {
+            $contentNode = $template->getElementsByTagName('ezcontent')->item(0);
+            switch ($templateType) {
+                case 'style':
+                    $parameters['content'] = $this->getCustomStyleContent($contentNode);
+                    break;
+                case 'tag':
+                default:
+                    $parameters['content'] = $this->getCustomTagContent($contentNode);
+                    break;
+            }
         }
 
-        if ($tag->hasAttribute('ezxhtml:align')) {
-            $parameters['align'] = $tag->getAttribute('ezxhtml:align');
+        if ($template->hasAttribute('ezxhtml:align')) {
+            $parameters['align'] = $template->getAttribute('ezxhtml:align');
         }
 
-        $content = $this->renderer->renderTag(
-            $tagName,
+        $content = $this->renderer->renderTemplate(
+            $templateName,
+            $templateType,
             $parameters,
-            $tag->localName === 'eztemplateinline'
+            $template->localName === 'eztemplateinline'
         );
 
         if (isset($content)) {
@@ -99,14 +133,14 @@ class Template extends Render implements Converter
             // for its content as these can't be nested.
             // CDATA section will be used only for content of root wrapping tag, content of tags
             // inside it will be added as XML fragments.
-            if ($this->isWrapped($tag)) {
+            if ($this->isWrapped($template)) {
                 $fragment = $document->createDocumentFragment();
                 $fragment->appendXML($content);
-                $tag->parentNode->replaceChild($fragment, $tag);
+                $template->parentNode->replaceChild($fragment, $template);
             } else {
                 $payload = $document->createElement('ezpayload');
                 $payload->appendChild($document->createCDATASection($content));
-                $tag->appendChild($payload);
+                $template->appendChild($payload);
             }
         }
     }
@@ -138,6 +172,7 @@ class Template extends Render implements Converter
      */
     protected function getNodeDepth(DomNode $node)
     {
+        // initial depth for top level elements (to avoid "ifs")
         $depth = -2;
 
         while ($node) {
@@ -156,6 +191,45 @@ class Template extends Render implements Converter
      * @return string
      */
     protected function saveNodeXML(DOMNode $node)
+    {
+        return $this->getCustomTagContent($node);
+    }
+
+    /**
+     * Returns XML fragment string for given converted $node.
+     *
+     * @param \DOMNode $node
+     *
+     * @return string
+     */
+    protected function getCustomStyleContent(DOMNode $node)
+    {
+        $innerDoc = new DOMDocument();
+
+        /** @var \DOMNode $child */
+        foreach ($node->childNodes as $child) {
+            $newNode = $innerDoc->importNode($child, true);
+            if ($newNode === false) {
+                $this->logger->warning(
+                    "Failed to import Custom Style content of node '{$child->getNodePath()}'"
+                );
+            }
+            $innerDoc->appendChild($newNode);
+        }
+
+        $convertedInnerDoc = $this->richTextConverter->convert($innerDoc);
+
+        return trim($convertedInnerDoc->saveHTML());
+    }
+
+    /**
+     * Returns XML fragment string for given $node.
+     *
+     * @param \DOMNode $node
+     *
+     * @return string
+     */
+    protected function getCustomTagContent(DOMNode $node)
     {
         $xmlString = '';
 

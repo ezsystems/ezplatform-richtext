@@ -19,6 +19,7 @@ use Symfony\Component\Config\FileLocator;
  */
 class EzPlatformRichTextExtension extends Extension implements PrependExtensionInterface
 {
+    const RICHTEXT_CUSTOM_STYLES_PARAMETER = 'ezplatform.ezrichtext.custom_styles';
     const RICHTEXT_CUSTOM_TAGS_PARAMETER = 'ezplatform.ezrichtext.custom_tags';
 
     public function getAlias()
@@ -72,6 +73,12 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
             $container->setParameter(
                 static::RICHTEXT_CUSTOM_TAGS_PARAMETER,
                 $config['custom_tags']
+            );
+        }
+        if (isset($config['custom_styles'])) {
+            $container->setParameter(
+                static::RICHTEXT_CUSTOM_STYLES_PARAMETER,
+                $config['custom_styles']
             );
         }
     }

@@ -574,6 +574,7 @@
         <zeroOrMore>
           <choice>
             <text/>
+            <ref name="db.all.inlines"/>
             <ref name="db.recursive.blocks.or.sections"/>
           </choice>
         </zeroOrMore>
@@ -596,6 +597,9 @@
         </data>
       </attribute>
       <optional>
+        <ref name="ez.template.type"/>
+      </optional>
+      <optional>
         <ref name="ez.xhtml.class.attribute"/>
       </optional>
     </define>
@@ -607,6 +611,17 @@
         <ref name="ez.xhtml.align"/>
       </optional>
       <ref name="ez.template.attributes.inline"/>
+    </define>
+    <define name="ez.template.type">
+      <a:documentation>
+        Template type attribute.
+      </a:documentation>
+      <attribute name="type">
+        <choice>
+          <value>tag</value>
+          <value>style</value>
+        </choice>
+      </attribute>
     </define>
   </div>
 
