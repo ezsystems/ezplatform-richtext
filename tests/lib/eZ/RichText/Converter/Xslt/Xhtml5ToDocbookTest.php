@@ -5,14 +5,12 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
-/**
- * File containing the Xhtml5ToDocbook conversion test.
- *
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
- * @license For full copyright and license information view LICENSE file distributed with this source code.
- */
 
 namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Converter\Xslt;
+
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Aggregate;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter\ProgramListing;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Xslt;
 
 /**
  * Tests conversion from xhtml5 edit format to docbook.
@@ -97,5 +95,25 @@ class Xhtml5ToDocbookTest extends BaseTest
             __DIR__ . '/_fixtures/docbook/custom_schemas/youtube.rng',
             __DIR__ . '/../../../../../../src/lib/eZ/RichText/Resources/schemas/docbook/docbook.iso.sch.xsl',
         ];
+    }
+
+    /**
+     * @return \EzSystems\EzPlatformRichText\eZ\RichText\Converter
+     */
+    protected function getConverter()
+    {
+        if ($this->converter === null) {
+            $this->converter = new Aggregate(
+                [
+                    new ProgramListing(),
+                    new Xslt(
+                        $this->getConversionTransformationStylesheet(),
+                        $this->getCustomConversionTransformationStylesheets()
+                    ),
+                ]
+            );
+        }
+
+        return $this->converter;
     }
 }

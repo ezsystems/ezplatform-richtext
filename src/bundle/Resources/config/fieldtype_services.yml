@@ -105,11 +105,25 @@ services:
         tags:
             - {name: ezpublish.ezrichtext.converter.output.xhtml5, priority: 50}
 
+    # Aggregate converter for XHTML5 input that other converters register to
+    # through 'ezpublish.ezrichtext.converter.input.xhtml5' service tag.
     ezrichtext.converter.input.xhtml5:
+        class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\Aggregate
+        lazy: true
+
+    ezrichtext.converter.input.xhtml5.core:
         class: EzSystems\EzPlatformRichTextBundle\eZ\RichText\Converter\Html5Input
         arguments:
-            - "%ezrichtext.converter.input.xhtml5.resources%"
-            - "@ezpublish.config.resolver"
+            - '%ezrichtext.converter.input.xhtml5.resources%'
+            - '@ezpublish.config.resolver'
+        tags:
+            - {name: ezpublish.ezrichtext.converter.input.xhtml5, priority: 50}
+
+    # Note: should run before xsl transformation
+    ezrichtext.converter.input.xhtml5.programlisting:
+        class: "%ezpublish.fieldType.ezrichtext.converter.programlisting.class%"
+        tags:
+            - {name: ezpublish.ezrichtext.converter.input.xhtml5, priority: 10}
 
     ezrichtext.converter.edit.xhtml5:
         class: EzSystems\EzPlatformRichTextBundle\eZ\RichText\Converter\Html5Edit
