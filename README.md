@@ -1,17 +1,17 @@
 # eZ Platform RichText Field Type Bundle
 
-This Bundle provides RichText (`ezrichtext`) Field Type for eZ Platform 2.1 and higher.
+This Bundle provides RichText (`ezrichtext`) Field Type for eZ Platform 2.4 and higher.
 It is a Field Type for supporting rich formatted text stored in a structured XML format.
 
-This package overrides the `eZ\Publish\Core\FieldType\RichText` namespace provided by
-the `ezsystems/ezpublish-kernel` package.
+This package overrides services provided by the `eZ\Publish\Core\FieldType\RichText` namespace of
+`ezsystems/ezpublish-kernel` package.
 
 This Field Type succeeds the former [XMLText](https://github.com/ezsystems/ezplatform-xmltext-fieldtype)
 Field Type found in eZ Publish 5.x and before.
 
 ## Installation
 
-1. In your eZ Platform 2.1+ project, require this package by the Composer.
+1. In your eZ Platform 2.4+ project, require this package by the Composer.
 
     ```bash
         composer require ezsystems/ezplatform-richtext
