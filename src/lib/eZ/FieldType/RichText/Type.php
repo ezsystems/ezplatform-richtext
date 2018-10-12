@@ -386,9 +386,9 @@ class Type extends FieldType
      * Not intended for \eZ\Publish\API\Repository\Values\Content\Relation::COMMON type relations,
      * there is a service API for handling those.
      *
-     * @param \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value $fieldValue
+     * @param \eZ\Publish\SPI\FieldType\Value $value
      *
-     * @return array Hash with relation type as key and array of destination content ids as value.
+     * @return array hash with relation type as key and array of destination content ids as value.
      *
      * Example:
      * <code>
