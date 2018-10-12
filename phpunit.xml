@@ -11,9 +11,7 @@
   <testsuites>
     <testsuite name="ezrichtext_field_type">
       <directory>tests/lib</directory>
-      <exclude>
-        <directory>tests/lib/eZ/API</directory>
-      </exclude>
+      <exclude>tests/lib/eZ/API</exclude>
     </testsuite>
   </testsuites>
 </phpunit>
