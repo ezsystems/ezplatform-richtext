@@ -878,7 +878,7 @@ XML
 
     protected function checkSearchEngineSupport()
     {
-        if (ltrim(get_class($this->getSetupFactory()), '\\') === 'EzSystems\\IntegrationTests\\EzPlatformRichText\\eZ\\API\\LegacySetupFactory') {
+        if ($this->getSetupFactory() instanceof LegacySetupFactory) {
             $this->markTestSkipped(
                 "'ezrichtext' field type is not searchable with Legacy Search Engine"
             );
