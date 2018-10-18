@@ -1,4 +1,3 @@
-<?xml version = '1.0' encoding = 'utf-8'?>
 <phpunit backupGlobals="false"
          backupStaticAttributes="false"
          bootstrap="bootstrap.php"
@@ -16,10 +15,8 @@
         <ini name="error_reporting" value="-1" />
     </php>
     <testsuites>
-        <testsuite name="RichText FieldType">
+        <testsuite name="ezrichtext_field_type_db_integration">
             <file>tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php</file>
-            <directory>eZ/Publish/API/Repository/Tests/Values/User/Limitation</directory>
-            <directory>eZ/Publish/API/Repository/Tests/FieldType/</directory>
         </testsuite>
     </testsuites>
 </phpunit>
