@@ -5,12 +5,6 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
-/**
- * File containing the Html5Input class.
- *
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
- * @license For full copyright and license information view LICENSE file distributed with this source code.
- */
 
 namespace EzSystems\EzPlatformRichTextBundle\eZ\RichText\Converter;
 
