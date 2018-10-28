@@ -1,0 +1,23 @@
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         processIsolation="false"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         beStrictAboutTestsThatDoNotTestAnything="false"
+         colors="true"
+         >
+    <php>
+        <env name="setupFactory" value="EzSystems\IntegrationTests\EzPlatformRichText\eZ\API\SetupFactory\SolrLegacySetupFactory" />
+        <env name="backendVersion" value="5" />
+        <env name="fixtureDir" value="Solr" />
+        <env name="solrServer" value="http://localhost:8983/" />
+        <env name="CORES_SETUP" value="dedicated" />
+        <ini name="error_reporting" value="-1" />
+    </php>
+    <testsuites>
+        <testsuite name="ezrichtext_field_type_solr_integration">
+            <file>tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php</file>
+        </testsuite>
+    </testsuites>
+</phpunit>

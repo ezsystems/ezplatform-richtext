@@ -36,6 +36,9 @@ matrix:
     - name: '[PHP 7.2] PostgreSQL Legacy Storage Integration'
       php: 7.2
       env: TEST_CONFIG="phpunit-integration-legacy.xml" DB="postgresql" DATABASE="pgsql://postgres@localhost/testdb"
+    - name: '[PHP 7.2] Solr Search Engine Integration'
+      php: 7.2
+      env: SOLR_VERSION="6.4.2" TEST_CONFIG="phpunit-integration-legacy-solr.xml" CORES_SETUP="shared" SOLR_CONFIG="vendor/ezsystems/ezplatform-solr-search-engine/lib/Resources/config/solr/schema.xml vendor/ezsystems/ezplatform-solr-search-engine/lib/Resources/config/solr/custom-fields-types.xml vendor/ezsystems/ezplatform-solr-search-engine/lib/Resources/config/solr/language-fieldtypes.xml"
 # CS check
     - name: 'Code Style Check'
       php: 7.2
