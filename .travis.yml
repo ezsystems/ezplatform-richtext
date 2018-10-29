@@ -1,6 +1,6 @@
 # Use trusty for better performance (and avoiding mysql/postgres/solr gone issues on precise and container infra)
 dist: trusty
-sudo: required
+sudo: false
 
 language: php
 
@@ -23,11 +23,22 @@ matrix:
   fast_finish: true
   include:
 # 7.1
-    - php: 7.1
+    - name: '[PHP 7.1] Unit tests'
+      php: 7.1
       env: TEST_CONFIG="phpunit.xml"
-    - php: 7.1
+    - name: '[PHP 7.1] MySQL Legacy Storage Integration'
+      php: 7.1
       env: TEST_CONFIG="phpunit-integration-legacy.xml" DB="mysql" DATABASE="mysql://root@localhost/testdb"
-    - php: 7.1
+# 7.2
+    - name: '[PHP 7.2] Unit tests'
+      php: 7.2
+      env: TEST_CONFIG="phpunit.xml"
+    - name: '[PHP 7.2] PostgreSQL Legacy Storage Integration'
+      php: 7.2
+      env: TEST_CONFIG="phpunit-integration-legacy.xml" DB="postgresql" DATABASE="pgsql://postgres@localhost/testdb"
+# CS check
+    - name: 'Code Style Check'
+      php: 7.2
       env: CHECK_CS=true
 
 # test only master, stable branches and pull requests
@@ -37,9 +48,12 @@ branches:
     - /^\d.\d+$/
 
 # setup requirements for running unit/integration/behat tests
-before_script:
-  # Disable memory_limit for composer
+before_install:
+  # Disable xdebug to speed things up as we don't currently generate coverage on travis
+  - phpenv config-rm xdebug.ini
+  # Add custom php.ini configuration for test matrix
   - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+  - echo "default_charset=UTF-8" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   # Prepare system
   - ./bin/.travis/prepare_unittest.sh
   # Execute Symfony command if specified
@@ -48,10 +62,16 @@ before_script:
   - TEST_TIMEZONES=("America/New_York" "Asia/Calcutta" "UTC")
   - TEST_TIMEZONE=${TEST_TIMEZONES["`shuf -i 0-2 -n 1`"]}
 
+install:
+  - travis_retry composer install --no-progress --no-interaction --prefer-dist --no-suggest
+  # Setup Solr / Elastic search if asked for
+  - if [ "$TEST_CONFIG" = "phpunit-integration-legacy-elasticsearch.xml" ] ; then ./bin/.travis/init_elasticsearch.sh ; fi
+  - if [ "$TEST_CONFIG" = "phpunit-integration-legacy-solr.xml" ] ; then ./vendor/ezsystems/ezplatform-solr-search-engine/bin/.travis/init_solr.sh; fi
+
 # execute phpunit or behat as the script command
 script:
-  - if [ "$TEST_CONFIG" != "" ] ; then php -d date.timezone=$TEST_TIMEZONE -d memory_limit=-1 vendor/bin/phpunit -c $TEST_CONFIG ; fi
-  - if [ "$CHECK_CS" = "true" ]; then ./vendor/bin/php-cs-fixer fix -v --dry-run --diff --show-progress=estimating; fi
+  - if [ "$TEST_CONFIG" != "" ] ; then php -d date.timezone=$TEST_TIMEZONE ./vendor/bin/phpunit -c $TEST_CONFIG ; fi
+  - if [ "$CHECK_CS" = "true" ] ; then ./vendor/bin/php-cs-fixer fix -v --dry-run --diff --show-progress=estimating; fi
 
 # disable mail notifications
 notifications:
