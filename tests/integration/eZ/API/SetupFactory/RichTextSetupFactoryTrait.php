@@ -6,23 +6,30 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\IntegrationTests\EzPlatformRichText\eZ\API;
+namespace EzSystems\IntegrationTests\EzPlatformRichText\eZ\API\SetupFactory;
 
-use eZ\Publish\API\Repository\Tests\SetupFactory\Legacy as CoreLegacySetupFactory;
 use EzSystems\EzPlatformRichTextBundle\DependencyInjection\Compiler;
+use RuntimeException;
+use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Config\FileLocator;
 
-/**
- * Used to setup the infrastructure for Repository Public API integration tests,
- * based on Repository with Legacy Storage Engine implementation.
- */
-class LegacySetupFactory extends CoreLegacySetupFactory
+trait RichTextSetupFactoryTrait
 {
-    protected function externalBuildContainer(ContainerBuilder $containerBuilder)
+    /**
+     * Load RichText package container settings.
+     *
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder
+     *
+     * @throws \Exception
+     */
+    protected function loadRichTextSettings(ContainerBuilder $containerBuilder)
     {
-        $settingsPath = __DIR__ . '/../../../../src/lib/eZ/settings/';
+        $settingsPath = realpath(__DIR__ . '/../../../../../src/lib/eZ/settings/');
+        if (false === $settingsPath) {
+            throw new RuntimeException('Unable to find RichText package settings');
+        }
 
         $loader = new YamlFileLoader($containerBuilder, new FileLocator($settingsPath));
         $loader->load('fieldtypes.yml');
@@ -32,7 +39,7 @@ class LegacySetupFactory extends CoreLegacySetupFactory
         $loader->load('storage_engines/legacy/external_storage_gateways.yml');
         $loader->load('storage_engines/legacy/field_value_converters.yml');
 
-        $containerBuilder->addCompilerPass(new Compiler\KernelRichTextPass());
+        $containerBuilder->addCompilerPass(new Compiler\KernelRichTextPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 30);
         $containerBuilder->addCompilerPass(new Compiler\RichTextHtml5ConverterPass());
     }
 }

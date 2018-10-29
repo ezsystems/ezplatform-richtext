@@ -23,6 +23,7 @@ use EzSystems\EzPlatformRichText\eZ\RichText\Normalizer\Aggregate;
 use EzSystems\EzPlatformRichText\eZ\RichText\Validator;
 use EzSystems\EzPlatformRichText\eZ\RichText\ValidatorDispatcher;
 use PHPUnit\Framework\TestCase;
+use RuntimeException;
 
 /**
  * @group fieldType
@@ -416,21 +417,12 @@ EOT;
      */
     protected function getAbsolutePath($relativePath)
     {
-        return self::getInstallationDir() . '/' . $relativePath;
-    }
-
-    /**
-     * @return string
-     */
-    protected static function getInstallationDir()
-    {
-        static $installDir = null;
-        if ($installDir === null) {
-            $config = require 'config.php';
-            $installDir = $config['install_dir'];
+        $absolutePath = realpath(__DIR__ . '/../../../../' . $relativePath);
+        if (false === $absolutePath) {
+            throw new RuntimeException("Unable to determine absolute path for '{$relativePath}'");
         }
 
-        return $installDir;
+        return $absolutePath;
     }
 
     protected function provideFieldTypeIdentifier()

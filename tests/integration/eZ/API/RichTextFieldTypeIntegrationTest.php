@@ -878,7 +878,7 @@ XML
 
     protected function checkSearchEngineSupport()
     {
-        if ($this->getSetupFactory() instanceof LegacySetupFactory) {
+        if ($this->getSetupFactory() instanceof SetupFactory\LegacySetupFactory) {
             $this->markTestSkipped(
                 "'ezrichtext' field type is not searchable with Legacy Search Engine"
             );

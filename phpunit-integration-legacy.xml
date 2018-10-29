@@ -1,6 +1,5 @@
 <phpunit backupGlobals="false"
          backupStaticAttributes="false"
-         bootstrap="bootstrap.php"
          processIsolation="false"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
@@ -9,7 +8,7 @@
          colors="true"
          >
     <php>
-        <env name="setupFactory" value="EzSystems\IntegrationTests\EzPlatformRichText\eZ\API\LegacySetupFactory" />
+        <env name="setupFactory" value="EzSystems\IntegrationTests\EzPlatformRichText\eZ\API\SetupFactory\LegacySetupFactory" />
         <env name="backendVersion" value="5" />
         <env name="fixtureDir" value="Legacy" />
         <ini name="error_reporting" value="-1" />
