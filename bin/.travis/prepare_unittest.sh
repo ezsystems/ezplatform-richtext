@@ -37,9 +37,6 @@ composer config -g github-oauth.github.com "d0285ed5c8644f30547572ead2ed897431c1
 
 # solr package search API integration tests
 if [ "$TEST_CONFIG" = "phpunit-integration-legacy-solr.xml" ] ; then
-    echo "> Require ezsystems/ezplatform-solr-search-engine:^1.3.0@dev"
-    composer require --no-update ezsystems/ezplatform-solr-search-engine:^1.3.0@dev
-
-    # Because of either some changes in travis, composer or git, composer is not able to pick version for "self" on inclusion of solr anymore, so we force it:
-    export COMPOSER_ROOT_VERSION=`php -r 'echo json_decode(file_get_contents("./composer.json"), true)["extra"]["branch-alias"]["dev-tmp_ci_branch"];'`
+    echo "> Require ezsystems/ezplatform-solr-search-engine:^1.5@dev"
+    composer require --no-update ezsystems/ezplatform-solr-search-engine:^1.5@dev
 fi
