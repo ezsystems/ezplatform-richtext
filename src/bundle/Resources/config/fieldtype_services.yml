@@ -1,5 +1,6 @@
 parameters:
     ezrichtext.tag.namespace: fieldtypes.ezrichtext.tags
+    ezrichtext.style.namespace: fieldtypes.ezrichtext.styles
     ezrichtext.embed.namespace: fieldtypes.ezrichtext.embed
     ezrichtext.resources: "%kernel.root_dir%/../vendor/ezsystems/ezplatform-richtext/src/lib/eZ/RichText/Resources"
 
@@ -37,9 +38,11 @@ services:
             - "@ezpublish.config.resolver"
             - "@templating"
             - "%ezrichtext.tag.namespace%"
+            - "%ezrichtext.style.namespace"
             - "%ezrichtext.embed.namespace%"
             - "@?logger"
             - "%ezplatform.ezrichtext.custom_tags%"
+            - "%ezplatform.ezrichtext.custom_styles%"
 
     ezrichtext.converter.link:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\Link
@@ -51,6 +54,8 @@ services:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template
         arguments:
             - "@ezrichtext.renderer"
+            - "@ezrichtext.converter.output.xhtml5"
+            - "@?logger"
         tags:
             - {name: ezpublish.ezrichtext.converter.output.xhtml5, priority: 10}
 

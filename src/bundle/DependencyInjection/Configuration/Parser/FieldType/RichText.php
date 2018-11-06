@@ -298,7 +298,7 @@ class RichText extends AbstractFieldTypeParser
         array $enabledCustomStyles
     ) {
         $definedCustomStyles = array_keys(
-            $container->getParameter(EzPublishCoreExtension::RICHTEXT_CUSTOM_STYLES_PARAMETER)
+            $container->getParameter(EzPlatformRichTextExtension::RICHTEXT_CUSTOM_STYLES_PARAMETER)
         );
         foreach ($enabledCustomStyles as $customStyleName) {
             if (!in_array($customStyleName, $definedCustomStyles)) {
