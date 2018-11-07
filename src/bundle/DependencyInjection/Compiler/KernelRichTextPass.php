@@ -10,7 +10,6 @@ namespace EzSystems\EzPlatformRichTextBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Reference;
 
 /**
  * Handles compatibility with kernel 7.x.
@@ -36,25 +35,5 @@ class KernelRichTextPass implements CompilerPassInterface
             },
             $this->servicesToRemove
         );
-
-        $def = $container->getDefinition('ezpublish.persistence.legacy.field_value_converter.registry');
-        $methodCalls = [];
-        foreach ($def->getMethodCalls() as $methodCall) {
-            if ($methodCall[0] != 'register') {
-                $methodCalls[] = $methodCall;
-                continue;
-            }
-
-            if ($methodCall[1][0] != 'ezrichtext') {
-                $methodCalls[] = $methodCall;
-                continue;
-            }
-
-            if (!$methodCall[1][1] instanceof Reference || (string)$methodCall[1][1] !== 'ezpublish.fieldType.ezrichtext.converter') {
-                $methodCalls[] = $methodCall;
-                continue;
-            }
-        }
-        $def->setMethodCalls($methodCalls);
     }
 }
