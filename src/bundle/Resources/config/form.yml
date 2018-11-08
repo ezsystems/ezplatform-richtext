@@ -8,6 +8,9 @@ services:
         arguments:
             $docbookToXhtml5EditConverter: '@ezrichtext.converter.edit.xhtml5'
 
+    EzSystems\RepositoryForms\Form\Type\FieldType\RichTextFieldType:
+        alias: EzSystems\EzPlatformRichText\Form\Type\RichTextFieldType
+
     EzSystems\EzPlatformRichText\Form\Mapper\RichTextFormMapper:
         tags:
             - { name: ez.fieldFormMapper.value, fieldType: ezrichtext }
