@@ -126,7 +126,7 @@ services:
 
     # Note: should run before xsl transformation
     ezrichtext.converter.input.xhtml5.programlisting:
-        class: "%ezpublish.fieldType.ezrichtext.converter.programlisting.class%"
+        class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\ProgramListing
         tags:
             - {name: ezpublish.ezrichtext.converter.input.xhtml5, priority: 10}
 
