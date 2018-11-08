@@ -1,0 +1,11 @@
+siteaccess:
+    default_siteaccess: ezdemo_site
+    list:
+    - ezdemo_site
+    groups:
+        ezdemo_group:
+        - ezdemo_site
+    match:
+        URIElement: 1
+        Map\URI:
+            the_front: ezdemo_site

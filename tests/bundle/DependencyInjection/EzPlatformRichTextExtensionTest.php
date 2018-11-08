@@ -37,7 +37,7 @@ class EzPlatformRichTextExtensionTest extends AbstractExtensionTestCase
     public function testRichTextConfiguration()
     {
         $config = Yaml::parse(
-            file_get_contents(__DIR__ . '/Fixtures/FieldType/RichText/ezrichtext.yml')
+            file_get_contents(__DIR__ . '/Fixtures/ezrichtext.yml')
         );
         $this->load($config);
 

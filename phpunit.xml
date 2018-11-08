@@ -10,6 +10,7 @@
   <testsuites>
     <testsuite name="ezrichtext_field_type">
       <directory>tests/lib</directory>
+      <directory>tests/bundle</directory>
       <exclude>tests/lib/eZ/API</exclude>
     </testsuite>
   </testsuites>

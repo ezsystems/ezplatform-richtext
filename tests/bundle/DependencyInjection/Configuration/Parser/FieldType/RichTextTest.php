@@ -11,12 +11,68 @@ namespace EzSystems\Tests\EzPlatformRichTextBundle\DependencyInjection\Configura
 use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\EzPublishCoreExtension;
 use eZ\Bundle\EzPublishCoreBundle\Tests\DependencyInjection\Configuration\Parser\AbstractParserTestCase;
 use EzSystems\EzPlatformRichTextBundle\DependencyInjection\Configuration\Parser\FieldType\RichText as RichTextConfigParser;
+use EzSystems\EzPlatformRichTextBundle\DependencyInjection\EzPlatformRichTextExtension;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\Yaml\Yaml;
 
 class RichTextTest extends AbstractParserTestCase
 {
+    /**
+     * Multidimensional array of configuration of multiple extensions ([extension => config]).
+     *
+     * @var array
+     */
+    private $extensionsConfig;
+
+    /**
+     * Get test configuration for multiple extensions.
+     *
+     * @return array
+     */
+    private function getExtensionsConfig(): array
+    {
+        if (null === $this->extensionsConfig) {
+            foreach (['ezrichtext', 'ezpublish'] as $extensionName) {
+                $this->extensionsConfig[$extensionName] = Yaml::parseFile(
+                    __DIR__ . "/../../../Fixtures/{$extensionName}.yml"
+                );
+            }
+        }
+
+        return $this->extensionsConfig;
+    }
+
+    /**
+     * Load Configuration for multiple defined extensions.
+     *
+     * @param array $configurationValues
+     *
+     * @throws \Exception
+     */
+    protected function load(array $configurationValues = [])
+    {
+        // mock list of available bundles
+        $this->setParameter('kernel.bundles', ['EzPublishCoreBundle', 'EzPlatformRichTextBundle']);
+
+        $configs = array_merge_recursive($this->getMinimalConfiguration(), $configurationValues);
+
+        foreach ($this->container->getExtensions() as $extension) {
+            if ($extension instanceof PrependExtensionInterface) {
+                $extension->prepend($this->container);
+            }
+
+            $extensionAlias = $extension->getAlias();
+            // when loading extension, pass only relevant configuration
+            $extensionConfig = isset($configs[$extensionAlias]) ? $configs[$extensionAlias] : [];
+
+            $extension->load([$extensionConfig], $this->container);
+        }
+
+        $this->configResolver = $this->container->get('ezpublish.config.resolver.core');
+    }
+
     /**
      * Return an array of container extensions you need to be registered for each test (usually just the container
      * extension you are testing.
@@ -27,12 +83,13 @@ class RichTextTest extends AbstractParserTestCase
     {
         return [
             new EzPublishCoreExtension([new RichTextConfigParser()]),
+            new EzPlatformRichTextExtension(),
         ];
     }
 
     protected function getMinimalConfiguration()
     {
-        return Yaml::parse(file_get_contents(__DIR__ . '/../../../Fixtures/FieldType/RichText/ezrichtext.yml'));
+        return $this->getExtensionsConfig();
     }
 
     public function testDefaultContentSettings()
@@ -42,7 +99,7 @@ class RichTextTest extends AbstractParserTestCase
         $this->assertConfigResolverParameterValue(
             'fieldtypes.ezrichtext.tags.default',
             [
-                'template' => 'EzPublishCoreBundle:FieldType/RichText/tag:default.html.twig',
+                'template' => 'EzPlatformRichTextBundle:RichText/tag:default.html.twig',
             ],
             'ezdemo_site'
         );
@@ -50,7 +107,7 @@ class RichTextTest extends AbstractParserTestCase
             'fieldtypes.ezrichtext.output_custom_xsl',
             [
                 0 => [
-                    'path' => '%kernel.root_dir%/../vendor/ezsystems/ezpublish-kernel/eZ/Publish/Core/FieldType/RichText/Resources/stylesheets/docbook/xhtml5/output/core.xsl',
+                    'path' => '%kernel.root_dir%/../vendor/ezsystems/ezplatform-richtext/src/lib/eZ/RichText/Resources/stylesheets/docbook/xhtml5/output/core.xsl',
                     'priority' => 0,
                 ],
             ],
@@ -68,11 +125,13 @@ class RichTextTest extends AbstractParserTestCase
 
         $this->load(
             [
-                'system' => [
-                    'ezdemo_site' => [
-                        'fieldtypes' => [
-                            'ezrichtext' => [
-                                'custom_tags' => ['foo'],
+                'ezpublish' => [
+                    'system' => [
+                        'ezdemo_site' => [
+                            'fieldtypes' => [
+                                'ezrichtext' => [
+                                    'custom_tags' => ['foo'],
+                                ],
                             ],
                         ],
                     ],
@@ -88,13 +147,22 @@ class RichTextTest extends AbstractParserTestCase
 
     /**
      * @dataProvider richTextSettingsProvider
+     *
+     * @param array $config
+     * @param array $expected
+     *
+     * @throws \Exception
      */
     public function testRichTextSettings(array $config, array $expected)
     {
         $this->load(
             [
-                'system' => [
-                    'ezdemo_site' => $config,
+                'ezpublish' => [
+                    'system' => [
+                        'ezdemo_site' => $config,
+                    ],
+                    // @todo remove once ezpublish extension can detect ezrichtext extension
+                    'ezrichtext' => $this->getExtensionsConfig()['ezrichtext'],
                 ],
             ]
         );
@@ -122,6 +190,7 @@ class RichTextTest extends AbstractParserTestCase
                 [
                     'fieldtypes.ezrichtext.output_custom_xsl' => [
                         // Default settings will be added
+                        // @todo replace with ezplatform-richtext file once ezpublish extension can detect that
                         ['path' => '%kernel.root_dir%/../vendor/ezsystems/ezpublish-kernel/eZ/Publish/Core/FieldType/RichText/Resources/stylesheets/docbook/xhtml5/output/core.xsl', 'priority' => 0],
                         ['path' => '/foo/bar.xsl', 'priority' => 123],
                         ['path' => '/foo/custom.xsl', 'priority' => -10],
@@ -144,6 +213,7 @@ class RichTextTest extends AbstractParserTestCase
                 [
                     'fieldtypes.ezrichtext.edit_custom_xsl' => [
                         // Default settings will be added
+                        // @todo replace with ezplatform-richtext file once ezpublish extension can detect that
                         ['path' => '%kernel.root_dir%/../vendor/ezsystems/ezpublish-kernel/eZ/Publish/Core/FieldType/RichText/Resources/stylesheets/docbook/xhtml5/edit/core.xsl', 'priority' => 0],
                         ['path' => '/foo/bar.xsl', 'priority' => 123],
                         ['path' => '/foo/custom.xsl', 'priority' => -10],
