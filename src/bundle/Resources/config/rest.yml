@@ -6,6 +6,6 @@ services:
 
     EzSystems\EzPlatformRichText\eZ\REST\FieldTypeProcessor\RichTextProcessor:
         arguments:
-            - "@ezrichtext.converter.edit.xhtml5"
+            - '@ezrichtext.converter.edit.xhtml5'
         tags:
             - { name: ezpublish_rest.field_type_processor, alias: ezrichtext }

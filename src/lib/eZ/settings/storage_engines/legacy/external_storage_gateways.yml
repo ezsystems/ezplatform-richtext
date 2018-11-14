@@ -6,5 +6,5 @@ services:
 
     EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage\Gateway\DoctrineStorage:
         arguments:
-            - "@ezpublish.fieldType.ezurl.storage_gateway"
-            - "@ezpublish.api.storage_engine.legacy.connection"
+            - '@ezpublish.fieldType.ezurl.storage_gateway'
+            - '@ezpublish.api.storage_engine.legacy.connection'

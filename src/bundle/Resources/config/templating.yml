@@ -1,7 +1,7 @@
 services:
     EzSystems\EzPlatformRichText\Templating\Twig\Extension\RichTextExtension:
         arguments:
-            - "@ezrichtext.converter.output.xhtml5"
-            - "@ezrichtext.converter.edit.xhtml5"
+            - '@ezrichtext.converter.output.xhtml5'
+            - '@ezrichtext.converter.edit.xhtml5'
         tags:
             - { name: twig.extension }

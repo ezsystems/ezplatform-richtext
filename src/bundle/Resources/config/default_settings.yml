@@ -15,12 +15,12 @@ parameters:
     # Built-in stylesheets are treated as custom for the sake of extensibility.
     ezsettings.default.fieldtypes.ezrichtext.output_custom_xsl:
         -
-            path: "%kernel.root_dir%/../vendor/ezsystems/ezplatform-richtext/src/lib/eZ/RichText/Resources/stylesheets/docbook/xhtml5/output/core.xsl"
+            path: '%kernel.root_dir%/../vendor/ezsystems/ezplatform-richtext/src/lib/eZ/RichText/Resources/stylesheets/docbook/xhtml5/output/core.xsl'
             priority: 0
 
     ezsettings.default.fieldtypes.ezrichtext.edit_custom_xsl:
         -
-            path: "%kernel.root_dir%/../vendor/ezsystems/ezplatform-richtext/src/lib/eZ/RichText/Resources/stylesheets/docbook/xhtml5/edit/core.xsl"
+            path: '%kernel.root_dir%/../vendor/ezsystems/ezplatform-richtext/src/lib/eZ/RichText/Resources/stylesheets/docbook/xhtml5/edit/core.xsl'
             priority: 0
 
     ezsettings.default.fieldtypes.ezrichtext.input_custom_xsl: []

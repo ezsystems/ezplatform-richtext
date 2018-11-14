@@ -2,75 +2,75 @@ parameters:
     ezrichtext.tag.namespace: fieldtypes.ezrichtext.tags
     ezrichtext.style.namespace: fieldtypes.ezrichtext.styles
     ezrichtext.embed.namespace: fieldtypes.ezrichtext.embed
-    ezrichtext.resources: "%kernel.root_dir%/../vendor/ezsystems/ezplatform-richtext/src/lib/eZ/RichText/Resources"
+    ezrichtext.resources: '%kernel.root_dir%/../vendor/ezsystems/ezplatform-richtext/src/lib/eZ/RichText/Resources'
 
-    ezrichtext.converter.input.xhtml5.resources: "%ezrichtext.resources%/stylesheets/xhtml5/edit/docbook.xsl"
-    ezrichtext.converter.edit.xhtml5.resources: "%ezrichtext.resources%/stylesheets/docbook/xhtml5/edit/xhtml5.xsl"
-    ezrichtext.converter.output.xhtml5.resources: "%ezrichtext.resources%/stylesheets/docbook/xhtml5/output/xhtml5.xsl"
-    ezrichtext.converter.output.xhtml5.fragment.resources: "%ezrichtext.resources%/stylesheets/xhtml5/output/fragment.xsl"
+    ezrichtext.converter.input.xhtml5.resources: '%ezrichtext.resources%/stylesheets/xhtml5/edit/docbook.xsl'
+    ezrichtext.converter.edit.xhtml5.resources: '%ezrichtext.resources%/stylesheets/docbook/xhtml5/edit/xhtml5.xsl'
+    ezrichtext.converter.output.xhtml5.resources: '%ezrichtext.resources%/stylesheets/docbook/xhtml5/output/xhtml5.xsl'
+    ezrichtext.converter.output.xhtml5.fragment.resources: '%ezrichtext.resources%/stylesheets/xhtml5/output/fragment.xsl'
 
     ezrichtext.validator.docbook.resources:
-        - "%ezrichtext.resources%/schemas/docbook/ezpublish.rng"
-        - "%ezrichtext.resources%/schemas/docbook/docbook.iso.sch.xsl"
+        - '%ezrichtext.resources%/schemas/docbook/ezpublish.rng'
+        - '%ezrichtext.resources%/schemas/docbook/docbook.iso.sch.xsl'
     ezrichtext.validator.output.ezxhtml5.resources:
-        - "%ezrichtext.resources%/schemas/ezxhtml5/output/ezxhtml5.xsd"
+        - '%ezrichtext.resources%/schemas/ezxhtml5/output/ezxhtml5.xsd'
 
 services:
     ezrichtext.normalizer.input:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Normalizer\DocumentTypeDefinition
         arguments:
-            - "section"
-            - "http://ez.no/namespaces/ezpublish5/xhtml5/edit"
-            - "%ezrichtext.resources%/dtd/ezxhtml5_edit_html_character_entities.dtd"
+            - 'section'
+            - 'http://ez.no/namespaces/ezpublish5/xhtml5/edit'
+            - '%ezrichtext.resources%/dtd/ezxhtml5_edit_html_character_entities.dtd'
 
     ezrichtext.converter.input.dispatcher:
         class: EzSystems\EzPlatformRichText\eZ\RichText\ConverterDispatcher
         arguments:
             -
                 http://docbook.org/ns/docbook: null
-                http://ez.no/namespaces/ezpublish5/xhtml5/edit: "@ezrichtext.converter.input.xhtml5"
+                http://ez.no/namespaces/ezpublish5/xhtml5/edit: '@ezrichtext.converter.input.xhtml5'
 
     ezrichtext.renderer:
         class: EzSystems\EzPlatformRichTextBundle\eZ\RichText\Renderer
         arguments:
-            - "@ezpublish.api.repository"
-            - "@security.authorization_checker"
-            - "@ezpublish.config.resolver"
-            - "@templating"
-            - "%ezrichtext.tag.namespace%"
-            - "%ezrichtext.style.namespace"
-            - "%ezrichtext.embed.namespace%"
-            - "@?logger"
-            - "%ezplatform.ezrichtext.custom_tags%"
-            - "%ezplatform.ezrichtext.custom_styles%"
+            - '@ezpublish.api.repository'
+            - '@security.authorization_checker'
+            - '@ezpublish.config.resolver'
+            - '@templating'
+            - '%ezrichtext.tag.namespace%'
+            - '%ezrichtext.style.namespace'
+            - '%ezrichtext.embed.namespace%'
+            - '@?logger'
+            - '%ezplatform.ezrichtext.custom_tags%'
+            - '%ezplatform.ezrichtext.custom_styles%'
 
     ezrichtext.converter.link:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\Link
-        arguments: ["@ezpublish.api.service.location", "@ezpublish.api.service.content", "@ezpublish.urlalias_router", "@?logger"]
+        arguments: ['@ezpublish.api.service.location', '@ezpublish.api.service.content', '@ezpublish.urlalias_router', '@?logger']
         tags:
             - {name: ezpublish.ezrichtext.converter.output.xhtml5, priority: 0}
 
     ezrichtext.converter.template:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template
         arguments:
-            - "@ezrichtext.renderer"
-            - "@ezrichtext.converter.output.xhtml5"
-            - "@?logger"
+            - '@ezrichtext.renderer'
+            - '@ezrichtext.converter.output.xhtml5'
+            - '@?logger'
         tags:
             - {name: ezpublish.ezrichtext.converter.output.xhtml5, priority: 10}
 
     ezrichtext.converter.embed:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Embed
         arguments:
-            - "@ezrichtext.renderer"
-            - "@?logger"
+            - '@ezrichtext.renderer'
+            - '@?logger'
         tags:
             - {name: ezpublish.ezrichtext.converter.output.xhtml5, priority: 10}
 
     # Note: should typically be the last one as it produces embeddable fragment
     ezrichtext.converter.output.xhtml5.fragment:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\Xslt
-        arguments: ["%ezrichtext.converter.output.xhtml5.fragment.resources%"]
+        arguments: ['%ezrichtext.converter.output.xhtml5.fragment.resources%']
         tags:
             - {name: ezpublish.ezrichtext.converter.output.xhtml5, priority: 100}
 
@@ -82,11 +82,11 @@ services:
 
     ezrichtext.validator.docbook:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Validator
-        arguments: ["%ezrichtext.validator.docbook.resources%"]
+        arguments: ['%ezrichtext.validator.docbook.resources%']
 
     ezrichtext.validator.output.ezxhtml5:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Validator
-        arguments: ["%ezrichtext.validator.output.ezxhtml5.resources%"]
+        arguments: ['%ezrichtext.validator.output.ezxhtml5.resources%']
 
     ezrichtext.validator.input.dispatcher:
         class: EzSystems\EzPlatformRichText\eZ\RichText\ValidatorDispatcher
@@ -94,7 +94,7 @@ services:
             -
                 http://docbook.org/ns/docbook: null
                 http://ez.no/namespaces/ezpublish5/xhtml5/edit: null
-                http://ez.no/namespaces/ezpublish5/xhtml5: "@ezrichtext.validator.output.ezxhtml5"
+                http://ez.no/namespaces/ezpublish5/xhtml5: '@ezrichtext.validator.output.ezxhtml5'
 
     ezrichtext.validator.internal_link:
         class: EzSystems\EzPlatformRichText\eZ\RichText\InternalLinkValidator
@@ -105,8 +105,8 @@ services:
     ezrichtext.converter.output.xhtml5.core:
         class: EzSystems\EzPlatformRichTextBundle\eZ\RichText\Converter\Html5
         arguments:
-            - "%ezrichtext.converter.output.xhtml5.resources%"
-            - "@ezpublish.config.resolver"
+            - '%ezrichtext.converter.output.xhtml5.resources%'
+            - '@ezpublish.config.resolver'
         tags:
             - {name: ezpublish.ezrichtext.converter.output.xhtml5, priority: 50}
 
@@ -133,7 +133,7 @@ services:
     ezrichtext.converter.edit.xhtml5:
         class: EzSystems\EzPlatformRichTextBundle\eZ\RichText\Converter\Html5Edit
         arguments:
-            - "%ezrichtext.converter.edit.xhtml5.resources%"
-            - "@ezpublish.config.resolver"
+            - '%ezrichtext.converter.edit.xhtml5.resources%'
+            - '@ezpublish.config.resolver'
         lazy: true
 
