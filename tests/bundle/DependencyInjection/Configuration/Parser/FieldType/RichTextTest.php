@@ -54,7 +54,10 @@ class RichTextTest extends AbstractParserTestCase
     protected function load(array $configurationValues = [])
     {
         // mock list of available bundles
-        $this->setParameter('kernel.bundles', ['EzPublishCoreBundle', 'EzPlatformRichTextBundle']);
+        $this->setParameter(
+            'kernel.bundles',
+            ['EzPublishCoreBundle' => null, 'EzPlatformRichTextBundle' => null]
+        );
 
         $configs = array_merge_recursive($this->getMinimalConfiguration(), $configurationValues);
 
