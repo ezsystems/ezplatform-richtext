@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace EzSystems\EzPlatformRichTextBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
@@ -69,18 +70,30 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
      */
     private function registerRichTextConfiguration(array $config, ContainerBuilder $container)
     {
-        if (isset($config['custom_tags'])) {
-            $container->setParameter(
-                static::RICHTEXT_CUSTOM_TAGS_PARAMETER,
-                $config['custom_tags']
-            );
-        }
-        if (isset($config['custom_styles'])) {
-            $container->setParameter(
-                static::RICHTEXT_CUSTOM_STYLES_PARAMETER,
-                $config['custom_styles']
-            );
-        }
+        $customTagsConfig = $config['custom_tags'] ?? [];
+        $customStylesConfig = $config['custom_styles'] ?? [];
+
+        $availableSiteAccesses = $container->hasParameter('ezpublish.siteaccess.list')
+            ? $container->getParameter('ezpublish.siteaccess.list')
+            : [];
+
+        $this->validateCustomTemplatesConfig(
+            $availableSiteAccesses,
+            $customTagsConfig,
+            'custom_tags',
+            'Tag',
+            $container
+        );
+        $this->validateCustomTemplatesConfig(
+            $availableSiteAccesses,
+            $customStylesConfig,
+            'custom_styles',
+            'Style',
+            $container
+        );
+
+        $container->setParameter(static::RICHTEXT_CUSTOM_TAGS_PARAMETER, $customTagsConfig);
+        $container->setParameter(static::RICHTEXT_CUSTOM_STYLES_PARAMETER, $customStylesConfig);
     }
 
     /**
@@ -109,5 +122,40 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
     public function getConfiguration(array $config, ContainerBuilder $container)
     {
         return new Configuration();
+    }
+
+    /**
+     * Validate Custom Templates (Tags, Styles) SiteAccess-defined configuration against a global one.
+     *
+     * @param array $availableSiteAccesses a list of available SiteAccesses
+     * @param array $config Custom Template configuration
+     * @param string $nodeName Custom Template node name
+     * @param string $type Custom Template type name
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+     */
+    private function validateCustomTemplatesConfig(
+        array $availableSiteAccesses,
+        array $config,
+        string $nodeName,
+        string $type,
+        ContainerBuilder $container
+    ) {
+        $namespace = 'ezsettings';
+        $definedCustomTemplates = array_keys($config);
+        // iterate manually through available Scopes as scope context is not available
+        foreach ($availableSiteAccesses as $siteAccessName) {
+            $enabledTemplatesParamName = "{$namespace}.{$siteAccessName}.fieldtypes.ezrichtext.{$nodeName}";
+            if (!$container->hasParameter($enabledTemplatesParamName)) {
+                continue;
+            }
+
+            foreach ($container->getParameter($enabledTemplatesParamName) as $customTemplateName) {
+                if (!in_array($customTemplateName, $definedCustomTemplates)) {
+                    throw new InvalidConfigurationException(
+                        "Unknown RichText Custom {$type} '{$customTemplateName}' (required by the '{$siteAccessName}' SiteAccess)"
+                    );
+                }
+            }
+        }
     }
 }
