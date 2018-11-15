@@ -21,7 +21,7 @@ use Symfony\Component\Yaml\Yaml;
 class CustomTagsValidatorTest extends TestCase
 {
     /**
-     * @var \eZ\Publish\Core\FieldType\RichText\CustomTagsValidator
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\CustomTagsValidator
      */
     private $validator;
 
@@ -37,7 +37,7 @@ class CustomTagsValidatorTest extends TestCase
     /**
      * Test validating DocBook document containing Custom Tags.
      *
-     * @covers \eZ\Publish\Core\FieldType\RichText\CustomTagsValidator::validateDocument
+     * @covers \EzSystems\EzPlatformRichText\eZ\RichText\CustomTagsValidator::validateDocument
      *
      * @dataProvider providerForTestValidateDocument
      *

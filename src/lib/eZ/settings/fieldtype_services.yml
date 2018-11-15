@@ -58,9 +58,9 @@ services:
 
     EzSystems\EzPlatformRichText\eZ\RichText\InputHandler:
         arguments:
-            - '@eZ\Publish\Core\FieldType\RichText\DOMDocumentFactory'
+            - '@EzSystems\EzPlatformRichText\eZ\RichText\DOMDocumentFactory'
             - '@ezrichtext.converter.input.dispatcher'
             - '@ezrichtext.normalizer.input'
             - '@ezrichtext.validator.input.dispatcher'
             - '@ezrichtext.validator.input.ezxhtml5'
-            - '@eZ\Publish\Core\FieldType\RichText\RelationProcessor'
+            - '@EzSystems\EzPlatformRichText\eZ\RichText\RelationProcessor'
