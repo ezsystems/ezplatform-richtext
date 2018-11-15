@@ -80,9 +80,15 @@ services:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\Aggregate
         lazy: true
 
+    ezrichtext.validator.input.ezxhtml5:
+        class: EzSystems\EzPlatformRichText\eZ\RichText\ValidatorAggregate
+        arguments: [!tagged ezrichtext.validator.input.ezxhtml5]
+
     ezrichtext.validator.docbook:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Validator
         arguments: ['%ezrichtext.validator.docbook.resources%']
+        tags:
+            - { name: 'ezrichtext.validator.input.ezxhtml5' }
 
     ezrichtext.validator.output.ezxhtml5:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Validator
@@ -101,6 +107,8 @@ services:
         arguments:
             - '@ezpublish.spi.persistence.cache.contentHandler'
             - '@ezpublish.spi.persistence.cache.locationHandler'
+        tags:
+            - { name: 'ezrichtext.validator.input.ezxhtml5' }
 
     ezrichtext.converter.output.xhtml5.core:
         class: EzSystems\EzPlatformRichTextBundle\eZ\RichText\Converter\Html5

@@ -16,9 +16,15 @@ services:
             -
                 http://docbook.org/ns/docbook: null
 
+    ezrichtext.validator.input.ezxhtml5:
+        class: EzSystems\EzPlatformRichText\eZ\RichText\ValidatorAggregate
+        arguments: [!tagged ezrichtext.validator.input.ezxhtml5]
+
     ezrichtext.validator.docbook:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Validator
         arguments: ['%ezrichtext.validator.docbook.resources%']
+        tags:
+            - { name: 'ezrichtext.validator.input.ezxhtml5' }
 
     ezrichtext.validator.input.dispatcher:
         class: EzSystems\EzPlatformRichText\eZ\RichText\ValidatorDispatcher
@@ -31,6 +37,8 @@ services:
         arguments:
             - '@ezpublish.spi.persistence.cache.contentHandler'
             - '@ezpublish.spi.persistence.cache.locationHandler'
+        tags:
+            - { name: 'ezrichtext.validator.input.ezxhtml5' }
 
     ezrichtext.normalizer.input:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Normalizer\Aggregate
@@ -39,3 +47,20 @@ services:
     EzSystems\EzPlatformRichText\eZ\RichText\CustomTagsValidator:
         public: false
         arguments: ['%ezplatform.ezrichtext.custom_tags%']
+        tags:
+            - { name: 'ezrichtext.validator.input.ezxhtml5' }
+
+    EzSystems\EzPlatformRichText\eZ\RichText\RelationProcessor:
+        public: false
+
+    EzSystems\EzPlatformRichText\eZ\RichText\DOMDocumentFactory:
+        public: false
+
+    EzSystems\EzPlatformRichText\eZ\RichText\InputHandler:
+        arguments:
+            - '@eZ\Publish\Core\FieldType\RichText\DOMDocumentFactory'
+            - '@ezrichtext.converter.input.dispatcher'
+            - '@ezrichtext.normalizer.input'
+            - '@ezrichtext.validator.input.dispatcher'
+            - '@ezrichtext.validator.input.ezxhtml5'
+            - '@eZ\Publish\Core\FieldType\RichText\RelationProcessor'
