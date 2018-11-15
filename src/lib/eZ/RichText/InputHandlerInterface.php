@@ -16,7 +16,7 @@ interface InputHandlerInterface
      *
      * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException
      * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException
-     * @throws \EzSystems\EzPlatformRichText\eZ\RichText\InvalidXmlException
+     * @throws \EzSystems\EzPlatformRichText\eZ\RichText\Exception\InvalidXmlException
      *
      * @return \DOMDocument
      */

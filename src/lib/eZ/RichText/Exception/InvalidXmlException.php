@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformRichText\eZ\RichText;
+namespace EzSystems\EzPlatformRichText\eZ\RichText\Exception;
 
 use eZ\Publish\Core\Base\Exceptions\InvalidArgumentException;
 use Throwable;
