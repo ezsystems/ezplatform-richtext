@@ -9,21 +9,14 @@ declare(strict_types=1);
 namespace EzSystems\EzPlatformRichText\eZ\FieldType\RichText;
 
 use eZ\Publish\Core\FieldType\FieldType;
-use eZ\Publish\Core\Base\Exceptions\InvalidArgumentException;
 use eZ\Publish\Core\Base\Exceptions\InvalidArgumentType;
 use eZ\Publish\Core\FieldType\ValidationError;
 use eZ\Publish\SPI\FieldType\Value as SPIValue;
 use eZ\Publish\SPI\Persistence\Content\FieldValue;
 use eZ\Publish\Core\FieldType\Value as BaseValue;
-use eZ\Publish\API\Repository\Values\Content\Relation;
 use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
 use DOMDocument;
-use EzSystems\EzPlatformRichText\eZ\RichText\ConverterDispatcher;
-use EzSystems\EzPlatformRichText\eZ\RichText\CustomTagsValidator;
-use EzSystems\EzPlatformRichText\eZ\RichText\InternalLinkValidator;
-use EzSystems\EzPlatformRichText\eZ\RichText\Normalizer;
-use EzSystems\EzPlatformRichText\eZ\RichText\Validator;
-use EzSystems\EzPlatformRichText\eZ\RichText\ValidatorDispatcher;
+use EzSystems\EzPlatformRichText\eZ\RichText\InputHandlerInterface;
 use RuntimeException;
 
 /**
@@ -32,57 +25,16 @@ use RuntimeException;
 class Type extends FieldType
 {
     /**
-     * @var \EzSystems\EzPlatformRichText\eZ\RichText\ValidatorDispatcher
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\InputHandlerInterface
      */
-    protected $internalFormatValidator;
+    private $inputHandler;
 
     /**
-     * @var \EzSystems\EzPlatformRichText\eZ\RichText\ConverterDispatcher
+     * @param \EzSystems\EzPlatformRichText\eZ\RichText\InputHandlerInterface $inputHandler
      */
-    protected $inputConverterDispatcher;
-
-    /**
-     * @var \EzSystems\EzPlatformRichText\eZ\RichText\Normalizer
-     */
-    protected $inputNormalizer;
-
-    /**
-     * @var null|\EzSystems\EzPlatformRichText\eZ\RichText\ValidatorDispatcher
-     */
-    protected $inputValidatorDispatcher;
-
-    /**
-     * @var null|\EzSystems\EzPlatformRichText\eZ\RichText\InternalLinkValidator
-     */
-    protected $internalLinkValidator;
-
-    /**
-     * @var null|\EzSystems\EzPlatformRichText\eZ\RichText\CustomTagsValidator
-     */
-    private $customTagsValidator;
-
-    /**
-     * @param \EzSystems\EzPlatformRichText\eZ\RichText\Validator $internalFormatValidator
-     * @param \EzSystems\EzPlatformRichText\eZ\RichText\ConverterDispatcher $inputConverterDispatcher
-     * @param \EzSystems\EzPlatformRichText\eZ\RichText\Normalizer|null $inputNormalizer
-     * @param \EzSystems\EzPlatformRichText\eZ\RichText\ValidatorDispatcher|null $inputValidatorDispatcher
-     * @param \EzSystems\EzPlatformRichText\eZ\RichText\InternalLinkValidator|null $internalLinkValidator
-     * @param \EzSystems\EzPlatformRichText\eZ\RichText\CustomTagsValidator|null $customTagsValidator
-     */
-    public function __construct(
-        Validator $internalFormatValidator,
-        ConverterDispatcher $inputConverterDispatcher,
-        Normalizer $inputNormalizer = null,
-        ValidatorDispatcher $inputValidatorDispatcher = null,
-        InternalLinkValidator $internalLinkValidator = null,
-        CustomTagsValidator $customTagsValidator = null
-    ) {
-        $this->internalFormatValidator = $internalFormatValidator;
-        $this->inputConverterDispatcher = $inputConverterDispatcher;
-        $this->inputNormalizer = $inputNormalizer;
-        $this->inputValidatorDispatcher = $inputValidatorDispatcher;
-        $this->internalLinkValidator = $internalLinkValidator;
-        $this->customTagsValidator = $customTagsValidator;
+    public function __construct(InputHandlerInterface $inputHandler)
+    {
+        $this->inputHandler = $inputHandler;
     }
 
     /**
@@ -162,72 +114,14 @@ class Type extends FieldType
     protected function createValueFromInput($inputValue)
     {
         if (is_string($inputValue)) {
-            if (empty($inputValue)) {
-                $inputValue = Value::EMPTY_VALUE;
-            }
-
-            if ($this->inputNormalizer !== null && $this->inputNormalizer->accept($inputValue)) {
-                $inputValue = $this->inputNormalizer->normalize($inputValue);
-            }
-
-            $inputValue = $this->loadXMLString($inputValue);
+            $inputValue = $this->inputHandler->fromString($inputValue);
         }
 
         if ($inputValue instanceof DOMDocument) {
-            if ($this->inputValidatorDispatcher !== null) {
-                $errors = $this->inputValidatorDispatcher->dispatch($inputValue);
-                if (!empty($errors)) {
-                    throw new InvalidArgumentException(
-                        '$inputValue',
-                        'Validation of XML content failed: ' . implode("\n", $errors)
-                    );
-                }
-            }
-
-            $inputValue = new Value(
-                $this->inputConverterDispatcher->dispatch($inputValue)
-            );
+            $inputValue = new Value($this->inputHandler->fromDocument($inputValue));
         }
 
         return $inputValue;
-    }
-
-    /**
-     * Creates \DOMDocument from given $xmlString.
-     *
-     * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException
-     *
-     * @param $xmlString
-     *
-     * @return \DOMDocument
-     */
-    protected function loadXMLString($xmlString)
-    {
-        $document = new DOMDocument();
-
-        libxml_use_internal_errors(true);
-        libxml_clear_errors();
-
-        // Options:
-        // - substitute entities
-        // - disable network access
-        // - relax parser limits for document size/complexity
-        $success = $document->loadXML($xmlString, LIBXML_NOENT | LIBXML_NONET | LIBXML_PARSEHUGE);
-
-        if (!$success) {
-            $messages = [];
-
-            foreach (libxml_get_errors() as $error) {
-                $messages[] = trim($error->message);
-            }
-
-            throw new InvalidArgumentException(
-                '$inputValue',
-                'Could not create XML document: ' . implode("\n", $messages)
-            );
-        }
-
-        return $document;
     }
 
     /**
@@ -264,31 +158,9 @@ class Type extends FieldType
      */
     public function validate(FieldDefinition $fieldDefinition, SPIValue $value)
     {
-        $validationErrors = [];
-
-        $errors = $this->internalFormatValidator->validate($value->xml);
-
-        if (!empty($errors)) {
-            $validationErrors[] = new ValidationError(
-                "Validation of XML content failed:\n" . implode("\n", $errors)
-            );
-        }
-
-        if ($this->internalLinkValidator !== null) {
-            $errors = $this->internalLinkValidator->validateDocument($value->xml);
-            foreach ($errors as $error) {
-                $validationErrors[] = new ValidationError($error);
-            }
-        }
-
-        if ($this->customTagsValidator !== null) {
-            $errors = $this->customTagsValidator->validateDocument($value->xml);
-            foreach ($errors as $error) {
-                $validationErrors[] = new ValidationError($error);
-            }
-        }
-
-        return $validationErrors;
+        return array_map(function ($error) {
+            return new ValidationError("Validation of XML content failed:\n" . $error);
+        }, $this->inputHandler->validate($value->xml));
     }
 
     /**
@@ -403,55 +275,11 @@ class Type extends FieldType
     {
         $relations = [];
 
-        /** @var \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value $value */
+        /** @var \eZ\Publish\Core\FieldType\RichText\Value $value */
         if ($value->xml instanceof DOMDocument) {
-            $relations = [
-                Relation::LINK => $this->getRelatedObjectIds($value, Relation::LINK),
-                Relation::EMBED => $this->getRelatedObjectIds($value, Relation::EMBED),
-            ];
+            $relations = $this->inputHandler->getRelations($value->xml);
         }
 
         return $relations;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function getRelatedObjectIds(Value $fieldValue, $relationType)
-    {
-        if ($relationType === Relation::EMBED) {
-            $tagNames = ['ezembedinline', 'ezembed'];
-        } else {
-            $tagNames = ['link', 'ezlink'];
-        }
-
-        $contentIds = [];
-        $locationIds = [];
-        $xpath = new \DOMXPath($fieldValue->xml);
-        $xpath->registerNamespace('docbook', 'http://docbook.org/ns/docbook');
-
-        foreach ($tagNames as $tagName) {
-            $xpathExpression = "//docbook:{$tagName}[starts-with( @xlink:href, 'ezcontent://' ) or starts-with( @xlink:href, 'ezlocation://' )]";
-            /** @var \DOMElement $element */
-            foreach ($xpath->query($xpathExpression) as $element) {
-                preg_match('~^(.+)://([^#]*)?(#.*|\\s*)?$~', $element->getAttribute('xlink:href'), $matches);
-                list(, $scheme, $id) = $matches;
-
-                if (empty($id)) {
-                    continue;
-                }
-
-                if ($scheme === 'ezcontent') {
-                    $contentIds[] = $id;
-                } elseif ($scheme === 'ezlocation') {
-                    $locationIds[] = $id;
-                }
-            }
-        }
-
-        return [
-            'locationIds' => array_unique($locationIds),
-            'contentIds' => array_unique($contentIds),
-        ];
     }
 }
