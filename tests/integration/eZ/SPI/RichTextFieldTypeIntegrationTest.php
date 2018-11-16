@@ -8,13 +8,14 @@ declare(strict_types=1);
 
 namespace EzSystems\IntegrationTests\EzPlatformRichText\eZ\SPI;
 
-use eZ\Publish\Core\FieldType;
 use eZ\Publish\SPI\Persistence\Content\FieldValue;
 use eZ\Publish\SPI\Persistence\Content\FieldTypeConstraints;
 use eZ\Publish\Core\FieldType\Url\UrlStorage\Gateway\DoctrineStorage as UrlGateway;
 use eZ\Publish\SPI\Tests\FieldType\BaseIntegrationTest;
+use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Type as RichTextType;
 use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage\Gateway\DoctrineStorage;
 use EzSystems\EzPlatformRichText\eZ\Persistence\Legacy\RichTextFieldValueConverter;
+use EzSystems\EzPlatformRichText\eZ\RichText;
 
 /**
  * Integration test for legacy storage field types.
@@ -55,16 +56,16 @@ class RichTextFieldTypeIntegrationTest extends BaseIntegrationTest
      */
     public function getCustomHandler()
     {
-        $fieldType = new FieldType\RichText\Type(
-            new FieldType\RichText\Validator(
+        $fieldType = new RichTextType(
+            new RichText\Validator(
                 [
                     $this->getAbsolutePath('src/lib/eZ/RichText/Resources/schemas/docbook/ezpublish.rng'),
                     $this->getAbsolutePath('src/lib/eZ/RichText/Resources/schemas/docbook/docbook.iso.sch.xsl'),
                 ]
             ),
-            new FieldType\RichText\ConverterDispatcher([]),
-            new FieldType\RichText\Normalizer\Aggregate(),
-            new FieldType\RichText\ValidatorDispatcher(['http://docbook.org/ns/docbook' => null])
+            new RichText\ConverterDispatcher([]),
+            new RichText\Normalizer\Aggregate(),
+            new RichText\ValidatorDispatcher(['http://docbook.org/ns/docbook' => null])
         );
         $fieldType->setTransformationProcessor($this->getTransformationProcessor());
 
@@ -74,7 +75,7 @@ class RichTextFieldTypeIntegrationTest extends BaseIntegrationTest
             'ezrichtext',
             $fieldType,
             new RichTextFieldValueConverter(),
-            new FieldType\RichText\RichTextStorage(
+            new RichText\RichTextStorage(
                 new DoctrineStorage(
                     $urlGateway,
                     $this->getDatabaseHandler()->getConnection()
