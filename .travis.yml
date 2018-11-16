@@ -19,6 +19,11 @@ cache:
   directories:
     - $HOME/.composer/cache/files
 
+env:
+  global:
+    # For acceptance tests
+    - EZPLATFORM_REPO="https://github.com/ezsystems/ezplatform.git"
+
 matrix:
   fast_finish: true
   include:
@@ -39,6 +44,13 @@ matrix:
     - name: '[PHP 7.2] Solr Search Engine Integration'
       php: 7.2
       env: SOLR_VERSION="6.4.2" TEST_CONFIG="phpunit-integration-legacy-solr.xml" CORES_SETUP="shared" SOLR_CONFIG="vendor/ezsystems/ezplatform-solr-search-engine/lib/Resources/config/solr/schema.xml vendor/ezsystems/ezplatform-solr-search-engine/lib/Resources/config/solr/custom-fields-types.xml vendor/ezsystems/ezplatform-solr-search-engine/lib/Resources/config/solr/language-fieldtypes.xml"
+    - name: '[PHP 7.2] AdminUI Behat tests'
+      php: 7.2
+      env:
+        - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
+        - BEHAT_OPTS="--profile=adminui --suite=adminui --tags=@richtext --no-interaction -vv"
+        - SYMFONY_ENV=behat
+        - SYMFONY_DEBUG=1
 # CS check
     - name: 'Code Style Check'
       php: 7.2
@@ -68,17 +80,26 @@ before_install:
 install:
   - travis_retry composer install --no-progress --no-interaction --prefer-dist --no-suggest
   # Setup Solr / Elastic search if asked for
-  - if [ "$TEST_CONFIG" = "phpunit-integration-legacy-elasticsearch.xml" ] ; then ./bin/.travis/init_elasticsearch.sh ; fi
-  - if [ "$TEST_CONFIG" = "phpunit-integration-legacy-solr.xml" ] ; then ./vendor/ezsystems/ezplatform-solr-search-engine/bin/.travis/init_solr.sh; fi
+  - if [ "${TEST_CONFIG}" = "phpunit-integration-legacy-elasticsearch.xml" ] ; then ./bin/.travis/init_elasticsearch.sh ; fi
+  - if [ "${TEST_CONFIG}" = "phpunit-integration-legacy-solr.xml" ] ; then ./vendor/ezsystems/ezplatform-solr-search-engine/bin/.travis/init_solr.sh; fi
+  # Prepare Behat environment if needed
+  - if [ "${BEHAT_OPTS}" != "" ]; then ./bin/.travis/prepare_ezplatform.sh ; fi
 
 # execute phpunit or behat as the script command
 script:
-  - if [ "$TEST_CONFIG" != "" ] ; then php -d date.timezone=$TEST_TIMEZONE ./vendor/bin/phpunit -c $TEST_CONFIG ; fi
-  - if [ "$CHECK_CS" = "true" ] ; then ./vendor/bin/php-cs-fixer fix -v --dry-run --diff --show-progress=estimating; fi
+  - if [ "${TEST_CONFIG}" != "" ] ; then php -d date.timezone=$TEST_TIMEZONE ./vendor/bin/phpunit -c $TEST_CONFIG ; fi
+  - if [ "${CHECK_CS}" = "true" ] ; then ./vendor/bin/php-cs-fixer fix -v --dry-run --diff --show-progress=estimating; fi
+  - if [ "${BEHAT_OPTS}" != "" ]; then cd "$HOME/build/ezplatform"; docker-compose exec --user www-data app sh -c "./bin/behat $BEHAT_OPTS" ; fi
 
 # disable mail notifications
 notifications:
   email: false
+  slack:
+    rooms:
+      - secure: "YdZUPNm+yftOLzaaHqW8mSoDbajQa1I4KOc3cdrB/LL03E95vAIhJRJXBobvRgVdElHlIqYI/NjI6yVHRXHAWZ0du/wWkNYOBvenBRA0qEuMZaD4pl+BlylMwUKMpML72nXmcZPLDp8u9DidoaiiG4wc7h3KXu/DJC0tpSwu10A+vo1OJjToISZfteEB97OzrWSKFgfk4tXgIeyGs6EbBzpbj6Lvsk+xGaf+PAaderSFWjr7T9cx1Lc2A8E+Lu3QbI6ahdV2WxUw5B/YVvvwP8DcVS4yqyU8IZvlJpI9m5zUjFwy9puL6BiVqKAX3BXY4SoLOZcuRNIdE+Yjd0B5T0F4KWrsVgheIvAPKHoCSYlJEbBblfxLtj+1gZ06i/gn/ALP67KKcTtUzPpspF9lRoEY4IZinfhvL2hNuCgOubuham9Q+qKRk8lxRFH9WDk6EdA8rIXcN+79HrRvFJ1mcB8AkYsxRBqF2GNVrYBZui3Ksg2hXwQb1Jjakta9taBeEQOwue5GGCXJl6DpRkByPFaonGPVVAQk5PaQmvOfWGquXnTaz4xNPhnIbwMPbnn0N+DmOTmeaDuz20ngiLuD8NVy5B1GEYasDW8tTTWAcJLB2z5Mm7PDMSzaAUaaF3fvjO5b5VcJNoibxMm83akVhn1awWpw30OGbjcLd75lszY="
+    on_success: change
+    on_failure: always
+    on_pull_requests: false
 
 # reduce depth (history) of git checkout
 git:
