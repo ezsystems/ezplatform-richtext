@@ -10,11 +10,8 @@ namespace EzSystems\EzPlatformRichTextBundle\DependencyInjection\Configuration\P
 
 use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\Configuration\Parser\AbstractFieldTypeParser;
 use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\Configuration\SiteAccessAware\ContextualizerInterface;
-use EzSystems\EzPlatformRichTextBundle\DependencyInjection\EzPlatformRichTextExtension;
 use Symfony\Component\Config\Definition\Builder\NodeBuilder;
 use Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition;
-use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Configuration parser handling RichText field type related config.
@@ -214,26 +211,13 @@ class RichText extends AbstractFieldTypeParser
             }
 
             if (isset($scopeSettings['fieldtypes']['ezrichtext']['custom_tags'])) {
-                $this->validateCustomTagsConfiguration(
-                    $contextualizer->getContainer(),
-                    $scopeSettings['fieldtypes']['ezrichtext']['custom_tags']
-                );
-                $contextualizer->setContextualParameter(
-                    'fieldtypes.ezrichtext.custom_tags',
-                    $currentScope,
-                    $scopeSettings['fieldtypes']['ezrichtext']['custom_tags']
-                );
+                $scopeSettings['fieldtypes.ezrichtext.custom_tags'] = $scopeSettings['fieldtypes']['ezrichtext']['custom_tags'];
+                unset($scopeSettings['fieldtypes']['ezrichtext']['custom_tags']);
             }
+
             if (isset($scopeSettings['fieldtypes']['ezrichtext']['custom_styles'])) {
-                $this->validateCustomStylesConfiguration(
-                    $contextualizer->getContainer(),
-                    $scopeSettings['fieldtypes']['ezrichtext']['custom_styles']
-                );
-                $contextualizer->setContextualParameter(
-                    'fieldtypes.ezrichtext.custom_styles',
-                    $currentScope,
-                    $scopeSettings['fieldtypes']['ezrichtext']['custom_styles']
-                );
+                $scopeSettings['fieldtypes.ezrichtext.custom_styles'] = $scopeSettings['fieldtypes']['ezrichtext']['custom_styles'];
+                unset($scopeSettings['fieldtypes']['ezrichtext']['custom_styles']);
             }
 
             if (isset($scopeSettings['fieldtypes']['ezrichtext']['tags'])) {
@@ -260,53 +244,11 @@ class RichText extends AbstractFieldTypeParser
 
     public function postMap(array $config, ContextualizerInterface $contextualizer)
     {
+        $contextualizer->mapConfigArray('fieldtypes.ezrichtext.custom_tags', $config);
+        $contextualizer->mapConfigArray('fieldtypes.ezrichtext.custom_styles', $config);
         $contextualizer->mapConfigArray('fieldtypes.ezrichtext.output_custom_xsl', $config);
         $contextualizer->mapConfigArray('fieldtypes.ezrichtext.edit_custom_xsl', $config);
         $contextualizer->mapConfigArray('fieldtypes.ezrichtext.input_custom_xsl', $config);
-    }
-
-    /**
-     * Validate SiteAccess-defined Custom Tags configuration against global one.
-     *
-     * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
-     * @param array $enabledCustomTags List of Custom Tags enabled for the current scope/SiteAccess
-     */
-    private function validateCustomTagsConfiguration(
-        ContainerInterface $container,
-        array $enabledCustomTags
-    ) {
-        $definedCustomTags = array_keys(
-            $container->getParameter(EzPlatformRichTextExtension::RICHTEXT_CUSTOM_TAGS_PARAMETER)
-        );
-        foreach ($enabledCustomTags as $customTagName) {
-            if (!in_array($customTagName, $definedCustomTags)) {
-                throw new InvalidConfigurationException(
-                    "Unknown RichText Custom Tag '{$customTagName}'"
-                );
-            }
-        }
-    }
-
-    /**
-     * Validate SiteAccess-defined Custom Styles configuration against global one.
-     *
-     * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
-     * @param array $enabledCustomStyles List of Custom Styles enabled for the current scope/SiteAccess
-     */
-    private function validateCustomStylesConfiguration(
-        ContainerInterface $container,
-        array $enabledCustomStyles
-    ) {
-        $definedCustomStyles = array_keys(
-            $container->getParameter(EzPlatformRichTextExtension::RICHTEXT_CUSTOM_STYLES_PARAMETER)
-        );
-        foreach ($enabledCustomStyles as $customStyleName) {
-            if (!in_array($customStyleName, $definedCustomStyles)) {
-                throw new InvalidConfigurationException(
-                    "Unknown RichText Custom Style '{$customStyleName}'"
-                );
-            }
-        }
     }
 
     /**
