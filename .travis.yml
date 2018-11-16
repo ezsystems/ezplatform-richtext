@@ -94,6 +94,12 @@ script:
 # disable mail notifications
 notifications:
   email: false
+  slack:
+    rooms:
+      - secure: "YdZUPNm+yftOLzaaHqW8mSoDbajQa1I4KOc3cdrB/LL03E95vAIhJRJXBobvRgVdElHlIqYI/NjI6yVHRXHAWZ0du/wWkNYOBvenBRA0qEuMZaD4pl+BlylMwUKMpML72nXmcZPLDp8u9DidoaiiG4wc7h3KXu/DJC0tpSwu10A+vo1OJjToISZfteEB97OzrWSKFgfk4tXgIeyGs6EbBzpbj6Lvsk+xGaf+PAaderSFWjr7T9cx1Lc2A8E+Lu3QbI6ahdV2WxUw5B/YVvvwP8DcVS4yqyU8IZvlJpI9m5zUjFwy9puL6BiVqKAX3BXY4SoLOZcuRNIdE+Yjd0B5T0F4KWrsVgheIvAPKHoCSYlJEbBblfxLtj+1gZ06i/gn/ALP67KKcTtUzPpspF9lRoEY4IZinfhvL2hNuCgOubuham9Q+qKRk8lxRFH9WDk6EdA8rIXcN+79HrRvFJ1mcB8AkYsxRBqF2GNVrYBZui3Ksg2hXwQb1Jjakta9taBeEQOwue5GGCXJl6DpRkByPFaonGPVVAQk5PaQmvOfWGquXnTaz4xNPhnIbwMPbnn0N+DmOTmeaDuz20ngiLuD8NVy5B1GEYasDW8tTTWAcJLB2z5Mm7PDMSzaAUaaF3fvjO5b5VcJNoibxMm83akVhn1awWpw30OGbjcLd75lszY="
+    on_success: change
+    on_failure: always
+    on_pull_requests: false
 
 # reduce depth (history) of git checkout
 git:
