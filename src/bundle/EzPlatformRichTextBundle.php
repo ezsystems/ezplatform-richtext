@@ -20,6 +20,17 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class EzPlatformRichTextBundle extends Bundle
 {
+    /**
+     * @var bool
+     */
+    private static $kernelBcEnabled = false;
+
+    public function __construct()
+    {
+        // load Kernel BC layer
+        $this->aliasDeprecatedKernelClasses();
+    }
+
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
@@ -54,5 +65,22 @@ class EzPlatformRichTextBundle extends Bundle
         }
 
         return $this->extension;
+    }
+
+    /**
+     * Load backward compatible class/interface aliases for \eZ\Publish\Core\FieldType\RichText namespace.
+     */
+    private function aliasDeprecatedKernelClasses()
+    {
+        // make sure this is executed only once.
+        if (static::$kernelBcEnabled) {
+            return;
+        }
+
+        foreach (EzPlatformRichTextExtension::KERNEL_CLASSMAP as $alias => $original) {
+            class_alias($original, $alias);
+        }
+
+        static::$kernelBcEnabled = true;
     }
 }

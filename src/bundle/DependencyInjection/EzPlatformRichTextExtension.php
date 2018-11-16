@@ -23,6 +23,19 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
     const RICHTEXT_CUSTOM_STYLES_PARAMETER = 'ezplatform.ezrichtext.custom_styles';
     const RICHTEXT_CUSTOM_TAGS_PARAMETER = 'ezplatform.ezrichtext.custom_tags';
 
+    /**
+     * @deprecated aliasing Kernel RichText classes with the ones from this bundle will be dropped
+     * in the next major version
+     */
+    const KERNEL_CLASSMAP = [
+        \eZ\Publish\Core\FieldType\RichText\Value::class => \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value::class,
+        \eZ\Publish\Core\FieldType\RichText\Type::class => \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Type::class,
+        \eZ\Publish\Core\FieldType\RichText\SearchField::class => \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\SearchField::class,
+        \eZ\Publish\Core\FieldType\RichText\Validator::class => \EzSystems\EzPlatformRichText\eZ\RichText\Validator::class,
+        \eZ\Publish\Core\FieldType\RichText\Converter::class => \EzSystems\EzPlatformRichText\eZ\RichText\Converter::class,
+        \eZ\Publish\Core\FieldType\RichText\RendererInterface::class => \EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface::class,
+    ];
+
     public function getAlias()
     {
         return 'ezrichtext';
