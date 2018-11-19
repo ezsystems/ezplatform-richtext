@@ -51,7 +51,6 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
             $container,
             new FileLocator(__DIR__ . '/../Resources/config')
         );
-        $loader->load('default_settings.yml');
         $loader->load('fieldtype_services.yml');
         $loader->load('rest.yml');
         $loader->load('templating.yml');
