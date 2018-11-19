@@ -12,6 +12,7 @@ use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\EzPublishCoreExtension;
 use eZ\Bundle\EzPublishCoreBundle\Tests\DependencyInjection\Configuration\Parser\AbstractParserTestCase;
 use EzSystems\EzPlatformRichTextBundle\DependencyInjection\Configuration\Parser\FieldType\RichText as RichTextConfigParser;
 use EzSystems\EzPlatformRichTextBundle\DependencyInjection\EzPlatformRichTextExtension;
+use EzSystems\EzPlatformRichTextBundle\EzPlatformRichTextBundle;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
@@ -53,6 +54,9 @@ class RichTextTest extends AbstractParserTestCase
      */
     protected function load(array $configurationValues = [])
     {
+        $bundle = new EzPlatformRichTextBundle();
+        $bundle->build($this->container);
+
         // mock list of available bundles
         $this->setParameter(
             'kernel.bundles',
@@ -193,8 +197,7 @@ class RichTextTest extends AbstractParserTestCase
                 [
                     'fieldtypes.ezrichtext.output_custom_xsl' => [
                         // Default settings will be added
-                        // @todo replace with ezplatform-richtext file once ezpublish extension can detect that
-                        ['path' => '%kernel.root_dir%/../vendor/ezsystems/ezpublish-kernel/eZ/Publish/Core/FieldType/RichText/Resources/stylesheets/docbook/xhtml5/output/core.xsl', 'priority' => 0],
+                        ['path' => '%kernel.root_dir%/../vendor/ezsystems/ezplatform-richtext/src/lib/eZ/RichText/Resources/stylesheets/docbook/xhtml5/output/core.xsl', 'priority' => 0],
                         ['path' => '/foo/bar.xsl', 'priority' => 123],
                         ['path' => '/foo/custom.xsl', 'priority' => -10],
                         ['path' => '/another/custom.xsl', 'priority' => 27],
@@ -216,8 +219,7 @@ class RichTextTest extends AbstractParserTestCase
                 [
                     'fieldtypes.ezrichtext.edit_custom_xsl' => [
                         // Default settings will be added
-                        // @todo replace with ezplatform-richtext file once ezpublish extension can detect that
-                        ['path' => '%kernel.root_dir%/../vendor/ezsystems/ezpublish-kernel/eZ/Publish/Core/FieldType/RichText/Resources/stylesheets/docbook/xhtml5/edit/core.xsl', 'priority' => 0],
+                        ['path' => '%kernel.root_dir%/../vendor/ezsystems/ezplatform-richtext/src/lib/eZ/RichText/Resources/stylesheets/docbook/xhtml5/edit/core.xsl', 'priority' => 0],
                         ['path' => '/foo/bar.xsl', 'priority' => 123],
                         ['path' => '/foo/custom.xsl', 'priority' => -10],
                         ['path' => '/another/custom.xsl', 'priority' => 27],

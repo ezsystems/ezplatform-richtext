@@ -30,6 +30,11 @@ class EzPlatformRichTextBundle extends Bundle
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
+
+        /** @var \eZ\Bundle\EzPublishCoreBundle\DependencyInjection\EzPublishCoreExtension $core */
+        $core = $container->getExtension('ezpublish');
+        $core->addDefaultSettings(__DIR__ . '/Resources/config', ['default_settings.yml']);
+
         $container->addCompilerPass(new RichTextHtml5ConverterPass());
         $container->addCompilerPass(new KernelRichTextPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, self::KERNEL_PASS_PRIORITY);
         $this->registerConfigParser($container);

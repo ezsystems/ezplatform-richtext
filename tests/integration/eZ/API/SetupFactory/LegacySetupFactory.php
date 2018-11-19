@@ -57,7 +57,7 @@ class LegacySetupFactory extends CoreLegacySetupFactory
     {
         parent::externalBuildContainer($containerBuilder);
 
-        $this->loadRichTextSettings($containerBuilder);
         $this->loadCoreSettings($containerBuilder);
+        $this->loadRichTextSettings($containerBuilder);
     }
 }
