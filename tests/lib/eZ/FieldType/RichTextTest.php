@@ -23,8 +23,8 @@ use EzSystems\EzPlatformRichText\eZ\RichText\DOMDocumentFactory;
 use EzSystems\EzPlatformRichText\eZ\RichText\InputHandler;
 use EzSystems\EzPlatformRichText\eZ\RichText\Normalizer\Aggregate;
 use EzSystems\EzPlatformRichText\eZ\RichText\RelationProcessor;
-use EzSystems\EzPlatformRichText\eZ\RichText\Validator;
-use EzSystems\EzPlatformRichText\eZ\RichText\ValidatorDispatcher;
+use EzSystems\EzPlatformRichText\eZ\RichText\Validator\Validator;
+use EzSystems\EzPlatformRichText\eZ\RichText\Validator\ValidatorDispatcher;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 

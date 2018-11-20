@@ -61,11 +61,11 @@ class RichTextFieldTypeIntegrationTest extends BaseIntegrationTest
             new RichText\DOMDocumentFactory(),
             new RichText\ConverterDispatcher([]),
             new RichText\Normalizer\Aggregate(),
-            new RichText\ValidatorDispatcher([
+            new RichText\Validator\ValidatorDispatcher([
                 'http://docbook.org/ns/docbook' => null,
             ]),
-            new RichText\ValidatorAggregate([
-                new RichText\Validator([
+            new RichText\Validator\ValidatorAggregate([
+                new RichText\Validator\Validator([
                     $this->getAbsolutePath('eZ/RichText/Resources/schemas/docbook/ezpublish.rng'),
                     $this->getAbsolutePath('eZ/RichText/Resources/schemas/docbook/docbook.iso.sch.xsl'),
                 ]),

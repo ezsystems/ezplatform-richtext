@@ -6,10 +6,10 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText;
+namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Validator;
 
 use DOMDocument;
-use EzSystems\EzPlatformRichText\eZ\RichText\CustomTagsValidator;
+use EzSystems\EzPlatformRichText\eZ\RichText\Validator\CustomTagsValidator;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Yaml\Yaml;
 
@@ -21,14 +21,14 @@ use Symfony\Component\Yaml\Yaml;
 class CustomTagsValidatorTest extends TestCase
 {
     /**
-     * @var \EzSystems\EzPlatformRichText\eZ\RichText\CustomTagsValidator
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\Validator\CustomTagsValidator
      */
     private $validator;
 
     public function setUp()
     {
         // reuse Custom Tags configuration from common test settings
-        $commonSettings = Yaml::parseFile(__DIR__ . '/../settings/common.yml');
+        $commonSettings = Yaml::parseFile(__DIR__ . '/../../settings/common.yml');
         $customTagsConfiguration = $commonSettings['parameters']['ezplatform.ezrichtext.custom_tags'];
 
         $this->validator = new CustomTagsValidator($customTagsConfiguration);

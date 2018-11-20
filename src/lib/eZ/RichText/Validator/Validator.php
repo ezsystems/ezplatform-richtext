@@ -6,11 +6,13 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformRichText\eZ\RichText;
+namespace EzSystems\EzPlatformRichText\eZ\RichText\Validator;
 
 use DOMDocument;
 use DOMElement;
 use DOMXPath;
+use EzSystems\EzPlatformRichText\eZ\RichText\ValidatorInterface;
+use EzSystems\EzPlatformRichText\eZ\RichText\XmlBase;
 use XSLTProcessor;
 use RuntimeException;
 

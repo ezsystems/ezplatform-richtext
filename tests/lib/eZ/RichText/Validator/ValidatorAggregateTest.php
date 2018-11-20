@@ -6,10 +6,10 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText;
+namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Validator;
 
 use DOMDocument;
-use EzSystems\EzPlatformRichText\eZ\RichText\ValidatorAggregate;
+use EzSystems\EzPlatformRichText\eZ\RichText\Validator\ValidatorAggregate;
 use EzSystems\EzPlatformRichText\eZ\RichText\ValidatorInterface;
 use PHPUnit\Framework\TestCase;
 

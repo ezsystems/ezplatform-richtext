@@ -6,9 +6,10 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformRichText\eZ\RichText;
+namespace EzSystems\EzPlatformRichText\eZ\RichText\Validator;
 
 use DOMDocument;
+use EzSystems\EzPlatformRichText\eZ\RichText\ValidatorInterface;
 
 class ValidatorAggregate implements ValidatorInterface
 {

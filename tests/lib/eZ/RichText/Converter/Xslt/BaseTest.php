@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Converter\Xslt;
 
-use EzSystems\EzPlatformRichText\eZ\RichText\Validator;
+use EzSystems\EzPlatformRichText\eZ\RichText\Validator\Validator;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Xslt;
 use PHPUnit\Framework\TestCase;
 use DOMDocument;

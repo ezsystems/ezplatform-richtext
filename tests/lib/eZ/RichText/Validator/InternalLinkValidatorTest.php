@@ -6,12 +6,12 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText;
+namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Validator;
 
 use eZ\Publish\SPI\Persistence\Content\Handler as ContentHandler;
 use eZ\Publish\SPI\Persistence\Content\Location\Handler as LocationHandler;
 use eZ\Publish\Core\Base\Exceptions\NotFoundException;
-use EzSystems\EzPlatformRichText\eZ\RichText\InternalLinkValidator;
+use EzSystems\EzPlatformRichText\eZ\RichText\Validator\InternalLinkValidator;
 use PHPUnit\Framework\TestCase;
 
 class InternalLinkValidatorTest extends TestCase

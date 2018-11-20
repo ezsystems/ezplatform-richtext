@@ -6,9 +6,10 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformRichText\eZ\RichText;
+namespace EzSystems\EzPlatformRichText\eZ\RichText\Validator;
 
 use eZ\Publish\Core\Base\Exceptions\NotFoundException;
+use EzSystems\EzPlatformRichText\eZ\RichText\ValidatorInterface;
 use DOMDocument;
 
 /**
@@ -39,7 +40,7 @@ class ValidatorDispatcher implements ValidatorInterface
      * @param string $namespace
      * @param \EzSystems\EzPlatformRichText\eZ\RichText\Validator $validator
      */
-    public function addValidator($namespace, Validator $validator = null)
+    public function addValidator($namespace, ValidatorInterface $validator = null)
     {
         $this->mapping[$namespace] = $validator;
     }
