@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5/edit">
+  <div data-ezelement="eztemplate" data-ezname="factbox" class="templateClass" data-ezalign="left">
+    <div data-ezelement="ezcontent">
+      <div data-ezelement="eztemplate" data-ezname="externalimage" class="templateClass2"
+           data-ezalign="right">
+        <span data-ezelement="ezconfig">
+          <span data-ezelement="ezvalue" data-ezvalue-key="src">
+            http://upload.wikimedia.org/wikipedia/commons/c/c6/R-S_mk2.gif
+          </span>
+          <span data-ezelement="ezvalue" data-ezvalue-key="height">365</span>
+          <span data-ezelement="ezvalue" data-ezvalue-key="width">500</span>
+          <span data-ezelement="ezvalue" data-ezvalue-key="alt">flip-flop</span>
+          <span data-ezelement="ezvalue" data-ezvalue-key="caption">bistable multivibrator</span>
+        </span>
+      </div>
+    </div>
+    <span data-ezelement="ezconfig">
+      <span data-ezelement="ezvalue" data-ezvalue-key="title">Factoids</span>
+    </span>
+  </div>
+</section>
