@@ -69,7 +69,7 @@ class CustomTagsValidator implements ValidatorInterface
             $tagAttributes = $this->customTagsConfiguration[$tagName]['attributes'];
 
             // iterate over all attributes defined in XML document to check if their names match configuration
-            $configElements = $xpath->query('.//docbook:ezconfig/docbook:ezvalue', $tagElement);
+            $configElements = $xpath->query('./docbook:ezconfig/docbook:ezvalue', $tagElement);
             foreach ($configElements as $configElement) {
                 $attributeName = $configElement->getAttribute('key');
                 if (empty($attributeName)) {
