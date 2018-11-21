@@ -33,8 +33,8 @@ class SolrLegacySetupFactory extends BaseSolrLegacySetupFactory
             /** @var \Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder */
             $containerBuilder = new ContainerBuilder();
 
-            $this->loadRichTextSettings($containerBuilder);
             $this->loadCoreSettings($containerBuilder);
+            $this->loadRichTextSettings($containerBuilder);
 
             $this->externalBuildContainer($containerBuilder);
 

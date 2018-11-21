@@ -10,7 +10,6 @@ namespace EzSystems\IntegrationTests\EzPlatformRichText\eZ\API\SetupFactory;
 
 use EzSystems\EzPlatformRichTextBundle\DependencyInjection\Compiler;
 use RuntimeException;
-use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Config\FileLocator;
@@ -39,7 +38,6 @@ trait RichTextSetupFactoryTrait
         $loader->load('storage_engines/legacy/external_storage_gateways.yml');
         $loader->load('storage_engines/legacy/field_value_converters.yml');
 
-        $containerBuilder->addCompilerPass(new Compiler\KernelRichTextPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 30);
         $containerBuilder->addCompilerPass(new Compiler\RichTextHtml5ConverterPass());
     }
 }
