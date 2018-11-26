@@ -8,6 +8,14 @@ services:
         arguments:
             $docbookToXhtml5EditConverter: '@ezrichtext.converter.edit.xhtml5'
 
+    EzSystems\EzPlatformRichText\Form\Type\RichTextType:
+        arguments:
+            $docbookToXhtml5EditConverter: '@ezrichtext.converter.edit.xhtml5'
+
+    EzSystems\EzPlatformRichText\Validator\Constraints\RichTextValidator:
+        tags:
+            - { name: validator.constraint_validator }
+
     EzSystems\RepositoryForms\Form\Type\FieldType\RichTextFieldType:
         alias: EzSystems\EzPlatformRichText\Form\Type\RichTextFieldType
 
