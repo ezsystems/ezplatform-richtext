@@ -31,7 +31,7 @@ services:
         alias: ezrichtext.normalizer.input
 
     eZ\Publish\Core\FieldType\RichText\CustomTagsValidator:
-        alias: EzSystems\EzPlatformRichText\eZ\RichText\CustomTagsValidator
+        alias: EzSystems\EzPlatformRichText\eZ\RichText\Validator\CustomTagsValidator
 
     ezpublish.fieldType.ezrichtext.converter.input.xhtml5.core:
         alias: ezrichtext.converter.input.xhtml5.core
