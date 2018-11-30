@@ -559,7 +559,7 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="ezxhtml5:div[@data-ezelement='ezembed']/ezxhtml5:a[@data-ezelement='ezlink'] | ezxhtml5:span[@data-ezelement='ezembedinline']/ezxhtml5:a[@data-ezelement='ezlink']">
+  <xsl:template name="embeddedLink">
     <xsl:element name="ezlink" namespace="http://docbook.org/ns/docbook">
       <xsl:attribute name="xlink:href">
         <xsl:value-of select="@href"/>
@@ -590,6 +590,15 @@
         </xsl:attribute>
       </xsl:if>
     </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="ezxhtml5:div[@data-ezelement='ezembed']/ezxhtml5:a[@data-ezelement='ezlink'] | ezxhtml5:span[@data-ezelement='ezembedinline']/ezxhtml5:a[@data-ezelement='ezlink']">
+    <xsl:call-template name="embeddedLink"/>
+  </xsl:template>
+
+  <!-- BC layer: using "link" tag instead of "a" tag inside of div[@data-ezelement='ezembed'] is deprecated and will be dropped in the next major release -->
+  <xsl:template match="ezxhtml5:div[@data-ezelement='ezembed']/ezxhtml5:link[@data-ezelement='ezlink'] | ezxhtml5:span[@data-ezelement='ezembedinline']/ezxhtml5:link[@data-ezelement='ezlink']">
+    <xsl:call-template name="embeddedLink"/>
   </xsl:template>
 
   <xsl:template match="ezxhtml5:span[@data-ezelement='ezconfig']">
