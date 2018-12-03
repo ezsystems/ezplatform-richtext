@@ -6,15 +6,16 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformRichText\eZ\RichText;
+namespace EzSystems\EzPlatformRichText\eZ\RichText\Validator;
 
 use eZ\Publish\Core\Base\Exceptions\NotFoundException;
+use EzSystems\EzPlatformRichText\eZ\RichText\ValidatorInterface;
 use DOMDocument;
 
 /**
  * Dispatcher for various validators depending on the XML document namespace.
  */
-class ValidatorDispatcher
+class ValidatorDispatcher implements ValidatorInterface
 {
     /**
      * Mapping of namespaces to validators.
@@ -39,7 +40,7 @@ class ValidatorDispatcher
      * @param string $namespace
      * @param \EzSystems\EzPlatformRichText\eZ\RichText\Validator $validator
      */
-    public function addValidator($namespace, Validator $validator = null)
+    public function addValidator($namespace, ValidatorInterface $validator = null)
     {
         $this->mapping[$namespace] = $validator;
     }
@@ -72,5 +73,13 @@ class ValidatorDispatcher
         }
 
         throw new NotFoundException('Validator', $documentNamespace);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validateDocument(DOMDocument $xmlDocument): array
+    {
+        return $this->dispatch($xmlDocument);
     }
 }

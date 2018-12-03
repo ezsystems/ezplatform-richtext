@@ -6,18 +6,19 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformRichText\eZ\RichText;
+namespace EzSystems\EzPlatformRichText\eZ\RichText\Validator;
 
 use DOMDocument;
 use eZ\Publish\SPI\Persistence\Content\Handler as ContentHandler;
 use eZ\Publish\SPI\Persistence\Content\Location\Handler as LocationHandler;
 use eZ\Publish\API\Repository\Exceptions\NotFoundException;
 use eZ\Publish\Core\Base\Exceptions\InvalidArgumentException;
+use EzSystems\EzPlatformRichText\eZ\RichText\ValidatorInterface;
 
 /**
  * Validator for RichText internal format links.
  */
-class InternalLinkValidator
+class InternalLinkValidator implements ValidatorInterface
 {
     /**
      * @var \eZ\Publish\SPI\Persistence\Content\Handler
@@ -47,8 +48,10 @@ class InternalLinkValidator
      * @param \DOMDocument $xml
      *
      * @return array
+     *
+     * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException
      */
-    public function validateDocument(DOMDocument $xml)
+    public function validateDocument(DOMDocument $xml): array
     {
         $errors = [];
 

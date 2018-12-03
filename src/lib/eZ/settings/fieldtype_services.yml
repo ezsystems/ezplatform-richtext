@@ -16,26 +16,51 @@ services:
             -
                 http://docbook.org/ns/docbook: null
 
+    ezrichtext.validator.input.ezxhtml5:
+        class: EzSystems\EzPlatformRichText\eZ\RichText\Validator\ValidatorAggregate
+        arguments: [!tagged ezrichtext.validator.input.ezxhtml5]
+
     ezrichtext.validator.docbook:
-        class: EzSystems\EzPlatformRichText\eZ\RichText\Validator
+        class: EzSystems\EzPlatformRichText\eZ\RichText\Validator\Validator
         arguments: ['%ezrichtext.validator.docbook.resources%']
+        tags:
+            - { name: 'ezrichtext.validator.input.ezxhtml5' }
 
     ezrichtext.validator.input.dispatcher:
-        class: EzSystems\EzPlatformRichText\eZ\RichText\ValidatorDispatcher
+        class: EzSystems\EzPlatformRichText\eZ\RichText\Validator\ValidatorDispatcher
         arguments:
             -
                 http://docbook.org/ns/docbook: null
 
     ezrichtext.validator.internal_link:
-        class: EzSystems\EzPlatformRichText\eZ\RichText\InternalLinkValidator
+        class: EzSystems\EzPlatformRichText\eZ\RichText\Validator\InternalLinkValidator
         arguments:
             - '@ezpublish.spi.persistence.cache.contentHandler'
             - '@ezpublish.spi.persistence.cache.locationHandler'
+        tags:
+            - { name: 'ezrichtext.validator.input.ezxhtml5' }
 
     ezrichtext.normalizer.input:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Normalizer\Aggregate
 
     # Symfony 3.4+ service definitions:
-    EzSystems\EzPlatformRichText\eZ\RichText\CustomTagsValidator:
+    EzSystems\EzPlatformRichText\eZ\RichText\Validator\CustomTagsValidator:
         public: false
         arguments: ['%ezplatform.ezrichtext.custom_tags%']
+        tags:
+            - { name: 'ezrichtext.validator.input.ezxhtml5' }
+
+    EzSystems\EzPlatformRichText\eZ\RichText\RelationProcessor:
+        public: false
+
+    EzSystems\EzPlatformRichText\eZ\RichText\DOMDocumentFactory:
+        public: false
+
+    EzSystems\EzPlatformRichText\eZ\RichText\InputHandler:
+        arguments:
+            - '@EzSystems\EzPlatformRichText\eZ\RichText\DOMDocumentFactory'
+            - '@ezrichtext.converter.input.dispatcher'
+            - '@ezrichtext.normalizer.input'
+            - '@ezrichtext.validator.input.dispatcher'
+            - '@ezrichtext.validator.input.ezxhtml5'
+            - '@EzSystems\EzPlatformRichText\eZ\RichText\RelationProcessor'

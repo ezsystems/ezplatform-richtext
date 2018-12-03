@@ -12,10 +12,11 @@ use eZ\Publish\SPI\Persistence\Content\FieldValue;
 use eZ\Publish\SPI\Persistence\Content\FieldTypeConstraints;
 use eZ\Publish\Core\FieldType\Url\UrlStorage\Gateway\DoctrineStorage as UrlGateway;
 use eZ\Publish\SPI\Tests\FieldType\BaseIntegrationTest;
-use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Type as RichTextType;
+use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage;
+use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Type;
+use EzSystems\EzPlatformRichText\eZ\RichText;
 use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage\Gateway\DoctrineStorage;
 use EzSystems\EzPlatformRichText\eZ\Persistence\Legacy\RichTextFieldValueConverter;
-use EzSystems\EzPlatformRichText\eZ\RichText;
 
 /**
  * Integration test for legacy storage field types.
@@ -56,17 +57,23 @@ class RichTextFieldTypeIntegrationTest extends BaseIntegrationTest
      */
     public function getCustomHandler()
     {
-        $fieldType = new RichTextType(
-            new RichText\Validator(
-                [
-                    $this->getAbsolutePath('src/lib/eZ/RichText/Resources/schemas/docbook/ezpublish.rng'),
-                    $this->getAbsolutePath('src/lib/eZ/RichText/Resources/schemas/docbook/docbook.iso.sch.xsl'),
-                ]
-            ),
+        $inputHandler = new RichText\InputHandler(
+            new RichText\DOMDocumentFactory(),
             new RichText\ConverterDispatcher([]),
             new RichText\Normalizer\Aggregate(),
-            new RichText\ValidatorDispatcher(['http://docbook.org/ns/docbook' => null])
+            new RichText\Validator\ValidatorDispatcher([
+                'http://docbook.org/ns/docbook' => null,
+            ]),
+            new RichText\Validator\ValidatorAggregate([
+                new RichText\Validator\Validator([
+                    $this->getAbsolutePath('eZ/RichText/Resources/schemas/docbook/ezpublish.rng'),
+                    $this->getAbsolutePath('eZ/RichText/Resources/schemas/docbook/docbook.iso.sch.xsl'),
+                ]),
+            ]),
+            new RichText\RelationProcessor()
         );
+
+        $fieldType = new Type($inputHandler);
         $fieldType->setTransformationProcessor($this->getTransformationProcessor());
 
         $urlGateway = new UrlGateway($this->getDatabaseHandler()->getConnection());
@@ -75,7 +82,7 @@ class RichTextFieldTypeIntegrationTest extends BaseIntegrationTest
             'ezrichtext',
             $fieldType,
             new RichTextFieldValueConverter(),
-            new RichText\RichTextStorage(
+            new RichTextStorage(
                 new DoctrineStorage(
                     $urlGateway,
                     $this->getDatabaseHandler()->getConnection()

@@ -6,18 +6,20 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformRichText\eZ\RichText;
+namespace EzSystems\EzPlatformRichText\eZ\RichText\Validator;
 
 use DOMDocument;
 use DOMElement;
 use DOMXPath;
+use EzSystems\EzPlatformRichText\eZ\RichText\ValidatorInterface;
+use EzSystems\EzPlatformRichText\eZ\RichText\XmlBase;
 use XSLTProcessor;
 use RuntimeException;
 
 /**
  * Validates XML document using ISO Schematron (as XSLT stylesheet), XSD and RELAX NG schemas.
  */
-class Validator extends XmlBase
+class Validator extends XmlBase implements ValidatorInterface
 {
     /**
      * Paths to the schema files.
@@ -35,6 +37,14 @@ class Validator extends XmlBase
     }
 
     /**
+     * @deprecated Use validateDocument instead
+     */
+    public function validate(DOMDocument $document)
+    {
+        return $this->validateDocument($document);
+    }
+
+    /**
      * Performs validation on given $document using injected schema files and returns validation errors.
      *
      * Handles ISO Schematron (as XSLT stylesheet), XSD and RELAX NG schemas.
@@ -45,7 +55,7 @@ class Validator extends XmlBase
      *
      * @return string[] An array of validation errors
      */
-    public function validate(DOMDocument $document)
+    public function validateDocument(DOMDocument $document): array
     {
         $this->startRecordingErrors();
         $additionalErrors = [];

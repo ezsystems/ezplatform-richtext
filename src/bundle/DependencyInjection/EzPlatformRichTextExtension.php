@@ -31,7 +31,7 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
         \eZ\Publish\Core\FieldType\RichText\Value::class => \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value::class,
         \eZ\Publish\Core\FieldType\RichText\Type::class => \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Type::class,
         \eZ\Publish\Core\FieldType\RichText\SearchField::class => \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\SearchField::class,
-        \eZ\Publish\Core\FieldType\RichText\Validator::class => \EzSystems\EzPlatformRichText\eZ\RichText\Validator::class,
+        \eZ\Publish\Core\FieldType\RichText\Validator::class => \EzSystems\EzPlatformRichText\eZ\RichText\Validator\Validator::class,
         \eZ\Publish\Core\FieldType\RichText\Converter::class => \EzSystems\EzPlatformRichText\eZ\RichText\Converter::class,
         \eZ\Publish\Core\FieldType\RichText\RendererInterface::class => \EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface::class,
     ];

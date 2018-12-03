@@ -19,9 +19,12 @@ use eZ\Publish\Core\Persistence\TransformationProcessor;
 use eZ\Publish\Core\FieldType\ValidationError;
 use Exception;
 use EzSystems\EzPlatformRichText\eZ\RichText\ConverterDispatcher;
+use EzSystems\EzPlatformRichText\eZ\RichText\DOMDocumentFactory;
+use EzSystems\EzPlatformRichText\eZ\RichText\InputHandler;
 use EzSystems\EzPlatformRichText\eZ\RichText\Normalizer\Aggregate;
-use EzSystems\EzPlatformRichText\eZ\RichText\Validator;
-use EzSystems\EzPlatformRichText\eZ\RichText\ValidatorDispatcher;
+use EzSystems\EzPlatformRichText\eZ\RichText\RelationProcessor;
+use EzSystems\EzPlatformRichText\eZ\RichText\Validator\Validator;
+use EzSystems\EzPlatformRichText\eZ\RichText\Validator\ValidatorDispatcher;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
@@ -36,17 +39,23 @@ class RichTextTest extends TestCase
      */
     protected function getFieldType()
     {
-        $fieldType = new RichTextType(
-            new Validator(
-                [
-                    $this->getAbsolutePath('src/lib/eZ/RichText/Resources/schemas/docbook/ezpublish.rng'),
-                    $this->getAbsolutePath('src/lib/eZ/RichText/Resources/schemas/docbook/docbook.iso.sch.xsl'),
-                ]
-            ),
-            new ConverterDispatcher(['http://docbook.org/ns/docbook' => null]),
+        $inputHandler = new InputHandler(
+            new DOMDocumentFactory(),
+            new ConverterDispatcher([
+                'http://docbook.org/ns/docbook' => null,
+            ]),
             new Aggregate(),
-            new ValidatorDispatcher(['http://docbook.org/ns/docbook' => null])
+            new ValidatorDispatcher([
+                'http://docbook.org/ns/docbook' => null,
+            ]),
+            new Validator([
+                $this->getAbsolutePath('src/lib/eZ/RichText/Resources/schemas/docbook/ezpublish.rng'),
+                $this->getAbsolutePath('src/lib/eZ/RichText/Resources/schemas/docbook/docbook.iso.sch.xsl'),
+            ]),
+            new RelationProcessor()
         );
+
+        $fieldType = new RichTextType($inputHandler);
         $fieldType->setTransformationProcessor($this->getTransformationProcessorMock());
 
         return $fieldType;
@@ -137,8 +146,8 @@ class RichTextTest extends TestCase
             [
                 'This is not XML at all!',
                 new InvalidArgumentException(
-                    '$inputValue',
-                    "Could not create XML document: Start tag expected, '<' not found"
+                    '$xmlString',
+                    "Start tag expected, '<' not found"
                 ),
             ],
             [
