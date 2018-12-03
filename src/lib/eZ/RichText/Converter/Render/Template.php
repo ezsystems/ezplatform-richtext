@@ -65,15 +65,10 @@ class Template extends Render implements Converter
         $xpathExpression = '//docbook:eztemplate | //docbook:eztemplateinline';
 
         $templates = $xpath->query($xpathExpression);
-        /** @var \DOMElement[] $templatesSorted */
         $templatesSorted = [];
-        $maxDepth = 0;
-
         foreach ($templates as $template) {
+            /** @var \DOMElement $template */
             $depth = $this->getNodeDepth($template);
-            if ($depth > $maxDepth) {
-                $maxDepth = $depth;
-            }
             $templatesSorted[$depth][] = $template;
         }
 
@@ -81,7 +76,7 @@ class Template extends Render implements Converter
 
         foreach ($templatesSorted as $templates) {
             foreach ($templates as $template) {
-                $this->processTemplate($document, $template);
+                $this->processTemplate($document, $xpath, $template);
             }
         }
 
@@ -92,29 +87,26 @@ class Template extends Render implements Converter
      * Processes given template $template in a given $document.
      *
      * @param \DOMDocument $document
+     * @param \DOMXPath $xpath
      * @param \DOMElement $template
      */
-    protected function processTemplate(DOMDocument $document, DOMElement $template)
+    protected function processTemplate(DOMDocument $document, DOMXPath $xpath, DOMElement $template)
     {
         $content = null;
         $templateName = $template->getAttribute('name');
         $templateType = $template->hasAttribute('type') ? $template->getAttribute('type') : 'tag';
         $parameters = [
             'name' => $templateName,
-            'params' => $this->extractConfiguration($template),
+            'params' => $this->extractTemplateConfiguration($template, $xpath),
         ];
 
-        if ($template->getElementsByTagName('ezcontent')->length > 0) {
-            $contentNode = $template->getElementsByTagName('ezcontent')->item(0);
-            switch ($templateType) {
-                case 'style':
-                    $parameters['content'] = $this->getCustomStyleContent($contentNode);
-                    break;
-                case 'tag':
-                default:
-                    $parameters['content'] = $this->getCustomTagContent($contentNode);
-                    break;
-            }
+        $contentNodes = $xpath->query('./docbook:ezcontent', $template);
+        $innerContent = '';
+        foreach ($contentNodes as $contentNode) {
+            $innerContent .= $this->getCustomTemplateContent($contentNode);
+        }
+        if (!empty($innerContent)) {
+            $parameters['content'] = $innerContent;
         }
 
         if ($template->hasAttribute('ezxhtml:align')) {
@@ -184,25 +176,13 @@ class Template extends Render implements Converter
     }
 
     /**
-     * Returns XML fragment string for given $node.
-     *
-     * @param \DOMNode $node
-     *
-     * @return string
-     */
-    protected function saveNodeXML(DOMNode $node)
-    {
-        return $this->getCustomTagContent($node);
-    }
-
-    /**
      * Returns XML fragment string for given converted $node.
      *
      * @param \DOMNode $node
      *
      * @return string
      */
-    protected function getCustomStyleContent(DOMNode $node)
+    protected function getCustomTemplateContent(DOMNode $node)
     {
         $innerDoc = new DOMDocument();
 
@@ -223,21 +203,20 @@ class Template extends Render implements Converter
     }
 
     /**
-     * Returns XML fragment string for given $node.
+     * Extract configuration hash from a template.
      *
-     * @param \DOMNode $node
+     * @param \DOMElement $template
+     * @param \DOMXPath $xpath
      *
-     * @return string
+     * @return array
      */
-    protected function getCustomTagContent(DOMNode $node)
+    protected function extractTemplateConfiguration(DOMElement $template, DOMXPath $xpath)
     {
-        $xmlString = '';
-
-        /** @var \DOMNode $child */
-        foreach ($node->childNodes as $child) {
-            $xmlString .= $node->ownerDocument->saveXML($child);
+        $configElements = $xpath->query('./docbook:ezconfig', $template);
+        if (0 === $configElements->length) {
+            return [];
         }
 
-        return $xmlString;
+        return $this->extractHash($configElements->item(0));
     }
 }
