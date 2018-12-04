@@ -551,8 +551,7 @@
   </xsl:template>
 
   <xsl:template match="docbook:ezembed/docbook:ezlink | docbook:ezembedinline/docbook:ezlink">
-    <xsl:element name="link" namespace="{$outputNamespace}">
-      <xsl:attribute name="itemprop">url</xsl:attribute>
+    <xsl:element name="a" namespace="{$outputNamespace}">
       <xsl:attribute name="data-ezelement">ezlink</xsl:attribute>
       <xsl:attribute name="href">
         <xsl:value-of select="@xlink:href"/>
@@ -575,6 +574,7 @@
           <xsl:value-of select="@xml:id"/>
         </xsl:attribute>
       </xsl:if>
+      <xsl:text> </xsl:text>
     </xsl:element>
   </xsl:template>
 

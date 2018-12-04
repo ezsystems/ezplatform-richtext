@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5/edit">
   <div itemscope="itemscope" data-ezelement="ezembed" data-href="ezcontent://106" id="embed-id-1" data-ezview="embed" class="embed-class" data-ezalign="left">
-    <link itemprop="url" data-ezelement="ezlink" href="ezurl://95#fragment1" target="_blank" id="link-id-1" title="Link title" class="link-class"/>
+    <a data-ezelement="ezlink" href="ezurl://95#fragment1" target="_blank" id="link-id-1" title="Link title" class="link-class"> </a>
     <span data-ezelement="ezconfig">
       <span data-ezelement="ezvalue" data-ezvalue-key="size">medium</span>
       <span data-ezelement="ezvalue" data-ezvalue-key="offset">10</span>
@@ -9,6 +9,6 @@
     </span>
   </div>
   <div itemscope="itemscope" data-ezelement="ezembed" data-href="ezlocation://601" id="embed-id-2" data-ezview="line" class="embedClass2" data-ezalign="right">
-    <link itemprop="url" data-ezelement="ezlink" href="ezlocation://202" class="linkClass2"/>
+    <a data-ezelement="ezlink" href="ezlocation://202" class="linkClass2"> </a>
   </div>
 </section>
