@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformRichText\Templating\Twig\Extension;
+namespace EzSystems\EzPlatformRichTextBundle\Templating\Twig\Extension;
 
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter as RichTextConverterInterface;
 use Twig_Extension;
@@ -15,12 +15,12 @@ use Twig_SimpleFilter;
 class RichTextExtension extends Twig_Extension
 {
     /**
-     * @var RichTextConverterInterface
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\Converter
      */
     private $richTextConverter;
 
     /**
-     * @var RichTextConverterInterface
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\Converter
      */
     private $richTextEditConverter;
 
