@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook" xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom">
+  <eztemplate name="style2" type="style"><ezcontent>style 2 content</ezcontent></eztemplate>
+  <eztemplateinline name="style3" type="style"><ezcontent>style 3 content</ezcontent></eztemplateinline>
+</section>
