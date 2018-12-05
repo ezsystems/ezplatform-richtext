@@ -127,7 +127,7 @@ class Template extends Render implements Converter
             // inside it will be added as XML fragments.
             if ($this->isWrapped($template)) {
                 $fragment = $document->createDocumentFragment();
-                $fragment->appendXML($content);
+                $fragment->appendXML(htmlspecialchars($content));
                 $template->parentNode->replaceChild($fragment, $template);
             } else {
                 $payload = $document->createElement('ezpayload');
