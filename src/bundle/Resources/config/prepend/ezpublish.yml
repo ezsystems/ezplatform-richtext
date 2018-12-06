@@ -1,0 +1,9 @@
+system:
+    default:
+        field_templates:
+            -   template: '@EzPlatformRichText/RichText/content_fields.html.twig'
+                priority: 0
+
+        fielddefinition_settings_templates:
+            -   template: '@EzPlatformRichText/RichText/fielddefinition_settings.html.twig'
+                priority: 0

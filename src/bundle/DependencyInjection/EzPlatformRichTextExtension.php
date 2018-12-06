@@ -9,11 +9,13 @@ declare(strict_types=1);
 namespace EzSystems\EzPlatformRichTextBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader;
-use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * eZ Platform RichText Field Type Bundle extension.
@@ -113,25 +115,16 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
 
     /**
      * Allow an extension to prepend the extension configurations.
+     *
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+     *
+     * @throws \Exception
      */
     public function prepend(ContainerBuilder $container)
     {
-        $container->prependExtensionConfig('ezpublish', [
-            'system' => ['default' => [
-                'field_templates' => [
-                    [
-                        'template' => 'EzPlatformRichTextBundle:RichText:content_fields.html.twig',
-                        'priority' => 0,
-                    ],
-                ],
-                'fielddefinition_settings_templates' => [
-                    [
-                        'template' => 'EzPlatformRichTextBundle:RichText:fielddefinition_settings.html.twig',
-                        'priority' => 0,
-                    ],
-                ],
-            ]],
-        ]);
+        $coreExtensionConfigFile = realpath(__DIR__ . '/../Resources/config/prepend/ezpublish.yml');
+        $container->prependExtensionConfig('ezpublish', Yaml::parseFile($coreExtensionConfigFile));
+        $container->addResource(new FileResource($coreExtensionConfigFile));
     }
 
     public function getConfiguration(array $config, ContainerBuilder $container)
