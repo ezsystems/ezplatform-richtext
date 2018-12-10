@@ -91,4 +91,46 @@ class EzPlatformRichTextExtensionTest extends AbstractExtensionTestCase
             $this->container->getParameter($this->extension::RICHTEXT_CUSTOM_TAGS_PARAMETER)
         );
     }
+
+    /**
+     * Test EzPlatformRichTextExtension prepends expected and needed core settings.
+     *
+     * @see \EzSystems\EzPlatformRichTextBundle\DependencyInjection\EzPlatformRichTextExtension::prepend
+     */
+    public function testPrepend()
+    {
+        $this->load([]);
+
+        $actualPrependedConfig = $this->container->getExtensionConfig('ezpublish');
+        // merge multiple configs returned
+        $actualPrependedConfig = array_merge(...$actualPrependedConfig);
+
+        $expectedPrependedConfig = [
+            'field_templates' => [
+                    [
+                        'template' => '@EzPlatformRichText/RichText/content_fields.html.twig',
+                        'priority' => 0,
+                    ],
+                ],
+            'fielddefinition_settings_templates' => [
+                [
+                    'template' => '@EzPlatformRichText/RichText/fielddefinition_settings.html.twig',
+                    'priority' => 0,
+                ],
+            ],
+            'content_view' => [
+                'embed-inline' => [
+                    'default' => [
+                        'template' => '@ezdesign/content_view/embed_inline.html.twig',
+                        'match' => [],
+                    ],
+                ],
+            ],
+        ];
+
+        self::assertSame(
+            $expectedPrependedConfig,
+            $actualPrependedConfig['system']['default']
+        );
+    }
 }
