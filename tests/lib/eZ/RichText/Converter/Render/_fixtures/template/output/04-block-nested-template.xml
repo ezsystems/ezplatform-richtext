@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook">
+  <eztemplate name="template7">
+    <ezcontent>content7template8</ezcontent>
+    <ezpayload><![CDATA[template7]]></ezpayload>
+  </eztemplate>
+</section>

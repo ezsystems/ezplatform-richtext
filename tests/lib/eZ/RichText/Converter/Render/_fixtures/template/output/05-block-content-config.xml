@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+ <section xmlns="http://docbook.org/ns/docbook" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml">
+  <eztemplate name="custom_tag" ezxhtml:align="right">
+    <ezcontent>
+      <para>Param: value</para>
+    </ezcontent>
+    <ezconfig>
+      <ezvalue key="param">value</ezvalue>
+    </ezconfig>
+    <ezpayload>custom_tag</ezpayload>
+  </eztemplate>
+</section>

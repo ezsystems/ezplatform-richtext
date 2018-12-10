@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook">
+  <eztemplate name="template3">
+    <ezpayload><![CDATA[template3]]></ezpayload>
+  </eztemplate>
+  <eztemplateinline name="template4">
+    <ezpayload><![CDATA[template4]]></ezpayload>
+  </eztemplateinline>
+</section>

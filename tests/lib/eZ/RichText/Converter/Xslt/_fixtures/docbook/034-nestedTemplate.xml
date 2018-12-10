@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml"
+         xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom"
+         version="5.0-variant ezpublish-1.0">
+  <eztemplate name="factbox" ezxhtml:class="templateClass" ezxhtml:align="left">
+    <ezcontent>
+      <eztemplate name="externalimage" ezxhtml:class="templateClass2" ezxhtml:align="right">
+        <ezconfig>
+          <ezvalue key="src">
+            http://upload.wikimedia.org/wikipedia/commons/c/c6/R-S_mk2.gif
+          </ezvalue>
+          <ezvalue key="height">365</ezvalue>
+          <ezvalue key="width">500</ezvalue>
+          <ezvalue key="alt">flip-flop</ezvalue>
+          <ezvalue key="caption">bistable multivibrator</ezvalue>
+        </ezconfig>
+      </eztemplate>
+    </ezcontent>
+    <ezconfig>
+      <ezvalue key="title">Factoids</ezvalue>
+    </ezconfig>
+  </eztemplate>
+</section>

@@ -692,6 +692,10 @@ EOT;
                 __DIR__ . '/_fixtures/ezrichtext/custom_tags/invalid/video.xml',
                 "Validation of XML content failed:\nUnknown attribute 'unknown_attribute' of RichText Custom Tag 'video'",
             ],
+            [
+                __DIR__ . '/_fixtures/ezrichtext/custom_tags/invalid/nested.xml',
+                "Validation of XML content failed:\nUnknown attribute 'typo' of RichText Custom Tag 'equation'",
+            ],
         ];
 
         return $data;
