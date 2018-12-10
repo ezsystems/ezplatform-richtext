@@ -9,7 +9,7 @@
         "ext-xsl": "*",
         "ext-dom": "*",
         "symfony/symfony": "^3.4",
-        "ezsystems/ezpublish-kernel": "^7.3@dev",
+        "ezsystems/ezpublish-kernel": "^7.4@dev",
         "ezsystems/repository-forms": "^2.0"
     },
     "require-dev": {
