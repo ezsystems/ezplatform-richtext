@@ -118,14 +118,6 @@ class EzPlatformRichTextExtensionTest extends AbstractExtensionTestCase
                     'priority' => 0,
                 ],
             ],
-            'content_view' => [
-                'embed-inline' => [
-                    'default' => [
-                        'template' => '@ezdesign/content_view/embed_inline.html.twig',
-                        'match' => [],
-                    ],
-                ],
-            ],
         ];
 
         self::assertSame(
