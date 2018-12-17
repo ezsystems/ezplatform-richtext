@@ -516,7 +516,9 @@
       <xsl:attribute name="data-ezelement">ezembedinline</xsl:attribute>
       <xsl:call-template name="addCommonEmbedAttributes"/>
       <xsl:apply-templates/>
-      <xsl:text> </xsl:text>
+      <xsl:if test="not(node())">
+        <xsl:text> </xsl:text>
+      </xsl:if>
     </xsl:element>
   </xsl:template>
 
