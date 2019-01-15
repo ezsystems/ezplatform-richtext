@@ -28,6 +28,7 @@ return PhpCsFixer\Config::create()
         'no_break_comment' => false,
         'declare_strict_types' => true,
         'native_function_invocation' => false,
+        'phpdoc_types_order' => false,
     ])
     ->setRiskyAllowed(true)
     ->setFinder(
