@@ -3,6 +3,9 @@ services:
     ezpublish.fieldType.ezrichtext:
         alias: EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Type
 
+    ezpublish.fieldType.ezrichtext.externalStorage:
+        alias: EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage
+
     ezpublish.fieldType.ezrichtext.converter:
         alias: EzSystems\EzPlatformRichText\eZ\Persistence\Legacy\RichTextFieldValueConverter
 
