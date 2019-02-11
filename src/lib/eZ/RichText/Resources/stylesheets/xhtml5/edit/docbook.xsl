@@ -48,6 +48,11 @@
 
   <xsl:template match="ezxhtml5:p">
     <para>
+      <xsl:if test="@id">
+        <xsl:attribute name="xml:id">
+          <xsl:value-of select="@id"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:if test="@class">
         <xsl:attribute name="ezxhtml:class">
           <xsl:value-of select="@class"/>
@@ -90,6 +95,11 @@
 
   <xsl:template match="ezxhtml5:pre">
     <xsl:element name="programlisting">
+      <xsl:if test="@id">
+        <xsl:attribute name="xml:id">
+          <xsl:value-of select="@id"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:if test="@class">
         <xsl:attribute name="ezxhtml:class">
           <xsl:value-of select="@class"/>
@@ -247,6 +257,11 @@
           <xsl:value-of select="@class"/>
         </xsl:attribute>
       </xsl:if>
+      <xsl:if test="@id">
+        <xsl:attribute name="xml:id">
+          <xsl:value-of select="@id"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:if test="contains( @style, 'text-align:' )">
         <xsl:variable name="textAlign">
           <xsl:call-template name="extractStyleValue">
@@ -266,6 +281,11 @@
 
   <xsl:template match="ezxhtml5:ol">
     <orderedlist>
+      <xsl:if test="@id">
+        <xsl:attribute name="xml:id">
+          <xsl:value-of select="@id"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:if test="@class">
         <xsl:attribute name="ezxhtml:class">
           <xsl:value-of select="@class"/>
@@ -277,6 +297,11 @@
 
   <xsl:template match="ezxhtml5:ul">
     <itemizedlist>
+      <xsl:if test="@id">
+        <xsl:attribute name="xml:id">
+          <xsl:value-of select="@id"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:if test="@class">
         <xsl:attribute name="ezxhtml:class">
           <xsl:value-of select="@class"/>
@@ -311,6 +336,11 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:element name="{$tablename}" namespace="http://docbook.org/ns/docbook">
+      <xsl:if test="@id">
+        <xsl:attribute name="xml:id">
+          <xsl:value-of select="@id"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:if test="@class">
         <xsl:attribute name="class">
           <xsl:value-of select="@class"/>

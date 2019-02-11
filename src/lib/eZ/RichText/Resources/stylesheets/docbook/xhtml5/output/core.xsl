@@ -20,6 +20,11 @@
 
   <xsl:template match="docbook:programlisting">
     <xsl:element name="pre" namespace="{$outputNamespace}">
+      <xsl:if test="@xml:id">
+        <xsl:attribute name="id">
+          <xsl:value-of select="@xml:id"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:if test="@ezxhtml:class">
         <xsl:attribute name="class">
           <xsl:value-of select="@ezxhtml:class"/>
@@ -43,6 +48,11 @@
 
   <xsl:template match="docbook:para">
     <xsl:element name="p" namespace="{$outputNamespace}">
+      <xsl:if test="@xml:id">
+        <xsl:attribute name="id">
+          <xsl:value-of select="@xml:id"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:if test="@ezxhtml:class">
         <xsl:attribute name="class">
           <xsl:value-of select="@ezxhtml:class"/>
@@ -247,6 +257,11 @@
           <xsl:value-of select="@ezxhtml:class"/>
         </xsl:attribute>
       </xsl:if>
+      <xsl:if test="@xml:id">
+        <xsl:attribute name="id">
+          <xsl:value-of select="@xml:id"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:if test="@ezxhtml:textalign">
         <xsl:attribute name="style">
           <xsl:value-of select="concat( 'text-align:', @ezxhtml:textalign, ';' )"/>
@@ -258,6 +273,11 @@
 
   <xsl:template match="docbook:orderedlist">
     <xsl:element name="ol" namespace="{$outputNamespace}">
+      <xsl:if test="@xml:id">
+        <xsl:attribute name="id">
+          <xsl:value-of select="@xml:id"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:if test="@ezxhtml:class">
         <xsl:attribute name="class">
           <xsl:value-of select="@ezxhtml:class"/>
@@ -269,6 +289,11 @@
 
   <xsl:template match="docbook:itemizedlist">
     <xsl:element name="ul" namespace="{$outputNamespace}">
+      <xsl:if test="@xml:id">
+        <xsl:attribute name="id">
+          <xsl:value-of select="@xml:id"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:if test="@ezxhtml:class">
         <xsl:attribute name="class">
           <xsl:value-of select="@ezxhtml:class"/>
@@ -291,6 +316,11 @@
 
   <xsl:template match="docbook:table | docbook:informaltable">
     <xsl:element name="table" namespace="{$outputNamespace}">
+      <xsl:if test="@xml:id">
+        <xsl:attribute name="id">
+          <xsl:value-of select="@xml:id"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:if test="@class">
         <xsl:attribute name="class">
           <xsl:value-of select="@class"/>
