@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5/edit">
-  <table class="tableClass" border="1" title="tableTitle" style="width:24px;border-width:42px;">
+  <table id="informaltable-id" class="tableClass" border="1" title="tableTitle" style="width:24px;border-width:42px;">
     <tbody>
       <tr class="rowClass1">
         <th class="headingClass1" colspan="1" rowspan="5" abbr="XSLT" scope="col" style="width:102px;vertical-align:top;">
