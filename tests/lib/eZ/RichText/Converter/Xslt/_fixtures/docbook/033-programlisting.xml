@@ -17,4 +17,5 @@
     thisIsSomePHPCode();
     return 0;
 }</programlisting>
+    <programlisting xml:id="programlisting-id"><![CDATA[Literal with CNAME end sequence here : ]]]]><![CDATA[> and some more text here]]></programlisting>
 </section>

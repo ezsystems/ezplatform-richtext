@@ -5,7 +5,8 @@
 {% if embedParams.link is defined  %}
     {% set params = params|merge( { "linkParameters": embedParams.link } ) %}
 {% endif %}
-<div class="{% if embedParams.align is defined %}align-{{ embedParams.align }}{% endif %}{% if embedParams.class is defined %} {{ embedParams.class }}{% endif %}">
+
+<div {% if embedParams.anchor is defined %}id="{{ embedParams.anchor }}"{% endif %} class="{% if embedParams.align is defined %}align-{{ embedParams.align }}{% endif %}{% if embedParams.class is defined %} {{ embedParams.class }}{% endif %}">
     {{ fos_httpcache_tag('relation-' ~ embedParams.id) }}
     {{
         render(

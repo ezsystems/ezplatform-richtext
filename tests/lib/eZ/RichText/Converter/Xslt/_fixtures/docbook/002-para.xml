@@ -10,4 +10,5 @@
   <para ezxhtml:textalign="center">This is a centered paragraph.</para>
   <para ezxhtml:textalign="right">This is a right aligned paragraph.</para>
   <para ezxhtml:textalign="justify">This is a justified paragraph.</para>
+  <para xml:id="para-id">This is a paragraph with id</para>
 </section>
