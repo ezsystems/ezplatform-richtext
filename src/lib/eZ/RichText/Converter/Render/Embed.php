@@ -122,6 +122,7 @@ class Embed extends Render implements Converter
 
         $class = $embed->getAttribute('ezxhtml:class');
         $align = $embed->getAttribute('ezxhtml:align');
+        $anchor = $embed->getAttribute('xml:id');
         $linkParameters = $this->extractLinkParameters($embed);
         $configuration = $this->extractConfiguration($embed);
 
@@ -129,6 +130,10 @@ class Embed extends Render implements Converter
         $parameters = [
             'viewType' => $viewType,
         ];
+
+        if (!empty($anchor)) {
+            $parameters['anchor'] = $anchor;
+        }
 
         if (!empty($class)) {
             $parameters['class'] = $class;

@@ -87,6 +87,7 @@ class EmbedTest extends TestCase
                             ],
                             'class' => 'embed-class',
                             'align' => 'left',
+                            'anchor' => 'embed-id-1',
                         ],
                     ],
                 ],
