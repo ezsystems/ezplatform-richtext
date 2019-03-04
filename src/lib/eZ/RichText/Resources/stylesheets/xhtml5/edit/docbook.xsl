@@ -677,7 +677,7 @@
         </xsl:when>
         <!-- For other types of tags behave as usual (ezcontent should be defined explicitly) -->
         <xsl:otherwise>
-          <xsl:apply-templates/>
+          <xsl:apply-templates select="child::node()[not(self::text())]"/>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:element>

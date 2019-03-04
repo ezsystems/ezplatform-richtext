@@ -66,6 +66,7 @@ class EzPlatformRichTextExtensionTest extends AbstractExtensionTestCase
                         'default_value' => null,
                     ],
                 ],
+                'is_inline' => false,
             ],
             'equation' => [
                 'template' => 'MyBundle:FieldType/RichText/tag:equation.html.twig',
@@ -83,6 +84,7 @@ class EzPlatformRichTextExtensionTest extends AbstractExtensionTestCase
                         'choices' => ['latex', 'tex'],
                     ],
                 ],
+                'is_inline' => false,
             ],
         ];
 

@@ -63,9 +63,11 @@ class Configuration extends SiteAccessConfiguration
                         ->scalarNode('icon')
                             ->defaultNull()
                         ->end()
+                        ->scalarNode('is_inline')
+                            ->defaultFalse()
+                        ->end()
                         ->arrayNode('attributes')
                             ->useAttributeAsKey('attribute')
-                            ->isRequired()
                             ->arrayPrototype()
                                 ->beforeNormalization()
                                     ->always(
