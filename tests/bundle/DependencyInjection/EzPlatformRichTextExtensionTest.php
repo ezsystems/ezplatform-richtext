@@ -84,7 +84,7 @@ class EzPlatformRichTextExtensionTest extends AbstractExtensionTestCase
                         'choices' => ['latex', 'tex'],
                     ],
                 ],
-                'is_inline' => true,
+                'is_inline' => false,
             ],
         ];
 

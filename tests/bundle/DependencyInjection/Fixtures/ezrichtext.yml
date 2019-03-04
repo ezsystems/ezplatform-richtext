@@ -26,4 +26,3 @@ custom_tags:
                 required: true
                 default_value: 'latex'
                 choices: ['latex', 'tex']
-        is_inline: true

@@ -68,7 +68,6 @@ class Configuration extends SiteAccessConfiguration
                         ->end()
                         ->arrayNode('attributes')
                             ->useAttributeAsKey('attribute')
-                            ->isRequired()
                             ->arrayPrototype()
                                 ->beforeNormalization()
                                     ->always(
