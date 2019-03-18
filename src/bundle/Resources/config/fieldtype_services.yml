@@ -38,7 +38,7 @@ services:
             - '@ezpublish.config.resolver'
             - '@templating'
             - '%ezrichtext.tag.namespace%'
-            - '%ezrichtext.style.namespace'
+            - '%ezrichtext.style.namespace%'
             - '%ezrichtext.embed.namespace%'
             - '@?logger'
             - '%ezplatform.ezrichtext.custom_tags%'
