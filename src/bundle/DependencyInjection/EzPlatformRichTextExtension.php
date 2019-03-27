@@ -24,6 +24,7 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
 {
     const RICHTEXT_CUSTOM_STYLES_PARAMETER = 'ezplatform.ezrichtext.custom_styles';
     const RICHTEXT_CUSTOM_TAGS_PARAMETER = 'ezplatform.ezrichtext.custom_tags';
+    const RICHTEXT_ALLOY_EDITOR_PARAMETER = 'ezplatform.ezrichtext.alloy_editor';
 
     /**
      * @deprecated aliasing Kernel RichText classes with the ones from this bundle will be dropped
@@ -89,6 +90,7 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
     {
         $customTagsConfig = $config['custom_tags'] ?? [];
         $customStylesConfig = $config['custom_styles'] ?? [];
+        $alloyEditorConfig = $config['alloy_editor'] ?? [];
 
         $availableSiteAccesses = $container->hasParameter('ezpublish.siteaccess.list')
             ? $container->getParameter('ezpublish.siteaccess.list')
@@ -111,6 +113,7 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
 
         $container->setParameter(static::RICHTEXT_CUSTOM_TAGS_PARAMETER, $customTagsConfig);
         $container->setParameter(static::RICHTEXT_CUSTOM_STYLES_PARAMETER, $customStylesConfig);
+        $container->setParameter(static::RICHTEXT_ALLOY_EDITOR_PARAMETER, $alloyEditorConfig);
     }
 
     /**
