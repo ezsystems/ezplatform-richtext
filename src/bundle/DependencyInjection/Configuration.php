@@ -30,7 +30,9 @@ class Configuration extends SiteAccessConfiguration
         $this
             ->addCustomTagsSection($sections);
         $this
-            ->addCustomStylesSection($sections)
+            ->addCustomStylesSection($sections);
+        $this
+            ->addAlloyEditorSection($sections)
             ->end();
 
         return $treeBuilder;
@@ -152,6 +154,34 @@ class Configuration extends SiteAccessConfiguration
                             ->scalarNode('inline')
                                 ->defaultFalse()
                             ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ;
+    }
+
+    /**
+     * Define RichText AlloyEditor Semantic Configuration.
+     *
+     * The configuration is available at:
+     * <code>
+     * ezpublish:
+     *     ezrichtext:
+     *         alloy_editor:
+     * </code>
+     *
+     * @param \Symfony\Component\Config\Definition\Builder\NodeBuilder $ezRichTextNode
+     *
+     * @return \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition
+     */
+    private function addAlloyEditorSection(NodeBuilder $ezRichTextNode)
+    {
+        return $ezRichTextNode
+                ->arrayNode('alloy_editor')
+                    ->children()
+                        ->arrayNode('extra_plugins')
+                            ->example(['plugin1', 'plugin2'])
+                            ->prototype('scalar')->end()
                         ->end()
                     ->end()
                 ->end()
