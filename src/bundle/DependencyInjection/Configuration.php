@@ -174,6 +174,10 @@ class Configuration extends SiteAccessConfiguration
      *                 - embed: [button1]
      * </code>
      *
+     * Please note extra_buttons setting will be deprecated in eZ Platform 3.x.
+     * The alternative and more flexible solution will be introduced.
+     * So you will need to update Online Editor Extra Buttons as part of eZ Platform 3.x upgrade.
+     *
      * @param \Symfony\Component\Config\Definition\Builder\NodeBuilder $ezRichTextNode
      *
      * @return \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition
