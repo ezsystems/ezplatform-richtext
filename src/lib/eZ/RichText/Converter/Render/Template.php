@@ -186,6 +186,9 @@ class Template extends Render implements Converter
     {
         $innerDoc = new DOMDocument();
 
+        $rootNode = $innerDoc->createElementNS('http://docbook.org/ns/docbook', 'section');
+        $innerDoc->appendChild($rootNode);
+
         /** @var \DOMNode $child */
         foreach ($node->childNodes as $child) {
             $newNode = $innerDoc->importNode($child, true);
@@ -194,12 +197,11 @@ class Template extends Render implements Converter
                     "Failed to import Custom Style content of node '{$child->getNodePath()}'"
                 );
             }
-            $innerDoc->appendChild($newNode);
+
+            $rootNode->appendChild($newNode);
         }
 
-        $convertedInnerDoc = $this->richTextConverter->convert($innerDoc);
-
-        return trim($convertedInnerDoc->saveHTML());
+        return trim($this->richTextConverter->convert($innerDoc)->saveHTML());
     }
 
     /**
