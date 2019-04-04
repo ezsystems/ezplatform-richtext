@@ -91,15 +91,25 @@ class TemplateTest extends TestCase
                 if (!empty($params['params']['content'])) {
                     // mock simple converter
                     $contentDoc = new DOMDocument();
+
+                    $xml = '<section xmlns="http://docbook.org/ns/docbook">';
+                    $xml .= $params['params']['content'];
+                    $xml .= '</section>';
+
+                    $params['params']['content'] = $xml;
+
                     $fragment = $contentDoc->createDocumentFragment();
-                    $fragment->appendXML($params['params']['content']);
+                    $fragment->appendXML($xml);
+
                     $contentDoc->appendChild($fragment);
+
                     $this->converterMock
                         ->expects($this->at($convertIndex++))
                         ->method('convert')
                         ->with($contentDoc)
                         ->will($this->returnValue($contentDoc));
                 }
+
                 $this->rendererMock
                     ->expects($this->at($index))
                     ->method('renderTemplate')
@@ -239,7 +249,7 @@ class TemplateTest extends TestCase
                 'is_inline' => false,
                 'params' => [
                     'name' => 'custom_tag',
-                    'content' => '<para xmlns="http://docbook.org/ns/docbook">Param: value</para>',
+                    'content' => '<para>Param: value</para>',
                     'params' => [
                         'param' => 'value',
                     ],

@@ -58,8 +58,11 @@ class Link implements Converter
     public function convert(DOMDocument $document)
     {
         $document = clone $document;
+
         $xpath = new DOMXPath($document);
         $xpath->registerNamespace('docbook', 'http://docbook.org/ns/docbook');
+        $xpath->registerNamespace('xlink', 'http://www.w3.org/1999/xlink');
+
         $linkAttributeExpression = "starts-with( @xlink:href, 'ezlocation://' ) or starts-with( @xlink:href, 'ezcontent://' )";
         $xpathExpression = "//docbook:link[{$linkAttributeExpression}]|//docbook:ezlink";
 
