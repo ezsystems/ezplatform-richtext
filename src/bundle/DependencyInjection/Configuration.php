@@ -170,8 +170,8 @@ class Configuration extends SiteAccessConfiguration
      *         alloy_editor:
      *             extra_plugins: [plugin1, plugin2]
      *             extra_buttons:
-     *                 - paragraph: [button1, button2]
-     *                 - embed: [button1]
+     *                 paragraph: [button1, button2]
+     *                 embed: [button1]
      * </code>
      *
      * Please note extra_buttons setting will be deprecated in eZ Platform 3.x.
