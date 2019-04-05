@@ -168,7 +168,15 @@ class Configuration extends SiteAccessConfiguration
      * ezpublish:
      *     ezrichtext:
      *         alloy_editor:
+     *             extra_plugins: [plugin1, plugin2]
+     *             extra_buttons:
+     *                 paragraph: [button1, button2]
+     *                 embed: [button1]
      * </code>
+     *
+     * Please note extra_buttons setting will be deprecated in eZ Platform 3.x.
+     * The alternative and more flexible solution will be introduced.
+     * So you will need to update Online Editor Extra Buttons as part of eZ Platform 3.x upgrade.
      *
      * @param \Symfony\Component\Config\Definition\Builder\NodeBuilder $ezRichTextNode
      *
@@ -182,6 +190,12 @@ class Configuration extends SiteAccessConfiguration
                         ->arrayNode('extra_plugins')
                             ->example(['plugin1', 'plugin2'])
                             ->prototype('scalar')->end()
+                        ->end()
+                        ->arrayNode('extra_buttons')
+                            ->arrayPrototype()
+                                ->example(['button1', 'button2'])
+                                ->prototype('scalar')->end()
+                            ->end()
                         ->end()
                     ->end()
                 ->end()
