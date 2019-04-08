@@ -41,6 +41,12 @@
     </xsl:element>
   </xsl:template>
 
+  <xsl:template match="docbook:section/text()">
+      <xsl:call-template name="breakLine">
+        <xsl:with-param name="text" select="."/>
+      </xsl:call-template>
+  </xsl:template>
+
   <xsl:template match="docbook:para">
     <xsl:element name="p" namespace="{$outputNamespace}">
       <xsl:if test="@ezxhtml:class">
