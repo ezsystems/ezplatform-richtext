@@ -58,6 +58,7 @@ services:
             - '@?logger'
         tags:
             - {name: ezpublish.ezrichtext.converter.output.xhtml5, priority: 10}
+        lazy: true
 
     ezrichtext.converter.embed:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Embed
