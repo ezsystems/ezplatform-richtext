@@ -824,4 +824,42 @@
     <notAllowed/>
   </define>
 
+  <define name="ez.ezcustom.attributes">
+    <optional>
+      <element name="ez-custom-attributes">
+        <ref name="ez.config.hash"/>
+      </element>
+    </optional>
+  </define>
+
+  <div>
+    <a:documentation>
+      Adding child ezcustomattributes element to the selected elements.
+    </a:documentation>
+    <define name="db.extension.inlines" combine="choice">
+      <ref name="ez.ezcustom.attributes" />
+    </define>
+    <define name="db.all.blocks" combine="choice">
+      <ref name="ez.ezcustom.attributes" />
+    </define>
+    <define name="db.para.info" combine="interleave">
+      <ref name="ez.ezcustom.attributes" />
+    </define>
+    <define name="db.orderedlist.info" combine="interleave">
+      <ref name="ez.ezcustom.attributes" />
+    </define>
+    <define name="db.itemizedlist.info" combine="interleave">
+      <ref name="ez.ezcustom.attributes" />
+    </define>
+    <define name="db.html.informaltable.info" combine="interleave">
+      <ref name="ez.ezcustom.attributes" />
+    </define>
+    <define name="db.html.table.info" combine="interleave">
+      <ref name="ez.ezcustom.attributes" />
+    </define>
+    <define name="db.html.tr.attlist" combine="interleave">
+      <ref name="ez.ezcustom.attributes" />
+    </define>
+  </div>
+
 </grammar>
