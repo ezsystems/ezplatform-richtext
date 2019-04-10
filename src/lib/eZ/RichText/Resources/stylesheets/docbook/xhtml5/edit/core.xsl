@@ -389,12 +389,12 @@
           <xsl:value-of select="concat( $inlineStyleWidth, $inlineStyleBorder )"/>
         </xsl:attribute>
       </xsl:if>
+      <xsl:call-template name="ez-custom-attributes"/>
       <xsl:if test="local-name(.) = 'table' and ./docbook:caption != ''">
         <xsl:element name="caption" namespace="{$outputNamespace}">
           <xsl:value-of select="./docbook:caption"/>
         </xsl:element>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
       <xsl:if test="./docbook:thead">
         <xsl:element name="thead" namespace="{$outputNamespace}">
           <xsl:for-each select="./docbook:thead/docbook:tr">
