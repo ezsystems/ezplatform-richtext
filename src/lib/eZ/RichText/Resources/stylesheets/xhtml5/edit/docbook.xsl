@@ -642,7 +642,9 @@
         <!-- Nest content of Style tag in ezcontent -->
         <xsl:when test="@data-eztype='style'">
           <xsl:element name="ezcontent" namespace="http://docbook.org/ns/docbook">
-            <xsl:apply-templates/>
+            <xsl:call-template name="breakline">
+              <xsl:with-param name="node" select="node()"/>
+            </xsl:call-template>
           </xsl:element>
         </xsl:when>
         <!-- For other types of tags behave as usual (ezcontent should be defined explicitly) -->

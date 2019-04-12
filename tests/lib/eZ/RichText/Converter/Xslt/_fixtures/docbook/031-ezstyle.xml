@@ -13,4 +13,11 @@
     <eztemplate name="highlighted_block" type="style" ezxhtml:align="center">
         <ezcontent>Highlighted block with "center" align.</ezcontent>
     </eztemplate>
+    <eztemplate name="highlighted_block" type="style">
+        <ezcontent>
+            Highlighted block with multiple lines
+            Highlighted block with multiple lines
+            Highlighted block with multiple lines
+        </ezcontent>
+    </eztemplate>
 </section>
