@@ -854,7 +854,7 @@
     <define name="db.html.informaltable.info" combine="interleave">
       <ref name="ez.ezcustom.attributes" />
     </define>
-    <define name="db.html.table.info" combine="interleave">
+    <define name="db.html.table.model" combine="interleave">
       <ref name="ez.ezcustom.attributes" />
     </define>
     <define name="db.html.tr.attlist" combine="interleave">
