@@ -16,5 +16,10 @@
   <p>
     <a href="ezcontent://333" id="id5" title="Content title" class="linkClass5">Content name</a>
   </p>
+  <p>
+    <a href="ezcontent://333" data-ez-custom-attribute-name-1="value 1" data-ez-custom-attribute-name-2="value 2" id="id6" title="Content title" class="linkClass5">
+      Content name
+    </a>
+  </p>
   <p><a id="anchor"/>Some anchored content.</p>
 </section>

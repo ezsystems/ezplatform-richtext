@@ -6,4 +6,15 @@
          version="5.0-variant ezpublish-1.0">
   <title ezxhtml:level="2">This is a heading.</title>
   <para>This is a paragraph with <emphasis role="underlined">underlined</emphasis> text.</para>
+  <para>
+    This is a paragraph with
+    <emphasis role="underlined">
+      <ez-custom-attributes>
+        <ezvalue key="name-1">value 1</ezvalue>
+        <ezvalue key="name-2">value 2</ezvalue>
+      </ez-custom-attributes>
+      underlined (custom attributes)
+    </emphasis>
+    text.
+  </para>
 </section>

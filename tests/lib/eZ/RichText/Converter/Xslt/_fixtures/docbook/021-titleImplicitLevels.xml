@@ -53,4 +53,96 @@
       </section>
     </section>
   </section>
+
+  <title>
+    <ez-custom-attributes>
+      <ezvalue key="level">1</ezvalue>
+      <ezvalue key="extra">value 1</ezvalue>
+    </ez-custom-attributes>
+    This is a first level heading with custom attributes.
+  </title>
+  <section>
+    <title>
+      <ez-custom-attributes>
+        <ezvalue key="level">2</ezvalue>
+        <ezvalue key="extra">value 2</ezvalue>
+      </ez-custom-attributes>
+      This is a second level heading with custom attributes.
+    </title>
+  </section>
+  <section>
+    <section>
+      <title>
+        <ez-custom-attributes>
+          <ezvalue key="level">3</ezvalue>
+          <ezvalue key="extra">value 3</ezvalue>
+        </ez-custom-attributes>
+        This is a third level heading with custom attributes.
+      </title>
+    </section>
+  </section>
+  <section>
+    <section>
+      <section>
+        <title>
+          <ez-custom-attributes>
+            <ezvalue key="level">4</ezvalue>
+            <ezvalue key="extra">value 4</ezvalue>
+          </ez-custom-attributes>
+          This is a fourth level heading with custom attributes.
+        </title>
+      </section>
+    </section>
+  </section>
+  <section>
+    <section>
+      <section>
+        <section>
+          <title>
+            <ez-custom-attributes>
+              <ezvalue key="level">5</ezvalue>
+              <ezvalue key="extra">value 5</ezvalue>
+            </ez-custom-attributes>
+            This is a fifth level heading with custom attributes.
+          </title>
+        </section>
+      </section>
+    </section>
+  </section>
+  <section>
+    <section>
+      <section>
+        <section>
+          <section>
+            <title>
+              <ez-custom-attributes>
+                <ezvalue key="level">6</ezvalue>
+                <ezvalue key="extra">value 6</ezvalue>
+              </ez-custom-attributes>
+              This is a sixth level heading with custom attributes.
+            </title>
+          </section>
+        </section>
+      </section>
+    </section>
+  </section>
+  <section>
+    <section>
+      <section>
+        <section>
+          <section>
+            <section>
+              <title>
+                <ez-custom-attributes>
+                  <ezvalue key="level">7</ezvalue>
+                  <ezvalue key="extra">value 7</ezvalue>
+                </ez-custom-attributes>
+                This is a seventh level heading with custom attributes.
+              </title>
+            </section>
+          </section>
+        </section>
+      </section>
+    </section>
+  </section>
 </section>

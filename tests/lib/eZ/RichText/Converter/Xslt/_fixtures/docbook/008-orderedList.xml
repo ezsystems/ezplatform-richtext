@@ -5,6 +5,10 @@
          xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom"
          version="5.0-variant ezpublish-1.0">
   <orderedlist xml:id="orderedlist-id" ezxhtml:class="orderedListClass">
+    <ez-custom-attributes>
+      <ezvalue key="name-1">value 1</ezvalue>
+      <ezvalue key="name-2">value 2</ezvalue>
+    </ez-custom-attributes>
     <listitem ezxhtml:class="listItemClass"><para>This is a list item.</para></listitem>
   </orderedlist>
 </section>

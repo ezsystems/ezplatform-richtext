@@ -12,6 +12,11 @@
     <a:documentation>
       Validation for youtube custom tag.
     </a:documentation>
+    <optional>
+      <element name="ez-custom-attributes">
+        <ref name="ez.config.hash"/>
+      </element>
+    </optional>
     <element name="ezcustom:youtube">
       <attribute name="ezcustom:videoWidth">
         <data type="integer"/>

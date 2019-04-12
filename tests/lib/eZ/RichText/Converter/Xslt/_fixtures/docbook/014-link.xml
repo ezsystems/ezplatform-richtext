@@ -20,5 +20,14 @@
   <para>
     <link xlink:href="ezcontent://333" xlink:show="none" xml:id="id5" xlink:title="Content title" ezxhtml:class="linkClass5">Content name</link>
   </para>
+  <para>
+    <link xlink:href="ezcontent://333" xlink:show="none" xml:id="id6" xlink:title="Content title" ezxhtml:class="linkClass5">
+      <ez-custom-attributes>
+        <ezvalue key="name-1">value 1</ezvalue>
+        <ezvalue key="name-2">value 2</ezvalue>
+      </ez-custom-attributes>
+      Content name
+    </link>
+  </para>
   <para><anchor xml:id="anchor"/>Some anchored content.</para>
 </section>

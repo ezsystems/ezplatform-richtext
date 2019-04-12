@@ -2,4 +2,11 @@
 <section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5/edit">
   <h2>This is a heading.</h2>
   <p>This is a paragraph with <u>underlined</u> text.</p>
+  <p>
+    This is a paragraph with
+    <u data-ez-custom-attribute-name-1="value 1" data-ez-custom-attribute-name-2="value 2">
+      underlined (custom attributes)
+    </u>
+    text.
+  </p>
 </section>
