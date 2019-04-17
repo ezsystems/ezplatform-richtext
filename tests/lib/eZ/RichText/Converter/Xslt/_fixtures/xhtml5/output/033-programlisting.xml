@@ -19,4 +19,5 @@
     return 0;
 }</pre>
   <pre id="programlisting-id">Literal with CNAME end sequence here : ]]&gt; and some more text here</pre>
+  <pre data-ez-custom-attribute-name-1="value 1" data-ez-custom-attribute-name-2="value 2">literal with custom attributes</pre>
 </section>

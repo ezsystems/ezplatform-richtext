@@ -9,4 +9,7 @@
   <blockquote>
     <p>Don't wake me for the end of the world unless it has very good special effects.</p>
   </blockquote>
+  <blockquote data-ez-custom-attribute-name-1="value 1" data-ez-custom-attribute-name-2="value 2">
+    <p>blockquote with custom attributes.</p>
+  </blockquote>
 </section>

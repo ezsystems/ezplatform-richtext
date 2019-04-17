@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5/edit">
   <p>Thirsty? Have some H<sub>2</sub>O.</p>
+  <p>
+    Example
+    <sub data-ez-custom-attribute-table-1="value 1" data-ez-custom-attribute-table-2="value 2">
+      subscript (with custom attributes)
+    </sub>
+    text
+  </p>
 </section>
