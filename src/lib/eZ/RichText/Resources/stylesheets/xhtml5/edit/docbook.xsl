@@ -25,9 +25,9 @@
     </section>
   </xsl:template>
 
-  <xsl:template name="ez-custom-attributes">
+  <xsl:template name="ezattribute">
     <xsl:if test="@*[starts-with(name(), 'data-ez-custom-attribute-')]">
-      <xsl:element name="ez-custom-attributes" namespace="http://docbook.org/ns/docbook">
+      <xsl:element name="ezattribute" namespace="http://docbook.org/ns/docbook">
         <xsl:for-each select="@*[starts-with(name(), 'data-ez-custom-attribute-')]">
           <xsl:element name="ezvalue" namespace="http://docbook.org/ns/docbook">
             <xsl:attribute name="key">
@@ -86,7 +86,7 @@
           </xsl:attribute>
         </xsl:if>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:choose>
         <xsl:when test="descendant::ezxhtml5:br">
           <literallayout class="normal">
@@ -126,7 +126,7 @@
           <xsl:value-of select="@data-language"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:text disable-output-escaping="yes">&lt;![CDATA[</xsl:text>
       <xsl:value-of disable-output-escaping="yes" select="./text()"/>
       <xsl:text disable-output-escaping="yes">]]&gt;</xsl:text>
@@ -135,7 +135,7 @@
 
   <xsl:template match="ezxhtml5:blockquote">
     <blockquote>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </blockquote>
   </xsl:template>
@@ -147,7 +147,7 @@
           <xsl:value-of select="@class"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:call-template name="breakline">
         <xsl:with-param name="node" select="node()"/>
       </xsl:call-template>
@@ -162,7 +162,7 @@
           <xsl:value-of select="@class"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:call-template name="breakline">
         <xsl:with-param name="node" select="node()"/>
       </xsl:call-template>
@@ -172,7 +172,7 @@
   <xsl:template match="ezxhtml5:u">
     <emphasis>
       <xsl:attribute name="role">underlined</xsl:attribute>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:call-template name="breakline">
         <xsl:with-param name="node" select="node()"/>
       </xsl:call-template>
@@ -182,7 +182,7 @@
   <xsl:template match="ezxhtml5:s">
     <emphasis>
       <xsl:attribute name="role">strikedthrough</xsl:attribute>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:call-template name="breakline">
         <xsl:with-param name="node" select="node()"/>
       </xsl:call-template>
@@ -193,7 +193,7 @@
     <emphasis>
       <xsl:attribute name="role">strikedthrough</xsl:attribute>
       <xsl:attribute name="revisionflag">deleted</xsl:attribute>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:call-template name="breakline">
         <xsl:with-param name="node" select="node()"/>
       </xsl:call-template>
@@ -202,14 +202,14 @@
 
   <xsl:template match="ezxhtml5:sub">
     <subscript>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </subscript>
   </xsl:template>
 
   <xsl:template match="ezxhtml5:sup">
     <superscript>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </superscript>
   </xsl:template>
@@ -244,7 +244,7 @@
           <xsl:value-of select="@class"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </link>
   </xsl:template>
@@ -301,7 +301,7 @@
           </xsl:attribute>
         </xsl:if>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </title>
   </xsl:template>
@@ -318,7 +318,7 @@
           <xsl:value-of select="@class"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </orderedlist>
   </xsl:template>
@@ -335,7 +335,7 @@
           <xsl:value-of select="@class"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </itemizedlist>
   </xsl:template>
@@ -347,7 +347,7 @@
           <xsl:value-of select="@class"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <para>
         <xsl:apply-templates/>
       </para>
@@ -422,7 +422,7 @@
           <xsl:value-of select="./ezxhtml5:caption"/>
         </caption>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:if test="./ezxhtml5:thead">
         <thead>
           <xsl:for-each select="./ezxhtml5:thead/ezxhtml5:tr">
@@ -452,7 +452,7 @@
           <xsl:value-of select="@class"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </tr>
   </xsl:template>
@@ -517,7 +517,7 @@
           <xsl:value-of select="@scope"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:call-template name="breakline">
         <xsl:with-param name="node" select="node()"/>
       </xsl:call-template>
@@ -574,7 +574,7 @@
           <xsl:value-of select="@rowspan"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:call-template name="breakline">
         <xsl:with-param name="node" select="node()"/>
       </xsl:call-template>

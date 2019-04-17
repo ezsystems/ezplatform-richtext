@@ -826,7 +826,7 @@
 
   <define name="ez.xhtml.data.attribute">
     <optional>
-      <element name="ez-custom-attributes">
+      <element name="ezattribute">
         <ref name="ez.config.hash"/>
       </element>
     </optional>
@@ -834,7 +834,7 @@
 
   <div>
     <a:documentation>
-      Adding child ezcustomattributes element to the selected elements.
+      Adding child ezattribute element to the selected elements.
     </a:documentation>
     <define name="db.extension.inlines" combine="choice">
       <ref name="ez.xhtml.data.attribute" />

@@ -10,16 +10,16 @@
   <xsl:output indent="yes" encoding="UTF-8"/>
   <xsl:variable name="outputNamespace" select="''"/>
 
-  <xsl:template name="ez-custom-attributes">
-    <xsl:if test="./docbook:ez-custom-attributes">
-      <xsl:for-each select="./docbook:ez-custom-attributes/docbook:ezvalue">
+  <xsl:template name="ezattribute">
+    <xsl:if test="./docbook:ezattribute">
+      <xsl:for-each select="./docbook:ezattribute/docbook:ezvalue">
         <xsl:attribute name="{concat('data-ez-custom-attribute-', @key)}">
           <xsl:value-of select="text()"/>
         </xsl:attribute>
       </xsl:for-each>
     </xsl:if>
   </xsl:template>
-  <xsl:template match="docbook:ez-custom-attributes" />
+  <xsl:template match="docbook:ezattribute" />
 
   <xsl:template match="docbook:section">
     <xsl:if test="not(parent::*)">
@@ -52,7 +52,7 @@
           <xsl:value-of select="concat( 'text-align:', @ezxhtml:textalign, ';' )"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -75,14 +75,14 @@
           <xsl:value-of select="@language"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:value-of select="./text()"/>
     </xsl:element>
   </xsl:template>
 
   <xsl:template match="docbook:blockquote">
     <xsl:element name="blockquote" namespace="{$outputNamespace}">
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -155,13 +155,13 @@
               <xsl:value-of select="@ezxhtml:class"/>
             </xsl:attribute>
           </xsl:if>
-          <xsl:call-template name="ez-custom-attributes"/>
+          <xsl:call-template name="ezattribute"/>
           <xsl:apply-templates/>
         </xsl:element>
       </xsl:when>
       <xsl:when test="@role='underlined'">
         <xsl:element name="u" namespace="{$outputNamespace}">
-          <xsl:call-template name="ez-custom-attributes"/>
+          <xsl:call-template name="ezattribute"/>
           <xsl:apply-templates/>
         </xsl:element>
       </xsl:when>
@@ -169,13 +169,13 @@
         <xsl:choose>
           <xsl:when test="@revisionflag='deleted'">
             <xsl:element name="del" namespace="{$outputNamespace}">
-              <xsl:call-template name="ez-custom-attributes"/>
+              <xsl:call-template name="ezattribute"/>
               <xsl:apply-templates/>
             </xsl:element>
           </xsl:when>
           <xsl:otherwise>
             <xsl:element name="s" namespace="{$outputNamespace}">
-              <xsl:call-template name="ez-custom-attributes"/>
+              <xsl:call-template name="ezattribute"/>
               <xsl:apply-templates/>
             </xsl:element>
           </xsl:otherwise>
@@ -188,7 +188,7 @@
               <xsl:value-of select="@ezxhtml:class"/>
             </xsl:attribute>
           </xsl:if>
-          <xsl:call-template name="ez-custom-attributes"/>
+          <xsl:call-template name="ezattribute"/>
           <xsl:apply-templates/>
         </xsl:element>
       </xsl:otherwise>
@@ -197,14 +197,14 @@
 
   <xsl:template match="docbook:subscript">
     <xsl:element name="sub" namespace="{$outputNamespace}">
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
 
   <xsl:template match="docbook:superscript">
     <xsl:element name="sup" namespace="{$outputNamespace}">
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -240,7 +240,7 @@
           <xsl:value-of select="@ezxhtml:class"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -282,7 +282,7 @@
           <xsl:value-of select="concat( 'text-align:', @ezxhtml:textalign, ';' )"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -299,7 +299,7 @@
           <xsl:value-of select="@ezxhtml:class"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -316,7 +316,7 @@
           <xsl:value-of select="@ezxhtml:class"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -328,7 +328,7 @@
           <xsl:value-of select="../@ezxhtml:class"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -393,7 +393,7 @@
           <xsl:value-of select="concat( $inlineStyleWidth, $inlineStyleBorder )"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:if test="local-name(.) = 'table' and ./docbook:caption != ''">
         <xsl:element name="caption" namespace="{$outputNamespace}">
           <xsl:value-of select="./docbook:caption"/>
@@ -428,7 +428,7 @@
           <xsl:value-of select="@class"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -498,7 +498,7 @@
           <xsl:value-of select="concat( $inlineStyleWidth, $inlineStyleValign )"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -558,7 +558,7 @@
           <xsl:value-of select="concat( $inlineStyleWidth, $inlineStyleValign )"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="ez-custom-attributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
