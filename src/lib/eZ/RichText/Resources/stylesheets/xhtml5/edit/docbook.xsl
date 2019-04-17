@@ -126,6 +126,7 @@
           <xsl:value-of select="@data-language"/>
         </xsl:attribute>
       </xsl:if>
+      <xsl:call-template name="ez-custom-attributes"/>
       <xsl:text disable-output-escaping="yes">&lt;![CDATA[</xsl:text>
       <xsl:value-of disable-output-escaping="yes" select="./text()"/>
       <xsl:text disable-output-escaping="yes">]]&gt;</xsl:text>
@@ -134,6 +135,7 @@
 
   <xsl:template match="ezxhtml5:blockquote">
     <blockquote>
+      <xsl:call-template name="ez-custom-attributes"/>
       <xsl:apply-templates/>
     </blockquote>
   </xsl:template>
@@ -200,12 +202,14 @@
 
   <xsl:template match="ezxhtml5:sub">
     <subscript>
+      <xsl:call-template name="ez-custom-attributes"/>
       <xsl:apply-templates/>
     </subscript>
   </xsl:template>
 
   <xsl:template match="ezxhtml5:sup">
     <superscript>
+      <xsl:call-template name="ez-custom-attributes"/>
       <xsl:apply-templates/>
     </superscript>
   </xsl:template>

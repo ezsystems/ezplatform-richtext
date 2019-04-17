@@ -860,6 +860,12 @@
     <define name="db.html.tr.attlist" combine="interleave">
       <ref name="ez.ezcustom.attributes" />
     </define>
+    <define name="db.subscript.attlist" combine="interleave">
+      <ref name="ez.ezcustom.attributes" />
+    </define>
+    <define name="db.superscript.attlist" combine="interleave">
+      <ref name="ez.ezcustom.attributes" />
+    </define>
   </div>
 
 </grammar>

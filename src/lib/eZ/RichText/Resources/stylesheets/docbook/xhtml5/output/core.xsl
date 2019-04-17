@@ -47,6 +47,7 @@
           <xsl:value-of select="@language"/>
         </xsl:attribute>
       </xsl:if>
+      <xsl:call-template name="ez-custom-attributes"/>
       <xsl:value-of select="./text()"/>
     </xsl:element>
   </xsl:template>
@@ -81,6 +82,7 @@
 
   <xsl:template match="docbook:blockquote">
     <xsl:element name="blockquote" namespace="{$outputNamespace}">
+      <xsl:call-template name="ez-custom-attributes"/>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -195,12 +197,14 @@
 
   <xsl:template match="docbook:subscript">
     <xsl:element name="sub" namespace="{$outputNamespace}">
+      <xsl:call-template name="ez-custom-attributes"/>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
 
   <xsl:template match="docbook:superscript">
     <xsl:element name="sup" namespace="{$outputNamespace}">
+      <xsl:call-template name="ez-custom-attributes"/>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
