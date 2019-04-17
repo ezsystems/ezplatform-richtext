@@ -5,7 +5,7 @@
 
   <p>
     This is a paragraph with
-    <em data-ez-custom-attribute-name-1="value 1" data-ez-custom-attribute-name-2="value 2">
+    <em data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2">
       emphasized (custom attributes)
     </em>
     text.

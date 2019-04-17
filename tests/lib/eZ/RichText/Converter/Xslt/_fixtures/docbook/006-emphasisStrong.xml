@@ -9,10 +9,10 @@
   <para>
     This is a paragraph with
     <emphasis role="strong">
-      <ez-custom-attributes>
+      <ezattribute>
         <ezvalue key="name-1">value 1</ezvalue>
         <ezvalue key="name-2">value 2</ezvalue>
-      </ez-custom-attributes>
+      </ezattribute>
       strong (custom attributes)
     </emphasis>
     text.

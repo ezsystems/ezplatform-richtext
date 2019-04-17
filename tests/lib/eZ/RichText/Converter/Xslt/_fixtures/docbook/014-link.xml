@@ -22,10 +22,10 @@
   </para>
   <para>
     <link xlink:href="ezcontent://333" xlink:show="none" xml:id="id6" xlink:title="Content title" ezxhtml:class="linkClass5">
-      <ez-custom-attributes>
+      <ezattribute>
         <ezvalue key="name-1">value 1</ezvalue>
         <ezvalue key="name-2">value 2</ezvalue>
-      </ez-custom-attributes>
+      </ezattribute>
       Content name
     </link>
   </para>

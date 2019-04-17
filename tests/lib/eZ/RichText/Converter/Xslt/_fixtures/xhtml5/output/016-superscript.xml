@@ -3,7 +3,7 @@
   <p>The equation e<sup>πi</sup> + 1 = 0 ties together five of the most important mathematical constants.</p>
   <p>
     Example
-    <sup data-ez-custom-attribute-table-1="value 1" data-ez-custom-attribute-table-2="value 2">
+    <sup data-ezattribute-table-1="value 1" data-ezattribute-table-2="value 2">
       superscript (with custom attributes)
     </sup>
     text

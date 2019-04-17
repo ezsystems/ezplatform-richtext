@@ -12,10 +12,10 @@
   <para ezxhtml:textalign="justify">This is a justified paragraph.</para>
   <para xml:id="para-id">This is a paragraph with id</para>
   <para>
-    <ez-custom-attributes>
+    <ezattribute>
       <ezvalue key="name-1">value 1</ezvalue>
       <ezvalue key="name-2">value 2</ezvalue>
-    </ez-custom-attributes>
+    </ezattribute>
     This is a paragraph with custom attributes
   </para>
 </section>

@@ -8,10 +8,10 @@
   <para>
     Example
     <superscript>
-      <ez-custom-attributes>
+      <ezattribute>
         <ezvalue key="table-1">value 1</ezvalue>
         <ezvalue key="table-2">value 2</ezvalue>
-      </ez-custom-attributes>
+      </ezattribute>
       superscript (with custom attributes)
     </superscript>
     text

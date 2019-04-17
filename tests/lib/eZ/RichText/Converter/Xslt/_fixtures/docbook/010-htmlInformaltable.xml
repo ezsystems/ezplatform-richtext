@@ -5,46 +5,46 @@
          xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom"
          version="5.0-variant ezpublish-1.0">
   <informaltable xml:id="informaltable-id" class="tableClass" width="24" title="tableTitle" border="1" style="border-width:42px;">
-    <ez-custom-attributes>
+    <ezattribute>
       <ezvalue key="table-1">value 1</ezvalue>
       <ezvalue key="table-2">value 2</ezvalue>
-    </ez-custom-attributes>
+    </ezattribute>
     <tbody>
       <tr class="rowClass1">
-        <ez-custom-attributes>
+        <ezattribute>
           <ezvalue key="row">value 1</ezvalue>
-        </ez-custom-attributes>
+        </ezattribute>
         <th class="headingClass1" ezxhtml:width="102" valign="top" colspan="1" rowspan="5" abbr="XSLT" scope="col">
-          <ez-custom-attributes>
+          <ezattribute>
             <ezvalue key="th">value 1</ezvalue>
-          </ez-custom-attributes>
+          </ezattribute>
           <para>11</para>
         </th>
         <th class="headingClass2" ezxhtml:width="37%" valign="middle" colspan="2" rowspan="6" abbr="XSD" scope="row">
-          <ez-custom-attributes>
+          <ezattribute>
             <ezvalue key="th">value 2</ezvalue>
-          </ez-custom-attributes>
+          </ezattribute>
           <para>12.1</para>
           <para>12.2</para>
         </th>
       </tr>
       <tr class="rowClass2">
-        <ez-custom-attributes>
+        <ezattribute>
           <ezvalue key="row">value 2</ezvalue>
-        </ez-custom-attributes>
+        </ezattribute>
         <td class="cellClass1" ezxhtml:width="74%" valign="bottom" colspan="3" rowspan="7">
-          <ez-custom-attributes>
+          <ezattribute>
             <ezvalue key="td">value 1</ezvalue>
-          </ez-custom-attributes>
+          </ezattribute>
           <para>21</para>
           <itemizedlist ezxhtml:class="itemizedListClass">
             <listitem ezxhtml:class="listItemClass"><para>This is a list item.</para></listitem>
           </itemizedlist>
         </td>
         <td class="cellClass2" ezxhtml:width="38" valign="baseline" colspan="4" rowspan="8">
-          <ez-custom-attributes>
+          <ezattribute>
             <ezvalue key="td">value 2</ezvalue>
-          </ez-custom-attributes>
+          </ezattribute>
           <para>22</para>
           <para><literallayout class="normal">This is a paragraph
 with some

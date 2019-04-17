@@ -4,7 +4,7 @@
   <p>This is a paragraph with <del>deleted</del> text.</p>
   <p>
     This is a paragraph with
-    <del data-ez-custom-attribute-name-1="value 1" data-ez-custom-attribute-name-2="value 2">
+    <del data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2">
       deleted (custom attributes)
     </del>
     text

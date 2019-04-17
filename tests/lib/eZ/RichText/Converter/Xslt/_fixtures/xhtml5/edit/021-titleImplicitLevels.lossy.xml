@@ -68,17 +68,17 @@ covered by:
       </section>
     </section>
   </section>
-  <h1 data-ez-custom-attribute-extra="value 1" data-ez-custom-attribute-level="1">
+  <h1 data-ezattribute-extra="value 1" data-ezattribute-level="1">
     This is a first level heading with custom attributes.
   </h1>
   <section>
-    <h2 data-ez-custom-attribute-extra="value 2" data-ez-custom-attribute-level="2">
+    <h2 data-ezattribute-extra="value 2" data-ezattribute-level="2">
       This is a second level heading with custom attributes.
     </h2>
   </section>
   <section>
     <section>
-      <h3 data-ez-custom-attribute-extra="value 3" data-ez-custom-attribute-level="3">
+      <h3 data-ezattribute-extra="value 3" data-ezattribute-level="3">
         This is a third level heading with custom attributes.
       </h3>
     </section>
@@ -86,7 +86,7 @@ covered by:
   <section>
     <section>
       <section>
-        <h4 data-ez-custom-attribute-extra="value 4" data-ez-custom-attribute-level="4">
+        <h4 data-ezattribute-extra="value 4" data-ezattribute-level="4">
           This is a fourth level heading with custom attributes.
         </h4>
       </section>
@@ -96,7 +96,7 @@ covered by:
     <section>
       <section>
         <section>
-          <h5 data-ez-custom-attribute-extra="value 5" data-ez-custom-attribute-level="5">
+          <h5 data-ezattribute-extra="value 5" data-ezattribute-level="5">
             This is a fifth level heading with custom attributes.
           </h5>
         </section>
@@ -108,7 +108,7 @@ covered by:
       <section>
         <section>
           <section>
-            <h6 data-ez-custom-attribute-extra="value 6" data-ez-custom-attribute-level="6">
+            <h6 data-ezattribute-extra="value 6" data-ezattribute-level="6">
               This is a sixth level heading with custom attributes.
             </h6>
           </section>
@@ -122,7 +122,7 @@ covered by:
         <section>
           <section>
             <section>
-              <h6 data-ez-custom-attribute-extra="value 7" data-ez-custom-attribute-level="7">
+              <h6 data-ezattribute-extra="value 7" data-ezattribute-level="7">
                 This is a seventh level heading with custom attributes.
               </h6>
             </section>

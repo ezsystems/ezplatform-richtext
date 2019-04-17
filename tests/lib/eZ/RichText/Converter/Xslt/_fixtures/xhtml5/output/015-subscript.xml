@@ -3,7 +3,7 @@
   <p>Thirsty? Have some H<sub>2</sub>O.</p>
   <p>
     Example
-    <sub data-ez-custom-attribute-table-1="value 1" data-ez-custom-attribute-table-2="value 2">
+    <sub data-ezattribute-table-1="value 1" data-ezattribute-table-2="value 2">
       subscript (with custom attributes)
     </sub>
     text

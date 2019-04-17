@@ -19,15 +19,15 @@
   <xs:redefine schemaLocation="../../../../../../../../../../src/lib/eZ/RichText/Resources/schemas/ezxhtml5/output/ezxhtml5.xsd">
     <xs:attributeGroup name="coreAttributeGroupNodir">
       <xs:attributeGroup ref="coreAttributeGroupNodir"/>
-      <xs:attribute name="data-ez-custom-attribute-name-1" type="string"/>
-      <xs:attribute name="data-ez-custom-attribute-name-2" type="string"/>
-      <xs:attribute name="data-ez-custom-attribute-table-1" type="string"/>
-      <xs:attribute name="data-ez-custom-attribute-table-2" type="string"/>
-      <xs:attribute name="data-ez-custom-attribute-row" type="string"/>
-      <xs:attribute name="data-ez-custom-attribute-th" type="string"/>
-      <xs:attribute name="data-ez-custom-attribute-td" type="string"/>
-      <xs:attribute name="data-ez-custom-attribute-extra" type="string"/>
-      <xs:attribute name="data-ez-custom-attribute-level" type="string"/>
+      <xs:attribute name="data-ezattribute-name-1" type="string"/>
+      <xs:attribute name="data-ezattribute-name-2" type="string"/>
+      <xs:attribute name="data-ezattribute-table-1" type="string"/>
+      <xs:attribute name="data-ezattribute-table-2" type="string"/>
+      <xs:attribute name="data-ezattribute-row" type="string"/>
+      <xs:attribute name="data-ezattribute-th" type="string"/>
+      <xs:attribute name="data-ezattribute-td" type="string"/>
+      <xs:attribute name="data-ezattribute-extra" type="string"/>
+      <xs:attribute name="data-ezattribute-level" type="string"/>
     </xs:attributeGroup>
   </xs:redefine>
 

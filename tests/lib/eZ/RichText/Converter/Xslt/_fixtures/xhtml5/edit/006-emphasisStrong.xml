@@ -4,7 +4,7 @@
   <p>This is a paragraph with <strong class="emphasisStrongClass">strong</strong> text.</p>
   <p>
     This is a paragraph with
-    <strong data-ez-custom-attribute-name-1="value 1" data-ez-custom-attribute-name-2="value 2">
+    <strong data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2">
       strong (custom attributes)
     </strong>
     text.

@@ -13,7 +13,7 @@
       Validation for youtube custom tag.
     </a:documentation>
     <optional>
-      <element name="ez-custom-attributes">
+      <element name="ezattribute">
         <ref name="ez.config.hash"/>
       </element>
     </optional>
