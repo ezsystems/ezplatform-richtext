@@ -13,7 +13,7 @@
   <xsl:template name="ezattribute">
     <xsl:if test="./docbook:ezattribute">
       <xsl:for-each select="./docbook:ezattribute/docbook:ezvalue">
-        <xsl:attribute name="{concat('data-ez-custom-attribute-', @key)}">
+        <xsl:attribute name="{concat('data-ezattribute-', @key)}">
           <xsl:value-of select="text()"/>
         </xsl:attribute>
       </xsl:for-each>

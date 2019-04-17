@@ -26,12 +26,12 @@
   </xsl:template>
 
   <xsl:template name="ezattribute">
-    <xsl:if test="@*[starts-with(name(), 'data-ez-custom-attribute-')]">
+    <xsl:if test="@*[starts-with(name(), 'data-ezattribute-')]">
       <xsl:element name="ezattribute" namespace="http://docbook.org/ns/docbook">
-        <xsl:for-each select="@*[starts-with(name(), 'data-ez-custom-attribute-')]">
+        <xsl:for-each select="@*[starts-with(name(), 'data-ezattribute-')]">
           <xsl:element name="ezvalue" namespace="http://docbook.org/ns/docbook">
             <xsl:attribute name="key">
-              <xsl:value-of select="substring-after(name(), 'data-ez-custom-attribute-')"/>
+              <xsl:value-of select="substring-after(name(), 'data-ezattribute-')"/>
             </xsl:attribute>
             <xsl:value-of select="."/>
           </xsl:element>
