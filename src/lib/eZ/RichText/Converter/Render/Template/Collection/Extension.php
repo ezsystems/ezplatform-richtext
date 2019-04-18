@@ -54,7 +54,7 @@ class Extension
      *
      * @param string $type Type
      * @param string $identifier Identifier
-     * @param array $identifier $params Current set of parameters
+     * @param array $params Current set of parameters
      *
      * @return array
      */
