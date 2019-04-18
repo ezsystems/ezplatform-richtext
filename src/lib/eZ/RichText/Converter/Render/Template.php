@@ -14,6 +14,7 @@ use DOMNode;
 use DOMXPath;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template\Collection\Extension as ExtensionsCollection;
 use EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
@@ -34,18 +35,26 @@ class Template extends Render implements Converter
     private $logger;
 
     /**
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template\Collection\Extension
+     */
+    private $extensionsCollection;
+
+    /**
      * RichText Template converter constructor.
      *
      * @param \EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface $renderer
      * @param \EzSystems\EzPlatformRichText\eZ\RichText\Converter $richTextConverter
+     * @param \EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template\Collection\Extension $extensionsCollection
      * @param \Psr\Log\LoggerInterface $logger
      */
     public function __construct(
         RendererInterface $renderer,
         Converter $richTextConverter,
+        ExtensionsCollection $extensionsCollection,
         LoggerInterface $logger = null
     ) {
         $this->richTextConverter = $richTextConverter;
+        $this->extensionsCollection = $extensionsCollection;
         $this->logger = $logger ?? new NullLogger();
 
         parent::__construct($renderer);
@@ -97,7 +106,11 @@ class Template extends Render implements Converter
         $templateType = $template->hasAttribute('type') ? $template->getAttribute('type') : 'tag';
         $parameters = [
             'name' => $templateName,
-            'params' => $this->extractTemplateConfiguration($template, $xpath),
+            'params' => $this->extensionsCollection->extend(
+                $templateType,
+                $templateName,
+                $this->extractConfiguration($template)
+            ),
         ];
 
         $contentNodes = $xpath->query('./docbook:ezcontent', $template);

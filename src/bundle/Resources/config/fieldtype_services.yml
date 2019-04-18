@@ -50,11 +50,20 @@ services:
         tags:
             - {name: ezpublish.ezrichtext.converter.output.xhtml5, priority: 0}
 
+    _instanceof:
+        EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template\Extension\Base:
+            tags: [ezpublish.ezrichtext.converter.output.template.extension]
+
+    ezrichtext.converter.template.extensions:
+        class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template\Collection\Extension
+        arguments: [!tagged ezpublish.ezrichtext.converter.output.template.extension]
+
     ezrichtext.converter.template:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template
         arguments:
             - '@ezrichtext.renderer'
             - '@ezrichtext.converter.output.xhtml5'
+            - '@ezrichtext.converter.template.extensions'
             - '@?logger'
         tags:
             - {name: ezpublish.ezrichtext.converter.output.xhtml5, priority: 10}

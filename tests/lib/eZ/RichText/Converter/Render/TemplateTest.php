@@ -11,6 +11,7 @@ namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Converter\Render;
 use PHPUnit\Framework\TestCase;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template\Collection\Extension as ExtensionsCollection;
 use EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface;
 use DOMDocument;
 
@@ -132,7 +133,9 @@ class TemplateTest extends TestCase
 
     protected function getConverter()
     {
-        return new Template($this->rendererMock, $this->converterMock);
+        $extensionsCollection = new ExtensionsCollection([]);
+
+        return new Template($this->rendererMock, $this->converterMock, $extensionsCollection);
     }
 
     /**

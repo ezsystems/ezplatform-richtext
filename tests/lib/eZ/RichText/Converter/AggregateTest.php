@@ -14,6 +14,7 @@ use eZ\Publish\Core\MVC\Symfony\Routing\UrlAliasRouter;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Aggregate;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Link;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template\Collection\Extension as ExtensionsCollection;
 use EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface;
 use PHPUnit\Framework\TestCase;
 
@@ -47,9 +48,12 @@ class AggregateTest extends TestCase
 
         $aggregate = new Aggregate([$linkConverter]);
 
+        $extensionsCollection = new ExtensionsCollection([]);
+
         $templateConverter = new Template(
             $renderer,
-            $aggregate
+            $aggregate,
+            $extensionsCollection
         );
 
         $aggregate = new Aggregate([$templateConverter, $linkConverter]);
