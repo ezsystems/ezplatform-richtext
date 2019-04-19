@@ -824,4 +824,48 @@
     <notAllowed/>
   </define>
 
+  <define name="ez.xhtml.data.attribute">
+    <optional>
+      <element name="ezattribute">
+        <ref name="ez.config.hash"/>
+      </element>
+    </optional>
+  </define>
+
+  <div>
+    <a:documentation>
+      Adding child ezattribute element to the selected elements.
+    </a:documentation>
+    <define name="db.extension.inlines" combine="choice">
+      <ref name="ez.xhtml.data.attribute" />
+    </define>
+    <define name="db.all.blocks" combine="choice">
+      <ref name="ez.xhtml.data.attribute" />
+    </define>
+    <define name="db.para.info" combine="interleave">
+      <ref name="ez.xhtml.data.attribute" />
+    </define>
+    <define name="db.orderedlist.info" combine="interleave">
+      <ref name="ez.xhtml.data.attribute" />
+    </define>
+    <define name="db.itemizedlist.info" combine="interleave">
+      <ref name="ez.xhtml.data.attribute" />
+    </define>
+    <define name="db.html.informaltable.info" combine="interleave">
+      <ref name="ez.xhtml.data.attribute" />
+    </define>
+    <define name="db.html.table.model" combine="interleave">
+      <ref name="ez.xhtml.data.attribute" />
+    </define>
+    <define name="db.html.tr.attlist" combine="interleave">
+      <ref name="ez.xhtml.data.attribute" />
+    </define>
+    <define name="db.subscript.attlist" combine="interleave">
+      <ref name="ez.xhtml.data.attribute" />
+    </define>
+    <define name="db.superscript.attlist" combine="interleave">
+      <ref name="ez.xhtml.data.attribute" />
+    </define>
+  </div>
+
 </grammar>

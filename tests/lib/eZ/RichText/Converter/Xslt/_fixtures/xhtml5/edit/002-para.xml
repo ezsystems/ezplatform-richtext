@@ -7,4 +7,7 @@
   <p style="text-align:right;">This is a right aligned paragraph.</p>
   <p style="text-align:justify;">This is a justified paragraph.</p>
   <p id="para-id">This is a paragraph with id</p>
+  <p data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2">
+    This is a paragraph with custom attributes
+  </p>
 </section>

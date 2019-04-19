@@ -7,4 +7,11 @@
 <section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5/edit">
   <h2>This is a heading.</h2>
   <p>This is a paragraph with <s>strikedthrough</s> text.</p>
+  <p>
+    This is a paragraph with
+    <s data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2">
+      strikedthrough (custom attributes)
+    </s>
+    text.
+  </p>
 </section>

@@ -4,7 +4,11 @@
          xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml"
          xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom"
          version="5.0-variant ezpublish-1.0">
-  <itemizedlist xml:id="itemizedlist-id" ezxhtml:class="itemizedListClass">
+  <itemizedlist>
+    <ezattribute>
+      <ezvalue key="name-1">value 1</ezvalue>
+      <ezvalue key="name-2">value 2</ezvalue>
+    </ezattribute>
     <listitem ezxhtml:class="listItemClass"><para>This is a list item.</para></listitem>
   </itemizedlist>
 </section>

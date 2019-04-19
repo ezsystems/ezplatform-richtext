@@ -6,4 +6,15 @@
          version="5.0-variant ezpublish-1.0">
   <title ezxhtml:level="2">This is a heading.</title>
   <para>This is a paragraph with <emphasis role="strikedthrough">strikedthrough</emphasis> text.</para>
+  <para>
+    This is a paragraph with
+    <emphasis role="strikedthrough">
+      <ezattribute>
+        <ezvalue key="name-1">value 1</ezvalue>
+        <ezvalue key="name-2">value 2</ezvalue>
+      </ezattribute>
+      strikedthrough (custom attributes)
+    </emphasis>
+    text.
+  </para>
 </section>

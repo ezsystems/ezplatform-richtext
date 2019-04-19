@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5">
-  <ol id="orderedlist-id" class="orderedListClass">
+  <ol class="orderedListClass" data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2" id="orderedlist-id">
     <li class="listItemClass">This is a list item.</li>
   </ol>
 </section>

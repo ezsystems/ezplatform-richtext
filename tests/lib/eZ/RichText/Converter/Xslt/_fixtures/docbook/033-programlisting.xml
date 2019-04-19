@@ -18,4 +18,11 @@
     return 0;
 }</programlisting>
     <programlisting xml:id="programlisting-id"><![CDATA[Literal with CNAME end sequence here : ]]]]><![CDATA[> and some more text here]]></programlisting>
+    <programlisting>
+        <ezattribute>
+            <ezvalue key="name-1">value 1</ezvalue>
+            <ezvalue key="name-2">value 2</ezvalue>
+        </ezattribute>
+        <![CDATA[literal with custom attributes]]>
+    </programlisting>
 </section>

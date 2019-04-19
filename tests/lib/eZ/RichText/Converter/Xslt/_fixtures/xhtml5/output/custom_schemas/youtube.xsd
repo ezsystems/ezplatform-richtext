@@ -16,4 +16,19 @@
     </xs:complexType>
   </xs:redefine>
 
+  <xs:redefine schemaLocation="../../../../../../../../../../src/lib/eZ/RichText/Resources/schemas/ezxhtml5/output/ezxhtml5.xsd">
+    <xs:attributeGroup name="coreAttributeGroupNodir">
+      <xs:attributeGroup ref="coreAttributeGroupNodir"/>
+      <xs:attribute name="data-ezattribute-name-1" type="string"/>
+      <xs:attribute name="data-ezattribute-name-2" type="string"/>
+      <xs:attribute name="data-ezattribute-table-1" type="string"/>
+      <xs:attribute name="data-ezattribute-table-2" type="string"/>
+      <xs:attribute name="data-ezattribute-row" type="string"/>
+      <xs:attribute name="data-ezattribute-th" type="string"/>
+      <xs:attribute name="data-ezattribute-td" type="string"/>
+      <xs:attribute name="data-ezattribute-extra" type="string"/>
+      <xs:attribute name="data-ezattribute-level" type="string"/>
+    </xs:attributeGroup>
+  </xs:redefine>
+
 </xs:schema>

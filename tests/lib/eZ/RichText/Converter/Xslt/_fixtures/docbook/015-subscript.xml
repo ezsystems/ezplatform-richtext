@@ -5,4 +5,15 @@
          xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom"
          version="5.0-variant ezpublish-1.0">
   <para>Thirsty? Have some H<subscript>2</subscript>O.</para>
+  <para>
+    Example
+    <subscript>
+      <ezattribute>
+        <ezvalue key="table-1">value 1</ezvalue>
+        <ezvalue key="table-2">value 2</ezvalue>
+      </ezattribute>
+      subscript (with custom attributes)
+    </subscript>
+    text
+  </para>
 </section>
