@@ -37,6 +37,6 @@ composer config -g github-oauth.github.com "d0285ed5c8644f30547572ead2ed897431c1
 
 # solr package search API integration tests
 if [ "$TEST_CONFIG" = "phpunit-integration-legacy-solr.xml" ] ; then
-    echo "> Require ezsystems/ezplatform-solr-search-engine:^1.5@dev"
-    composer require --no-update ezsystems/ezplatform-solr-search-engine:^1.5@dev
+    echo "> Require ezsystems/ezplatform-solr-search-engine:^2.0@dev"
+    composer require --no-update ezsystems/ezplatform-solr-search-engine:^2.0@dev
 fi
