@@ -171,6 +171,8 @@ class RichText extends AbstractFieldTypeParser
                 ->info('List of RichText Custom Styles enabled for the current scope. The Custom Styles must be defined in ezpublish.ezrichtext.custom_styles Node.')
                 ->scalarPrototype()->end()
             ->end();
+
+        $this->buildOnlineEditorConfiguration($nodeBuilder);
     }
 
     /**
@@ -352,5 +354,53 @@ class RichText extends AbstractFieldTypeParser
                 ->end()
             ->end()
         ;
+    }
+
+    /**
+     * Build configuration nodes strictly related to Online Editor.
+     *
+     * @param \Symfony\Component\Config\Definition\Builder\NodeBuilder $nodeBuilder
+     */
+    private function buildOnlineEditorConfiguration(NodeBuilder $nodeBuilder): void
+    {
+        $nodeBuilder
+            ->arrayNode('classes')
+                ->useAttributeAsKey('element')
+                ->arrayPrototype()
+                    ->children()
+                        ->arrayNode('choices')
+                            ->scalarPrototype()->end()
+                            ->isRequired()
+                        ->end()
+                        ->booleanNode('required')
+                            ->defaultFalse()
+                        ->end()
+                        ->scalarNode('default_value')
+                        ->end()
+                        ->booleanNode('multiple')
+                            ->defaultTrue()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+            ->arrayNode('attributes')
+                ->useAttributeAsKey('element')
+                ->arrayPrototype()
+                    ->arrayPrototype()
+                        ->children()
+                            ->enumNode('type')
+                                ->isRequired()
+                                ->values(['choice', 'boolean', 'string', 'number'])
+                            ->end()
+                            ->arrayNode('choices')
+                                ->scalarPrototype()->end()
+                            ->end()
+                            ->booleanNode('multiple')->defaultTrue()->end()
+                            ->booleanNode('required')->defaultFalse()->end()
+                            ->scalarNode('default_value')->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end();
     }
 }
