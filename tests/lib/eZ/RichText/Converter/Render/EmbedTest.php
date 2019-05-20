@@ -494,7 +494,7 @@ class EmbedTest extends TestCase
                         ],
                         $params['is_inline']
                     )
-                    ->will($this->returnValue($params['id']));
+                    ->willReturn($params['id']);
             }
         } else {
             $this->rendererMock->expects($this->never())->method('renderContentEmbed');
