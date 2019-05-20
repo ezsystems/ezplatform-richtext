@@ -18,6 +18,9 @@ use Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition;
  */
 class RichText extends AbstractFieldTypeParser
 {
+    const CLASSES_SA_SETTINGS_ID = 'fieldtypes.ezrichtext.classes';
+    const ATTRIBUTES_SA_SETTINGS_ID = 'fieldtypes.ezrichtext.attributes';
+
     /**
      * Returns the fieldType identifier the config parser works for.
      * This is to create the right configuration node under system.<siteaccess_name>.fieldtypes.
@@ -241,6 +244,17 @@ class RichText extends AbstractFieldTypeParser
                     );
                 }
             }
+
+            $onlineEditorSettingsMap = [
+                'classes' => self::CLASSES_SA_SETTINGS_ID,
+                'attributes' => self::ATTRIBUTES_SA_SETTINGS_ID,
+            ];
+            foreach ($onlineEditorSettingsMap as $key => $settingsId) {
+                if (isset($scopeSettings['fieldtypes']['ezrichtext'][$key])) {
+                    $scopeSettings[$settingsId] = $scopeSettings['fieldtypes']['ezrichtext'][$key];
+                    unset($scopeSettings['fieldtypes']['ezrichtext'][$key]);
+                }
+            }
         }
     }
 
@@ -251,6 +265,8 @@ class RichText extends AbstractFieldTypeParser
         $contextualizer->mapConfigArray('fieldtypes.ezrichtext.output_custom_xsl', $config);
         $contextualizer->mapConfigArray('fieldtypes.ezrichtext.edit_custom_xsl', $config);
         $contextualizer->mapConfigArray('fieldtypes.ezrichtext.input_custom_xsl', $config);
+        $contextualizer->mapConfigArray(static::CLASSES_SA_SETTINGS_ID, $config);
+        $contextualizer->mapConfigArray(static::ATTRIBUTES_SA_SETTINGS_ID, $config);
     }
 
     /**
