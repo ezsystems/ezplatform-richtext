@@ -26,7 +26,7 @@ class EzPlatformRichTextBundle extends Bundle
 
         /** @var \eZ\Bundle\EzPublishCoreBundle\DependencyInjection\EzPublishCoreExtension $core */
         $core = $container->getExtension('ezpublish');
-        $core->addDefaultSettings(__DIR__ . '/Resources/config', ['default_settings.yml']);
+        $core->addDefaultSettings(__DIR__ . '/Resources/config', ['default_settings.yaml']);
 
         $container->addCompilerPass(new RichTextHtml5ConverterPass());
         $this->registerConfigParser($container);
