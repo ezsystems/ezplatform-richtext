@@ -153,6 +153,102 @@ class RichTextTest extends AbstractParserTestCase
     }
 
     /**
+     * Test expected semantic config validation for online editor settings.
+     *
+     * @dataProvider getOnlineEditorInvalidSettings
+     *
+     * @param array $config
+     * @param string $expectedExceptionMessage
+     *
+     * @throws \Exception
+     */
+    public function testOnlineEditorInvalidSettingsThrowException(
+        array $config,
+        string $expectedExceptionMessage
+    ): void {
+        $this->expectException(InvalidConfigurationException::class);
+        $this->expectExceptionMessage($expectedExceptionMessage);
+
+        $this->load(
+            [
+                'ezpublish' => [
+                    'system' => [
+                        'ezdemo_site' => [
+                            'fieldtypes' => [
+                                'ezrichtext' => $config,
+                            ],
+                        ],
+                    ],
+                ],
+            ]
+        );
+    }
+
+    /**
+     * Data provider for testOnlineEditorInvalidSettings.
+     *
+     * @see testOnlineEditorInvalidSettingsThrowException
+     *
+     * @return array
+     */
+    public function getOnlineEditorInvalidSettings(): array
+    {
+        return [
+            [
+                [
+                    'classes' => [
+                        'paragraph' => [
+                            'choices' => ['class1', 'class2'],
+                            'default_value' => 'class3',
+                        ],
+                    ],
+                ],
+                'Default value must be one of the possible choices',
+            ],
+            [
+                [
+                    'attributes' => [
+                        'paragraph' => [
+                            'select-single-attr' => [
+                                'type' => 'choice',
+                                'choices' => ['class1', 'class2'],
+                                'default_value' => 'class3',
+                            ],
+                        ],
+                    ],
+                ],
+                'Default value must be one of the possible choices',
+            ],
+            [
+                [
+                    'attributes' => [
+                        'paragraph' => [
+                            'boolean-attr' => [
+                                'type' => 'boolean',
+                                'required' => true,
+                            ],
+                        ],
+                    ],
+                ],
+                'Boolean type does not support "required" setting',
+            ],
+            [
+                [
+                    'attributes' => [
+                        'paragraph' => [
+                            'boolean-attr' => [
+                                'type' => 'number',
+                                'choices' => ['foo'],
+                            ],
+                        ],
+                    ],
+                ],
+                'Number type does not support "choices" setting',
+            ],
+        ];
+    }
+
+    /**
      * @dataProvider richTextSettingsProvider
      *
      * @param array $config
@@ -369,6 +465,40 @@ class RichTextTest extends AbstractParserTestCase
                                     'index' => true,
                                 ],
                             ],
+                        ],
+                    ],
+                ],
+            ],
+            [
+                [
+                    'fieldtypes' => [
+                        'ezrichtext' => [
+                            'classes' => [
+                                'paragraph' => [
+                                    'choices' => ['class1', 'class2'],
+                                    'required' => true,
+                                    'default_value' => 'class1',
+                                    'multiple' => true,
+                                ],
+                                'headline' => [
+                                    'choices' => ['class3', 'class4'],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+                [
+                    'fieldtypes.ezrichtext.classes' => [
+                        'paragraph' => [
+                            'choices' => ['class1', 'class2'],
+                            'required' => true,
+                            'default_value' => 'class1',
+                            'multiple' => true,
+                        ],
+                        'headline' => [
+                            'choices' => ['class3', 'class4'],
+                            'required' => false,
+                            'multiple' => true,
                         ],
                     ],
                 ],

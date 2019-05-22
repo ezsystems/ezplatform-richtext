@@ -10,6 +10,7 @@ namespace EzSystems\EzPlatformRichTextBundle\DependencyInjection\Configuration\P
 
 use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\Configuration\Parser\AbstractFieldTypeParser;
 use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\Configuration\SiteAccessAware\ContextualizerInterface;
+use InvalidArgumentException;
 use Symfony\Component\Config\Definition\Builder\NodeBuilder;
 use Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition;
 
@@ -19,7 +20,22 @@ use Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition;
 class RichText extends AbstractFieldTypeParser
 {
     const CLASSES_SA_SETTINGS_ID = 'fieldtypes.ezrichtext.classes';
+    const CLASSES_NODE_KEY = 'classes';
+
     const ATTRIBUTES_SA_SETTINGS_ID = 'fieldtypes.ezrichtext.attributes';
+    const ATTRIBUTES_NODE_KEY = 'attributes';
+    const ATTRIBUTE_TYPE_NODE_KEY = 'type';
+    const ATTRIBUTE_TYPE_CHOICE = 'choice';
+    const ATTRIBUTE_TYPE_BOOLEAN = 'boolean';
+    const ATTRIBUTE_TYPE_STRING = 'string';
+    const ATTRIBUTE_TYPE_NUMBER = 'number';
+
+    // constants common for OE custom classes and data attributes configuration
+    const ELEMENT_NODE_KEY = 'element';
+    const DEFAULT_VALUE_NODE_KEY = 'default_value';
+    const CHOICES_NODE_KEY = 'choices';
+    const REQUIRED_NODE_KEY = 'required';
+    const MULTIPLE_NODE_KEY = 'multiple';
 
     /**
      * Returns the fieldType identifier the config parser works for.
@@ -246,8 +262,8 @@ class RichText extends AbstractFieldTypeParser
             }
 
             $onlineEditorSettingsMap = [
-                'classes' => self::CLASSES_SA_SETTINGS_ID,
-                'attributes' => self::ATTRIBUTES_SA_SETTINGS_ID,
+                self::CLASSES_NODE_KEY => self::CLASSES_SA_SETTINGS_ID,
+                self::ATTRIBUTES_NODE_KEY => self::ATTRIBUTES_SA_SETTINGS_ID,
             ];
             foreach ($onlineEditorSettingsMap as $key => $settingsId) {
                 if (isset($scopeSettings['fieldtypes']['ezrichtext'][$key])) {
@@ -379,44 +395,113 @@ class RichText extends AbstractFieldTypeParser
      */
     private function buildOnlineEditorConfiguration(NodeBuilder $nodeBuilder): void
     {
+        $invalidChoiceCallback = function (array $v) {
+            $message = sprintf(
+                'Default value must be one of the possible choices: %s, but "%s" given',
+                implode(', ', $v[self::CHOICES_NODE_KEY]),
+                $v[self::DEFAULT_VALUE_NODE_KEY]
+            );
+
+            throw new InvalidArgumentException($message, 1);
+        };
+
         $nodeBuilder
-            ->arrayNode('classes')
-                ->useAttributeAsKey('element')
+            ->arrayNode(self::CLASSES_NODE_KEY)
+                ->useAttributeAsKey(self::ELEMENT_NODE_KEY)
                 ->arrayPrototype()
+                    ->validate()
+                        ->ifTrue(function (array $v) {
+                            return !empty($v[self::DEFAULT_VALUE_NODE_KEY])
+                                && !in_array($v[self::DEFAULT_VALUE_NODE_KEY], $v[self::CHOICES_NODE_KEY]);
+                        })
+                        ->then($invalidChoiceCallback)
+                    ->end()
                     ->children()
-                        ->arrayNode('choices')
+                        ->arrayNode(self::CHOICES_NODE_KEY)
                             ->scalarPrototype()->end()
                             ->isRequired()
                         ->end()
-                        ->booleanNode('required')
+                        ->booleanNode(self::REQUIRED_NODE_KEY)
                             ->defaultFalse()
                         ->end()
-                        ->scalarNode('default_value')
+                        ->scalarNode(self::DEFAULT_VALUE_NODE_KEY)
                         ->end()
-                        ->booleanNode('multiple')
+                        ->booleanNode(self::MULTIPLE_NODE_KEY)
                             ->defaultTrue()
                         ->end()
                     ->end()
                 ->end()
             ->end()
-            ->arrayNode('attributes')
-                ->useAttributeAsKey('element')
+            ->arrayNode(self::ATTRIBUTES_NODE_KEY)
+                ->useAttributeAsKey(self::ELEMENT_NODE_KEY)
                 ->arrayPrototype()
                     ->arrayPrototype()
+                        ->validate()
+                            ->always($this->getAttributesValidatorCallback($invalidChoiceCallback))
+                        ->end()
                         ->children()
-                            ->enumNode('type')
+                            ->enumNode(self::ATTRIBUTE_TYPE_NODE_KEY)
                                 ->isRequired()
-                                ->values(['choice', 'boolean', 'string', 'number'])
+                                ->values(
+                                    [
+                                        self::ATTRIBUTE_TYPE_CHOICE,
+                                        self::ATTRIBUTE_TYPE_BOOLEAN,
+                                        self::ATTRIBUTE_TYPE_STRING,
+                                        self::ATTRIBUTE_TYPE_NUMBER,
+                                    ]
+                                )
                             ->end()
-                            ->arrayNode('choices')
-                                ->scalarPrototype()->end()
+                            ->arrayNode(self::CHOICES_NODE_KEY)
+                                ->validate()
+                                    ->ifEmpty()->thenUnset()
+                                ->end()
+                                ->scalarPrototype()
+                                ->end()
                             ->end()
-                            ->booleanNode('multiple')->defaultTrue()->end()
-                            ->booleanNode('required')->defaultFalse()->end()
-                            ->scalarNode('default_value')->end()
+                            ->booleanNode(self::MULTIPLE_NODE_KEY)->defaultTrue()->end()
+                            ->booleanNode(self::REQUIRED_NODE_KEY)->defaultFalse()->end()
+                            ->scalarNode(self::DEFAULT_VALUE_NODE_KEY)->end()
                         ->end()
                     ->end()
                 ->end()
             ->end();
+    }
+
+    /**
+     * Return validation callback which will validate custom data attributes semantic config.
+     *
+     * The validation validates the following rules:
+     * - if a custom data attribute is not of `choice` type, it must not define `choices` list,
+     * - a `default_value` of custom data attribute must be the one from `choices` list,
+     * - a custom data attribute of `boolean` type must not define `required` setting.
+     *
+     * @param callable $invalidChoiceCallback
+     *
+     * @return callable
+     */
+    private function getAttributesValidatorCallback(callable $invalidChoiceCallback): callable
+    {
+        return function (array $v) use ($invalidChoiceCallback) {
+            if ($v[self::ATTRIBUTE_TYPE_NODE_KEY] === self::ATTRIBUTE_TYPE_CHOICE
+                && !empty($v[self::DEFAULT_VALUE_NODE_KEY])
+                && !in_array($v[self::DEFAULT_VALUE_NODE_KEY], $v[self::CHOICES_NODE_KEY])
+            ) {
+                $invalidChoiceCallback($v);
+            } elseif ($v[self::ATTRIBUTE_TYPE_NODE_KEY] === self::ATTRIBUTE_TYPE_BOOLEAN && $v[self::REQUIRED_NODE_KEY]) {
+                throw new InvalidArgumentException(
+                    sprintf('Boolean type does not support "%s" setting', self::REQUIRED_NODE_KEY)
+                );
+            } elseif ($v[self::ATTRIBUTE_TYPE_NODE_KEY] !== self::ATTRIBUTE_TYPE_CHOICE && !empty($v[self::CHOICES_NODE_KEY])) {
+                throw new InvalidArgumentException(
+                    sprintf(
+                        '%s type does not support "%s" setting',
+                        ucfirst($v[self::ATTRIBUTE_TYPE_NODE_KEY]),
+                        self::CHOICES_NODE_KEY
+                    )
+                );
+            }
+
+            return $v;
+        };
     }
 }
