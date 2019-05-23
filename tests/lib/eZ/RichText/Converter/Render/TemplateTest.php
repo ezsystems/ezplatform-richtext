@@ -107,7 +107,7 @@ class TemplateTest extends TestCase
                         ->expects($this->at($convertIndex++))
                         ->method('convert')
                         ->with($contentDoc)
-                        ->will($this->returnValue($contentDoc));
+                        ->willReturn($contentDoc);
                 }
 
                 $this->rendererMock
@@ -119,7 +119,7 @@ class TemplateTest extends TestCase
                         $params['params'],
                         $params['is_inline']
                     )
-                    ->will($this->returnValue($params['name']));
+                    ->willReturn($params['name']);
             }
         } else {
             $this->rendererMock->expects($this->never())->method('renderTemplate');

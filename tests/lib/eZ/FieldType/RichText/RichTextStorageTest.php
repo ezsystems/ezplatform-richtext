@@ -70,7 +70,7 @@ class RichTextStorageTest extends TestCase
             ->expects($this->once())
             ->method('getIdUrlMap')
             ->with($this->equalTo($linkIds))
-            ->will($this->returnValue($linkUrls));
+            ->willReturn($linkUrls);
         $gateway->expects($this->never())->method('getUrlIdMap');
         $gateway->expects($this->never())->method('getContentIds');
         $gateway->expects($this->never())->method('insertUrl');
@@ -200,12 +200,12 @@ class RichTextStorageTest extends TestCase
             ->expects($this->at($gatewayCallIndex++))
             ->method('getUrlIdMap')
             ->with($this->equalTo($linkUrls))
-            ->will($this->returnValue($linkIds));
+            ->willReturn($linkIds);
         $gateway
             ->expects($this->at($gatewayCallIndex++))
             ->method('getContentIds')
             ->with($this->equalTo($remoteIds))
-            ->will($this->returnValue($contentIds));
+            ->willReturn($contentIds);
         $gateway->expects($this->never())->method('getIdUrlMap');
         if (empty($insertLinks)) {
             $gateway->expects($this->never())->method('insertUrl');
@@ -218,7 +218,7 @@ class RichTextStorageTest extends TestCase
                     ->expects($this->at($gatewayCallIndex++))
                     ->method('insertUrl')
                     ->with($this->equalTo($url))
-                    ->will($this->returnValue($id));
+                    ->willReturn($id);
             } else {
                 $id = $linkIds[$url];
             }
@@ -283,12 +283,12 @@ class RichTextStorageTest extends TestCase
             ->expects($this->once())
             ->method('getUrlIdMap')
             ->with($this->equalTo($linkUrls))
-            ->will($this->returnValue($linkIds));
+            ->willReturn($linkIds);
         $gateway
             ->expects($this->once())
             ->method('getContentIds')
             ->with($this->equalTo($remoteIds))
-            ->will($this->returnValue($contentIds));
+            ->willReturn($contentIds);
         $gateway->expects($this->never())->method('getIdUrlMap');
         if (empty($insertLinks)) {
             $gateway->expects($this->never())->method('insertUrl');
@@ -299,7 +299,7 @@ class RichTextStorageTest extends TestCase
                 ->expects($this->at($index + 2))
                 ->method('insertUrl')
                 ->with($this->equalTo($linkMap['url']))
-                ->will($this->returnValue($linkMap['id']));
+                ->willReturn($linkMap['id']);
         }
 
         $versionInfo = new VersionInfo();

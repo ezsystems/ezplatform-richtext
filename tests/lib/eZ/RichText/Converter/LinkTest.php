@@ -222,12 +222,12 @@ class LinkTest extends TestCase
         $locationService->expects($this->once())
             ->method('loadLocation')
             ->with($this->equalTo($locationId))
-            ->will($this->returnValue($location));
+            ->willReturn($location);
 
         $urlAliasRouter->expects($this->once())
             ->method('generate')
             ->with($this->equalTo($location))
-            ->will($this->returnValue($urlResolved));
+            ->willReturn($urlResolved);
 
         $converter = new Link($locationService, $contentService, $urlAliasRouter);
 
@@ -427,22 +427,22 @@ class LinkTest extends TestCase
         $contentInfo->expects($this->once())
             ->method('__get')
             ->with($this->equalTo('mainLocationId'))
-            ->will($this->returnValue($locationId));
+            ->willReturn($locationId);
 
         $contentService->expects($this->any())
             ->method('loadContentInfo')
             ->with($this->equalTo($contentId))
-            ->will($this->returnValue($contentInfo));
+            ->willReturn($contentInfo);
 
         $locationService->expects($this->once())
             ->method('loadLocation')
             ->with($this->equalTo($locationId))
-            ->will($this->returnValue($location));
+            ->willReturn($location);
 
         $urlAliasRouter->expects($this->once())
             ->method('generate')
             ->with($this->equalTo($location))
-            ->will($this->returnValue($urlResolved));
+            ->willReturn($urlResolved);
 
         $converter = new Link($locationService, $contentService, $urlAliasRouter);
 

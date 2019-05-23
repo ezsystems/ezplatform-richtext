@@ -48,19 +48,19 @@ class RendererTest extends TestCase
             ->expects($this->once())
             ->method('render')
             ->with($templateName, $parameters)
-            ->will($this->returnValue($result));
+            ->willReturn($result);
 
         $renderer
             ->expects($this->once())
             ->method('getTagTemplateName')
             ->with($name, $isInline)
-            ->will($this->returnValue($templateName));
+            ->willReturn($templateName);
 
         $this->templateEngineMock
             ->expects($this->once())
             ->method('exists')
             ->with($templateName)
-            ->will($this->returnValue(true));
+            ->willReturn(true);
 
         $this->loggerMock
             ->expects($this->never())
@@ -87,7 +87,7 @@ class RendererTest extends TestCase
             ->expects($this->once())
             ->method('getTagTemplateName')
             ->with($name, $isInline)
-            ->will($this->returnValue(null));
+            ->willReturn(null);
 
         $this->templateEngineMock
             ->expects($this->never())
@@ -119,13 +119,13 @@ class RendererTest extends TestCase
             ->expects($this->once())
             ->method('getTagTemplateName')
             ->with($name, $isInline)
-            ->will($this->returnValue('templateName'));
+            ->willReturn('templateName');
 
         $this->templateEngineMock
             ->expects($this->once())
             ->method('exists')
             ->with($templateName)
-            ->will($this->returnValue(false));
+            ->willReturn(false);
 
         $this->loggerMock
             ->expects($this->once())
@@ -253,7 +253,7 @@ class RendererTest extends TestCase
                 ->expects($this->once())
                 ->method('render')
                 ->with($renderTemplate, $parameters)
-                ->will($this->returnValue($renderResult));
+                ->willReturn($renderResult);
         }
 
         if (!isset($templateEngineTemplate)) {
@@ -265,7 +265,7 @@ class RendererTest extends TestCase
                 ->expects($this->once())
                 ->method('exists')
                 ->with($templateEngineTemplate)
-                ->will($this->returnValue(true));
+                ->willReturn(true);
         }
 
         if (empty($configResolverParams)) {
@@ -282,7 +282,7 @@ class RendererTest extends TestCase
                     ->expects($this->at($i))
                     ->method($method)
                     ->with($namespace)
-                    ->will($this->returnValue($returnValue));
+                    ->willReturn($returnValue);
                 ++$i;
             }
         }
@@ -339,19 +339,19 @@ class RendererTest extends TestCase
             ->expects($this->once())
             ->method('render')
             ->with($templateName, $parameters)
-            ->will($this->returnValue($result));
+            ->willReturn($result);
 
         $renderer
             ->expects($this->once())
             ->method('getEmbedTemplateName')
             ->with(Renderer::RESOURCE_TYPE_CONTENT, $isInline, $isDenied)
-            ->will($this->returnValue($templateName));
+            ->willReturn($templateName);
 
         $this->templateEngineMock
             ->expects($this->once())
             ->method('exists')
             ->with($templateName)
-            ->will($this->returnValue(true));
+            ->willReturn(true);
 
         $this->loggerMock
             ->expects($this->never())
@@ -395,7 +395,7 @@ class RendererTest extends TestCase
             ->expects($this->once())
             ->method('getEmbedTemplateName')
             ->with(Renderer::RESOURCE_TYPE_CONTENT, $isInline, $isDenied)
-            ->will($this->returnValue($templateName));
+            ->willReturn($templateName);
 
         $this->templateEngineMock
             ->expects($this->never())
@@ -442,13 +442,13 @@ class RendererTest extends TestCase
             ->expects($this->once())
             ->method('getEmbedTemplateName')
             ->with(Renderer::RESOURCE_TYPE_CONTENT, $isInline, $isDenied)
-            ->will($this->returnValue($templateName));
+            ->willReturn($templateName);
 
         $this->templateEngineMock
             ->expects($this->once())
             ->method('exists')
             ->with($templateName)
-            ->will($this->returnValue(false));
+            ->willReturn(false);
 
         $this->loggerMock
             ->expects($this->once())
@@ -489,19 +489,19 @@ class RendererTest extends TestCase
             ->expects($this->once())
             ->method('render')
             ->with($templateName, $parameters)
-            ->will($this->returnValue($result));
+            ->willReturn($result);
 
         $renderer
             ->expects($this->once())
             ->method('getEmbedTemplateName')
             ->with(Renderer::RESOURCE_TYPE_CONTENT, $isInline, $isDenied)
-            ->will($this->returnValue($templateName));
+            ->willReturn($templateName);
 
         $this->templateEngineMock
             ->expects($this->once())
             ->method('exists')
             ->with($templateName)
-            ->will($this->returnValue(true));
+            ->willReturn(true);
 
         $this->loggerMock
             ->expects($this->once())
@@ -802,7 +802,7 @@ class RendererTest extends TestCase
                 ->expects($this->once())
                 ->method('render')
                 ->with($renderTemplate, $parameters)
-                ->will($this->returnValue($renderResult));
+                ->willReturn($renderResult);
         }
 
         if (!isset($templateEngineTemplate)) {
@@ -814,7 +814,7 @@ class RendererTest extends TestCase
                 ->expects($this->once())
                 ->method('exists')
                 ->with($templateEngineTemplate)
-                ->will($this->returnValue(true));
+                ->willReturn(true);
         }
 
         if (empty($configResolverParams)) {
@@ -831,7 +831,7 @@ class RendererTest extends TestCase
                     ->expects($this->at($i))
                     ->method($method)
                     ->with($namespace)
-                    ->will($this->returnValue($returnValue));
+                    ->willReturn($returnValue);
                 ++$i;
             }
         }
@@ -875,31 +875,31 @@ class RendererTest extends TestCase
             ->expects($this->once())
             ->method('__get')
             ->with('invisible')
-            ->will($this->returnValue(false));
+            ->willReturn(false);
 
         $renderer
             ->expects($this->once())
             ->method('checkLocation')
             ->with($locationId)
-            ->will($this->returnValue($mockLocation));
+            ->willReturn($mockLocation);
 
         $renderer
             ->expects($this->once())
             ->method('render')
             ->with($templateName, $parameters)
-            ->will($this->returnValue($result));
+            ->willReturn($result);
 
         $renderer
             ->expects($this->once())
             ->method('getEmbedTemplateName')
             ->with(Renderer::RESOURCE_TYPE_LOCATION, $isInline, $isDenied)
-            ->will($this->returnValue($templateName));
+            ->willReturn($templateName);
 
         $this->templateEngineMock
             ->expects($this->once())
             ->method('exists')
             ->with($templateName)
-            ->will($this->returnValue(true));
+            ->willReturn(true);
 
         $this->loggerMock
             ->expects($this->never())
@@ -926,13 +926,13 @@ class RendererTest extends TestCase
             ->expects($this->once())
             ->method('__get')
             ->with('invisible')
-            ->will($this->returnValue(false));
+            ->willReturn(false);
 
         $renderer
             ->expects($this->once())
             ->method('checkLocation')
             ->with($locationId)
-            ->will($this->returnValue($mockLocation));
+            ->willReturn($mockLocation);
 
         $renderer
             ->expects($this->never())
@@ -942,7 +942,7 @@ class RendererTest extends TestCase
             ->expects($this->once())
             ->method('getEmbedTemplateName')
             ->with(Renderer::RESOURCE_TYPE_LOCATION, $isInline, $isDenied)
-            ->will($this->returnValue($templateName));
+            ->willReturn($templateName);
 
         $this->templateEngineMock
             ->expects($this->never())
@@ -973,13 +973,13 @@ class RendererTest extends TestCase
             ->expects($this->once())
             ->method('__get')
             ->with('invisible')
-            ->will($this->returnValue(false));
+            ->willReturn(false);
 
         $renderer
             ->expects($this->once())
             ->method('checkLocation')
             ->with($locationId)
-            ->will($this->returnValue($mockLocation));
+            ->willReturn($mockLocation);
 
         $renderer
             ->expects($this->never())
@@ -989,13 +989,13 @@ class RendererTest extends TestCase
             ->expects($this->once())
             ->method('getEmbedTemplateName')
             ->with(Renderer::RESOURCE_TYPE_LOCATION, $isInline, $isDenied)
-            ->will($this->returnValue($templateName));
+            ->willReturn($templateName);
 
         $this->templateEngineMock
             ->expects($this->once())
             ->method('exists')
             ->with($templateName)
-            ->will($this->returnValue(false));
+            ->willReturn(false);
 
         $this->loggerMock
             ->expects($this->once())
@@ -1028,19 +1028,19 @@ class RendererTest extends TestCase
             ->expects($this->once())
             ->method('render')
             ->with($templateName, $parameters)
-            ->will($this->returnValue($result));
+            ->willReturn($result);
 
         $renderer
             ->expects($this->once())
             ->method('getEmbedTemplateName')
             ->with(Renderer::RESOURCE_TYPE_LOCATION, $isInline, $isDenied)
-            ->will($this->returnValue($templateName));
+            ->willReturn($templateName);
 
         $this->templateEngineMock
             ->expects($this->once())
             ->method('exists')
             ->with($templateName)
-            ->will($this->returnValue(true));
+            ->willReturn(true);
 
         $this->loggerMock
             ->expects($this->once())
@@ -1066,13 +1066,13 @@ class RendererTest extends TestCase
             ->expects($this->once())
             ->method('__get')
             ->with('invisible')
-            ->will($this->returnValue(true));
+            ->willReturn(true);
 
         $renderer
             ->expects($this->once())
             ->method('checkLocation')
             ->with($locationId)
-            ->will($this->returnValue($mockLocation));
+            ->willReturn($mockLocation);
 
         $renderer
             ->expects($this->never())
@@ -1312,13 +1312,13 @@ class RendererTest extends TestCase
                 ->expects($this->once())
                 ->method('__get')
                 ->with('invisible')
-                ->will($this->returnValue(false));
+                ->willReturn(false);
 
             $renderer
                 ->expects($this->once())
                 ->method('checkLocation')
                 ->with($locationId)
-                ->will($this->returnValue($mockLocation));
+                ->willReturn($mockLocation);
         }
 
         if (!isset($renderTemplate)) {
@@ -1330,7 +1330,7 @@ class RendererTest extends TestCase
                 ->expects($this->once())
                 ->method('render')
                 ->with($renderTemplate, $parameters)
-                ->will($this->returnValue($renderResult));
+                ->willReturn($renderResult);
         }
 
         if (!isset($templateEngineTemplate)) {
@@ -1342,7 +1342,7 @@ class RendererTest extends TestCase
                 ->expects($this->once())
                 ->method('exists')
                 ->with($templateEngineTemplate)
-                ->will($this->returnValue(true));
+                ->willReturn(true);
         }
 
         if (empty($configResolverParams)) {
@@ -1359,7 +1359,7 @@ class RendererTest extends TestCase
                     ->expects($this->at($i))
                     ->method($method)
                     ->with($namespace)
-                    ->will($this->returnValue($returnValue));
+                    ->willReturn($returnValue);
                 ++$i;
             }
         }
