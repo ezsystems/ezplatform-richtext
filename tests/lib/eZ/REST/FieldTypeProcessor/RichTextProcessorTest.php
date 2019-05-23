@@ -45,7 +45,7 @@ EOT;
             ->expects($this->once())
             ->method('convert')
             ->with($this->isInstanceOf('DOMDocument'))
-            ->will($this->returnValue($convertedDocument));
+            ->willReturn($convertedDocument);
 
         $this->assertEquals(
             $processedOutputValue,
