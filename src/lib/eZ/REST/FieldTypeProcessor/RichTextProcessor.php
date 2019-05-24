@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace EzSystems\EzPlatformRichText\eZ\REST\FieldTypeProcessor;
 
-use eZ\Publish\Core\REST\Common\FieldTypeProcessor;
+use EzSystems\EzPlatformRest\FieldTypeProcessor;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 use DOMDocument;
 
