@@ -282,7 +282,12 @@ class RichText extends AbstractFieldTypeParser
         $contextualizer->mapConfigArray('fieldtypes.ezrichtext.edit_custom_xsl', $config);
         $contextualizer->mapConfigArray('fieldtypes.ezrichtext.input_custom_xsl', $config);
         $contextualizer->mapConfigArray(static::CLASSES_SA_SETTINGS_ID, $config);
-        $contextualizer->mapConfigArray(static::ATTRIBUTES_SA_SETTINGS_ID, $config);
+        // merge attributes of the same element from different scopes
+        $contextualizer->mapConfigArray(
+            static::ATTRIBUTES_SA_SETTINGS_ID,
+            $config,
+            ContextualizerInterface::MERGE_FROM_SECOND_LEVEL
+        );
     }
 
     /**
