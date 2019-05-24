@@ -19,23 +19,23 @@ use Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition;
  */
 class RichText extends AbstractFieldTypeParser
 {
-    const CLASSES_SA_SETTINGS_ID = 'fieldtypes.ezrichtext.classes';
-    const CLASSES_NODE_KEY = 'classes';
+    public const CLASSES_SA_SETTINGS_ID = 'fieldtypes.ezrichtext.classes';
+    private const CLASSES_NODE_KEY = 'classes';
 
-    const ATTRIBUTES_SA_SETTINGS_ID = 'fieldtypes.ezrichtext.attributes';
-    const ATTRIBUTES_NODE_KEY = 'attributes';
-    const ATTRIBUTE_TYPE_NODE_KEY = 'type';
-    const ATTRIBUTE_TYPE_CHOICE = 'choice';
-    const ATTRIBUTE_TYPE_BOOLEAN = 'boolean';
-    const ATTRIBUTE_TYPE_STRING = 'string';
-    const ATTRIBUTE_TYPE_NUMBER = 'number';
+    public const ATTRIBUTES_SA_SETTINGS_ID = 'fieldtypes.ezrichtext.attributes';
+    private const ATTRIBUTES_NODE_KEY = 'attributes';
+    private const ATTRIBUTE_TYPE_NODE_KEY = 'type';
+    private const ATTRIBUTE_TYPE_CHOICE = 'choice';
+    private const ATTRIBUTE_TYPE_BOOLEAN = 'boolean';
+    private const ATTRIBUTE_TYPE_STRING = 'string';
+    private const ATTRIBUTE_TYPE_NUMBER = 'number';
 
     // constants common for OE custom classes and data attributes configuration
-    const ELEMENT_NODE_KEY = 'element';
-    const DEFAULT_VALUE_NODE_KEY = 'default_value';
-    const CHOICES_NODE_KEY = 'choices';
-    const REQUIRED_NODE_KEY = 'required';
-    const MULTIPLE_NODE_KEY = 'multiple';
+    private const ELEMENT_NODE_KEY = 'element';
+    private const DEFAULT_VALUE_NODE_KEY = 'default_value';
+    private const CHOICES_NODE_KEY = 'choices';
+    private const REQUIRED_NODE_KEY = 'required';
+    private const MULTIPLE_NODE_KEY = 'multiple';
 
     /**
      * Returns the fieldType identifier the config parser works for.
@@ -281,10 +281,10 @@ class RichText extends AbstractFieldTypeParser
         $contextualizer->mapConfigArray('fieldtypes.ezrichtext.output_custom_xsl', $config);
         $contextualizer->mapConfigArray('fieldtypes.ezrichtext.edit_custom_xsl', $config);
         $contextualizer->mapConfigArray('fieldtypes.ezrichtext.input_custom_xsl', $config);
-        $contextualizer->mapConfigArray(static::CLASSES_SA_SETTINGS_ID, $config);
+        $contextualizer->mapConfigArray(self::CLASSES_SA_SETTINGS_ID, $config);
         // merge attributes of the same element from different scopes
         $contextualizer->mapConfigArray(
-            static::ATTRIBUTES_SA_SETTINGS_ID,
+            self::ATTRIBUTES_SA_SETTINGS_ID,
             $config,
             ContextualizerInterface::MERGE_FROM_SECOND_LEVEL
         );
