@@ -71,6 +71,7 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
         $loader->load('rest.yml');
         $loader->load('templating.yml');
         $loader->load('form.yml');
+        $loader->load('translation.yml');
 
         // load Kernel BC layer
         $loader->load('bc/aliases.yml');
