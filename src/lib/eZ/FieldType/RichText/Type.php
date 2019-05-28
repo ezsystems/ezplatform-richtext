@@ -53,11 +53,13 @@ class Type extends FieldType
      * It will be used to generate content name and url alias if current field is designated
      * to be used in the content name/urlAlias pattern.
      *
-     * @param \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value $value
+     * @param \eZ\Publish\SPI\FieldType\Value $value
+     * @param \eZ\Publish\API\Repository\Values\ContentType\FieldDefinition $fieldDefinition
+     * @param string $languageCode
      *
      * @return string
      */
-    public function getName(SPIValue $value)
+    public function getName(SPIValue $value, FieldDefinition $fieldDefinition, string $languageCode): string
     {
         $result = null;
         if ($section = $value->xml->documentElement->firstChild) {
