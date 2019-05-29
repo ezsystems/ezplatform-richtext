@@ -503,6 +503,48 @@ class RichTextTest extends AbstractParserTestCase
                     ],
                 ],
             ],
+            [
+                [
+                    'fieldtypes' => [
+                        'ezrichtext' => [
+                            'attributes' => [
+                                'paragraph' => [
+                                    'select-single-attr' => [
+                                        'choices' => ['class1', 'class2'],
+                                        'type' => 'choice',
+                                        'required' => true,
+                                        'default_value' => 'class1',
+                                    ],
+                                ],
+                                'headline' => [
+                                    'text-attr' => [
+                                        'type' => 'string',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+                [
+                    'fieldtypes.ezrichtext.attributes' => [
+                        'paragraph' => [
+                            'select-single-attr' => [
+                                'choices' => ['class1', 'class2'],
+                                'type' => 'choice',
+                                'required' => true,
+                                'default_value' => 'class1',
+                                'multiple' => false,
+                            ],
+                        ],
+                        'headline' => [
+                            'text-attr' => [
+                                'type' => 'string',
+                                'required' => false,
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

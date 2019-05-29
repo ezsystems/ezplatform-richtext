@@ -440,6 +440,8 @@ class RichText extends AbstractFieldTypeParser
             ->arrayNode(self::ATTRIBUTES_NODE_KEY)
                 ->useAttributeAsKey(self::ELEMENT_NODE_KEY)
                 ->arrayPrototype()
+                    // allow dashes in data attribute name
+                    ->normalizeKeys(false)
                     ->arrayPrototype()
                         ->validate()
                             ->always($this->getAttributesValidatorCallback($invalidChoiceCallback))
@@ -504,6 +506,11 @@ class RichText extends AbstractFieldTypeParser
                         self::CHOICES_NODE_KEY
                     )
                 );
+            }
+
+            // at this point, for non-choice types, unset choice type-related settings
+            if ($v[self::ATTRIBUTE_TYPE_NODE_KEY] !== self::ATTRIBUTE_TYPE_CHOICE) {
+                unset($v[self::CHOICES_NODE_KEY], $v[self::MULTIPLE_NODE_KEY]);
             }
 
             return $v;
