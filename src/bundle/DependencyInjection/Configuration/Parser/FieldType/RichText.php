@@ -463,7 +463,7 @@ class RichText extends AbstractFieldTypeParser
                                 ->scalarPrototype()
                                 ->end()
                             ->end()
-                            ->booleanNode(self::MULTIPLE_NODE_KEY)->defaultTrue()->end()
+                            ->booleanNode(self::MULTIPLE_NODE_KEY)->defaultFalse()->end()
                             ->booleanNode(self::REQUIRED_NODE_KEY)->defaultFalse()->end()
                             ->scalarNode(self::DEFAULT_VALUE_NODE_KEY)->end()
                         ->end()
