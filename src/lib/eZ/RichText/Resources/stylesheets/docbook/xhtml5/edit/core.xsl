@@ -321,15 +321,15 @@
     </xsl:element>
   </xsl:template>
 
-  <xsl:template match="docbook:orderedlist/docbook:listitem/docbook:para | docbook:itemizedlist/docbook:listitem/docbook:para">
+  <xsl:template match="docbook:orderedlist/docbook:listitem | docbook:itemizedlist/docbook:listitem">
     <xsl:element name="li" namespace="{$outputNamespace}">
-      <xsl:if test="../@ezxhtml:class">
+      <xsl:if test="@ezxhtml:class">
         <xsl:attribute name="class">
-          <xsl:value-of select="../@ezxhtml:class"/>
+          <xsl:value-of select="@ezxhtml:class"/>
         </xsl:attribute>
       </xsl:if>
       <xsl:call-template name="ezattribute"/>
-      <xsl:apply-templates/>
+      <xsl:apply-templates select="./docbook:para/node()" />
     </xsl:element>
   </xsl:template>
 
