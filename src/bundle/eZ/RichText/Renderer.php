@@ -119,22 +119,6 @@ class Renderer implements RendererInterface
     /**
      * {@inheritdoc}
      */
-    protected function renderStyle($name, array $parameters, $isInline)
-    {
-        return $this->renderTemplate($name, 'style', $parameters, $isInline);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function renderTag($name, array $parameters, $isInline)
-    {
-        return $this->renderTemplate($name, 'tag', $parameters, $isInline);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function renderContentEmbed($contentId, $viewType, array $parameters, $isInline)
     {
         $isDenied = false;
