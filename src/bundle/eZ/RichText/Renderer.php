@@ -442,27 +442,6 @@ class Renderer implements RendererInterface
     }
 
     /**
-     * Check embed permissions for the given Content $id.
-     *
-     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
-     *
-     * @deprecated since 6.7
-     *
-     * @param int $contentId
-     */
-    protected function checkContent($contentId)
-    {
-        /** @var \eZ\Publish\API\Repository\Values\Content\Content $content */
-        $content = $this->repository->sudo(
-            function (Repository $repository) use ($contentId) {
-                return $repository->getContentService()->loadContent($contentId);
-            }
-        );
-
-        $this->checkContentPermissions($content);
-    }
-
-    /**
      * Check embed permissions for the given Content.
      *
      * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
