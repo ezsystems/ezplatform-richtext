@@ -126,7 +126,7 @@ class DocbookTest extends TestCase
         $document->loadXML($input);
 
         $validator = $this->getConversionValidator();
-        $errors = $validator->validate($document);
+        $errors = $validator->validateDocument($document);
 
         $this->assertEquals(count($expectedErrors), count($errors));
 
@@ -136,12 +136,12 @@ class DocbookTest extends TestCase
     }
 
     /**
-     * @var \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Validator
+     * @var \EzSystems\EzPlatformRichText\eZ\RichText\ValidatorInterface
      */
     protected $validator;
 
     /**
-     * @return \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Validator
+     * @return \EzSystems\EzPlatformRichText\eZ\RichText\ValidatorInterface
      */
     protected function getConversionValidator()
     {

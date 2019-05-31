@@ -37,14 +37,6 @@ class Validator extends XmlBase implements ValidatorInterface
     }
 
     /**
-     * @deprecated Use validateDocument instead
-     */
-    public function validate(DOMDocument $document)
-    {
-        return $this->validateDocument($document);
-    }
-
-    /**
      * Performs validation on given $document using injected schema files and returns validation errors.
      *
      * Handles ISO Schematron (as XSLT stylesheet), XSD and RELAX NG schemas.
