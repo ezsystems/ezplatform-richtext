@@ -26,19 +26,6 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
     const RICHTEXT_CUSTOM_TAGS_PARAMETER = 'ezplatform.ezrichtext.custom_tags';
     const RICHTEXT_ALLOY_EDITOR_PARAMETER = 'ezplatform.ezrichtext.alloy_editor';
 
-    /**
-     * @deprecated aliasing Kernel RichText classes with the ones from this bundle will be dropped
-     * in the next major version
-     */
-    const KERNEL_CLASSMAP = [
-        \eZ\Publish\Core\FieldType\RichText\Value::class => \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value::class,
-        \eZ\Publish\Core\FieldType\RichText\Type::class => \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Type::class,
-        \eZ\Publish\Core\FieldType\RichText\SearchField::class => \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\SearchField::class,
-        \eZ\Publish\Core\FieldType\RichText\Validator::class => \EzSystems\EzPlatformRichText\eZ\RichText\Validator\Validator::class,
-        \eZ\Publish\Core\FieldType\RichText\Converter::class => \EzSystems\EzPlatformRichText\eZ\RichText\Converter::class,
-        \eZ\Publish\Core\FieldType\RichText\RendererInterface::class => \EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface::class,
-    ];
-
     public function getAlias()
     {
         return 'ezrichtext';
@@ -71,9 +58,6 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
         $loader->load('rest.yml');
         $loader->load('templating.yml');
         $loader->load('form.yml');
-
-        // load Kernel BC layer
-        $loader->load('bc/aliases.yml');
 
         $configuration = $this->getConfiguration($configs, $container);
         $config = $this->processConfiguration($configuration, $configs);
