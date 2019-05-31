@@ -36,6 +36,8 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
      *
      * @param array $configs
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+     *
+     * @throws \Exception
      */
     public function load(array $configs, ContainerBuilder $container)
     {
