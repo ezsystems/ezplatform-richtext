@@ -18,20 +18,6 @@ use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value;
 class RichTextFieldValueConverter implements Converter
 {
     /**
-     * Factory for current class.
-     *
-     * Note: Class should instead be configured as service if it gains dependencies.
-     *
-     * @deprecated since 6.8, will be removed in 7.x, use default constructor instead.
-     *
-     * @return self
-     */
-    public static function create()
-    {
-        return new self();
-    }
-
-    /**
      * Converts data from $value to $storageFieldValue.
      *
      * @param \eZ\Publish\SPI\Persistence\Content\FieldValue $value

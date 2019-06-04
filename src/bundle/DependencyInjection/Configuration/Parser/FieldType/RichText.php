@@ -36,9 +36,6 @@ class RichText extends AbstractFieldTypeParser
      */
     public function addFieldTypeSemanticConfig(NodeBuilder $nodeBuilder)
     {
-        // for BC setup deprecated configuration
-        $this->setupDeprecatedConfiguration($nodeBuilder);
-
         $nodeBuilder
             ->arrayNode('embed')
                 ->info('RichText embed tags configuration.')
@@ -195,21 +192,6 @@ class RichText extends AbstractFieldTypeParser
     {
         if (!empty($scopeSettings['fieldtypes'])) {
             // Workaround to be able to use Contextualizer::mapConfigArray() which only supports first level entries.
-            if (isset($scopeSettings['fieldtypes']['ezrichtext']['output_custom_tags'])) {
-                $scopeSettings['fieldtypes.ezrichtext.output_custom_xsl'] = $scopeSettings['fieldtypes']['ezrichtext']['output_custom_tags'];
-                unset($scopeSettings['fieldtypes']['ezrichtext']['output_custom_tags']);
-            }
-
-            if (isset($scopeSettings['fieldtypes']['ezrichtext']['edit_custom_tags'])) {
-                $scopeSettings['fieldtypes.ezrichtext.edit_custom_xsl'] = $scopeSettings['fieldtypes']['ezrichtext']['edit_custom_tags'];
-                unset($scopeSettings['fieldtypes']['ezrichtext']['edit_custom_tags']);
-            }
-
-            if (isset($scopeSettings['fieldtypes']['ezrichtext']['input_custom_tags'])) {
-                $scopeSettings['fieldtypes.ezrichtext.input_custom_xsl'] = $scopeSettings['fieldtypes']['ezrichtext']['input_custom_tags'];
-                unset($scopeSettings['fieldtypes']['ezrichtext']['input_custom_tags']);
-            }
-
             if (isset($scopeSettings['fieldtypes']['ezrichtext']['custom_tags'])) {
                 $scopeSettings['fieldtypes.ezrichtext.custom_tags'] = $scopeSettings['fieldtypes']['ezrichtext']['custom_tags'];
                 unset($scopeSettings['fieldtypes']['ezrichtext']['custom_tags']);
@@ -218,16 +200,6 @@ class RichText extends AbstractFieldTypeParser
             if (isset($scopeSettings['fieldtypes']['ezrichtext']['custom_styles'])) {
                 $scopeSettings['fieldtypes.ezrichtext.custom_styles'] = $scopeSettings['fieldtypes']['ezrichtext']['custom_styles'];
                 unset($scopeSettings['fieldtypes']['ezrichtext']['custom_styles']);
-            }
-
-            if (isset($scopeSettings['fieldtypes']['ezrichtext']['tags'])) {
-                foreach ($scopeSettings['fieldtypes']['ezrichtext']['tags'] as $name => $tagSettings) {
-                    $contextualizer->setContextualParameter(
-                        "fieldtypes.ezrichtext.tags.{$name}",
-                        $currentScope,
-                        $scopeSettings['fieldtypes']['ezrichtext']['tags'][$name]
-                    );
-                }
             }
 
             if (isset($scopeSettings['fieldtypes']['ezrichtext']['embed'])) {
@@ -249,108 +221,5 @@ class RichText extends AbstractFieldTypeParser
         $contextualizer->mapConfigArray('fieldtypes.ezrichtext.output_custom_xsl', $config);
         $contextualizer->mapConfigArray('fieldtypes.ezrichtext.edit_custom_xsl', $config);
         $contextualizer->mapConfigArray('fieldtypes.ezrichtext.input_custom_xsl', $config);
-    }
-
-    /**
-     * Add BC setup for deprecated configuration.
-     *
-     * Note: kept in separate method for readability.
-     *
-     * @param \Symfony\Component\Config\Definition\Builder\NodeBuilder $nodeBuilder
-     */
-    private function setupDeprecatedConfiguration(NodeBuilder $nodeBuilder)
-    {
-        $nodeBuilder
-            ->arrayNode('output_custom_tags')
-                ->setDeprecated('DEPRECATED. Configure custom tags using custom_tags node')
-                ->info('Custom XSL stylesheets to use for RichText transformation to HTML5. Useful for "custom tags".')
-                ->example(
-                    [
-                        'path' => '%kernel.root_dir%/../src/Acme/TestBundle/Resources/myTag.xsl',
-                        'priority' => 10,
-                    ]
-                )
-                ->prototype('array')
-                    ->children()
-                        ->scalarNode('path')
-                            ->info('Path of the XSL stylesheet to load.')
-                            ->isRequired()
-                        ->end()
-                        ->integerNode('priority')
-                            ->info('Priority in the loading order. A high value will have higher precedence in overriding XSL templates.')
-                            ->defaultValue(0)
-                        ->end()
-                    ->end()
-                ->end()
-            ->end()
-            ->arrayNode('edit_custom_tags')
-                ->setDeprecated('DEPRECATED. Configure custom tags using custom_tags node')
-                ->info('Custom XSL stylesheets to use for RichText transformation to HTML5. Useful for "custom tags".')
-                ->example(
-                    [
-                        'path' => '%kernel.root_dir%/../src/Acme/TestBundle/Resources/myTag.xsl',
-                        'priority' => 10,
-                    ]
-                )
-                ->prototype('array')
-                    ->children()
-                        ->scalarNode('path')
-                            ->info('Path of the XSL stylesheet to load.')
-                            ->isRequired()
-                        ->end()
-                        ->integerNode('priority')
-                            ->info('Priority in the loading order. A high value will have higher precedence in overriding XSL templates.')
-                            ->defaultValue(0)
-                        ->end()
-                    ->end()
-                ->end()
-            ->end()
-            ->arrayNode('input_custom_tags')
-                ->setDeprecated('DEPRECATED. Configure custom tags using custom_tags node')
-                ->info('Custom XSL stylesheets to use for RichText transformation to HTML5. Useful for "custom tags".')
-                ->example(
-                    [
-                        'path' => '%kernel.root_dir%/../src/Acme/TestBundle/Resources/myTag.xsl',
-                        'priority' => 10,
-                    ]
-                )
-                ->prototype('array')
-                    ->children()
-                        ->scalarNode('path')
-                            ->info('Path of the XSL stylesheet to load.')
-                            ->isRequired()
-                        ->end()
-                        ->integerNode('priority')
-                            ->info('Priority in the loading order. A high value will have higher precedence in overriding XSL templates.')
-                            ->defaultValue(0)
-                        ->end()
-                    ->end()
-                ->end()
-            ->end()
-            ->arrayNode('tags')
-                ->setDeprecated('DEPRECATED. Configure custom tags using custom_tags node')
-                ->info('RichText template tags configuration.')
-                ->useAttributeAsKey('key')
-                ->normalizeKeys(false)
-                ->prototype('array')
-                    ->info(
-                        "Name of RichText template tag.\n" .
-                        "'default' and 'default_inline' tag names are reserved for fallback."
-                    )
-                    ->example('math_equation')
-                    ->children()
-                        ->append(
-                            $this->getTemplateNodeDefinition(
-                                'Template used for rendering RichText template tag.',
-                                'MyBundle:FieldType/RichText/tag:math_equation.html.twig'
-                            )
-                        )
-                        ->variableNode('config')
-                            ->info('Tag configuration, arbitrary configuration is allowed here.')
-                        ->end()
-                    ->end()
-                ->end()
-            ->end()
-        ;
     }
 }

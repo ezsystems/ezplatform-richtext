@@ -16,9 +16,6 @@ services:
         tags:
             - { name: validator.constraint_validator }
 
-    EzSystems\RepositoryForms\Form\Type\FieldType\RichTextFieldType:
-        alias: EzSystems\EzPlatformRichText\Form\Type\RichTextFieldType
-
     EzSystems\EzPlatformRichText\Form\Mapper\RichTextFormMapper:
         tags:
             - { name: ez.fieldFormMapper.value, fieldType: ezrichtext }

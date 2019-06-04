@@ -119,22 +119,6 @@ class Renderer implements RendererInterface
     /**
      * {@inheritdoc}
      */
-    protected function renderStyle($name, array $parameters, $isInline)
-    {
-        return $this->renderTemplate($name, 'style', $parameters, $isInline);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function renderTag($name, array $parameters, $isInline)
-    {
-        return $this->renderTemplate($name, 'tag', $parameters, $isInline);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function renderContentEmbed($contentId, $viewType, array $parameters, $isInline)
     {
         $isDenied = false;
@@ -455,27 +439,6 @@ class Renderer implements RendererInterface
         );
 
         return null;
-    }
-
-    /**
-     * Check embed permissions for the given Content $id.
-     *
-     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
-     *
-     * @deprecated since 6.7
-     *
-     * @param int $contentId
-     */
-    protected function checkContent($contentId)
-    {
-        /** @var \eZ\Publish\API\Repository\Values\Content\Content $content */
-        $content = $this->repository->sudo(
-            function (Repository $repository) use ($contentId) {
-                return $repository->getContentService()->loadContent($contentId);
-            }
-        );
-
-        $this->checkContentPermissions($content);
     }
 
     /**

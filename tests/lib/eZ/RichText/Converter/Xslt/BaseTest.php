@@ -122,7 +122,7 @@ abstract class BaseTest extends TestCase
         $validator = $this->getConversionValidator();
         if (isset($validator)) {
             // As assert below validated converted and output is the same, validate ouput here to get right line number.
-            $errors = $validator->validate($outputDocument);
+            $errors = $validator->validateDocument($outputDocument);
             $this->assertEmpty(
                 $errors,
                 'Conversion result did not validate against the configured schemas:' .
@@ -179,7 +179,7 @@ abstract class BaseTest extends TestCase
     }
 
     /**
-     * @return \EzSystems\EzPlatformRichText\eZ\RichText\Validator
+     * @return \EzSystems\EzPlatformRichText\eZ\RichText\ValidatorInterface
      */
     protected function getConversionValidator()
     {
