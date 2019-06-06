@@ -866,6 +866,9 @@
     <define name="db.superscript.attlist" combine="interleave">
       <ref name="ez.xhtml.data.attribute" />
     </define>
+    <define name="ez.embed.content" combine="interleave">
+      <ref name="ez.xhtml.data.attribute" />
+    </define>
   </div>
 
 </grammar>

@@ -10,4 +10,5 @@
       <ezvalue key="size">medium</ezvalue>
     </ezconfig>
   </ezembedinline> content.</para>
+  <para>Some<ezembedinline xlink:href="ezcontent://601" xml:id="id4"><ezattribute><ezvalue key="name-1">value 1</ezvalue><ezvalue key="name-2">value 2</ezvalue></ezattribute></ezembedinline> content.</para>
 </section>

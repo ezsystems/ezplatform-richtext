@@ -6,4 +6,5 @@
       <span data-ezelement="ezvalue" data-ezvalue-key="size">medium</span>
     </span>
   </span> content.</p>
+  <p>Some<span data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2" data-ezelement="ezembedinline" id="id4" data-href="ezcontent://601"> </span> content.</p>
 </section>

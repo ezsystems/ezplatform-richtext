@@ -567,6 +567,7 @@
     <xsl:element name="div" namespace="{$outputNamespace}">
       <xsl:attribute name="data-ezelement">ezembed</xsl:attribute>
       <xsl:call-template name="addCommonEmbedAttributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -575,8 +576,9 @@
     <xsl:element name="span" namespace="{$outputNamespace}">
       <xsl:attribute name="data-ezelement">ezembedinline</xsl:attribute>
       <xsl:call-template name="addCommonEmbedAttributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
-      <xsl:if test="not(node())">
+      <xsl:if test="./docbook:ezattribute or not(node())">
         <xsl:text> </xsl:text>
       </xsl:if>
     </xsl:element>

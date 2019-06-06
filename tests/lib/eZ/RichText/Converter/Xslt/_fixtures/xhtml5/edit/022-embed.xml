@@ -8,4 +8,5 @@
     </span>
   </div>
   <div data-ezelement="ezembed" data-href="ezlocation://601" id="embed-id-2" data-ezview="line" class="embedClass2" data-ezalign="right"/>
+  <div data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2" data-ezelement="ezembed" data-href="ezlocation://601" id="embed-id-3" data-ezview="embed" data-ezalign="right"/>
 </section>

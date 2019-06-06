@@ -5,6 +5,11 @@
 {% if embedParams.link is defined  %}
     {% set params = params|merge( { "linkParameters": embedParams.link } ) %}
 {% endif %}
+{% if embedParams.dataAttributes is defined %}
+    {# Note: intentionally using here new convention for parameter names #}
+    {% set params = params|merge( { "data_attributes": embedParams.dataAttributes } ) %}
+{% endif %}
+
 {{ fos_httpcache_tag('relation-' ~ embedParams.id) }}
 {{
     render(
