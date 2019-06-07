@@ -28,35 +28,25 @@ branches:
 matrix:
   fast_finish: true
   include:
-# 7.1
-    - name: '[PHP 7.1] Unit tests'
-      php: 7.1
+# 7.3
+    - name: '[PHP 7.3] Unit tests'
+      php: 7.3
       env: TEST_CONFIG="phpunit.xml"
-    - name: '[PHP 7.1] MySQL Legacy Storage Integration'
-      php: 7.1
-      env:
-        - TEST_CONFIG="phpunit-integration-legacy.xml"
-        - DB="mysql"
-        - DATABASE="mysql://root@localhost/testdb"
-# 7.2
-    - name: '[PHP 7.2] Unit tests'
-      php: 7.2
-      env: TEST_CONFIG="phpunit.xml"
-    - name: '[PHP 7.2] PostgreSQL Legacy Storage Integration'
-      php: 7.2
+    - name: '[PHP 7.3] PostgreSQL Legacy Storage Integration'
+      php: 7.3
       env:
         - TEST_CONFIG="phpunit-integration-legacy.xml"
         - DB="postgresql"
         - DATABASE="pgsql://postgres@localhost/testdb"
-    - name: '[PHP 7.2] Solr Search Engine Integration'
-      php: 7.2
+    - name: '[PHP 7.3] Solr Search Engine Integration'
+      php: 7.3
       env:
         - SOLR_VERSION="6.4.2"
         - TEST_CONFIG="phpunit-integration-legacy-solr.xml"
         - CORES_SETUP="shared"
         - SOLR_CONFIG="vendor/ezsystems/ezplatform-solr-search-engine/lib/Resources/config/solr/schema.xml vendor/ezsystems/ezplatform-solr-search-engine/lib/Resources/config/solr/custom-fields-types.xml vendor/ezsystems/ezplatform-solr-search-engine/lib/Resources/config/solr/language-fieldtypes.xml"
-    - name: '[PHP 7.2] AdminUI Behat tests'
-      php: 7.2
+    - name: '[PHP 7.3] AdminUI Behat tests'
+      php: 7.3
       env:
         - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
         - BEHAT_OPTS="--profile=adminui --suite=richtext"
@@ -64,7 +54,7 @@ matrix:
         - SYMFONY_DEBUG=1
 # CS check
     - name: 'Code Style Check'
-      php: 7.2
+      php: 7.3
       env: CHECK_CS=true
 
 # reduce depth (history) of git checkout
