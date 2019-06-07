@@ -9,10 +9,10 @@ declare(strict_types=1);
 namespace EzSystems\EzPlatformRichTextBundle\Templating\Twig\Extension;
 
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter as RichTextConverterInterface;
-use Twig_Extension;
-use Twig_SimpleFilter;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 
-class RichTextExtension extends Twig_Extension
+class RichTextExtension extends AbstractExtension
 {
     /**
      * @var \EzSystems\EzPlatformRichText\eZ\RichText\Converter
@@ -38,12 +38,12 @@ class RichTextExtension extends Twig_Extension
     public function getFilters()
     {
         return [
-            new Twig_SimpleFilter(
+            new TwigFilter(
                 'richtext_to_html5',
                 [$this, 'richTextToHtml5'],
                 ['is_safe' => ['html']]
             ),
-            new Twig_SimpleFilter(
+            new TwigFilter(
                 'richtext_to_html5_edit',
                 [$this, 'richTextToHtml5Edit'],
                 ['is_safe' => ['html']]
