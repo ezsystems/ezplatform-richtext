@@ -144,5 +144,4 @@ services:
         arguments:
             - '%ezrichtext.converter.edit.xhtml5.resources%'
             - '@ezpublish.config.resolver'
-        lazy: true
 
