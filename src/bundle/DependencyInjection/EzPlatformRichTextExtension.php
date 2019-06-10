@@ -45,21 +45,21 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
             $container,
             new FileLocator(__DIR__ . '/../../lib/eZ/settings')
         );
-        $ezLoader->load('fieldtypes.yml');
-        $ezLoader->load('fieldtype_services.yml');
-        $ezLoader->load('fieldtype_external_storages.yml');
-        $ezLoader->load('indexable_fieldtypes.yml');
-        $ezLoader->load('storage_engines/legacy/external_storage_gateways.yml');
-        $ezLoader->load('storage_engines/legacy/field_value_converters.yml');
+        $ezLoader->load('fieldtypes.yaml');
+        $ezLoader->load('fieldtype_services.yaml');
+        $ezLoader->load('fieldtype_external_storages.yaml');
+        $ezLoader->load('indexable_fieldtypes.yaml');
+        $ezLoader->load('storage_engines/legacy/external_storage_gateways.yaml');
+        $ezLoader->load('storage_engines/legacy/field_value_converters.yaml');
 
         $loader = new Loader\YamlFileLoader(
             $container,
             new FileLocator(__DIR__ . '/../Resources/config')
         );
-        $loader->load('fieldtype_services.yml');
-        $loader->load('rest.yml');
-        $loader->load('templating.yml');
-        $loader->load('form.yml');
+        $loader->load('fieldtype_services.yaml');
+        $loader->load('rest.yaml');
+        $loader->load('templating.yaml');
+        $loader->load('form.yaml');
 
         $configuration = $this->getConfiguration($configs, $container);
         $config = $this->processConfiguration($configuration, $configs);
@@ -111,7 +111,7 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
      */
     public function prepend(ContainerBuilder $container)
     {
-        $coreExtensionConfigFile = realpath(__DIR__ . '/../Resources/config/prepend/ezpublish.yml');
+        $coreExtensionConfigFile = realpath(__DIR__ . '/../Resources/config/prepend/ezpublish.yaml');
         $container->prependExtensionConfig('ezpublish', Yaml::parseFile($coreExtensionConfigFile));
         $container->addResource(new FileResource($coreExtensionConfigFile));
     }

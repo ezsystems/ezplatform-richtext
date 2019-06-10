@@ -64,3 +64,6 @@ services:
             - '@ezrichtext.validator.input.dispatcher'
             - '@ezrichtext.validator.input.ezxhtml5'
             - '@EzSystems\EzPlatformRichText\eZ\RichText\RelationProcessor'
+
+    # Default InputHandler
+    EzSystems\EzPlatformRichText\eZ\RichText\InputHandlerInterface: '@EzSystems\EzPlatformRichText\eZ\RichText\InputHandler'

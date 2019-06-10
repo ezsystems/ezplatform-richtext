@@ -28,7 +28,7 @@ class CustomTagsValidatorTest extends TestCase
     public function setUp()
     {
         // reuse Custom Tags configuration from common test settings
-        $commonSettings = Yaml::parseFile(__DIR__ . '/../../settings/common.yml');
+        $commonSettings = Yaml::parseFile(__DIR__ . '/../../settings/common.yaml');
         $customTagsConfiguration = $commonSettings['parameters']['ezplatform.ezrichtext.custom_tags'];
 
         $this->validator = new CustomTagsValidator($customTagsConfiguration);

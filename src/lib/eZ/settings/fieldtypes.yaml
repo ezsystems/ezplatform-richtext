@@ -1,5 +1,6 @@
 services:
     EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Type:
+        public: true # @todo should be private
         parent: ezpublish.fieldType
         arguments:
             - '@EzSystems\EzPlatformRichText\eZ\RichText\InputHandler'

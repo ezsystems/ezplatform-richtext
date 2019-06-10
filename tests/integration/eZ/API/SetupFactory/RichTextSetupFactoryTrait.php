@@ -31,12 +31,12 @@ trait RichTextSetupFactoryTrait
         }
 
         $loader = new YamlFileLoader($containerBuilder, new FileLocator($settingsPath));
-        $loader->load('fieldtypes.yml');
-        $loader->load('fieldtype_services.yml');
-        $loader->load('fieldtype_external_storages.yml');
-        $loader->load('indexable_fieldtypes.yml');
-        $loader->load('storage_engines/legacy/external_storage_gateways.yml');
-        $loader->load('storage_engines/legacy/field_value_converters.yml');
+        $loader->load('fieldtypes.yaml');
+        $loader->load('fieldtype_services.yaml');
+        $loader->load('fieldtype_external_storages.yaml');
+        $loader->load('indexable_fieldtypes.yaml');
+        $loader->load('storage_engines/legacy/external_storage_gateways.yaml');
+        $loader->load('storage_engines/legacy/field_value_converters.yaml');
 
         $containerBuilder->addCompilerPass(new Compiler\RichTextHtml5ConverterPass());
     }
