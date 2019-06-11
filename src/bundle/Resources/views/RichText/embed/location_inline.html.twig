@@ -9,6 +9,9 @@
     {# Note: intentionally using here new convention for parameter names #}
     {% set params = params|merge( { "data_attributes": embedParams.dataAttributes } ) %}
 {% endif %}
+{% if embedParams.class is defined %}
+    {% set params = params|merge( { "class": embedParams.class } ) %}
+{% endif %}
 
 {{ fos_httpcache_tag('relation-location-' ~ embedParams.id) }}
 {{
