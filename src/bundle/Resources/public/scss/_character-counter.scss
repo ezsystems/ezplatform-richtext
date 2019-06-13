@@ -1,0 +1,12 @@
+.ez-character-counter {
+    position: relative;
+    border-bottom-left-radius: calculateRem(5px);
+    border-bottom-right-radius: calculateRem(5px);
+    text-align: right;
+    white-space: nowrap;
+
+    &__word-count,
+    &__character-count {
+        margin-left: calculateRem(16px);
+    }
+}
