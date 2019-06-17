@@ -23,7 +23,17 @@ class EmbedTest extends TestCase
         parent::setUp();
     }
 
-    public function providerForTestConvert()
+    /**
+     * Data provider for testConvert.
+     *
+     * @see testConvert
+     *
+     * Provided parameters:
+     * <code>string $xmlString, string $expectedXmlString, array $errors, array $renderParams</code>
+     *
+     * @return array
+     */
+    public function providerForTestConvert(): array
     {
         return [
             [
@@ -461,14 +471,109 @@ class EmbedTest extends TestCase
                     ],
                 ],
             ],
+            [
+                '<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <para>
+    <ezattribute>
+      <ezvalue key="not-related-attr">not related value</ezvalue>
+    </ezattribute>
+    <ezembedinline xlink:href="ezcontent://106" view="embed-inline">
+      <ezattribute>
+        <ezvalue key="inline-choice-attr">choice1</ezvalue>
+        <ezvalue key="inline-choice-mul-attr">choice2,choice3</ezvalue>
+      </ezattribute>
+    </ezembedinline>
+  </para>
+</section>',
+                '<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <para>
+    <ezattribute>
+      <ezvalue key="not-related-attr">not related value</ezvalue>
+    </ezattribute>
+    <ezembedinline xlink:href="ezcontent://106" view="embed-inline">
+      <ezattribute>
+        <ezvalue key="inline-choice-attr">choice1</ezvalue>
+        <ezvalue key="inline-choice-mul-attr">choice2,choice3</ezvalue>
+      </ezattribute>
+      <ezpayload>106</ezpayload>
+    </ezembedinline>
+  </para>
+</section>',
+                [],
+                [
+                    [
+                        'method' => 'renderContentEmbed',
+                        'id' => '106',
+                        'viewType' => 'embed-inline',
+                        'is_inline' => true,
+                        'embedParams' => [
+                            'id' => '106',
+                            'viewType' => 'embed-inline',
+                            'dataAttributes' => [
+                                'inline-choice-attr' => 'choice1',
+                                'inline-choice-mul-attr' => 'choice2,choice3',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            [
+                '<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <ezembed xlink:href="ezcontent://106">
+    <ezattribute>
+       <ezvalue key="inline-choice-attr">choice1</ezvalue>
+       <ezvalue key="inline-choice-mul-attr">choice2,choice3</ezvalue>
+    </ezattribute>
+  </ezembed>
+</section>',
+                '<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <ezembed xlink:href="ezcontent://106">
+    <ezattribute>
+      <ezvalue key="inline-choice-attr">choice1</ezvalue>
+      <ezvalue key="inline-choice-mul-attr">choice2,choice3</ezvalue>
+    </ezattribute>
+    <ezpayload><![CDATA[106]]></ezpayload>
+  </ezembed>
+</section>',
+                [],
+                [
+                    [
+                        'method' => 'renderContentEmbed',
+                        'id' => '106',
+                        'viewType' => 'embed',
+                        'is_inline' => false,
+                        'embedParams' => [
+                            'id' => '106',
+                            'viewType' => 'embed',
+                            'dataAttributes' => [
+                                'inline-choice-attr' => 'choice1',
+                                'inline-choice-mul-attr' => 'choice2,choice3',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
     /**
      * @dataProvider providerForTestConvert
+     *
+     * @param string $xmlString
+     * @param string $expectedXmlString
+     * @param array $errors
+     * @param array $renderParams
      */
-    public function testConvert($xmlString, $expectedXmlString, array $errors, array $renderParams)
-    {
+    public function testConvert(
+        string $xmlString,
+        string $expectedXmlString,
+        array $errors,
+        array $renderParams
+    ) {
         if (isset($errors)) {
             foreach ($errors as $index => $error) {
                 $this->loggerMock

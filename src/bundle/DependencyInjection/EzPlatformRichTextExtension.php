@@ -60,6 +60,7 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
         $loader->load('rest.yaml');
         $loader->load('templating.yaml');
         $loader->load('form.yaml');
+        $loader->load('translation.yaml');
 
         $configuration = $this->getConfiguration($configs, $container);
         $config = $this->processConfiguration($configuration, $configs);

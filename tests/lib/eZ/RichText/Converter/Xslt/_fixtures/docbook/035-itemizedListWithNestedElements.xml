@@ -5,15 +5,8 @@
          xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom"
          version="5.0-variant ezpublish-1.0">
   <itemizedlist>
-    <ezattribute>
-      <ezvalue key="name-1">value 1</ezvalue>
-      <ezvalue key="name-2">value 2</ezvalue>
-    </ezattribute>
-    <listitem ezxhtml:class="listItemClass">
-      <ezattribute>
-        <ezvalue key="name-2">value 2</ezvalue>
-      </ezattribute>
-      <para>This is a list item.</para>
+    <listitem>
+      <para>This is a list item <ezembedinline xlink:href="ezcontent://52" view="embed-inline"/></para>
     </listitem>
   </itemizedlist>
 </section>

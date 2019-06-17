@@ -584,6 +584,7 @@
   <xsl:template match="ezxhtml5:div[@data-ezelement='ezembed']">
     <xsl:element name="ezembed" namespace="http://docbook.org/ns/docbook">
       <xsl:call-template name="addCommonEmbedAttributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates select="node()[not(self::text())]"/>
     </xsl:element>
   </xsl:template>
@@ -591,6 +592,7 @@
   <xsl:template match="ezxhtml5:span[@data-ezelement='ezembedinline']">
     <xsl:element name="ezembedinline" namespace="http://docbook.org/ns/docbook">
       <xsl:call-template name="addCommonEmbedAttributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates select="node()[not(self::text())]"/>
     </xsl:element>
   </xsl:template>

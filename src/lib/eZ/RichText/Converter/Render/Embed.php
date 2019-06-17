@@ -8,6 +8,8 @@ declare(strict_types=1);
 
 namespace EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render;
 
+use DOMNode;
+use DOMXPath;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render;
 use EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface;
@@ -64,6 +66,11 @@ class Embed extends Render implements Converter
         foreach ($document->getElementsByTagName($tagName) as $embed) {
             $embedContent = null;
             $parameters = $this->extractParameters($embed, $tagName);
+            $dataAttributes = $this->extractCustomDataAttributes($document, $embed);
+            if (!empty($dataAttributes)) {
+                $parameters['dataAttributes'] = $dataAttributes;
+            }
+
             $resourceReference = $embed->getAttribute('xlink:href');
 
             if (empty($resourceReference)) {
@@ -306,5 +313,30 @@ class Embed extends Render implements Converter
         $this->processTag($document, 'ezembedinline', true);
 
         return $document;
+    }
+
+    /**
+     * Extract /ezattribute/ezvalue elements from XML for the current embed node.
+     *
+     * @param \DOMDocument $document
+     * @param \DOMNode $embedNode
+     *
+     * @return array
+     */
+    private function extractCustomDataAttributes(DOMDocument $document, DOMNode $embedNode): array
+    {
+        $dataAttributes = [];
+
+        $xpath = new DOMXPath($document);
+        $xpath->registerNamespace('docbook', 'http://docbook.org/ns/docbook');
+        $dataAttributeNodes = $xpath->query('./docbook:ezattribute/docbook:ezvalue', $embedNode);
+
+        foreach ($dataAttributeNodes as $dataAttributeNode) {
+            /** @var \DOMElement $dataAttributeNode */
+            $attributeName = $dataAttributeNode->getAttribute('key');
+            $dataAttributes[$attributeName] = $dataAttributeNode->nodeValue;
+        }
+
+        return $dataAttributes;
     }
 }

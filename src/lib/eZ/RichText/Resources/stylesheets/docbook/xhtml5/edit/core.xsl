@@ -321,15 +321,15 @@
     </xsl:element>
   </xsl:template>
 
-  <xsl:template match="docbook:orderedlist/docbook:listitem/docbook:para | docbook:itemizedlist/docbook:listitem/docbook:para">
+  <xsl:template match="docbook:orderedlist/docbook:listitem | docbook:itemizedlist/docbook:listitem">
     <xsl:element name="li" namespace="{$outputNamespace}">
-      <xsl:if test="../@ezxhtml:class">
+      <xsl:if test="@ezxhtml:class">
         <xsl:attribute name="class">
-          <xsl:value-of select="../@ezxhtml:class"/>
+          <xsl:value-of select="@ezxhtml:class"/>
         </xsl:attribute>
       </xsl:if>
       <xsl:call-template name="ezattribute"/>
-      <xsl:apply-templates/>
+      <xsl:apply-templates select="./docbook:para/node()" />
     </xsl:element>
   </xsl:template>
 
@@ -567,6 +567,7 @@
     <xsl:element name="div" namespace="{$outputNamespace}">
       <xsl:attribute name="data-ezelement">ezembed</xsl:attribute>
       <xsl:call-template name="addCommonEmbedAttributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -575,8 +576,9 @@
     <xsl:element name="span" namespace="{$outputNamespace}">
       <xsl:attribute name="data-ezelement">ezembedinline</xsl:attribute>
       <xsl:call-template name="addCommonEmbedAttributes"/>
+      <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
-      <xsl:if test="not(node())">
+      <xsl:if test="./docbook:ezattribute or not(node())">
         <xsl:text> </xsl:text>
       </xsl:if>
     </xsl:element>

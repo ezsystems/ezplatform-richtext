@@ -5,6 +5,13 @@
 {% if embedParams.link is defined  %}
     {% set params = params|merge( { "linkParameters": embedParams.link } ) %}
 {% endif %}
+{% if embedParams.dataAttributes is defined %}
+    {# Note: intentionally using here new convention for parameter names #}
+    {% set params = params|merge( { "data_attributes": embedParams.dataAttributes } ) %}
+{% endif %}
+{% if embedParams.class is defined %}
+    {% set params = params|merge( { "class": embedParams.class } ) %}
+{% endif %}
 
 <div {% if embedParams.anchor is defined %}id="{{ embedParams.anchor }}"{% endif %} class="{% if embedParams.align is defined %}align-{{ embedParams.align }}{% endif %}{% if embedParams.class is defined %} {{ embedParams.class }}{% endif %}">
     {{ fos_httpcache_tag('relation-location-' ~ embedParams.id) }}
