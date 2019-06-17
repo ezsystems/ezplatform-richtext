@@ -291,7 +291,7 @@ class RichTextTest extends TestCase
         $fieldType = $this->getFieldType();
         $this->assertEquals(
             $expectedName,
-            $fieldType->getName($value)
+            $fieldType->getName($value, $this->createMock(APIFieldDefinition::class), 'eng-US')
         );
     }
 
