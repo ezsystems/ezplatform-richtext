@@ -9,6 +9,11 @@
       <ezvalue key="name-1">value 1</ezvalue>
       <ezvalue key="name-2">value 2</ezvalue>
     </ezattribute>
-    <listitem ezxhtml:class="listItemClass"><para>This is a list item.</para></listitem>
+    <listitem ezxhtml:class="listItemClass">
+      <ezattribute>
+        <ezvalue key="name-2">value 2</ezvalue>
+      </ezattribute>
+      <para>This is a list item.</para>
+    </listitem>
   </orderedlist>
 </section>

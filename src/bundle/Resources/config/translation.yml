@@ -1,0 +1,11 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    EzSystems\EzPlatformRichText\Translation\Extractor\OnlineEditorCustomAttributesExtractor:
+        arguments:
+            $siteAccessList: '%ezpublish.siteaccess.list%'
+        tags:
+            - { name: jms_translation.extractor, alias: ez_online_editor_attributes }
