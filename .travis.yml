@@ -50,8 +50,8 @@ matrix:
       env:
         - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
         - BEHAT_OPTS="--profile=adminui --suite=richtext"
-        - SYMFONY_ENV=behat
-        - SYMFONY_DEBUG=1
+        - APP_ENV=behat
+        - APP_DEBUG=1
 # CS check
     - name: 'Code Style Check'
       php: 7.3
