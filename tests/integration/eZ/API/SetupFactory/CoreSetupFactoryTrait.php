@@ -45,7 +45,7 @@ trait CoreSetupFactoryTrait
         $loader->load('io.yml');
         $loader->load('repository.yml');
         $loader->load('repository/inner.yml');
-        $loader->load('repository/signalslot.yml');
+        $loader->load('repository/event.yml');
         $loader->load('repository/siteaccessaware.yml');
         $loader->load('roles.yml');
         $loader->load('storage_engines/common.yml');
@@ -93,7 +93,6 @@ trait CoreSetupFactoryTrait
         $containerBuilder->addCompilerPass(new Compiler\Search\Legacy\CriterionFieldValueHandlerRegistryPass());
         $containerBuilder->addCompilerPass(new Compiler\Search\Legacy\SortClauseConverterPass());
 
-        $containerBuilder->addCompilerPass(new Compiler\Search\SearchEngineSignalSlotPass('legacy'));
         $containerBuilder->addCompilerPass(new Compiler\Search\FieldRegistryPass());
 
         $containerBuilder->setParameter(
