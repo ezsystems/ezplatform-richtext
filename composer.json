@@ -21,9 +21,9 @@
         "symfony/validator": "^4.3",
         "symfony/cache": "^4.3",
         "twig/twig": "^2.11",
-        "ezsystems/ezpublish-kernel": "^8.0@dev",
-        "ezsystems/repository-forms": "^3.0@dev",
-        "ezsystems/ezplatform-rest": "^1.0@dev"
+        "ezsystems/ezpublish-kernel": "^8.0@beta",
+        "ezsystems/repository-forms": "^3.0@beta",
+        "ezsystems/ezplatform-rest": "^1.0@beta"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.0",
