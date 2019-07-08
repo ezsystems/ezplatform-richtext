@@ -21,7 +21,7 @@
         "symfony/validator": "^4.3",
         "symfony/cache": "^4.3",
         "twig/twig": "^2.11",
-        "ezsystems/ezpublish-kernel": "^8.0@dev",
+        "ezsystems/ezpublish-kernel": "dev-ezp-30517-drop-richtext as 8.0.x-dev",
         "ezsystems/repository-forms": "^3.0@dev",
         "ezsystems/ezplatform-rest": "^1.0@dev"
     },
@@ -52,5 +52,9 @@
             "dev-tmp_ci_branch": "2.0.x-dev",
             "dev-master": "2.0.x-dev"
         }
-    }
+    },
+    "repositories": [{
+            "type": "vcs",
+            "url": "https://github.com/alongosz/ezpublish-kernel"
+        }]
 }
