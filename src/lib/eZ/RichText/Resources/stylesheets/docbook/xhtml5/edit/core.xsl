@@ -729,7 +729,7 @@
     <xsl:apply-templates select="node()|@*"/>
   </xsl:template>
 
-  <xsl:template match="docbook:eztemplateinline/docbook:ezcontent/text()">
+  <xsl:template match="docbook:literallayout/docbook:eztemplateinline/docbook:ezcontent/text()">
     <xsl:call-template name="breakLine">
       <xsl:with-param name="text" select="."/>
     </xsl:call-template>
