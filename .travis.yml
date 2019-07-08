@@ -3,7 +3,7 @@ language: php
 
 env:
   global:
-    - EZPLATFORM_REPO="https://github.com/ezsystems/ezplatform.git"
+    - EZPLATFORM_REPO="https://github.com/alongosz/ezplatform.git"
 
 services:
   - mysql
