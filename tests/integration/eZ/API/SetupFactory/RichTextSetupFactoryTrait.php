@@ -30,6 +30,7 @@ trait RichTextSetupFactoryTrait
             throw new RuntimeException('Unable to find RichText package settings');
         }
 
+        // load core settings
         $loader = new YamlFileLoader($containerBuilder, new FileLocator($settingsPath));
         $loader->load('fieldtypes.yaml');
         $loader->load('fieldtype_services.yaml');
@@ -37,6 +38,13 @@ trait RichTextSetupFactoryTrait
         $loader->load('indexable_fieldtypes.yaml');
         $loader->load('storage_engines/legacy/external_storage_gateways.yaml');
         $loader->load('storage_engines/legacy/field_value_converters.yaml');
+
+        // load test settings
+        $loader = new YamlFileLoader(
+            $containerBuilder,
+            new FileLocator(__DIR__ . '/../../../../lib/eZ/settings')
+        );
+        $loader->load('common.yaml');
 
         $containerBuilder->addCompilerPass(new Compiler\RichTextHtml5ConverterPass());
     }

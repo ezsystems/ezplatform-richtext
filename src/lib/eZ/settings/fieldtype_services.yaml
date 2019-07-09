@@ -1,8 +1,5 @@
 parameters:
-    ezrichtext.resources: '%ezpublish.kernel.root_dir%/eZ/Publish/Core/FieldType/RichText/Resources'
-    ezrichtext.validator.docbook.resources:
-        - '%ezrichtext.resources%/schemas/docbook/ezpublish.rng'
-        - '%ezrichtext.resources%/schemas/docbook/docbook.iso.sch.xsl'
+    ezrichtext.validator.docbook.resources: []
 
 services:
     _defaults:

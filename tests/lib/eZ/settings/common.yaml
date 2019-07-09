@@ -1,4 +1,9 @@
 parameters:
+    ezrichtext.resources: 'src/lib/eZ/RichText/Resources'
+    ezrichtext.validator.docbook.resources:
+        - '%ezrichtext.resources%/schemas/docbook/ezpublish.rng'
+        - '%ezrichtext.resources%/schemas/docbook/docbook.iso.sch.xsl'
+
     ezplatform.ezrichtext.custom_tags:
         video:
             template: 'MyBundle:FieldType/RichText/tag:video.html.twig'
