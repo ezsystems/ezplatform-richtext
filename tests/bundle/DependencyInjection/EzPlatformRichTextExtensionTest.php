@@ -15,7 +15,7 @@ use Symfony\Component\Yaml\Yaml;
 class EzPlatformRichTextExtensionTest extends AbstractExtensionTestCase
 {
     /**
-     * @var \eZ\Bundle\EzPublishCoreBundle\DependencyInjection\EzPublishCoreExtension
+     * @var \EzSystems\EzPlatformRichTextBundle\DependencyInjection\EzPlatformRichTextExtension
      */
     private $extension;
 

@@ -6,7 +6,7 @@
     version="1.0">
 
   <!-- XSL stylesheets are dynamically added to this one via <xsl:import/> -->
-  <!-- See eZ\Publish\Core\FieldType\RichText\Converter\Xslt::getXSLTProcessor() -->
+  <!-- See \EzSystems\EzPlatformRichText\eZ\RichText\Converter\Xslt::getXSLTProcessor() -->
   <!--<xsl:import href="core.xsl"/>-->
 
   <xsl:output indent="yes" encoding="UTF-8"/>

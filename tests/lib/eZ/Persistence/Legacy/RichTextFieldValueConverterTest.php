@@ -10,7 +10,7 @@ namespace EzSystems\EzPlatformRichText\eZ\Persistence\Legacy\Tests\Content\Field
 
 use eZ\Publish\SPI\Persistence\Content\FieldValue;
 use eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldValue;
-use eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\RichTextConverter;
+use EzSystems\EzPlatformRichText\eZ\Persistence\Legacy\RichTextFieldValueConverter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -22,7 +22,7 @@ use PHPUnit\Framework\TestCase;
 class RichTextFieldValueConverterTest extends TestCase
 {
     /**
-     * @var \eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\RichTextConverter
+     * @var \EzSystems\EzPlatformRichText\eZ\Persistence\Legacy\RichTextFieldValueConverter
      */
     protected $converter;
 
@@ -34,7 +34,7 @@ class RichTextFieldValueConverterTest extends TestCase
     protected function setUp()
     {
         parent::setUp();
-        $this->converter = new RichTextConverter();
+        $this->converter = new RichTextFieldValueConverter();
         $this->docbookString = <<<EOT
 <?xml version="1.0" encoding="UTF-8"?>
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml" xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom" version="5.0-variant ezpublish-1.0">
@@ -52,7 +52,7 @@ EOT;
     }
 
     /**
-     * @covers \eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\RichTextConverter::toStorageValue
+     * @covers \EzSystems\EzPlatformRichText\eZ\Persistence\Legacy\RichTextFieldValueConverter::toStorageValue
      */
     public function testToStorageValue()
     {
@@ -65,7 +65,7 @@ EOT;
     }
 
     /**
-     * @covers \eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\RichTextConverter::toFieldValue
+     * @covers \EzSystems\EzPlatformRichText\eZ\Persistence\Legacy\RichTextFieldValueConverter::toFieldValue
      */
     public function testToFieldValue()
     {
@@ -75,29 +75,5 @@ EOT;
 
         $this->converter->toFieldValue($storageFieldValue, $fieldValue);
         self::assertSame($this->docbookString, $fieldValue->data);
-    }
-
-    /**
-     * @param string $relativePath
-     *
-     * @return string
-     */
-    protected function getAbsolutePath($relativePath)
-    {
-        return self::getInstallationDir() . '/' . $relativePath;
-    }
-
-    /**
-     * @return string
-     */
-    protected static function getInstallationDir()
-    {
-        static $installDir = null;
-        if ($installDir === null) {
-            $config = require 'config.php';
-            $installDir = $config['service']['parameters']['install_dir'];
-        }
-
-        return $installDir;
     }
 }

@@ -277,7 +277,7 @@ class Type extends FieldType
     {
         $relations = [];
 
-        /** @var \eZ\Publish\Core\FieldType\RichText\Value $value */
+        /** @var \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value $value */
         if ($value->xml instanceof DOMDocument) {
             $relations = $this->inputHandler->getRelations($value->xml);
         }
