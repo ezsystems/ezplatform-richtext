@@ -48,7 +48,7 @@ services:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\Link
         arguments: ['@ezpublish.api.service.location', '@ezpublish.api.service.content', '@ezpublish.urlalias_router', '@?logger']
         tags:
-            - {name: ezpublish.ezrichtext.converter.output.xhtml5, priority: 0}
+            - {name: ezrichtext.converter.output.xhtml5, priority: 0}
 
     ezrichtext.converter.template:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template
@@ -57,7 +57,7 @@ services:
             - '@ezrichtext.converter.output.xhtml5'
             - '@?logger'
         tags:
-            - {name: ezpublish.ezrichtext.converter.output.xhtml5, priority: 10}
+            - {name: ezrichtext.converter.output.xhtml5, priority: 10}
         lazy: true
 
     ezrichtext.converter.embed:
@@ -66,14 +66,14 @@ services:
             - '@ezrichtext.renderer'
             - '@?logger'
         tags:
-            - {name: ezpublish.ezrichtext.converter.output.xhtml5, priority: 10}
+            - {name: ezrichtext.converter.output.xhtml5, priority: 10}
 
     # Note: should typically be the last one as it produces embeddable fragment
     ezrichtext.converter.output.xhtml5.fragment:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\Xslt
         arguments: ['%ezrichtext.converter.output.xhtml5.fragment.resources%']
         tags:
-            - {name: ezpublish.ezrichtext.converter.output.xhtml5, priority: 100}
+            - {name: ezrichtext.converter.output.xhtml5, priority: 100}
 
     # Aggregate converter for XHTML5 output that other converters register to
     # through service tags.
@@ -117,10 +117,10 @@ services:
             - '%ezrichtext.converter.output.xhtml5.resources%'
             - '@ezpublish.config.resolver'
         tags:
-            - {name: ezpublish.ezrichtext.converter.output.xhtml5, priority: 50}
+            - {name: ezrichtext.converter.output.xhtml5, priority: 50}
 
     # Aggregate converter for XHTML5 input that other converters register to
-    # through 'ezpublish.ezrichtext.converter.input.xhtml5' service tag.
+    # through 'ezrichtext.converter.input.xhtml5' service tag.
     ezrichtext.converter.input.xhtml5:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\Aggregate
         lazy: true
@@ -131,13 +131,13 @@ services:
             - '%ezrichtext.converter.input.xhtml5.resources%'
             - '@ezpublish.config.resolver'
         tags:
-            - {name: ezpublish.ezrichtext.converter.input.xhtml5, priority: 50}
+            - {name: ezrichtext.converter.input.xhtml5, priority: 50}
 
     # Note: should run before xsl transformation
     ezrichtext.converter.input.xhtml5.programlisting:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\ProgramListing
         tags:
-            - {name: ezpublish.ezrichtext.converter.input.xhtml5, priority: 10}
+            - {name: ezrichtext.converter.input.xhtml5, priority: 10}
 
     ezrichtext.converter.edit.xhtml5:
         class: EzSystems\EzPlatformRichTextBundle\eZ\RichText\Converter\Html5Edit

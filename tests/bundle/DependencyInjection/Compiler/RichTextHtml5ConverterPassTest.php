@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace EzSystems\Tests\EzPlatformRichTextBundle\DependencyInjection\Compiler;
 
-use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\Compiler\RichTextHtml5ConverterPass;
+use EzSystems\EzPlatformRichTextBundle\DependencyInjection\Compiler\RichTextHtml5ConverterPass;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractCompilerPassTestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -21,6 +21,8 @@ class RichTextHtml5ConverterPassTest extends AbstractCompilerPassTestCase
      * method:.
      *
      *   $container->addCompilerPass(new MyCompilerPass());
+     *
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
     protected function registerCompilerPass(ContainerBuilder $container)
     {
@@ -31,30 +33,30 @@ class RichTextHtml5ConverterPassTest extends AbstractCompilerPassTestCase
     {
         $configurationResolver = new Definition();
         $this->setDefinition(
-            'ezpublish.fieldType.ezrichtext.converter.output.xhtml5',
+            'ezrichtext.converter.output.xhtml5',
             $configurationResolver
         );
 
         $configurationProvider = new Definition();
-        $configurationProvider->addTag('ezpublish.ezrichtext.converter.output.xhtml5');
+        $configurationProvider->addTag('ezrichtext.converter.output.xhtml5');
         $this->setDefinition('ezrichtext.converter.test1', $configurationProvider);
 
         $configurationProvider = new Definition();
-        $configurationProvider->addTag('ezpublish.ezrichtext.converter.output.xhtml5', ['priority' => 10]);
+        $configurationProvider->addTag('ezrichtext.converter.output.xhtml5', ['priority' => 10]);
         $this->setDefinition('ezrichtext.converter.test2', $configurationProvider);
 
         $configurationProvider = new Definition();
-        $configurationProvider->addTag('ezpublish.ezrichtext.converter.output.xhtml5', ['priority' => 5]);
+        $configurationProvider->addTag('ezrichtext.converter.output.xhtml5', ['priority' => 5]);
         $this->setDefinition('ezrichtext.converter.test3', $configurationProvider);
 
         $configurationProvider = new Definition();
-        $configurationProvider->addTag('ezpublish.ezrichtext.converter.output.xhtml5', ['priority' => 5]);
+        $configurationProvider->addTag('ezrichtext.converter.output.xhtml5', ['priority' => 5]);
         $this->setDefinition('ezrichtext.converter.test4', $configurationProvider);
 
         $this->compile();
 
         $this->assertContainerBuilderHasServiceDefinitionWithArgument(
-            'ezpublish.fieldType.ezrichtext.converter.output.xhtml5',
+            'ezrichtext.converter.output.xhtml5',
             0,
             [
                 new Reference('ezrichtext.converter.test1'),
