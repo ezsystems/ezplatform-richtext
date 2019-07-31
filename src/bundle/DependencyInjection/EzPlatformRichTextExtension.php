@@ -112,9 +112,22 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
      */
     public function prepend(ContainerBuilder $container)
     {
+        $this->prependEzPublishConfiguration($container);
+        $this->prependEzRichtextConfiguration($container);
+    }
+
+    private function prependEzPublishConfiguration(ContainerBuilder $container): void
+    {
         $coreExtensionConfigFile = realpath(__DIR__ . '/../Resources/config/prepend/ezpublish.yaml');
         $container->prependExtensionConfig('ezpublish', Yaml::parseFile($coreExtensionConfigFile));
         $container->addResource(new FileResource($coreExtensionConfigFile));
+    }
+
+    private function prependEzRichtextConfiguration(ContainerBuilder $container): void
+    {
+        $richtextExtensionConfigFile = realpath(__DIR__ . '/../Resources/config/prepend/ezrichtext.yaml');
+        $container->prependExtensionConfig('ezrichtext', Yaml::parseFile($richtextExtensionConfigFile));
+        $container->addResource(new FileResource($richtextExtensionConfigFile));
     }
 
     public function getConfiguration(array $config, ContainerBuilder $container)

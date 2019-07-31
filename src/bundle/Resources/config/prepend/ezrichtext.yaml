@@ -1,0 +1,54 @@
+custom_tags:
+    ezfacebook:
+        template: EzPlatformRichTextBundle:RichText/fields/ezrichtext/custom_tags:ezfacebook.html.twig
+        icon: '/bundles/ezplatformadminui/img/ez-icons.svg#facebook'
+        attributes:
+            post_url:
+                type: 'string'
+                required: true
+            width:
+                type: 'number'
+    eztwitter:
+        template: EzPlatformRichTextBundle:RichText/fields/ezrichtext/custom_tags:eztwitter.html.twig
+        icon: '/bundles/ezplatformadminui/img/ez-icons.svg#twitter'
+        attributes:
+            tweet_url:
+                type: 'string'
+                required: true
+            # see https://dev.twitter.com/web/embedded-tweets/parameters
+            cards:
+                type: 'choice'
+                required: false
+                default_value: ''
+                choices: ['', 'hidden']
+            conversation:
+                type: 'choice'
+                default_value: ''
+                choices: ['', 'none']
+            theme:
+                type: 'choice'
+                default_value: 'light'
+                required: true
+                choices: ['light', 'dark']
+            link_color:
+                type: 'string'
+                default_value: ''
+            width:
+                type: 'number'
+                default_value: 500
+            lang:
+                type: 'string'
+                default_value: 'en'
+            dnt:
+                type: 'boolean'
+                default_value: true
+    ezyoutube:
+        template: EzPlatformRichTextBundle:RichText/fields/ezrichtext/custom_tags:ezyoutube.html.twig
+        icon: '/bundles/ezplatformadminui/img/ez-icons.svg#video'
+        attributes:
+            video_url:
+                type: 'string'
+                required: true
+            autoplay:
+                type: 'boolean'
+                default_value: false
