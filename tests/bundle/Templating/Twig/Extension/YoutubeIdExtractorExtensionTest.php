@@ -1,11 +1,20 @@
 <?php
+
+/**
+ * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
+declare(strict_types=1);
+
 namespace EzSystems\Tests\EzPlatformRichTextBundle\Templating\Twig\Extension;
+
 use EzSystems\EzPlatformRichTextBundle\Templating\Twig\Extension\YoutubeIdExtractorExtension;
 use PHPUnit\Framework\TestCase;
-use Twig_Function;
+use Twig\TwigFunction;
+
 class YoutubeIdExtractorExtensionTest extends TestCase
 {
-    public function youtubeUrls()
+    public function getYouTubeUrls(): array
     {
         return [
             ['http://www.youtube.com/watch?v=Z1xNWm6dHp4', 'Z1xNWm6dHp4'],
@@ -29,31 +38,34 @@ class YoutubeIdExtractorExtensionTest extends TestCase
             ['//something/', null],
         ];
     }
+
     /**
-     * @param $input
-     * @param $expected
-     * @dataProvider youtubeUrls
+     * @param string $input
+     * @param null|string $expected
+     * @dataProvider getYouTubeUrls
      */
-    public function testExtractId($input, $expected)
+    public function testExtractId(string $input, ?string $expected): void
     {
         $subject = new YoutubeIdExtractorExtension();
         $result = $subject->extractId($input);
         $this->assertEquals($expected, $result);
     }
-    public function testGetName()
+
+    public function testGetName(): void
     {
         $subject = new YoutubeIdExtractorExtension();
         $result = $subject->getName();
-        $this->assertInternalType('string', $result);
-        $this->assertEquals('app.youtube_extract_id', $result);
+        $this->assertIsArray($result);
+        $this->assertEquals('ezrichtext.youtube_extract_id', $result);
     }
-    public function testGetFunctions()
+
+    public function testGetFunctions(): void
     {
         $subject = new YoutubeIdExtractorExtension();
-        /** @var Twig_Function[] $result */
+        /** @var TwigFunction[] $result */
         $result = $subject->getFunctions();
-        $this->assertInternalType('array', $result);
-        $this->assertInstanceOf('Twig_Function', $result[0]);
-        $this->assertEquals('app_youtube_extract_id', $result[0]->getName());
+        $this->assertIsArray($result);
+        $this->assertInstanceOf('TwigFunction', $result[0]);
+        $this->assertEquals('ez_richtext_youtube_extract_id', $result[0]->getName());
     }
 }

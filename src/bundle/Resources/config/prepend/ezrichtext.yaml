@@ -1,7 +1,7 @@
 custom_tags:
     ezfacebook:
-        template: EzPlatformRichTextBundle:RichText/fields/ezrichtext/custom_tags:ezfacebook.html.twig
-        icon: '/bundles/ezplatformadminui/img/ez-icons.svg#facebook'
+        template: '@ezdesign/ezrichtext/custom_tags/ezfacebook.html.twig'
+        icon: '/bundles/ezplatformrichtext/assets/images/custom_tags/admin/icons/facebook.svg#facebook'
         attributes:
             post_url:
                 type: 'string'
@@ -9,8 +9,8 @@ custom_tags:
             width:
                 type: 'number'
     eztwitter:
-        template: EzPlatformRichTextBundle:RichText/fields/ezrichtext/custom_tags:eztwitter.html.twig
-        icon: '/bundles/ezplatformadminui/img/ez-icons.svg#twitter'
+        template: '@ezdesign/ezrichtext/custom_tags/eztwitter.html.twig'
+        icon: '/bundles/ezplatformrichtext/assets/images/custom_tags/admin/icons/twitter.svg#twitter'
         attributes:
             tweet_url:
                 type: 'string'
@@ -43,8 +43,8 @@ custom_tags:
                 type: 'boolean'
                 default_value: true
     ezyoutube:
-        template: EzPlatformRichTextBundle:RichText/fields/ezrichtext/custom_tags:ezyoutube.html.twig
-        icon: '/bundles/ezplatformadminui/img/ez-icons.svg#video'
+        template: '@ezdesign/ezrichtext/custom_tags/ezyoutube.html.twig'
+        icon: '/bundles/ezplatformrichtext/assets/images/custom_tags/admin/icons/video.svg#video'
         attributes:
             video_url:
                 type: 'string'
