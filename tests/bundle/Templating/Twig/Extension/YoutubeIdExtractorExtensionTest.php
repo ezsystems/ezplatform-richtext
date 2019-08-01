@@ -61,7 +61,7 @@ class YoutubeIdExtractorExtensionTest extends TestCase
     {
         $subject = new YoutubeIdExtractorExtension();
         $result = $subject->getName();
-        $this->assertIsArray($result);
+        $this->assertIsString($result);
         $this->assertEquals('ezrichtext.youtube_extract_id', $result);
     }
 
