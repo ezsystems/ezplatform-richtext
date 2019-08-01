@@ -74,7 +74,7 @@ class YoutubeIdExtractorExtensionTest extends TestCase
         /** @var TwigFunction[] $result */
         $result = $subject->getFunctions();
         $this->assertIsArray($result);
-        $this->assertInstanceOf('TwigFunction', $result[0]);
+        $this->assertInstanceOf(TwigFunction::class, $result[0]);
         $this->assertEquals('ez_richtext_youtube_extract_id', $result[0]->getName());
     }
 }
