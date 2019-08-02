@@ -113,7 +113,7 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
     public function prepend(ContainerBuilder $container)
     {
         $this->prependEzPublishConfiguration($container);
-        $this->prependEzRichtextConfiguration($container);
+        $this->prependEzRichTextConfiguration($container);
     }
 
     private function prependEzPublishConfiguration(ContainerBuilder $container): void
@@ -123,11 +123,11 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
         $container->addResource(new FileResource($coreExtensionConfigFile));
     }
 
-    private function prependEzRichtextConfiguration(ContainerBuilder $container): void
+    private function prependEzRichTextConfiguration(ContainerBuilder $container): void
     {
-        $richtextExtensionConfigFile = realpath(__DIR__ . '/../Resources/config/prepend/ezrichtext.yaml');
-        $container->prependExtensionConfig('ezrichtext', Yaml::parseFile($richtextExtensionConfigFile));
-        $container->addResource(new FileResource($richtextExtensionConfigFile));
+        $richTextExtensionConfigFile = realpath(__DIR__ . '/../Resources/config/prepend/ezrichtext.yaml');
+        $container->prependExtensionConfig('ezrichtext', Yaml::parseFile($richTextExtensionConfigFile));
+        $container->addResource(new FileResource($richTextExtensionConfigFile));
     }
 
     public function getConfiguration(array $config, ContainerBuilder $container)
