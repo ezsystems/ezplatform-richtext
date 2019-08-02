@@ -7,3 +7,8 @@ system:
         fielddefinition_settings_templates:
             -   template: '@EzPlatformRichText/RichText/fielddefinition_settings.html.twig'
                 priority: 0
+
+    admin_group:
+        fieldtypes:
+            ezrichtext:
+                custom_tags: [ezyoutube, eztwitter, ezfacebook]
