@@ -7,7 +7,6 @@ parameters:
 
     # Rich Text Custom Styles global configuration
     ezplatform.ezrichtext.custom_styles: {}
-
     # Rich Text Custom Styles default scope (for SiteAccess) configuration
     ezsettings.default.fieldtypes.ezrichtext.custom_styles: []
 
