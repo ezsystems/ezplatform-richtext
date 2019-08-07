@@ -114,6 +114,25 @@ class DocbookTest extends TestCase
 </section>',
                 [],
             ],
+            [
+                '<?xml version="1.0" encoding="UTF-8"?>
+<section
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml"
+    xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom" version="5.0-variant ezpublish-1.0">
+    <informaltable width="100%" border="1">
+        <tbody>
+            <tr>
+                <td>
+                    <blockquote/>
+                </td>
+            </tr>
+        </tbody>
+    </informaltable>
+</section>',
+                [],
+            ],
         ];
     }
 
