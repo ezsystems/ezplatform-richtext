@@ -462,30 +462,6 @@
     <define name="db.wordasword"><notAllowed/></define>
     <define name="db.xref"><notAllowed/></define>
     <define name="db.year"><notAllowed/></define>
-
-    <define name="db.html.th">
-      <element name="th">
-        <a:documentation>A table header entry in an HTML table</a:documentation>
-        <ref name="db.html.th.attlist"/>
-        <zeroOrMore>
-          <choice>
-            <ref name="db.all.inlines"/>
-            <ref name="db.all.blocks"/>
-          </choice>
-        </zeroOrMore>
-      </element>
-    </define>
-    <define name="db.html.td">
-      <element name="td">
-        <a:documentation>A table entry in an HTML table</a:documentation>
-        <zeroOrMore>
-          <choice>
-            <ref name="db.all.inlines"/>
-            <ref name="db.all.blocks"/>
-          </choice>
-        </zeroOrMore>
-      </element>
-    </define>
   </include>
 
   <define name="ez.db.section">
@@ -854,6 +830,30 @@
         <ref name="ez.config.hash"/>
       </element>
     </optional>
+  </define>
+
+  <define name="db.html.th" combine="choice">
+    <element name="th">
+      <a:documentation>A table header entry in an HTML table</a:documentation>
+      <ref name="db.html.th.attlist"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="db.all.inlines"/>
+          <ref name="db.all.blocks"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="db.html.td" combine="choice">
+    <element name="td">
+      <a:documentation>A table entry in an HTML table</a:documentation>
+      <zeroOrMore>
+        <choice>
+          <ref name="db.all.inlines"/>
+          <ref name="db.all.blocks"/>
+        </choice>
+      </zeroOrMore>
+    </element>
   </define>
 
   <div>
