@@ -5,4 +5,4 @@ services:
         arguments:
             - '@EzSystems\EzPlatformRichText\eZ\RichText\InputHandler'
         tags:
-            - {name: ezpublish.fieldType, alias: ezrichtext}
+            - {name: ezplatform.field_type, alias: ezrichtext}

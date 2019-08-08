@@ -1,4 +1,4 @@
 services:
     EzSystems\EzPlatformRichText\eZ\Persistence\Legacy\RichTextFieldValueConverter:
         tags:
-            - {name: ezpublish.storageEngine.legacy.converter, alias: ezrichtext}
+            - {name: ezplatform.field_type.legacy_storage.converter, alias: ezrichtext}

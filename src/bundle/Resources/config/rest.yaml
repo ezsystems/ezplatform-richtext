@@ -8,4 +8,4 @@ services:
         arguments:
             - '@ezrichtext.converter.edit.xhtml5'
         tags:
-            - { name: ezpublish_rest.field_type_processor, alias: ezrichtext }
+            - { name: ezplatform.field_type.rest.processor, alias: ezrichtext }
