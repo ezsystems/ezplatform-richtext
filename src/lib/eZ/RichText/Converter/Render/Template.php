@@ -23,6 +23,8 @@ use Psr\Log\NullLogger;
  */
 class Template extends Render implements Converter
 {
+    const LITERAL_LAYOUT_LINE_BREAK = "\n";
+
     /**
      * @var \EzSystems\EzPlatformRichText\eZ\RichText\Converter
      */
@@ -235,7 +237,7 @@ class Template extends Render implements Converter
      */
     private function wrapContentWithLiteralLayout(DOMNode $rootNode, DOMNode $node): DOMNode
     {
-        if (false === strpos($node->nodeValue, "\n")) {
+        if (false === strpos($node->nodeValue, self::LITERAL_LAYOUT_LINE_BREAK)) {
             return $rootNode;
         }
 
