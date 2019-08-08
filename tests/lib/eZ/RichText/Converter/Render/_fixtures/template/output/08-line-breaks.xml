@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook">
+  <eztemplate name="template8">
+    <ezcontent>Some content
+with line breaks.</ezcontent>
+    <ezpayload><![CDATA[template8]]></ezpayload>
+  </eztemplate>
+</section>

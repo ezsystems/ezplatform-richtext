@@ -294,5 +294,17 @@ class TemplateTest extends TestCase
                 ],
             ],
         ],
+        '08-line-breaks' => [
+            [
+                'name' => 'template8',
+                'type' => 'tag',
+                'is_inline' => false,
+                'params' => [
+                    'name' => 'template8',
+                    'content' => "<literallayout>Some content\nwith line breaks.</literallayout>",
+                    'params' => [],
+                ],
+            ],
+        ],
     ];
 }
