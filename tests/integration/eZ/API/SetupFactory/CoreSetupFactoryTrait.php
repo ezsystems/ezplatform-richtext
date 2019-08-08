@@ -82,7 +82,8 @@ trait CoreSetupFactoryTrait
 
         $containerBuilder->setParameter('ezpublish.kernel.root_dir', realpath($kernelRootDir));
 
-        $containerBuilder->addCompilerPass(new Compiler\FieldTypeCollectionPass());
+        $containerBuilder->addCompilerPass(new Compiler\FieldTypeRegistryPass());
+        $containerBuilder->addCompilerPass(new Compiler\Persistence\FieldTypeRegistryPass());
         $containerBuilder->addCompilerPass(new Compiler\RegisterLimitationTypePass());
 
         $containerBuilder->addCompilerPass(new Compiler\Storage\ExternalStorageRegistryPass());
