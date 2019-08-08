@@ -235,20 +235,22 @@ class Template extends Render implements Converter
      */
     private function wrapContentWithLiteralLayout(DOMNode $rootNode, DOMNode $node): DOMNode
     {
-        $xpath = new DOMXPath($node->ownerDocument);
-        $xpath->registerNamespace('docbook', 'http://docbook.org/ns/docbook');
-        if (
-            strpos($node->nodeValue, "\n") !== false
-            && $xpath->query('.//docbook:literallayout', $node)->length === 0
-        ) {
-            $literalLayoutNode = $rootNode->ownerDocument->createElementNS(
-                'http://docbook.org/ns/docbook',
-                'literallayout'
-            );
-
-            return $rootNode->appendChild($literalLayoutNode);
+        if (false === strpos($node->nodeValue, "\n")) {
+            return $rootNode;
         }
 
-        return $rootNode;
+        $xpath = new DOMXPath($node->ownerDocument);
+        $xpath->registerNamespace('docbook', 'http://docbook.org/ns/docbook');
+
+        if ($xpath->query('.//docbook:literallayout', $node)->length > 0) {
+            return $rootNode;
+        }
+
+        $literalLayoutNode = $rootNode->ownerDocument->createElementNS(
+            'http://docbook.org/ns/docbook',
+            'literallayout'
+        );
+
+        return $rootNode->appendChild($literalLayoutNode);
     }
 }
