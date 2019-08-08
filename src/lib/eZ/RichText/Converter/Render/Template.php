@@ -189,6 +189,8 @@ class Template extends Render implements Converter
         $rootNode = $innerDoc->createElementNS('http://docbook.org/ns/docbook', 'section');
         $innerDoc->appendChild($rootNode);
 
+        $rootNode = $this->wrapContentWithLiteralLayout($rootNode, $node);
+
         /** @var \DOMNode $child */
         foreach ($node->childNodes as $child) {
             $newNode = $innerDoc->importNode($child, true);
@@ -220,5 +222,33 @@ class Template extends Render implements Converter
         }
 
         return $this->extractHash($configElements->item(0));
+    }
+
+    /**
+     * BC: wrap nested content containing line breaks with "literallayout" DocBook tag,
+     * unless literallayout already exists.
+     *
+     * @param \DOMNode $rootNode
+     * @param \DOMNode $node
+     *
+     * @return \DOMNode
+     */
+    private function wrapContentWithLiteralLayout(DOMNode $rootNode, DOMNode $node): DOMNode
+    {
+        $xpath = new DOMXPath($node->ownerDocument);
+        $xpath->registerNamespace('docbook', 'http://docbook.org/ns/docbook');
+        if (
+            strpos($node->nodeValue, "\n") !== false
+            && $xpath->query('.//docbook:literallayout', $node)->length === 0
+        ) {
+            $literalLayoutNode = $rootNode->ownerDocument->createElementNS(
+                'http://docbook.org/ns/docbook',
+                'literallayout'
+            );
+
+            return $rootNode->appendChild($literalLayoutNode);
+        }
+
+        return $rootNode;
     }
 }
