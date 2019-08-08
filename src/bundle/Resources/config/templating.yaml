@@ -1,7 +1,10 @@
 services:
-    EzSystems\EzPlatformRichTextBundle\Templating\Twig\Extension\RichTextExtension:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    EzSystems\EzPlatformRichTextBundle\Templating\Twig\Extension\RichTextConverterExtension:
         arguments:
-            - '@ezrichtext.converter.output.xhtml5'
-            - '@ezrichtext.converter.edit.xhtml5'
-        tags:
-            - { name: twig.extension }
+            $richTextOutputConverter: '@ezrichtext.converter.output.xhtml5'
+            $richTextEditConverter: '@ezrichtext.converter.edit.xhtml5'
