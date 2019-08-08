@@ -4,8 +4,6 @@
     "homepage": "https://ezplatform.com",
     "license": "GPL-2.0-only",
     "type": "ezplatform-bundle",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "require": {
         "php": "^7.3",
         "ext-xsl": "*",
