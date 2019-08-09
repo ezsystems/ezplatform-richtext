@@ -23,8 +23,9 @@ class Configuration extends SiteAccessConfiguration
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('ezrichtext');
+        $treeBuilder = new TreeBuilder('ezrichtext');
+
+        $rootNode = $treeBuilder->getRootNode();
 
         $sections = $rootNode->children();
         $this
