@@ -19,5 +19,5 @@ services:
 
     EzSystems\EzPlatformRichText\Form\Mapper\RichTextFormMapper:
         tags:
-            - { name: ez.fieldFormMapper.value, fieldType: ezrichtext }
+            - { name: ezplatform.field_type.form_mapper.value, fieldType: ezrichtext }
 
