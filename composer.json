@@ -4,8 +4,6 @@
     "homepage": "https://ezplatform.com",
     "license": "GPL-2.0-only",
     "type": "ezplatform-bundle",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "require": {
         "php": "^7.3",
         "ext-xsl": "*",
@@ -21,6 +19,7 @@
         "symfony/validator": "^4.3",
         "symfony/cache": "^4.3",
         "twig/twig": "^2.11",
+        "ezsystems/doctrine-dbal-schema": "^1.0@dev",
         "ezsystems/ezpublish-kernel": "^8.0@dev",
         "ezsystems/repository-forms": "^3.0@dev",
         "ezsystems/ezplatform-rest": "^1.0@dev"
