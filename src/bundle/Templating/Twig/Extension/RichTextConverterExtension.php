@@ -8,34 +8,33 @@ declare(strict_types=1);
 
 namespace EzSystems\EzPlatformRichTextBundle\Templating\Twig\Extension;
 
+use DOMDocument;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter as RichTextConverterInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
-class RichTextExtension extends AbstractExtension
+class RichTextConverterExtension extends AbstractExtension
 {
-    /**
-     * @var \EzSystems\EzPlatformRichText\eZ\RichText\Converter
-     */
-    private $richTextConverter;
+    /** @var \EzSystems\EzPlatformRichText\eZ\RichText\Converter */
+    private $richTextOutputConverter;
 
-    /**
-     * @var \EzSystems\EzPlatformRichText\eZ\RichText\Converter
-     */
+    /** @var \EzSystems\EzPlatformRichText\eZ\RichText\Converter */
     private $richTextEditConverter;
 
-    public function __construct(RichTextConverterInterface $richTextConverter, RichTextConverterInterface $richTextEditConverter)
-    {
-        $this->richTextConverter = $richTextConverter;
+    public function __construct(
+        RichTextConverterInterface $richTextOutputConverter,
+        RichTextConverterInterface $richTextEditConverter
+    ) {
+        $this->richTextOutputConverter = $richTextOutputConverter;
         $this->richTextEditConverter = $richTextEditConverter;
     }
 
-    public function getName()
+    public function getName(): string
     {
-        return 'ezpublish.rich_text';
+        return 'ezrichtext.converter';
     }
 
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new TwigFilter(
@@ -58,9 +57,9 @@ class RichTextExtension extends AbstractExtension
      *
      * @return string
      */
-    public function richTextToHtml5($xmlData)
+    public function richTextToHtml5(DOMDocument $xmlData): string
     {
-        return $this->richTextConverter->convert($xmlData)->saveHTML();
+        return $this->richTextOutputConverter->convert($xmlData)->saveHTML();
     }
 
     /**
@@ -70,7 +69,7 @@ class RichTextExtension extends AbstractExtension
      *
      * @return string
      */
-    public function richTextToHtml5Edit($xmlData)
+    public function richTextToHtml5Edit(DOMDocument $xmlData): string
     {
         return $this->richTextEditConverter->convert($xmlData)->saveHTML();
     }
