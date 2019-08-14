@@ -3,5 +3,5 @@
     <div data-ezelement="eztemplate" data-eztype="style" data-ezname="highlighted_block" data-ezalign="left">Highlighted block with "left" align.</div>
     <div data-ezelement="eztemplate" data-eztype="style" data-ezname="highlighted_block" data-ezalign="right">Highlighted block with "right" align.</div>
     <div data-ezelement="eztemplate" data-eztype="style" data-ezname="highlighted_block" data-ezalign="center">Highlighted block with "center" align.</div>
-    <div data-ezelement="eztemplate" data-eztype="style" data-ezname="highlighted_block"><br/>            Highlighted block with multiple lines<br/>            Highlighted block with multiple lines<br/>            Highlighted block with multiple lines<br/>        </div>
+    <div data-ezelement="eztemplate" data-eztype="style" data-ezname="highlighted_block">Highlighted block with multiple lines<br/>Highlighted block with multiple lines<br/>Highlighted block with multiple lines</div>
 </section>
