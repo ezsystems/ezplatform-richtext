@@ -703,9 +703,22 @@
         <!-- Nest content of Style tag in ezcontent -->
         <xsl:when test="@data-eztype='style'">
           <xsl:element name="ezcontent" namespace="http://docbook.org/ns/docbook">
-            <xsl:call-template name="breakline">
-              <xsl:with-param name="node" select="node()"/>
-            </xsl:call-template>
+            <xsl:choose>
+              <xsl:when test="@data-ezelement='eztemplate' and descendant::ezxhtml5:br">
+                <!-- Wrap with literallayout only block custom styles -->
+                <xsl:element name="literallayout">
+                  <xsl:call-template name="breakline">
+                    <xsl:with-param name="node" select="node()"/>
+                  </xsl:call-template>
+                </xsl:element>
+              </xsl:when>
+              <xsl:otherwise>
+                <!-- Inline custom styles already have outer literallayout for e.g. para -->
+                <xsl:call-template name="breakline">
+                  <xsl:with-param name="node" select="node()"/>
+                </xsl:call-template>
+              </xsl:otherwise>
+            </xsl:choose>
           </xsl:element>
         </xsl:when>
         <!-- For other types of tags behave as usual (ezcontent should be defined explicitly) -->

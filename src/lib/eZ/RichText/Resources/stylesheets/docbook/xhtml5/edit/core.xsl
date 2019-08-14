@@ -719,7 +719,8 @@
     <xsl:apply-templates select="node()|@*"/>
   </xsl:template>
 
-  <xsl:template match="docbook:eztemplate/docbook:ezcontent/text()">
+  <!-- Content with line breaks should be wrapped with literallayout, treating entire content as literal due to BC -->
+  <xsl:template match="docbook:eztemplate/docbook:ezcontent/text() | docbook:eztemplate/docbook:ezcontent/docbook:literallayout/text()">
     <xsl:call-template name="breakLine">
       <xsl:with-param name="text" select="."/>
     </xsl:call-template>
