@@ -99,7 +99,7 @@ class Template extends Render implements Converter
         $templateType = $template->hasAttribute('type') ? $template->getAttribute('type') : 'tag';
         $parameters = [
             'name' => $templateName,
-            'params' => $this->extractTemplateConfiguration($template, $xpath),
+            'params' => $this->extractConfiguration($template),
         ];
 
         $contentNodes = $xpath->query('./docbook:ezcontent', $template);
@@ -206,24 +206,6 @@ class Template extends Render implements Converter
         }
 
         return trim($this->richTextConverter->convert($innerDoc)->saveHTML());
-    }
-
-    /**
-     * Extract configuration hash from a template.
-     *
-     * @param \DOMElement $template
-     * @param \DOMXPath $xpath
-     *
-     * @return array
-     */
-    protected function extractTemplateConfiguration(DOMElement $template, DOMXPath $xpath)
-    {
-        $configElements = $xpath->query('./docbook:ezconfig', $template);
-        if (0 === $configElements->length) {
-            return [];
-        }
-
-        return $this->extractHash($configElements->item(0));
     }
 
     /**
