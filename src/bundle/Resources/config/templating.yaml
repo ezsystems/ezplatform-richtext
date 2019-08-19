@@ -8,6 +8,5 @@ services:
         arguments:
             $richTextOutputConverter: '@ezrichtext.converter.output.xhtml5'
             $richTextEditConverter: '@ezrichtext.converter.edit.xhtml5'
-    EzSystems\EzPlatformRichTextBundle\Templating\Twig\Extension\YoutubeIdExtractorExtension:
-        tags:
-            - { name: twig.extension }
+
+    EzSystems\EzPlatformRichTextBundle\Templating\Twig\Extension\YoutubeIdExtractorExtension: ~
