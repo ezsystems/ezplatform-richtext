@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace EzSystems\EzPlatformRichTextBundle\DependencyInjection;
 
+use EzSystems\EzPlatformRichText\SPI\Configuration\Provider;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Resource\FileResource;
@@ -25,6 +26,7 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
     const RICHTEXT_CUSTOM_STYLES_PARAMETER = 'ezplatform.ezrichtext.custom_styles';
     const RICHTEXT_CUSTOM_TAGS_PARAMETER = 'ezplatform.ezrichtext.custom_tags';
     const RICHTEXT_ALLOY_EDITOR_PARAMETER = 'ezplatform.ezrichtext.alloy_editor';
+    public const RICHTEXT_CONFIGURATION_PROVIDER_TAG = 'ezrichtext.configuration.provider';
 
     public function getAlias()
     {
@@ -52,6 +54,10 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
         $ezLoader->load('storage_engines/legacy/external_storage_gateways.yaml');
         $ezLoader->load('storage_engines/legacy/field_value_converters.yaml');
 
+        $container
+            ->registerForAutoconfiguration(Provider::class)
+            ->addTag(static::RICHTEXT_CONFIGURATION_PROVIDER_TAG);
+
         $loader = new Loader\YamlFileLoader(
             $container,
             new FileLocator(__DIR__ . '/../Resources/config')
@@ -61,6 +67,8 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
         $loader->load('templating.yaml');
         $loader->load('form.yaml');
         $loader->load('translation.yaml');
+        $loader->load('configuration.yaml');
+        $loader->load('api.yaml');
 
         $configuration = $this->getConfiguration($configs, $container);
         $config = $this->processConfiguration($configuration, $configs);
