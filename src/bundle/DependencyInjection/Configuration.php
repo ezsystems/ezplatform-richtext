@@ -56,6 +56,7 @@ class Configuration extends SiteAccessConfiguration
     {
         return $ezRichTextNode
                 ->arrayNode('custom_tags')
+                ->normalizeKeys(false)
                 // workaround: take into account Custom Tag names when merging configs
                 ->useAttributeAsKey('tag')
                 ->arrayPrototype()
