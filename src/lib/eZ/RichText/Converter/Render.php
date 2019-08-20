@@ -10,6 +10,7 @@ namespace EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 
 use DOMElement;
 use DOMNode;
+use DOMXPath;
 use EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface;
 
 /**
@@ -37,7 +38,10 @@ abstract class Render
     protected function extractConfiguration(DOMElement $embed)
     {
         $hash = [];
-        $configElements = $embed->getElementsByTagName('ezconfig');
+
+        $xpath = new DOMXPath($embed->ownerDocument);
+        $xpath->registerNamespace('docbook', 'http://docbook.org/ns/docbook');
+        $configElements = $xpath->query('./docbook:ezconfig', $embed);
 
         if ($configElements->length) {
             $hash = $this->extractHash($configElements->item(0));
