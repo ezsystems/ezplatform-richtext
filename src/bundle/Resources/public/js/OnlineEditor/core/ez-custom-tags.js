@@ -1,5 +1,5 @@
 (function(global, doc, eZ, AlloyEditor) {
-    Object.entries(eZ.adminUiConfig.richTextCustomTags).forEach(([customTag, tagConfig]) => {
+    Object.entries(eZ.richText.customTags).forEach(([customTag, tagConfig]) => {
         const isInline = tagConfig.isInline;
         const componentClassName = `ezBtn${customTag.charAt(0).toUpperCase() + customTag.slice(1)}`;
         const editComponentClassName = `${componentClassName}Edit`;

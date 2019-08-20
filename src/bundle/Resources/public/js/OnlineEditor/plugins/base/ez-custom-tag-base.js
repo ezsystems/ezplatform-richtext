@@ -108,7 +108,7 @@ const customTagBaseDefinition = {
      * @method renderHeader
      */
     renderHeader: function() {
-        const customTagConfig = global.eZ.adminUiConfig.richTextCustomTags[this.getName()];
+        const customTagConfig = global.eZ.richText.customTags[this.getName()];
 
         if (!customTagConfig) {
             return;
@@ -175,7 +175,7 @@ const customTagBaseDefinition = {
      * @method renderAttributes
      */
     renderAttributes: function() {
-        const customTagConfig = global.eZ.adminUiConfig.richTextCustomTags[this.getName()];
+        const customTagConfig = global.eZ.richText.customTags[this.getName()];
 
         if (!customTagConfig || !customTagConfig.attributes) {
             return;

@@ -6,11 +6,11 @@
         constructor() {
             this.ezNamespace = 'http://ez.no/namespaces/ezpublish5/xhtml5/edit';
             this.xhtmlNamespace = 'http://www.w3.org/1999/xhtml';
-            this.customTags = Object.keys(eZ.adminUiConfig.richTextCustomTags).filter(
-                (key) => !eZ.adminUiConfig.richTextCustomTags[key].isInline
+            this.customTags = Object.keys(eZ.richText.customTags).filter(
+                (key) => !eZ.richText.customTags[key].isInline
             );
-            this.inlineCustomTags = Object.keys(eZ.adminUiConfig.richTextCustomTags).filter(
-                (key) => eZ.adminUiConfig.richTextCustomTags[key].isInline
+            this.inlineCustomTags = Object.keys(eZ.richText.customTags).filter(
+                (key) => eZ.richText.customTags[key].isInline
             );
             this.alloyEditorExtraButtons = {
                 ezadd: [],
@@ -19,12 +19,12 @@
                 table: [],
                 tr: [],
                 td: [],
-                ...eZ.adminUiConfig.alloyEditor.extraButtons,
+                ...eZ.richText.alloyEditor.extraButtons,
             };
-            this.attributes = global.eZ.adminUiConfig.alloyEditor.attributes;
-            this.classes = global.eZ.adminUiConfig.alloyEditor.classes;
+            this.attributes = global.eZ.richText.alloyEditor.attributes;
+            this.classes = global.eZ.richText.alloyEditor.classes;
             this.customTagsToolbars = this.customTags.map((customTag) => {
-                const alloyEditorConfig = eZ.adminUiConfig.richTextCustomTags[customTag];
+                const alloyEditorConfig = eZ.richText.customTags[customTag];
 
                 return new eZ.ezAlloyEditor.ezCustomTagConfig({
                     name: customTag,
@@ -33,7 +33,7 @@
                 });
             });
             this.inlineCustomTagsToolbars = this.inlineCustomTags.map((customTag) => {
-                const alloyEditorConfig = eZ.adminUiConfig.richTextCustomTags[customTag];
+                const alloyEditorConfig = eZ.richText.customTags[customTag];
 
                 return new eZ.ezAlloyEditor.ezInlineCustomTagConfig({
                     name: customTag,
@@ -41,14 +41,14 @@
                     extraButtons: this.alloyEditorExtraButtons,
                 });
             });
-            this.customStylesConfigurations = Object.entries(eZ.adminUiConfig.richTextCustomStyles).map(
+            this.customStylesConfigurations = Object.entries(eZ.richText.customStyles).map(
                 ([customStyleName, customStyleConfig]) => {
                     return {
-                        name: customStyleConfig.adminUiConfig.label,
+                        name: customStyleConfig.label,
                         style: {
-                            element: customStyleConfig.adminUiConfig.inline ? 'span' : 'div',
+                            element: customStyleConfig.inline ? 'span' : 'div',
                             attributes: {
-                                'data-ezelement': customStyleConfig.adminUiConfig.inline ? 'eztemplateinline' : 'eztemplate',
+                                'data-ezelement': customStyleConfig.inline ? 'eztemplateinline' : 'eztemplate',
                                 'data-eztype': 'style',
                                 'data-ezname': customStyleName,
                             },
@@ -56,7 +56,7 @@
                     };
                 }
             );
-            this.alloyEditorExtraPlugins = eZ.adminUiConfig.alloyEditor.extraPlugins;
+            this.alloyEditorExtraPlugins = eZ.richText.alloyEditor.extraPlugins;
 
             this.xhtmlify = this.xhtmlify.bind(this);
         }

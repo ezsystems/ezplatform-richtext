@@ -1,5 +1,5 @@
 (function(global, doc, eZ, AlloyEditor) {
-    const { attributes, classes } = eZ.adminUiConfig.alloyEditor;
+    const { attributes, classes } = eZ.richText.alloyEditor;
     const toolbarNames = new Set([...Object.keys(attributes), ...Object.keys(classes)]);
 
     toolbarNames.forEach((toolbarName) => {

@@ -57,7 +57,7 @@ CKEDITOR.dtd.$editable.span = 1;
                 },
 
                 renderIcon: function() {
-                    const customTagConfig = global.eZ.adminUiConfig.richTextCustomTags[this.getName()];
+                    const customTagConfig = global.eZ.richText.customTags[this.getName()];
 
                     if (!customTagConfig) {
                         return;
