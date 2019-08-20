@@ -18,6 +18,8 @@
         "symfony/options-resolver": "^4.3",
         "symfony/validator": "^4.3",
         "symfony/cache": "^4.3",
+        "symfony/translation": "^4.3",
+        "symfony/translation-contracts": "^1.1.2",
         "twig/twig": "^2.11",
         "ezsystems/doctrine-dbal-schema": "^1.0@dev",
         "ezsystems/ezpublish-kernel": "^8.0@dev",
