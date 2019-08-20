@@ -104,7 +104,7 @@ class EmbedTest extends TestCase
             ],
             [
                 '<?xml version="1.0" encoding="UTF-8"?>
-<section xmlns:xlink="http://www.w3.org/1999/xlink">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <ezembed xlink:href="ezlocation://601" view="embed-inline">
     <ezconfig>
       <ezvalue key="size">medium</ezvalue>
@@ -123,7 +123,7 @@ class EmbedTest extends TestCase
   </ezembed>
 </section>',
                 '<?xml version="1.0" encoding="UTF-8"?>
-<section xmlns:xlink="http://www.w3.org/1999/xlink">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <ezembed xlink:href="ezlocation://601" view="embed-inline">
     <ezconfig>
       <ezvalue key="size">medium</ezvalue>
@@ -172,7 +172,7 @@ class EmbedTest extends TestCase
             ],
             [
                 '<?xml version="1.0" encoding="UTF-8"?>
-<section xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml">
   <ezembed xlink:href="ezlocation://601" view="embed-inline">
     <ezlink href_resolved="RESOLVED" xlink:href="ezcontent://95#fragment1" xlink:show="replace"/>
     <ezconfig>
@@ -192,7 +192,7 @@ class EmbedTest extends TestCase
   </ezembed>
 </section>',
                 '<?xml version="1.0" encoding="UTF-8"?>
-<section xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml">
   <ezembed xlink:href="ezlocation://601" view="embed-inline">
     <ezlink href_resolved="RESOLVED" xlink:href="ezcontent://95#fragment1" xlink:show="replace"/>
     <ezconfig>
@@ -289,7 +289,7 @@ class EmbedTest extends TestCase
             ],
             [
                 '<?xml version="1.0" encoding="UTF-8"?>
-<section xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml">
   <ezembedinline xlink:href="ezlocation://601" view="embed">
     <ezlink href_resolved="RESOLVED" xlink:href="ezcontent://95"/>
     <ezconfig>
@@ -304,7 +304,7 @@ class EmbedTest extends TestCase
   </ezembedinline> inline</link> embed</paragraph>
 </section>',
                 '<?xml version="1.0" encoding="UTF-8"?>
-<section xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml">
   <ezembedinline xlink:href="ezlocation://601" view="embed">
     <ezlink href_resolved="RESOLVED" xlink:href="ezcontent://95"/>
     <ezconfig>
@@ -552,6 +552,61 @@ class EmbedTest extends TestCase
                             'dataAttributes' => [
                                 'inline-choice-attr' => 'choice1',
                                 'inline-choice-mul-attr' => 'choice2,choice3',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            [
+                '<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml">
+  <paragraph>Here is paragraph with child embed
+    <ezembed xlink:href="ezlocation://601">
+      <ezembed xlink:href="ezlocation://602">
+        <ezconfig>
+          <ezvalue key="nested">value2</ezvalue>
+        </ezconfig>
+      </ezembed>
+      <ezconfig>
+        <ezvalue key="parent">value1</ezvalue>
+      </ezconfig>
+    </ezembed>
+    <ezconfig>
+      <ezvalue key="custom">big</ezvalue>
+    </ezconfig>
+  </paragraph>
+</section>',
+                '<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml">
+  <paragraph>Here is paragraph with child embed
+    <ezembed xlink:href="ezlocation://601">
+      <ezembed xlink:href="ezlocation://602">
+        <ezconfig>
+          <ezvalue key="nested">value2</ezvalue>
+        </ezconfig>
+      </ezembed>
+      <ezconfig>
+        <ezvalue key="parent">value1</ezvalue>
+      </ezconfig>
+      <ezpayload><![CDATA[601]]></ezpayload>
+    </ezembed>
+    <ezconfig>
+      <ezvalue key="custom">big</ezvalue>
+    </ezconfig>
+  </paragraph>
+</section>',
+                [],
+                [
+                    [
+                        'method' => 'renderLocationEmbed',
+                        'id' => '601',
+                        'viewType' => 'embed',
+                        'is_inline' => false,
+                        'embedParams' => [
+                            'id' => '601',
+                            'viewType' => 'embed',
+                            'config' => [
+                                'parent' => 'value1',
                             ],
                         ],
                     ],
