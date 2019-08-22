@@ -73,12 +73,17 @@ final class AlloyEditor implements Provider
      */
     private function getExtraButtons(): array
     {
+        if (empty($this->alloyEditorConfiguration['extra_buttons'])) {
+            return [];
+        }
+
         @trigger_error(
-            '"ezrichtext.alloy_editor.extra_buttons" is deprecated since v2.5.1. There will be new and more flexible solution to manage buttons in Online Editor in 3.0.0',
+            '"ezrichtext.alloy_editor.extra_buttons" is deprecated since v2.5.1. ' .
+            'There will be new and more flexible solution to manage buttons in Online Editor in 3.0.0',
             E_USER_DEPRECATED
         );
 
-        return $this->alloyEditorConfiguration['extra_buttons'] ?? [];
+        return $this->alloyEditorConfiguration['extra_buttons'];
     }
 
     /**
