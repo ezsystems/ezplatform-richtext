@@ -15,9 +15,6 @@ namespace EzSystems\EzPlatformRichText\Configuration\UI\Mapper\CustomTag;
  */
 final class ChoiceAttributeMapper extends CommonAttributeMapper implements AttributeMapper
 {
-    /**
-     * {@inheritdoc}
-     */
     public function supports(string $attributeType): bool
     {
         return 'choice' === $attributeType;

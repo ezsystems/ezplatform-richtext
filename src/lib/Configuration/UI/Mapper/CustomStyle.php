@@ -50,7 +50,7 @@ final class CustomStyle
      *
      * @return array Mapped configuration
      */
-    public function mapConfig(array $enabledCustomStyles)
+    public function mapConfig(array $enabledCustomStyles): array
     {
         $config = [];
         foreach ($enabledCustomStyles as $styleName) {

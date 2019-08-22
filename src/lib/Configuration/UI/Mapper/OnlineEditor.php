@@ -23,10 +23,6 @@ final class OnlineEditor implements OnlineEditorConfigMapper
     /** @var string */
     private $translationDomain;
 
-    /**
-     * @param \Symfony\Contracts\Translation\TranslatorInterface $translator
-     * @param string $translationDomain
-     */
     public function __construct(TranslatorInterface $translator, string $translationDomain)
     {
         $this->translator = $translator;

@@ -73,7 +73,7 @@ final class CustomTag
      *
      * @return array Mapped configuration
      */
-    public function mapConfig(array $enabledCustomTags)
+    public function mapConfig(array $enabledCustomTags): array
     {
         $config = [];
         foreach ($enabledCustomTags as $tagName) {
@@ -121,7 +121,7 @@ final class CustomTag
      * @param string $attributeName
      * @param string $attributeType
      *
-     * @return AttributeMapper
+     * @return \EzSystems\EzPlatformRichText\Configuration\UI\Mapper\CustomTag\AttributeMapper
      */
     private function getAttributeTypeMapper(
         string $tagName,
