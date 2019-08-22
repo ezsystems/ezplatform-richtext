@@ -19,12 +19,12 @@ class OnlineEditorTest extends TestCase
 
     public function setUp(): void
     {
+        /** @var \Symfony\Contracts\Translation\TranslatorInterface $translatorMock */
         $translatorMock = $this->createMock(TranslatorInterface::class);
         $translatorMock
             ->expects($this->any())
             ->method('trans')
             ->willReturnArgument(0);
-        /** @var \Symfony\Contracts\Translation\TranslatorInterface $translatorMock */
         $this->mapper = new OnlineEditor($translatorMock, 'online_editor');
     }
 
