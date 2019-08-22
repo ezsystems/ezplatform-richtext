@@ -25,10 +25,6 @@ final class CustomTag implements Provider
     /** @var \EzSystems\EzPlatformRichText\Configuration\UI\Mapper\CustomTag */
     private $customTagConfigurationMapper;
 
-    /**
-     * @param \eZ\Publish\Core\MVC\ConfigResolverInterface $configResolver
-     * @param \EzSystems\EzPlatformRichText\Configuration\UI\Mapper\CustomTag $customTagConfigurationMapper
-     */
     public function __construct(
         ConfigResolverInterface $configResolver,
         CustomTagConfigurationMapper $customTagConfigurationMapper

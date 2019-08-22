@@ -29,11 +29,6 @@ final class AlloyEditor implements Provider
     /** @var \EzSystems\EzPlatformRichText\Configuration\UI\Mapper\OnlineEditorConfigMapper */
     private $onlineEditorConfigMapper;
 
-    /**
-     * @param array $alloyEditorConfiguration
-     * @param \eZ\Publish\Core\MVC\ConfigResolverInterface $configResolver
-     * @param \EzSystems\EzPlatformRichText\Configuration\UI\Mapper\OnlineEditorConfigMapper $onlineEditorConfigMapper
-     */
     public function __construct(
         array $alloyEditorConfiguration,
         ConfigResolverInterface $configResolver,

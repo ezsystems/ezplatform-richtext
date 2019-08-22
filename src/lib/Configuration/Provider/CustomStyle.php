@@ -25,10 +25,6 @@ final class CustomStyle implements Provider
     /** @var \EzSystems\EzPlatformRichText\Configuration\UI\Mapper\CustomStyle */
     private $customStyleConfigurationMapper;
 
-    /**
-     * @param \eZ\Publish\Core\MVC\ConfigResolverInterface $configResolver
-     * @param \EzSystems\EzPlatformRichText\Configuration\UI\Mapper\CustomStyle $customStyleConfigurationMapper
-     */
     public function __construct(
         ConfigResolverInterface $configResolver,
         CustomStyleConfigurationMapper $customStyleConfigurationMapper
