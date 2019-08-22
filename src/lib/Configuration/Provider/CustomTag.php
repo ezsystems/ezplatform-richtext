@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace EzSystems\EzPlatformRichText\Configuration\Provider;
 
 use eZ\Publish\Core\MVC\ConfigResolverInterface;
-use EzSystems\EzPlatformRichText\Configuration\UI\Mapper\CustomTag as CustomTagConfigurationMapper;
+use EzSystems\EzPlatformRichText\Configuration\UI\Mapper\CustomTemplateConfigMapper;
 use EzSystems\EzPlatformRichText\SPI\Configuration\Provider;
 
 /**
@@ -27,7 +27,7 @@ final class CustomTag implements Provider
 
     public function __construct(
         ConfigResolverInterface $configResolver,
-        CustomTagConfigurationMapper $customTagConfigurationMapper
+        CustomTemplateConfigMapper $customTagConfigurationMapper
     ) {
         $this->configResolver = $configResolver;
         $this->customTagConfigurationMapper = $customTagConfigurationMapper;

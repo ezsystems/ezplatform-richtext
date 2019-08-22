@@ -17,7 +17,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  *
  * @internal For internal use by RichText package
  */
-final class CustomStyle
+final class CustomStyle implements CustomTemplateConfigMapper
 {
     /** @var array */
     private $customStylesConfiguration;

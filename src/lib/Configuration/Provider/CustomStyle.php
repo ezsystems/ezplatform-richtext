@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace EzSystems\EzPlatformRichText\Configuration\Provider;
 
 use eZ\Publish\Core\MVC\ConfigResolverInterface;
-use EzSystems\EzPlatformRichText\Configuration\UI\Mapper\CustomStyle as CustomStyleConfigurationMapper;
+use EzSystems\EzPlatformRichText\Configuration\UI\Mapper\CustomTemplateConfigMapper;
 use EzSystems\EzPlatformRichText\SPI\Configuration\Provider;
 
 /**
@@ -27,7 +27,7 @@ final class CustomStyle implements Provider
 
     public function __construct(
         ConfigResolverInterface $configResolver,
-        CustomStyleConfigurationMapper $customStyleConfigurationMapper
+        CustomTemplateConfigMapper $customStyleConfigurationMapper
     ) {
         $this->configResolver = $configResolver;
         $this->customStyleConfigurationMapper = $customStyleConfigurationMapper;

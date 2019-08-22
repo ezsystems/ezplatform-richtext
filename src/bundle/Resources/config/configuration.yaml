@@ -14,6 +14,14 @@ services:
     EzSystems\EzPlatformRichText\Configuration\Provider\:
         resource: '../../../lib/Configuration/Provider/*'
 
+    EzSystems\EzPlatformRichText\Configuration\Provider\CustomStyle:
+        arguments:
+            $customStyleConfigurationMapper: '@EzSystems\EzPlatformRichText\Configuration\UI\Mapper\CustomStyle'
+
+    EzSystems\EzPlatformRichText\Configuration\Provider\CustomTag:
+        arguments:
+            $customTagConfigurationMapper: '@EzSystems\EzPlatformRichText\Configuration\UI\Mapper\CustomTag'
+
     EzSystems\EzPlatformRichText\Configuration\Provider\AlloyEditor:
         arguments:
             $alloyEditorConfiguration: '%ezplatform.ezrichtext.alloy_editor%'

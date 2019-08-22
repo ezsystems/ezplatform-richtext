@@ -19,7 +19,7 @@ use Traversable;
  *
  * @internal For internal use by RichText package
  */
-final class CustomTag
+final class CustomTag implements CustomTemplateConfigMapper
 {
     /** @var array */
     private $customTagsConfiguration;
