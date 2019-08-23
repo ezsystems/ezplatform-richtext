@@ -78,8 +78,7 @@ class Xslt extends XmlBase implements Converter
 
             // Prevents showing XSLTProcessor::importStylesheet() warning on Windows file system
             // & allows loading stylesheets if project's directory name contains space(s)
-            $hrefAttr->value = str_replace(['\\', ' '], ['/', '%20'], $stylesheet);
-
+            $hrefAttr->value = realpath($stylesheet);
             $newEl->appendChild($hrefAttr);
             $xslDoc->documentElement->insertBefore($newEl, $insertBeforeEl);
         }
