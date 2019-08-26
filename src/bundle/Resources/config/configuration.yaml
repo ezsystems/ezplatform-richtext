@@ -11,9 +11,6 @@ services:
         autoconfigure: true
         public: false
 
-    EzSystems\EzPlatformRichText\Configuration\Provider\:
-        resource: '../../../lib/Configuration/Provider/*'
-
     EzSystems\EzPlatformRichText\Configuration\Provider\CustomStyle:
         arguments:
             $customStyleConfigurationMapper: '@EzSystems\EzPlatformRichText\Configuration\UI\Mapper\CustomStyle'
