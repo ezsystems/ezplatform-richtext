@@ -15,13 +15,13 @@ services:
 
     ezrichtext.validator.input.ezxhtml5:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Validator\ValidatorAggregate
-        arguments: [!tagged ezrichtext.validator.input.ezxhtml5]
+        arguments: [!tagged ezplatform.ezrichtext.validator.input.ezxhtml5]
 
     ezrichtext.validator.docbook:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Validator\Validator
         arguments: ['%ezrichtext.validator.docbook.resources%']
         tags:
-            - { name: 'ezrichtext.validator.input.ezxhtml5' }
+            - { name: 'ezplatform.ezrichtext.validator.input.ezxhtml5' }
 
     ezrichtext.validator.input.dispatcher:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Validator\ValidatorDispatcher
@@ -35,7 +35,7 @@ services:
             - '@ezpublish.spi.persistence.cache.contentHandler'
             - '@ezpublish.spi.persistence.cache.locationHandler'
         tags:
-            - { name: 'ezrichtext.validator.input.ezxhtml5' }
+            - { name: 'ezplatform.ezrichtext.validator.input.ezxhtml5' }
 
     ezrichtext.normalizer.input:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Normalizer\Aggregate
@@ -45,7 +45,7 @@ services:
         public: false
         arguments: ['%ezplatform.ezrichtext.custom_tags%']
         tags:
-            - { name: 'ezrichtext.validator.input.ezxhtml5' }
+            - { name: 'ezplatform.ezrichtext.validator.input.ezxhtml5' }
 
     EzSystems\EzPlatformRichText\eZ\RichText\RelationProcessor:
         public: false

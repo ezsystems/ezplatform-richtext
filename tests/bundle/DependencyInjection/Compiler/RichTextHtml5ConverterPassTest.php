@@ -38,19 +38,19 @@ class RichTextHtml5ConverterPassTest extends AbstractCompilerPassTestCase
         );
 
         $configurationProvider = new Definition();
-        $configurationProvider->addTag('ezrichtext.converter.output.xhtml5');
+        $configurationProvider->addTag('ezplatform.ezrichtext.converter.output.xhtml5');
         $this->setDefinition('ezrichtext.converter.test1', $configurationProvider);
 
         $configurationProvider = new Definition();
-        $configurationProvider->addTag('ezrichtext.converter.output.xhtml5', ['priority' => 10]);
+        $configurationProvider->addTag('ezplatform.ezrichtext.converter.output.xhtml5', ['priority' => 10]);
         $this->setDefinition('ezrichtext.converter.test2', $configurationProvider);
 
         $configurationProvider = new Definition();
-        $configurationProvider->addTag('ezrichtext.converter.output.xhtml5', ['priority' => 5]);
+        $configurationProvider->addTag('ezplatform.ezrichtext.converter.output.xhtml5', ['priority' => 5]);
         $this->setDefinition('ezrichtext.converter.test3', $configurationProvider);
 
         $configurationProvider = new Definition();
-        $configurationProvider->addTag('ezrichtext.converter.output.xhtml5', ['priority' => 5]);
+        $configurationProvider->addTag('ezplatform.ezrichtext.converter.output.xhtml5', ['priority' => 5]);
         $this->setDefinition('ezrichtext.converter.test4', $configurationProvider);
 
         $this->compile();

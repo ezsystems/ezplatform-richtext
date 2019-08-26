@@ -83,13 +83,13 @@ services:
 
     ezrichtext.validator.input.ezxhtml5:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Validator\ValidatorAggregate
-        arguments: [!tagged ezrichtext.validator.input.ezxhtml5]
+        arguments: [!tagged ezplatform.ezrichtext.validator.input.ezxhtml5]
 
     ezrichtext.validator.docbook:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Validator\Validator
         arguments: ['%ezrichtext.validator.docbook.resources%']
         tags:
-            - { name: 'ezrichtext.validator.input.ezxhtml5' }
+            - { name: 'ezplatform.ezrichtext.validator.input.ezxhtml5' }
 
     ezrichtext.validator.output.ezxhtml5:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Validator\Validator
@@ -109,7 +109,7 @@ services:
             - '@ezpublish.spi.persistence.cache.contentHandler'
             - '@ezpublish.spi.persistence.cache.locationHandler'
         tags:
-            - { name: 'ezrichtext.validator.input.ezxhtml5' }
+            - { name: 'ezplatform.ezrichtext.validator.input.ezxhtml5' }
 
     ezrichtext.converter.output.xhtml5.core:
         class: EzSystems\EzPlatformRichTextBundle\eZ\RichText\Converter\Html5
@@ -120,7 +120,7 @@ services:
             - {name: ezrichtext.converter.output.xhtml5, priority: 50}
 
     # Aggregate converter for XHTML5 input that other converters register to
-    # through 'ezrichtext.converter.input.xhtml5' service tag.
+    # through 'ezplatform.ezrichtext.converter.input.xhtml5' service tag.
     ezrichtext.converter.input.xhtml5:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\Aggregate
         lazy: true

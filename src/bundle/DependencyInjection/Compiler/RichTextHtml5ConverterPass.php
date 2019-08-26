@@ -24,13 +24,13 @@ class RichTextHtml5ConverterPass implements CompilerPassInterface
     {
         if ($container->hasDefinition('ezrichtext.converter.output.xhtml5')) {
             $html5OutputConverterDefinition = $container->getDefinition('ezrichtext.converter.output.xhtml5');
-            $taggedOutputServiceIds = $container->findTaggedServiceIds('ezrichtext.converter.output.xhtml5');
+            $taggedOutputServiceIds = $container->findTaggedServiceIds('ezplatform.ezrichtext.converter.output.xhtml5');
             $this->setConverterDefinitions($taggedOutputServiceIds, $html5OutputConverterDefinition);
         }
 
         if ($container->hasDefinition('ezrichtext.converter.input.xhtml5')) {
             $html5InputConverterDefinition = $container->getDefinition('ezrichtext.converter.input.xhtml5');
-            $taggedInputServiceIds = $container->findTaggedServiceIds('ezrichtext.converter.input.xhtml5');
+            $taggedInputServiceIds = $container->findTaggedServiceIds('ezplatform.ezrichtext.converter.input.xhtml5');
             $this->setConverterDefinitions($taggedInputServiceIds, $html5InputConverterDefinition);
         }
     }
