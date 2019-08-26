@@ -28,4 +28,4 @@ services:
 
     EzSystems\EzPlatformRichText\Configuration\AggregateProvider:
         arguments:
-            $providers: !tagged ezrichtext.configuration.provider
+            $providers: !tagged ezplatform.ezrichtext.configuration.provider
