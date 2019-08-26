@@ -29,7 +29,7 @@ final class RichTextConfigurationExtension extends AbstractExtension implements 
 
     public function getName(): string
     {
-        return 'ezpublish.rich_text';
+        return 'ezrichtext.configuration';
     }
 
     public function getGlobals(): array
