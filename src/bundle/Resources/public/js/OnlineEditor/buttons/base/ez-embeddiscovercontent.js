@@ -35,7 +35,7 @@ export default class EzEmbedDiscoverContentButton extends EzWidgetButton {
         const siteaccess = document.querySelector('meta[name="SiteAccess"]').content;
         const languageCode = document.querySelector('meta[name="LanguageCode"]').content;
         const config = JSON.parse(document.querySelector(`[data-udw-config-name="${udwConfigName}"]`).dataset.udwConfig);
-        const selectContent = eZ.alloyEditor.callbacks.selectContent;
+        const selectContent = eZ.richText.alloyEditor.callbacks.selectContent;
         const mergedConfig = Object.assign(
             {
                 onConfirm: this.confirmHandler,
