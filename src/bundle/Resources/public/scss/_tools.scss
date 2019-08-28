@@ -1,0 +1,8 @@
+.ez-richtext-tools {
+	display: flex;
+	justify-content: space-between;
+	font-size: calculateRem(10px);
+	background-color: $ez-tools-color-ground;
+	color: $ez-tools-color-text;
+	padding: 0 calculateRem(16px);
+}

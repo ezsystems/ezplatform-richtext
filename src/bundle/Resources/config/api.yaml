@@ -1,0 +1,8 @@
+services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: false
+
+    EzSystems\EzPlatformRichText\API\Configuration\ProviderService:
+        alias: EzSystems\EzPlatformRichText\Configuration\AggregateProvider

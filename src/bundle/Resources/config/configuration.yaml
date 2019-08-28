@@ -1,0 +1,28 @@
+imports:
+    - { resource: ui/mappers.yaml }
+
+parameters:
+    # set via compiler pass
+    ezplatform.ezrichtext.alloy_editor: []
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    EzSystems\EzPlatformRichText\Configuration\Provider\CustomStyle:
+        arguments:
+            $customStyleConfigurationMapper: '@EzSystems\EzPlatformRichText\Configuration\UI\Mapper\CustomStyle'
+
+    EzSystems\EzPlatformRichText\Configuration\Provider\CustomTag:
+        arguments:
+            $customTagConfigurationMapper: '@EzSystems\EzPlatformRichText\Configuration\UI\Mapper\CustomTag'
+
+    EzSystems\EzPlatformRichText\Configuration\Provider\AlloyEditor:
+        arguments:
+            $alloyEditorConfiguration: '%ezplatform.ezrichtext.alloy_editor%'
+
+    EzSystems\EzPlatformRichText\Configuration\AggregateProvider:
+        arguments:
+            $providers: !tagged ezplatform.ezrichtext.configuration.provider

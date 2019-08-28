@@ -1,0 +1,62 @@
+.ae-ui {
+    .ae-toolbar-add {
+        opacity: 0;
+    }
+
+    .ae-toolbar {
+        .ae-button {
+            &.ez-btn-ae {
+                width: auto;
+                height: auto;
+                margin: 0.3rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+    .ae-container {
+        .ez-ae-edit-link {
+            .ez-btn-ae {
+                color: $ez-ae-color-primary;
+
+                &--clear-link {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    color: $ez-ae-color-negative;
+                    height: 2.25rem;
+                    display: none;
+                }
+
+                &--remove-link,
+                &--save-link {
+                    border-radius: 50%;
+                    width: calculateRem(40px);
+                    height: calculateRem(40px);
+                    padding: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                &--remove-link {
+                    background-color: $ez-ae-color-negative;
+                }
+
+                &--save-link {
+                    background-color: $ez-ae-color-positive;
+                }
+            }
+
+            &.is-linked {
+                .ez-btn-ae {
+                    &--clear-link {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}

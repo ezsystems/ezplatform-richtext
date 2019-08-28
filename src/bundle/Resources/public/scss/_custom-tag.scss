@@ -1,0 +1,99 @@
+.ez-custom-tag {
+    max-width: 50%;
+    border: calculateRem(1px) solid $ez-custom-tag-color-border;
+    margin: calculateRem(16px) 0;
+    border-radius: calculateRem(5px);
+
+    & & {
+        max-width: 100%;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $ez-custom-tag-color-header-ground;
+        padding: calculateRem(2px) calculateRem(2px) calculateRem(2px) calculateRem(8px);
+        border-top-left-radius: calculateRem(5px);
+        border-top-right-radius: calculateRem(5px);
+
+        &-label {
+            font-weight: bold;
+        }
+
+        &-btns {
+            background-color: $ez-custom-tag-color-switcher-ground;
+            border: calculateRem(2px) solid $ez-custom-tag-color-switcher-active;
+            border-radius: calculateRem(5px);
+            display: flex;
+            padding: calculateRem(2px);
+        }
+
+        &-btn {
+            display: flex;
+            border-radius: calculateRem(5px);
+            padding: calculateRem(6px) calculateRem(8px);
+
+            .ez-icon {
+                fill: $ez-custom-tag-color-switcher-active;
+            }
+        }
+    }
+
+    &__icon-wrapper {
+        white-space: initial;
+        display: flex;
+        align-items: center;
+    }
+
+    & > [data-ezelement='ezattributes'],
+    & > [data-ezelement='ezcontent'] {
+        display: none;
+        padding: calculateRem(8px) calculateRem(24px);
+    }
+
+    &--attributes-visible {
+        & > [data-ezelement='ezattributes'] {
+            display: block;
+        }
+
+        & > .ez-custom-tag__header {
+            .ez-custom-tag__header-btn--attributes {
+                background-color: $ez-custom-tag-color-switcher-active;
+
+                .ez-icon {
+                    fill: $ez-custom-tag-color-switcher-inactive;
+                }
+            }
+        }
+    }
+
+    &--content-visible {
+        & > [data-ezelement='ezcontent'] {
+            display: inherit;
+        }
+
+        &[data-ezelement='eztemplateinline'] {
+            padding: 0 calculateRem(8px);
+            margin: 0 calculateRem(4px);
+            background-color: $ez-custom-tag-inline-color-ground;
+            border: none;
+            display: inline-flex;
+            max-width: none;
+
+            & > [data-ezelement='ezcontent'] {
+                padding: 0;
+            }
+        }
+
+        & > .ez-custom-tag__header {
+            .ez-custom-tag__header-btn--content {
+                background-color: $ez-custom-tag-color-switcher-active;
+
+                .ez-icon {
+                    fill: $ez-custom-tag-color-switcher-inactive;
+                }
+            }
+        }
+    }
+}

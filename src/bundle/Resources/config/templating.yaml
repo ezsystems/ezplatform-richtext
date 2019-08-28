@@ -10,3 +10,5 @@ services:
             $richTextEditConverter: '@ezrichtext.converter.edit.xhtml5'
 
     EzSystems\EzPlatformRichTextBundle\Templating\Twig\Extension\YoutubeIdExtractorExtension: ~
+
+    EzSystems\EzPlatformRichTextBundle\Templating\Twig\Extension\RichTextConfigurationExtension: ~
