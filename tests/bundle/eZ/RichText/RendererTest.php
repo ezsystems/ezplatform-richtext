@@ -21,7 +21,8 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Exception;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Templating\EngineInterface;
+use Twig\Environment;
+use Twig\Loader\LoaderInterface;
 
 class RendererTest extends TestCase
 {
@@ -32,6 +33,7 @@ class RendererTest extends TestCase
         $this->configResolverMock = $this->getConfigResolverMock();
         $this->templateEngineMock = $this->getTemplateEngineMock();
         $this->loggerMock = $this->getLoggerMock();
+        $this->loaderMock = $this->getLoaderMock();
         parent::setUp();
     }
 
@@ -56,11 +58,15 @@ class RendererTest extends TestCase
             ->with($name, $isInline)
             ->willReturn($templateName);
 
-        $this->templateEngineMock
-            ->expects($this->once())
+        $this->loaderMock
             ->method('exists')
             ->with($templateName)
             ->willReturn(true);
+
+        $this->templateEngineMock
+            ->expects($this->once())
+            ->method('getLoader')
+            ->willReturn($this->loaderMock);
 
         $this->loggerMock
             ->expects($this->never())
@@ -91,7 +97,7 @@ class RendererTest extends TestCase
 
         $this->templateEngineMock
             ->expects($this->never())
-            ->method('exists');
+            ->method('getLoader');
 
         $this->loggerMock
             ->expects($this->once())
@@ -121,11 +127,15 @@ class RendererTest extends TestCase
             ->with($name, $isInline)
             ->willReturn('templateName');
 
-        $this->templateEngineMock
-            ->expects($this->once())
+        $this->loaderMock
             ->method('exists')
             ->with($templateName)
             ->willReturn(false);
+
+        $this->templateEngineMock
+            ->expects($this->once())
+            ->method('getLoader')
+            ->willReturn($this->loaderMock);
 
         $this->loggerMock
             ->expects($this->once())
@@ -261,11 +271,15 @@ class RendererTest extends TestCase
                 ->expects($this->never())
                 ->method($this->anything());
         } else {
-            $this->templateEngineMock
-                ->expects($this->once())
+            $this->loaderMock
                 ->method('exists')
                 ->with($templateEngineTemplate)
                 ->willReturn(true);
+
+            $this->templateEngineMock
+                ->expects($this->once())
+                ->method('getLoader')
+                ->willReturn($this->loaderMock);
         }
 
         if (empty($configResolverParams)) {
@@ -347,11 +361,15 @@ class RendererTest extends TestCase
             ->with(Renderer::RESOURCE_TYPE_CONTENT, $isInline, $isDenied)
             ->willReturn($templateName);
 
-        $this->templateEngineMock
-            ->expects($this->once())
+        $this->loaderMock
             ->method('exists')
             ->with($templateName)
             ->willReturn(true);
+
+        $this->templateEngineMock
+            ->expects($this->once())
+            ->method('getLoader')
+            ->willReturn($this->loaderMock);
 
         $this->loggerMock
             ->expects($this->never())
@@ -399,7 +417,7 @@ class RendererTest extends TestCase
 
         $this->templateEngineMock
             ->expects($this->never())
-            ->method('exists');
+            ->method('getLoader');
 
         $this->loggerMock
             ->expects($this->once())
@@ -444,11 +462,15 @@ class RendererTest extends TestCase
             ->with(Renderer::RESOURCE_TYPE_CONTENT, $isInline, $isDenied)
             ->willReturn($templateName);
 
-        $this->templateEngineMock
-            ->expects($this->once())
+        $this->loaderMock
             ->method('exists')
             ->with($templateName)
             ->willReturn(false);
+
+        $this->templateEngineMock
+            ->expects($this->once())
+            ->method('getLoader')
+            ->willReturn($this->loaderMock);
 
         $this->loggerMock
             ->expects($this->once())
@@ -497,11 +519,15 @@ class RendererTest extends TestCase
             ->with(Renderer::RESOURCE_TYPE_CONTENT, $isInline, $isDenied)
             ->willReturn($templateName);
 
-        $this->templateEngineMock
-            ->expects($this->once())
+        $this->loaderMock
             ->method('exists')
             ->with($templateName)
             ->willReturn(true);
+
+        $this->templateEngineMock
+            ->expects($this->once())
+            ->method('getLoader')
+            ->willReturn($this->loaderMock);
 
         $this->loggerMock
             ->expects($this->once())
@@ -595,7 +621,7 @@ class RendererTest extends TestCase
 
         $this->templateEngineMock
             ->expects($this->never())
-            ->method('exists');
+            ->method('getLoader');
 
         $this->loggerMock
             ->expects($this->once())
@@ -810,11 +836,15 @@ class RendererTest extends TestCase
                 ->expects($this->never())
                 ->method($this->anything());
         } else {
-            $this->templateEngineMock
-                ->expects($this->once())
+            $this->loaderMock
                 ->method('exists')
                 ->with($templateEngineTemplate)
                 ->willReturn(true);
+
+            $this->templateEngineMock
+                ->expects($this->once())
+                ->method('getLoader')
+                ->willReturn($this->loaderMock);
         }
 
         if (empty($configResolverParams)) {
@@ -895,11 +925,15 @@ class RendererTest extends TestCase
             ->with(Renderer::RESOURCE_TYPE_LOCATION, $isInline, $isDenied)
             ->willReturn($templateName);
 
-        $this->templateEngineMock
-            ->expects($this->once())
+        $this->loaderMock
             ->method('exists')
             ->with($templateName)
             ->willReturn(true);
+
+        $this->templateEngineMock
+            ->expects($this->once())
+            ->method('getLoader')
+            ->willReturn($this->loaderMock);
 
         $this->loggerMock
             ->expects($this->never())
@@ -946,7 +980,7 @@ class RendererTest extends TestCase
 
         $this->templateEngineMock
             ->expects($this->never())
-            ->method('exists');
+            ->method('getLoader');
 
         $this->loggerMock
             ->expects($this->once())
@@ -991,11 +1025,15 @@ class RendererTest extends TestCase
             ->with(Renderer::RESOURCE_TYPE_LOCATION, $isInline, $isDenied)
             ->willReturn($templateName);
 
-        $this->templateEngineMock
-            ->expects($this->once())
+        $this->loaderMock
             ->method('exists')
             ->with($templateName)
             ->willReturn(false);
+
+        $this->templateEngineMock
+            ->expects($this->once())
+            ->method('getLoader')
+            ->willReturn($this->loaderMock);
 
         $this->loggerMock
             ->expects($this->once())
@@ -1036,11 +1074,15 @@ class RendererTest extends TestCase
             ->with(Renderer::RESOURCE_TYPE_LOCATION, $isInline, $isDenied)
             ->willReturn($templateName);
 
-        $this->templateEngineMock
-            ->expects($this->once())
+        $this->loaderMock
             ->method('exists')
             ->with($templateName)
             ->willReturn(true);
+
+        $this->templateEngineMock
+            ->expects($this->once())
+            ->method('getLoader')
+            ->willReturn($this->loaderMock);
 
         $this->loggerMock
             ->expects($this->once())
@@ -1084,7 +1126,7 @@ class RendererTest extends TestCase
 
         $this->templateEngineMock
             ->expects($this->never())
-            ->method('exists');
+            ->method('getLoader');
 
         $this->loggerMock
             ->expects($this->once())
@@ -1132,7 +1174,7 @@ class RendererTest extends TestCase
 
         $this->templateEngineMock
             ->expects($this->never())
-            ->method('exists');
+            ->method('getLoader');
 
         $this->loggerMock
             ->expects($this->once())
@@ -1338,11 +1380,15 @@ class RendererTest extends TestCase
                 ->expects($this->never())
                 ->method($this->anything());
         } else {
-            $this->templateEngineMock
-                ->expects($this->once())
+            $this->loaderMock
                 ->method('exists')
                 ->with($templateEngineTemplate)
                 ->willReturn(true);
+
+            $this->templateEngineMock
+                ->expects($this->once())
+                ->method('getLoader')
+                ->willReturn($this->loaderMock);
         }
 
         if (empty($configResolverParams)) {
@@ -1460,7 +1506,7 @@ class RendererTest extends TestCase
      */
     protected function getTemplateEngineMock()
     {
-        return $this->createMock(EngineInterface::class);
+        return $this->createMock(Environment::class);
     }
 
     /**
@@ -1474,6 +1520,19 @@ class RendererTest extends TestCase
     protected function getLoggerMock()
     {
         return $this->createMock(LoggerInterface::class);
+    }
+
+    /**
+     * @var \Twig\Loader\LoaderInterface|\PHPUnit\Framework\MockObject\MockObject
+     */
+    protected $loaderMock;
+
+    /**
+     * @return \PHPUnit\Framework\MockObject\MockObject
+     */
+    protected function getLoaderMock()
+    {
+        return $this->createMock(LoaderInterface::class);
     }
 
     protected function getContentMock($mainLocationId)

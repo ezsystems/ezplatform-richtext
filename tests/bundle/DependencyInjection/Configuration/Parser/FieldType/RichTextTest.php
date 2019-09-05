@@ -106,7 +106,7 @@ class RichTextTest extends AbstractParserTestCase
         $this->assertConfigResolverParameterValue(
             'fieldtypes.ezrichtext.tags.default',
             [
-                'template' => 'EzPlatformRichTextBundle:RichText/tag:default.html.twig',
+                'template' => '@EzPlatformRichText/RichText/tag/default.html.twig',
             ],
             'ezdemo_site'
         );

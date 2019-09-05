@@ -13,7 +13,6 @@ use eZ\Publish\API\Repository\Values\Content\Content;
 use eZ\Publish\Core\MVC\ConfigResolverInterface;
 use EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface;
 use Psr\Log\NullLogger;
-use Symfony\Component\Templating\EngineInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use eZ\Publish\Core\MVC\Symfony\Security\Authorization\Attribute as AuthorizationAttribute;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -21,6 +20,7 @@ use eZ\Publish\API\Repository\Exceptions\NotFoundException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Exception;
 use Psr\Log\LoggerInterface;
+use Twig\Environment;
 
 /**
  * Symfony implementation of RichText field type embed renderer.
@@ -61,7 +61,7 @@ class Renderer implements RendererInterface
     protected $configResolver;
 
     /**
-     * @var \Symfony\Component\Templating\EngineInterface
+     * @var \Twig\Environment
      */
     protected $templateEngine;
 
@@ -84,7 +84,7 @@ class Renderer implements RendererInterface
      * @param \eZ\Publish\API\Repository\Repository $repository
      * @param \Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface $authorizationChecker
      * @param \eZ\Publish\Core\MVC\ConfigResolverInterface $configResolver
-     * @param \Symfony\Component\Templating\EngineInterface $templateEngine
+     * @param \Twig\Environment $templateEngine
      * @param string $tagConfigurationNamespace
      * @param string $styleConfigurationNamespace
      * @param string $embedConfigurationNamespace
@@ -96,7 +96,7 @@ class Renderer implements RendererInterface
         Repository $repository,
         AuthorizationCheckerInterface $authorizationChecker,
         ConfigResolverInterface $configResolver,
-        EngineInterface $templateEngine,
+        Environment $templateEngine,
         $tagConfigurationNamespace,
         $styleConfigurationNamespace,
         $embedConfigurationNamespace,
@@ -172,7 +172,7 @@ class Renderer implements RendererInterface
             return null;
         }
 
-        if (!$this->templateEngine->exists($templateName)) {
+        if (!$this->templateEngine->getLoader()->exists($templateName)) {
             $this->logger->error(
                 "Could not render embedded resource: template '{$templateName}' does not exists"
             );
@@ -232,7 +232,7 @@ class Renderer implements RendererInterface
             return null;
         }
 
-        if (!$this->templateEngine->exists($templateName)) {
+        if (!$this->templateEngine->getLoader()->exists($templateName)) {
             $this->logger->error(
                 "Could not render embedded resource: template '{$templateName}' does not exists"
             );
@@ -272,7 +272,7 @@ class Renderer implements RendererInterface
             return null;
         }
 
-        if (!$this->templateEngine->exists($templateName)) {
+        if (!$this->templateEngine->getLoader()->exists($templateName)) {
             $this->logger->error(
                 "Could not render template {$type} '{$name}': template '{$templateName}' does not exist"
             );
