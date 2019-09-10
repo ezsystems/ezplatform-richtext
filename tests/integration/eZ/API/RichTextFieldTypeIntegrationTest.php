@@ -568,13 +568,14 @@ EOT;
         $contentService = $repository->getContentService();
         $contentTypeService = $repository->getContentTypeService();
         $locationService = $repository->getLocationService();
+        $permissionResolver = $repository->getPermissionResolver();
 
         // Create Type containing RichText Field definition
         $createStruct = $contentTypeService->newContentTypeCreateStruct('test-RichText');
         $createStruct->mainLanguageCode = 'eng-GB';
         $createStruct->remoteId = 'test-RichText-abcdefghjklm9876543210';
         $createStruct->names = ['eng-GB' => 'Test'];
-        $createStruct->creatorId = $repository->getCurrentUser()->id;
+        $createStruct->creatorId = $permissionResolver->getCurrentUserReference()->getUserId();
         $createStruct->creationDate = $this->createDateTime();
 
         $fieldCreate = $contentTypeService->newFieldDefinitionCreateStruct('description', 'ezrichtext');
