@@ -41,7 +41,7 @@ matrix:
     - name: '[PHP 7.3] Solr Search Engine Integration'
       php: 7.3
       env:
-        - SOLR_VERSION="6.4.2"
+        - SOLR_VERSION="7.7.2"
         - TEST_CONFIG="phpunit-integration-legacy-solr.xml"
         - CORES_SETUP="shared"
         - SOLR_CONFIG="vendor/ezsystems/ezplatform-solr-search-engine/lib/Resources/config/solr/schema.xml vendor/ezsystems/ezplatform-solr-search-engine/lib/Resources/config/solr/custom-fields-types.xml vendor/ezsystems/ezplatform-solr-search-engine/lib/Resources/config/solr/language-fieldtypes.xml"
