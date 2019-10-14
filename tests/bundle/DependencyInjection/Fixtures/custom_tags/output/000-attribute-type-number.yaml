@@ -1,0 +1,11 @@
+custom_tags:
+    foo:
+        template: 'MyBundle:FieldType/RichText/tag:foo.html.twig'
+        icon: '/bundles/mybundle/fieldtype/richtext/foo.svg#foo'
+        attributes:
+            bar:
+                type: 'number'
+                required: true
+                default_value: 360
+        is_inline: false
+custom_styles: []
