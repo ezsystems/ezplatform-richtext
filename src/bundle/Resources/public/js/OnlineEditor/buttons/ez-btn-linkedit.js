@@ -58,7 +58,6 @@ export default class EzBtnLinkEdit extends Component {
     }
 
     udwOnConfirm(items) {
-        console.log(items);
         this.state.element.setAttribute('href', 'ezlocation://' + items[0].id);
 
         this.invokeWithFixedScrollbar(() => {
@@ -80,7 +79,7 @@ export default class EzBtnLinkEdit extends Component {
             const siteaccess = document.querySelector('meta[name="SiteAccess"]').content;
             const config = JSON.parse(document.querySelector(`[data-udw-config-name="richtext_embed"]`).dataset.udwConfig);
             const title = Translator.trans(/*@Desc("Select content")*/ 'link_edit_btn.udw.title', {}, 'alloy_editor');
-            const selectContent = eZ.alloyEditor.callbacks.selectContent;
+            const selectContent = eZ.richText.alloyEditor.callbacks.selectContent;
             const mergedConfig = Object.assign(
                 {
                     onConfirm: this.udwOnConfirm.bind(this),
@@ -91,7 +90,7 @@ export default class EzBtnLinkEdit extends Component {
                 },
                 config
             );
-            console.log('dd');
+
             if (typeof selectContent === 'function') {
                 selectContent(mergedConfig);
             }
