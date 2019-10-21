@@ -24,7 +24,7 @@ export default class EzBtnMoveDown extends Component {
      * @return {Object} The content which should be rendered.
      */
     render() {
-        const title = Translator.trans(/*@Desc("Move Down")*/ 'move_down_btn.title', {}, 'alloy_editor');
+        const title = Translator.trans(/*@Desc("Move down")*/ 'move_down_btn.title', {}, 'alloy_editor');
 
         return (
             <button

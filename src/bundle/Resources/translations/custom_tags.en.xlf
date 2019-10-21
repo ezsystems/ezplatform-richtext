@@ -18,8 +18,8 @@
             </trans-unit>
             <trans-unit id="8f9f4c953fc856ffdd89f2584789096bc29cd806"
                         resname="ezrichtext.custom_tags.ezyoutube.description">
-                <source>Add YouTube video</source>
-                <target>Add YouTube video</target>
+                <source>Add a YouTube video</source>
+                <target>Add a YouTube video</target>
                 <note>key: ezrichtext.custom_tags.ezyoutube.description</note>
             </trans-unit>
             <trans-unit id="605cb001f1553455c945e45234d73b47cf1417b1"
@@ -42,8 +42,8 @@
             </trans-unit>
             <trans-unit id="65fc0855d568f69246fa41e8f447617d3ec051e3"
                         resname="ezrichtext.custom_tags.ezyoutube.attributes.video_url.label">
-                <source>Video url</source>
-                <target>Video url</target>
+                <source>Video URL</source>
+                <target>Video URL</target>
                 <note>key: ezrichtext.custom_tags.ezyoutube.attributes.video_url.label</note>
             </trans-unit>
             <trans-unit id="aea37ec43e2230a8627b214d93cb548de4e81d1f"
@@ -60,8 +60,8 @@
             </trans-unit>
             <trans-unit id="c1fd25ffc048cf47e9bc6bcaae98dd86abb2a7dd"
                         resname="ezrichtext.custom_tags.eztwitter.description">
-                <source>Add tweet</source>
-                <target>Add tweet</target>
+                <source>Add a tweet</source>
+                <target>Add a tweet</target>
                 <note>key: ezrichtext.custom_tags.eztwitter.description</note>
             </trans-unit>
             <trans-unit id="b7ef5c07f5cbc982f23e547bc1e1326752853018"
@@ -102,8 +102,8 @@
             </trans-unit>
             <trans-unit id="4c8cbac4f038c15c7e71194a1af3726117d28279"
                         resname="ezrichtext.custom_tags.eztwitter.attributes.tweet_url.label">
-                <source>Tweet url</source>
-                <target>Tweet url</target>
+                <source>Tweet URL</source>
+                <target>Tweet URL</target>
                 <note>key: ezrichtext.custom_tags.eztwitter.attributes.tweet_url.label</note>
             </trans-unit>
             <trans-unit id="47da3c994119e5c6e00e9e9fe61495155e8427c2"
@@ -120,8 +120,8 @@
             </trans-unit>
             <trans-unit id="04a09b59ee06e7996670b684a9ca256d792992d2"
                         resname="ezrichtext.custom_tags.ezfacebook.description">
-                <source>Add Facebook post</source>
-                <target>Add Facebook post</target>
+                <source>Add a Facebook post</source>
+                <target>Add a Facebook post</target>
                 <note>key: ezrichtext.custom_tags.ezfacebook.description</note>
             </trans-unit>
             <trans-unit id="7ddd17c1a96742c10988612627d3bf5134bcd912"
