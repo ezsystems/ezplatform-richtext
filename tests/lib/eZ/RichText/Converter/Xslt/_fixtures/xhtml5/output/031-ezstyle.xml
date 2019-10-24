@@ -1,2 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5"/>
+<?xml version="1.0"?>
+<section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5">
+  <template-output is-inline="0" name="highlighted_block" type="style">
+    <param name="name">highlighted_block</param>
+    <param name="content">
+      <section>Highlighted block with "left" align.</section>
+    </param>
+    <param name="align">left</param>
+  </template-output>
+  <template-output is-inline="0" name="highlighted_block" type="style">
+    <param name="name">highlighted_block</param>
+    <param name="content">
+      <section>Highlighted block with "right" align.</section>
+    </param>
+    <param name="align">right</param>
+  </template-output>
+  <template-output is-inline="0" name="highlighted_block" type="style">
+    <param name="name">highlighted_block</param>
+    <param name="content">
+      <section>Highlighted block with "center" align.</section>
+    </param>
+    <param name="align">center</param>
+  </template-output>
+  <template-output is-inline="0" name="highlighted_block" type="style">
+    <param name="name">highlighted_block</param>
+    <param name="content">
+      <section>Highlighted block with multiple lines<br/>Highlighted block with multiple lines<br/>Highlighted block with multiple lines</section>
+    </param>
+  </template-output>
+  <template-output is-inline="0" name="highlighted_block" type="style">
+    <param name="name">highlighted_block</param>
+    <param name="content">
+      <section>Highlighted block with multiple lines and emphasis<br/><strong>Highlighted block with multiple lines and emphasis</strong><br/>Highlighted block with multiple lines and emphasis</section>
+    </param>
+  </template-output>
+</section>

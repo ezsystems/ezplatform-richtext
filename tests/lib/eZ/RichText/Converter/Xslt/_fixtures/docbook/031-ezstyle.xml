@@ -19,4 +19,11 @@ Highlighted block with multiple lines
 Highlighted block with multiple lines</literallayout>
         </ezcontent>
     </eztemplate>
+    <eztemplate name="highlighted_block" type="style">
+        <ezcontent>
+            <literallayout>Highlighted block with multiple lines and emphasis
+<emphasis role="strong">Highlighted block with multiple lines and emphasis</emphasis>
+Highlighted block with multiple lines and emphasis</literallayout>
+        </ezcontent>
+    </eztemplate>
 </section>
