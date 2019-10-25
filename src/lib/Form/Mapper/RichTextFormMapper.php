@@ -9,8 +9,8 @@ declare(strict_types=1);
 namespace EzSystems\EzPlatformRichText\Form\Mapper;
 
 use EzSystems\EzPlatformRichText\Form\Type\RichTextFieldType;
-use EzSystems\RepositoryForms\Data\Content\FieldData;
-use EzSystems\RepositoryForms\FieldType\FieldValueFormMapperInterface;
+use EzSystems\EzPlatformContentForms\Data\Content\FieldData;
+use EzSystems\EzPlatformContentForms\FieldType\FieldValueFormMapperInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
