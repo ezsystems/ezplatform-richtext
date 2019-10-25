@@ -83,9 +83,6 @@ notifications:
 
 # setup requirements for running unit/integration/behat tests
 before_install:
-  # Decrypt SSH key to Allure report server
-  - openssl aes-256-cbc -K $encrypted_f7f2c9545d93_key -iv $encrypted_f7f2c9545d93_iv -in .travis/rsa_allure.enc -out $HOME/rsa_allure -d
-  - chmod 400 $HOME/rsa_allure
   # Disable xdebug to speed things up as we don't currently generate coverage on travis
   - phpenv config-rm xdebug.ini
   # Add custom php.ini configuration for test matrix
