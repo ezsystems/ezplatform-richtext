@@ -1,0 +1,8 @@
+custom_tags:
+    foo:
+        template: 'MyBundle:FieldType/RichText/tag:foo.html.twig'
+        icon: '/bundles/mybundle/fieldtype/richtext/foo.svg#foo'
+        attributes:
+            bar:
+                type: 'link'
+                required: true
