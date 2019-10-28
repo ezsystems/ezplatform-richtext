@@ -53,7 +53,6 @@
     </xs:sequence>
 
     <xs:attribute type="xs:string" name="name"/>
-    <xs:attribute type="xs:string" name="tag"/>
     <xs:attribute type="xs:string" name="is-inline"/>
     <xs:attribute type="xs:string" name="type"/>
   </xs:complexType>
