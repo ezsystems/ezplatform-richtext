@@ -26,7 +26,7 @@
         "twig/twig": "^2.11",
         "ezsystems/doctrine-dbal-schema": "^1.0@dev",
         "ezsystems/ezpublish-kernel": "^8.0@dev",
-        "ezsystems/ezplatform-content-forms": "dev-content_forms as ^1.0@dev",
+        "ezsystems/ezplatform-content-forms": "dev-content_forms as 1.0.x-dev",
         "ezsystems/ezplatform-rest": "^1.0@dev"
     },
     "require-dev": {
