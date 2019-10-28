@@ -58,7 +58,6 @@
     </xsl:element>
   </xsl:template>
 
-
   <xsl:template match="docbook:section/docbook:literallayout/text()">
     <xsl:call-template name="breakLine">
       <xsl:with-param name="text" select="."/>

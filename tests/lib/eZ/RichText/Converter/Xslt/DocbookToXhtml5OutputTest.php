@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Converter\Xslt;
 
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Aggregate;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Xslt;
@@ -88,7 +89,7 @@ class DocbookToXhtml5OutputTest extends BaseTest
         ];
     }
 
-    protected function getConverter()
+    protected function getConverter(): Converter
     {
         if ($this->converter === null) {
             $this->converter = new Aggregate();
