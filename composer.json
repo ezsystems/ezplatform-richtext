@@ -56,5 +56,8 @@
             "dev-tmp_ci_branch": "2.0.x-dev",
             "dev-master": "2.0.x-dev"
         }
+    },
+    "config": {
+        "github-protocols": ["https"]
     }
 }
