@@ -12,7 +12,7 @@ use EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface;
 
 final class DebugRenderer implements RendererInterface
 {
-    private const TEMPLATE_FORMAT = '<template-output name="%s" type="%s" is-inline="%d">%s</template-output>';
+    private const TEMPLATE_FORMAT = '<template-output name="%s" type="%s" is-inline="%s">%s</template-output>';
     private const EMBED_CONTENT_FORMAT = '<embed-content-output content-id="%d" view-type="%s" is-inline="%s">%s</embed-content-output>';
     private const EMBED_LOCATION_FORMAT = '<embed-location-output location-id="%d" view-type="%s" is-inline="%s">%s</embed-location-output>';
 

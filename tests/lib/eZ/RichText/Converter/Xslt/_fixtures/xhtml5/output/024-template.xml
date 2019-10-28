@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5">
-  <template-output is-inline="0" name="factbox" type="tag">
+  <template-output is-inline="false" name="factbox" type="tag">
     <param name="name">factbox</param>
     <param name="params">
       <param name="title">Factoids</param>
@@ -31,7 +31,7 @@
     </param>
     <param name="align">left</param>
   </template-output>
-  <template-output is-inline="0" name="externalimage" type="tag">
+  <template-output is-inline="false" name="externalimage" type="tag">
     <param name="name">externalimage</param>
     <param name="params">
       <param name="src">http://upload.wikimedia.org/wikipedia/commons/c/c6/R-S_mk2.gif</param>
@@ -42,14 +42,14 @@
     </param>
     <param name="align">right</param>
   </template-output>
-  <template-output is-inline="0" name="factoidbox" type="tag">
+  <template-output is-inline="false" name="factoidbox" type="tag">
     <param name="name">factoidbox</param>
     <param name="content">
       <section>It is widely known that the bistable multivibrator hums z's in the middle octave key of E.</section>
     </param>
     <param name="align">center</param>
   </template-output>
-  <template-output is-inline="0" name="factoidbox" type="tag">
+  <template-output is-inline="false" name="factoidbox" type="tag">
     <param name="name">factoidbox</param>
     <param name="align">center</param>
   </template-output>
