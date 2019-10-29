@@ -193,6 +193,7 @@ class Configuration extends SiteAccessConfiguration
                             ->prototype('scalar')->end()
                         ->end()
                         ->arrayNode('extra_buttons')
+                            ->useAttributeAsKey('name')
                             ->arrayPrototype()
                                 ->example(['button1', 'button2'])
                                 ->prototype('scalar')->end()
