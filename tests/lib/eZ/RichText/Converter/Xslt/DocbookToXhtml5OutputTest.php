@@ -8,6 +8,11 @@ declare(strict_types=1);
 
 namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Converter\Xslt;
 
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Aggregate;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template;
+use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Xslt;
+
 /**
  * Tests conversion from docbook to xhtml5 output format.
  */
@@ -84,15 +89,26 @@ class DocbookToXhtml5OutputTest extends BaseTest
         ];
     }
 
-    /**
-     * Return an array of absolute paths to conversion result validation schemas.
-     *
-     * @return string[]
-     */
-    protected function getConversionValidationSchema()
+    protected function getConverter(): Converter
     {
-        return [
-            __DIR__ . '/_fixtures/xhtml5/output/custom_schemas/youtube.xsd',
-        ];
+        if ($this->converter === null) {
+            $this->converter = new Aggregate();
+
+            $this->converter->addConverter(
+                new Template(
+                    new DebugRenderer(),
+                    $this->converter
+                )
+            );
+
+            $this->converter->addConverter(
+                new Xslt(
+                    $this->getConversionTransformationStylesheet(),
+                    $this->getCustomConversionTransformationStylesheets()
+                )
+            );
+        }
+
+        return $this->converter;
     }
 }

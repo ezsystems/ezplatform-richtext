@@ -46,4 +46,9 @@ class Aggregate implements Converter
 
         return $document;
     }
+
+    public function addConverter(Converter $converter): void
+    {
+        $this->converters[] = $converter;
+    }
 }
