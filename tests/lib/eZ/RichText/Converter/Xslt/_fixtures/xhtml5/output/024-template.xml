@@ -1,2 +1,56 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5"/>
+<?xml version="1.0"?>
+<section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5">
+  <template-output is-inline="false" name="factbox" type="tag">
+    <param name="name">factbox</param>
+    <param name="params">
+      <param name="title">Factoids</param>
+    </param>
+    <param name="content">
+      <section>
+        <table title="tableTitle">
+          <caption>About factoids</caption>
+          <tbody>
+            <tr>
+              <th>
+                <h3 style="text-align:center;">Some facts about factoids</h3>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p>A factoid is a questionable or spurious (unverified, false, or fabricated) statement presented as a fact, but without supporting evidence.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Factoids may give rise to, or arise from, common misconceptions and urban legends.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </param>
+    <param name="align">left</param>
+  </template-output>
+  <template-output is-inline="false" name="externalimage" type="tag">
+    <param name="name">externalimage</param>
+    <param name="params">
+      <param name="src">http://upload.wikimedia.org/wikipedia/commons/c/c6/R-S_mk2.gif</param>
+      <param name="height">365</param>
+      <param name="width">500</param>
+      <param name="alt">flip-flop</param>
+      <param name="caption">bistable multivibrator</param>
+    </param>
+    <param name="align">right</param>
+  </template-output>
+  <template-output is-inline="false" name="factoidbox" type="tag">
+    <param name="name">factoidbox</param>
+    <param name="content">
+      <section>It is widely known that the bistable multivibrator hums z's in the middle octave key of E.</section>
+    </param>
+    <param name="align">center</param>
+  </template-output>
+  <template-output is-inline="false" name="factoidbox" type="tag">
+    <param name="name">factoidbox</param>
+    <param name="align">center</param>
+  </template-output>
+</section>

@@ -164,7 +164,7 @@ abstract class BaseTest extends TestCase
     }
 
     /**
-     * @return \EzSystems\EzPlatformRichText\eZ\RichText\Converter\Xslt
+     * @return \EzSystems\EzPlatformRichText\eZ\RichText\Converter
      */
     protected function getConverter()
     {
