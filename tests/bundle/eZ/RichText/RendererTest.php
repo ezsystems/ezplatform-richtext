@@ -551,6 +551,47 @@ class RendererTest extends TestCase
         );
     }
 
+    public function testRenderContentEmbedHidden()
+    {
+        $renderer = $this->getMockedRenderer(['checkContentPermissions']);
+        $contentId = 42;
+        $viewType = 'embedTest';
+        $parameters = ['parameters'];
+        $isInline = true;
+
+        $contentInfoMock = $this->createMock(ContentInfo::class);
+        $contentInfoMock
+            ->expects($this->at(0))
+            ->method('__get')
+            ->with('mainLocationId')
+            ->willReturn(2);
+        $contentInfoMock
+            ->expects($this->at(1))
+            ->method('__get')
+            ->with('isHidden')
+            ->willReturn(true);
+
+        $contentMock = $this->createMock(Content::class);
+        $contentMock
+            ->method('__get')
+            ->with('contentInfo')
+            ->willReturn($contentInfoMock);
+
+        $this->repositoryMock
+            ->expects($this->once())
+            ->method('sudo')
+            ->willReturn($contentMock);
+
+        $this->loggerMock
+            ->expects($this->once())
+            ->method('error')
+            ->with("Could not render embedded resource: Content #{$contentId} is hidden.");
+
+        $this->assertNull(
+            $renderer->renderContentEmbed($contentId, $viewType, $parameters, $isInline)
+        );
+    }
+
     public function providerForTestRenderContentEmbedNotFound()
     {
         return [
@@ -1480,14 +1521,18 @@ class RendererTest extends TestCase
     {
         $contentInfoMock = $this->createMock(ContentInfo::class);
         $contentInfoMock
-            ->expects($this->once())
+            ->expects($this->at(0))
             ->method('__get')
             ->with('mainLocationId')
             ->willReturn($mainLocationId);
+        $contentInfoMock
+            ->expects($this->at(1))
+            ->method('__get')
+            ->with('isHidden')
+            ->willReturn(false);
 
         $contentMock = $this->createMock(Content::class);
         $contentMock
-            ->expects($this->once())
             ->method('__get')
             ->with('contentInfo')
             ->willReturn($contentInfoMock);
