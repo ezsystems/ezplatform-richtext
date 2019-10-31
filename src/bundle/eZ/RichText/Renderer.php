@@ -139,6 +139,14 @@ class Renderer implements RendererInterface
                 return null;
             }
 
+            if ($content->contentInfo->isHidden) {
+                $this->logger->error(
+                    "Could not render embedded resource: Content #{$contentId} is hidden."
+                );
+
+                return null;
+            }
+
             $this->checkContentPermissions($content);
         } catch (AccessDeniedException $e) {
             $this->logger->error(
