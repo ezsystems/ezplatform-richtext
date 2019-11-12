@@ -1,17 +1,14 @@
 (function(global, doc, eZ, CKEDITOR, AlloyEditor) {
     const HTML_NODE = 1;
     const TEXT_NODE = 3;
+    const notInitializeElements = ['strong', 'em', 'u', 'sup', 'sub', 's'];
 
     class BaseRichText {
         constructor() {
             this.ezNamespace = 'http://ez.no/namespaces/ezpublish5/xhtml5/edit';
             this.xhtmlNamespace = 'http://www.w3.org/1999/xhtml';
-            this.customTags = Object.keys(eZ.richText.customTags).filter(
-                (key) => !eZ.richText.customTags[key].isInline
-            );
-            this.inlineCustomTags = Object.keys(eZ.richText.customTags).filter(
-                (key) => eZ.richText.customTags[key].isInline
-            );
+            this.customTags = Object.keys(eZ.richText.customTags).filter((key) => !eZ.richText.customTags[key].isInline);
+            this.inlineCustomTags = Object.keys(eZ.richText.customTags).filter((key) => eZ.richText.customTags[key].isInline);
             this.alloyEditorExtraButtons = {
                 ezadd: [],
                 link: [],
@@ -41,21 +38,19 @@
                     extraButtons: this.alloyEditorExtraButtons,
                 });
             });
-            this.customStylesConfigurations = Object.entries(eZ.richText.customStyles).map(
-                ([customStyleName, customStyleConfig]) => {
-                    return {
-                        name: customStyleConfig.label,
-                        style: {
-                            element: customStyleConfig.inline ? 'span' : 'div',
-                            attributes: {
-                                'data-ezelement': customStyleConfig.inline ? 'eztemplateinline' : 'eztemplate',
-                                'data-eztype': 'style',
-                                'data-ezname': customStyleName,
-                            },
+            this.customStylesConfigurations = Object.entries(eZ.richText.customStyles).map(([customStyleName, customStyleConfig]) => {
+                return {
+                    name: customStyleConfig.label,
+                    style: {
+                        element: customStyleConfig.inline ? 'span' : 'div',
+                        attributes: {
+                            'data-ezelement': customStyleConfig.inline ? 'eztemplateinline' : 'eztemplate',
+                            'data-eztype': 'style',
+                            'data-ezname': customStyleName,
                         },
-                    };
-                }
-            );
+                    },
+                };
+            });
             this.alloyEditorExtraPlugins = eZ.richText.alloyEditor.extraPlugins;
 
             this.xhtmlify = this.xhtmlify.bind(this);
@@ -317,7 +312,7 @@
         }
 
         setNodeInitializedState(node) {
-            if (node.nodeType === HTML_NODE) {
+            if (node.nodeType === HTML_NODE && !notInitializeElements.includes(node.nodeName.toLowerCase())) {
                 node.setAttribute('data-ez-node-initialized', true);
             }
         }
