@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5">
-  <p>Some <template-output is-inline="true" name="emojicake" type="tag"><param name="name">emojicake</param></template-output> for the otherwise unremarkable paragraph.</p>
-  <p>This paragraph is just showing off its <template-output is-inline="true" name="emojicrocodile" type="tag"><param name="name">emojicrocodile</param><param name="params"><param name="size">large</param></param></template-output>.</p>
+  <p>Some <template-output is-inline="true" name="emojicake" type="tag"><param name="name">emojicake</param><param name="content"/></template-output> for the otherwise unremarkable paragraph.</p>
+  <p>This paragraph is just showing off its <template-output is-inline="true" name="emojicrocodile" type="tag"><param name="name">emojicrocodile</param><param name="params"><param name="size">large</param></param><param name="content"/></template-output>.</p>
   <p>The equation <template-output is-inline="true" name="tex" type="tag"><param name="name">tex</param><param name="params"><param name="color">red</param></param><param name="content"><section>e^{\pi i}+1=0</section></param></template-output> ties together five of the most important mathematical constants.</p>
   <p>This paragraph contains some <template-output is-inline="true" name="bold" type="tag"><param name="name">bold</param><param name="content"><section>styled <template-output is-inline="true" name="strikedthrough" type="tag"><param name="name">strikedthrough</param><param name="content"><section>text</section></param></template-output></section></param></template-output>.</p>
 </section>
