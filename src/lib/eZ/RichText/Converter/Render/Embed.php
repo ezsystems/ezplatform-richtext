@@ -23,7 +23,7 @@ use DOMElement;
 class Embed extends Render implements Converter
 {
     /**
-     * @var null|\Psr\Log\LoggerInterface
+     * @var \Psr\Log\LoggerInterface|null
      */
     protected $logger;
 
