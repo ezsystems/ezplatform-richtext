@@ -56,7 +56,7 @@ final class CustomStyle implements CustomTemplateConfigMapper
         foreach ($enabledCustomStyles as $styleName) {
             if (!isset($this->customStylesConfiguration[$styleName])) {
                 throw new RuntimeException(
-                    "RichText Custom Style configuration for {$styleName} not found."
+                    "Could not find RichText Custom Style configuration for {$styleName}."
                 );
             }
 

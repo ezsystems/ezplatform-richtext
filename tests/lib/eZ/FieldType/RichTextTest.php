@@ -428,7 +428,7 @@ EOT;
     {
         $absolutePath = realpath(__DIR__ . '/../../../../' . $relativePath);
         if (false === $absolutePath) {
-            throw new RuntimeException("Unable to determine absolute path for '{$relativePath}'");
+            throw new RuntimeException("Unable to determine the absolute path for '{$relativePath}'");
         }
 
         return $absolutePath;

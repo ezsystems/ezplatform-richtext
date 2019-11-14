@@ -101,7 +101,7 @@ class Validator extends XmlBase implements ValidatorInterface
                 throw new RuntimeException(
                     'Validator is capable of handling ISO Schematron (as XSLT stylesheet), ' .
                     "XSD and RELAX NG schema files, ending in .xsl, .xsd or .rng.\n" .
-                    "File '{$schema}' does not seem to be either of these."
+                    "File '{$schema}' does not seem to be any of these."
                 );
         }
 

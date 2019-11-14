@@ -103,7 +103,7 @@ class InternalLinkValidator implements ValidatorInterface
                     $this->locationHandler->load($id);
                     break;
                 default:
-                    throw new InvalidArgumentException($scheme, "Given scheme '{$scheme}' is not supported.");
+                    throw new InvalidArgumentException($scheme, "The provided scheme '{$scheme}' is not supported.");
             }
         } catch (NotFoundException $e) {
             return false;
@@ -129,7 +129,7 @@ class InternalLinkValidator implements ValidatorInterface
             case 'ezremote':
                 return sprintf('Invalid link "%s": target content cannot be found', $url);
             case 'ezlocation':
-                return sprintf('Invalid link "%s": target location cannot be found', $url);
+                return sprintf('Invalid link "%s": target Location cannot be found', $url);
             default:
                 throw new InvalidArgumentException($scheme, "Given scheme '{$scheme}' is not supported.");
         }

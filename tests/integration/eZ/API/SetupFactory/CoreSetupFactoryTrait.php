@@ -32,7 +32,7 @@ trait CoreSetupFactoryTrait
         // @todo refactor when refactoring kernel SetupFactory to avoid hardcoding package path
         $kernelRootDir = realpath(__DIR__ . '/../../../../../vendor/ezsystems/ezpublish-kernel');
         if (false === $kernelRootDir) {
-            throw new RuntimeException('Unable to find ezpublish-kernel package directory');
+            throw new RuntimeException('Unable to find the ezpublish-kernel package directory');
         }
         $settingsPath = "{$kernelRootDir}/eZ/Publish/Core/settings";
 

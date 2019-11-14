@@ -830,7 +830,7 @@ EOT;
         $contentUpdateStruct->setField('data', new RichTextValue($document), 'eng-GB');
 
         $expectedValidationErrorMessage = sprintf(
-            "Validation of XML content failed:\nInvalid link \"ezlocation://%s\": target location cannot be found",
+            "Validation of XML content failed:\nInvalid link \"ezlocation://%s\": cannot find target Location",
             $deletedLocation->id
         );
         try {

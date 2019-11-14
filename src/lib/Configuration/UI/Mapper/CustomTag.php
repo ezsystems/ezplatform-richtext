@@ -79,7 +79,7 @@ final class CustomTag implements CustomTemplateConfigMapper
         foreach ($enabledCustomTags as $tagName) {
             if (!isset($this->customTagsConfiguration[$tagName])) {
                 throw new RuntimeException(
-                    "RichText Custom Tag configuration for {$tagName} not found."
+                    "Could not find RichText Custom Tag configuration for {$tagName}."
                 );
             }
 
@@ -140,7 +140,7 @@ final class CustomTag implements CustomTemplateConfigMapper
         }
 
         throw new RuntimeException(
-            "RichText Custom Tag configuration: unsupported attribute type '{$attributeType}' of '{$attributeName}' attribute of '{$tagName}' Custom Tag"
+            "RichText Custom Tag configuration: unsupported attribute type '{$attributeType}' of the '{$attributeName}' attribute in '{$tagName}' Custom Tag"
         );
     }
 
