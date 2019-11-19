@@ -33,7 +33,7 @@ class InternalLinkValidatorTest extends TestCase
 
     /**
      * @expectedException \eZ\Publish\Core\Base\Exceptions\InvalidArgumentException
-     * @expectedExceptionMessage Argument 'eznull' is invalid: Given scheme 'eznull' is not supported.
+     * @expectedExceptionMessage Argument 'eznull' is invalid: The provided scheme 'eznull' is not supported.
      */
     public function testValidateFailOnNotSupportedSchema()
     {
@@ -267,7 +267,7 @@ class InternalLinkValidatorTest extends TestCase
 
     private function assertContainsEzLocationInvalidLinkError($locationId, array $errors)
     {
-        $format = 'Invalid link "ezlocation://%d": target location cannot be found';
+        $format = 'Invalid link "ezlocation://%d": target Location cannot be found';
 
         $this->assertContains(sprintf($format, $locationId), $errors);
     }
