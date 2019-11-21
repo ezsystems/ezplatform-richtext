@@ -2,6 +2,7 @@ const IMAGE_TYPE_CLASS = 'ez-embed-type-image';
 const IS_LINKED_CLASS = 'is-linked';
 const SHOW_EDIT_LINK_TOOLBAR_ATTR = 'data-show-edit-link-toolbar';
 const DATA_ALIGNMENT_ATTR = 'ezalign';
+const ENTER_KEY_CODE = 13;
 
 const embedBaseDefinition = {
     defaults: {
@@ -65,6 +66,29 @@ const embedBaseDefinition = {
         this.cancelEditEvents();
 
         this.initEditMode();
+        this.initEnterHandler();
+    },
+
+    initEnterHandler() {
+        const enterNewLine = this.enterNewLine.bind(this);
+
+        this.editor.on('selectionChange', (event) => {
+            const lastElement = event.data.path.lastElement;
+            const isEmbed =
+                lastElement.$.classList.contains('cke_widget_ezembed') || lastElement.$.classList.contains('cke_widget_ezembedinline');
+            const methodName = isEmbed ? 'addEventListener' : 'removeEventListener';
+
+            document.body[methodName]('keyup', enterNewLine, false);
+        });
+    },
+
+    enterNewLine(event) {
+        if (event.keyCode === ENTER_KEY_CODE) {
+            this.editor.execCommand('eZAddContent', {
+                tagName: 'p',
+                content: '<br>',
+            });
+        }
     },
 
     getIdentifier() {
