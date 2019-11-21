@@ -66,7 +66,7 @@ class Renderer implements RendererInterface
     protected $templateEngine;
 
     /**
-     * @var null|\Psr\Log\LoggerInterface
+     * @var \Psr\Log\LoggerInterface|null
      */
     protected $logger;
 
@@ -88,7 +88,7 @@ class Renderer implements RendererInterface
      * @param string $tagConfigurationNamespace
      * @param string $styleConfigurationNamespace
      * @param string $embedConfigurationNamespace
-     * @param null|\Psr\Log\LoggerInterface $logger
+     * @param \Psr\Log\LoggerInterface|null $logger
      * @param array $customTagsConfiguration
      * @param array $customStylesConfiguration
      */
@@ -313,7 +313,7 @@ class Renderer implements RendererInterface
      * @param string $identifier
      * @param bool $isInline
      *
-     * @return null|string
+     * @return string|null
      */
     protected function getStyleTemplateName($identifier, $isInline)
     {
@@ -350,7 +350,7 @@ class Renderer implements RendererInterface
      * @param string $identifier
      * @param bool $isInline
      *
-     * @return null|string
+     * @return string|null
      */
     protected function getTagTemplateName($identifier, $isInline)
     {
@@ -398,7 +398,7 @@ class Renderer implements RendererInterface
      * @param $isInline
      * @param $isDenied
      *
-     * @return null|string
+     * @return string|null
      */
     protected function getEmbedTemplateName($resourceType, $isInline, $isDenied)
     {

@@ -45,7 +45,7 @@ class YoutubeIdExtractorExtensionTest extends TestCase
      * @dataProvider getYouTubeUrls
      *
      * @param string $input
-     * @param null|string $expected
+     * @param string|null $expected
      */
     public function testExtractId(string $input, ?string $expected): void
     {
