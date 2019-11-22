@@ -267,7 +267,7 @@ class InternalLinkValidatorTest extends TestCase
 
     private function assertContainsEzLocationInvalidLinkError($locationId, array $errors)
     {
-        $format = 'Invalid link "ezlocation://%d": target Location cannot be found';
+        $format = 'Invalid link "ezlocation://%d": cannot find target Location';
 
         $this->assertContains(sprintf($format, $locationId), $errors);
     }

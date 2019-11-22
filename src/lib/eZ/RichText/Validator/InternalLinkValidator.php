@@ -127,9 +127,9 @@ class InternalLinkValidator implements ValidatorInterface
         switch ($scheme) {
             case 'ezcontent':
             case 'ezremote':
-                return sprintf('Invalid link "%s": target content cannot be found', $url);
+                return sprintf('Invalid link "%s": cannot find target content', $url);
             case 'ezlocation':
-                return sprintf('Invalid link "%s": target Location cannot be found', $url);
+                return sprintf('Invalid link "%s": cannot find target Location', $url);
             default:
                 throw new InvalidArgumentException($scheme, "Given scheme '{$scheme}' is not supported.");
         }
