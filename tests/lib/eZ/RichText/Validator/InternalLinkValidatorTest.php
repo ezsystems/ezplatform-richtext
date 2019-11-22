@@ -274,14 +274,14 @@ class InternalLinkValidatorTest extends TestCase
 
     private function assertContainsEzContentInvalidLinkError($contentId, array $errors)
     {
-        $format = 'Invalid link "ezcontent://%d": target content cannot be found';
+        $format = 'Invalid link "ezcontent://%d": cannot find target content';
 
         $this->assertContains(sprintf($format, $contentId), $errors);
     }
 
     private function assertContainsEzRemoteInvalidLinkError($contentId, array $errors)
     {
-        $format = 'Invalid link "ezremote://%s": target content cannot be found';
+        $format = 'Invalid link "ezremote://%s": cannot find target content';
 
         $this->assertContains(sprintf($format, $contentId), $errors);
     }
