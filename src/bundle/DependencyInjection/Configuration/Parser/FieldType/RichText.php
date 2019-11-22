@@ -271,7 +271,7 @@ class RichText extends AbstractFieldTypeParser
     {
         $invalidChoiceCallback = function (array $v) {
             $message = sprintf(
-                'Default value must be one of the possible choices: %s, but "%s" given',
+                'The default value must be one of the possible choices: %s, instead of "%s" ',
                 implode(', ', $v[self::CHOICES_NODE_KEY]),
                 $v[self::DEFAULT_VALUE_NODE_KEY]
             );
@@ -365,12 +365,12 @@ class RichText extends AbstractFieldTypeParser
                 $invalidChoiceCallback($v);
             } elseif ($v[self::ATTRIBUTE_TYPE_NODE_KEY] === self::ATTRIBUTE_TYPE_BOOLEAN && $v[self::REQUIRED_NODE_KEY]) {
                 throw new InvalidArgumentException(
-                    sprintf('Boolean type does not support "%s" setting', self::REQUIRED_NODE_KEY)
+                    sprintf('Boolean type does not support the "%s" setting', self::REQUIRED_NODE_KEY)
                 );
             } elseif ($v[self::ATTRIBUTE_TYPE_NODE_KEY] !== self::ATTRIBUTE_TYPE_CHOICE && !empty($v[self::CHOICES_NODE_KEY])) {
                 throw new InvalidArgumentException(
                     sprintf(
-                        '%s type does not support "%s" setting',
+                        '%s type does not support the "%s" setting',
                         ucfirst($v[self::ATTRIBUTE_TYPE_NODE_KEY]),
                         self::CHOICES_NODE_KEY
                     )

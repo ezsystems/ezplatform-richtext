@@ -203,7 +203,7 @@ class RichTextTest extends AbstractParserTestCase
                         ],
                     ],
                 ],
-                'Default value must be one of the possible choices',
+                'The default value must be one of the possible choices',
             ],
             [
                 [
@@ -217,7 +217,7 @@ class RichTextTest extends AbstractParserTestCase
                         ],
                     ],
                 ],
-                'Default value must be one of the possible choices',
+                'The default value must be one of the possible choices',
             ],
             [
                 [
@@ -230,7 +230,7 @@ class RichTextTest extends AbstractParserTestCase
                         ],
                     ],
                 ],
-                'Boolean type does not support "required" setting',
+                'Boolean type does not support the "required" setting',
             ],
             [
                 [
@@ -243,7 +243,7 @@ class RichTextTest extends AbstractParserTestCase
                         ],
                     ],
                 ],
-                'Number type does not support "choices" setting',
+                'Number type does not support the "choices" setting',
             ],
         ];
     }
