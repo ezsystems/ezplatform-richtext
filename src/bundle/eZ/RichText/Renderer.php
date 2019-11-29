@@ -127,7 +127,7 @@ class Renderer implements RendererInterface
             /** @var \eZ\Publish\API\Repository\Values\Content\Content $content */
             $content = $this->repository->sudo(
                 function (Repository $repository) use ($contentId) {
-                    return $repository->getContentService()->loadContent($contentId);
+                    return $repository->getContentService()->loadContent((int)$contentId);
                 }
             );
 
