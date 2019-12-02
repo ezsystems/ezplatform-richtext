@@ -585,7 +585,7 @@
       <xsl:call-template name="ezattribute"/>
       <xsl:apply-templates/>
       <xsl:if test="./docbook:ezattribute or not(node())">
-        <xsl:text> </xsl:text>
+        <xsl:text>ao-upcast-placeholder</xsl:text>
       </xsl:if>
     </xsl:element>
   </xsl:template>
