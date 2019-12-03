@@ -164,7 +164,7 @@ export default class EzBtnAnchorEdit extends Component {
         }
 
         const errorMessage = Translator.trans(
-            /*@Desc("This anchor already exists on the page. Anchor name must be unique.")*/ 'anchor_btn.error.unique',
+            /*@Desc("This anchor already exists in this Content item. Anchor name must be unique.")*/ 'anchor_btn.error.unique',
             {},
             'alloy_editor'
         );
