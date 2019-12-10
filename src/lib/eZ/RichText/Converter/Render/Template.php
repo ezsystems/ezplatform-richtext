@@ -107,9 +107,7 @@ class Template extends Render implements Converter
         foreach ($contentNodes as $contentNode) {
             $innerContent .= $this->getCustomTemplateContent($contentNode);
         }
-        if (!empty($innerContent)) {
-            $parameters['content'] = $innerContent;
-        }
+        $parameters['content'] = !empty($innerContent) ? $innerContent : null;
 
         if ($template->hasAttribute('ezxhtml:align')) {
             $parameters['align'] = $template->getAttribute('ezxhtml:align');

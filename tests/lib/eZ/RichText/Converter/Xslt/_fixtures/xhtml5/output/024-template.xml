@@ -40,6 +40,7 @@
       <param name="alt">flip-flop</param>
       <param name="caption">bistable multivibrator</param>
     </param>
+    <param name="content"/>
     <param name="align">right</param>
   </template-output>
   <template-output is-inline="false" name="factoidbox" type="tag">
@@ -51,6 +52,7 @@
   </template-output>
   <template-output is-inline="false" name="factoidbox" type="tag">
     <param name="name">factoidbox</param>
+    <param name="content"/>
     <param name="align">center</param>
   </template-output>
 </section>
