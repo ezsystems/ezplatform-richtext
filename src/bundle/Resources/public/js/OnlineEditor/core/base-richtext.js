@@ -52,6 +52,9 @@
                 };
             });
             this.alloyEditorExtraPlugins = eZ.richText.alloyEditor.extraPlugins;
+            this.customStyleSelections = global.eZ.ezAlloyEditor.customSelections
+                ? Object.values(global.eZ.ezAlloyEditor.customSelections)
+                : [];
 
             this.xhtmlify = this.xhtmlify.bind(this);
         }
@@ -186,6 +189,9 @@
 
         init(container) {
             const toolbarProps = { extraButtons: this.alloyEditorExtraButtons, attributes: this.attributes, classes: this.classes };
+            const customSelections = this.customStyleSelections.map((Selection) => {
+                return new Selection(toolbarProps);
+            });
             const alloyEditor = AlloyEditor.editable(container.getAttribute('id'), {
                 toolbars: {
                     ezadd: {
@@ -244,6 +250,7 @@
                             new eZ.ezAlloyEditor.ezEmbedImageLinkConfig(toolbarProps),
                             new eZ.ezAlloyEditor.ezEmbedImageConfig(toolbarProps),
                             new eZ.ezAlloyEditor.ezEmbedConfig(toolbarProps),
+                            ...customSelections,
                         ],
                         tabIndex: 1,
                     },
