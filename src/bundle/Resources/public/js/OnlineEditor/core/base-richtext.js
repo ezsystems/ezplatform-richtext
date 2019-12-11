@@ -16,6 +16,7 @@
                 table: [],
                 tr: [],
                 td: [],
+                th: [],
                 ...eZ.richText.alloyEditor.extraButtons,
             };
             this.attributes = global.eZ.richText.alloyEditor.attributes;
@@ -247,6 +248,7 @@
                             new eZ.ezAlloyEditor.ezTableConfig(toolbarProps),
                             new eZ.ezAlloyEditor.ezTableRowConfig(toolbarProps),
                             new eZ.ezAlloyEditor.ezTableCellConfig(toolbarProps),
+                            new eZ.ezAlloyEditor.ezTableHeaderConfig(toolbarProps),
                             new eZ.ezAlloyEditor.ezEmbedImageLinkConfig(toolbarProps),
                             new eZ.ezAlloyEditor.ezEmbedImageConfig(toolbarProps),
                             new eZ.ezAlloyEditor.ezEmbedConfig(toolbarProps),
