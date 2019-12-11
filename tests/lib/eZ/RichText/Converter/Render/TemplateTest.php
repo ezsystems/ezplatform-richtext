@@ -8,11 +8,11 @@ declare(strict_types=1);
 
 namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Converter\Render;
 
-use PHPUnit\Framework\TestCase;
+use DOMDocument;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template;
 use EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface;
-use DOMDocument;
+use PHPUnit\Framework\TestCase;
 
 class TemplateTest extends TestCase
 {
@@ -75,10 +75,6 @@ class TemplateTest extends TestCase
 
     /**
      * @dataProvider providerForTestConvert
-     *
-     * @param \DOMDocument $inputDocument
-     * @param \DOMDocument $expectedOutputDocument
-     * @param array $expectedRenderParams
      */
     public function testConvert(DOMDocument $inputDocument, DOMDocument $expectedOutputDocument, array $expectedRenderParams)
     {
@@ -108,6 +104,8 @@ class TemplateTest extends TestCase
                         ->method('convert')
                         ->with($contentDoc)
                         ->willReturn($contentDoc);
+                } else {
+                    $params['params']['content'] = null;
                 }
 
                 $this->rendererMock
@@ -164,6 +162,7 @@ class TemplateTest extends TestCase
                     'params' => [
                     ],
                 ],
+                'content' => null,
             ],
         ],
         '01-complex-config' => [
@@ -188,6 +187,7 @@ class TemplateTest extends TestCase
                         ],
                     ],
                 ],
+                'content' => null,
             ],
         ],
         '02-block-inline' => [
@@ -199,6 +199,7 @@ class TemplateTest extends TestCase
                     'params' => [
                     ],
                 ],
+                'content' => null,
             ],
             [
                 'name' => 'template4',
@@ -208,6 +209,7 @@ class TemplateTest extends TestCase
                     'params' => [
                     ],
                 ],
+                'content' => null,
             ],
         ],
         '03-inline' => [
@@ -219,6 +221,7 @@ class TemplateTest extends TestCase
                     'params' => [
                     ],
                 ],
+                'content' => null,
             ],
         ],
         '04-block-nested-template' => [
@@ -231,6 +234,7 @@ class TemplateTest extends TestCase
                     'params' => [
                     ],
                 ],
+                'content' => null,
             ],
             [
                 'name' => 'template8',
@@ -241,6 +245,7 @@ class TemplateTest extends TestCase
                     'params' => [
                     ],
                 ],
+                'content' => null,
             ],
         ],
         '05-block-content-config' => [
@@ -255,6 +260,7 @@ class TemplateTest extends TestCase
                     ],
                     'align' => 'right',
                 ],
+                'content' => null,
             ],
         ],
         '06-custom-style-block' => [
@@ -268,6 +274,7 @@ class TemplateTest extends TestCase
                     'params' => [
                     ],
                 ],
+                'content' => null,
             ],
         ],
         '07-custom-style-block-inline' => [
@@ -281,6 +288,7 @@ class TemplateTest extends TestCase
                     'params' => [
                     ],
                 ],
+                'content' => null,
             ],
             [
                 'name' => 'style3',
@@ -292,6 +300,7 @@ class TemplateTest extends TestCase
                     'params' => [
                     ],
                 ],
+                'content' => null,
             ],
         ],
         '08-line-breaks' => [
@@ -304,6 +313,7 @@ class TemplateTest extends TestCase
                     'content' => "<literallayout>Some content\nwith line breaks.</literallayout>",
                     'params' => [],
                 ],
+                'content' => null,
             ],
         ],
     ];

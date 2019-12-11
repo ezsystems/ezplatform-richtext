@@ -18,6 +18,7 @@
             <param name="alt">flip-flop</param>
             <param name="caption">bistable multivibrator</param>
           </param>
+          <param name="content"/>
           <param name="align">right</param>
         </template-output>
       </section>
