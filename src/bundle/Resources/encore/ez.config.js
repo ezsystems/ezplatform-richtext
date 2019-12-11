@@ -66,6 +66,7 @@ module.exports = (Encore) => {
         path.resolve(__dirname, '../public/js/OnlineEditor/toolbars/config/ez-table.js'),
         path.resolve(__dirname, '../public/js/OnlineEditor/toolbars/config/ez-table-row.js'),
         path.resolve(__dirname, '../public/js/OnlineEditor/toolbars/config/ez-table-cell.js'),
+        path.resolve(__dirname, '../public/js/OnlineEditor/toolbars/config/ez-table-header.js'),
         path.resolve(__dirname, '../public/js/OnlineEditor/toolbars/config/ez-link.js'),
         path.resolve(__dirname, '../public/js/OnlineEditor/toolbars/config/ez-heading.js'),
         path.resolve(__dirname, '../public/js/OnlineEditor/toolbars/config/ez-embed.js'),
