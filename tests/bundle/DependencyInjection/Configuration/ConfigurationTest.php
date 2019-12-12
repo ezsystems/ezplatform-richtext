@@ -11,8 +11,6 @@ namespace EzSystems\Tests\EzPlatformRichTextBundle\DependencyInjection\Configura
 use EzSystems\EzPlatformRichTextBundle\DependencyInjection\Configuration;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
 use PHPUnit\Framework\TestCase;
-use SplFileInfo;
-use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Yaml\Yaml;
 
@@ -29,29 +27,15 @@ final class ConfigurationTest extends TestCase
     }
 
     /**
-     * @dataProvider providerForTestProcessingConfiguration
+     * Custom tags configuration data provider for testProcessingConfiguration.
+     *
+     * Fetches configs from the filesystem.
+     *
+     * @see testProcessingConfiguration
+     *
+     * @return iterable
      */
-    public function testProcessingConfiguration(SplFileInfo $inputConfigurationFile): void
-    {
-        $outputFilePath = self::OUTPUT_FIXTURES_DIR . $inputConfigurationFile->getFilename();
-        if (!file_exists($outputFilePath)) {
-            $this->markTestIncomplete("Missing output fixture: {$outputFilePath}");
-        }
-
-        $configs = [Yaml::parseFile($inputConfigurationFile->getPathname())];
-        $expectedProcessedConfiguration = Yaml::parseFile($outputFilePath);
-
-        $configuration = $this->getConfiguration();
-        $processor = new Processor();
-        $processedConfiguration = $processor->processConfiguration($configuration, $configs);
-
-        self::assertEquals(
-            $expectedProcessedConfiguration,
-            $processedConfiguration
-        );
-    }
-
-    public function providerForTestProcessingConfiguration(): iterable
+    public function providerForTestProcessingCustomTagsConfiguration(): iterable
     {
         $finder = new Finder();
         $finder
@@ -62,18 +46,26 @@ final class ConfigurationTest extends TestCase
         ;
 
         foreach ($finder as $file) {
-            yield [$file];
+            $outputFilePath = self::OUTPUT_FIXTURES_DIR . $file->getFilename();
+            if (!file_exists($outputFilePath)) {
+                $this->markTestIncomplete("Missing output fixture: {$outputFilePath}");
+            }
+
+            $configs = [Yaml::parseFile($file->getPathname())];
+            $expectedProcessedConfiguration = Yaml::parseFile($outputFilePath);
+
+            yield 'Custom tags: ' . $file->getBasename() => [$configs, $expectedProcessedConfiguration];
         }
     }
 
     /**
-     * Data provider for testMergingAlloyEditorConfiguration.
+     * Simple data provider for testProcessingConfiguration.
      *
-     * @see testMergingAlloyEditorConfiguration
+     * @see testProcessingConfiguration
      *
      * @return array
      */
-    public function providerForTestMergingAlloyEditorConfiguration(): array
+    public function providerForTestProcessingConfiguration(): array
     {
         return [
             'Empty configuration' => [
@@ -122,12 +114,13 @@ final class ConfigurationTest extends TestCase
     }
 
     /**
-     * @dataProvider providerForTestMergingAlloyEditorConfiguration
+     * @dataProvider providerForTestProcessingConfiguration
+     * @dataProvider providerForTestProcessingCustomTagsConfiguration
      *
      * @param array $configurationValues
      * @param array $expectedProcessedConfiguration
      */
-    public function testMergingAlloyEditorConfiguration(
+    public function testProcessingConfiguration(
         array $configurationValues,
         array $expectedProcessedConfiguration
     ): void {
