@@ -29,10 +29,7 @@ export default class EzEmbedDiscoverContentButton extends EzWidgetButton {
      * @method chooseContent
      */
     chooseContent() {
-        const { udwIsSelectableMethod, udwConfigName, udwTitle, editor } = this.props;
-        const selectable = udwIsSelectableMethod ? this[udwIsSelectableMethod] : (item, callback) => callback(true);
-        const token = document.querySelector('meta[name="CSRF-Token"]').content;
-        const siteaccess = document.querySelector('meta[name="SiteAccess"]').content;
+        const { udwConfigName, udwTitle, editor } = this.props;
         const languageCode = document.querySelector('meta[name="LanguageCode"]').content;
         const config = JSON.parse(document.querySelector(`[data-udw-config-name="${udwConfigName}"]`).dataset.udwConfig);
         const selectContent = eZ.richText.alloyEditor.callbacks.selectContent;
@@ -42,12 +39,13 @@ export default class EzEmbedDiscoverContentButton extends EzWidgetButton {
                 onCancel: this.cancelHandler,
                 title: udwTitle,
                 multiple: false,
-                startingLocationId: window.eZ.adminUiConfig.universalDiscoveryWidget.startingLocationId,
-                restInfo: { token, siteaccess },
-                canSelectContent: selectable,
-                cotfAllowedLanguages: [languageCode],
             },
-            config
+            config,
+            {
+                contentOnTheFly: {
+                    allowedLanguages: [languageCode],
+                },
+            }
         );
 
         editor.get('nativeEditor').lockSelection();

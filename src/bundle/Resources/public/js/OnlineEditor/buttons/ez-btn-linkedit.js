@@ -74,9 +74,6 @@ export default class EzBtnLinkEdit extends Component {
      */
     selectContent() {
         const openUDW = () => {
-            const udwContainer = document.querySelector('#react-udw');
-            const token = document.querySelector('meta[name="CSRF-Token"]').content;
-            const siteaccess = document.querySelector('meta[name="SiteAccess"]').content;
             const config = JSON.parse(document.querySelector(`[data-udw-config-name="richtext_embed"]`).dataset.udwConfig);
             const title = Translator.trans(/*@Desc("Select content")*/ 'link_edit_btn.udw.title', {}, 'alloy_editor');
             const selectContent = eZ.richText.alloyEditor.callbacks.selectContent;
@@ -85,8 +82,6 @@ export default class EzBtnLinkEdit extends Component {
                     onConfirm: this.udwOnConfirm.bind(this),
                     title,
                     multiple: false,
-                    startingLocationId: window.eZ.adminUiConfig.universalDiscoveryWidget.startingLocationId,
-                    restInfo: { token, siteaccess },
                 },
                 config
             );
