@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5/edit">
+  <p>Some <b>strong</b> content.</p>
+  <p>Some <span style="font-weight: bold">strong</span> content.</p>
+  <p>Some <i>em</i> content.</p>
+  <p>Some <span style="font-weight: bold; font-style: italic;">em</span> content.</p>
+</section>
