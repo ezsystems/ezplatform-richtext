@@ -8,26 +8,12 @@
     <ezattribute>
       <ezvalue key="name-1">value 1</ezvalue>
       <ezvalue key="name-2">value 2</ezvalue>
-      <ezvalue key="name-3">value 3</ezvalue>
-      <ezvalue key="name-4">value 4</ezvalue>
     </ezattribute>
     <listitem ezxhtml:class="listItemClass">
       <ezattribute>
         <ezvalue key="name-2">value 2</ezvalue>
       </ezattribute>
       <para>This is a list item.</para>
-    </listitem>
-    <listitem ezxhtml:class="listItemClass">
-      <ezattribute>
-        <ezvalue key="name-3">value 3</ezvalue>
-      </ezattribute>
-      <para>This is a list item with unwanted paragraph.</para>
-    </listitem>
-    <listitem ezxhtml:class="listItemClass">
-      <ezattribute>
-        <ezvalue key="name-4">value 4</ezvalue>
-      </ezattribute>
-      <para>This is a list item with unwanted span.</para>
     </listitem>
   </orderedlist>
 </section>

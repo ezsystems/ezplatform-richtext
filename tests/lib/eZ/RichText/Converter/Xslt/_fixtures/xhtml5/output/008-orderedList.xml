@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5">
-  <ol class="orderedListClass" data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2" data-ezattribute-name-3="value 3" data-ezattribute-name-4="value 4" id="orderedlist-id">
+  <ol class="orderedListClass" data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2" id="orderedlist-id">
     <li class="listItemClass" data-ezattribute-name-2="value 2">This is a list item.</li>
-    <li class="listItemClass" data-ezattribute-name-3="value 3"><p>This is a list item with unwanted paragraph.</p></li>
-    <li class="listItemClass" data-ezattribute-name-4="value 4"><span>This is a list item with unwanted span.</span></li>
   </ol>
 </section>
