@@ -130,7 +130,13 @@ class TemplateTest extends TestCase
 
     protected function getConverter()
     {
-        return new Template($this->rendererMock, $this->converterMock);
+        return new Template(
+            $this->rendererMock,
+            new Converter\Aggregate([
+                new Template($this->rendererMock, $this->converterMock),
+                $this->converterMock,
+            ])
+        );
     }
 
     /**
@@ -226,22 +232,22 @@ class TemplateTest extends TestCase
         ],
         '04-block-nested-template' => [
             [
-                'name' => 'template7',
+                'name' => 'template8',
                 'is_inline' => false,
                 'params' => [
-                    'name' => 'template7',
-                    'content' => 'content7<eztemplate name="template8"><ezcontent>content8</ezcontent></eztemplate>',
+                    'name' => 'template8',
+                    'content' => 'content8',
                     'params' => [
                     ],
                 ],
                 'content' => null,
             ],
             [
-                'name' => 'template8',
+                'name' => 'template7',
                 'is_inline' => false,
                 'params' => [
-                    'name' => 'template8',
-                    'content' => 'content8',
+                    'name' => 'template7',
+                    'content' => 'content7<eztemplate name="template8"><ezcontent>content8</ezcontent><ezpayload>template8</ezpayload></eztemplate>',
                     'params' => [
                     ],
                 ],

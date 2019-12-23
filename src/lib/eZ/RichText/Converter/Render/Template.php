@@ -64,22 +64,11 @@ class Template extends Render implements Converter
     {
         $xpath = new DOMXPath($document);
         $xpath->registerNamespace('docbook', 'http://docbook.org/ns/docbook');
-        $xpathExpression = '//docbook:eztemplate | //docbook:eztemplateinline';
+        // internal templates processed inside a processTemplate
+        $xpathExpression = '//docbook:eztemplate[not(ancestor::docbook:eztemplate)] | //docbook:eztemplateinline[not(ancestor::docbook:eztemplateinline)]';
 
-        $templates = $xpath->query($xpathExpression);
-        $templatesSorted = [];
-        foreach ($templates as $template) {
-            /** @var \DOMElement $template */
-            $depth = $this->getNodeDepth($template);
-            $templatesSorted[$depth][] = $template;
-        }
-
-        ksort($templatesSorted, SORT_NUMERIC);
-
-        foreach ($templatesSorted as $templates) {
-            foreach ($templates as $template) {
-                $this->processTemplate($document, $xpath, $template);
-            }
+        foreach ($xpath->query($xpathExpression) as $template) {
+            $this->processTemplate($document, $xpath, $template);
         }
 
         return $document;
@@ -94,7 +83,6 @@ class Template extends Render implements Converter
      */
     protected function processTemplate(DOMDocument $document, DOMXPath $xpath, DOMElement $template)
     {
-        $content = null;
         $templateName = $template->getAttribute('name');
         $templateType = $template->hasAttribute('type') ? $template->getAttribute('type') : 'tag';
         $parameters = [
@@ -120,59 +108,11 @@ class Template extends Render implements Converter
             $template->localName === 'eztemplateinline'
         );
 
-        if (isset($content)) {
-            // If current tag is wrapped inside another template tag we can't use CDATA section
-            // for its content as these can't be nested.
-            // CDATA section will be used only for content of root wrapping tag, content of tags
-            // inside it will be added as XML fragments.
-            if ($this->isWrapped($template)) {
-                $fragment = $document->createDocumentFragment();
-                $fragment->appendXML(htmlspecialchars($content));
-                $template->parentNode->replaceChild($fragment, $template);
-            } else {
-                $payload = $document->createElement('ezpayload');
-                $payload->appendChild($document->createCDATASection($content));
-                $template->appendChild($payload);
-            }
+        if ($content !== null) {
+            $payload = $document->createElement('ezpayload');
+            $payload->appendChild($document->createCDATASection($content));
+            $template->appendChild($payload);
         }
-    }
-
-    /**
-     * Returns if the given $node is wrapped inside another template node.
-     *
-     * @param \DOMNode $node
-     *
-     * @return bool
-     */
-    protected function isWrapped(DomNode $node)
-    {
-        while ($node = $node->parentNode) {
-            if ($node->localName === 'eztemplate' || $node->localName === 'eztemplateinline') {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Returns depth of given $node in a DOMDocument.
-     *
-     * @param \DOMNode $node
-     *
-     * @return int
-     */
-    protected function getNodeDepth(DomNode $node)
-    {
-        // initial depth for top level elements (to avoid "ifs")
-        $depth = -2;
-
-        while ($node) {
-            ++$depth;
-            $node = $node->parentNode;
-        }
-
-        return $depth;
     }
 
     /**
@@ -195,9 +135,8 @@ class Template extends Render implements Converter
         foreach ($node->childNodes as $child) {
             $newNode = $innerDoc->importNode($child, true);
             if ($newNode === false) {
-                $this->logger->warning(
-                    "Failed to import Custom Style content of node '{$child->getNodePath()}'"
-                );
+                $this->logger->warning("Failed to import Custom Style content of node '{$child->getNodePath()}'");
+                continue;
             }
 
             $rootNode->appendChild($newNode);
