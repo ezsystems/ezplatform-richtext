@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5/edit">
+    <ol>
+        <li>Some list item.</li>
+        <li><p>Some list item with a paragraph.</p></li>
+    </ol>
+</section>
