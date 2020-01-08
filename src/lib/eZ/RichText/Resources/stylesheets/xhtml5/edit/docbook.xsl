@@ -109,6 +109,26 @@
     </para>
   </xsl:template>
 
+  <xsl:template match="ezxhtml5:span">
+    <xsl:choose>
+      <xsl:when test="descendant::ezxhtml5:br">
+        <xsl:for-each select="node()">
+          <xsl:choose>
+            <xsl:when test="local-name( current() ) = 'br'">
+              <xsl:text>&#xA;</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:apply-templates select="current()"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:for-each>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
   <xsl:template match="ezxhtml5:pre">
     <xsl:element name="programlisting">
       <xsl:if test="@id">
