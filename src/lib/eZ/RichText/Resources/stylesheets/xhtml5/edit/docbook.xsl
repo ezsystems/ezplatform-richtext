@@ -348,9 +348,16 @@
         </xsl:attribute>
       </xsl:if>
       <xsl:call-template name="ezattribute"/>
-      <para>
-        <xsl:apply-templates/>
-      </para>
+      <xsl:choose>
+        <xsl:when test="descendant::ezxhtml5:p">
+          <xsl:apply-templates/>
+        </xsl:when>
+        <xsl:otherwise>
+          <para>
+            <xsl:apply-templates/>
+          </para>
+        </xsl:otherwise>
+      </xsl:choose>
     </listitem>
   </xsl:template>
 
