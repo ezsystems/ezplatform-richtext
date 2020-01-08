@@ -78,7 +78,7 @@ class SearchField implements Indexable
      *
      * @return string
      */
-    public static function extractShortText(DOMDocument $document)
+    public static function extractShortText(DOMDocument $document): string
     {
         $result = null;
         // try to extract first paragraph/tag
