@@ -140,7 +140,7 @@
     </blockquote>
   </xsl:template>
 
-  <xsl:template match="ezxhtml5:em">
+  <xsl:template match="ezxhtml5:em | ezxhtml5:i">
     <emphasis>
       <xsl:if test="@class">
         <xsl:attribute name="ezxhtml:class">
@@ -154,7 +154,7 @@
     </emphasis>
   </xsl:template>
 
-  <xsl:template match="ezxhtml5:strong">
+  <xsl:template match="ezxhtml5:strong | ezxhtml5:b">
     <emphasis>
       <xsl:attribute name="role">strong</xsl:attribute>
       <xsl:if test="@class">
@@ -752,6 +752,24 @@
     <xsl:param name="style"/>
     <xsl:param name="property"/>
     <xsl:value-of select="translate( substring-before( substring-after( concat( substring-after( $style, $property ), ';' ), ':' ), ';' ), ' ', '' )"/>
+  </xsl:template>
+
+  <!-- Some fallbacks to handle translating inline formatting in span tags for copy&paste and import use cases -->
+  <xsl:template match="ezxhtml5:span[not(@data-ezelement) and contains(@style,'bold')]">
+    <emphasis>
+      <xsl:attribute name="role">strong</xsl:attribute>
+      <xsl:call-template name="breakline">
+        <xsl:with-param name="node" select="node()"/>
+      </xsl:call-template>
+    </emphasis>
+  </xsl:template>
+
+  <xsl:template match="ezxhtml5:span[not(@data-ezelement) and contains(@style,'italic')]">
+    <emphasis>
+      <xsl:call-template name="breakline">
+        <xsl:with-param name="node" select="node()"/>
+      </xsl:call-template>
+    </emphasis>
   </xsl:template>
 
 </xsl:stylesheet>
