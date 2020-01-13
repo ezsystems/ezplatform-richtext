@@ -32,7 +32,7 @@
         &-btn {
             display: flex;
             border-radius: calculateRem(5px);
-            padding: calculateRem(6px) calculateRem(8px);
+            padding: calculateRem(4px);
 
             .ez-icon {
                 fill: $ez-custom-tag-color-switcher-active;
