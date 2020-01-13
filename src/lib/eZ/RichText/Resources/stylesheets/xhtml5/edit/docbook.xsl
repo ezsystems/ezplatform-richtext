@@ -109,6 +109,12 @@
     </para>
   </xsl:template>
 
+  <xsl:template match="ezxhtml5:span">
+    <xsl:call-template name="breakline">
+      <xsl:with-param name="node" select="node()"/>
+    </xsl:call-template>
+  </xsl:template>
+
   <xsl:template match="ezxhtml5:pre">
     <xsl:element name="programlisting">
       <xsl:if test="@id">
