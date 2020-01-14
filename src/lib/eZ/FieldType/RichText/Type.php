@@ -166,17 +166,17 @@ class Type extends FieldType
     }
 
     /**
-     * Returns sortKey information.
+     * Returns information for FieldValue->$sortKey relevant to the field type.
      *
      * @see \eZ\Publish\Core\FieldType
      *
      * @param \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value $value
      *
-     * @return array|bool
+     * @return string|null
      */
     protected function getSortInfo(BaseValue $value)
     {
-        return false;
+        return SearchField::extractShortText($value->xml);
     }
 
     /**
