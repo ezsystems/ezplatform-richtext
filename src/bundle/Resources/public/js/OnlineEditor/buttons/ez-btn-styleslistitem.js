@@ -1,6 +1,5 @@
 import React from 'react';
 import AlloyEditor from 'alloyeditor';
-import EzBtnLink from "./ez-btn-link";
 
 export default class EzBtnStylesListItem extends AlloyEditor.ButtonStylesListItem {
     /**
