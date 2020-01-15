@@ -1,5 +1,6 @@
 import React from 'react';
 import AlloyEditor from 'alloyeditor';
+import EzBtnLink from "./ez-btn-link";
 
 export default class EzBtnStylesListItem extends AlloyEditor.ButtonStylesListItem {
     /**
@@ -34,4 +35,8 @@ export default class EzBtnStylesListItem extends AlloyEditor.ButtonStylesListIte
 }
 
 AlloyEditor.ButtonStylesListItem = AlloyEditor.EzBtnStylesListItem = EzBtnStylesListItem;
-eZ.addConfig('ezAlloyEditor.ezBtnStylesListItem', EzBtnStylesListItem);
+
+const eZ = (window.eZ = window.eZ || {});
+
+eZ.ezAlloyEditor = eZ.ezAlloyEditor || {};
+eZ.ezAlloyEditor.ezBtnStylesListItem = EzBtnStylesListItem;
