@@ -65,6 +65,14 @@ export default class EzBtnLinkEdit extends Component {
         });
     }
 
+    udwOnCancel(udwContainer) {
+        this.invokeWithFixedScrollbar(() => {
+            this.focusEditedLink();
+        });
+
+        ReactDOM.unmountComponentAtNode(udwContainer);
+    }
+
     /**
      * Runs the Universal Discovery Widget so that the user can pick a
      * Content.
@@ -83,6 +91,7 @@ export default class EzBtnLinkEdit extends Component {
             const mergedConfig = Object.assign(
                 {
                     onConfirm: this.udwOnConfirm.bind(this),
+                    onCancel: this.udwOnCancel.bind(this, udwContainer),
                     title,
                     multiple: false,
                     startingLocationId: window.eZ.adminUiConfig.universalDiscoveryWidget.startingLocationId,
@@ -426,6 +435,8 @@ export default class EzBtnLinkEdit extends Component {
         this.invokeWithFixedScrollbar(() => {
             editor.fire('actionPerformed', this);
         });
+
+        editor.fire('customUpdate');
     }
 
     /**
