@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5/edit">
+    <table style="border: 1 px solid black; width: 100%;">
+        <thead>
+            <tr>
+                <th style="width: 100pt">
+                    <p>
+                        <span>test heading<br/>with a breakline</span>
+                    </p>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="width: 100px;">
+                    <p>
+                        <span>test cell<br/>with a breakline</span>
+                    </p>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
