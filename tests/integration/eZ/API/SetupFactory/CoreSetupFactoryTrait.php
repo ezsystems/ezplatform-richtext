@@ -85,7 +85,6 @@ trait CoreSetupFactoryTrait
 
         $containerBuilder->addCompilerPass(new Compiler\FieldTypeRegistryPass());
         $containerBuilder->addCompilerPass(new Compiler\Persistence\FieldTypeRegistryPass());
-        $containerBuilder->addCompilerPass(new Compiler\RegisterLimitationTypePass());
 
         $containerBuilder->addCompilerPass(new Compiler\Storage\ExternalStorageRegistryPass());
         $containerBuilder->addCompilerPass(new Compiler\Storage\Legacy\FieldValueConverterRegistryPass());
