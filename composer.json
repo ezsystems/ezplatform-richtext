@@ -21,10 +21,10 @@
         "symfony/translation": "^4.3",
         "symfony/translation-contracts": "^1.1.2",
         "twig/twig": "^2.11",
-        "ezsystems/doctrine-dbal-schema": "^1.0@dev",
-        "ezsystems/ezpublish-kernel": "^8.0@dev",
-        "ezsystems/ezplatform-content-forms": "^1.0@dev",
-        "ezsystems/ezplatform-rest": "^1.0@dev"
+        "ezsystems/doctrine-dbal-schema": "^1.0",
+        "ezsystems/ezpublish-kernel": "^8.0",
+        "ezsystems/ezplatform-content-forms": "^1.0",
+        "ezsystems/ezplatform-rest": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.0",
