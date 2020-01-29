@@ -39,7 +39,6 @@
       </xsl:element>
     </xsl:if>
   </xsl:template>
-
   <xsl:template name="breakline">
     <xsl:param name="node"/>
     <xsl:choose>
@@ -758,15 +757,28 @@
     <xsl:param name="width"/>
     <xsl:choose>
       <xsl:when test="substring( $width, string-length( $width ) - 1 ) = 'px'">
-        <xsl:value-of select="format-number(number(substring-before( $width, 'px' )), '#')"/>
+        <xsl:value-of select="round(substring-before( $width, 'px' ))"/>
       </xsl:when>
       <xsl:when test="substring( $width, string-length( $width ) - 1 ) = 'pt'">
-        <xsl:value-of select="format-number(number(substring-before( $width, 'pt' )) * 1.33, '#')"/>
+        <xsl:value-of select="round(substring-before( $width, 'pt' )) * 1.33"/>
+      </xsl:when>
+      <xsl:when test="substring( $width, string-length( $width ) ) = '%'">
+        <xsl:value-of select="concat(round(substring-before( $width, '%' )), '%')"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="$width"/>
+        <xsl:variable name="strippedWidth">
+          <xsl:call-template name="stripUnits">
+            <xsl:with-param name="inputString" select="$width"/>
+          </xsl:call-template>
+        </xsl:variable>
+        <xsl:value-of select="round($strippedWidth)"/>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="stripUnits">
+    <xsl:param name="inputString"/>
+    <xsl:value-of select="translate($inputString, translate($inputString, '0123456789%.', ''), '')"/>
   </xsl:template>
 
   <!-- Some fallbacks to handle translating inline formatting in span tags for copy&paste and import use cases -->
