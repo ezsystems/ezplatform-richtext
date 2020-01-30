@@ -39,7 +39,6 @@
       </xsl:element>
     </xsl:if>
   </xsl:template>
-
   <xsl:template name="breakline">
     <xsl:param name="node"/>
     <xsl:choose>
@@ -397,15 +396,13 @@
           </xsl:call-template>
         </xsl:variable>
         <xsl:if test="$width != ''">
+          <xsl:variable name="normalizedWidth">
+            <xsl:call-template name="normalizeWidth">
+              <xsl:with-param name="width" select="$width"/>
+            </xsl:call-template>
+          </xsl:variable>
           <xsl:attribute name="width">
-            <xsl:choose>
-              <xsl:when test="substring( $width, string-length( $width ) - 1 ) = 'px'">
-                <xsl:value-of select="substring-before( $width, 'px' )"/>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:value-of select="$width"/>
-              </xsl:otherwise>
-            </xsl:choose>
+            <xsl:value-of select="$normalizedWidth"/>
           </xsl:attribute>
         </xsl:if>
       </xsl:if>
@@ -414,7 +411,7 @@
           <xsl:value-of select="@title"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:if test="@border != ''">
+      <xsl:if test="(@border != '') or (contains( @style, 'border:' ))">
         <xsl:attribute name="border">1</xsl:attribute>
       </xsl:if>
       <xsl:if test="contains( @style, 'border-width:' )">
@@ -477,7 +474,7 @@
           <xsl:value-of select="@class"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:if test="contains( @style, 'width' )">
+      <xsl:if test="contains( @style, 'width:' )">
         <xsl:variable name="width">
           <xsl:call-template name="extractStyleValue">
             <xsl:with-param name="style" select="@style"/>
@@ -485,15 +482,13 @@
           </xsl:call-template>
         </xsl:variable>
         <xsl:if test="$width != ''">
+          <xsl:variable name="normalizedWidth">
+            <xsl:call-template name="normalizeWidth">
+              <xsl:with-param name="width" select="$width"/>
+            </xsl:call-template>
+          </xsl:variable>
           <xsl:attribute name="ezxhtml:width">
-            <xsl:choose>
-              <xsl:when test="substring( $width, string-length( $width ) - 1 ) = 'px'">
-                <xsl:value-of select="substring-before( $width, 'px' )"/>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:value-of select="$width"/>
-              </xsl:otherwise>
-            </xsl:choose>
+            <xsl:value-of select="$normalizedWidth"/>
           </xsl:attribute>
         </xsl:if>
       </xsl:if>
@@ -551,16 +546,14 @@
             <xsl:with-param name="property" select="'width'"/>
           </xsl:call-template>
         </xsl:variable>
-        <xsl:if test="$width != ''">
+        <xsl:variable name="normalizedWidth">
+          <xsl:call-template name="normalizeWidth">
+            <xsl:with-param name="width" select="$width"/>
+          </xsl:call-template>
+        </xsl:variable>
+        <xsl:if test="$normalizedWidth != ''">
           <xsl:attribute name="ezxhtml:width">
-            <xsl:choose>
-              <xsl:when test="substring( $width, string-length( $width ) - 1 ) = 'px'">
-                <xsl:value-of select="substring-before( $width, 'px' )"/>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:value-of select="$width"/>
-              </xsl:otherwise>
-            </xsl:choose>
+            <xsl:value-of select="$normalizedWidth"/>
           </xsl:attribute>
         </xsl:if>
       </xsl:if>
@@ -758,6 +751,34 @@
     <xsl:param name="style"/>
     <xsl:param name="property"/>
     <xsl:value-of select="translate( substring-before( substring-after( concat( substring-after( $style, $property ), ';' ), ':' ), ';' ), ' ', '' )"/>
+  </xsl:template>
+
+  <xsl:template name="normalizeWidth">
+    <xsl:param name="width"/>
+    <xsl:choose>
+      <xsl:when test="substring( $width, string-length( $width ) - 1 ) = 'px'">
+        <xsl:value-of select="round(substring-before( $width, 'px' ))"/>
+      </xsl:when>
+      <xsl:when test="substring( $width, string-length( $width ) - 1 ) = 'pt'">
+        <xsl:value-of select="round(substring-before( $width, 'pt' ) * 1.33)"/>
+      </xsl:when>
+      <xsl:when test="substring( $width, string-length( $width ) ) = '%'">
+        <xsl:value-of select="concat(round(substring-before( $width, '%' )), '%')"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:variable name="strippedWidth">
+          <xsl:call-template name="stripUnits">
+            <xsl:with-param name="inputString" select="$width"/>
+          </xsl:call-template>
+        </xsl:variable>
+        <xsl:value-of select="round($strippedWidth)"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="stripUnits">
+    <xsl:param name="inputString"/>
+    <xsl:value-of select="translate($inputString, translate($inputString, '0123456789%.', ''), '')"/>
   </xsl:template>
 
   <!-- Some fallbacks to handle translating inline formatting in span tags for copy&paste and import use cases -->

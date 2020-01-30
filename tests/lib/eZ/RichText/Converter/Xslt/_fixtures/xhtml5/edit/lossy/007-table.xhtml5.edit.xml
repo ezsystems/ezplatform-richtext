@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5/edit">
+    <table style="border: 1 px solid black; width: 100.3%;">
+        <thead>
+            <tr>
+                <th style="width: 100.3pt">
+                    <p>
+                        <span>test heading<br/>with a breakline</span>
+                    </p>
+                </th>
+                <th style="width: 100em">
+                    <p>
+                        <span>test heading with different width unit</span>
+                    </p>
+                </th>
+                <th style="width: 100rem">
+                    <p>
+                        <span>another test heading with different width unit</span>
+                    </p>
+                </th>
+                <th style="width: 100.3dummyUnit">
+                    <p>
+                        <span>another test heading with dummy width unit</span>
+                    </p>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="width: 100.3px;">
+                    <p>
+                        <span>test cell<br/>with a breakline</span>
+                    </p>
+                </td>
+                <td style="width: 100em">
+                    <p>
+                        <span>test cell with different width unit</span>
+                    </p>
+                </td>
+                <td style="width: 100.3rem">
+                    <p>
+                        <span>another test cell with different width unit</span>
+                    </p>
+                </td>
+                <td style="width: 100.3dummyUnit">
+                    <p>
+                        <span>another test cell with dummy width unit</span>
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
