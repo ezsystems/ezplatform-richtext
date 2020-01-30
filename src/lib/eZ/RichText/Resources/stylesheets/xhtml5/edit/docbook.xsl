@@ -760,7 +760,7 @@
         <xsl:value-of select="round(substring-before( $width, 'px' ))"/>
       </xsl:when>
       <xsl:when test="substring( $width, string-length( $width ) - 1 ) = 'pt'">
-        <xsl:value-of select="round(substring-before( $width, 'pt' )) * 1.33"/>
+        <xsl:value-of select="round(substring-before( $width, 'pt' ) * 1.33)"/>
       </xsl:when>
       <xsl:when test="substring( $width, string-length( $width ) ) = '%'">
         <xsl:value-of select="concat(round(substring-before( $width, '%' )), '%')"/>
