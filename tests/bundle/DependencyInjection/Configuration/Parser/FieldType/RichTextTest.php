@@ -76,8 +76,6 @@ class RichTextTest extends AbstractParserTestCase
 
             $extension->load([$extensionConfig], $this->container);
         }
-
-        $this->configResolver = $this->container->get('ezpublish.config.resolver');
     }
 
     /**
