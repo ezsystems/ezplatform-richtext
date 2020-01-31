@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section
+        xmlns="http://docbook.org/ns/docbook"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml"
+        xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom"
+        version="5.0-variant ezpublish-1.0">
+    <informaltable width="100%" border="1">
+        <thead>
+            <tr>
+                <th ezxhtml:width="133">
+                    <para>
+                        <literallayout class="normal">test heading
+with a breakline</literallayout>
+                    </para>
+                </th>
+                <th ezxhtml:width="100">
+                    <para>test heading with different width unit</para>
+                </th>
+                <th ezxhtml:width="100">
+                    <para>another test heading with different width unit</para>
+                </th>
+                <th ezxhtml:width="100">
+                    <para>another test heading with dummy width unit</para>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td ezxhtml:width="100">
+                    <para>
+                        <literallayout class="normal">test cell
+with a breakline</literallayout>
+                    </para>
+                </td>
+                <td ezxhtml:width="100">
+                    <para>test cell with different width unit</para>
+                </td>
+                <td ezxhtml:width="100">
+                    <para>another test cell with different width unit</para>
+                </td>
+                <td ezxhtml:width="100">
+                    <para>another test cell with dummy width unit</para>
+                </td>
+            </tr>
+        </tbody>
+    </informaltable>
+</section>
