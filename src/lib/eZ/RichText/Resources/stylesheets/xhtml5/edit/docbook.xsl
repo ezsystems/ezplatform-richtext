@@ -258,9 +258,18 @@
   <xsl:template name="link.anchor">
     <xsl:param name="attribute"/>
     <anchor>
-      <xsl:attribute name="xml:id">
-        <xsl:value-of select="$attribute"/>
-      </xsl:attribute>
+      <xsl:choose>
+        <xsl:when test="boolean(//ezxhtml5:a[@name = preceding::ezxhtml5:a/@name or ./ezxhtml5:a/@name = following::ezxhtml5:a/@name] ) = false()">
+          <xsl:attribute name="xml:id">
+            <xsl:value-of select="$attribute"/>
+          </xsl:attribute>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:message terminate="yes">
+            Anchor names must be unique. Check duplicates and re-publish the content.
+          </xsl:message>
+        </xsl:otherwise>
+      </xsl:choose>
     </anchor>
   </xsl:template>
 
