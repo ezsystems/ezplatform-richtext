@@ -57,6 +57,10 @@ class RichTextStorage extends GatewayBasedStorage
 
         $links = $xpath->query($xpathExpression);
 
+        if ($versionInfo->versionNo !== 1) {
+            $this->gateway->unlinkUrl($field->id, $versionInfo->versionNo);
+        }
+
         if (empty($links)) {
             return false;
         }
