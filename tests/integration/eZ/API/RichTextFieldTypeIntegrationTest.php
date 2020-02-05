@@ -9,6 +9,8 @@ declare(strict_types=1);
 namespace EzSystems\IntegrationTests\EzPlatformRichText\eZ\API;
 
 use DirectoryIterator;
+use Doctrine\DBAL\FetchMode;
+use Doctrine\DBAL\ParameterType;
 use eZ\Publish\API\Repository\Exceptions\ContentFieldValidationException;
 use eZ\Publish\API\Repository\Repository;
 use eZ\Publish\API\Repository\Tests\FieldType\RelationSearchBaseIntegrationTestTrait;
@@ -444,10 +446,10 @@ EOT
     public function testFromHash($hash, $expectedValue = null)
     {
         $richTextValue = $this
-                ->getRepository()
-                ->getFieldTypeService()
-                ->getFieldType($this->getTypeName())
-                ->fromHash($hash);
+            ->getRepository()
+            ->getFieldTypeService()
+            ->getFieldType($this->getTypeName())
+            ->fromHash($hash);
         $this->assertInstanceOf(
             RichTextValue::class,
             $richTextValue
@@ -622,6 +624,111 @@ EOT;
             str_replace('[ObjectId]', $objectId, $expected),
             $test->getField('description')->value->xml->saveXML()
         );
+    }
+
+    /**
+     * @throws \eZ\Publish\API\Repository\Exceptions\ContentFieldValidationException
+     * @throws \ErrorException
+     * @throws \eZ\Publish\API\Repository\Exceptions\BadStateException
+     * @throws \eZ\Publish\API\Repository\Exceptions\ContentTypeFieldDefinitionValidationException
+     * @throws \eZ\Publish\API\Repository\Exceptions\ContentValidationException
+     * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException
+     * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException
+     * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
+     */
+    public function testExternalLinkCorrectStoreAfterUpdate()
+    {
+        $xmlDocument = $this->getXMLForTestExternalLinkCorrectStoreAfterUpdate();
+        $repository = $this->getRepository();
+        $contentService = $repository->getContentService();
+        $contentTypeService = $repository->getContentTypeService();
+        $locationService = $repository->getLocationService();
+
+        $createStruct = $contentTypeService->newContentTypeCreateStruct('test-RichText');
+        $createStruct->mainLanguageCode = 'eng-GB';
+        $createStruct->names = ['eng-GB' => 'Test'];
+        $createStruct->creatorId = $repository->getPermissionResolver()->getCurrentUserReference()->getUserId();
+        $createStruct->creationDate = $this->createDateTime();
+
+        $fieldCreate = $contentTypeService->newFieldDefinitionCreateStruct('description', 'ezrichtext');
+        $fieldCreate->names = ['eng-GB' => 'Title'];
+        $fieldCreate->fieldGroup = 'main';
+        $fieldCreate->position = 1;
+        $fieldCreate->isTranslatable = true;
+        $createStruct->addFieldDefinition($fieldCreate);
+
+        $contentGroup = $contentTypeService->loadContentTypeGroupByIdentifier('Content');
+        $contentTypeDraft = $contentTypeService->createContentType($createStruct, [$contentGroup]);
+
+        $contentTypeService->publishContentTypeDraft($contentTypeDraft);
+        $testContentType = $contentTypeService->loadContentType($contentTypeDraft->id);
+
+        // Create a folder for tests
+        $createStruct = $contentService->newContentCreateStruct(
+            $contentTypeService->loadContentTypeByIdentifier('folder'),
+            'eng-GB'
+        );
+
+        $createStruct->setField('name', 'Folder Link');
+        $draft = $contentService->createContent(
+            $createStruct,
+            [$locationService->newLocationCreateStruct(2)]
+        );
+
+        $folder = $contentService->publishVersion(
+            $draft->versionInfo
+        );
+        $locationId = $folder->versionInfo->contentInfo->mainLocationId;
+
+        $testStruct = $contentService->newContentCreateStruct($testContentType, 'eng-GB');
+        $testStruct->setField('description', $xmlDocument, 'eng-GB');
+        $content = $contentService->createContent(
+            $testStruct,
+            [$locationService->newLocationCreateStruct($locationId)]
+        );
+        $content = $contentService->publishVersion(
+            $content->versionInfo
+        );
+        $mapIds = $this->getUrlObjectLinkForContentObjectAttributeIdAndVersionNo($content->getField('description')->id, $content->contentInfo->currentVersionNo);
+
+        $contentUpdateStruct = $contentService->newContentUpdateStruct();
+        $contentUpdateStruct->setField('description', $xmlDocument, 'eng-GB');
+            $contentDraftB = $contentService->updateContent(
+                $contentService->createContentDraft($content->contentInfo)->versionInfo,
+                $contentUpdateStruct
+            );
+        $content = $contentService->publishVersion($contentDraftB->versionInfo);
+        $mapIdsAfterUpdate = $this->getUrlObjectLinkForContentObjectAttributeIdAndVersionNo($content->getField('description')->id, $content->contentInfo->currentVersionNo);
+
+        $this->assertEquals($mapIds, $mapIdsAfterUpdate);
+    }
+
+    /**
+     * @param int $contentObjectAttributeId
+     * @param int $versionNo
+     * @return array
+     * @throws \ErrorException
+     */
+    private function getUrlObjectLinkForContentObjectAttributeIdAndVersionNo(int $contentObjectAttributeId, int $versionNo): array
+    {
+        $connection = $this->getRawDatabaseConnection();
+        $map = [];
+        $query = $connection->createQueryBuilder();
+        $query
+            ->select(
+                $connection->quoteIdentifier('url_id')
+            )
+            ->from('ezurl_object_link')
+            ->where('contentobject_attribute_id = :contentobject_attribute_id')
+            ->andWhere('contentobject_attribute_version = :contentobject_attribute_version')
+            ->setParameter(':contentobject_attribute_version', $versionNo, ParameterType::INTEGER)
+            ->setParameter(':contentobject_attribute_id', $contentObjectAttributeId, ParameterType::INTEGER);
+
+        $statement = $query->execute();
+        foreach ($statement->fetchAll(FetchMode::ASSOCIATIVE) as $row) {
+            $map[] = $row['url_id'];
+        }
+        return $map;
     }
 
     /**
@@ -847,6 +954,34 @@ EOT;
 
         self::fail("Expected ValidationError '{$expectedValidationErrorMessage}' didn't occur");
     }
+
+
+    /**
+     * @return \DOMDocument
+     */
+    public function getXMLForTestExternalLinkCorrectStoreAfterUpdate()
+    {
+        $document = new DOMDocument();
+        $document->preserveWhiteSpace = false;
+        $document->formatOutput = false;
+        $document->loadXML((<<<XML
+<?xml version="1.0" encoding="UTF-8"?>
+    <section 
+    xmlns="http://docbook.org/ns/docbook" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" 
+    xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml" 
+    xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom" 
+    version="5.0-variant ezpublish-1.0">
+        <para>
+            <link xlink:href="https://ez.no/" xlink:show="none" xlink:title="">link</link>
+        </para>
+    </section>
+
+XML
+        ), LIBXML_NOENT);
+        return $document;
+    }
+
 
     /**
      * Get XML Document in DocBook format, containing link to the given Location.
