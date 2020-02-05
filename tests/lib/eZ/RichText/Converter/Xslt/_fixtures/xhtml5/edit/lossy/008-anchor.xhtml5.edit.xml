@@ -3,4 +3,7 @@
     <p>
         <a name="top"/>some anchor with a name attribute.
     </p>
+    <p>
+        <a name="top"/>another anchor with the same name attribute.
+    </p>
 </section>
