@@ -255,20 +255,28 @@
   </xsl:template>
 
   <xsl:template name="link.anchor">
+    <xsl:param name="attribute"/>
     <anchor>
       <xsl:attribute name="xml:id">
-        <xsl:value-of select="@id"/>
+        <xsl:value-of select="$attribute"/>
       </xsl:attribute>
     </anchor>
   </xsl:template>
 
-  <xsl:template match="ezxhtml5:a">
+  <xsl:template match="ezxhtml5:a[not(@name=preceding::ezxhtml5:a/@name)]">
     <xsl:choose>
       <xsl:when test="@href">
         <xsl:call-template name="link.href"/>
       </xsl:when>
       <xsl:when test="@id">
-        <xsl:call-template name="link.anchor"/>
+        <xsl:call-template name="link.anchor">
+          <xsl:with-param name="attribute" select="@id"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:when test="@name">
+        <xsl:call-template name="link.anchor">
+          <xsl:with-param name="attribute" select="@name"/>
+        </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
         <xsl:message terminate="yes">
