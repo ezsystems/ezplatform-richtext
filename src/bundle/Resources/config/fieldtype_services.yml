@@ -44,17 +44,47 @@ services:
             - '%ezplatform.ezrichtext.custom_tags%'
             - '%ezplatform.ezrichtext.custom_styles%'
 
+    EzSystems\EzPlatformRichText\eZ\RichText\HrefResolver:
+        arguments:
+            - '@ezpublish.api.service.location'
+            - '@ezpublish.api.service.content'
+            - '@ezpublish.urlalias_router'
+        calls:
+            - ['setLogger', ['@?logger']]
+
     ezrichtext.converter.link:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\Link
-        arguments: ['@ezpublish.api.service.location', '@ezpublish.api.service.content', '@ezpublish.urlalias_router', '@?logger']
+        arguments:
+            - '@ezpublish.api.service.location'
+            - '@ezpublish.api.service.content'
+            - '@ezpublish.urlalias_router'
+            - '@EzSystems\EzPlatformRichText\eZ\RichText\HrefResolver'
+            - '@?logger'
         tags:
             - {name: ezpublish.ezrichtext.converter.output.xhtml5, priority: 0}
+
+    EzSystems\EzPlatformRichText\eZ\RichText\Template\TemplateRegistry:
+        factory: ['EzSystems\EzPlatformRichText\eZ\RichText\Template\TemplateRegistry', 'createFromConfig']
+        arguments:
+            $config: '%ezplatform.ezrichtext.custom_tags%'
+
+    EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Handler\AttributeHandlerDispatcher:
+        arguments:
+            - !tagged ezplatform.richtext.template.attribute.handler
+
+    EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Handler\LinkAttributeHandler:
+        arguments:
+            - '@EzSystems\EzPlatformRichText\eZ\RichText\HrefResolver'
+        tags:
+            - {name: ezplatform.richtext.template.attribute.handler}
 
     ezrichtext.converter.template:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template
         arguments:
             - '@ezrichtext.renderer'
             - '@ezrichtext.converter.output.xhtml5'
+            - '@EzSystems\EzPlatformRichText\eZ\RichText\Template\TemplateRegistry'
+            - '@EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Handler\AttributeHandlerDispatcher'
             - '@?logger'
         tags:
             - {name: ezpublish.ezrichtext.converter.output.xhtml5, priority: 10}
