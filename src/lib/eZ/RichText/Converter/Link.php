@@ -12,39 +12,55 @@ use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 use eZ\Publish\API\Repository\ContentService;
 use eZ\Publish\API\Repository\LocationService;
 use eZ\Publish\Core\MVC\Symfony\Routing\UrlAliasRouter;
+use EzSystems\EzPlatformRichText\eZ\RichText\HrefResolverInterface;
 use Psr\Log\LoggerInterface;
-use eZ\Publish\API\Repository\Exceptions\NotFoundException as APINotFoundException;
-use eZ\Publish\API\Repository\Exceptions\UnauthorizedException as APIUnauthorizedException;
 use DOMDocument;
 use DOMXPath;
 
 class Link implements Converter
 {
     /**
+     * @deprecated since version 2.5.9, to be removed in 3.0
+     *
      * @var \eZ\Publish\API\Repository\LocationService
      */
     protected $locationService;
 
     /**
+     * @deprecated since version 2.5.9, to be removed in 3.0
+     *
      * @var \eZ\Publish\API\Repository\ContentService
      */
     protected $contentService;
 
     /**
+     * @deprecated since version 2.5.9, to be removed in 3.0
+     *
      * @var \eZ\Publish\Core\MVC\Symfony\Routing\UrlAliasRouter
      */
     protected $urlAliasRouter;
 
     /**
+     * @deprecated since version 2.5.9, to be removed in 3.0
+     *
      * @var \Psr\Log\LoggerInterface
      */
     protected $logger;
 
-    public function __construct(LocationService $locationService, ContentService $contentService, UrlAliasRouter $urlAliasRouter, LoggerInterface $logger = null)
-    {
+    /** @var \EzSystems\EzPlatformRichText\eZ\RichText\HrefResolverInterface */
+    private $hrefResolver;
+
+    public function __construct(
+        LocationService $locationService,
+        ContentService $contentService,
+        UrlAliasRouter $urlAliasRouter,
+        HrefResolverInterface $hrefResolver,
+        LoggerInterface $logger = null
+    ) {
         $this->locationService = $locationService;
         $this->contentService = $contentService;
         $this->urlAliasRouter = $urlAliasRouter;
+        $this->hrefResolver = $hrefResolver;
         $this->logger = $logger;
     }
 
@@ -68,56 +84,6 @@ class Link implements Converter
 
         /** @var \DOMElement $link */
         foreach ($xpath->query($xpathExpression) as $link) {
-            // Set resolved href to number character as a default if it can't be resolved
-            $hrefResolved = '#';
-            $href = $link->getAttribute('xlink:href');
-            $location = null;
-            preg_match('~^(.+://)?([^#]*)?(#.*|\\s*)?$~', $href, $matches);
-            list(, $scheme, $id, $fragment) = $matches;
-
-            if ($scheme === 'ezcontent://') {
-                try {
-                    $contentInfo = $this->contentService->loadContentInfo($id);
-                    $location = $this->locationService->loadLocation($contentInfo->mainLocationId);
-                    $hrefResolved = $this->urlAliasRouter->generate($location) . $fragment;
-                } catch (APINotFoundException $e) {
-                    if ($this->logger) {
-                        $this->logger->warning(
-                            'While generating links for richtext, could not locate ' .
-                            'Content object with ID ' . $id
-                        );
-                    }
-                } catch (APIUnauthorizedException $e) {
-                    if ($this->logger) {
-                        $this->logger->notice(
-                            'While generating links for richtext, unauthorized to load ' .
-                            'Content object with ID ' . $id
-                        );
-                    }
-                }
-            } elseif ($scheme === 'ezlocation://') {
-                try {
-                    $location = $this->locationService->loadLocation($id);
-                    $hrefResolved = $this->urlAliasRouter->generate($location) . $fragment;
-                } catch (APINotFoundException $e) {
-                    if ($this->logger) {
-                        $this->logger->warning(
-                            'While generating links for richtext, could not locate ' .
-                            'Location with ID ' . $id
-                        );
-                    }
-                } catch (APIUnauthorizedException $e) {
-                    if ($this->logger) {
-                        $this->logger->notice(
-                            'While generating links for richtext, unauthorized to load ' .
-                            'Location with ID ' . $id
-                        );
-                    }
-                }
-            } else {
-                $hrefResolved = $href;
-            }
-
             $hrefAttributeName = 'xlink:href';
 
             // For embeds set the resolved href to the separate attribute
@@ -127,6 +93,9 @@ class Link implements Converter
             if ($link->localName === 'ezlink') {
                 $hrefAttributeName = 'href_resolved';
             }
+
+            // Set resolved href to number character as a default if it can't be resolved
+            $hrefResolved = $this->hrefResolver->resolve($link->getAttribute('xlink:href'));
 
             $link->setAttribute($hrefAttributeName, $hrefResolved);
         }
