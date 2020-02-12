@@ -676,14 +676,14 @@ EOT;
 
         $contentUpdateStruct = $contentService->newContentUpdateStruct();
         $contentUpdateStruct->setField('description', $xmlDocument, 'eng-GB');
-        $contentDraftB = $contentService->updateContent(
+        $contentDraft = $contentService->updateContent(
                 $contentService->createContentDraft($content->contentInfo)->versionInfo,
                 $contentUpdateStruct
             );
-        $content = $contentService->publishVersion($contentDraftB->versionInfo);
-        $mapIdsAfterUpdate = $this->getUrlIdsForContentObjectAttributeIdAndVersionNo($content->getField('description')->id, $content->contentInfo->currentVersionNo);
+        $content = $contentService->publishVersion($contentDraft->versionInfo);
+        $urlIdsAfterUpdate = $this->getUrlIdsForContentObjectAttributeIdAndVersionNo($content->getField('description')->id, $content->contentInfo->currentVersionNo);
 
-        $this->assertEquals($urlIds, $mapIdsAfterUpdate);
+        $this->assertEquals($urlIds, $urlIdsAfterUpdate);
     }
 
     /**
