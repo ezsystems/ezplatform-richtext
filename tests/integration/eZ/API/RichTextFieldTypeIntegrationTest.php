@@ -693,7 +693,7 @@ EOT;
 
         $contentUpdateStruct = $contentService->newContentUpdateStruct();
         $contentUpdateStruct->setField('description', $xmlDocument, 'eng-GB');
-            $contentDraftB = $contentService->updateContent(
+        $contentDraftB = $contentService->updateContent(
                 $contentService->createContentDraft($content->contentInfo)->versionInfo,
                 $contentUpdateStruct
             );
@@ -706,7 +706,9 @@ EOT;
     /**
      * @param int $contentObjectAttributeId
      * @param int $versionNo
+     *
      * @return array
+     *
      * @throws \ErrorException
      */
     private function getUrlObjectLinkForContentObjectAttributeIdAndVersionNo(int $contentObjectAttributeId, int $versionNo): array
@@ -728,6 +730,7 @@ EOT;
         foreach ($statement->fetchAll(FetchMode::ASSOCIATIVE) as $row) {
             $map[] = $row['url_id'];
         }
+
         return $map;
     }
 
@@ -955,7 +958,6 @@ EOT;
         self::fail("Expected ValidationError '{$expectedValidationErrorMessage}' didn't occur");
     }
 
-
     /**
      * @return \DOMDocument
      */
@@ -979,9 +981,9 @@ EOT;
 
 XML
         ), LIBXML_NOENT);
+
         return $document;
     }
-
 
     /**
      * Get XML Document in DocBook format, containing link to the given Location.
