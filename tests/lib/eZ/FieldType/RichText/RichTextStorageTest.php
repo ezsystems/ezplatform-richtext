@@ -195,7 +195,10 @@ class RichTextStorageTest extends TestCase
         $value = new FieldValue(['data' => $xmlString]);
         $field = new Field(['id' => 42, 'value' => $value]);
         $gateway = $this->getGatewayMock();
-
+        $gateway
+            ->expects($this->at($gatewayCallIndex++))
+            ->method('unlinkUrl')
+            ->with(42, 24);
         $gateway
             ->expects($this->at($gatewayCallIndex++))
             ->method('getUrlIdMap')

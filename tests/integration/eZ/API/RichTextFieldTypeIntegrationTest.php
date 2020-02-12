@@ -638,40 +638,40 @@ EOT;
      */
     public function testExternalLinkCorrectStoreAfterUpdate()
     {
-        $xmlDocument = $this->getXMLForTestExternalLinkCorrectStoreAfterUpdate();
+        $xmlDocument = $this->createXmlDocumentWithExternalLink();
         $repository = $this->getRepository();
         $contentService = $repository->getContentService();
         $contentTypeService = $repository->getContentTypeService();
         $locationService = $repository->getLocationService();
 
-        $createStruct = $contentTypeService->newContentTypeCreateStruct('test-RichText');
-        $createStruct->mainLanguageCode = 'eng-GB';
-        $createStruct->names = ['eng-GB' => 'Test'];
-        $createStruct->creatorId = $repository->getPermissionResolver()->getCurrentUserReference()->getUserId();
-        $createStruct->creationDate = $this->createDateTime();
+        $contentTypeCreateStruct = $contentTypeService->newContentTypeCreateStruct('test-RichText');
+        $contentTypeCreateStruct->mainLanguageCode = 'eng-GB';
+        $contentTypeCreateStruct->names = ['eng-GB' => 'Test'];
+        $contentTypeCreateStruct->creatorId = $repository->getPermissionResolver()->getCurrentUserReference()->getUserId();
+        $contentTypeCreateStruct->creationDate = $this->createDateTime();
 
-        $fieldCreate = $contentTypeService->newFieldDefinitionCreateStruct('description', 'ezrichtext');
-        $fieldCreate->names = ['eng-GB' => 'Title'];
-        $fieldCreate->fieldGroup = 'main';
-        $fieldCreate->position = 1;
-        $fieldCreate->isTranslatable = true;
-        $createStruct->addFieldDefinition($fieldCreate);
+        $fieldDefinitionCreateStruct = $contentTypeService->newFieldDefinitionCreateStruct('description', 'ezrichtext');
+        $fieldDefinitionCreateStruct->names = ['eng-GB' => 'Title'];
+        $fieldDefinitionCreateStruct->fieldGroup = 'main';
+        $fieldDefinitionCreateStruct->position = 1;
+        $fieldDefinitionCreateStruct->isTranslatable = true;
+        $contentTypeCreateStruct->addFieldDefinition($fieldDefinitionCreateStruct);
 
         $contentGroup = $contentTypeService->loadContentTypeGroupByIdentifier('Content');
-        $contentTypeDraft = $contentTypeService->createContentType($createStruct, [$contentGroup]);
+        $contentTypeDraft = $contentTypeService->createContentType($contentTypeCreateStruct, [$contentGroup]);
 
         $contentTypeService->publishContentTypeDraft($contentTypeDraft);
         $testContentType = $contentTypeService->loadContentType($contentTypeDraft->id);
 
         // Create a folder for tests
-        $createStruct = $contentService->newContentCreateStruct(
+        $contentTypeCreateStruct = $contentService->newContentCreateStruct(
             $contentTypeService->loadContentTypeByIdentifier('folder'),
             'eng-GB'
         );
 
-        $createStruct->setField('name', 'Folder Link');
+        $contentTypeCreateStruct->setField('name', 'Folder Link');
         $draft = $contentService->createContent(
-            $createStruct,
+            $contentTypeCreateStruct,
             [$locationService->newLocationCreateStruct(2)]
         );
 
@@ -680,16 +680,16 @@ EOT;
         );
         $locationId = $folder->versionInfo->contentInfo->mainLocationId;
 
-        $testStruct = $contentService->newContentCreateStruct($testContentType, 'eng-GB');
-        $testStruct->setField('description', $xmlDocument, 'eng-GB');
+        $testContentCreateStruct = $contentService->newContentCreateStruct($testContentType, 'eng-GB');
+        $testContentCreateStruct->setField('description', $xmlDocument, 'eng-GB');
         $content = $contentService->createContent(
-            $testStruct,
+            $testContentCreateStruct,
             [$locationService->newLocationCreateStruct($locationId)]
         );
         $content = $contentService->publishVersion(
             $content->versionInfo
         );
-        $mapIds = $this->getUrlObjectLinkForContentObjectAttributeIdAndVersionNo($content->getField('description')->id, $content->contentInfo->currentVersionNo);
+        $urlIds = $this->getUrlIdsForContentObjectAttributeIdAndVersionNo($content->getField('description')->id, $content->contentInfo->currentVersionNo);
 
         $contentUpdateStruct = $contentService->newContentUpdateStruct();
         $contentUpdateStruct->setField('description', $xmlDocument, 'eng-GB');
@@ -698,23 +698,23 @@ EOT;
                 $contentUpdateStruct
             );
         $content = $contentService->publishVersion($contentDraftB->versionInfo);
-        $mapIdsAfterUpdate = $this->getUrlObjectLinkForContentObjectAttributeIdAndVersionNo($content->getField('description')->id, $content->contentInfo->currentVersionNo);
+        $mapIdsAfterUpdate = $this->getUrlIdsForContentObjectAttributeIdAndVersionNo($content->getField('description')->id, $content->contentInfo->currentVersionNo);
 
-        $this->assertEquals($mapIds, $mapIdsAfterUpdate);
+        $this->assertEquals($urlIds, $mapIdsAfterUpdate);
     }
 
     /**
      * @param int $contentObjectAttributeId
      * @param int $versionNo
      *
-     * @return array
+     * @return int[]
      *
      * @throws \ErrorException
      */
-    private function getUrlObjectLinkForContentObjectAttributeIdAndVersionNo(int $contentObjectAttributeId, int $versionNo): array
+    private function getUrlIdsForContentObjectAttributeIdAndVersionNo(int $contentObjectAttributeId, int $versionNo): array
     {
         $connection = $this->getRawDatabaseConnection();
-        $map = [];
+        $urlIds = [];
         $query = $connection->createQueryBuilder();
         $query
             ->select(
@@ -728,10 +728,10 @@ EOT;
 
         $statement = $query->execute();
         foreach ($statement->fetchAll(FetchMode::ASSOCIATIVE) as $row) {
-            $map[] = $row['url_id'];
+            $urlIds[] = (int) $row['url_id'];
         }
 
-        return $map;
+        return $urlIds;
     }
 
     /**
@@ -961,7 +961,7 @@ EOT;
     /**
      * @return \DOMDocument
      */
-    public function getXMLForTestExternalLinkCorrectStoreAfterUpdate()
+    private function createXmlDocumentWithExternalLink()
     {
         $document = new DOMDocument();
         $document->preserveWhiteSpace = false;
