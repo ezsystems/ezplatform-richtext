@@ -636,7 +636,7 @@ EOT;
      * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException
      * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
      */
-    public function testExternalLinkCorrectStoreAfterUpdate()
+    public function testExternalLinkStoringAfterUpdate()
     {
         $xmlDocument = $this->createXmlDocumentWithExternalLink();
         $repository = $this->getRepository();
@@ -663,28 +663,11 @@ EOT;
         $contentTypeService->publishContentTypeDraft($contentTypeDraft);
         $testContentType = $contentTypeService->loadContentType($contentTypeDraft->id);
 
-        // Create a folder for tests
-        $contentTypeCreateStruct = $contentService->newContentCreateStruct(
-            $contentTypeService->loadContentTypeByIdentifier('folder'),
-            'eng-GB'
-        );
-
-        $contentTypeCreateStruct->setField('name', 'Folder Link');
-        $draft = $contentService->createContent(
-            $contentTypeCreateStruct,
-            [$locationService->newLocationCreateStruct(2)]
-        );
-
-        $folder = $contentService->publishVersion(
-            $draft->versionInfo
-        );
-        $locationId = $folder->versionInfo->contentInfo->mainLocationId;
-
         $testContentCreateStruct = $contentService->newContentCreateStruct($testContentType, 'eng-GB');
         $testContentCreateStruct->setField('description', $xmlDocument, 'eng-GB');
         $content = $contentService->createContent(
             $testContentCreateStruct,
-            [$locationService->newLocationCreateStruct($locationId)]
+            [$locationService->newLocationCreateStruct(2)]
         );
         $content = $contentService->publishVersion(
             $content->versionInfo
