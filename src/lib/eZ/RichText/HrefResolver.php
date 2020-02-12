@@ -49,13 +49,14 @@ final class HrefResolver implements HrefResolverInterface
         $this->logger = new NullLogger();
     }
 
-    public function resolve(string $url): string
+    public function resolve(string $href): string
     {
-        [$scheme, $id, $fragment] = $this->splitUrl($url);
+        $hrefResolved = self::EMPTY_HREF;
 
+        [$scheme, $id, $fragment] = $this->splitHref($href);
         if ($scheme === self::EZCONTENT_SCHEME) {
             try {
-                return $this->generateContentUrl((int) $id) . $fragment;
+                $hrefResolved = $this->generateContentUrl((int) $id) . $fragment;
             } catch (APINotFoundException $e) {
                 $this->logger->warning(
                     'While generating links for richtext, could not locate ' .
@@ -69,7 +70,7 @@ final class HrefResolver implements HrefResolverInterface
             }
         } elseif ($scheme === self::EZLOCATION_SCHEME) {
             try {
-                return $this->generateLocationUrl((int) $id);
+                $hrefResolved = $this->generateLocationUrl((int) $id) . $fragment;
             } catch (APINotFoundException $e) {
                 $this->logger->warning(
                     'While generating links for richtext, could not locate ' .
@@ -81,14 +82,16 @@ final class HrefResolver implements HrefResolverInterface
                     'Location with ID ' . $id
                 );
             }
+        } else {
+            $hrefResolved = $href;
         }
 
-        return $url ?? self::EMPTY_HREF;
+        return $hrefResolved;
     }
 
-    private function splitUrl(string $url): array
+    private function splitHref(string $href): array
     {
-        preg_match(self::INTERNAL_URL_PATTERN, $url, $matches);
+        preg_match(self::INTERNAL_URL_PATTERN, $href, $matches);
         list(, $scheme, $id, $fragment) = $matches;
 
         return [$scheme, $id, $fragment];

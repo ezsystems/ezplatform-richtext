@@ -14,6 +14,7 @@ use eZ\Publish\Core\MVC\Symfony\Routing\UrlAliasRouter;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Aggregate;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Link;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template;
+use EzSystems\EzPlatformRichText\eZ\RichText\HrefResolverInterface;
 use EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface;
 use PHPUnit\Framework\TestCase;
 
@@ -37,12 +38,14 @@ class AggregateTest extends TestCase
         $locationService = $this->createMock(LocationService::class);
         $contentService = $this->createMock(ContentService::class);
         $urlAliasRouter = $this->createMock(UrlAliasRouter::class);
+        $hrefResolver = $this->createMock(HrefResolverInterface::class);
         $renderer = $this->createMock(RendererInterface::class);
 
         $linkConverter = new Link(
             $locationService,
             $contentService,
-            $urlAliasRouter
+            $urlAliasRouter,
+            $hrefResolver
         );
 
         $aggregate = new Aggregate([$linkConverter]);

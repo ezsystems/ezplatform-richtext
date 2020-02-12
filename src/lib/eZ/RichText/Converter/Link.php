@@ -94,7 +94,6 @@ class Link implements Converter
                 $hrefAttributeName = 'href_resolved';
             }
 
-            // Set resolved href to number character as a default if it can't be resolved
             $hrefResolved = $this->hrefResolver->resolve($link->getAttribute('xlink:href'));
 
             $link->setAttribute($hrefAttributeName, $hrefResolved);

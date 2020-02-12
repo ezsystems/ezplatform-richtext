@@ -16,5 +16,5 @@ interface HrefResolverInterface
     /**
      * Converts internal links (ezcontent:// and ezlocation://) to URLs.
      */
-    public function resolve(string $url): string;
+    public function resolve(string $href): string;
 }
