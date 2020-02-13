@@ -12,6 +12,8 @@ use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Aggregate;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Xslt;
+use EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Handler\AttributeHandlerDispatcher;
+use EzSystems\EzPlatformRichText\eZ\RichText\Template\TemplateRegistry;
 
 /**
  * Tests conversion from docbook to xhtml5 output format.
@@ -97,7 +99,9 @@ class DocbookToXhtml5OutputTest extends BaseTest
             $this->converter->addConverter(
                 new Template(
                     new DebugRenderer(),
-                    $this->converter
+                    $this->converter,
+                    new TemplateRegistry(),
+                    new AttributeHandlerDispatcher()
                 )
             );
 

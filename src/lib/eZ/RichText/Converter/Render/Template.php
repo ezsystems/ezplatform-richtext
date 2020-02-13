@@ -17,6 +17,7 @@ use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render;
 use EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Handler\AttributeHandler;
 use EzSystems\EzPlatformRichText\eZ\RichText\Template\TemplateRegistry;
 use EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface;
+use EzSystems\EzPlatformRichText\eZ\RichText\Template\TemplateRegistryInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
@@ -44,14 +45,14 @@ class Template extends Render implements Converter
      *
      * @param \EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface $renderer
      * @param \EzSystems\EzPlatformRichText\eZ\RichText\Converter $richTextConverter
-     * @param \EzSystems\EzPlatformRichText\eZ\RichText\Template\TemplateRegistry $templateRegistry
+     * @param \EzSystems\EzPlatformRichText\eZ\RichText\Template\TemplateRegistryInterface $templateRegistry
      * @param \EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Handler\AttributeHandler  $attributeHandler
      * @param \Psr\Log\LoggerInterface $logger
      */
     public function __construct(
         RendererInterface $renderer,
         Converter $richTextConverter,
-        TemplateRegistry $templateRegistry,
+        TemplateRegistryInterface $templateRegistry,
         AttributeHandler $attributeHandler,
         LoggerInterface $logger = null
     ) {

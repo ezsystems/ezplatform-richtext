@@ -18,7 +18,7 @@ use DOMDocument;
 use Psr\Log\LoggerInterface;
 
 /**
- * Tests the Link converter
+ * Tests the Link converter.
  */
 class LinkTest extends TestCase
 {
