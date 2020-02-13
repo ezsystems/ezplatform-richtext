@@ -6,16 +6,16 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Template\Attribute\Handler;
+namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Template\Attribute\Transformer;
 
 use EzSystems\EzPlatformRichText\eZ\RichText\Exception\Template\AttributeTransformationFailedException;
 use EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Attribute;
-use EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Handler\AttributeHandler;
-use EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Handler\AttributeHandlerDispatcher;
+use EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Transformer\TransformerInterface;
+use EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Transformer\TransformerDispatcher;
 use EzSystems\EzPlatformRichText\eZ\RichText\Template\Template;
 use PHPUnit\Framework\TestCase;
 
-final class AttributeHandlerDispatcherTest extends TestCase
+final class TransformerDispatcherTest extends TestCase
 {
     public function testSupports(): void
     {
@@ -24,19 +24,19 @@ final class AttributeHandlerDispatcherTest extends TestCase
 
         $template = new Template('foo', '@ezdesign/foo.html.twig', 'foo.svg');
 
-        $handlerA = $this->createMock(AttributeHandler::class);
+        $handlerA = $this->createMock(TransformerInterface::class);
         $handlerA->method('supports')->willReturnMap([
             [$template, $attributeA, true],
             [$template, $attributeB, false],
         ]);
 
-        $handlerB = $this->createMock(AttributeHandler::class);
+        $handlerB = $this->createMock(TransformerInterface::class);
         $handlerB->method('supports')->willReturn(false);
 
-        $handlerC = $this->createMock(AttributeHandler::class);
+        $handlerC = $this->createMock(TransformerInterface::class);
         $handlerC->method('supports')->willReturn(false);
 
-        $dispatcher = new AttributeHandlerDispatcher([
+        $dispatcher = new TransformerDispatcher([
             $handlerA,
             $handlerB,
             $handlerC,
@@ -46,28 +46,28 @@ final class AttributeHandlerDispatcherTest extends TestCase
         $this->assertFalse($dispatcher->supports($template, $attributeB));
     }
 
-    public function testProcess(): void
+    public function testTransform(): void
     {
         $attribute = $this->createMock(Attribute::class);
 
         $template = new Template('foo', '@ezdesign/foo.html.twig', 'foo.svg');
 
-        $handlerA = $this->createMock(AttributeHandler::class);
+        $handlerA = $this->createMock(TransformerInterface::class);
         $handlerA->method('supports')->willReturnMap([
             [$template, $attribute, true],
         ]);
 
-        $handlerA->method('process')->with($template, $attribute, 'input')->willReturn('output');
+        $handlerA->method('transform')->with($template, $attribute, 'input')->willReturn('output');
 
-        $handlerB = $this->createMock(AttributeHandler::class);
+        $handlerB = $this->createMock(TransformerInterface::class);
         $handlerB->method('supports')->willReturn(false);
 
-        $handlerC = $this->createMock(AttributeHandler::class);
+        $handlerC = $this->createMock(TransformerInterface::class);
         $handlerC->method('supports')->willReturn(false);
 
-        $dispatcher = new AttributeHandlerDispatcher([$handlerA, $handlerB, $handlerC]);
+        $dispatcher = new TransformerDispatcher([$handlerA, $handlerB, $handlerC]);
 
-        $this->assertEquals('output', $dispatcher->process($template, $attribute, 'input'));
+        $this->assertEquals('output', $dispatcher->transform($template, $attribute, 'input'));
     }
 
     public function testProcessThrowsAttributeTransformationFailedException(): void
@@ -77,20 +77,23 @@ final class AttributeHandlerDispatcherTest extends TestCase
         $attribute = $this->createMock(Attribute::class);
         $attribute->method('getName')->willReturn('bar');
 
-        $handlerA = $this->createMock(AttributeHandler::class);
+        $handlerA = $this->createMock(TransformerInterface::class);
         $handlerA->method('supports')->willReturn(false);
 
-        $handlerB = $this->createMock(AttributeHandler::class);
+        $handlerB = $this->createMock(TransformerInterface::class);
         $handlerB->method('supports')->willReturn(false);
 
-        $handlerC = $this->createMock(AttributeHandler::class);
+        $handlerC = $this->createMock(TransformerInterface::class);
         $handlerC->method('supports')->willReturn(false);
 
-        $dispatcher = new AttributeHandlerDispatcher([$handlerA, $handlerB, $handlerC]);
+        $dispatcher = new TransformerDispatcher([$handlerA, $handlerB, $handlerC]);
 
         $this->expectException(AttributeTransformationFailedException::class);
-        $this->expectExceptionMessage(sprintf('Unable to transform template attribute foo::bar: could not find %s for attribute', AttributeHandler::class));
+        $this->expectExceptionMessage(sprintf(
+            'Unable to transform template attribute foo::bar: could not find %s for attribute',
+            TransformerInterface::class
+        ));
 
-        $dispatcher->process($template, $attribute, 'input');
+        $dispatcher->transform($template, $attribute, 'input');
     }
 }

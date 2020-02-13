@@ -68,15 +68,15 @@ services:
         arguments:
             $config: '%ezplatform.ezrichtext.custom_tags%'
 
-    EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Handler\AttributeHandlerDispatcher:
+    EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Transformer\TransformerDispatcher:
         arguments:
-            - !tagged ezplatform.richtext.template.attribute.handler
+            - !tagged ezplatform.richtext.template.attribute.transformer
 
-    EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Handler\LinkAttributeHandler:
+    EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Transformer\LinkTransformer:
         arguments:
             - '@EzSystems\EzPlatformRichText\eZ\RichText\HrefResolver'
         tags:
-            - {name: ezplatform.richtext.template.attribute.handler}
+            - {name: ezplatform.richtext.template.attribute.transformer}
 
     ezrichtext.converter.template:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template
@@ -84,7 +84,7 @@ services:
             - '@ezrichtext.renderer'
             - '@ezrichtext.converter.output.xhtml5'
             - '@EzSystems\EzPlatformRichText\eZ\RichText\Template\TemplateRegistry'
-            - '@EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Handler\AttributeHandlerDispatcher'
+            - '@EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Transformer\TransformerDispatcher'
             - '@?logger'
         tags:
             - {name: ezpublish.ezrichtext.converter.output.xhtml5, priority: 10}

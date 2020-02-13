@@ -6,14 +6,14 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Handler;
+namespace EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Transformer;
 
 use EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Attribute;
 use EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\LinkAttribute;
 use EzSystems\EzPlatformRichText\eZ\RichText\Template\Template;
 use EzSystems\EzPlatformRichText\eZ\RichText\HrefResolverInterface;
 
-final class LinkAttributeHandler implements AttributeHandler
+final class LinkTransformer implements TransformerInterface
 {
     /** @var \EzSystems\EzPlatformRichText\eZ\RichText\HrefResolverInterface */
     private $hrefResolver;
@@ -28,7 +28,7 @@ final class LinkAttributeHandler implements AttributeHandler
         return $attribute instanceof LinkAttribute;
     }
 
-    public function process(Template $template, Attribute $attribute, $value)
+    public function transform(Template $template, Attribute $attribute, $value)
     {
         return $this->hrefResolver->resolve($value);
     }

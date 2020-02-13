@@ -12,7 +12,7 @@ use DOMDocument;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template;
 use EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface;
-use EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Handler\AttributeHandler;
+use EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Transformer\TransformerInterface;
 use EzSystems\EzPlatformRichText\eZ\RichText\Template\TemplateRegistryInterface;
 use PHPUnit\Framework\TestCase;
 
@@ -136,7 +136,7 @@ class TemplateTest extends TestCase
             $this->rendererMock,
             $this->converterMock,
             $this->createMock(TemplateRegistryInterface::class),
-            $this->createMock(AttributeHandler::class)
+            $this->createMock(TransformerInterface::class)
         );
     }
 

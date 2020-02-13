@@ -6,15 +6,15 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Handler;
+namespace EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Transformer;
 
 use EzSystems\EzPlatformRichText\eZ\RichText\Exception\Template\AttributeTransformationFailedException;
 use EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Attribute;
 use EzSystems\EzPlatformRichText\eZ\RichText\Template\Template;
 
-final class AttributeHandlerDispatcher implements AttributeHandler
+final class TransformerDispatcher implements TransformerInterface
 {
-    /** @var \EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Handler\AttributeHandler[] */
+    /** @var \EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Transformer\TransformerInterface[] */
     private $handlers;
 
     public function __construct(iterable $handlers = [])
@@ -24,24 +24,24 @@ final class AttributeHandlerDispatcher implements AttributeHandler
 
     public function supports(Template $template, Attribute $attribute): bool
     {
-        return $this->findHandler($template, $attribute) !== null;
+        return $this->findTransformer($template, $attribute) !== null;
     }
 
-    public function process(Template $template, Attribute $attribute, $value)
+    public function transform(Template $template, Attribute $attribute, $value)
     {
-        $handler = $this->findHandler($template, $attribute);
-        if ($handler instanceof AttributeHandler) {
-            return $handler->process($template, $attribute, $value);
+        $handler = $this->findTransformer($template, $attribute);
+        if ($handler instanceof TransformerInterface) {
+            return $handler->transform($template, $attribute, $value);
         }
 
         throw new AttributeTransformationFailedException(
             $template->getName(),
             $attribute->getName(),
-            sprintf('could not find %s for attribute', AttributeHandler::class)
+            sprintf('could not find %s for attribute', TransformerInterface::class)
         );
     }
 
-    private function findHandler(Template $customTag, Attribute $attribute): ?AttributeHandler
+    private function findTransformer(Template $customTag, Attribute $attribute): ?TransformerInterface
     {
         foreach ($this->handlers as $handler) {
             if ($handler->supports($customTag, $attribute)) {

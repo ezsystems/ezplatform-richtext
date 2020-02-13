@@ -16,7 +16,7 @@ use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Link;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template;
 use EzSystems\EzPlatformRichText\eZ\RichText\HrefResolverInterface;
 use EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface;
-use EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Handler\AttributeHandler;
+use EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Transformer\TransformerInterface;
 use EzSystems\EzPlatformRichText\eZ\RichText\Template\TemplateRegistryInterface;
 use PHPUnit\Framework\TestCase;
 
@@ -43,7 +43,7 @@ class AggregateTest extends TestCase
         $hrefResolver = $this->createMock(HrefResolverInterface::class);
         $renderer = $this->createMock(RendererInterface::class);
         $templateRegistry = $this->createMock(TemplateRegistryInterface::class);
-        $attributeHandler = $this->createMock(AttributeHandler::class);
+        $attributeHandler = $this->createMock(TransformerInterface::class);
 
         $linkConverter = new Link(
             $locationService,

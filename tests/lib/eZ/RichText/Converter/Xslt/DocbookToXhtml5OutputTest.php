@@ -12,7 +12,7 @@ use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Aggregate;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Xslt;
-use EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Handler\AttributeHandlerDispatcher;
+use EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Transformer\TransformerDispatcher;
 use EzSystems\EzPlatformRichText\eZ\RichText\Template\TemplateRegistry;
 
 /**
@@ -101,7 +101,7 @@ class DocbookToXhtml5OutputTest extends BaseTest
                     new DebugRenderer(),
                     $this->converter,
                     new TemplateRegistry(),
-                    new AttributeHandlerDispatcher()
+                    new TransformerDispatcher()
                 )
             );
 

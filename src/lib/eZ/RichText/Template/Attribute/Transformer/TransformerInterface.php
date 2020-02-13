@@ -6,14 +6,14 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Handler;
+namespace EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Transformer;
 
 use EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Attribute;
 use EzSystems\EzPlatformRichText\eZ\RichText\Template\Template;
 
-interface AttributeHandler
+interface TransformerInterface
 {
     public function supports(Template $template, Attribute $attribute): bool;
 
-    public function process(Template $template, Attribute $attribute, $value);
+    public function transform(Template $template, Attribute $attribute, $value);
 }
