@@ -10,7 +10,7 @@ namespace EzSystems\EzPlatformRichText\eZ\RichText\Template;
 
 interface TemplateRegistryInterface
 {
-    public function registerTemplate(Template $template): void;
+    public function register(Template $template): void;
 
     public function has(string $name): bool;
 

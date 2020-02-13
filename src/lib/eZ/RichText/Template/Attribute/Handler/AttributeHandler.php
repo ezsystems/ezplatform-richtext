@@ -13,7 +13,7 @@ use EzSystems\EzPlatformRichText\eZ\RichText\Template\Template;
 
 interface AttributeHandler
 {
-    public function supports(Template $customTag, Attribute $attribute): bool;
+    public function supports(Template $template, Attribute $attribute): bool;
 
-    public function process(Template $customTag, Attribute $attribute, $value);
+    public function process(Template $template, Attribute $attribute, $value);
 }

@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace EzSystems\EzPlatformRichText\eZ\RichText\Template;
 
-use ArrayIterator;
 use EzSystems\EzPlatformRichText\eZ\RichText\Exception\Template\TemplateNotFoundException;
 
 final class TemplateRegistry implements TemplateRegistryInterface
@@ -24,7 +23,7 @@ final class TemplateRegistry implements TemplateRegistryInterface
         }
     }
 
-    public function registerTemplate(Template $template): void
+    public function register(Template $template): void
     {
         $this->templates[$template->getName()] = $template;
     }
@@ -45,7 +44,7 @@ final class TemplateRegistry implements TemplateRegistryInterface
 
     public function getAll(): iterable
     {
-        return new ArrayIterator($this->templates);
+        return array_values($this->templates);
     }
 
     public static function createFromConfig(array $config): self

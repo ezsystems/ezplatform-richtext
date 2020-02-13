@@ -16,20 +16,20 @@ use EzSystems\EzPlatformRichText\eZ\RichText\HrefResolverInterface;
 final class LinkAttributeHandler implements AttributeHandler
 {
     /** @var \EzSystems\EzPlatformRichText\eZ\RichText\HrefResolverInterface */
-    private $linkResolver;
+    private $hrefResolver;
 
     public function __construct(HrefResolverInterface $linkResolver)
     {
-        $this->linkResolver = $linkResolver;
+        $this->hrefResolver = $linkResolver;
     }
 
-    public function supports(Template $customTag, Attribute $attribute): bool
+    public function supports(Template $template, Attribute $attribute): bool
     {
         return $attribute instanceof LinkAttribute;
     }
 
-    public function process(Template $customTag, Attribute $attribute, $value)
+    public function process(Template $template, Attribute $attribute, $value)
     {
-        return $this->linkResolver->resolve($value);
+        return $this->hrefResolver->resolve($value);
     }
 }

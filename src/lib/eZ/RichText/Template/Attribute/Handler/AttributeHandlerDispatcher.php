@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Handler;
 
+use EzSystems\EzPlatformRichText\eZ\RichText\Exception\Template\AttributeTransformationFailedException;
 use EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Attribute;
 use EzSystems\EzPlatformRichText\eZ\RichText\Template\Template;
 
@@ -21,19 +22,23 @@ final class AttributeHandlerDispatcher implements AttributeHandler
         $this->handlers = $handlers;
     }
 
-    public function supports(Template $customTag, Attribute $attribute): bool
+    public function supports(Template $template, Attribute $attribute): bool
     {
-        return $this->findHandler($customTag, $attribute) !== null;
+        return $this->findHandler($template, $attribute) !== null;
     }
 
-    public function process(Template $customTag, Attribute $attribute, $value)
+    public function process(Template $template, Attribute $attribute, $value)
     {
-        $handler = $this->findHandler($customTag, $attribute);
+        $handler = $this->findHandler($template, $attribute);
         if ($handler instanceof AttributeHandler) {
-            // TODO: Throw exception
+            return $handler->process($template, $attribute, $value);
         }
 
-        return $handler->process($customTag, $attribute, $value);
+        throw new AttributeTransformationFailedException(
+            $template->getName(),
+            $attribute->getName(),
+            sprintf('could not find %s for attribute', AttributeHandler::class)
+        );
     }
 
     private function findHandler(Template $customTag, Attribute $attribute): ?AttributeHandler

@@ -28,7 +28,7 @@ final class Template
     /** @var \EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Attribute[] */
     private $attributes;
 
-    public function __construct(string $name, string $template, string $icon, bool $inline, array $attributes)
+    public function __construct(string $name, string $template, string $icon, bool $inline = false, array $attributes = [])
     {
         $this->name = $name;
         $this->template = $template;

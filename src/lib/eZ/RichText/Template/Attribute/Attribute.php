@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute;
 
-use RuntimeException;
+use EzSystems\EzPlatformRichText\eZ\RichText\Exception\Template\UnsupportedAttributeTypeException;
 
 abstract class Attribute
 {
@@ -63,7 +63,7 @@ abstract class Attribute
             case self::TYPE_LINK:
                 return LinkAttribute::createFromConfig($name, $config);
             default:
-                throw new RuntimeException('Unknown attribute type: ' . $config['$type']);
+                throw new UnsupportedAttributeTypeException($config['type']);
         }
     }
 }
