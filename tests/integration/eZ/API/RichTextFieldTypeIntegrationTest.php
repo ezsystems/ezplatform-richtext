@@ -636,7 +636,7 @@ EOT;
      * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException
      * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
      */
-    public function testExternalLinkStoringAfterUpdate()
+    public function testExternalLinkStoringAfterUpdate(): void
     {
         $xmlDocument = $this->createXmlDocumentWithExternalLink();
         $repository = $this->getRepository();
@@ -944,7 +944,7 @@ EOT;
     /**
      * @return \DOMDocument
      */
-    private function createXmlDocumentWithExternalLink()
+    private function createXmlDocumentWithExternalLink(): DOMDocument
     {
         $document = new DOMDocument();
         $document->preserveWhiteSpace = false;
