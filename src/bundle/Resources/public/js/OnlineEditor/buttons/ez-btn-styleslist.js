@@ -3,22 +3,35 @@ import AlloyEditor from 'alloyeditor';
 import EzButtonDropdown from './ez-btn-dropdown';
 
 export default class EzButtonStylesList extends AlloyEditor.ButtonStylesList {
-
+    /**
+     * Lifecycle. Renders the UI of the list.
+     *
+     * @instance
+     * @memberof ButtonStylesList
+     * @method render
+     * @return {Object} The content which should be rendered.
+     */
     render() {
-        var e;
-        return this.props.showRemoveStylesItem && (e = React.createElement(AlloyEditor.ButtonStylesListItemRemove, {
-            editor: this.props.editor,
-            onDismiss: this.props.toggleDropdown
-        })), React.createElement(EzButtonDropdown, this.props, e, React.createElement(AlloyEditor.ButtonsStylesListHeader, {
-            name: AlloyEditor.Strings.blockStyles,
-            styles: this._blockStyles
-        }), this._renderStylesItems(this._blockStyles), React.createElement(AlloyEditor.ButtonsStylesListHeader, {
-            name: AlloyEditor.Strings.inlineStyles,
-            styles: this._inlineStyles
-        }), this._renderStylesItems(this._inlineStyles), React.createElement(AlloyEditor.ButtonsStylesListHeader, {
-            name: AlloyEditor.Strings.objectStyles,
-            styles: this._objectStyles
-        }), this._renderStylesItems(this._objectStyles))
+        let removeStylesItem;
+
+        if (this.props.showRemoveStylesItem) {
+            removeStylesItem = <AlloyEditor.ButtonStylesListItemRemove editor={this.props.editor} onDismiss={this.props.toggleDropdown} />;
+        }
+
+        return (
+            <EzButtonDropdown {...this.props}>
+                {removeStylesItem}
+
+                <AlloyEditor.ButtonsStylesListHeader name={AlloyEditor.Strings.blockStyles} styles={this._blockStyles} />
+                {this._renderStylesItems(this._blockStyles)}
+
+                <AlloyEditor.ButtonsStylesListHeader name={AlloyEditor.Strings.inlineStyles} styles={this._inlineStyles} />
+                {this._renderStylesItems(this._inlineStyles)}
+
+                <AlloyEditor.ButtonsStylesListHeader name={AlloyEditor.Strings.objectStyles} styles={this._objectStyles} />
+                {this._renderStylesItems(this._objectStyles)}
+            </EzButtonDropdown>
+        );
     }
 }
 

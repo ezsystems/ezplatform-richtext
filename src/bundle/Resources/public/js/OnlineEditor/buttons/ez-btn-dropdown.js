@@ -2,7 +2,6 @@ import React from 'react';
 import AlloyEditor from 'alloyeditor';
 
 export default class EzBtnDropdown extends AlloyEditor.ButtonDropdown {
-
     render() {
         return React.createElement("div", {
             className: "ae-dropdown ae-arrow-box ae-arrow-box-top-left",
