@@ -25,6 +25,8 @@ module.exports = (Encore) => {
         path.resolve(__dirname, '../public/js/OnlineEditor/buttons/ez-btn-underline.js'),
         path.resolve(__dirname, '../public/js/OnlineEditor/buttons/ez-btn-subscript.js'),
         path.resolve(__dirname, '../public/js/OnlineEditor/buttons/ez-btn-superscript.js'),
+        path.resolve(__dirname, '../public/js/OnlineEditor/buttons/ez-btn-dropdown.js'),
+        path.resolve(__dirname, '../public/js/OnlineEditor/buttons/ez-btn-styleslist.js'),
         path.resolve(__dirname, '../public/js/OnlineEditor/buttons/ez-btn-styleslistitem.js'),
         path.resolve(__dirname, '../public/js/OnlineEditor/buttons/ez-btn-quote.js'),
         path.resolve(__dirname, '../public/js/OnlineEditor/buttons/ez-btn-strike.js'),
