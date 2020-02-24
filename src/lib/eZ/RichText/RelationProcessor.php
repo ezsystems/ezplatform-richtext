@@ -9,8 +9,9 @@ declare(strict_types=1);
 namespace EzSystems\EzPlatformRichText\eZ\RichText;
 
 use DOMDocument;
-use DOMXPath;
 use eZ\Publish\API\Repository\Values\Content\Relation;
+use EzSystems\EzPlatformRichText\eZ\RichText\InternalLink\InternalLink;
+use EzSystems\EzPlatformRichText\eZ\RichText\InternalLink\InternalLinkIterator;
 
 final class RelationProcessor
 {
@@ -57,33 +58,24 @@ final class RelationProcessor
 
     /**
      * @param \DOMDocument $xml
-     * @param array $tagNames
+     * @param array $tags
      *
      * @return array
      */
-    private function getRelatedObjectIds(DOMDocument $xml, array $tagNames): array
+    private function getRelatedObjectIds(DOMDocument $xml, array $tags): array
     {
         $contentIds = [];
         $locationIds = [];
 
-        $xpath = new DOMXPath($xml);
-        $xpath->registerNamespace('docbook', 'http://docbook.org/ns/docbook');
-        foreach ($tagNames as $tagName) {
-            $xpathExpression = "//docbook:{$tagName}[starts-with( @xlink:href, 'ezcontent://' ) or starts-with( @xlink:href, 'ezlocation://' )]";
-            /** @var \DOMElement $element */
-            foreach ($xpath->query($xpathExpression) as $element) {
-                preg_match('~^(.+)://([^#]*)?(#.*|\\s*)?$~', $element->getAttribute('xlink:href'), $matches);
-                list(, $scheme, $id) = $matches;
+        foreach (new InternalLinkIterator($xml, $tags, [InternalLink::EZCONTENT_SCHEME]) as $link) {
+            if (!empty($link->getId())) {
+                $contentIds[] = $link->getId();
+            }
+        }
 
-                if (empty($id)) {
-                    continue;
-                }
-
-                if ($scheme === 'ezcontent') {
-                    $contentIds[] = $id;
-                } elseif ($scheme === 'ezlocation') {
-                    $locationIds[] = $id;
-                }
+        foreach (new InternalLinkIterator($xml, $tags, [InternalLink::EZLOCATION_SCHEME]) as $link) {
+            if (!empty($link->getId())) {
+                $locationIds[] = $link->getId();
             }
         }
 

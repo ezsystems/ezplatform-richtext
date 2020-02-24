@@ -9,10 +9,10 @@ declare(strict_types=1);
 namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Converter;
 
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Link;
-use EzSystems\EzPlatformRichText\eZ\RichText\HrefResolverInterface;
 use eZ\Publish\Core\Repository\ContentService;
 use eZ\Publish\Core\Repository\LocationService;
 use eZ\Publish\Core\MVC\Symfony\Routing\UrlAliasRouter;
+use EzSystems\EzPlatformRichText\eZ\RichText\InternalLink\InternalLinkResolverInterface;
 use PHPUnit\Framework\TestCase;
 use DOMDocument;
 use Psr\Log\LoggerInterface;
@@ -34,8 +34,8 @@ class LinkTest extends TestCase
     /** @var \eZ\Publish\Core\MVC\Symfony\Routing\UrlAliasRouter|\PHPUnit\Framework\MockObject\MockObject */
     private $urlAliasRouter;
 
-    /** @var \EzSystems\EzPlatformRichText\eZ\RichText\HrefResolverInterface|\PHPUnit\Framework\MockObject\MockObject */
-    private $hrefResolver;
+    /** @var \EzSystems\EzPlatformRichText\eZ\RichText\InternalLink\InternalLinkResolverInterface|\PHPUnit\Framework\MockObject\MockObject */
+    private $internalLinkResolver;
 
     /** @var \Psr\Log\LoggerInterface|\PHPUnit\Framework\MockObject\MockObject */
     private $logger;
@@ -60,8 +60,8 @@ class LinkTest extends TestCase
             ->expects($this->never())
             ->method($this->anything());
 
-        $this->hrefResolver = $this->createMock(HrefResolverInterface::class);
-        $this->hrefResolver
+        $this->internalLinkResolver = $this->createMock(InternalLinkResolverInterface::class);
+        $this->internalLinkResolver
             ->method('resolve')
             ->with(self::EXAMPLE_INPUT_LINK)
             ->willReturn(self::EXAMPLE_OUTPUT_LINK);
@@ -75,7 +75,7 @@ class LinkTest extends TestCase
             $this->locationService,
             $this->contentService,
             $this->urlAliasRouter,
-            $this->hrefResolver,
+            $this->internalLinkResolver,
             $this->logger
         );
     }

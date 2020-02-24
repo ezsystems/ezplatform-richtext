@@ -44,6 +44,14 @@ services:
             - '%ezplatform.ezrichtext.custom_tags%'
             - '%ezplatform.ezrichtext.custom_styles%'
 
+    EzSystems\EzPlatformRichText\eZ\RichText\InternalLink\InternalLinkResolver:
+        arguments:
+            - '@ezpublish.api.service.location'
+            - '@ezpublish.api.service.content'
+            - '@ezpublish.urlalias_router'
+        calls:
+            - ['setLogger', ['@?logger']]
+
     EzSystems\EzPlatformRichText\eZ\RichText\HrefResolver:
         arguments:
             - '@ezpublish.api.service.location'
@@ -58,7 +66,7 @@ services:
             - '@ezpublish.api.service.location'
             - '@ezpublish.api.service.content'
             - '@ezpublish.urlalias_router'
-            - '@EzSystems\EzPlatformRichText\eZ\RichText\HrefResolver'
+            - '@EzSystems\EzPlatformRichText\eZ\RichText\InternalLink\InternalLinkResolver'
             - '@?logger'
         tags:
             - {name: ezpublish.ezrichtext.converter.output.xhtml5, priority: 0}
@@ -67,6 +75,9 @@ services:
         factory: ['EzSystems\EzPlatformRichText\eZ\RichText\Template\TemplateRegistry', 'createFromConfig']
         arguments:
             $config: '%ezplatform.ezrichtext.custom_tags%'
+
+    EzSystems\EzPlatformRichText\eZ\RichText\Template\TemplateRegistryInterface:
+        alias: EzSystems\EzPlatformRichText\eZ\RichText\Template\TemplateRegistry
 
     EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Transformer\TransformerDispatcher:
         arguments:
@@ -167,6 +178,13 @@ services:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\ProgramListing
         tags:
             - {name: ezpublish.ezrichtext.converter.input.xhtml5, priority: 10}
+
+    # Note: should run after xsl transformation
+#    EzSystems\EzPlatformRichText\eZ\RichText\Converter\TemplateLink:
+#        arguments:
+#            - '@EzSystems\EzPlatformRichText\eZ\RichText\Template\TemplateRegistry'
+#        tags:
+#            - {name: ezpublish.ezrichtext.converter.input.xhtml5, priority: 100}
 
     ezrichtext.converter.edit.xhtml5:
         class: EzSystems\EzPlatformRichTextBundle\eZ\RichText\Converter\Html5Edit

@@ -80,6 +80,18 @@ final class Template
         return $this->attributes;
     }
 
+    /**
+     * @return \EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Attribute[]
+     */
+    public function getAttributesOfType(string $type): iterable
+    {
+        foreach ($this->attributes as $attribute) {
+            if ($attribute instanceof $type) {
+                yield $attribute;
+            }
+        }
+    }
+
     public static function createFromConfig($name, array $config): self
     {
         $attributes = [];

@@ -12,10 +12,10 @@ use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 use eZ\Publish\API\Repository\ContentService;
 use eZ\Publish\API\Repository\LocationService;
 use eZ\Publish\Core\MVC\Symfony\Routing\UrlAliasRouter;
-use EzSystems\EzPlatformRichText\eZ\RichText\HrefResolverInterface;
+use EzSystems\EzPlatformRichText\eZ\RichText\InternalLink\InternalLinkIterator;
+use EzSystems\EzPlatformRichText\eZ\RichText\InternalLink\InternalLinkResolverInterface;
 use Psr\Log\LoggerInterface;
 use DOMDocument;
-use DOMXPath;
 
 class Link implements Converter
 {
@@ -47,20 +47,20 @@ class Link implements Converter
      */
     protected $logger;
 
-    /** @var \EzSystems\EzPlatformRichText\eZ\RichText\HrefResolverInterface */
-    private $hrefResolver;
+    /** @var \EzSystems\EzPlatformRichText\eZ\RichText\InternalLink\InternalLinkResolverInterface */
+    private $internalLinkResolver;
 
     public function __construct(
         LocationService $locationService,
         ContentService $contentService,
         UrlAliasRouter $urlAliasRouter,
-        HrefResolverInterface $hrefResolver,
+        InternalLinkResolverInterface $internalLinkResolver,
         LoggerInterface $logger = null
     ) {
         $this->locationService = $locationService;
         $this->contentService = $contentService;
         $this->urlAliasRouter = $urlAliasRouter;
-        $this->hrefResolver = $hrefResolver;
+        $this->internalLinkResolver = $internalLinkResolver;
         $this->logger = $logger;
     }
 
@@ -75,28 +75,20 @@ class Link implements Converter
     {
         $document = clone $document;
 
-        $xpath = new DOMXPath($document);
-        $xpath->registerNamespace('docbook', 'http://docbook.org/ns/docbook');
-        $xpath->registerNamespace('xlink', 'http://www.w3.org/1999/xlink');
-
-        $linkAttributeExpression = "starts-with( @xlink:href, 'ezlocation://' ) or starts-with( @xlink:href, 'ezcontent://' )";
-        $xpathExpression = "//docbook:link[{$linkAttributeExpression}]|//docbook:ezlink";
-
         /** @var \DOMElement $link */
-        foreach ($xpath->query($xpathExpression) as $link) {
-            $hrefAttributeName = 'xlink:href';
+        foreach (new InternalLinkIterator($document) as $link) {
+            $node = $link->getNode();
 
+            $hrefAttributeName = 'xlink:href';
             // For embeds set the resolved href to the separate attribute
             // Original href needs to be preserved in order to generate link parameters
             // This will need to change with introduction of UrlService and removal of URL link
             // resolving in external storage
-            if ($link->localName === 'ezlink') {
+            if ($node->localName === 'ezlink') {
                 $hrefAttributeName = 'href_resolved';
             }
 
-            $hrefResolved = $this->hrefResolver->resolve($link->getAttribute('xlink:href'));
-
-            $link->setAttribute($hrefAttributeName, $hrefResolved);
+            $node->setAttribute($hrefAttributeName, $this->internalLinkResolver->resolve($link));
         }
 
         return $document;

@@ -13,12 +13,19 @@ use eZ\Publish\SPI\FieldType\StorageGateway;
 use eZ\Publish\SPI\Persistence\Content\VersionInfo;
 use eZ\Publish\SPI\Persistence\Content\Field;
 use eZ\Publish\Core\Base\Exceptions\NotFoundException;
+use EzSystems\EzPlatformRichText\eZ\RichText\InternalLink\InternalLink;
+use EzSystems\EzPlatformRichText\eZ\RichText\InternalLink\InternalLinkIterator;
+use EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\LinkAttribute;
+use EzSystems\EzPlatformRichText\eZ\RichText\Template\TemplateRegistryInterface;
+use EzSystems\EzPlatformRichText\eZ\RichText\TemplateInstance\TemplateIterator;
 use Psr\Log\LoggerInterface;
 use DOMDocument;
 use DOMXPath;
 
 class RichTextStorage extends GatewayBasedStorage
 {
+    private const EMPTY_HREF = '#';
+
     /**
      * @var \Psr\Log\LoggerInterface
      */
@@ -29,13 +36,22 @@ class RichTextStorage extends GatewayBasedStorage
      */
     protected $gateway;
 
+    /** @var \EzSystems\EzPlatformRichText\eZ\RichText\Template\TemplateRegistryInterface */
+    protected $templateRegistry;
+
     /**
      * @param \eZ\Publish\SPI\FieldType\StorageGateway $gateway
+     * @param \EzSystems\EzPlatformRichText\eZ\RichText\Template\TemplateRegistryInterface $templateRegistry
      * @param \Psr\Log\LoggerInterface $logger
      */
-    public function __construct(StorageGateway $gateway, LoggerInterface $logger = null)
-    {
+    public function __construct(
+        StorageGateway $gateway,
+        TemplateRegistryInterface $templateRegistry,
+        LoggerInterface $logger = null
+    ) {
         parent::__construct($gateway);
+
+        $this->templateRegistry = $templateRegistry;
         $this->logger = $logger;
     }
 
@@ -47,6 +63,120 @@ class RichTextStorage extends GatewayBasedStorage
         $document = new DOMDocument();
         $document->loadXML($field->value->data);
 
+        $this->extractURLsFromLinks($versionInfo, $field, $context, $document);
+
+        $field->value->data = $document->saveXML();
+
+        return true;
+    }
+
+    /**
+     * Modifies $field if needed, using external data (like for Urls).
+     *
+     * @param \eZ\Publish\SPI\Persistence\Content\VersionInfo $versionInfo
+     * @param \eZ\Publish\SPI\Persistence\Content\Field $field
+     * @param array $context
+     */
+    public function getFieldData(VersionInfo $versionInfo, Field $field, array $context)
+    {
+        $document = new DOMDocument();
+        $document->loadXML($field->value->data);
+
+        $urlIdSet = [];
+
+        $iterator = new InternalLinkIterator($document, ['link', 'ezlink'], [InternalLink::EZURL_SCHEME]);
+
+        $containsLinks = false;
+        foreach ($iterator as $link) {
+            $containsLinks = true;
+            if (!empty($link->getId())) {
+                $urlIdSet[$link->getId()] = true;
+            }
+        }
+
+        $linkTemplateParamsById = [];
+        foreach ($this->getTemplateLinkAttributeIterator($document) as $param) {
+            $containsLinks = true;
+
+            $link = InternalLink::fromString($param->getNode(), $param->getValue());
+            if (!empty($link->getId())) {
+                $id = $link->getId();
+
+                $urlIdSet[$id] = true;
+                if (!isset($linkTemplateParamsById[$id])) {
+                    $linkTemplateParamsById[$id] = [];
+                }
+
+                $linkTemplateParamsById[$id][] = $link;
+            }
+        }
+
+        if (!$containsLinks) {
+            return;
+        }
+
+        $urlMap = $this->gateway->getIdUrlMap(array_keys($urlIdSet));
+
+        foreach ($iterator as $link) {
+            $id = $link->getId();
+
+            if (isset($urlMap[$id])) {
+                $href = $urlMap[$id] . $link->getFragment();
+            } else {
+                // URL id is empty or not in the DB
+                if (isset($this->logger)) {
+                    $this->logger->error("URL with ID {$id} not found");
+                }
+
+                $href = self::EMPTY_HREF;
+            }
+
+            $link->getNode()->setAttribute('xlink:href', $href);
+        }
+
+        foreach ($linkTemplateParamsById as $id => $links) {
+            if (isset($urlMap[$id])) {
+                $href = $urlMap[$id] . $link->getFragment();
+            } else {
+                // URL id is empty or not in the DB
+                if (isset($this->logger)) {
+                    $this->logger->error("URL with ID {$id} not found");
+                }
+
+                $href = self::EMPTY_HREF;
+            }
+
+            foreach ($links as $link) {
+                $link->getNode()->textContent = $href;
+            }
+        }
+
+        $field->value->data = $document->saveXML();
+    }
+
+    public function deleteFieldData(VersionInfo $versionInfo, array $fieldIds, array $context)
+    {
+        foreach ($fieldIds as $fieldId) {
+            $this->gateway->unlinkUrl($fieldId, $versionInfo->versionNo);
+        }
+    }
+
+    /**
+     * Checks if field type has external data to deal with.
+     *
+     * @return bool
+     */
+    public function hasFieldData()
+    {
+        return true;
+    }
+
+    public function getIndexData(VersionInfo $versionInfo, Field $field, array $context)
+    {
+    }
+
+    private function extractURLsFromLinks(VersionInfo $versionInfo, Field $field, array $context, DOMDocument $document): void
+    {
         $xpath = new DOMXPath($document);
         $xpath->registerNamespace('docbook', 'http://docbook.org/ns/docbook');
         // This will select only links with non-empty 'xlink:href' attribute value
@@ -58,7 +188,7 @@ class RichTextStorage extends GatewayBasedStorage
         $links = $xpath->query($xpathExpression);
 
         if (empty($links)) {
-            return false;
+            return;
         }
 
         $urlSet = [];
@@ -79,6 +209,20 @@ class RichTextStorage extends GatewayBasedStorage
             } else {
                 $remoteIdSet[$matches[2]] = true;
             }
+        }
+
+        $linkTemplateParamsByUrl = [];
+        foreach ($this->getTemplateLinkAttributeIterator($document) as $param) {
+            $value = $param->getValue();
+            if (!empty($value)) {
+                $urlSet[$value] = true;
+            }
+
+            if (!isset($linkTemplateParamsByUrl[$value])) {
+                $linkTemplateParamsByUrl[$value] = [];
+            }
+
+            $linkTemplateParamsByUrl[$value][] = $param;
         }
 
         $urlIdMap = $this->gateway->getUrlIdMap(array_keys($urlSet));
@@ -113,89 +257,43 @@ class RichTextStorage extends GatewayBasedStorage
             $link->setAttribute('xlink:href', $href);
         }
 
-        $field->value->data = $document->saveXML();
+        foreach ($linkTemplateParamsByUrl as $url => $params) {
+            // Insert the same URL only once
+            if (!isset($urlIdMap[$url])) {
+                $urlIdMap[$url] = $this->gateway->insertUrl($url);
+            }
 
-        return true;
-    }
+            // Link the same URL only once
+            if (!isset($urlLinkSet[$url])) {
+                $this->gateway->linkUrl(
+                    $urlIdMap[$url],
+                    $field->id,
+                    $versionInfo->versionNo
+                );
+                $urlLinkSet[$url] = true;
+            }
 
-    /**
-     * Modifies $field if needed, using external data (like for Urls).
-     *
-     * @param \eZ\Publish\SPI\Persistence\Content\VersionInfo $versionInfo
-     * @param \eZ\Publish\SPI\Persistence\Content\Field $field
-     * @param array $context
-     */
-    public function getFieldData(VersionInfo $versionInfo, Field $field, array $context)
-    {
-        $document = new DOMDocument();
-        $document->loadXML($field->value->data);
-
-        $xpath = new DOMXPath($document);
-        $xpath->registerNamespace('docbook', 'http://docbook.org/ns/docbook');
-        $xpathExpression = "//docbook:link[starts-with( @xlink:href, 'ezurl://' )]|//docbook:ezlink[starts-with( @xlink:href, 'ezurl://' )]";
-
-        $links = $xpath->query($xpathExpression);
-
-        if (empty($links)) {
-            return;
-        }
-
-        $urlIdSet = [];
-        $urlInfo = [];
-
-        /** @var \DOMElement $link */
-        foreach ($links as $index => $link) {
-            preg_match(
-                '~^ezurl://([^#]*)?(#.*|\\s*)?$~',
-                $link->getAttribute('xlink:href'),
-                $matches
-            );
-            $urlInfo[$index] = $matches;
-
-            if (!empty($matches[1])) {
-                $urlIdSet[$matches[1]] = true;
+            foreach ($params as $param) {
+                /** @var \DOMElement $node */
+                $node = $param->getNode();
+                $node->textContent = "ezurl://{$urlIdMap[$url]}";
             }
         }
+    }
 
-        $idUrlMap = $this->gateway->getIdUrlMap(array_keys($urlIdSet));
+    private function getTemplateLinkAttributeIterator(DOMDocument $document): iterable
+    {
+        foreach (new TemplateIterator($document) as $template) {
+            if (!$this->templateRegistry->has($template->getName())) {
+                continue;
+            }
 
-        foreach ($links as $index => $link) {
-            list(, $urlId, $fragment) = $urlInfo[$index];
-
-            if (isset($idUrlMap[$urlId])) {
-                $href = $idUrlMap[$urlId] . $fragment;
-            } else {
-                // URL id is empty or not in the DB
-                if (isset($this->logger)) {
-                    $this->logger->error("URL with ID {$urlId} not found");
+            $definition = $this->templateRegistry->get($template->getName());
+            foreach ($definition->getAttributesOfType(LinkAttribute::class) as $attribute) {
+                if ($template->hasParam($attribute->getName())) {
+                    yield $template->getParam($attribute->getName());
                 }
-                $href = '#';
             }
-
-            $link->setAttribute('xlink:href', $href);
         }
-
-        $field->value->data = $document->saveXML();
-    }
-
-    public function deleteFieldData(VersionInfo $versionInfo, array $fieldIds, array $context)
-    {
-        foreach ($fieldIds as $fieldId) {
-            $this->gateway->unlinkUrl($fieldId, $versionInfo->versionNo);
-        }
-    }
-
-    /**
-     * Checks if field type has external data to deal with.
-     *
-     * @return bool
-     */
-    public function hasFieldData()
-    {
-        return true;
-    }
-
-    public function getIndexData(VersionInfo $versionInfo, Field $field, array $context)
-    {
     }
 }

@@ -14,7 +14,7 @@ use eZ\Publish\Core\MVC\Symfony\Routing\UrlAliasRouter;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Aggregate;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Link;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Render\Template;
-use EzSystems\EzPlatformRichText\eZ\RichText\HrefResolverInterface;
+use EzSystems\EzPlatformRichText\eZ\RichText\InternalLink\InternalLinkResolverInterface;
 use EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface;
 use EzSystems\EzPlatformRichText\eZ\RichText\Template\Attribute\Transformer\TransformerInterface;
 use EzSystems\EzPlatformRichText\eZ\RichText\Template\TemplateRegistryInterface;
@@ -40,7 +40,7 @@ class AggregateTest extends TestCase
         $locationService = $this->createMock(LocationService::class);
         $contentService = $this->createMock(ContentService::class);
         $urlAliasRouter = $this->createMock(UrlAliasRouter::class);
-        $hrefResolver = $this->createMock(HrefResolverInterface::class);
+        $internalLinkResolver = $this->createMock(InternalLinkResolverInterface::class);
         $renderer = $this->createMock(RendererInterface::class);
         $templateRegistry = $this->createMock(TemplateRegistryInterface::class);
         $attributeHandler = $this->createMock(TransformerInterface::class);
@@ -49,7 +49,7 @@ class AggregateTest extends TestCase
             $locationService,
             $contentService,
             $urlAliasRouter,
-            $hrefResolver
+            $internalLinkResolver
         );
 
         $aggregate = new Aggregate([$linkConverter]);

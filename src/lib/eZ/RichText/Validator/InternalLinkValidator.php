@@ -13,6 +13,8 @@ use eZ\Publish\SPI\Persistence\Content\Handler as ContentHandler;
 use eZ\Publish\SPI\Persistence\Content\Location\Handler as LocationHandler;
 use eZ\Publish\API\Repository\Exceptions\NotFoundException;
 use eZ\Publish\Core\Base\Exceptions\InvalidArgumentException;
+use EzSystems\EzPlatformRichText\eZ\RichText\InternalLink\InternalLink;
+use EzSystems\EzPlatformRichText\eZ\RichText\InternalLink\InternalLinkIterator;
 use EzSystems\EzPlatformRichText\eZ\RichText\ValidatorInterface;
 
 /**
@@ -55,24 +57,14 @@ class InternalLinkValidator implements ValidatorInterface
     {
         $errors = [];
 
-        $xpath = new \DOMXPath($xml);
-        $xpath->registerNamespace('docbook', 'http://docbook.org/ns/docbook');
+        /** @var \DOMElement $link */
+        foreach (new InternalLinkIterator($xml) as $link) {
+            if (empty($link->getId())) {
+                continue;
+            }
 
-        foreach (['link', 'ezlink'] as $tagName) {
-            $xpathExpression = $this->getXPathForLinkTag($tagName);
-            /** @var \DOMElement $element */
-            foreach ($xpath->query($xpathExpression) as $element) {
-                $url = $element->getAttribute('xlink:href');
-                preg_match('~^(.+)://([^#]*)?(#.*|\\s*)?$~', $url, $matches);
-                list(, $scheme, $id) = $matches;
-
-                if (empty($id)) {
-                    continue;
-                }
-
-                if (!$this->validate($scheme, $id)) {
-                    $errors[] = $this->getInvalidLinkError($scheme, $url);
-                }
+            if (!$this->validate($link->getScheme(), $link->getId())) {
+                $errors[] = $this->getInvalidLinkError($link->getScheme(), $link->getHref());
             }
         }
 
@@ -93,13 +85,13 @@ class InternalLinkValidator implements ValidatorInterface
     {
         try {
             switch ($scheme) {
-                case 'ezcontent':
+                case InternalLink::EZCONTENT_SCHEME:
                     $this->contentHandler->loadContentInfo($id);
                     break;
-                case 'ezremote':
+                case InternalLink::EZREMOTE_SCHEME:
                     $this->contentHandler->loadContentInfoByRemoteId($id);
                     break;
-                case 'ezlocation':
+                case InternalLink::EZLOCATION_SCHEME:
                     $this->locationHandler->load($id);
                     break;
                 default:
@@ -122,28 +114,16 @@ class InternalLinkValidator implements ValidatorInterface
      *
      * @return string
      */
-    private function getInvalidLinkError($scheme, $url)
+    private function getInvalidLinkError($scheme, $url): string
     {
         switch ($scheme) {
-            case 'ezcontent':
-            case 'ezremote':
+            case InternalLink::EZCONTENT_SCHEME:
+            case InternalLink::EZREMOTE_SCHEME:
                 return sprintf('Invalid link "%s": target content cannot be found', $url);
-            case 'ezlocation':
+            case InternalLink::EZLOCATION_SCHEME:
                 return sprintf('Invalid link "%s": target location cannot be found', $url);
             default:
                 throw new InvalidArgumentException($scheme, "Given scheme '{$scheme}' is not supported.");
         }
-    }
-
-    /**
-     * Generates XPath expression for given link tag.
-     *
-     * @param string $tagName
-     *
-     * @return string
-     */
-    private function getXPathForLinkTag($tagName)
-    {
-        return "//docbook:{$tagName}[starts-with(@xlink:href, 'ezcontent://') or starts-with(@xlink:href, 'ezlocation://') or starts-with(@xlink:href, 'ezremote://')]";
     }
 }

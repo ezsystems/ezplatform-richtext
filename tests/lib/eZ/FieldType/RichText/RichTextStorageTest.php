@@ -52,8 +52,7 @@ class RichTextStorageTest extends TestCase
                 '<?xml version="1.0" encoding="UTF-8"?>
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml" xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom" version="5.0-variant ezpublish-1.0">
     <para>Oh links, where art thou?</para>
-</section>
-',
+</section>',
                 [],
                 [],
             ],
@@ -67,7 +66,6 @@ class RichTextStorageTest extends TestCase
     {
         $gateway = $this->getGatewayMock();
         $gateway
-            ->expects($this->once())
             ->method('getIdUrlMap')
             ->with($this->equalTo($linkIds))
             ->willReturn($linkUrls);
