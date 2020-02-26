@@ -57,10 +57,6 @@ class RichTextStorage extends GatewayBasedStorage
 
         $links = $xpath->query($xpathExpression);
 
-        if ($versionInfo->versionNo !== 1) {
-            $this->gateway->unlinkUrl($field->id, $versionInfo->versionNo);
-        }
-
         if (empty($links)) {
             return false;
         }
@@ -116,6 +112,14 @@ class RichTextStorage extends GatewayBasedStorage
 
             $link->setAttribute('xlink:href', $href);
         }
+
+        $this->gateway->unlinkUrl(
+            $field->id,
+            $versionInfo->versionNo,
+            array_values(
+                $urlIdMap
+            )
+        );
 
         $field->value->data = $document->saveXML();
 

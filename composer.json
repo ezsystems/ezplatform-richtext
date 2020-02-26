@@ -8,6 +8,7 @@
         "php": "^7.1",
         "ext-xsl": "*",
         "ext-dom": "*",
+        "ext-libxml": "*",
         "symfony/symfony": "^3.4",
         "ezsystems/ezpublish-kernel": "^7.4@dev",
         "ezsystems/repository-forms": "^2.0"
