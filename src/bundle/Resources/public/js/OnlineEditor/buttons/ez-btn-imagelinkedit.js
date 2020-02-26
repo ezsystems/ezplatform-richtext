@@ -45,12 +45,10 @@ export default class EzBtnImageLinkEdit extends EzBtnLinkEdit {
         return editor.widgets.getByElement(wrapper);
     }
 
-    udwOnConfirm(udwContainer, items) {
+    udwOnConfirm(items) {
         this.widget.setEzLinkAttribute('href', 'ezlocation://' + items[0].id);
         this.widget.setLinkEditState();
         this.widget.setFocused(true);
-
-        ReactDOM.unmountComponentAtNode(udwContainer);
     }
 
     udwOnCancel(udwContainer, items) {

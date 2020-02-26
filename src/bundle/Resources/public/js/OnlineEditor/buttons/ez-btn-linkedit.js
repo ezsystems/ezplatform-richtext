@@ -82,6 +82,7 @@ export default class EzBtnLinkEdit extends Component {
      */
     selectContent() {
         const openUDW = () => {
+            const udwContainer = document.querySelector('#react-udw');
             const config = JSON.parse(document.querySelector(`[data-udw-config-name="richtext_embed"]`).dataset.udwConfig);
             const title = Translator.trans(/*@Desc("Select content")*/ 'link_edit_btn.udw.title', {}, 'alloy_editor');
             const selectContent = eZ.richText.alloyEditor.callbacks.selectContent;
