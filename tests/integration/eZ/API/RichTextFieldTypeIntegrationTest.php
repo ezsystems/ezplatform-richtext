@@ -642,7 +642,7 @@ EOT;
      */
     public function testExternalLinkStoringAfterUpdate(): void
     {
-        $xmlDocument = $this->createXmlDocumentWithExternalLink('https://ez.no/');
+        $xmlDocument = $this->createXmlDocumentWithExternalLink(['https://ez.no/', 'https://support.ez.no/']);
         $repository = $this->getRepository();
         $contentService = $repository->getContentService();
 
@@ -667,7 +667,7 @@ EOT;
             $content->contentInfo->currentVersionNo
         );
 
-        $xmlDocument = $this->createXmlDocumentWithExternalLink('https://support.ez.no/');
+        $xmlDocument = $this->createXmlDocumentWithExternalLink(['https://support.ez.no/']);
         $contentUpdateStruct = $contentService->newContentUpdateStruct();
         $contentUpdateStruct->setField('description', $xmlDocument, 'eng-GB');
         $contentDraft = $contentService->updateContent(
@@ -977,15 +977,22 @@ EOT;
     }
 
     /**
-     * @param string $url
+     * @param array $urls
      *
      * @return \DOMDocument
      */
-    private function createXmlDocumentWithExternalLink(string $url): DOMDocument
+    private function createXmlDocumentWithExternalLink(array $urls): DOMDocument
     {
         $document = new DOMDocument();
         $document->preserveWhiteSpace = false;
         $document->formatOutput = false;
+        $links = '';
+        foreach ($urls as $url) {
+            $links .= sprintf(
+                '<link xlink:href="%s" xlink:show="none" xlink:title="">%1$s</link>',
+                $url
+            );
+        }
         $document->loadXML(
             (<<<XML
 <?xml version="1.0" encoding="UTF-8"?>
@@ -996,7 +1003,7 @@ EOT;
     xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom" 
     version="5.0-variant ezpublish-1.0">
         <para>
-            <link xlink:href="$url" xlink:show="none" xlink:title="">link</link>
+            $links
         </para>
     </section>
 
