@@ -5,9 +5,7 @@ export default class EzListBaseConfig extends EzConfigBase {
         super(config);
 
         this.name = this.getConfigName();
-        this.buttons = ['ezmoveup', 'ezmovedown', this.getEditAttributesButton(config), 'ezembedinline', 'ezanchor', 'ezblockremove'];
-
-        this.addExtraButtons(config.extraButtons);
+        this.buttons = this.getButtons(config);
     }
 
     getConfigName() {

@@ -1,9 +1,12 @@
 import AlloyEditor from 'alloyeditor';
+import EzConfigButtonsBase from './base-buttons';
 
-export default class EzLinkConfig {
+export default class EzLinkConfig extends EzConfigButtonsBase {
     constructor(config) {
+        super(config);
+
         this.name = 'link';
-        this.buttons = ['ezlinkedit', ...config.extraButtons[this.name]];
+        this.buttons = this.getButtons(config);
 
         this.test = AlloyEditor.SelectionTest.link;
     }

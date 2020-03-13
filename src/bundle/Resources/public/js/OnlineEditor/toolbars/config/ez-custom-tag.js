@@ -4,24 +4,16 @@ export default class EzCustomTagConfig extends EzConfigBase {
     constructor(config) {
         super(config);
 
-        const editButton = !!config.alloyEditor.attributes ? `${config.name}edit` : '';
-        const defaultButtons = [
-            'ezmoveup',
-            'ezmovedown',
-            editButton,
-            'ezanchor',
-            'ezembedleft',
-            'ezembedcenter',
-            'ezembedright',
-            'ezblockremove',
-        ];
-        const customButtons = config.alloyEditor.toolbarButtons;
-        const buttons = customButtons && customButtons.length ? customButtons : defaultButtons;
-
         this.name = config.name;
-        this.buttons = buttons;
 
-        this.addExtraButtons(config.extraButtons);
+        const buttons = this.getButtons(config);
+        const customTagEditIndex = buttons.indexOf('ezcustomtagedit');
+
+        if (customTagEditIndex > -1) {
+            buttons[customTagEditIndex] = !!config.alloyEditor.attributes ? `${config.name}edit` : '';
+        }
+
+        this.buttons = buttons;
 
         this.test = this.test.bind(this);
     }
