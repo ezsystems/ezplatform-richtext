@@ -112,7 +112,7 @@ class RichTextTest extends AbstractParserTestCase
             'fieldtypes.ezrichtext.output_custom_xsl',
             [
                 0 => [
-                    'path' => '%kernel.root_dir%/../vendor/ezsystems/ezplatform-richtext/src/lib/eZ/RichText/Resources/stylesheets/docbook/xhtml5/output/core.xsl',
+                    'path' => '%kernel.project_dir%/vendor/ezsystems/ezplatform-richtext/src/lib/eZ/RichText/Resources/stylesheets/docbook/xhtml5/output/core.xsl',
                     'priority' => 0,
                 ],
             ],
