@@ -5,8 +5,7 @@
     "license": "GPL-2.0-only",
     "type": "ezplatform-bundle",
     "repositories": [
-        {"type": "vcs", "url": "https://github.com/webhdx/Routing.git"},
-        {"type": "vcs", "url": "https://github.com/webhdx/JMSTranslationBundle.git"}
+        {"type": "vcs", "url": "https://github.com/ezsystems/Routing.git"}
     ],
     "minimum-stability": "dev",
     "prefer-stable": true,
