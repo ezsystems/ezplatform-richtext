@@ -4,9 +4,6 @@
     "homepage": "https://ezplatform.com",
     "license": "GPL-2.0-only",
     "type": "ezplatform-bundle",
-    "repositories": [
-        {"type": "vcs", "url": "https://github.com/ezsystems/Routing.git"}
-    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
@@ -26,7 +23,6 @@
         "symfony/translation": "^5.0",
         "symfony/translation-contracts": "^2.0",
         "twig/twig": "^3.0",
-        "ezsystems/doctrine-dbal-schema": "dev-symfony5 as 1.0.x-dev",
         "ezsystems/ezpublish-kernel": "dev-symfony5 as 8.0.x-dev",
         "ezsystems/ezplatform-content-forms": "dev-symfony5 as 1.0.x-dev",
         "ezsystems/ezplatform-rest": "dev-symfony5 as 1.0.x-dev"
