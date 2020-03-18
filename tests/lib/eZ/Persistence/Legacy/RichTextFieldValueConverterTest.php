@@ -31,7 +31,7 @@ class RichTextFieldValueConverterTest extends TestCase
      */
     private $docbookString;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->converter = new RichTextFieldValueConverter();
@@ -45,7 +45,7 @@ class RichTextFieldValueConverterTest extends TestCase
 EOT;
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         unset($this->docbookString);
         parent::tearDown();

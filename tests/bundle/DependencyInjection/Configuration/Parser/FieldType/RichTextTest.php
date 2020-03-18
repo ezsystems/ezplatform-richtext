@@ -52,7 +52,7 @@ class RichTextTest extends AbstractParserTestCase
      *
      * @throws \Exception
      */
-    protected function load(array $configurationValues = [])
+    protected function configureAndLoad(array $configurationValues = [])
     {
         $bundle = new EzPlatformRichTextBundle();
         $bundle->build($this->container);
@@ -84,7 +84,7 @@ class RichTextTest extends AbstractParserTestCase
      *
      * @return ExtensionInterface[]
      */
-    protected function getContainerExtensions()
+    protected function getContainerExtensions(): array
     {
         return [
             new EzPublishCoreExtension([new RichTextConfigParser()]),
@@ -92,14 +92,14 @@ class RichTextTest extends AbstractParserTestCase
         ];
     }
 
-    protected function getMinimalConfiguration()
+    protected function getMinimalConfiguration(): array
     {
         return $this->getExtensionsConfig();
     }
 
     public function testDefaultContentSettings()
     {
-        $this->load();
+        $this->configureAndLoad();
 
         $this->assertConfigResolverParameterValue(
             'fieldtypes.ezrichtext.tags.default',
@@ -128,7 +128,7 @@ class RichTextTest extends AbstractParserTestCase
         $this->expectException(InvalidConfigurationException::class);
         $this->expectExceptionMessage('Unknown RichText Custom Tag \'foo\'');
 
-        $this->load(
+        $this->configureAndLoad(
             [
                 'ezpublish' => [
                     'system' => [
@@ -167,7 +167,7 @@ class RichTextTest extends AbstractParserTestCase
         $this->expectException(InvalidConfigurationException::class);
         $this->expectExceptionMessage($expectedExceptionMessage);
 
-        $this->load(
+        $this->configureAndLoad(
             [
                 'ezpublish' => [
                     'system' => [
@@ -256,7 +256,7 @@ class RichTextTest extends AbstractParserTestCase
      */
     public function testRichTextSettings(array $config, array $expected)
     {
-        $this->load(
+        $this->configureAndLoad(
             [
                 'ezpublish' => [
                     'system' => [

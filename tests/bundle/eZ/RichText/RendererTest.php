@@ -26,7 +26,7 @@ use Twig\Loader\LoaderInterface;
 
 class RendererTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->repositoryMock = $this->getRepositoryMock();
         $this->authorizationCheckerMock = $this->getAuthorizationCheckerMock();
@@ -675,12 +675,11 @@ class RendererTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \Exception
-     * @expectedExceptionMessage Something threw up
-     */
     public function testRenderContentEmbedThrowsException()
     {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Something threw up');
+
         $renderer = $this->getMockedRenderer(['checkContentPermissions']);
         $contentId = 42;
         $mainLocationId = 2;
@@ -1228,12 +1227,11 @@ class RendererTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \Exception
-     * @expectedExceptionMessage Something threw up
-     */
     public function testRenderLocationEmbedThrowsException()
     {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Something threw up');
+
         $renderer = $this->getMockedRenderer(['checkLocation']);
         $locationId = 42;
 

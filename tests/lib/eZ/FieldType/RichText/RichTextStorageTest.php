@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace EzSystems\Tests\EzPlatformRichText\eZ\FieldType\RichText;
 
+use eZ\Publish\API\Repository\Exceptions\NotFoundException;
 use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage;
 use eZ\Publish\SPI\FieldType\StorageGateway;
 use eZ\Publish\SPI\Persistence\Content\VersionInfo;
@@ -268,7 +269,6 @@ class RichTextStorageTest extends TestCase
 
     /**
      * @dataProvider providerForTestStoreFieldDataThrowsNotFoundException
-     * @expectedException \eZ\Publish\API\Repository\Exceptions\NotFoundException
      */
     public function testStoreFieldDataThrowsNotFoundException(
         $xmlString,
@@ -278,6 +278,8 @@ class RichTextStorageTest extends TestCase
         $remoteIds,
         $contentIds
     ) {
+        $this->expectException(NotFoundException::class);
+
         $gateway = $this->getGatewayMock();
         $gateway
             ->expects($this->once())

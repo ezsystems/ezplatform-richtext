@@ -26,7 +26,7 @@ class TemplateTest extends TestCase
      */
     protected $converterMock;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->rendererMock = $this->getRendererMock();
         $this->converterMock = $this->getConverterMock();
