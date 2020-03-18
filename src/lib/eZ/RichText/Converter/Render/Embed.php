@@ -77,14 +77,14 @@ class Embed extends Render implements Converter
                 if (isset($this->logger)) {
                     $this->logger->error("Could not embed resource: empty 'xlink:href' attribute");
                 }
-            } elseif (0 === preg_match('~^(ezcontent|ezlocation)://(.*)$~', $resourceReference, $matches)) {
+            } elseif (0 === preg_match('~^(ezcontent|ezlocation)://(\d+)$~', $resourceReference, $matches)) {
                 if (isset($this->logger)) {
                     $this->logger->error(
                         "Could not embed resource: unhandled resource reference '{$resourceReference}'"
                     );
                 }
             } elseif ($matches[1] === 'ezcontent') {
-                $parameters['id'] = $matches[2];
+                $parameters['id'] = (int) $matches[2];
                 $embedContent = $this->renderer->renderContentEmbed(
                     $parameters['id'],
                     $parameters['viewType'],
@@ -94,7 +94,7 @@ class Embed extends Render implements Converter
                     $isInline
                 );
             } elseif ($matches[1] === 'ezlocation') {
-                $parameters['id'] = $matches[2];
+                $parameters['id'] = (int) $matches[2];
                 $embedContent = $this->renderer->renderLocationEmbed(
                     $parameters['id'],
                     $parameters['viewType'],

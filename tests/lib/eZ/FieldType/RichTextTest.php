@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace EzSystems\Tests\EzPlatformRichText\eZ\FieldType;
 
+use eZ\Publish\API\Repository\Exceptions\InvalidArgumentException as ApiInvalidArgumentException;
 use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition as APIFieldDefinition;
 use eZ\Publish\Core\FieldType\Value as CoreValue;
 use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Type as RichTextType;
@@ -103,10 +104,11 @@ class RichTextTest extends TestCase
 
     /**
      * @covers \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Type::acceptValue
-     * @expectedException \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException
      */
     public function testAcceptValueInvalidType()
     {
+        $this->expectException(ApiInvalidArgumentException::class);
+
         $this->getFieldType()->acceptValue($this->createMock(CoreValue::class));
     }
 
@@ -276,7 +278,7 @@ class RichTextTest extends TestCase
         $fieldType = $this->getFieldType();
         $fieldValue = $fieldType->toPersistenceValue($fieldType->acceptValue($xmlString));
 
-        self::assertInternalType('string', $fieldValue->data);
+        self::assertIsString($fieldValue->data);
         self::assertSame($xmlString, $fieldValue->data);
     }
 

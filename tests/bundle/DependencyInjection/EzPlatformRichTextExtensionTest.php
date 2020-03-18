@@ -19,14 +19,14 @@ class EzPlatformRichTextExtensionTest extends AbstractExtensionTestCase
      */
     private $extension;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->extension = new EzPlatformRichTextExtension();
 
         parent::setUp();
     }
 
-    protected function getContainerExtensions()
+    protected function getContainerExtensions(): array
     {
         return [$this->extension];
     }

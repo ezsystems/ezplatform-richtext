@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Validator;
 
+use eZ\Publish\Core\Base\Exceptions\InvalidArgumentException;
 use eZ\Publish\SPI\Persistence\Content\Handler as ContentHandler;
 use eZ\Publish\SPI\Persistence\Content\Location\Handler as LocationHandler;
 use eZ\Publish\Core\Base\Exceptions\NotFoundException;
@@ -31,12 +32,11 @@ class InternalLinkValidatorTest extends TestCase
         $this->locationHandler = $this->createMock(LocationHandler::class);
     }
 
-    /**
-     * @expectedException \eZ\Publish\Core\Base\Exceptions\InvalidArgumentException
-     * @expectedExceptionMessage Argument 'eznull' is invalid: The provided scheme 'eznull' is not supported.
-     */
     public function testValidateFailOnNotSupportedSchema()
     {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage("Argument 'eznull' is invalid: The provided scheme 'eznull' is not supported.");
+
         $validator = $this->getInternalLinkValidator();
         $validator->validate('eznull', 1);
     }
