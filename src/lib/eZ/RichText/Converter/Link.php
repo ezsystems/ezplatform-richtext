@@ -97,7 +97,7 @@ class Link implements Converter
                 }
             } elseif ($scheme === 'ezlocation://') {
                 try {
-                    $location = $this->locationService->loadLocation($id);
+                    $location = $this->locationService->loadLocation((int) $id);
                     $hrefResolved = $this->urlAliasRouter->generate($location) . $fragment;
                 } catch (APINotFoundException $e) {
                     if ($this->logger) {
