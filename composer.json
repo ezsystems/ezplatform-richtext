@@ -26,6 +26,7 @@
         "ezsystems/ezplatform-rest": "^1.0@dev"
     },
     "require-dev": {
+        "ezsystems/doctrine-dbal-schema": "^1.0@dev",
         "phpunit/phpunit": "^8.5",
         "symfony/finder": "^5.0",
         "matthiasnoback/symfony-config-test": "^4.1",
