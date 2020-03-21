@@ -19,9 +19,9 @@ use Symfony\Component\DependencyInjection\Reference;
 trait CoreSetupFactoryTrait
 {
     /**
-     * Load ezpublish-kernel settings and setup container.
+     * Load eZ Platform Kernel settings and setup container.
      *
-     * @todo refactor ezpublish-kernel SetupFactory to include that setup w/o relying on config.php
+     * @todo refactor ezplatform-kernel SetupFactory to include that setup w/o relying on config.php
      *
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder
      *
@@ -30,9 +30,9 @@ trait CoreSetupFactoryTrait
     protected function loadCoreSettings(ContainerBuilder $containerBuilder)
     {
         // @todo refactor when refactoring kernel SetupFactory to avoid hardcoding package path
-        $kernelRootDir = realpath(__DIR__ . '/../../../../../vendor/ezsystems/ezpublish-kernel');
+        $kernelRootDir = realpath(__DIR__ . '/../../../../../vendor/ezsystems/ezplatform-kernel');
         if (false === $kernelRootDir) {
-            throw new RuntimeException('Unable to find the ezpublish-kernel package directory');
+            throw new RuntimeException('Unable to find the ezplatform-kernel package directory');
         }
         $settingsPath = "{$kernelRootDir}/eZ/Publish/Core/settings";
 
