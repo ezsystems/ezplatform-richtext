@@ -31,7 +31,8 @@
         "matthiasnoback/symfony-config-test": "^4.1",
         "matthiasnoback/symfony-dependency-injection-test": "^4.1",
         "friendsofphp/php-cs-fixer": "^2.16",
-        "ezsystems/ezplatform-code-style": "^0.1"
+        "ezsystems/ezplatform-code-style": "^0.1",
+        "ezsystems/doctrine-dbal-schema": "^1.0@dev"
     },
     "autoload": {
         "psr-4": {
