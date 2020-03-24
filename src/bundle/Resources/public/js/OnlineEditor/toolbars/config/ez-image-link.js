@@ -5,9 +5,7 @@ export default class EzEmbedImageLinkConfig extends EzConfigBase {
         super(config);
 
         this.name = 'embedimagelink';
-        this.buttons = ['ezimagelink'];
-
-        this.addExtraButtons(config.extraButtons);
+        this.buttons = this.getButtons(config);
     }
 
     /**

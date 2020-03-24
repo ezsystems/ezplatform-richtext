@@ -1,21 +1,12 @@
 import AlloyEditor from 'alloyeditor';
+import EzConfigButtonsBase from './base-buttons';
 
-export default class EzTextConfig {
+export default class EzTextConfig extends EzConfigButtonsBase {
     constructor(config) {
+        super(config);
+
         this.name = 'text';
-        this.buttons = [
-            this.getStyles(config.customStyles),
-            'ezbold',
-            'ezitalic',
-            'ezunderline',
-            'ezsubscript',
-            'ezsuperscript',
-            'ezquote',
-            'ezstrike',
-            'ezlink',
-            ...config.inlineCustomTags,
-            ...config.extraButtons[this.name],
-        ];
+        this.buttons = this.getButtons(config);
 
         this.test = AlloyEditor.SelectionTest.text;
     }

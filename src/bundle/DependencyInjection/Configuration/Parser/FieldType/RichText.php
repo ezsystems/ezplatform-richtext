@@ -30,6 +30,9 @@ class RichText extends AbstractFieldTypeParser
     private const ATTRIBUTE_TYPE_STRING = 'string';
     private const ATTRIBUTE_TYPE_NUMBER = 'number';
 
+    private const TOOLBARS_NODE_KEY = 'toolbars';
+    public const TOOLBARS_SA_SETTINGS_ID = 'fieldtypes.ezrichtext.' . self::TOOLBARS_NODE_KEY;
+
     // constants common for OE custom classes and data attributes configuration
     private const ELEMENT_NODE_KEY = 'element';
     private const DEFAULT_VALUE_NODE_KEY = 'default_value';
@@ -188,6 +191,32 @@ class RichText extends AbstractFieldTypeParser
                 ->scalarPrototype()->end()
             ->end();
 
+        // RichText Toolbars configuration (defines list of Toolbars and Buttons enabled for current SiteAccess scope)
+        $nodeBuilder
+            ->arrayNode(self::TOOLBARS_NODE_KEY)
+                ->useAttributeAsKey('name')
+                ->info('List of Toolbars and Buttons enabled for current SiteAccess scope.')
+                ->prototype('array')
+                    ->children()
+                        ->arrayNode('buttons')
+                            ->useAttributeAsKey('name')
+                            ->prototype('array')
+                                ->children()
+                                    ->booleanNode('visible')
+                                        ->info('Is button visible on toolbar?')
+                                        ->defaultTrue()
+                                    ->end()
+                                    ->integerNode('priority')
+                                        ->info('Defines order in which buttons appear (255 .. -255).')
+                                        ->defaultValue(0)
+                                    ->end()
+                                ->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end();
+
         $this->buildOnlineEditorConfiguration($nodeBuilder);
     }
 
@@ -236,6 +265,7 @@ class RichText extends AbstractFieldTypeParser
             $onlineEditorSettingsMap = [
                 self::CLASSES_NODE_KEY => self::CLASSES_SA_SETTINGS_ID,
                 self::ATTRIBUTES_NODE_KEY => self::ATTRIBUTES_SA_SETTINGS_ID,
+                self::TOOLBARS_NODE_KEY => self::TOOLBARS_SA_SETTINGS_ID,
             ];
             foreach ($onlineEditorSettingsMap as $key => $settingsId) {
                 if (isset($scopeSettings['fieldtypes']['ezrichtext'][$key])) {
@@ -250,6 +280,7 @@ class RichText extends AbstractFieldTypeParser
     {
         $contextualizer->mapConfigArray('fieldtypes.ezrichtext.custom_tags', $config);
         $contextualizer->mapConfigArray('fieldtypes.ezrichtext.custom_styles', $config);
+        $contextualizer->mapConfigArray(self::TOOLBARS_SA_SETTINGS_ID, $config);
         $contextualizer->mapConfigArray('fieldtypes.ezrichtext.output_custom_xsl', $config);
         $contextualizer->mapConfigArray('fieldtypes.ezrichtext.edit_custom_xsl', $config);
         $contextualizer->mapConfigArray('fieldtypes.ezrichtext.input_custom_xsl', $config);

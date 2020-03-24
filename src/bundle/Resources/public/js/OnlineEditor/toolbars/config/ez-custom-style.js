@@ -4,20 +4,8 @@ export default class EzCustomStyleConfig extends EzConfigBase {
     constructor(config) {
         super(config);
 
-        this.name = 'custom-style';
-        this.buttons = [
-            'ezmoveup',
-            'ezmovedown',
-            this.getStyles(config.customStyles),
-            'ezanchor',
-            'ezblocktextalignleft',
-            'ezblocktextaligncenter',
-            'ezblocktextalignright',
-            'ezblocktextalignjustify',
-            'ezblockremove',
-        ];
-
-        this.addExtraButtons(config.extraButtons);
+        this.name = 'custom_style';
+        this.buttons = this.getButtons(config);
     }
 
     /**

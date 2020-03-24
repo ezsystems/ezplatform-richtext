@@ -5,21 +5,7 @@ export default class EzEmbedImageConfig extends EzConfigBase {
         super(config);
 
         this.name = 'embedimage';
-        this.buttons = [
-            'ezmoveup',
-            'ezmovedown',
-            this.getEditAttributesButton(config),
-            'ezimageupdate',
-            'ezimagevariation',
-            'ezimagelink',
-            'ezanchor',
-            'ezembedleft',
-            'ezembedcenter',
-            'ezembedright',
-            'ezblockremove',
-        ];
-
-        this.addExtraButtons(config.extraButtons);
+        this.buttons = this.getButtons(config);
     }
 
     /**

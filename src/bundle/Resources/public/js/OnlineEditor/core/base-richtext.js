@@ -9,16 +9,6 @@
             this.xhtmlNamespace = 'http://www.w3.org/1999/xhtml';
             this.customTags = Object.keys(eZ.richText.customTags).filter((key) => !eZ.richText.customTags[key].isInline);
             this.inlineCustomTags = Object.keys(eZ.richText.customTags).filter((key) => eZ.richText.customTags[key].isInline);
-            this.alloyEditorExtraButtons = {
-                ezadd: [],
-                link: [],
-                text: [],
-                table: [],
-                tr: [],
-                td: [],
-                th: [],
-                ...eZ.richText.alloyEditor.extraButtons,
-            };
             this.attributes = global.eZ.richText.alloyEditor.attributes;
             this.classes = global.eZ.richText.alloyEditor.classes;
             this.customTagsToolbars = this.customTags.map((customTag) => {
@@ -27,7 +17,6 @@
                 return new eZ.ezAlloyEditor.ezCustomTagConfig({
                     name: customTag,
                     alloyEditor: alloyEditorConfig,
-                    extraButtons: this.alloyEditorExtraButtons,
                 });
             });
             this.inlineCustomTagsToolbars = this.inlineCustomTags.map((customTag) => {
@@ -36,7 +25,6 @@
                 return new eZ.ezAlloyEditor.ezInlineCustomTagConfig({
                     name: customTag,
                     alloyEditor: alloyEditorConfig,
-                    extraButtons: this.alloyEditorExtraButtons,
                 });
             });
             this.customStylesConfigurations = Object.entries(eZ.richText.customStyles).map(([customStyleName, customStyleConfig]) => {
@@ -189,24 +177,14 @@
         }
 
         init(container) {
-            const toolbarProps = { extraButtons: this.alloyEditorExtraButtons, attributes: this.attributes, classes: this.classes };
+            const toolbarProps = { attributes: this.attributes, classes: this.classes };
             const customSelections = this.customStyleSelections.map((Selection) => {
                 return new Selection(toolbarProps);
             });
             const alloyEditor = AlloyEditor.editable(container.getAttribute('id'), {
                 toolbars: {
                     ezadd: {
-                        buttons: [
-                            'ezheading',
-                            'ezparagraph',
-                            'ezunorderedlist',
-                            'ezorderedlist',
-                            'ezimage',
-                            'ezembed',
-                            'eztable',
-                            ...this.customTags,
-                            ...this.alloyEditorExtraButtons['ezadd'],
-                        ],
+                        buttons: eZ.richText.alloyEditor.toolbars.ezadd.buttons,
                         tabIndex: 2,
                     },
                     styles: {

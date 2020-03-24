@@ -51,10 +51,43 @@ final class AlloyEditor implements Provider
     {
         return [
             'extraPlugins' => $this->getExtraPlugins(),
-            'extraButtons' => $this->getExtraButtons(),
+            'toolbars' => $this->getToolbars(),
             'classes' => $this->getCssClasses(),
             'attributes' => $this->getDataAttributes(),
         ];
+    }
+
+    /**
+     * @return array Toolbars configuration
+     */
+    private function getToolbars(): array
+    {
+        $toolbarsConfiguration = $this->getSiteAccessConfigArray(RichText::TOOLBARS_SA_SETTINGS_ID);
+        $toolbars = [];
+
+        foreach ($toolbarsConfiguration as $toolbar => $configuration) {
+            $toolbars[$toolbar] = [
+                'buttons' => $this->getToolbarButtons($configuration['buttons'] ?? []),
+            ];
+        }
+
+        return $toolbars;
+    }
+
+    /**
+     * @return string[] List of visible buttons
+     */
+    private function getToolbarButtons(array $buttons): array
+    {
+        $buttons = array_filter($buttons, static function (array $value): bool {
+            return $value['visible'];
+        });
+
+        uasort($buttons, static function (array $a, array $b): int {
+            return $b['priority'] <=> $a['priority'];
+        });
+
+        return array_keys($buttons);
     }
 
     /**
@@ -63,27 +96,6 @@ final class AlloyEditor implements Provider
     private function getExtraPlugins(): array
     {
         return $this->alloyEditorConfiguration['extra_plugins'] ?? [];
-    }
-
-    /**
-     * @deprecated 3.0.0 The alternative and more flexible solution will be introduced.
-     * @deprecated 3.0.0 So you will need to update Online Editor Extra Buttons as part of eZ Platform 3.x upgrade.
-     *
-     * @return array Custom buttons
-     */
-    private function getExtraButtons(): array
-    {
-        if (empty($this->alloyEditorConfiguration['extra_buttons'])) {
-            return [];
-        }
-
-        @trigger_error(
-            '"ezrichtext.alloy_editor.extra_buttons" is deprecated since v2.5.1. ' .
-            'There will be new and more flexible solution to manage buttons in Online Editor in 3.0.0',
-            E_USER_DEPRECATED
-        );
-
-        return $this->alloyEditorConfiguration['extra_buttons'];
     }
 
     /**

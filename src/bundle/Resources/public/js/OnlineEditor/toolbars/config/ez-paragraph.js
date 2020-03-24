@@ -5,21 +5,7 @@ export default class EzParagraphConfig extends EzConfigFixedBase {
         super(config);
 
         this.name = 'paragraph';
-        this.buttons = [
-            'ezmoveup',
-            'ezmovedown',
-            this.getEditAttributesButton(config),
-            this.getStyles(config.customStyles),
-            'ezembedinline',
-            'ezanchor',
-            'ezblocktextalignleft',
-            'ezblocktextaligncenter',
-            'ezblocktextalignright',
-            'ezblocktextalignjustify',
-            'ezblockremove',
-        ];
-
-        this.addExtraButtons(config.extraButtons);
+        this.buttons = this.getButtons(config);
     }
 
     /**
