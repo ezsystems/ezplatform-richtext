@@ -58,11 +58,11 @@ class SearchField implements Indexable
     {
         $text = '';
 
-        if ($node->childNodes) {
+        if ($node->childNodes->count() > 0) {
             foreach ($node->childNodes as $child) {
                 $text .= $this->extractText($child);
             }
-        } else {
+        } elseif (!empty($node->nodeValue)) {
             $text .= $node->nodeValue . ' ';
         }
 
