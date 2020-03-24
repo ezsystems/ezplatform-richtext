@@ -62,6 +62,10 @@ matrix:
         - BEHAT_OPTS="--profile=adminui --suite=richtext"
         - SYMFONY_ENV=behat
         - SYMFONY_DEBUG=1
+# 7.3
+    - name: '[PHP 7.3] Unit tests'
+      php: 7.3
+      env: TEST_CONFIG="phpunit.xml"
 # CS check
     - name: 'Code Style Check'
       php: 7.2
