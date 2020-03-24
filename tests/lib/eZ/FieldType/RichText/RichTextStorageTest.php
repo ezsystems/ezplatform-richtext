@@ -197,10 +197,6 @@ class RichTextStorageTest extends TestCase
         $gateway = $this->getGatewayMock();
         $gateway
             ->expects($this->at($gatewayCallIndex++))
-            ->method('unlinkUrl')
-            ->with(42, 24);
-        $gateway
-            ->expects($this->at($gatewayCallIndex++))
             ->method('getUrlIdMap')
             ->with($this->equalTo($linkUrls))
             ->willReturn($linkIds);
@@ -222,6 +218,7 @@ class RichTextStorageTest extends TestCase
                     ->method('insertUrl')
                     ->with($this->equalTo($url))
                     ->willReturn($id);
+                $linkIds[$url] = $id;
             } else {
                 $id = $linkIds[$url];
             }
@@ -231,6 +228,16 @@ class RichTextStorageTest extends TestCase
                 ->method('linkUrl')
                 ->with($id, 42, 24);
         }
+        $gateway
+            ->expects($this->at($gatewayCallIndex))
+            ->method('unlinkUrl')
+            ->with(
+                42,
+                24,
+                array_values(
+                    $linkIds
+                )
+            );
 
         $storage = $this->getPartlyMockedStorage($gateway);
         $result = $storage->storeFieldData(
