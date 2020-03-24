@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 
+use eZ\Publish\API\Repository\Values\Content\Location;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 use eZ\Publish\API\Repository\ContentService;
 use eZ\Publish\API\Repository\LocationService;
@@ -79,7 +80,7 @@ class Link implements Converter
                 try {
                     $contentInfo = $this->contentService->loadContentInfo((int) $id);
                     $location = $this->locationService->loadLocation($contentInfo->mainLocationId);
-                    $hrefResolved = $this->urlAliasRouter->generate($location) . $fragment;
+                    $hrefResolved = $this->generateUrlAliasForLocation($location, $fragment);
                 } catch (APINotFoundException $e) {
                     if ($this->logger) {
                         $this->logger->warning(
@@ -98,7 +99,7 @@ class Link implements Converter
             } elseif ($scheme === 'ezlocation://') {
                 try {
                     $location = $this->locationService->loadLocation((int) $id);
-                    $hrefResolved = $this->urlAliasRouter->generate($location) . $fragment;
+                    $hrefResolved = $this->generateUrlAliasForLocation($location, $fragment);
                 } catch (APINotFoundException $e) {
                     if ($this->logger) {
                         $this->logger->warning(
@@ -132,5 +133,15 @@ class Link implements Converter
         }
 
         return $document;
+    }
+
+    private function generateUrlAliasForLocation(Location $location, string $fragment): string
+    {
+        $urlAlias = $this->urlAliasRouter->generate(
+            UrlAliasRouter::URL_ALIAS_ROUTE_NAME,
+            ['location' => $location]
+        );
+
+        return $urlAlias . $fragment;
     }
 }

@@ -226,7 +226,7 @@ class LinkTest extends TestCase
 
         $urlAliasRouter->expects($this->once())
             ->method('generate')
-            ->with($this->equalTo($location))
+            ->with(UrlAliasRouter::URL_ALIAS_ROUTE_NAME, ['location' => $location])
             ->willReturn($urlResolved);
 
         $converter = new Link($locationService, $contentService, $urlAliasRouter);
@@ -441,7 +441,7 @@ class LinkTest extends TestCase
 
         $urlAliasRouter->expects($this->once())
             ->method('generate')
-            ->with($this->equalTo($location))
+            ->with(UrlAliasRouter::URL_ALIAS_ROUTE_NAME, ['location' => $location])
             ->willReturn($urlResolved);
 
         $converter = new Link($locationService, $contentService, $urlAliasRouter);
