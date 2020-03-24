@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Converter;
 
+use DOMDocument;
 use eZ\Publish\API\Repository\ContentService;
 use eZ\Publish\API\Repository\LocationService;
 use eZ\Publish\Core\MVC\Symfony\Routing\UrlAliasRouter;
@@ -20,18 +21,13 @@ use PHPUnit\Framework\TestCase;
 class AggregateTest extends TestCase
 {
     /**
-     * @param $input
-     * @param $expectedWarningMessage
-     *
      * @dataProvider providerConvertWithLinkInCustomTag
      *
      * @see https://jira.ez.no/browse/EZP-30166
      */
-    public function testConvertWithLinkInCustomTag(
-        $input,
-        $expectedOutput
-    ) {
-        $xmlDocument = new \DOMDocument();
+    public function testConvertWithLinkInCustomTag(string $input, string $expectedOutput): void
+    {
+        $xmlDocument = new DOMDocument();
         $xmlDocument->loadXML($input);
 
         $locationService = $this->createMock(LocationService::class);
@@ -55,7 +51,7 @@ class AggregateTest extends TestCase
         $aggregate = new Aggregate([$templateConverter, $linkConverter]);
         $output = $aggregate->convert($xmlDocument);
 
-        $expectedOutputDocument = new \DOMDocument();
+        $expectedOutputDocument = new DOMDocument();
         $expectedOutputDocument->loadXML($expectedOutput);
         $this->assertEquals($expectedOutputDocument, $output, 'Xml is not converted as expected');
     }
