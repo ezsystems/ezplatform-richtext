@@ -12,5 +12,11 @@
         <listitem>
             <para>Some list item with a paragraph.</para>
         </listitem>
+        <listitem>
+            <para>
+                <literallayout class="normal">Some list item
+with a line break.</literallayout>
+            </para>
+        </listitem>
     </orderedlist>
 </section>

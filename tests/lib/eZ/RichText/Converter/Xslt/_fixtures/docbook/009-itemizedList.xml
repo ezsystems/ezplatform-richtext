@@ -8,12 +8,28 @@
     <ezattribute>
       <ezvalue key="name-1">value 1</ezvalue>
       <ezvalue key="name-2">value 2</ezvalue>
+      <ezvalue key="name-3">value 3</ezvalue>
     </ezattribute>
     <listitem ezxhtml:class="listItemClass">
       <ezattribute>
         <ezvalue key="name-2">value 2</ezvalue>
       </ezattribute>
-      <para>This is a list item.</para>
+      <para ezxhtml:class="listitemclass">
+        <ezattribute>
+          <ezvalue key="name-2">value 2</ezvalue>
+        </ezattribute>This is a list item.</para>
+    </listitem>
+    <listitem ezxhtml:class="listItemClass">
+      <ezattribute>
+        <ezvalue key="name-3">value 3</ezvalue>
+      </ezattribute>
+      <para ezxhtml:class="listitemclass">
+        <ezattribute>
+          <ezvalue key="name-3">value 3</ezvalue>
+        </ezattribute>
+        <literallayout class="normal">This is a list item
+with a line break.</literallayout>
+      </para>
     </listitem>
   </itemizedlist>
 </section>

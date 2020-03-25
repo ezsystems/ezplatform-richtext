@@ -38,7 +38,7 @@
           </ezattribute>
           <para>21</para>
           <itemizedlist ezxhtml:class="itemizedListClass">
-            <listitem ezxhtml:class="listItemClass"><para>This is a list item.</para></listitem>
+            <listitem ezxhtml:class="listItemClass"><para ezxhtml:class="listitemclass">This is a list item.</para></listitem>
           </itemizedlist>
         </td>
         <td class="cellClass2" ezxhtml:width="38" valign="baseline" colspan="4" rowspan="8">
