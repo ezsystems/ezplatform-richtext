@@ -720,8 +720,6 @@ EOT;
     }
 
     /**
-     * @param $contentObjectAttributeId
-     * @param $versionNo
      *
      * @return int[]
      *
