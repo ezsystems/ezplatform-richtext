@@ -14,7 +14,7 @@
       <ezattribute>
         <ezvalue key="name-2">value 2</ezvalue>
       </ezattribute>
-      <para ezxhtml:class="listitemclass">
+      <para ezxhtml:class="listItemClass">
         <ezattribute>
           <ezvalue key="name-2">value 2</ezvalue>
         </ezattribute>This is a list item.</para>
@@ -23,11 +23,11 @@
       <ezattribute>
         <ezvalue key="name-3">value 3</ezvalue>
       </ezattribute>
-      <para ezxhtml:class="listitemclass">
+      <para ezxhtml:class="listItemClass">
         <ezattribute>
           <ezvalue key="name-3">value 3</ezvalue>
         </ezattribute>
-        <literallayout class="normal">this is a list item
+        <literallayout class="normal">This is a list item
 with a line break.</literallayout>
       </para>
     </listitem>

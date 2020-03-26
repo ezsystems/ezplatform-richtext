@@ -60,7 +60,7 @@
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template match="ezxhtml5:p" name="paragraph">>
+  <xsl:template match="ezxhtml5:p" name="paragraph">
     <para>
       <xsl:if test="@id">
         <xsl:attribute name="xml:id">
