@@ -720,7 +720,6 @@ EOT;
     }
 
     /**
-     *
      * @return int[]
      *
      * @throws \ErrorException
