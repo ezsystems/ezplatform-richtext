@@ -9,6 +9,8 @@ declare(strict_types=1);
 namespace EzSystems\IntegrationTests\EzPlatformRichText\eZ\API;
 
 use DirectoryIterator;
+use Doctrine\DBAL\FetchMode;
+use Doctrine\DBAL\ParameterType;
 use eZ\Publish\API\Repository\Exceptions\ContentFieldValidationException;
 use eZ\Publish\API\Repository\Repository;
 use eZ\Publish\API\Repository\Tests\FieldType\RelationSearchBaseIntegrationTestTrait;
@@ -19,6 +21,7 @@ use eZ\Publish\API\Repository\Values\Content\Field;
 use DOMDocument;
 use eZ\Publish\Core\Repository\Values\Content\Relation;
 use eZ\Publish\API\Repository\Values\Content\Content;
+use eZ\Publish\API\Repository\Values\ContentType\ContentType;
 
 /**
  * Integration test for use field type.
@@ -43,7 +46,8 @@ class RichTextFieldTypeIntegrationTest extends SearchBaseIntegrationTest
     public function __construct($name = null, array $data = [], $dataName = '')
     {
         $this->createdDOMValue = new DOMDocument();
-        $this->createdDOMValue->loadXML(<<<EOT
+        $this->createdDOMValue->loadXML(
+            <<<EOT
 <?xml version="1.0" encoding="UTF-8"?>
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml" xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom" version="5.0-variant ezpublish-1.0">
     <para><link xlink:href="ezlocation://58" xlink:show="none">link1</link></para>
@@ -53,7 +57,8 @@ EOT
         );
 
         $this->updatedDOMValue = new DOMDocument();
-        $this->updatedDOMValue->loadXML(<<<EOT
+        $this->updatedDOMValue->loadXML(
+            <<<EOT
 <?xml version="1.0" encoding="UTF-8"?>
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml" xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom" version="5.0-variant ezpublish-1.0">
     <para><link xlink:href="ezlocation://60" xlink:show="none">link1</link></para>
@@ -394,7 +399,8 @@ EOT
     public function provideToHashData()
     {
         $xml = new DOMDocument();
-        $xml->loadXML(<<<EOT
+        $xml->loadXML(
+            <<<EOT
 <?xml version="1.0" encoding="UTF-8"?>
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml" xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom" version="5.0-variant ezpublish-1.0">
     <title>Some text</title>
@@ -431,6 +437,7 @@ EOT
 </section>
 
 EOT
+                    ,
                 ],
             ],
         ];
@@ -444,10 +451,10 @@ EOT
     public function testFromHash($hash, $expectedValue = null)
     {
         $richTextValue = $this
-                ->getRepository()
-                ->getFieldTypeService()
-                ->getFieldType($this->getTypeName())
-                ->fromHash($hash);
+            ->getRepository()
+            ->getFieldTypeService()
+            ->getFieldType($this->getTypeName())
+            ->fromHash($hash);
         $this->assertInstanceOf(
             RichTextValue::class,
             $richTextValue
@@ -577,7 +584,10 @@ EOT;
         $createStruct->creatorId = $repository->getCurrentUser()->id;
         $createStruct->creationDate = $this->createDateTime();
 
-        $fieldCreate = $contentTypeService->newFieldDefinitionCreateStruct('description', 'ezrichtext');
+        $fieldCreate = $contentTypeService->newFieldDefinitionCreateStruct(
+            'description',
+            'ezrichtext'
+        );
         $fieldCreate->names = ['eng-GB' => 'Title'];
         $fieldCreate->fieldGroup = 'main';
         $fieldCreate->position = 1;
@@ -621,6 +631,124 @@ EOT;
         $this->assertEquals(
             str_replace('[ObjectId]', $objectId, $expected),
             $test->getField('description')->value->xml->saveXML()
+        );
+    }
+
+    /**
+     * @throws \ErrorException
+     * @throws \eZ\Publish\API\Repository\Exceptions\ForbiddenException
+     * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
+     * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException
+     */
+    public function testExternalLinkStoringAfterUpdate(): void
+    {
+        $xmlDocument = $this->createXmlDocumentWithExternalLink(['https://ez.no/', 'https://support.ez.no/']);
+        $repository = $this->getRepository();
+        $contentService = $repository->getContentService();
+
+        $locationService = $repository->getLocationService();
+
+        $testContentType = $this->createContentTypeForTestExternalLinkStoringAfterUpdate();
+
+        $testContentCreateStruct = $contentService->newContentCreateStruct(
+            $testContentType,
+            'eng-GB'
+        );
+        $testContentCreateStruct->setField('description', $xmlDocument, 'eng-GB');
+        $content = $contentService->createContent(
+            $testContentCreateStruct,
+            [$locationService->newLocationCreateStruct(2)]
+        );
+        $content = $contentService->publishVersion(
+            $content->versionInfo
+        );
+        $urlIds = $this->getUrlIdsForContentObjectAttributeIdAndVersionNo(
+            $content->getField('description')->id,
+            $content->contentInfo->currentVersionNo
+        );
+
+        $xmlDocument = $this->createXmlDocumentWithExternalLink(['https://support.ez.no/']);
+        $contentUpdateStruct = $contentService->newContentUpdateStruct();
+        $contentUpdateStruct->setField('description', $xmlDocument, 'eng-GB');
+        $contentDraft = $contentService->updateContent(
+            $contentService->createContentDraft($content->contentInfo)->versionInfo,
+            $contentUpdateStruct
+        );
+        $content = $contentService->publishVersion($contentDraft->versionInfo);
+        $urlIdsAfterUpdate = $this->getUrlIdsForContentObjectAttributeIdAndVersionNo(
+            $content->getField('description')->id,
+            $content->contentInfo->currentVersionNo
+        );
+
+        $this->assertNotContains(reset($urlIds), $urlIdsAfterUpdate);
+    }
+
+    /**
+     * @return \eZ\Publish\API\Repository\Values\ContentType\ContentType
+     *
+     * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
+     * @throws \eZ\Publish\API\Repository\Exceptions\ForbiddenException
+     * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException
+     */
+    private function createContentTypeForTestExternalLinkStoringAfterUpdate(): ContentType
+    {
+        $repository = $this->getRepository();
+        $contentTypeService = $repository->getContentTypeService();
+        $contentTypeCreateStruct = $contentTypeService->newContentTypeCreateStruct('test-RichText');
+        $contentTypeCreateStruct->mainLanguageCode = 'eng-GB';
+        $contentTypeCreateStruct->names = ['eng-GB' => 'Test'];
+
+        $fieldDefinitionCreateStruct = $contentTypeService->newFieldDefinitionCreateStruct(
+            'description',
+            'ezrichtext'
+        );
+        $fieldDefinitionCreateStruct->names = ['eng-GB' => 'Title'];
+        $fieldDefinitionCreateStruct->fieldGroup = 'main';
+        $fieldDefinitionCreateStruct->position = 1;
+        $fieldDefinitionCreateStruct->isTranslatable = true;
+        $contentTypeCreateStruct->addFieldDefinition($fieldDefinitionCreateStruct);
+
+        $contentGroup = $contentTypeService->loadContentTypeGroupByIdentifier('Content');
+        $contentTypeDraft = $contentTypeService->createContentType(
+            $contentTypeCreateStruct,
+            [$contentGroup]
+        );
+
+        $contentTypeService->publishContentTypeDraft($contentTypeDraft);
+
+        return $contentTypeService->loadContentType($contentTypeDraft->id);
+    }
+
+    /**
+     * @return int[]
+     *
+     * @throws \ErrorException
+     */
+    private function getUrlIdsForContentObjectAttributeIdAndVersionNo(
+        int $contentObjectAttributeId,
+        int $versionNo
+    ): array {
+        $connection = $this->getRawDatabaseConnection();
+        $query = $connection->createQueryBuilder();
+        $query
+            ->select(
+                $connection->quoteIdentifier('url_id')
+            )
+            ->from('ezurl_object_link')
+            ->where('contentobject_attribute_id = :contentobject_attribute_id')
+            ->andWhere('contentobject_attribute_version = :contentobject_attribute_version')
+            ->setParameter(':contentobject_attribute_version', $versionNo, ParameterType::INTEGER)
+            ->setParameter(
+                ':contentobject_attribute_id',
+                $contentObjectAttributeId,
+                ParameterType::INTEGER
+            );
+
+        $statement = $query->execute();
+
+        return array_map(
+            'intval',
+            array_column($statement->fetchAll(FetchMode::ASSOCIATIVE), 'url_id')
         );
     }
 
@@ -725,10 +853,7 @@ EOT;
      *
      * @return array [$deletedLocation, $brokenContent]
      *
-     * @throws \eZ\Publish\API\Repository\Exceptions\BadStateException
-     * @throws \eZ\Publish\API\Repository\Exceptions\ContentFieldValidationException
-     * @throws \eZ\Publish\API\Repository\Exceptions\ContentValidationException
-     * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException
+     * @throws \eZ\Publish\API\Repository\Exceptions\ForbiddenException
      * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
      */
     private function prepareInternalLinkValidatorBrokenLinksTestCase(Repository $repository)
@@ -849,6 +974,45 @@ EOT;
     }
 
     /**
+     * @param array $urls
+     *
+     * @return \DOMDocument
+     */
+    private function createXmlDocumentWithExternalLink(array $urls): DOMDocument
+    {
+        $document = new DOMDocument();
+        $document->preserveWhiteSpace = false;
+        $document->formatOutput = false;
+        $links = '';
+        foreach ($urls as $url) {
+            $links .= sprintf(
+                '<link xlink:href="%s" xlink:show="none" xlink:title="">%1$s</link>',
+                $url
+            );
+        }
+        $document->loadXML(
+            (<<<XML
+<?xml version="1.0" encoding="UTF-8"?>
+    <section 
+    xmlns="http://docbook.org/ns/docbook" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" 
+    xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml" 
+    xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom" 
+    version="5.0-variant ezpublish-1.0">
+        <para>
+            $links
+        </para>
+    </section>
+
+XML
+            ),
+            LIBXML_NOENT
+        );
+
+        return $document;
+    }
+
+    /**
      * Get XML Document in DocBook format, containing link to the given Location.
      *
      * @param \eZ\Publish\API\Repository\Values\Content\Location $location
@@ -858,7 +1022,8 @@ EOT;
     private function getDocumentWithLocationLink(Location $location)
     {
         $document = new DOMDocument();
-        $document->loadXML(<<<XML
+        $document->loadXML(
+            <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml" xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom" version="5.0-variant ezpublish-1.0">
     <para><link xlink:href="ezlocation://{$location->id}" xlink:show="none">link1</link></para>

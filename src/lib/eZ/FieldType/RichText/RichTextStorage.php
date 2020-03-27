@@ -113,6 +113,14 @@ class RichTextStorage extends GatewayBasedStorage
             $link->setAttribute('xlink:href', $href);
         }
 
+        $this->gateway->unlinkUrl(
+            $field->id,
+            $versionInfo->versionNo,
+            array_values(
+                $urlIdMap
+            )
+        );
+
         $field->value->data = $document->saveXML();
 
         return true;
