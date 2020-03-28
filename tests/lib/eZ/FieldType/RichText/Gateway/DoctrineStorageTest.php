@@ -51,7 +51,7 @@ class DoctrineStorageTest extends TestCase
     protected function getStorageGateway()
     {
         if (!isset($this->storageGateway)) {
-            $connection = $this->getDatabaseHandler()->getConnection();
+            $connection = $this->getDatabaseConnection();
             $urlGateway = new UrlStorageDoctrineGateway($connection);
             $this->storageGateway = new DoctrineStorage($urlGateway, $connection);
         }

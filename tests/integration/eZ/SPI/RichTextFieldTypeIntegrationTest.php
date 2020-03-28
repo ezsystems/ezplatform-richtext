@@ -76,7 +76,7 @@ class RichTextFieldTypeIntegrationTest extends BaseIntegrationTest
         $fieldType = new Type($inputHandler);
         $fieldType->setTransformationProcessor($this->getTransformationProcessor());
 
-        $urlGateway = new UrlGateway($this->getDatabaseHandler()->getConnection());
+        $urlGateway = new UrlGateway($this->getDatabaseConnection());
 
         return $this->getHandler(
             'ezrichtext',
@@ -85,7 +85,7 @@ class RichTextFieldTypeIntegrationTest extends BaseIntegrationTest
             new RichTextStorage(
                 new DoctrineStorage(
                     $urlGateway,
-                    $this->getDatabaseHandler()->getConnection()
+                    $this->getDatabaseConnection()
                 )
             )
         );
