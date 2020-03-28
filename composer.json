@@ -4,6 +4,12 @@
     "homepage": "https://ezplatform.com",
     "license": "GPL-2.0-only",
     "type": "ezplatform-bundle",
+    "repositories": {
+        "kernel": {
+            "type": "vcs",
+            "url": "https://github.com/ezsystems/ezplatform-kernel.git"
+        }
+    },
     "require": {
         "php": "^7.3",
         "ext-xsl": "*",
@@ -22,7 +28,7 @@
         "symfony/translation": "^5.0",
         "symfony/translation-contracts": "^2.0",
         "twig/twig": "^3.0",
-        "ezsystems/ezplatform-kernel": "^1.0@dev",
+        "ezsystems/ezplatform-kernel": "dev-use-persistence-connection-svc-in-tests as 1.0.x-dev",
         "ezsystems/ezplatform-content-forms": "^1.0@dev",
         "ezsystems/ezplatform-rest": "^1.0@dev"
     },
