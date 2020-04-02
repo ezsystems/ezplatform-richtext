@@ -12,10 +12,11 @@ use eZ\Publish\SPI\FieldType\GatewayBasedStorage;
 use eZ\Publish\SPI\FieldType\StorageGateway;
 use eZ\Publish\SPI\Persistence\Content\VersionInfo;
 use eZ\Publish\SPI\Persistence\Content\Field;
-use eZ\Publish\Core\Base\Exceptions\NotFoundException;
+use EzSystems\EzPlatformRichText\LinkManager\LinkManagerService;
+use EzSystems\EzPlatformRichText\LinkManager\Transformer\RichTextLinkTransformer;
+use EzSystems\EzPlatformRichText\LinkManager\Extractor\RichTextLinkExtractor;
 use Psr\Log\LoggerInterface;
 use DOMDocument;
-use DOMXPath;
 
 class RichTextStorage extends GatewayBasedStorage
 {
@@ -29,14 +30,31 @@ class RichTextStorage extends GatewayBasedStorage
      */
     protected $gateway;
 
+    /** @var \EzSystems\EzPlatformRichText\LinkManager\Extractor\RichTextLinkExtractor */
+    private $linkExtractor;
+
+    /** @var \EzSystems\EzPlatformRichText\LinkManager\LinkManagerService */
+    private $linkManager;
+
+    /** @var \EzSystems\EzPlatformRichText\LinkManager\Transformer\RichTextLinkTransformer */
+    private $linkTransformer;
+
     /**
      * @param \eZ\Publish\SPI\FieldType\StorageGateway $gateway
      * @param \Psr\Log\LoggerInterface $logger
      */
-    public function __construct(StorageGateway $gateway, LoggerInterface $logger = null)
-    {
+    public function __construct(
+        StorageGateway $gateway,
+        RichTextLinkExtractor $linkExtractor,
+        LinkManagerService $linkManager,
+        RichTextLinkTransformer $replaceLink,
+        LoggerInterface $logger = null
+    ) {
         parent::__construct($gateway);
         $this->logger = $logger;
+        $this->linkExtractor = $linkExtractor;
+        $this->linkManager = $linkManager;
+        $this->linkTransformer = $replaceLink;
     }
 
     /**
@@ -46,82 +64,34 @@ class RichTextStorage extends GatewayBasedStorage
     {
         $document = new DOMDocument();
         $document->loadXML($field->value->data);
-
-        $xpath = new DOMXPath($document);
-        $xpath->registerNamespace('docbook', 'http://docbook.org/ns/docbook');
-        // This will select only links with non-empty 'xlink:href' attribute value
-        $xpathExpression = "//docbook:link[string( @xlink:href ) and not( starts-with( @xlink:href, 'ezurl://' )" .
-            "or starts-with( @xlink:href, 'ezcontent://' )" .
-            "or starts-with( @xlink:href, 'ezlocation://' )" .
-            "or starts-with( @xlink:href, '#' ) )]";
-
-        $links = $xpath->query($xpathExpression);
+        $links = $this->linkExtractor->getLinksInDocument($document);
 
         if (empty($links)) {
             return false;
         }
 
-        $urlSet = [];
-        $remoteIdSet = [];
-        $linksInfo = [];
-
-        /** @var \DOMElement $link */
-        foreach ($links as $index => $link) {
-            preg_match(
-                '~^(ezremote://)?([^#]*)?(#.*|\\s*)?$~',
-                $link->getAttribute('xlink:href'),
-                $matches
-            );
-            $linksInfo[$index] = $matches;
-
-            if (empty($matches[1])) {
-                $urlSet[$matches[2]] = true;
-            } else {
-                $remoteIdSet[$matches[2]] = true;
-            }
+        $linkInfoList = [];
+        foreach ($links->getLinkDomElements() as $linkDOMElement) {
+            $linkInfoList[] = $linkDOMElement->getLinkInfo();
         }
 
-        $urlIdMap = $this->gateway->getUrlIdMap(array_keys($urlSet));
-        $contentIds = $this->gateway->getContentIds(array_keys($remoteIdSet));
-        $urlLinkSet = [];
-
-        foreach ($links as $index => $link) {
-            list(, $scheme, $url, $fragment) = $linksInfo[$index];
-
-            if (empty($scheme)) {
-                // Insert the same URL only once
-                if (!isset($urlIdMap[$url])) {
-                    $urlIdMap[$url] = $this->gateway->insertUrl($url);
-                }
-                // Link the same URL only once
-                if (!isset($urlLinkSet[$url])) {
-                    $this->gateway->linkUrl(
-                        $urlIdMap[$url],
-                        $field->id,
-                        $versionInfo->versionNo
-                    );
-                    $urlLinkSet[$url] = true;
-                }
-                $href = "ezurl://{$urlIdMap[$url]}{$fragment}";
-            } else {
-                if (!isset($contentIds[$url])) {
-                    throw new NotFoundException('Content', $url);
-                }
-                $href = "ezcontent://{$contentIds[$url]}{$fragment}";
-            }
-
-            $link->setAttribute('xlink:href', $href);
-        }
-
-        $this->gateway->unlinkUrl(
-            $field->id,
-            $versionInfo->versionNo,
-            array_values(
-                $urlIdMap
-            )
+        $this->linkManager->addLinks(
+            $versionInfo,
+            $field,
+            $linkInfoList
         );
 
-        $field->value->data = $document->saveXML();
+        $documentWithReplacedLinks = $this->linkTransformer->atSave($links);
+
+//        $this->gateway->unlinkUrl(
+//            $field->id,
+//            $versionInfo->versionNo,
+//            array_values(
+//                $urlIdMap
+//            )
+//        );
+
+        $field->value->data = $documentWithReplacedLinks->saveXML();
 
         return true;
     }
@@ -137,53 +107,10 @@ class RichTextStorage extends GatewayBasedStorage
     {
         $document = new DOMDocument();
         $document->loadXML($field->value->data);
+        $links = $this->linkExtractor->getLinkInfoForRead($document);
+        $documentWithReplacedLinks = $this->linkTransformer->atRead($links);
 
-        $xpath = new DOMXPath($document);
-        $xpath->registerNamespace('docbook', 'http://docbook.org/ns/docbook');
-        $xpathExpression = "//docbook:link[starts-with( @xlink:href, 'ezurl://' )]|//docbook:ezlink[starts-with( @xlink:href, 'ezurl://' )]";
-
-        $links = $xpath->query($xpathExpression);
-
-        if (empty($links)) {
-            return;
-        }
-
-        $urlIdSet = [];
-        $urlInfo = [];
-
-        /** @var \DOMElement $link */
-        foreach ($links as $index => $link) {
-            preg_match(
-                '~^ezurl://([^#]*)?(#.*|\\s*)?$~',
-                $link->getAttribute('xlink:href'),
-                $matches
-            );
-            $urlInfo[$index] = $matches;
-
-            if (!empty($matches[1])) {
-                $urlIdSet[$matches[1]] = true;
-            }
-        }
-
-        $idUrlMap = $this->gateway->getIdUrlMap(array_keys($urlIdSet));
-
-        foreach ($links as $index => $link) {
-            list(, $urlId, $fragment) = $urlInfo[$index];
-
-            if (isset($idUrlMap[$urlId])) {
-                $href = $idUrlMap[$urlId] . $fragment;
-            } else {
-                // URL id is empty or not in the DB
-                if (isset($this->logger)) {
-                    $this->logger->error("URL with ID {$urlId} not found");
-                }
-                $href = '#';
-            }
-
-            $link->setAttribute('xlink:href', $href);
-        }
-
-        $field->value->data = $document->saveXML();
+        $field->value->data = $documentWithReplacedLinks->saveXML();
     }
 
     public function deleteFieldData(VersionInfo $versionInfo, array $fieldIds, array $context)

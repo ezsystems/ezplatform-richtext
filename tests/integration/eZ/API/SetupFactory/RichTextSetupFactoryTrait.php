@@ -38,6 +38,7 @@ trait RichTextSetupFactoryTrait
         $loader->load('indexable_fieldtypes.yaml');
         $loader->load('storage_engines/legacy/external_storage_gateways.yaml');
         $loader->load('storage_engines/legacy/field_value_converters.yaml');
+        $loader->load('services.yaml');
 
         // load test settings
         $loader = new YamlFileLoader(

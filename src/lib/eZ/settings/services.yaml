@@ -1,0 +1,11 @@
+services:
+    _defaults:
+      autoconfigure: true
+      autowire: true
+      public: false
+
+    EzSystems\EzPlatformRichText\LinkManager\Extractor\RichTextLinkExtractor: ~
+    EzSystems\EzPlatformRichText\LinkManager\Transformer\RichTextLinkTransformer:
+        $gateway: '@EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage\Gateway\DoctrineStorage'
+    EzSystems\EzPlatformRichText\LinkManager\LinkManagerService:
+        $gateway: '@EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage\Gateway\DoctrineStorage'

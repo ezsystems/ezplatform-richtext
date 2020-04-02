@@ -53,6 +53,7 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
         $ezLoader->load('indexable_fieldtypes.yaml');
         $ezLoader->load('storage_engines/legacy/external_storage_gateways.yaml');
         $ezLoader->load('storage_engines/legacy/field_value_converters.yaml');
+        $ezLoader->load('services.yaml');
 
         $container
             ->registerForAutoconfiguration(Provider::class)
