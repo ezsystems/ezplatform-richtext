@@ -60,7 +60,7 @@
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template match="ezxhtml5:p">
+  <xsl:template match="ezxhtml5:p" name="paragraph">
     <para>
       <xsl:if test="@id">
         <xsl:attribute name="xml:id">
@@ -366,9 +366,7 @@
           <xsl:apply-templates/>
         </xsl:when>
         <xsl:otherwise>
-          <para>
-            <xsl:apply-templates/>
-          </para>
+          <xsl:call-template name="paragraph"/>
         </xsl:otherwise>
       </xsl:choose>
     </listitem>

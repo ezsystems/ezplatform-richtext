@@ -3,5 +3,6 @@
     <ol>
         <li>Some list item.</li>
         <li><p>Some list item with a paragraph.</p></li>
+        <li>Some list item<br/>with a line break.</li>
     </ol>
 </section>
