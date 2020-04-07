@@ -124,7 +124,6 @@ const embedBaseDefinition = {
                 identifier: `embed-load-content-info-${contentId}`,
                 public: false,
                 ContentQuery: {
-                    Criteria: {},
                     FacetBuilders: {},
                     SortClauses: {},
                     Filter: { ContentIdCriterion: `${contentId}` },
