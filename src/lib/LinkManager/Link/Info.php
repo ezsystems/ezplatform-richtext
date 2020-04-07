@@ -19,19 +19,29 @@ final class Info
     /** @var bool */
     private $isRemote;
 
+    /** @var string */
+    private $id;
+
     public function __construct(
         string $url,
-        string $fragment,
-        bool $isRemote
+        ?string $id = null,
+        string $fragment = '',
+        bool $isRemote = true
     ) {
         $this->url = $url;
         $this->fragment = $fragment;
         $this->isRemote = $isRemote;
+        $this->id = $id;
     }
 
     public function getUrl(): string
     {
         return $this->url;
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
     }
 
     public function getFragment(): string

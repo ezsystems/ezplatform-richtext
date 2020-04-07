@@ -66,17 +66,17 @@ class RichTextLinkTransformer
     public function atRead(DocumentLinkCollection $links): \DOMDocument
     {
         $idUrlMap = $this->gateway->getIdUrlMap(
-            array_map(function (Info $internalLink) {
-                return $internalLink->getUrl();
+            array_map(function (LinkDOMElement $internalLink) {
+                return $internalLink->getLinkInfo()->getId();
             }, array_filter($links->getLinkDomElements(), function (LinkDOMElement $DOMElementLink) {
-                return $DOMElementLink->getLinkInfo()->isRemote();
+                return !$DOMElementLink->getLinkInfo()->isRemote();
             }))
         );
 
         $document = $links->getDocument();
         foreach ($links->getLinkDomElements() as $link) {
             $linkInfo = $link->getLinkInfo();
-            $urlId = $linkInfo->getUrl();
+            $urlId = $linkInfo->getId();
             $fragment = $linkInfo->getFragment();
 
             if (isset($idUrlMap[$urlId])) {

@@ -68,6 +68,7 @@ class RichTextLinkExtractor
                 $link,
                 new Info(
                     $matches[2],
+                    '',
                     $matches[3],
                     empty($matches[1])
                 )
@@ -90,12 +91,13 @@ class RichTextLinkExtractor
                 $matches
             );
 
-            // No scheme part means is nonremote url
+            // No id part means is nonremote url
             $linkInfoList[] = new LinkDOMElement(
                 $link,
                 new Info(
-                    $matches[1],
                     '',
+                    $matches[1],
+                    $matches[2],
                     empty($matches[1])
                 )
             );

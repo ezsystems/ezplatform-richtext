@@ -66,7 +66,7 @@ class RichTextStorage extends GatewayBasedStorage
         $document->loadXML($field->value->data);
         $links = $this->linkExtractor->getLinksInDocument($document);
 
-        if (empty($links)) {
+        if (empty($links->getLinkDomElements())) {
             return false;
         }
 
@@ -83,6 +83,7 @@ class RichTextStorage extends GatewayBasedStorage
 
         $documentWithReplacedLinks = $this->linkTransformer->atSave($links);
 
+        /* @todo move to service */
 //        $this->gateway->unlinkUrl(
 //            $field->id,
 //            $versionInfo->versionNo,
