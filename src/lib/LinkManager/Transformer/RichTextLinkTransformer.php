@@ -12,7 +12,8 @@ use eZ\Publish\Core\Base\Exceptions\NotFoundException;
 use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage\Gateway;
 use EzSystems\EzPlatformRichText\LinkManager\Link\DOM\DocumentLinkCollection;
 use EzSystems\EzPlatformRichText\LinkManager\Link\DOM\LinkDOMElement;
-use EzSystems\EzPlatformRichText\LinkManager\Link\Info;
+use EzSystems\EzPlatformRichText\LinkManager\Link\External;
+use EzSystems\EzPlatformRichText\LinkManager\Link\Internal;
 
 class RichTextLinkTransformer
 {
@@ -29,35 +30,31 @@ class RichTextLinkTransformer
         $urlIdMap = $this->gateway->getUrlIdMap(
             array_map(function (LinkDOMElement $DOMElementLink) {
                 return $DOMElementLink->getLinkInfo()->getUrl();
-            }, array_filter($links->getLinkDomElements(), function (LinkDOMElement $DOMElementLink) {
-                return $DOMElementLink->getLinkInfo()->isRemote();
-            }))
+            }, $links->getExternalLinks())
         );
 
         $contentIds = $this->gateway->getContentIds(
             array_map(function (LinkDOMElement $DOMElementLink) {
-                return $DOMElementLink->getLinkInfo()->getUrl();
-            }, array_filter($links->getLinkDomElements(), function (LinkDOMElement $DOMElementLink) {
-                return !$DOMElementLink->getLinkInfo()->isRemote();
-            }))
+                return $DOMElementLink->getLinkInfo()->getId();
+            }, $links->getInternalLinks())
         );
 
-        foreach ($links->getLinkDomElements() as $link) {
-            $linkInfo = $link->getLinkInfo();
-            $url = $linkInfo->getUrl();
-            $fragment = $linkInfo->getFragment();
-
-            if (!$linkInfo->isRemote()) {
-                if (!isset($contentIds[$url])) {
-                    throw new NotFoundException('Content', $url);
+        /** @var \EzSystems\EzPlatformRichText\LinkManager\Link\DOM\LinkDOMElement $linkDomElement */
+        foreach ($links as $linkDomElement) {
+            $link = $linkDomElement->getLinkInfo();
+            $href = '#';
+            if ($link instanceof Internal) {
+                $id = $link->getId();
+                if (!isset($contentIds[$id->getId()])) {
+                    throw new NotFoundException('Content', $id);
                 }
-                $href = "ezcontent://{$contentIds[$url]}{$fragment}";
-            } else {
-
-                $href = "ezurl://{$urlIdMap[$url]}{$fragment}";
+                $href = "ezcontent://{$contentIds[$id]}{$link->getFragment()}";
+            } elseif ($link instanceof External) {
+                $url = $link->getUrl();
+                $href = "ezurl://{$urlIdMap[$url]}{$link->getFragment()}";
             }
 
-            $link->getLinkDomElement()->setAttribute('xlink:href', $href);
+            $linkDomElement->getDomElement()->setAttribute('xlink:href', $href);
         }
 
         return $links->getDocument();
@@ -68,9 +65,7 @@ class RichTextLinkTransformer
         $idUrlMap = $this->gateway->getIdUrlMap(
             array_map(function (LinkDOMElement $internalLink) {
                 return $internalLink->getLinkInfo()->getId();
-            }, array_filter($links->getLinkDomElements(), function (LinkDOMElement $DOMElementLink) {
-                return !$DOMElementLink->getLinkInfo()->isRemote();
-            }))
+            }, $links->getInternalLinks())
         );
 
         $document = $links->getDocument();
@@ -85,7 +80,7 @@ class RichTextLinkTransformer
                 $href = '#';
             }
 
-            $link->getLinkDomElement()->setAttribute('xlink:href', $href);
+            $link->getDomElement()->setAttribute('xlink:href', $href);
         }
 
         return $document;

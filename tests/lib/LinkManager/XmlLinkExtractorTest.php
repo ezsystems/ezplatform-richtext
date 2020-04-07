@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\Tests\EzPlatformRichText\Util;
+namespace EzSystems\Tests\EzPlatformRichText\LinkManager;
 
 use EzSystems\EzPlatformRichText\LinkManager\Link\Info;
 use EzSystems\EzPlatformRichText\LinkManager\Extractor\RichTextLinkExtractor;

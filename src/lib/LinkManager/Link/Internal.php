@@ -8,35 +8,20 @@ declare(strict_types=1);
 
 namespace EzSystems\EzPlatformRichText\LinkManager\Link;
 
-final class Info
+class Internal implements Link
 {
     /** @var string */
-    private $url;
+    private $id;
 
     /** @var string */
     private $fragment;
 
-    /** @var bool */
-    private $isRemote;
-
-    /** @var string */
-    private $id;
-
     public function __construct(
-        string $url,
-        ?string $id = null,
-        string $fragment = '',
-        bool $isRemote = true
+        string $id,
+        string $fragment
     ) {
-        $this->url = $url;
-        $this->fragment = $fragment;
-        $this->isRemote = $isRemote;
         $this->id = $id;
-    }
-
-    public function getUrl(): string
-    {
-        return $this->url;
+        $this->fragment = $fragment;
     }
 
     public function getId(): string
@@ -47,10 +32,5 @@ final class Info
     public function getFragment(): string
     {
         return $this->fragment;
-    }
-
-    public function isRemote(): bool
-    {
-        return $this->isRemote;
     }
 }

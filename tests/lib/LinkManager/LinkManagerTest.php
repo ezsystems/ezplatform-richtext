@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\Tests\EzPlatformRichText\Util;
+namespace EzSystems\Tests\EzPlatformRichText\LinkManager;
 
 use eZ\Publish\SPI\Persistence\Content\Field;
 use eZ\Publish\SPI\Persistence\Content\VersionInfo;

@@ -8,7 +8,12 @@ declare(strict_types=1);
 
 namespace EzSystems\EzPlatformRichText\LinkManager\Link\DOM;
 
-final class DocumentLinkCollection
+use ArrayIterator;
+use EzSystems\EzPlatformRichText\LinkManager\Link\External;
+use EzSystems\EzPlatformRichText\LinkManager\Link\Internal;
+use Iterator;
+
+final class DocumentLinkCollection implements \IteratorAggregate, \Countable
 {
     /** @var \DOMDocument */
     private $document;
@@ -33,5 +38,29 @@ final class DocumentLinkCollection
     public function getLinkDomElements(): array
     {
         return $this->linkDomElements;
+    }
+
+    public function getIterator(): Iterator
+    {
+        return new ArrayIterator($this->linkDomElements);
+    }
+
+    public function getExternalLinks()
+    {
+        return array_filter($this->linkDomElements, function (LinkDOMElement $DOMElementLink) {
+            return $DOMElementLink->getLinkInfo() instanceof External;
+        });
+    }
+
+    public function getInternalLinks()
+    {
+        return array_filter($this->linkDomElements, function (LinkDOMElement $DOMElementLink) {
+            return $DOMElementLink->getLinkInfo() instanceof Internal;
+        });
+    }
+
+    public function count(): int
+    {
+        return \count($this->linkDomElements);
     }
 }

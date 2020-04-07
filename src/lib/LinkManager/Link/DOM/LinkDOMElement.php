@@ -10,27 +10,28 @@ namespace EzSystems\EzPlatformRichText\LinkManager\Link\DOM;
 
 use DOMElement;
 use EzSystems\EzPlatformRichText\LinkManager\Link\Info;
+use EzSystems\EzPlatformRichText\LinkManager\Link\Link;
 
 final class LinkDOMElement
 {
     /** @var \DOMElement */
-    private $linkDomElement;
+    private $DOMElement;
 
-    /** @var \EzSystems\EzPlatformRichText\LinkManager\Link\Info */
+    /** @var \EzSystems\EzPlatformRichText\LinkManager\Link\Link */
     private $linkInfo;
 
-    public function __construct(DOMElement $linkDomElement, Info $linkInfo)
+    public function __construct(DOMElement $DOMElement, Link $linkInfo)
     {
-        $this->linkDomElement = $linkDomElement;
+        $this->DOMElement = $DOMElement;
         $this->linkInfo = $linkInfo;
     }
 
-    public function getLinkDomElement(): DOMElement
+    public function getDomElement(): DOMElement
     {
-        return $this->linkDomElement;
+        return $this->DOMElement;
     }
 
-    public function getLinkInfo(): Info
+    public function getLinkInfo(): Link
     {
         return $this->linkInfo;
     }

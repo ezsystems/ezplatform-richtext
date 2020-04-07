@@ -12,6 +12,7 @@ use eZ\Publish\SPI\FieldType\GatewayBasedStorage;
 use eZ\Publish\SPI\FieldType\StorageGateway;
 use eZ\Publish\SPI\Persistence\Content\VersionInfo;
 use eZ\Publish\SPI\Persistence\Content\Field;
+use EzSystems\EzPlatformRichText\LinkManager\Link\DOM\LinkDOMElement;
 use EzSystems\EzPlatformRichText\LinkManager\LinkManagerService;
 use EzSystems\EzPlatformRichText\LinkManager\Transformer\RichTextLinkTransformer;
 use EzSystems\EzPlatformRichText\LinkManager\Extractor\RichTextLinkExtractor;
@@ -66,31 +67,27 @@ class RichTextStorage extends GatewayBasedStorage
         $document->loadXML($field->value->data);
         $links = $this->linkExtractor->getLinksInDocument($document);
 
-        if (empty($links->getLinkDomElements())) {
+        if (\count($links) === 0) {
             return false;
         }
 
-        $linkInfoList = [];
-        foreach ($links->getLinkDomElements() as $linkDOMElement) {
-            $linkInfoList[] = $linkDOMElement->getLinkInfo();
-        }
+        $linksToAdd = array_map(function (LinkDOMElement $linkDOMElement) {
+            return $linkDOMElement->getLinkInfo();
+        }, $links->getExternalLinks());
 
         $this->linkManager->addLinks(
             $versionInfo,
             $field,
-            $linkInfoList
+            $linksToAdd
         );
 
         $documentWithReplacedLinks = $this->linkTransformer->atSave($links);
 
-        /* @todo move to service */
-//        $this->gateway->unlinkUrl(
-//            $field->id,
-//            $versionInfo->versionNo,
-//            array_values(
-//                $urlIdMap
-//            )
-//        );
+        $this->linkManager->removeAllButLinks(
+            $versionInfo,
+            $field,
+            $linksToAdd
+        );
 
         $field->value->data = $documentWithReplacedLinks->saveXML();
 

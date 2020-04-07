@@ -12,8 +12,10 @@ use DOMDocument;
 use DOMNodeList;
 use DOMXPath;
 use EzSystems\EzPlatformRichText\LinkManager\Link\DOM\DocumentLinkCollection;
+use EzSystems\EzPlatformRichText\LinkManager\Link\External;
 use EzSystems\EzPlatformRichText\LinkManager\Link\Info;
 use EzSystems\EzPlatformRichText\LinkManager\Link\DOM\LinkDOMElement;
+use EzSystems\EzPlatformRichText\LinkManager\Link\Internal;
 
 class RichTextLinkExtractor
 {
@@ -63,16 +65,23 @@ class RichTextLinkExtractor
                 $matches
             );
 
-            // No scheme part means is nonremote url
-            $linkInfoList[] = new LinkDOMElement(
-                $link,
-                new Info(
-                    $matches[2],
-                    '',
-                    $matches[3],
-                    empty($matches[1])
-                )
-            );
+            if (empty($matches[1])) {
+                $linkInfoList[] = new LinkDOMElement(
+                    $link,
+                    new External(
+                        $matches[2],
+                        $matches[3]
+                    )
+                );
+            } else {
+                $linkInfoList[] = new LinkDOMElement(
+                    $link,
+                    new Internal(
+                        $matches[2],
+                        $matches[3]
+                    )
+                );
+            }
         }
 
         return new DocumentLinkCollection($document, $linkInfoList);
@@ -91,14 +100,11 @@ class RichTextLinkExtractor
                 $matches
             );
 
-            // No id part means is nonremote url
             $linkInfoList[] = new LinkDOMElement(
                 $link,
-                new Info(
-                    '',
+                new Internal(
                     $matches[1],
-                    $matches[2],
-                    empty($matches[1])
+                    $matches[2]
                 )
             );
         }

@@ -11,7 +11,8 @@ namespace EzSystems\EzPlatformRichText\LinkManager;
 use eZ\Publish\SPI\Persistence\Content\Field;
 use eZ\Publish\SPI\Persistence\Content\VersionInfo;
 use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\RichTextStorage\Gateway;
-use EzSystems\EzPlatformRichText\LinkManager\Link\Info;
+use EzSystems\EzPlatformRichText\LinkManager\Link\External;
+use EzSystems\EzPlatformRichText\LinkManager\Link\Link;
 
 class LinkManagerService
 {
@@ -24,24 +25,23 @@ class LinkManagerService
     }
 
     /**
-     * @param \EzSystems\EzPlatformRichText\LinkManager\Link\Info[] $links
+     * @param \EzSystems\EzPlatformRichText\LinkManager\Link\Link[] $links
      */
-    public function addLinks(VersionInfo $versionInfo, Field $field, array $links)
+    public function addLinks(VersionInfo $versionInfo, Field $field, array $links): void
     {
+        $remoteLinks = array_filter($links, function (Link $linkInfo) {
+            return $linkInfo instanceof External;
+        });
+
         $urlIdMap = $this->gateway->getUrlIdMap(
-            array_map(function (Info $linkInfo) {
+            array_map(function (External $linkInfo) {
                 return $linkInfo->getUrl();
-            }, array_filter($links, function (Info $linkInfo) {
-                return $linkInfo->isRemote();
-            }))
+            }, $remoteLinks)
         );
 
         $wasUrlLinkedToContent = [];
 
-        foreach ($links as $linkInfo) {
-            if (!$linkInfo->isRemote()) {
-                continue;
-            }
+        foreach ($remoteLinks as $linkInfo) {
             $url = $linkInfo->getUrl();
 
             // Insert the same URL only once
@@ -58,5 +58,29 @@ class LinkManagerService
                 $wasUrlLinkedToContent[$url] = true;
             }
         }
+    }
+
+    /**
+     * @param \EzSystems\EzPlatformRichText\LinkManager\Link\Link[] $linksToPreserve
+     */
+    public function removeAllButLinks(VersionInfo $versionInfo, Field $field, array $linksToPreserve): void
+    {
+        $remoteLinks = array_filter($linksToPreserve, function (Link $linkInfo) {
+            return $linkInfo instanceof External;
+        });
+
+        $urlIdMap = $this->gateway->getUrlIdMap(
+            array_map(function (External $linkInfo) {
+                return $linkInfo->getUrl();
+            }, $remoteLinks)
+        );
+
+        $this->gateway->unlinkUrl(
+            $field->id,
+            $versionInfo->versionNo,
+            array_values(
+                $urlIdMap
+            )
+        );
     }
 }
