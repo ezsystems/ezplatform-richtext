@@ -80,9 +80,9 @@ final class RelationProcessor
                 }
 
                 if ($scheme === 'ezcontent') {
-                    $contentIds[] = $id;
+                    $contentIds[] = (int)$id;
                 } elseif ($scheme === 'ezlocation') {
-                    $locationIds[] = $id;
+                    $locationIds[] = (int)$id;
                 }
             }
         }
