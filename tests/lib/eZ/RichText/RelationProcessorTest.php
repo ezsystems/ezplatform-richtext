@@ -31,7 +31,7 @@ class RelationProcessorTest extends TestCase
     {
         $actualProcessor = (new RelationProcessor())->getRelations($document);
 
-        $this->assertEquals($expectedRelations, $actualProcessor);
+        $this->assertSame($expectedRelations, $actualProcessor);
     }
 
     public function dateProviderForGetRelations(): array
