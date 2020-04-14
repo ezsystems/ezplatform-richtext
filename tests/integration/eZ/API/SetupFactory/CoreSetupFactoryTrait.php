@@ -47,6 +47,7 @@ trait CoreSetupFactoryTrait
         $loader->load('repository/inner.yml');
         $loader->load('repository/event.yml');
         $loader->load('repository/siteaccessaware.yml');
+        $loader->load('repository/autowire.yml');
         $loader->load('roles.yml');
         $loader->load('storage_engines/common.yml');
         $loader->load('storage_engines/cache.yml');
