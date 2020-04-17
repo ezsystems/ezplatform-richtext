@@ -54,7 +54,7 @@ eZ.ezAlloyEditor = eZ.ezAlloyEditor || {};
 eZ.ezAlloyEditor.ezBtnEmbedUpdate = EzBtnEmbedUpdate;
 
 EzBtnEmbedUpdate.defaultProps = {
-    udwTitle: Translator.trans(/*@Desc("Select content to embed")*/ 'embed_update_btn.udw.title', {}, 'alloy_editor'),
+    udwTitle: Translator.trans(/*@Desc("Select a Content item to embed")*/ 'embed_update_btn.udw.title', {}, 'alloy_editor'),
     udwContentDiscoveredMethod: 'updateEmbed',
     udwConfigName: 'richtext_embed',
     label: Translator.trans(/*@Desc("Select another Content item")*/ 'embed_update_btn.label', {}, 'alloy_editor'),
