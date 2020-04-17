@@ -315,7 +315,25 @@
         </xsl:if>
       </xsl:if>
       <xsl:call-template name="ezattribute"/>
-      <xsl:apply-templates/>
+      <xsl:choose>
+        <xsl:when test="descendant::ezxhtml5:br">
+          <literallayout class="normal">
+            <xsl:for-each select="node()">
+              <xsl:choose>
+                <xsl:when test="local-name( current() ) = 'br'">
+                  <xsl:text>&#xA;</xsl:text>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:apply-templates select="current()"/>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:for-each>
+          </literallayout>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates/>
+        </xsl:otherwise>
+      </xsl:choose>
     </title>
   </xsl:template>
 

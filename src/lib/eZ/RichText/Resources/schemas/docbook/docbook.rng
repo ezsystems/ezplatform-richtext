@@ -1120,7 +1120,10 @@
         <a:documentation>The text of the title of a section of a document or of a formal block-level element</a:documentation>
         <ref name="db.title.attlist"/>
         <zeroOrMore>
-          <ref name="db.all.inlines"/>
+          <choice>
+            <ref name="db.all.inlines"/>
+            <ref name="db.literallayout"/>
+          </choice>
         </zeroOrMore>
       </element>
     </define>
