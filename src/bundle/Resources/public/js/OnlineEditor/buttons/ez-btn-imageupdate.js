@@ -67,7 +67,7 @@ eZ.ezAlloyEditor = eZ.ezAlloyEditor || {};
 eZ.ezAlloyEditor.ezBtnImageUpdate = EzBtnImageUpdate;
 
 EzBtnImageUpdate.defaultProps = {
-    udwTitle: Translator.trans(/*@Desc("Select an image to embed")*/ 'image_update_btn.udw.title', {}, 'alloy_editor'),
+    udwTitle: Translator.trans(/*@Desc("Select an image")*/ 'image_update_btn.udw.title', {}, 'alloy_editor'),
     udwContentDiscoveredMethod: 'updateImage',
     udwConfigName: 'richtext_embed_image',
     label: Translator.trans(/*@Desc("Select another image")*/ 'image_update_btn.label', {}, 'alloy_editor'),
