@@ -24,6 +24,7 @@ services:
     EzSystems\EzPlatformRichText\Configuration\UI\Mapper\CustomTag:
         arguments:
             $customTagsConfiguration: '%ezplatform.ezrichtext.custom_tags%'
+            $translatorBag: '@translator'
             $translationDomain: '%ezrichtext.custom_tags.translation_domain%'
             $customTagAttributeMappers: !tagged ezrichtext.configuration.custom_tag.mapper
 
