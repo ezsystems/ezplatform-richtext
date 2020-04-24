@@ -11,6 +11,7 @@ namespace EzSystems\EzPlatformRichText\Configuration\UI\Mapper;
 use EzSystems\EzPlatformRichText\Configuration\UI\Mapper\CustomTag\AttributeMapper;
 use RuntimeException;
 use Symfony\Component\Asset\Packages;
+use Symfony\Component\Translation\TranslatorBagInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Traversable;
 
@@ -26,6 +27,9 @@ final class CustomTag implements CustomTemplateConfigMapper
 
     /** @var \Symfony\Contracts\Translation\TranslatorInterface */
     private $translator;
+
+    /** @var \Symfony\Component\Translation\TranslatorBagInterface */
+    private $translatorBag;
 
     /** @var \Symfony\Component\Asset\Packages */
     private $packages;
@@ -47,6 +51,7 @@ final class CustomTag implements CustomTemplateConfigMapper
      *
      * @param array $customTagsConfiguration
      * @param \Symfony\Contracts\Translation\TranslatorInterface $translator
+     * @param \Symfony\Component\Translation\TranslatorBagInterface $translatorBag
      * @param string $translationDomain
      * @param \Symfony\Component\Asset\Packages $packages
      * @param \Traversable $customTagAttributeMappers
@@ -54,12 +59,14 @@ final class CustomTag implements CustomTemplateConfigMapper
     public function __construct(
         array $customTagsConfiguration,
         TranslatorInterface $translator,
+        TranslatorBagInterface $translatorBag,
         string $translationDomain,
         Packages $packages,
         Traversable $customTagAttributeMappers
     ) {
         $this->customTagsConfiguration = $customTagsConfiguration;
         $this->translator = $translator;
+        $this->translatorBag = $translatorBag;
         $this->translationDomain = $translationDomain;
         $this->packages = $packages;
         $this->customTagAttributeMappers = $customTagAttributeMappers;
@@ -171,7 +178,7 @@ final class CustomTag implements CustomTemplateConfigMapper
                 continue;
             }
 
-            $transCatalogue = $this->translator->getCatalogue();
+            $transCatalogue = $this->translatorBag->getCatalogue();
             foreach ($tagConfig['attributes'] as $attributeName => $attributeConfig) {
                 $config[$tagName]['attributes'][$attributeName]['label'] = $this->translator->trans(
                     /** @Ignore */
