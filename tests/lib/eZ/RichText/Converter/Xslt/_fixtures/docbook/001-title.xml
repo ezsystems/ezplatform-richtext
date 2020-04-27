@@ -9,4 +9,8 @@
   <title ezxhtml:level="3" ezxhtml:textalign="center">This is a centered heading.</title>
   <title ezxhtml:level="3" ezxhtml:textalign="right">This is a right aligned heading.</title>
   <title ezxhtml:level="3" ezxhtml:textalign="justify">This is a justified heading.</title>
+  <title ezxhtml:level="4" ezxhtml:class="titleClass3">
+    <literallayout class="normal">This is a heading
+with a line break.</literallayout>
+  </title>
 </section>
