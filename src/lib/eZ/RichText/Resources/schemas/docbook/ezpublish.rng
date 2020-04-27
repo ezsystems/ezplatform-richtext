@@ -22,6 +22,16 @@
       </a:documentation>
       <ref name="db.title"/>
     </define>
+    <define name="db.all.inlines">
+      <choice>
+        <text/>
+        <ref name="db.ubiq.inlines"/>
+        <ref name="db.general.inlines"/>
+        <ref name="db.domain.inlines"/>
+        <ref name="db.extension.inlines"/>
+        <ref name="db.literallayout"/>
+      </choice>
+    </define>
 
     <define name="db.blockquote.info" combine="choice">
       <a:documentation>

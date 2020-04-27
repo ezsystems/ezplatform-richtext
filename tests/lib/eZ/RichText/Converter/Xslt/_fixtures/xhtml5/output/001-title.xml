@@ -5,4 +5,5 @@
   <h3 style="text-align:center;">This is a centered heading.</h3>
   <h3 style="text-align:right;">This is a right aligned heading.</h3>
   <h3 style="text-align:justify;">This is a justified heading.</h3>
+  <h4 class="titleClass3">This is a heading<br/>with a line break.</h4>
 </section>

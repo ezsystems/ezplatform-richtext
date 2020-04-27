@@ -139,6 +139,12 @@
     </xsl:call-template>
   </xsl:template>
 
+  <xsl:template match="docbook:title/docbook:literallayout">
+    <xsl:call-template name="paragraphLiterallayout">
+      <xsl:with-param name="nodes" select="node()"/>
+    </xsl:call-template>
+  </xsl:template>
+
   <xsl:template match="docbook:emphasis/text()">
     <xsl:choose>
       <xsl:when test="ancestor::*[local-name() = 'literallayout']">
