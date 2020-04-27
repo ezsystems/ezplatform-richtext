@@ -39,6 +39,8 @@
       </xsl:element>
     </xsl:if>
   </xsl:template>
+
+  <!-- Note: use only in context where literallayout is handled always in parent context -->
   <xsl:template name="breakline">
     <xsl:param name="node"/>
     <xsl:choose>
@@ -53,6 +55,29 @@
             </xsl:otherwise>
           </xsl:choose>
         </xsl:for-each>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="breaklineWithLiterallayout">
+    <xsl:param name="node"/>
+    <xsl:choose>
+      <xsl:when test="descendant::ezxhtml5:br">
+        <literallayout class="normal">
+          <xsl:for-each select="$node">
+            <xsl:choose>
+              <xsl:when test="local-name( current() ) = 'br'">
+                <xsl:text>&#xA;</xsl:text>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:apply-templates select="current()"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:for-each>
+        </literallayout>
       </xsl:when>
       <xsl:otherwise>
         <xsl:apply-templates/>
@@ -86,25 +111,9 @@
         </xsl:if>
       </xsl:if>
       <xsl:call-template name="ezattribute"/>
-      <xsl:choose>
-        <xsl:when test="descendant::ezxhtml5:br">
-          <literallayout class="normal">
-            <xsl:for-each select="node()">
-              <xsl:choose>
-                <xsl:when test="local-name( current() ) = 'br'">
-                  <xsl:text>&#xA;</xsl:text>
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:apply-templates select="current()"/>
-                </xsl:otherwise>
-              </xsl:choose>
-            </xsl:for-each>
-          </literallayout>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:apply-templates/>
-        </xsl:otherwise>
-      </xsl:choose>
+      <xsl:call-template name="breaklineWithLiterallayout">
+        <xsl:with-param name="node" select="node()"/>
+      </xsl:call-template>
     </para>
   </xsl:template>
 
@@ -315,7 +324,9 @@
         </xsl:if>
       </xsl:if>
       <xsl:call-template name="ezattribute"/>
-      <xsl:apply-templates/>
+      <xsl:call-template name="breaklineWithLiterallayout">
+        <xsl:with-param name="node" select="node()"/>
+      </xsl:call-template>
     </title>
   </xsl:template>
 
