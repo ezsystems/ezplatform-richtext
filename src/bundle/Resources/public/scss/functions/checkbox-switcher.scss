@@ -1,0 +1,72 @@
+@mixin checkbox-switcher($size: 2rem) {
+    .ez-data-source__label {
+        position: relative;
+        width: $size;
+        height: calc(#{$size} + 0.25rem);
+        background-color: $ez-color-base-pale;
+        margin-left: calc((#{$size} + 0.25rem) / 2);
+        cursor: pointer;
+
+        input {
+            opacity: 0;
+            height: 1px;
+        }
+
+        .ez-data-source__indicator {
+            width: $size;
+            height: $size;
+            display: block;
+            background-color: $ez-white;
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 0;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform: translateX(-50%);
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        &.is-checked {
+            background-color: $ez-secondary-ground;
+
+            .ez-data-source__indicator {
+                transform: translateX(50%);
+            }
+
+            &:before {
+                background-color: $ez-secondary-ground;
+            }
+
+            &:after {
+                background-color: $ez-secondary-ground;
+            }
+        }
+
+        &:before,
+        &:after {
+            content: '';
+            height: calc(#{$size} + 0.25rem);
+            width: calc(#{$size} + 0.25rem);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            background-color: $ez-color-base-pale;
+            cursor: pointer;
+        }
+
+        &:before {
+            left: 0;
+            transform: translate(-50%, -50%);
+        }
+
+        &:after {
+            right: 0;
+            transform: translate(50%, -50%);
+        }
+
+        &.is-disabled {
+            opacity: 0.5;
+        }
+    }
+}

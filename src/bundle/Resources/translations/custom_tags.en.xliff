@@ -7,8 +7,8 @@
     </header>
     <body>
       <trans-unit id="7ddd17c1a96742c10988612627d3bf5134bcd912" resname="ezrichtext.custom_tags.ezfacebook.attributes.post_url.label">
-        <source>Post URL</source>
-        <target>Post URL</target>
+        <source>Facebook URL</source>
+        <target>Facebook URL</target>
         <note>key: ezrichtext.custom_tags.ezfacebook.attributes.post_url.label</note>
       </trans-unit>
       <trans-unit id="14df6986afb2121f6d8f3a8e3fd3cc2e8719f28e" resname="ezrichtext.custom_tags.ezfacebook.attributes.width.label">

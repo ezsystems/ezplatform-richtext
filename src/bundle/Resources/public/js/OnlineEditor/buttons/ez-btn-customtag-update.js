@@ -56,18 +56,25 @@ export default class EzBtnCustomTagUpdate extends EzWidgetButton {
      * @return {Object} The rendered checkbox input.
      */
     renderCheckbox(config, attrName) {
+        const isChecked = this.state.values[attrName].value;
+
         return (
             <div className="attribute__wrapper">
                 <label className="attribute__label form-control-label">{config.label}</label>
-                <input
-                    type="checkbox"
-                    defaultValue={config.defaultValue}
-                    required={config.required}
-                    className="attribute__input form-control"
-                    checked={this.state.values[attrName].value}
-                    onChange={this.updateValues.bind(this)}
-                    data-attr-name={attrName}
-                />
+                <div class="ez-data-source" title="">
+                    <label class={`ez-data-source__label ${isChecked ? 'is-checked' : ''}`}>
+                        <span class="ez-data-source__indicator"></span>
+                        <input
+                            type="checkbox"
+                            defaultValue={config.defaultValue}
+                            required={config.required}
+                            className="attribute__input form-control ez-data-source__input"
+                            checked={isChecked}
+                            onChange={this.updateValues.bind(this)}
+                            data-attr-name={attrName}
+                        />
+                    </label>
+                </div>
             </div>
         );
     }
@@ -156,7 +163,11 @@ export default class EzBtnCustomTagUpdate extends EzWidgetButton {
         const renderMethods = this.getAttributeRenderMethods();
         const methodName = renderMethods[attributeConfig.type];
 
-        return <div className="ez-ae-custom-tag__attributes">{this[methodName](attributeConfig, attribute)}</div>;
+        return (
+            <div className={`ez-ae-custom-tag__attributes ez-ae-custom-tag__attribute-type--${attributeConfig.type} ez-ae-custom-tag__attribute-name--${attribute}`}>
+                {this[methodName](attributeConfig, attribute)}
+            </div>
+        );
     }
 
     /**
@@ -172,7 +183,7 @@ export default class EzBtnCustomTagUpdate extends EzWidgetButton {
         const isValid = this.isValid();
 
         return (
-            <div className="ez-ae-custom-tag">
+            <div className={`ez-ae-custom-tag ez-ae-custom-tag--${this.customTagName}`}>
                 <div className="ez-ae-custom-tag__header">
                     {this.name}
                 </div>

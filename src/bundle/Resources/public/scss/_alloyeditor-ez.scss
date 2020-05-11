@@ -1096,6 +1096,21 @@ pre.ez-has-anchor > .ez-icon {
                 max-height: calculateRem(300px);
                 overflow: auto;
                 padding: 1rem;
+
+                .attribute__label {
+                    font-weight: 700;
+
+                    &:after {
+                        content: ':';
+                        position: relative;
+                    }
+                }
+            }
+
+            &__attribute-type {
+                &--boolean {
+                    @include checkbox-switcher(1rem);
+                }
             }
 
             &__footer {
@@ -1135,6 +1150,58 @@ pre.ez-has-anchor > .ez-icon {
                 color: $ez-ae-color-primary;
                 margin-left: calculateRem(5px);
             }
+
+            &--ezyoutube {
+                width: calculateRem(280px);
+
+                .ez-ae-custom-tag {
+                    &__attributes-list {
+                        display: flex;
+                        flex-wrap: wrap;
+                    }
+
+                    &__attribute-name {
+                        &--width,
+                        &--height {
+                            width: calculateRem(80px);
+                            padding-right: calculateRem(16px);
+                        }
+
+                        &--autoplay {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+
+            &--eztwitter {
+                width: calculateRem(280px);
+
+                .ez-ae-custom-tag {
+                    &__attribute-name {
+                        &--cards,
+                        &--conversation,
+                        &--theme,
+                        &--link_color,
+                        &--width,
+                        &--lang {
+                            width: calculateRem(175px);
+                        }
+                    }
+                }
+            }
+
+            &--ezfacebook {
+                width: calculateRem(280px);
+
+                .ez-ae-custom-tag {
+                    &__attribute-name {
+                        &--width {
+                            width: calculateRem(80px);
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -1153,7 +1220,7 @@ pre.ez-has-anchor > .ez-icon {
         .ae-container {
             .ez-ae-custom-tag {
                 &:after {
-                    border-top: calculateRem(8px) solid $ez-ground-base;
+                    border-bottom: calculateRem(8px) solid $ez-ground-base;
                     top: calculateRem(-8px);
                 }
             }
