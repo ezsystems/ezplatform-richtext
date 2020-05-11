@@ -166,19 +166,33 @@ export default class EzBtnCustomTagUpdate extends EzWidgetButton {
      * @return {Object} The content which should be rendered.
      */
     render() {
+        const cancelLabel = Translator.trans(/*@Desc("Cancel")*/ 'custom_tag_update_btn.cancel_btn.label', {}, 'alloy_editor');
         const saveLabel = Translator.trans(/*@Desc("Save")*/ 'custom_tag_update_btn.save_btn.label', {}, 'alloy_editor');
         const attrs = Object.keys(this.attributes);
         const isValid = this.isValid();
 
         return (
             <div className="ez-ae-custom-tag">
-                {attrs.map(this.renderAttribute.bind(this))}
-                <button
-                    className="ez-btn-ae btn ez-btn-ae--custom-tag float-right"
-                    onClick={this.saveCustomTag.bind(this)}
-                    disabled={!isValid}>
-                    {saveLabel}
-                </button>
+                <div className="ez-ae-custom-tag__header">
+                    {this.name}
+                </div>
+                <div className="ez-ae-custom-tag__attributes-list">
+                    {attrs.map(this.renderAttribute.bind(this))}
+                </div>
+                <div className="ez-ae-custom-tag__footer">
+                    <button
+                        className="ez-btn-ae btn ez-btn-ae--cancel"
+                        onClick={this.props.cancelExclusive}
+                    >
+                        {cancelLabel}
+                    </button>
+                    <button
+                        className="ez-btn-ae btn btn-primary"
+                        onClick={this.saveCustomTag.bind(this)}
+                        disabled={!isValid}>
+                        {saveLabel}
+                    </button>
+                </div>
             </div>
         );
     }
@@ -284,4 +298,5 @@ EzBtnCustomTagUpdate.propTypes = {
     editor: PropTypes.object.isRequired,
     label: PropTypes.string.isRequired,
     tabIndex: PropTypes.number.isRequired,
+    cancelExclusive: PropTypes.func.isRequired,
 };
