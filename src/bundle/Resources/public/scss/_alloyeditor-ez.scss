@@ -1080,6 +1080,7 @@ pre.ez-has-anchor > .ez-icon {
 .ae-ui {
     .ae-container {
         .ez-ae-custom-tag {
+            width: calculateRem(280px);
             margin: calculateRem(-4px);
             border-radius: calculateRem(3px);
             overflow: hidden;
@@ -1152,15 +1153,13 @@ pre.ez-has-anchor > .ez-icon {
             }
 
             &--ezyoutube {
-                width: calculateRem(280px);
-
                 .ez-ae-custom-tag {
                     &__attributes-list {
                         display: flex;
                         flex-wrap: wrap;
                     }
 
-                    &__attribute-name {
+                    &__attributes {
                         &--width,
                         &--height {
                             width: calculateRem(80px);
@@ -1175,10 +1174,8 @@ pre.ez-has-anchor > .ez-icon {
             }
 
             &--eztwitter {
-                width: calculateRem(280px);
-
                 .ez-ae-custom-tag {
-                    &__attribute-name {
+                    &__attributes {
                         &--cards,
                         &--conversation,
                         &--theme,
@@ -1192,10 +1189,8 @@ pre.ez-has-anchor > .ez-icon {
             }
 
             &--ezfacebook {
-                width: calculateRem(280px);
-
                 .ez-ae-custom-tag {
-                    &__attribute-name {
+                    &__attributes {
                         &--width {
                             width: calculateRem(80px);
                         }

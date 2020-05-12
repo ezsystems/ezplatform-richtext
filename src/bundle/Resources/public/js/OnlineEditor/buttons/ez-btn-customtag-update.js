@@ -164,7 +164,7 @@ export default class EzBtnCustomTagUpdate extends EzWidgetButton {
         const methodName = renderMethods[attributeConfig.type];
 
         return (
-            <div className={`ez-ae-custom-tag__attributes ez-ae-custom-tag__attribute-type--${attributeConfig.type} ez-ae-custom-tag__attribute-name--${attribute}`}>
+            <div className={`ez-ae-custom-tag__attributes ez-ae-custom-tag__attributes--${attributeConfig.type} ez-ae-custom-tag__attributes--${attribute}`}>
                 {this[methodName](attributeConfig, attribute)}
             </div>
         );
