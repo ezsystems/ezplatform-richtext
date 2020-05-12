@@ -61,14 +61,14 @@ export default class EzBtnCustomTagUpdate extends EzWidgetButton {
         return (
             <div className="attribute__wrapper">
                 <label className="attribute__label form-control-label">{config.label}</label>
-                <div class="ez-data-source" title="">
-                    <label class={`ez-data-source__label ${isChecked ? 'is-checked' : ''}`}>
-                        <span class="ez-data-source__indicator"></span>
+                <div class="ez-ae-switcher" title="">
+                    <label class={`ez-ae-switcher__label ${isChecked ? 'is-checked' : ''}`}>
+                        <span class="ez-ae-switcher__indicator"></span>
                         <input
                             type="checkbox"
                             defaultValue={config.defaultValue}
                             required={config.required}
-                            className="attribute__input form-control ez-data-source__input"
+                            className="attribute__input form-control ez-ae-switcher__input"
                             checked={isChecked}
                             onChange={this.updateValues.bind(this)}
                             data-attr-name={attrName}

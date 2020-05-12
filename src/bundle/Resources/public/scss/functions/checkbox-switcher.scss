@@ -1,5 +1,5 @@
 @mixin checkbox-switcher($size: 2rem) {
-    .ez-data-source__label {
+    .ez-ae-switcher__label {
         position: relative;
         width: $size;
         height: calc(#{$size} + 0.25rem);
@@ -12,14 +12,14 @@
             height: 1px;
         }
 
-        .ez-data-source__indicator {
+        .ez-ae-switcher__indicator {
             width: $size;
             height: $size;
             display: block;
             background-color: $ez-white;
             border-radius: 50%;
             position: absolute;
-            top: 2px;
+            top: calculateRem(2px);
             left: 0;
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             transform: translateX(-50%);
@@ -30,7 +30,7 @@
         &.is-checked {
             background-color: $ez-secondary-ground;
 
-            .ez-data-source__indicator {
+            .ez-ae-switcher__indicator {
                 transform: translateX(50%);
             }
 
