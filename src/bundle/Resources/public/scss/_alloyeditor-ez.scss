@@ -1108,10 +1108,8 @@ pre.ez-has-anchor > .ez-icon {
                 }
             }
 
-            &__attribute-type {
-                &--boolean {
-                    @include checkbox-switcher(1rem);
-                }
+            &__attributes--boolean {
+                @include checkbox-switcher(1rem);
             }
 
             &__footer {
