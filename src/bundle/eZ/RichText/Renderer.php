@@ -505,14 +505,14 @@ class Renderer implements RendererInterface
                 new AuthorizationAttribute(
                     'content',
                     'read',
-                    ['valueObject' => $location->contentInfo, 'targets' => $location]
+                    ['valueObject' => $location->contentInfo, 'targets' => [$location]]
                 )
             )
             && !$this->authorizationChecker->isGranted(
                 new AuthorizationAttribute(
                     'content',
                     'view_embed',
-                    ['valueObject' => $location->contentInfo, 'targets' => $location]
+                    ['valueObject' => $location->contentInfo, 'targets' => [$location]]
                 )
             )
         ) {
