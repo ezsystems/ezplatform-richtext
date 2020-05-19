@@ -122,6 +122,8 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
     {
         $this->prependEzPublishConfiguration($container);
         $this->prependEzRichTextConfiguration($container);
+        $this->prependBazingaJsTranslationConfiguration($container);
+        $this->prependJMSTranslation($container);
     }
 
     private function prependEzPublishConfiguration(ContainerBuilder $container): void
@@ -136,6 +138,34 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
         $richTextExtensionConfigFile = realpath(__DIR__ . '/../Resources/config/prepend/ezrichtext.yaml');
         $container->prependExtensionConfig('ezrichtext', Yaml::parseFile($richTextExtensionConfigFile));
         $container->addResource(new FileResource($richTextExtensionConfigFile));
+    }
+
+    private function prependBazingaJsTranslationConfiguration(ContainerBuilder $container): void
+    {
+        $configFile = __DIR__ . '/../Resources/config/bazinga_js_translation.yaml';
+        $config = Yaml::parseFile($configFile);
+        $container->prependExtensionConfig('bazinga_js_translation', $config);
+        $container->addResource(new FileResource($configFile));
+    }
+
+    /**
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+     */
+    private function prependJMSTranslation(ContainerBuilder $container): void
+    {
+        $container->prependExtensionConfig('jms_translation', [
+            'configs' => [
+                'ezplatform_richtext' => [
+                    'dirs' => [
+                        __DIR__ . '/../../../src/',
+                    ],
+                    'output_dir' => __DIR__ . '/../Resources/translations/',
+                    'output_format' => 'xliff',
+                    'excluded_dirs' => ['Behat', 'Tests', 'node_modules'],
+                    'extractors' => [],
+                ],
+            ],
+        ]);
     }
 
     public function getConfiguration(array $config, ContainerBuilder $container)

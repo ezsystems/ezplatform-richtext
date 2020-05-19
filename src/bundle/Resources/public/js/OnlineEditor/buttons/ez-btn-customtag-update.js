@@ -56,18 +56,25 @@ export default class EzBtnCustomTagUpdate extends EzWidgetButton {
      * @return {Object} The rendered checkbox input.
      */
     renderCheckbox(config, attrName) {
+        const isChecked = this.state.values[attrName].value;
+
         return (
             <div className="attribute__wrapper">
                 <label className="attribute__label form-control-label">{config.label}</label>
-                <input
-                    type="checkbox"
-                    defaultValue={config.defaultValue}
-                    required={config.required}
-                    className="attribute__input form-control"
-                    checked={this.state.values[attrName].value}
-                    onChange={this.updateValues.bind(this)}
-                    data-attr-name={attrName}
-                />
+                <div class="ez-ae-switcher" title="">
+                    <label class={`ez-ae-switcher__label ${isChecked ? 'is-checked' : ''}`}>
+                        <span class="ez-ae-switcher__indicator"></span>
+                        <input
+                            type="checkbox"
+                            defaultValue={config.defaultValue}
+                            required={config.required}
+                            className="attribute__input form-control ez-ae-switcher__input"
+                            checked={isChecked}
+                            onChange={this.updateValues.bind(this)}
+                            data-attr-name={attrName}
+                        />
+                    </label>
+                </div>
             </div>
         );
     }
@@ -157,7 +164,11 @@ export default class EzBtnCustomTagUpdate extends EzWidgetButton {
         const renderMethods = this.getAttributeRenderMethods();
         const methodName = renderMethods[attributeConfig.type];
 
-        return <div className="ez-ae-custom-tag__attributes">{this[methodName](attributeConfig, attribute)}</div>;
+        return (
+            <div className={`ez-ae-custom-tag__attributes ez-ae-custom-tag__attributes--${attributeConfig.type} ez-ae-custom-tag__attributes--${attribute}`}>
+                {this[methodName](attributeConfig, attribute)}
+            </div>
+        );
     }
 
     /**
@@ -167,19 +178,33 @@ export default class EzBtnCustomTagUpdate extends EzWidgetButton {
      * @return {Object} The content which should be rendered.
      */
     render() {
+        const cancelLabel = Translator.trans(/*@Desc("Cancel")*/ 'custom_tag_update_btn.cancel_btn.label', {}, 'alloy_editor');
         const saveLabel = Translator.trans(/*@Desc("Save")*/ 'custom_tag_update_btn.save_btn.label', {}, 'alloy_editor');
         const attrs = Object.keys(this.attributes);
         const isValid = this.isValid();
 
         return (
-            <div className="ez-ae-custom-tag">
-                {attrs.map(this.renderAttribute.bind(this))}
-                <button
-                    className="ez-btn-ae btn ez-btn-ae--custom-tag float-right"
-                    onClick={this.saveCustomTag.bind(this)}
-                    disabled={!isValid}>
-                    {saveLabel}
-                </button>
+            <div className={`ez-ae-custom-tag ez-ae-custom-tag--${this.customTagName}`}>
+                <div className="ez-ae-custom-tag__header">
+                    {this.name}
+                </div>
+                <div className="ez-ae-custom-tag__attributes-list">
+                    {attrs.map(this.renderAttribute.bind(this))}
+                </div>
+                <div className="ez-ae-custom-tag__footer">
+                    <button
+                        className="ez-btn-ae btn ez-btn-ae--cancel"
+                        onClick={this.props.cancelExclusive}
+                    >
+                        {cancelLabel}
+                    </button>
+                    <button
+                        className="ez-btn-ae btn btn-primary"
+                        onClick={this.saveCustomTag.bind(this)}
+                        disabled={!isValid}>
+                        {saveLabel}
+                    </button>
+                </div>
             </div>
         );
     }
@@ -285,4 +310,5 @@ EzBtnCustomTagUpdate.propTypes = {
     editor: PropTypes.object.isRequired,
     label: PropTypes.string.isRequired,
     tabIndex: PropTypes.number.isRequired,
+    cancelExclusive: PropTypes.func.isRequired,
 };

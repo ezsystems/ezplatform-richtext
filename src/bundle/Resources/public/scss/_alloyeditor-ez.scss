@@ -1080,9 +1080,56 @@ pre.ez-has-anchor > .ez-icon {
 .ae-ui {
     .ae-container {
         .ez-ae-custom-tag {
-            max-height: 400px;
-            overflow: auto;
-            padding: 1rem;
+            width: calculateRem(280px);
+            margin: calculateRem(-4px);
+            border-radius: calculateRem(3px);
+            overflow: hidden;
+
+            &__header {
+                font-size: calculateRem(15px);
+                line-height: calculateRem(32px);
+                padding: 0 calculateRem(10px);
+                font-weight: 700;
+                background: $ez-ground-base;
+            }
+
+            &__attributes-list {
+                max-height: calculateRem(300px);
+                overflow: auto;
+                padding: 1rem;
+
+                .attribute__label {
+                    font-weight: 700;
+
+                    &:after {
+                        content: ':';
+                        position: relative;
+                    }
+                }
+            }
+
+            &__attributes--boolean {
+                @include checkbox-switcher(1rem);
+            }
+
+            &__footer {
+                text-align: center;
+                padding: calculateRem(10px);
+                background: $ez-ground-base;
+            }
+
+            &:after {
+                content: '';
+                margin: auto;
+                position: absolute;
+                height: 0;
+                width: 0;
+                border-left: calculateRem(9px) solid transparent;
+                border-right: calculateRem(9px) solid transparent;
+                left: 0;
+                right: 0;
+                z-index: 1
+            }
 
             .attribute__wrapper {
                 margin-bottom: 0.5rem;
@@ -1092,9 +1139,83 @@ pre.ez-has-anchor > .ez-icon {
                 margin: 0.5rem 0;
             }
 
-            .ez-btn-ae--custom-tag {
+            .ez-btn-ae--cancel {
                 color: $ez-ae-color-primary;
-                background-color: $ez-ae-color-secondary;
+                background-color: $ez-color-base-dark;
+                margin-right: calculateRem(5px);
+            }
+
+            .btn-primary {
+                color: $ez-ae-color-primary;
+                margin-left: calculateRem(5px);
+            }
+
+            &--ezyoutube {
+                .ez-ae-custom-tag {
+                    &__attributes-list {
+                        display: flex;
+                        flex-wrap: wrap;
+                    }
+
+                    &__attributes {
+                        &--width,
+                        &--height {
+                            width: calculateRem(80px);
+                            padding-right: calculateRem(16px);
+                        }
+
+                        &--autoplay {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+
+            &--eztwitter {
+                .ez-ae-custom-tag {
+                    &__attributes {
+                        &--cards,
+                        &--conversation,
+                        &--theme,
+                        &--link_color,
+                        &--width,
+                        &--lang {
+                            width: calculateRem(175px);
+                        }
+                    }
+                }
+            }
+
+            &--ezfacebook {
+                .ez-ae-custom-tag {
+                    &__attributes {
+                        &--width {
+                            width: calculateRem(80px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .ae-arrow-box-bottom {
+        .ae-container {
+            .ez-ae-custom-tag {
+                &:after {
+                    border-top: calculateRem(8px) solid $ez-ground-base;
+                    top: 100%;
+                }
+            }
+        }
+    }
+
+    .ae-arrow-box-top {
+        .ae-container {
+            .ez-ae-custom-tag {
+                &:after {
+                    border-bottom: calculateRem(8px) solid $ez-ground-base;
+                    top: calculateRem(-8px);
+                }
             }
         }
     }

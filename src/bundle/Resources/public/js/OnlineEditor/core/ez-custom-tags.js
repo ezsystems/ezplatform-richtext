@@ -1,4 +1,4 @@
-(function(global, doc, eZ, AlloyEditor) {
+(function (global, doc, eZ, AlloyEditor) {
     Object.entries(eZ.richText.customTags).forEach(([customTag, tagConfig]) => {
         const isInline = tagConfig.isInline;
         const componentClassName = `ezBtn${customTag.charAt(0).toUpperCase() + customTag.slice(1)}`;
@@ -54,6 +54,7 @@
 
                 this.customTagName = customTag;
                 this.attributes = tagConfig.attributes || {};
+                this.name = tagConfig.label;
             }
 
             static get key() {
