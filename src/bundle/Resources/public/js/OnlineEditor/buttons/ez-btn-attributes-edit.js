@@ -18,6 +18,10 @@ export default class EzBtnAttributesEdit extends EzWidgetButton {
             td: this.setDefaultClassesOnTableCells,
             li: this.setDefaultClassesOnListItems,
         };
+
+        this.nativeAttributes = {
+            table: ['border']
+        }
     }
 
     componentDidMount() {
@@ -133,70 +137,92 @@ export default class EzBtnAttributesEdit extends EzWidgetButton {
 
     setDefaultAttributes(block) {
         Object.entries(this.attributes).forEach(([attributeName, config]) => {
-            const attributeValue = block.getAttribute(`data-ezattribute-${attributeName}`);
+            const attributeValue = this.getAttributeValue(block, attributeName, config);
 
             if (attributeValue !== null) {
                 return;
             }
 
             const defaultValue = config.defaultValue;
-
             if (defaultValue !== undefined && defaultValue !== null) {
                 const setDefaultAttributesMethod = this.setDefaultAttributesMethods[this.toolbarName]
                     ? this.setDefaultAttributesMethods[this.toolbarName]
                     : this.setDefaultAttributesOnBlock;
 
-                setDefaultAttributesMethod(block, attributeName, defaultValue);
+                setDefaultAttributesMethod.bind(this)(block, attributeName, defaultValue);
             }
         });
     }
 
     setDefaultAttributesOnBlock(block, attributeName, value) {
-        block.setAttribute(`data-ezattribute-${attributeName}`, value);
+        this.setAttributeValue(block, attributeName, value);
     }
 
     setDefaultAttributesOnTableRows(block, attributeName, value) {
         const rows = block.$.closest('table').querySelectorAll('tr');
 
-        rows.forEach((row) => row.setAttribute(`data-ezattribute-${attributeName}`, value));
+        rows.forEach((row) => this.setAttributeValue(row,attributeName, value));
     }
 
     setDefaultAttributesOnTableCells(block, attributeName, value) {
         const cells = block.$.closest('table').querySelectorAll('td');
 
-        cells.forEach((cell) => cell.setAttribute(`data-ezattribute-${attributeName}`, value));
+        cells.forEach((cell) => this.setAttributeValue(cell,attributeName, value));
     }
 
     setDefaultAttributesOnListItems(block, attributeName, value) {
         const list = block.$.closest('ul') || block.$.closest('ol');
         const listItems = list.querySelectorAll('li');
 
-        listItems.forEach((listItem) => listItem.setAttribute(`data-ezattribute-${attributeName}`, value));
+        listItems.forEach((listItem) => this.setAttributeValue(listItem,attributeName, value));
     }
 
     getAttributesValues() {
         return Object.entries(this.attributes).reduce((total, [attributeName, config]) => {
             const block = this.findSelectedBlock();
-            const defaultValue = config.defaultValue;
-            let value = block.getAttribute(`data-ezattribute-${attributeName}`);
-            const isValueDefined = value !== null;
-
-            if (config.type === 'choice' && !isValueDefined && !config.multiple) {
-                value = config.choices[0];
-            }
-
-            if (!isValueDefined && defaultValue !== undefined && defaultValue !== null) {
-                value = defaultValue;
-            }
-
-            if (config.type === 'boolean' && isValueDefined) {
-                value = value === 'true';
-            }
+            const value = this.getAttributeValue(block, attributeName, config);
 
             total[attributeName] = { value };
 
             return total;
         }, {});
+    }
+
+    getAttributeValue(element, name, config) {
+        const nativeAttributes = this.nativeAttributes[element.getName()] || [];
+
+        if (nativeAttributes.includes(name)) {
+            return element.getAttribute(name);
+        }
+
+        let value = element.getAttribute(`data-ezattribute-${name}`);
+
+        const isValueDefined = value !== null;
+        const defaultValue = config.defaultValue;
+
+        if (config.type === 'choice' && !isValueDefined && !config.multiple) {
+            value = config.choices[0];
+        }
+
+        if (!isValueDefined && defaultValue !== undefined && defaultValue !== null) {
+            value = defaultValue;
+        }
+
+        if (config.type === 'boolean' && isValueDefined) {
+            value = value === 'true';
+        }
+
+        return value;
+    }
+
+    setAttributeValue(element, name, value) {
+        const nativeAttributes = this.nativeAttributes[element.getName()] || [];
+
+        if (!nativeAttributes.includes(name)) {
+            name = `data-ezattribute-${name}`;
+        }
+
+        element.setAttribute(name, value);
     }
 
     getClassesValue() {
