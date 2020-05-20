@@ -400,8 +400,10 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:variable>
-      <xsl:if test="@border != ''">
-        <xsl:attribute name="border">1</xsl:attribute>
+      <xsl:if test="@border">
+        <xsl:attribute name="border">
+          <xsl:value-of select="@border"/>
+        </xsl:attribute>
       </xsl:if>
       <xsl:if test="@title">
         <xsl:attribute name="title">
