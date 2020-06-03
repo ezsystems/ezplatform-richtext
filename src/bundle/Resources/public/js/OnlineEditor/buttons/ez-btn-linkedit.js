@@ -133,9 +133,14 @@ export default class EzBtnLinkEdit extends Component {
      */
     showUI() {
         const nativeEditor = this.props.editor.get('nativeEditor');
+        const element = nativeEditor.elementPath().lastElement;
 
         nativeEditor.fire('editorInteraction', {
             editor: this.props.editor,
+            nativeEvent: {
+                editor: this.props.editor,
+                target: element.$,
+            },
             selectionData: {
                 element: this.state.element,
                 region: this.getRegion(),
