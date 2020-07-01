@@ -13,7 +13,7 @@
     {% set params = params|merge( { "class": embedParams.class } ) %}
 {% endif %}
 
-{{ fos_httpcache_tag('relation-' ~ embedParams.id) }}
+{{ ez_http_tag_relation_ids([embedParams.id]) }}
 {{
     render(
         controller(
