@@ -46,6 +46,32 @@
         align-items: center;
     }
 
+    &__link-controls {
+        .btn.btn-secondary {
+            width: 100%;
+            margin: calculateRem(5px) calculateRem(5px) calculateRem(5px) 0;
+            color: $ez-white;
+        }
+        .ez-custom-tag--link {
+            display: block;
+            width: 100%;
+            padding: calculateRem(10px) calculateRem(5px) calculateRem(5px) calculateRem(5px);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            color: $ez-color-hyperlink;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s $ez-admin-transition;
+
+            &:hover,
+            &:focus {
+                color: $ez-color-hyperlink-hover;
+                text-decoration: underline;
+            }
+        }
+    }
+
     & > [data-ezelement='ezattributes'],
     & > [data-ezelement='ezcontent'] {
         display: none;

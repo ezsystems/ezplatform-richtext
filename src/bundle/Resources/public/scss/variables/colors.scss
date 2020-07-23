@@ -13,6 +13,11 @@ $ez-ground-base: #f3f3f3;
 $ez-ground-base-pale: #fafafa;
 $ez-ground-base-dark: #e5e3e3;
 $ez-secondary-ground: #2b84b1;
+$ez-color-hyperlink: #0645ad;
+$ez-color-hyperlink-hover: darken($ez-color-hyperlink, 15%);
+
+// eZ transition function
+$ez-admin-transition: cubic-bezier(0.25, 0.8, 0.25, 1);
 
 // AlloyEditor
 $ez-ae-color-primary: $ez-white !default;

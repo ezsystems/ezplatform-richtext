@@ -71,6 +71,16 @@
         <target>Save</target>
         <note>key: custom_tag_update_btn.save_btn.label</note>
       </trans-unit>
+      <trans-unit id="1cfc2dd28fe6cbd725b0ccf91be60138750af4b3" resname="custom_tag.link.select_content_btn.label">
+        <source>Select content</source>
+        <target>Select content</target>
+        <note>key: custom_tag.link.select_content_btn.label</note>
+      </trans-unit>
+      <trans-unit id="e1c16d681181ae931a8d56529dc9397f809b1e4a" resname="custom_tag.link.udw.title">
+        <source>Select content</source>
+        <target>Select content</target>
+        <note>key: custom_tag.link.udw.title</note>
+      </trans-unit>
       <trans-unit id="5a25d3a19c8addc868947381a4eb1a699d01cf22" resname="embed.ezlocation.error">
         <source>This embedded item relies on 'ezlocation' imported from Legacy. It isn't supported by Online Editor yet.</source>
         <target state="new">This embedded item relies on 'ezlocation' imported from Legacy. It isn't supported by Online Editor yet.</target>
