@@ -165,7 +165,8 @@ export default class EzBtnCustomTagUpdate extends EzWidgetButton {
         const methodName = renderMethods[attributeConfig.type];
 
         return (
-            <div className={`ez-ae-custom-tag__attributes ez-ae-custom-tag__attributes--${attributeConfig.type} ez-ae-custom-tag__attributes--${attribute}`}>
+            <div
+                className={`ez-ae-custom-tag__attributes ez-ae-custom-tag__attributes--${attributeConfig.type} ez-ae-custom-tag__attributes--${attribute}`}>
                 {this[methodName](attributeConfig, attribute)}
             </div>
         );
@@ -185,24 +186,14 @@ export default class EzBtnCustomTagUpdate extends EzWidgetButton {
 
         return (
             <div className={`ez-ae-custom-tag ez-ae-custom-tag--${this.customTagName}`}>
-                <div className="ez-ae-custom-tag__header">
-                    {this.name}
-                </div>
-                <div className="ez-ae-custom-tag__attributes-list">
-                    {attrs.map(this.renderAttribute.bind(this))}
-                </div>
+                <div className="ez-ae-custom-tag__header">{this.name}</div>
+                <div className="ez-ae-custom-tag__attributes-list">{attrs.map(this.renderAttribute.bind(this))}</div>
                 <div className="ez-ae-custom-tag__footer">
-                    <button
-                        className="ez-btn-ae btn ez-btn-ae--cancel"
-                        onClick={this.props.cancelExclusive}
-                    >
-                        {cancelLabel}
-                    </button>
-                    <button
-                        className="ez-btn-ae btn btn-primary"
-                        onClick={this.saveCustomTag.bind(this)}
-                        disabled={!isValid}>
+                    <button className="btn btn-primary ez-btn-ae" onClick={this.saveCustomTag.bind(this)} disabled={!isValid}>
                         {saveLabel}
+                    </button>
+                    <button className="btn btn-link ez-btn-ae ez-btn-ae--cancel" onClick={this.props.cancelExclusive}>
+                        {cancelLabel}
                     </button>
                 </div>
             </div>

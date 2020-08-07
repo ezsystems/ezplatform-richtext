@@ -1,3 +1,29 @@
+// Ibexa colors
+$ibexa-white: #FFF;
+$ibexa-black: #131C26;
+
+$ibexa-color-primary: #DB0032;
+$ibexa-color-primary-pale: #F3E4E7;
+$ibexa-color-primary-light: #E75476;
+
+$ibexa-color-base: #E0E0E8;
+$ibexa-color-base-pale: #F5F5F5;
+$ibexa-color-base-light: #F7F7F9;
+$ibexa-color-base-medium: #ECECF1;
+$ibexa-color-base-dark: #878B90;
+$ibexa-color-base-deep-dark: #131C26;
+
+$ibexa-color-font: #131C26;
+$ibexa-color-font-pale: #878B90;
+$ibexa-color-border-light: #ECDFD1;
+
+$ibexa-color-positive: #00825C;
+$ibexa-color-warning: #F7D000;
+$ibexa-color-danger: #D92D42;
+$ibexa-color-warning-dark: #AA0000;
+$ibexa-color-warning-pale: #FCEAEC;
+
+/* eZ colors: These colors are deprecated, please use colors with the "ibexa" prefix */
 $ez-white: #fff;
 $ez-black: #333;
 
@@ -15,33 +41,33 @@ $ez-ground-base-dark: #e5e3e3;
 $ez-secondary-ground: #2b84b1;
 
 // AlloyEditor
-$ez-ae-color-primary: $ez-white !default;
-$ez-ae-color-primary-text: $ez-black !default;
-$ez-ae-color-secondary: $ez-color-secondary !default;
-$ez-ae-color-warning-pale: $ez-color-warning-pale !default;
-$ez-ae-color-warning: $ez-color-warning-dark !default;
-$ez-ae-color-positive: $ez-color-positive !default;
-$ez-ae-color-negative: $ez-color-base-dark !default;
-$ez-ae-color-ground: $ez-ground-base-dark !default;
-$ez-ae-color-text-hover: #65b6f0 !default;
+$ez-ae-color-primary: $ibexa-white !default;
+$ez-ae-color-primary-text: $ibexa-black !default;
+$ez-ae-color-secondary: $ibexa-color-primary !default;
+$ez-ae-color-warning-pale: $ibexa-color-warning-pale !default;
+$ez-ae-color-warning: $ibexa-color-warning-dark !default;
+$ez-ae-color-positive: $ibexa-color-positive !default;
+$ez-ae-color-negative: $ibexa-color-base-medium !default;
+$ez-ae-color-ground: $ibexa-color-base-pale !default;
+$ez-ae-color-text-hover: $ibexa-color-primary !default;
 
 // Custom tag
-$ez-custom-tag-color-border: $ez-color-primary !default;
-$ez-custom-tag-color-header-ground: $ez-ground-base-dark !default;
-$ez-custom-tag-inline-color-ground: $ez-ground-base-dark !default;
-$ez-custom-tag-color-switcher-active: $ez-color-secondary !default;
-$ez-custom-tag-color-switcher-inactive: $ez-white !default;
-$ez-custom-tag-color-switcher-ground: $ez-white !default;
+$ez-custom-tag-color-border: $ibexa-color-base-pale !default;
+$ez-custom-tag-color-header-ground: $ibexa-color-base-pale !default;
+$ez-custom-tag-inline-color-ground: $ibexa-color-base-medium !default;
+$ez-custom-tag-color-switcher-active: $ibexa-color-primary!default;
+$ez-custom-tag-color-switcher-inactive: $ibexa-white !default;
+$ez-custom-tag-color-switcher-ground: $ibexa-white !default;
 
 // Tools
-$ez-tools-color-ground: $ez-ground-base-dark !default;
-$ez-tools-color-text: $ez-black !default;
+$ez-tools-color-ground: $ibexa-color-base-medium !default;
+$ez-tools-color-text: $ibexa-black !default;
 
 // Embed
-$ez-embed-color-ground: $ez-ground-base-dark !default;
-$ez-embed-color-icon-ground: $ez-white !default;
-$ez-embed-color-border: $ez-ground-base-dark !default;
+$ez-embed-color-ground: $ibexa-color-base-medium !default;
+$ez-embed-color-icon-ground: $ibexa-white !default;
+$ez-embed-color-border: $ibexa-color-base-medium !default;
 
 // Formatted
-$ez-formatted-color-ground: $ez-ground-base-pale !default;
-$ez-formatted-color-border: $ez-ground-base-dark !default;
+$ez-formatted-color-ground: $ibexa-color-base-pale !default;
+$ez-formatted-color-border: $ibexa-color-base-medium !default;

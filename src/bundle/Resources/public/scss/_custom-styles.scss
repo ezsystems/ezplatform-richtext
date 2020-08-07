@@ -4,19 +4,34 @@
     div[class*=' ezstyle-'],
     div[data-ezelement='eztemplate'][data-eztype='style'] {
         margin-top: 0;
-        margin-bottom: 1rem;
-        padding: 0.5rem;
-        border-width: 0.5rem;
+        margin-bottom: calculateRem(16px);
+        padding: calculateRem(8px);
+        border-width: calculateRem(8px);
         border-style: solid;
-        border-color: $ez-ae-color-ground;
-        border-radius: 0.25rem;
+        border-color: $ibexa-color-base-pale;
+        border-radius: $ibexa-border-radius;
     }
 
     span[class^='ezstyle-'],
     span[class*=' style-'],
     span[data-ezelement='eztemplateinline'][data-eztype='style'] {
-        background-color: $ez-ae-color-ground;
-        padding: 0 0.25rem;
+        background-color: $ibexa-color-base-pale;
+        padding: 0 calculateRem(4px);
         font-family: courier, monospace;
     }
+}
+
+.cke_widget_focused > .ez-custom-tag{
+    border: calculateRem(1px) solid $ibexa-color-primary;
+}
+
+.cke_widget_wrapper:hover > .cke_widget_element {
+    outline: none !important;
+}
+
+.cke_widget_wrapper:hover > .ez-custom-tag  {
+    border-color: $ibexa-color-primary;
+    box-shadow: 0 0 calculateRem(2px) 0 rgba($ibexa-color-primary, 0.75);
+    outline: none;
+    border-radius: $ibexa-border-radius;
 }

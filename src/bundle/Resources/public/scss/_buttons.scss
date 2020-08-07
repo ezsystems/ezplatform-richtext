@@ -1,14 +1,17 @@
 .ae-ui {
     .ae-toolbar-add {
         opacity: 0;
+        padding: calculateRem(4px);
     }
 
     .ae-toolbar {
+        padding: calculateRem(8px);
+
         .ae-button {
             &.ez-btn-ae {
                 width: auto;
                 height: auto;
-                margin: 0.3rem;
+                margin: calculateRem(4px);
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -19,34 +22,24 @@
     .ae-container {
         .ez-ae-edit-link {
             .ez-btn-ae {
-                color: $ez-ae-color-primary;
+                color: $ibexa-white;
 
                 &--clear-link {
                     position: absolute;
                     bottom: 0;
                     right: 0;
-                    color: $ez-ae-color-negative;
-                    height: 2.25rem;
+                    height: calculateRem(36px);
                     display: none;
                 }
 
                 &--remove-link,
                 &--save-link {
-                    border-radius: 50%;
                     width: calculateRem(40px);
                     height: calculateRem(40px);
                     padding: 0;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                }
-
-                &--remove-link {
-                    background-color: $ez-ae-color-negative;
-                }
-
-                &--save-link {
-                    background-color: $ez-ae-color-positive;
                 }
             }
 

@@ -1,8 +1,8 @@
 .ez-ae-anchor-edit {
     display: flex;
-    padding: calculateRem(8px) 0 calculateRem(8px) calculateRem(8px);
+    padding: calculateRem(8px);
     flex-wrap: wrap;
-    max-width: calculateRem(528px);
+    max-width: calculateRem(548px);
 
     &__input-wrapper {
         margin-right: calculateRem(10px);
@@ -10,42 +10,24 @@
 
     &__input-label {
         font-weight: 700;
+        font-size: calculateRem(16px);
     }
 
     &__input {
         width: calculateRem(400px);
+        margin-top: calculateRem(8px);
     }
 
     &__actions {
         display: flex;
-        align-items: flex-end;
         justify-content: space-around;
-        width: calculateRem(110px);
+        width: calculateRem(90px);
     }
 
     &__btn {
         border: none;
-
-        &--trash,
-        &--save {
-            border-radius: 50%;
-            width: calculateRem(40px);
-            height: calculateRem(40px);
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        &--trash {
-            background-color: $ez-ae-color-negative;
-        }
-
-        &--save {
-            background-color: $ez-ae-color-positive;
-        }
-
+        margin-top: calculateRem(18px);
+        
         &[disabled] {
             opacity: 0.3;
             cursor: not-allowed;
@@ -65,8 +47,8 @@
             }
 
             &__input {
-                border-color: $ez-color-danger;
-                background: $ez-color-warning-pale;
+                border-color: $ibexa-color-danger;
+                background: $ibexa-color-warning-pale;
             }
         }
     }

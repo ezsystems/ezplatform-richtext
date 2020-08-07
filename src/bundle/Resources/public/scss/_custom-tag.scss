@@ -1,8 +1,8 @@
 .ez-custom-tag {
     max-width: 50%;
-    border: calculateRem(1px) solid $ez-custom-tag-color-border;
+    border: calculateRem(1px) solid $ibexa-color-base-pale;
     margin: calculateRem(16px) 0;
-    border-radius: calculateRem(5px);
+    border-radius: $ibexa-border-radius;
 
     & & {
         max-width: 100%;
@@ -12,31 +12,31 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: $ez-custom-tag-color-header-ground;
+        background-color: $ibexa-color-base-pale;
         padding: calculateRem(2px) calculateRem(2px) calculateRem(2px) calculateRem(8px);
         border-top-left-radius: calculateRem(5px);
         border-top-right-radius: calculateRem(5px);
+    }
 
-        &-label {
-            font-weight: bold;
-        }
+    &__header-label {
+        font-weight: bold;
+    }
 
-        &-btns {
-            background-color: $ez-custom-tag-color-switcher-ground;
-            border: calculateRem(2px) solid $ez-custom-tag-color-switcher-active;
-            border-radius: calculateRem(5px);
-            display: flex;
-            padding: calculateRem(2px);
-        }
+    &__header-btns {
+        background-color: $ibexa-white;
+        border: calculateRem(1px) solid $ibexa-color-primary;
+        border-radius: $ibexa-border-radius;
+        display: flex;
+        padding: calculateRem(2px);
+    }
 
-        &-btn {
-            display: flex;
-            border-radius: calculateRem(5px);
-            padding: calculateRem(4px);
+    &__header-btn {
+        display: flex;
+        border-radius: calculateRem(5px);
+        padding: calculateRem(4px);
 
-            .ez-icon {
-                fill: $ez-custom-tag-color-switcher-active;
-            }
+        .ez-icon {
+            fill: $ibexa-color-primary;
         }
     }
 
@@ -59,10 +59,10 @@
 
         & > .ez-custom-tag__header {
             .ez-custom-tag__header-btn--attributes {
-                background-color: $ez-custom-tag-color-switcher-active;
+                background-color: $ibexa-color-primary;
 
                 .ez-icon {
-                    fill: $ez-custom-tag-color-switcher-inactive;
+                    fill: $ibexa-white;
                 }
             }
         }
@@ -76,7 +76,7 @@
         &[data-ezelement='eztemplateinline'] {
             padding: 0 calculateRem(8px);
             margin: 0 calculateRem(4px);
-            background-color: $ez-custom-tag-inline-color-ground;
+            background-color: $ibexa-color-base-medium;
             border: none;
             display: inline-flex;
             max-width: none;
@@ -88,10 +88,10 @@
 
         & > .ez-custom-tag__header {
             .ez-custom-tag__header-btn--content {
-                background-color: $ez-custom-tag-color-switcher-active;
+                background-color: $ibexa-color-primary;
 
                 .ez-icon {
-                    fill: $ez-custom-tag-color-switcher-inactive;
+                    fill: $ibexa-white;
                 }
             }
         }
