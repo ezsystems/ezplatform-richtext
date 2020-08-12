@@ -20,16 +20,13 @@
 
         &--info {
             grid-area: info;
+            margin-top: calculateRem(8px);
         }
 
         &--actions {
             grid-area: actions;
             padding: 0 0 0 calculateRem(14px);
-            border-left: calculateRem(2px) solid $ez-ae-color-ground;
-        }
-
-        .ez-btn-ae--udw {
-            background-color: $ez-ae-color-secondary;
+            border-left: calculateRem(2px) solid $ibexa-color-base-pale;
         }
     }
 
@@ -37,13 +34,14 @@
         &--udw {
             display: flex;
             flex-direction: column;
+            margin-bottom: 0;
         }
 
         &--url {
             position: relative;
             display: flex;
             flex-direction: column;
-            width: 25rem;
+            width: calculateRem(400px);
         }
 
         &--title,
@@ -53,6 +51,7 @@
 
             .ez-ae-edit-link__text {
                 font-weight: bold;
+                margin-bottom: calculateRem(8px);
             }
         }
 
@@ -63,39 +62,33 @@
 
         &--target {
             .ez-ae-edit-link__choice {
-                border: calculateRem(2px) solid $ez-ae-color-secondary;
-                padding: calculateRem(2px);
-                border-radius: calculateRem(4px);
+                border: calculateRem(1px) solid $ibexa-color-base-dark;
+                border-radius: $ibexa-border-radius;
 
                 .ez-ae-edit-link__label {
-                    margin-bottom: 0;
-
-                    &:not(:last-child) {
-                        .ez-btn-ae__icon-wrapper {
-                            margin-right: calculateRem(8px);
-                        }
-                    }
+                    width: calculateRem(36px);
+                    height: calculateRem(36px);
+                    margin: 0;
 
                     .ez-icon {
-                        fill: $ez-ae-color-secondary;
+                        fill: $ibexa-color-base-dark;;
                         width: calculateRem(20px);
                         height: calculateRem(20px);
                     }
 
                     .ez-btn-ae__icon-wrapper {
-                        padding: calculateRem(4px);
-                        border-radius: calculateRem(4px);
                         cursor: pointer;
                         display: flex;
                         justify-content: center;
                         align-items: center;
+                        width: calculateRem(36px);
+                        height: calculateRem(36px);
                     }
 
                     input:checked + .ez-btn-ae__icon-wrapper {
-                        background: $ez-ae-color-secondary;
+                        background: $ibexa-color-base-dark;
 
                         .ez-icon {
-                            background-color: $ez-ae-color-secondary;
                             fill: $ez-ae-color-primary;
                         }
                     }
@@ -108,8 +101,8 @@
         }
 
         &--separator {
-            line-height: 2.25rem;
-            padding: 0 0.5rem;
+            line-height: calculateRem(36px);
+            padding: 0 calculateRem(8px);
         }
 
         &--actions {
@@ -118,23 +111,11 @@
             justify-content: space-around;
             height: 100%;
 
-            .ez-btn-ae {
-                &__icon {
-                    fill: $ez-ae-color-primary;
-                }
-            }
         }
 
         .ez-ae-edit-link__label {
-            margin-bottom: 0.3rem;
+            margin-bottom: calculateRem(4px);
             font-weight: bold;
-        }
-
-        .ez-ae-edit-link__input {
-            height: calculateRem(36px);
-            border: calculateRem(1px) solid $ez-ae-color-ground;
-            border-radius: calculateRem(4px);
-            padding-right: calculateRem(32px);
         }
     }
 }

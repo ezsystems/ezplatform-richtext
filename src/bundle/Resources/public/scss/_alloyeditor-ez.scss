@@ -9,14 +9,16 @@
     font-style: normal;
 }
 
+.cke_widget_wrapper:hover > .cke_widget_element {
+    outline: none;
+}
+
 .cke_widget_wrapper:hover > .cke_widget_element[data-ezelement='ezembed'] {
     outline: 1px solid $ez-custom-tag-color-border;
 }
 
 .ae-ui .ae-toolbar .ae-container-edit-table .ae-button {
-    border-radius: 50%;
-    background-color: $ez-ae-color-positive;
-    color: $ez-ae-color-primary;
+    color: $ibexa-color-base-dark;
     margin-left: 16px;
 }
 
@@ -268,13 +270,6 @@
     box-sizing: content-box;
 }
 
-.ae-ui .ae-toolbar,
-.ae-ui [class^='ae-toolbar-'] {
-    line-height: 1;
-    padding: 4px;
-    position: absolute;
-}
-
 .ae-ui .ae-toolbar input,
 .ae-ui .ae-toolbar textarea,
 .ae-ui .ae-toolbar keygen,
@@ -283,9 +278,8 @@
 .ae-ui [class^='ae-toolbar-'] input,
 .ae-ui [class^='ae-toolbar-'] textarea,
 .ae-ui [class^='ae-toolbar-'] keygen,
-.ae-ui [class^='ae-toolbar-'] select,
-.ae-ui [class^='ae-toolbar-'] button {
-    font-size: 15px;
+.ae-ui [class^='ae-toolbar-'] select {
+    font-size: calculateRem(16px);
 }
 
 .ae-ui .ae-toolbar.ae-toolbar-transition,
@@ -357,8 +351,8 @@
 }
 
 .ae-ui .ae-toolbar-add .ae-button {
-    height: 34px;
-    width: 34px;
+    height: calculateRem(24px);
+    width: calculateRem(24px);
 }
 
 .ae-ui .ae-arrow-box:after {
@@ -496,15 +490,19 @@
 .ae-ui .ae-container [class^='ae-container-'],
 .ae-ui .ae-container .ae-button,
 .ae-ui .ae-container .ae-toolbar-element,
-.ae-ui .ae-container label,
 .ae-ui [class^='ae-container-'] .ae-container,
 .ae-ui [class^='ae-container-'] [class^='ae-container-'],
 .ae-ui [class^='ae-container-'] .ae-button,
 .ae-ui [class^='ae-container-'] .ae-toolbar-element,
 .ae-ui [class^='ae-container-'] label {
-    font-size: 15px;
+    font-size: calculateRem(16px);
     margin: 0;
     position: relative;
+}
+
+.ae-ui .ae-container label {
+    font-size: calculateRem(16px);
+    margin: 0 0 calculateRem(8px) 0;
 }
 
 .ae-ui .ae-container .ae-container:not(:last-child),
@@ -522,7 +520,11 @@
 
 .ae-ui .ae-container-edit-link,
 .ae-ui .ae-container-edit-table {
-    height: 40px \9;
+    padding: calculateRem(8px);
+
+    label {
+        margin-bottom: 0;
+    }
 }
 
 .ae-ui .ae-container-edit-link *,
@@ -868,18 +870,22 @@
 
 .ae-ui .ae-container-input .ae-container-dropdown {
     background-color: #fff;
-    color: #000;
+    color: $ibexa-color-font;
 }
 
 .ae-ui .ae-container-input input,
 .ae-ui .ae-container-input .ae-input {
     border-radius: 2px;
     border-width: 0;
-    color: #869cad;
+    color: $ibexa-color-font;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 14px;
+    font-size: calculateRem(16px);
+    line-height: calculateRem(16px);
     outline: none;
+
+    &:focus {
+        color: $ibexa-color-font-pale;
+    }
 }
 
 .ae-ui .ae-container-input input::-webkit-input-placeholder,
@@ -953,10 +959,12 @@
 
 .ae-ui .ae-toolbar,
 .ae-ui [class^='ae-toolbar-'] {
-    background-color: $ez-ae-color-primary;
-    border-radius: 3px;
-    color: $ez-ae-color-primary-text;
-    box-shadow: 0 4px 10px 2px rgba(86, 94, 99, 0.45);
+    position: absolute;
+    border-radius: $ibexa-border-radius;
+    background-color: $ibexa-white;
+    line-height: 1;
+    color: $ibexa-color-font;
+    box-shadow: 0 calculateRem(4px) calculateRem(10px) calculateRem(2px) rgba(86, 94, 99, 0.45);
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -1063,6 +1071,7 @@ pre.ez-has-anchor > .ez-icon {
 
 .ae-toolbar-styles {
     z-index: 1;
+    padding: calculateRem(8px);
 }
 
 .ae-ui .ae-toolbar-floating--fixed {
@@ -1080,23 +1089,24 @@ pre.ez-has-anchor > .ez-icon {
 .ae-ui {
     .ae-container {
         .ez-ae-custom-tag {
-            width: calculateRem(280px);
+            width: calculateRem(320px);
             margin: calculateRem(-4px);
-            border-radius: calculateRem(3px);
+            border-radius: $ibexa-border-radius;
             overflow: hidden;
 
             &__header {
-                font-size: calculateRem(15px);
+                font-size: calculateRem(16px);
                 line-height: calculateRem(32px);
-                padding: 0 calculateRem(10px);
+                padding: calculateRem(8px) calculateRem(16px);
                 font-weight: 700;
-                background: $ez-ground-base;
+                background: $ibexa-color-base-pale;
             }
 
             &__attributes-list {
                 max-height: calculateRem(300px);
                 overflow: auto;
-                padding: 1rem;
+                padding: calculateRem(16px);
+                background: $ibexa-white;
 
                 .attribute__label {
                     font-weight: 700;
@@ -1109,13 +1119,22 @@ pre.ez-has-anchor > .ez-icon {
             }
 
             &__attributes--boolean {
-                @include checkbox-switcher(1rem);
+                @include checkbox-switcher();
             }
 
             &__footer {
-                text-align: center;
-                padding: calculateRem(10px);
-                background: $ez-ground-base;
+                padding: calculateRem(16px);
+                background: $ibexa-color-base-pale;
+
+                .ez-btn-ae {
+                    font-size: calculateRem(14px);
+                    color: $ibexa-white;
+
+                    &--cancel {
+                        text-decoration: none;
+                        color: $ibexa-color-primary;
+                    }
+                }
             }
 
             &:after {
@@ -1137,17 +1156,6 @@ pre.ez-has-anchor > .ez-icon {
 
             .attribute__label {
                 margin: 0.5rem 0;
-            }
-
-            .ez-btn-ae--cancel {
-                color: $ez-ae-color-primary;
-                background-color: $ez-color-base-dark;
-                margin-right: calculateRem(5px);
-            }
-
-            .btn-primary {
-                color: $ez-ae-color-primary;
-                margin-left: calculateRem(5px);
             }
 
             &--ezyoutube {
@@ -1224,7 +1232,7 @@ pre.ez-has-anchor > .ez-icon {
 .ez-btn-ae {
     &:hover {
         .ez-icon {
-            fill: $ez-ae-color-text-hover;
+            fill: $ibexa-color-primary;
         }
     }
 
