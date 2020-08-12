@@ -9,13 +9,13 @@
     }
 
     &__input-label {
+        margin-bottom: calculateRem(4px);
         font-weight: 700;
         font-size: calculateRem(16px);
     }
 
     &__input {
         width: calculateRem(400px);
-        margin-top: calculateRem(8px);
     }
 
     &__actions {

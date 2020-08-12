@@ -5,16 +5,22 @@
     }
 
     .ae-toolbar {
-        padding: calculateRem(8px);
-
         .ae-button {
             &.ez-btn-ae {
-                width: auto;
-                height: auto;
-                margin: calculateRem(4px);
+                width: calculateRem(34px);
+                height: calculateRem(34px);
+                margin: calculateRem(8px) 0;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+
+                &:first-child {
+                    margin-left: calculateRem(8px);
+                }
+
+                &:last-child {
+                    margin-right: calculateRem(8px);
+                }
             }
         }
     }

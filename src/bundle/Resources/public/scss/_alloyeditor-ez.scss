@@ -520,7 +520,11 @@
 
 .ae-ui .ae-container-edit-link,
 .ae-ui .ae-container-edit-table {
-    height: 40px \9;
+    padding: calculateRem(8px);
+
+    label {
+        margin-bottom: 0;
+    }
 }
 
 .ae-ui .ae-container-edit-link *,
@@ -866,18 +870,22 @@
 
 .ae-ui .ae-container-input .ae-container-dropdown {
     background-color: #fff;
-    color: #000;
+    color: $ibexa-color-font;
 }
 
 .ae-ui .ae-container-input input,
 .ae-ui .ae-container-input .ae-input {
     border-radius: 2px;
     border-width: 0;
-    color: #869cad;
+    color: $ibexa-color-font;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 14px;
+    font-size: calculateRem(16px);
+    line-height: calculateRem(16px);
     outline: none;
+
+    &:focus {
+        color: $ibexa-color-font-pale;
+    }
 }
 
 .ae-ui .ae-container-input input::-webkit-input-placeholder,
