@@ -1,0 +1,6 @@
+.ae-select {
+    &--imagevariation {
+        margin: 0 calculateRem(4px);
+        max-width: calculateRem(370px);
+    }
+}

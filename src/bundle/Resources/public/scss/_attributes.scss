@@ -3,18 +3,18 @@
         .ez-ae-attributes {
             max-height: 400px;
             overflow: auto;
-            padding: 1rem;
+            padding: calucalteRem(16px);
 
             .ez-ae-attribute__wrapper {
-                margin-bottom: 0.5rem;
+                margin-bottom: calculateRem(8px);
             }
 
             .ez-ae-attribute__label {
-                margin: 0.5rem 0;
+                margin: calculateRem(8px) 0 calculateRem(12px) 0;
             }
 
             .ez-btn-ae--attributes-save {
-                color: $ez-ae-color-primary;
+                color: $ibexa-color-primary;
             }
         }
     }

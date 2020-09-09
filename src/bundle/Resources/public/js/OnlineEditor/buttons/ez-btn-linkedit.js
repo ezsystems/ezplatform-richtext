@@ -187,7 +187,7 @@ export default class EzBtnLinkEdit extends Component {
             <div className="ez-ae-edit-link__row ez-ae-edit-link__row--udw">
                 <div className="ez-ae-edit-link__block ez-ae-edit-link__block--udw">
                     <label className="ez-ae-edit-link__label">{selectLabel}</label>
-                    <button className="ez-ae-button ez-btn-ae ez-btn-ae--udw btn" onClick={this.selectContent.bind(this)}>
+                    <button className="ez-btn-ae ez-btn-ae--udw btn btn-primary" onClick={this.selectContent.bind(this)}>
                         {selectContentLabel}
                     </button>
                 </div>
@@ -197,7 +197,7 @@ export default class EzBtnLinkEdit extends Component {
                 <div className="ez-ae-edit-link__block ez-ae-edit-link__block--url">
                     <label className="ez-ae-edit-link__label">{linkToLabel}</label>
                     <input
-                        className="ae-input ez-ae-edit-link__input"
+                        className="ae-input ez-ae-edit-link__input form-control"
                         onChange={this.setHref.bind(this)}
                         onKeyDown={this.handleKeyDown.bind(this)}
                         placeholder={blockPlaceholderText}
@@ -234,7 +234,7 @@ export default class EzBtnLinkEdit extends Component {
                     <label className="ez-ae-edit-link__label">{title}</label>
                     <input
                         type="text"
-                        className="ae-input ez-ae-edit-link__input"
+                        className="ae-input ez-ae-edit-link__input form-control"
                         onChange={this.setTitle.bind(this)}
                         value={this.state.linkTitle}
                     />
@@ -298,7 +298,7 @@ export default class EzBtnLinkEdit extends Component {
             <div className="ez-ae-edit-link__row ez-ae-edit-link__row--actions">
                 <div className="ez-ae-edit-link__block ez-ae-edit-link__block--actions">
                     <button
-                        className="ez-btn-ae ez-btn-ae--remove-link btn"
+                        className="ez-btn-ae ez-btn-ae--remove-link btn btn-icon"
                         disabled={this.state.isTemporary}
                         onClick={this.removeLink.bind(this)}
                         title={removeLabel}>
@@ -307,7 +307,7 @@ export default class EzBtnLinkEdit extends Component {
                         </svg>
                     </button>
                     <button
-                        className="ez-btn-ae ez-btn-ae--save-link btn"
+                        className="ez-btn-ae ez-btn-ae--save-link btn btn-icon"
                         disabled={!this.state.linkHref}
                         onClick={this.saveLink.bind(this)}
                         title={saveLabel}>

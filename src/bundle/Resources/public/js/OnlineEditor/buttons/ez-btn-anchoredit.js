@@ -107,7 +107,6 @@ export default class EzBtnAnchorEdit extends Component {
         });
     }
 
-
     isValueValid(value) {
         return ANCHOR_PATTERN.test(value);
     }
@@ -183,17 +182,9 @@ export default class EzBtnAnchorEdit extends Component {
         let errorMessage;
 
         if (value && !isValueUnique) {
-            errorMessage = Translator.trans(
-                /*@Desc("Anchor name must be unique.")*/ 'anchor_btn.error.unique',
-                {},
-                'alloy_editor'
-            );
+            errorMessage = Translator.trans(/*@Desc("Anchor name must be unique.")*/ 'anchor_btn.error.unique', {}, 'alloy_editor');
         } else if (value && !isValueValid) {
-            errorMessage = Translator.trans(
-                /*@Desc("A valid anchor link is needed.")*/ 'anchor_btn.error.valid',
-                {},
-                'alloy_editor'
-            );
+            errorMessage = Translator.trans(/*@Desc("A valid anchor link is needed.")*/ 'anchor_btn.error.valid', {}, 'alloy_editor');
         }
 
         return <em className="ez-ae-anchor-edit__error">{errorMessage}</em>;
@@ -227,7 +218,7 @@ export default class EzBtnAnchorEdit extends Component {
                     <button
                         type="button"
                         title={removeBtnTitle}
-                        className="ez-ae-anchor-edit__btn ez-ae-anchor-edit__btn--trash"
+                        className="btn btn-icon ez-ae-anchor-edit__btn ez-ae-anchor-edit__btn--trash"
                         onClick={this.removeAnchor}
                         disabled={isRemoveBtnDisabled}>
                         <svg className="ez-icon ez-icon--light ez-icon--medium ez-btn-ae__icon">
@@ -237,7 +228,7 @@ export default class EzBtnAnchorEdit extends Component {
                     <button
                         type="button"
                         title={saveBtnTitle}
-                        className="ez-ae-anchor-edit__btn ez-ae-anchor-edit__btn--save"
+                        className="btn btn-icon ez-ae-anchor-edit__btn ez-ae-anchor-edit__btn--save"
                         onClick={this.saveAnchor}
                         disabled={isSaveBtnDisabled}>
                         <svg className="ez-icon ez-icon--light ez-icon--medium ez-btn-ae__icon">

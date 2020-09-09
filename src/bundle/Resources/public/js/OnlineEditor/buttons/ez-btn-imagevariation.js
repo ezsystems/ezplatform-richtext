@@ -47,7 +47,11 @@ export default class EzBtnImageVariation extends EzEmbedImageButton {
      */
     render() {
         return (
-            <select defaultValue={this.getWidget().getConfig('size')} onChange={this.updateImage.bind(this)} tabIndex={this.props.tabIndex}>
+            <select
+                className="form-control ae-select ae-select--imagevariation"
+                defaultValue={this.getWidget().getConfig('size')}
+                onChange={this.updateImage.bind(this)}
+                tabIndex={this.props.tabIndex}>
                 {this.getImageVariationOptions()}
             </select>
         );
