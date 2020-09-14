@@ -18,7 +18,9 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use eZ\Publish\Core\MVC\Symfony\Security\Authorization\Attribute as AuthorizationAttribute;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use eZ\Publish\API\Repository\Exceptions\NotFoundException;
+use eZ\Publish\API\Repository\Exceptions\UnauthorizedException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\Security\Core\Exception\AuthenticationCredentialsNotFoundException;
 use Exception;
 use Psr\Log\LoggerInterface;
 
@@ -170,6 +172,24 @@ class Renderer implements RendererInterface
             );
 
             $isDenied = true;
+        } catch (AuthenticationCredentialsNotFoundException $e) {
+            // There is no firewall for 404 page, and we're unable to use "isGranted".
+            // note that "content/view_embed" is not covered here
+            try {
+                $this->repository->getContentService()->loadContent((int)$contentId);
+            } catch (NotFoundException $e) {
+                $this->logger->error(
+                    "Could not render embedded resource, credentials not found: Content #{$contentId} not found"
+                );
+
+                return null;
+            } catch (UnauthorizedException $e) {
+                $this->logger->error(
+                    "Could not render embedded resource, credentials not found: Unauthorized Content #{$contentId}"
+                );
+
+                $isDenied = true;
+            }
         } catch (Exception $e) {
             if ($e instanceof NotFoundHttpException || $e instanceof NotFoundException) {
                 $this->logger->error(
@@ -223,6 +243,23 @@ class Renderer implements RendererInterface
                 );
 
                 return null;
+            }
+        } catch (AuthenticationCredentialsNotFoundException $e) {
+            // There is no firewall for 404 page, and we're unable to use "isGranted".
+            // note that "content/view_embed" is not covered here
+            try {
+                $this->repository->getLocationService()->loadLocation($locationId);
+            } catch (NotFoundException $e) {
+                $this->logger->error(
+                    "Could not render embedded resource, credentials not found: Location #{$locationId} not found"
+                );
+
+                return null;
+            } catch (UnauthorizedException $e) {
+                $this->logger->error(
+                    "Could not render embedded resource, credentials not found: Unauthorized Location #{$locationId}"
+                );
+                $isDenied = true;
             }
         } catch (AccessDeniedException $e) {
             $this->logger->error(
