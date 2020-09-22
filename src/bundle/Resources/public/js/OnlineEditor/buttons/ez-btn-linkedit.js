@@ -473,9 +473,9 @@ export default class EzBtnLinkEdit extends Component {
             this.invokeWithFixedScrollbar(() => {
                 editor.fire('actionPerformed', this);
 
-                const pathElement = editor.elementPath().lastElement;
-                if (pathElement.getName() === 'br') {
-                    const parent = pathElement.getParent();
+                const path = editor.elementPath();
+                if (path && path.lastElement.getName() === 'br') {
+                    const parent = path.lastElement.getParent();
                     if (parent.getName() === 'td' || parent.getName() === 'th') {
                         editor.eZ.moveCaretToElement(editor, parent);
                     }
