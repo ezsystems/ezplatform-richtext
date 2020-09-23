@@ -112,9 +112,7 @@ final class AlloyEditor implements Provider
     }
 
     /**
-     * Get custom data attributes defined by the SiteAccess-aware configuration.
-     *
-     * @return array
+     * @return array Native attributes
      */
     private function getDataAttributes(): array
     {
