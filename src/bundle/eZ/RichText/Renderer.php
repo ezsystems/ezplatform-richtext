@@ -11,6 +11,7 @@ namespace EzSystems\EzPlatformRichTextBundle\eZ\RichText;
 use eZ\Publish\API\Repository\Exceptions\NotFoundException;
 use eZ\Publish\API\Repository\Repository;
 use eZ\Publish\API\Repository\Values\Content\ContentInfo;
+use eZ\Publish\API\Repository\Values\Content\Location;
 use eZ\Publish\Core\MVC\ConfigResolverInterface;
 use EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface;
 use Psr\Log\LoggerInterface;
@@ -172,7 +173,8 @@ class Renderer implements RendererInterface
             $location->getContentInfo(),
             static::RESOURCE_TYPE_LOCATION,
             $isInline,
-            $parameters
+            $parameters,
+            $location
         );
     }
 
@@ -180,7 +182,8 @@ class Renderer implements RendererInterface
         ContentInfo $contentInfo,
         int $resourceType,
         bool $isInline,
-        array $parameters
+        array $parameters,
+        Location $location = null
     ): ?string {
         if (!$contentInfo->mainLocationId) {
             $this->logger->error("Could not render embedded resource: Content #{$contentInfo->id} is trashed.");
@@ -195,7 +198,7 @@ class Renderer implements RendererInterface
 
         $isDenied = false;
         try {
-            $this->checkContentInfoPermissions($contentInfo);
+            $this->checkContentInfoPermissions($contentInfo, $location);
         } catch (AccessDeniedException $e) {
             $this->logger->error(
                 "Could not render embedded resource: access denied to embed Content #{$contentInfo->id}"
@@ -440,14 +443,16 @@ class Renderer implements RendererInterface
      *
      * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
      */
-    protected function checkContentInfoPermissions(ContentInfo $contentInfo): void
+    protected function checkContentInfoPermissions(ContentInfo $contentInfo, Location $targetLocation = null): void
     {
         $permissionResolver = $this->repository->getPermissionResolver();
 
+        $targets = $targetLocation ? [$targetLocation] : [];
+
         // Check both 'content/read' and 'content/view_embed'.
         if (
-            !$permissionResolver->canUser('content', 'read', $contentInfo)
-            && !$permissionResolver->canUser('content', 'view_embed', $contentInfo)
+            !$permissionResolver->canUser('content', 'read', $contentInfo, $targets)
+            && !$permissionResolver->canUser('content', 'view_embed', $contentInfo, $targets)
         ) {
             throw new AccessDeniedException();
         }
@@ -477,7 +482,7 @@ class Renderer implements RendererInterface
                 return $repository->getLocationService()->loadLocation($id);
             }
         );
-        $this->checkContentInfoPermissions($location->getContentInfo());
+        $this->checkContentInfoPermissions($location->getContentInfo(), $location);
 
         return $location;
     }

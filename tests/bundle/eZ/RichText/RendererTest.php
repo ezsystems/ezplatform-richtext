@@ -623,7 +623,7 @@ class RendererTest extends TestCase
             ->with($contentMock)
             ->will($this->throwException(new Exception('Something threw up')));
 
-        $this->expectExceptionMessage("Something threw up");
+        $this->expectExceptionMessage('Something threw up');
         $this->expectException(\Exception::class);
         $renderer->renderContentEmbed($contentId, 'embedTest', ['parameters'], true);
     }
@@ -1180,7 +1180,7 @@ class RendererTest extends TestCase
             ->method('sudo')
             ->will($this->throwException(new Exception('Something threw up')));
 
-        $this->expectExceptionMessage("Something threw up");
+        $this->expectExceptionMessage('Something threw up');
         $this->expectException(\Exception::class);
         $renderer->renderLocationEmbed($locationId, 'embedTest', ['parameters'], true);
     }
