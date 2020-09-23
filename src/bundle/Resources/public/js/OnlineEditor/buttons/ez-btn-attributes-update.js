@@ -19,9 +19,7 @@ export default class EzBtnAttributesUpdate extends EzWidgetButton {
             classesValue: props.classesValue,
         };
 
-        this.nativeAttributes = {
-            table: ['border']
-        }
+        this.nativeAttributes = window.eZ.richText.alloyEditor.nativeAttributes;
     }
 
     renderString(attrName, config, value) {
