@@ -1,3 +1,6 @@
+alloy_editor:
+    native_attributes:
+        table: [border]
 custom_tags:
     ezfacebook:
         template: '@ezdesign/ezrichtext/custom_tags/ezfacebook.html.twig'

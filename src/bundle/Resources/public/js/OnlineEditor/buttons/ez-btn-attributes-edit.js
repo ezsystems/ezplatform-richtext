@@ -19,9 +19,7 @@ export default class EzBtnAttributesEdit extends EzWidgetButton {
             li: this.setDefaultClassesOnListItems,
         };
 
-        this.nativeAttributes = {
-            table: ['border']
-        }
+        this.nativeAttributes = window.eZ.richText.alloyEditor.nativeAttributes;
     }
 
     componentDidMount() {
@@ -144,6 +142,7 @@ export default class EzBtnAttributesEdit extends EzWidgetButton {
             }
 
             const defaultValue = config.defaultValue;
+
             if (defaultValue !== undefined && defaultValue !== null) {
                 const setDefaultAttributesMethod = this.setDefaultAttributesMethods[this.toolbarName]
                     ? this.setDefaultAttributesMethods[this.toolbarName]
@@ -196,7 +195,6 @@ export default class EzBtnAttributesEdit extends EzWidgetButton {
         }
 
         let value = element.getAttribute(`data-ezattribute-${name}`);
-
         const isValueDefined = value !== null;
         const defaultValue = config.defaultValue;
 

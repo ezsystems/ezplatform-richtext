@@ -174,6 +174,8 @@ class Configuration extends SiteAccessConfiguration
      *             extra_buttons:
      *                 paragraph: [button1, button2]
      *                 embed: [button1]
+     *             native_attributes:
+     *                 table: [border]
      * </code>
      *
      * Please note extra_buttons setting will be deprecated in eZ Platform 3.x.
@@ -197,6 +199,13 @@ class Configuration extends SiteAccessConfiguration
                             ->useAttributeAsKey('name')
                             ->arrayPrototype()
                                 ->example(['button1', 'button2'])
+                                ->prototype('scalar')->end()
+                            ->end()
+                        ->end()
+                        ->arrayNode('native_attributes')
+                            ->useAttributeAsKey('name')
+                            ->arrayPrototype()
+                                ->example(['border', 'width'])
                                 ->prototype('scalar')->end()
                             ->end()
                         ->end()
