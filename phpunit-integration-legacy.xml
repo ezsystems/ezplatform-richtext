@@ -6,6 +6,7 @@
          convertWarningsToExceptions="true"
          beStrictAboutTestsThatDoNotTestAnything="false"
          colors="true"
+         failOnWarning="true"
          >
     <php>
         <env name="setupFactory" value="EzSystems\IntegrationTests\EzPlatformRichText\eZ\API\SetupFactory\LegacySetupFactory" />
