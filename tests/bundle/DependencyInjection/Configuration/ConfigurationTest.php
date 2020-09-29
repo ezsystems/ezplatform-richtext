@@ -85,6 +85,7 @@ final class ConfigurationTest extends TestCase
                                 'paragraph' => ['button1', 'button2'],
                                 'embed' => ['button1'],
                             ],
+                            'native_attributes' => ['element1'],
                         ],
                     ],
                     [
@@ -94,6 +95,7 @@ final class ConfigurationTest extends TestCase
                                 'paragraph' => ['button3', 'button4'],
                                 'embed' => ['button1'],
                             ],
+                            'native_attributes' => ['element2'],
                         ],
                     ],
                 ],
@@ -105,6 +107,7 @@ final class ConfigurationTest extends TestCase
                             'embed' => ['button1', 'button1'],
                         ],
                         'extra_plugins' => ['plugin1', 'plugin2'],
+                        'native_attributes' => ['element1', 'element2'],
                     ],
                     'custom_tags' => [],
                     'custom_styles' => [],
