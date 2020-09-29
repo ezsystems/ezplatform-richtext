@@ -72,6 +72,7 @@ class AlloyEditorTest extends BaseProviderTestCase
                 'toolbars' => [],
                 'classes' => ['class1', 'class2'],
                 'attributes' => ['attr1', 'attr2'],
+                'nativeAttributes' => [],
             ],
             $provider->getConfiguration()
         );
@@ -110,6 +111,7 @@ class AlloyEditorTest extends BaseProviderTestCase
                 ],
                 'classes' => [],
                 'attributes' => [],
+                'nativeAttributes' => [],
             ],
             $provider->getConfiguration()
         );
@@ -156,6 +158,7 @@ class AlloyEditorTest extends BaseProviderTestCase
                 ],
                 'classes' => [],
                 'attributes' => [],
+                'nativeAttributes' => [],
             ],
             $provider->getConfiguration()
         );
@@ -202,6 +205,7 @@ class AlloyEditorTest extends BaseProviderTestCase
                 ],
                 'classes' => [],
                 'attributes' => [],
+                'nativeAttributes' => [],
             ],
             $provider->getConfiguration()
         );
