@@ -135,10 +135,6 @@ export default class EzBtnLinkEdit extends Component {
         const nativeEditor = this.props.editor.get('nativeEditor');
         const eventOptions = {
             editor: this.props.editor,
-            nativeEvent: {
-                editor: this.props.editor,
-                target: element.$,
-            },
             selectionData: {
                 element: this.state.element,
                 region: this.getRegion(),
