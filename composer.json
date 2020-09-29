@@ -9,6 +9,7 @@
         "ext-xsl": "*",
         "ext-dom": "*",
         "ext-libxml": "*",
+        "symfony/asset": "^5.1",
         "symfony/dependency-injection": "^5.0",
         "symfony/http-kernel": "^5.0",
         "symfony/config": "^5.0",
