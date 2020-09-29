@@ -6,6 +6,7 @@
     convertWarningsToExceptions="true"
     beStrictAboutTestsThatDoNotTestAnything="false"
     colors="true"
+    failOnWarning="true"
 >
   <testsuites>
     <testsuite name="ezrichtext_field_type">
