@@ -693,9 +693,9 @@
         <xsl:value-of select="@xml:id"/>
       </xsl:attribute>
     </xsl:if>
-    <xsl:if test="@ezxhtml:textalign">
+    <xsl:if test="@ezxhtml:align">
       <xsl:attribute name="style">
-        <xsl:value-of select="concat( 'text-align:', @ezxhtml:textalign, ';' )"/>
+        <xsl:value-of select="concat( 'text-align:', @ezxhtml:align, ';' )"/>
       </xsl:attribute>
     </xsl:if>
   </xsl:template>

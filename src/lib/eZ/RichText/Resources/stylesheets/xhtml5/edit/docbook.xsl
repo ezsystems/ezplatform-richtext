@@ -735,7 +735,7 @@
           </xsl:call-template>
         </xsl:variable>
         <xsl:if test="$textAlign != ''">
-          <xsl:attribute name="ezxhtml:textalign">
+          <xsl:attribute name="ezxhtml:align">
             <xsl:value-of select="$textAlign"/>
           </xsl:attribute>
         </xsl:if>
