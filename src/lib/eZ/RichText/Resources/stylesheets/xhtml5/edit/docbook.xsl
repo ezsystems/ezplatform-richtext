@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet
-        xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-        xmlns:ezxhtml5="http://ez.no/namespaces/ezpublish5/xhtml5/edit"
-        xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        xmlns="http://docbook.org/ns/docbook"
-        exclude-result-prefixes="ezxhtml5"
-        version="1.0">
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:ezxhtml5="http://ez.no/namespaces/ezpublish5/xhtml5/edit"
+    xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns="http://docbook.org/ns/docbook"
+    exclude-result-prefixes="ezxhtml5"
+    version="1.0">
   <xsl:output indent="yes" encoding="UTF-8"/>
 
   <xsl:template match="/ezxhtml5:section">
