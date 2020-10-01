@@ -97,8 +97,12 @@ class Template extends Render implements Converter
         }
         $parameters['content'] = !empty($innerContent) ? $innerContent : null;
 
-        if ($template->hasAttribute('ezxhtml:align')) {
-            $parameters['align'] = $template->getAttribute('ezxhtml:align');
+        if ($template->hasAttribute('ezxhtml:textalign')) {
+            $parameters['align'] = $template->getAttribute('ezxhtml:textalign');
+        }
+
+        if ($template->hasAttribute('xml:id')) {
+            $parameters['id'] = $template->getAttribute('xml:id');
         }
 
         $content = $this->renderer->renderTemplate(

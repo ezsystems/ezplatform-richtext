@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:ezxhtml5="http://ez.no/namespaces/ezpublish5/xhtml5/edit"
-    xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    xmlns="http://docbook.org/ns/docbook"
-    exclude-result-prefixes="ezxhtml5"
-    version="1.0">
+        xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+        xmlns:ezxhtml5="http://ez.no/namespaces/ezpublish5/xhtml5/edit"
+        xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns="http://docbook.org/ns/docbook"
+        exclude-result-prefixes="ezxhtml5"
+        version="1.0">
   <xsl:output indent="yes" encoding="UTF-8"/>
 
   <xsl:template match="/ezxhtml5:section">
@@ -722,10 +722,23 @@
           <xsl:value-of select="@class"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:if test="@data-ezalign">
-        <xsl:attribute name="ezxhtml:align">
-          <xsl:value-of select="@data-ezalign"/>
+      <xsl:if test="@id">
+        <xsl:attribute name="xml:id">
+          <xsl:value-of select="@id"/>
         </xsl:attribute>
+      </xsl:if>
+      <xsl:if test="contains( @style, 'text-align:' )">
+        <xsl:variable name="textAlign">
+          <xsl:call-template name="extractStyleValue">
+            <xsl:with-param name="style" select="@style"/>
+            <xsl:with-param name="property" select="'align'"/>
+          </xsl:call-template>
+        </xsl:variable>
+        <xsl:if test="$textAlign != ''">
+          <xsl:attribute name="ezxhtml:textalign">
+            <xsl:value-of select="$textAlign"/>
+          </xsl:attribute>
+        </xsl:if>
       </xsl:if>
       <xsl:choose>
         <!-- Nest content of Style tag in ezcontent -->

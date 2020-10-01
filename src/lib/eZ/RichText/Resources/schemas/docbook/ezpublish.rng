@@ -617,7 +617,10 @@
     </define>
     <define name="ez.template.attributes">
       <optional>
-        <ref name="ez.xhtml.align"/>
+        <ref name="ez.xhtml.textalign"/>
+      </optional>
+      <optional>
+        <ref name="db.xml.id.attribute"/>
       </optional>
       <ref name="ez.template.attributes.inline"/>
     </define>

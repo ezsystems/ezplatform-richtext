@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:docbook="http://docbook.org/ns/docbook"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml"
-    xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom"
-    exclude-result-prefixes="docbook xlink ezxhtml ezcustom"
-    version="1.0">
+        xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+        xmlns:docbook="http://docbook.org/ns/docbook"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml"
+        xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom"
+        exclude-result-prefixes="docbook xlink ezxhtml ezcustom"
+        version="1.0">
   <xsl:output indent="yes" encoding="UTF-8"/>
   <xsl:variable name="outputNamespace" select="''"/>
 
@@ -688,9 +688,14 @@
         <xsl:value-of select="@ezxhtml:class"/>
       </xsl:attribute>
     </xsl:if>
-    <xsl:if test="@ezxhtml:align">
-      <xsl:attribute name="data-ezalign">
-        <xsl:value-of select="@ezxhtml:align"/>
+    <xsl:if test="@xml:id">
+      <xsl:attribute name="id">
+        <xsl:value-of select="@xml:id"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@ezxhtml:textalign">
+      <xsl:attribute name="style">
+        <xsl:value-of select="concat( 'text-align:', @ezxhtml:textalign, ';' )"/>
       </xsl:attribute>
     </xsl:if>
   </xsl:template>
