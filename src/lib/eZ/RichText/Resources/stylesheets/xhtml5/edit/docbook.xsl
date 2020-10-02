@@ -731,7 +731,7 @@
         <xsl:variable name="textAlign">
           <xsl:call-template name="extractStyleValue">
             <xsl:with-param name="style" select="@style"/>
-            <xsl:with-param name="property" select="'align'"/>
+            <xsl:with-param name="property" select="'text-align'"/>
           </xsl:call-template>
         </xsl:variable>
         <xsl:if test="$textAlign != ''">
