@@ -5,7 +5,7 @@
         xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml"
         xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom"
         version="5.0-variant ezpublish-1.0">
-    <informaltable width="100%" border="1">
+    <informaltable width="100%" border="3">
         <thead>
             <tr>
                 <th ezxhtml:width="133">

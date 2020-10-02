@@ -967,16 +967,9 @@
         </xs:choice>
       </xs:sequence>
       <xs:attributeGroup ref="globalAttributeGroup"/>
-      <xs:attribute name="border" type="border"/>
+      <xs:attribute name="border" type="nonNegativeInteger"/>
     </xs:complexType>
   </xs:element>
-
-  <xs:simpleType name="border">
-    <xs:restriction base="xs:token">
-      <xs:enumeration value=""/>
-      <xs:enumeration value="1"/>
-    </xs:restriction>
-  </xs:simpleType>
 
   <xs:element name="caption" type="flowContentElement"/>
 
