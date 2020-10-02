@@ -428,8 +428,10 @@
           <xsl:value-of select="@title"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:if test="(@border != '') or (contains( @style, 'border:' ))">
-        <xsl:attribute name="border">1</xsl:attribute>
+      <xsl:if test="@border">
+        <xsl:attribute name="border">
+          <xsl:value-of select="@border"/>
+        </xsl:attribute>
       </xsl:if>
       <xsl:if test="contains( @style, 'border-width:' )">
         <xsl:variable name="borderWidth">
