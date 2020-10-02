@@ -4,9 +4,9 @@
          xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml"
          xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom"
          version="5.0-variant ezpublish-1.0">
-  <eztemplate name="factbox" ezxhtml:class="templateClass" ezxhtml:align="left">
+  <eztemplate name="factbox" ezxhtml:class="templateClass" ezxhtml:align="left" xml:id="template">
     <ezcontent>
-      <eztemplate name="externalimage" ezxhtml:class="templateClass2" ezxhtml:align="right">
+      <eztemplate name="externalimage" ezxhtml:class="templateClass2" ezxhtml:align="right" xml:id="nested-template">
         <ezconfig>
           <ezvalue key="src">
             http://upload.wikimedia.org/wikipedia/commons/c/c6/R-S_mk2.gif
