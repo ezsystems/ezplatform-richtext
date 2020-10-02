@@ -54,6 +54,7 @@ final class AlloyEditor implements Provider
             'toolbars' => $this->getToolbars(),
             'classes' => $this->getCssClasses(),
             'attributes' => $this->getDataAttributes(),
+            'nativeAttributes' => $this->getNativeAttributes(),
         ];
     }
 
@@ -120,6 +121,14 @@ final class AlloyEditor implements Provider
         return $this->onlineEditorConfigMapper->mapDataAttributesConfiguration(
             $this->getSiteAccessConfigArray(RichText::ATTRIBUTES_SA_SETTINGS_ID)
         );
+    }
+
+    /**
+     * @return array Native attributes
+     */
+    private function getNativeAttributes(): array
+    {
+        return $this->alloyEditorConfiguration['native_attributes'] ?? [];
     }
 
     /**

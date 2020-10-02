@@ -18,6 +18,8 @@ export default class EzBtnAttributesUpdate extends EzWidgetButton {
             attributesValues: props.attributesValues,
             classesValue: props.classesValue,
         };
+
+        this.nativeAttributes = window.eZ.richText.alloyEditor.nativeAttributes;
     }
 
     renderString(attrName, config, value) {
@@ -156,10 +158,15 @@ export default class EzBtnAttributesUpdate extends EzWidgetButton {
         const block = this.findSelectedBlock();
         const { attributesValues, classesValue } = this.state;
         const { editor, cancelExclusive } = this.props;
+        const nativeAttributes = this.nativeAttributes[block.getName()] || [];
         const nativeEditor = editor.get('nativeEditor');
 
         Object.entries(attributesValues).forEach(([attribute, attributeData]) => {
-            block.setAttribute(`data-ezattribute-${attribute}`, attributeData.value);
+            if (!nativeAttributes.includes(attribute)) {
+                attribute = `data-ezattribute-${attribute}`;
+            }
+
+            block.setAttribute(attribute, attributeData.value);
         });
 
         this.clearClasses();
