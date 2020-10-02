@@ -123,6 +123,7 @@ class Template extends Render implements Converter
      *     attribute => param,
      *     ...
      * ].
+     *
      * @return string[]
      */
     protected function getAttributesMap(): array
