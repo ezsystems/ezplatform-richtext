@@ -693,9 +693,14 @@
         <xsl:value-of select="@xml:id"/>
       </xsl:attribute>
     </xsl:if>
-    <xsl:if test="@ezxhtml:align">
+    <xsl:if test="@ezxhtml:align and not(contains( @ezxhtml:class, 'ez-custom-tag' ))">
       <xsl:attribute name="style">
         <xsl:value-of select="concat( 'text-align:', @ezxhtml:align, ';' )"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@ezxhtml:align and contains( @ezxhtml:class, 'ez-custom-tag' )">
+      <xsl:attribute name="data-ezalign">
+        <xsl:value-of select="@ezxhtml:align"/>
       </xsl:attribute>
     </xsl:if>
   </xsl:template>

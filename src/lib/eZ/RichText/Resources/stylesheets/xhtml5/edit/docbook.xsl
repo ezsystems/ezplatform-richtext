@@ -740,6 +740,11 @@
           </xsl:attribute>
         </xsl:if>
       </xsl:if>
+      <xsl:if test="@data-ezalign">
+        <xsl:attribute name="ezxhtml:align">
+          <xsl:value-of select="@data-ezalign"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:choose>
         <!-- Nest content of Style tag in ezcontent -->
         <xsl:when test="@data-eztype='style'">
