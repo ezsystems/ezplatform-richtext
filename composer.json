@@ -23,13 +23,13 @@
         "symfony/translation": "^5.0",
         "symfony/translation-contracts": "^2.0",
         "twig/twig": "^3.0",
-        "ezsystems/ezplatform-kernel": "^1.2@dev",
-        "ezsystems/ezplatform-content-forms": "^1.0@dev",
-        "ezsystems/ezplatform-rest": "^1.0@dev",
-        "ezsystems/ezplatform-http-cache": "^2.0@dev"
+        "ezsystems/ezplatform-kernel": "^1.2",
+        "ezsystems/ezplatform-content-forms": "^1.0",
+        "ezsystems/ezplatform-rest": "^1.0",
+        "ezsystems/ezplatform-http-cache": "^2.0"
     },
     "require-dev": {
-        "ezsystems/doctrine-dbal-schema": "^1.0@dev",
+        "ezsystems/doctrine-dbal-schema": "^1.0",
         "phpunit/phpunit": "^8.5",
         "symfony/finder": "^5.0",
         "matthiasnoback/symfony-config-test": "^4.1",
