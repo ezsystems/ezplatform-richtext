@@ -13,6 +13,6 @@ export default class EzConfigTableBase extends EzConfigFixedBase {
     }
 
     getArrowBoxClasses() {
-        return '';
+        return 'ae-toolbar-floating';
     }
 }
