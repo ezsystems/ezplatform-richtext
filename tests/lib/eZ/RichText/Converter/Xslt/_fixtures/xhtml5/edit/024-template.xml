@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5/edit">
-  <div data-ezelement="eztemplate" data-ezname="factbox" class="templateClass" style="text-align:left;">
+  <div data-ezelement="eztemplate" data-ezname="factbox" class="templateClass" data-ezalign="left">
     <div data-ezelement="ezcontent">
       <table title="tableTitle">
         <caption>About factoids</caption>
@@ -27,7 +27,7 @@
       <span data-ezelement="ezvalue" data-ezvalue-key="title">Factoids</span>
     </span>
   </div>
-  <div data-ezelement="eztemplate" data-ezname="externalimage" class="templateClass2" style="text-align:right;">
+  <div data-ezelement="eztemplate" data-ezname="externalimage" class="templateClass2" data-ezalign="right">
     <span data-ezelement="ezconfig">
       <span data-ezelement="ezvalue" data-ezvalue-key="src">http://upload.wikimedia.org/wikipedia/commons/c/c6/R-S_mk2.gif</span>
       <span data-ezelement="ezvalue" data-ezvalue-key="height">365</span>
@@ -36,8 +36,8 @@
       <span data-ezelement="ezvalue" data-ezvalue-key="caption">bistable multivibrator</span>
     </span>
   </div>
-  <div data-ezelement="eztemplate" data-ezname="factoidbox" class="templateClass3" style="text-align:center;">
+  <div data-ezelement="eztemplate" data-ezname="factoidbox" class="templateClass3" data-ezalign="center">
     <div data-ezelement="ezcontent">It is widely known that the bistable multivibrator hums z's in the middle octave key of E.</div>
   </div>
-  <div data-ezelement="eztemplate" data-ezname="factoidbox" class="templateClass4" style="text-align:center;"/>
+  <div data-ezelement="eztemplate" data-ezname="factoidbox" class="templateClass4" data-ezalign="center"/>
 </section>

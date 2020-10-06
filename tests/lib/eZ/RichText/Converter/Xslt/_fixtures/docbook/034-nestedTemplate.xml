@@ -4,7 +4,7 @@
          xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml"
          xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom"
          version="5.0-variant ezpublish-1.0">
-  <eztemplate name="factbox" ezxhtml:class="templateClass ez-custom-tag" ezxhtml:align="left" xml:id="template">
+  <eztemplate name="factbox" ezxhtml:class="templateClass" ezxhtml:align="left" xml:id="template">
     <ezcontent>
       <eztemplate name="externalimage" ezxhtml:class="templateClass2" ezxhtml:align="right" xml:id="nested-template">
         <ezconfig>

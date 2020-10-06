@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5/edit">
-  <div data-ezelement="eztemplate" data-ezname="factbox" class="templateClass ez-custom-tag" id="template" data-ezalign="left">
+  <div data-ezelement="eztemplate" data-ezname="factbox" class="templateClass" id="template" data-ezalign="left">
     <div data-ezelement="ezcontent">
-      <div data-ezelement="eztemplate" data-ezname="externalimage" class="templateClass2" style="text-align:right;" id="nested-template">
+      <div data-ezelement="eztemplate" data-ezname="externalimage" class="templateClass2" data-ezalign="right" id="nested-template">
         <span data-ezelement="ezconfig">
           <span data-ezelement="ezvalue" data-ezvalue-key="src">
             http://upload.wikimedia.org/wikipedia/commons/c/c6/R-S_mk2.gif
