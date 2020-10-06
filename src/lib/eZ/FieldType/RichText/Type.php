@@ -159,7 +159,7 @@ class Type extends FieldType
     public function validate(FieldDefinition $fieldDefinition, SPIValue $value)
     {
         return array_map(function ($error) {
-            return new ValidationError("Validation of XML content failed:\n" . $error);
+            return new ValidationError("Validation of XML content failed:\n" . $error, null, [], 'xml');
         }, $this->inputHandler->validate($value->xml));
     }
 
