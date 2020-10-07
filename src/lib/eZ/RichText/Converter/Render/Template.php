@@ -97,8 +97,10 @@ class Template extends Render implements Converter
         }
         $parameters['content'] = !empty($innerContent) ? $innerContent : null;
 
-        if ($template->hasAttribute('ezxhtml:align')) {
-            $parameters['align'] = $template->getAttribute('ezxhtml:align');
+        foreach ($this->getAttributesMap() as $attribute => $param) {
+            if ($template->hasAttribute($attribute)) {
+                $parameters[$param] = $template->getAttribute($attribute);
+            }
         }
 
         $content = $this->renderer->renderTemplate(
@@ -113,6 +115,23 @@ class Template extends Render implements Converter
             $payload->appendChild($document->createCDATASection($content));
             $template->appendChild($payload);
         }
+    }
+
+    /**
+     * Provides attributes map in format:
+     * [
+     *     attribute => param,
+     *     ...
+     * ].
+     *
+     * @return string[]
+     */
+    protected function getAttributesMap(): array
+    {
+        return [
+            'ezxhtml:align' => 'align',
+            'xml:id' => 'id',
+        ];
     }
 
     /**

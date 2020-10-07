@@ -20,9 +20,11 @@
           </param>
           <param name="content"/>
           <param name="align">right</param>
+          <param name="id">nested-template</param>
         </template-output>
       </section>
     </param>
     <param name="align">left</param>
+    <param name="id">template</param>
   </template-output>
 </section>

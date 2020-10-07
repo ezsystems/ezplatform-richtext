@@ -722,6 +722,24 @@
           <xsl:value-of select="@class"/>
         </xsl:attribute>
       </xsl:if>
+      <xsl:if test="@id">
+        <xsl:attribute name="xml:id">
+          <xsl:value-of select="@id"/>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:if test="contains( @style, 'text-align:' )">
+        <xsl:variable name="textAlign">
+          <xsl:call-template name="extractStyleValue">
+            <xsl:with-param name="style" select="@style"/>
+            <xsl:with-param name="property" select="'text-align'"/>
+          </xsl:call-template>
+        </xsl:variable>
+        <xsl:if test="$textAlign != ''">
+          <xsl:attribute name="ezxhtml:align">
+            <xsl:value-of select="$textAlign"/>
+          </xsl:attribute>
+        </xsl:if>
+      </xsl:if>
       <xsl:if test="@data-ezalign">
         <xsl:attribute name="ezxhtml:align">
           <xsl:value-of select="@data-ezalign"/>
