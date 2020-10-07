@@ -194,7 +194,10 @@ class RichTextTest extends TestCase
                 [
                     new ValidationError(
                         "Validation of XML content failed:\n" .
-                        'Error in 3:0: Element section has extra content: h1'
+                        'Error in 3:0: Element section has extra content: h1',
+                        null,
+                        [],
+                        'xml'
                     ),
                 ],
             ],
@@ -206,7 +209,10 @@ class RichTextTest extends TestCase
                 [
                     new ValidationError(
                         "Validation of XML content failed:\n" .
-                        "/*[local-name()='section' and namespace-uri()='http://docbook.org/ns/docbook']: The root element must have a version attribute."
+                        "/*[local-name()='section' and namespace-uri()='http://docbook.org/ns/docbook']: The root element must have a version attribute.",
+                        null,
+                        [],
+                        'xml'
                     ),
                 ],
             ],
@@ -218,7 +224,10 @@ class RichTextTest extends TestCase
                 [
                     new ValidationError(
                         "Validation of XML content failed:\n" .
-                        '/section/para/link: using scripts in links is not allowed'
+                        '/section/para/link: using scripts in links is not allowed',
+                        null,
+                        [],
+                        'xml'
                     ),
                 ],
             ],
@@ -230,7 +239,10 @@ class RichTextTest extends TestCase
                 [
                     new ValidationError(
                         "Validation of XML content failed:\n" .
-                        '/section/para/link: using scripts in links is not allowed'
+                        '/section/para/link: using scripts in links is not allowed',
+                        null,
+                        [],
+                        'xml'
                     ),
                 ],
             ],

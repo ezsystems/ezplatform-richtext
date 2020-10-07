@@ -619,6 +619,9 @@
       <optional>
         <ref name="ez.xhtml.align"/>
       </optional>
+      <optional>
+        <ref name="db.xml.id.attribute"/>
+      </optional>
       <ref name="ez.template.attributes.inline"/>
     </define>
     <define name="ez.template.type">
