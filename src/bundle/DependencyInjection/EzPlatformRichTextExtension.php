@@ -208,7 +208,7 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
                     if (in_array($buttonName, $customTags, true)) {
                         throw new InvalidConfigurationException(
                             sprintf(
-                                'Toolbar "%s" configured in "%s" cannot contain Custom Tag "%s". Inline Custom Tags are not allowed in Toolbars other than "%s".',
+                                'Toolbar "%s" configured in the "%s" scope cannot contain Custom Tag "%s". Inline Custom Tags are not allowed in Toolbars other than "%s".',
                                 $toolbarName,
                                 $siteAccess,
                                 $buttonName,
