@@ -184,30 +184,6 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
         }
     }
 
-    private function getToolbarsBySiteAccess(array $availableSiteAccesses, ContainerBuilder $container): \Traversable
-    {
-        foreach ($availableSiteAccesses as $siteAccessName) {
-            $paramName = "ezsettings.{$siteAccessName}.fieldtypes.ezrichtext.toolbars";
-            if (!$container->hasParameter($paramName)) {
-                continue;
-            }
-
-            yield $paramName => $container->getParameter($paramName);
-        }
-    }
-
-    /**
-     * @return string[]
-     */
-    private function getInlineCustomTags(array $customTagsConfig): array
-    {
-        $customTags = array_filter($customTagsConfig, static function (array $customTag): bool {
-            return $customTag['is_inline'] ?? false;
-        });
-
-        return array_keys($customTags);
-    }
-
     private function validateCustomTagToolbars(array $availableSiteAccesses, array $customTagsConfig, ContainerBuilder $container): void
     {
         $customTags = $this->getInlineCustomTags($customTagsConfig);
@@ -233,5 +209,29 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
                 }
             }
         }
+    }
+
+    private function getToolbarsBySiteAccess(array $availableSiteAccesses, ContainerBuilder $container): \Traversable
+    {
+        foreach ($availableSiteAccesses as $siteAccessName) {
+            $paramName = "ezsettings.{$siteAccessName}.fieldtypes.ezrichtext.toolbars";
+            if (!$container->hasParameter($paramName)) {
+                continue;
+            }
+
+            yield $paramName => $container->getParameter($paramName);
+        }
+    }
+
+    /**
+     * @return string[]
+     */
+    private function getInlineCustomTags(array $customTagsConfig): array
+    {
+        $customTags = array_filter($customTagsConfig, static function (array $customTag): bool {
+            return $customTag['is_inline'] ?? false;
+        });
+
+        return array_keys($customTags);
     }
 }
