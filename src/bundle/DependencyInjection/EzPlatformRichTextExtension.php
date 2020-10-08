@@ -244,9 +244,12 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
      */
     private function getInlineCustomTags(array $customTagsConfig): array
     {
-        $customTags = array_filter($customTagsConfig, static function (array $customTag): bool {
-            return $customTag['is_inline'] ?? false;
-        });
+        $customTags = array_filter(
+            $customTagsConfig,
+            static function (array $customTag): bool {
+                return $customTag['is_inline'] ?? false;
+            }
+        );
 
         return array_keys($customTags);
     }
