@@ -117,7 +117,10 @@ class EzPlatformRichTextExtensionTest extends AbstractExtensionTestCase
         );
     }
 
-    public function testThrowsExceptionOnInlineCustomTagsInNonTextToolbar(): void
+    /**
+     * @dataProvider inlineTagDataProvider
+     */
+    public function testCheckingInlineCustomTagsInToolbars(string $toolbarName, ?string $expectedException): void
     {
         $config = Yaml::parse(
             file_get_contents(__DIR__ . '/Fixtures/ezrichtext.yaml')
@@ -125,7 +128,7 @@ class EzPlatformRichTextExtensionTest extends AbstractExtensionTestCase
         $config['custom_tags']['video']['is_inline'] = true;
         $this->container->setParameter('ezpublish.siteaccess.list', ['admin_group']);
         $this->container->setParameter("ezsettings.admin_group.fieldtypes.ezrichtext.toolbars", [
-            'some_toolbar' => [
+            $toolbarName => [
                 'buttons' => [
                     'video' => [
                         'priority' => 5,
@@ -135,29 +138,23 @@ class EzPlatformRichTextExtensionTest extends AbstractExtensionTestCase
             ],
         ]);
 
-        $this->expectException(InvalidConfigurationException::class);
-        $this->expectExceptionMessage('Toolbar "some_toolbar" configured in the "ezsettings.admin_group.fieldtypes.ezrichtext.toolbars" scope cannot contain Custom Tag "video". Inline Custom Tags are not allowed in Toolbars other than "text".');
+        if (is_string($expectedException)) {
+            $this->expectException(InvalidConfigurationException::class);
+            $this->expectExceptionMessage($expectedException);
+        }
         $this->load($config);
     }
 
-    public function testAllowsInlineCustomTagsInTextToolbar(): void
+    public function inlineTagDataProvider(): iterable
     {
-        $config = Yaml::parse(
-            file_get_contents(__DIR__ . '/Fixtures/ezrichtext.yaml')
-        );
-        $config['custom_tags']['video']['is_inline'] = true;
-        $this->container->setParameter('ezpublish.siteaccess.list', ['admin_group']);
-        $this->container->setParameter("ezsettings.admin_group.fieldtypes.ezrichtext.toolbars", [
-            'text' => [
-                'buttons' => [
-                    'video' => [
-                        'priority' => 5,
-                        'visible' => true,
-                    ],
-                ],
-            ],
-        ]);
+        yield 'Inline tag in normal toolbar' => [
+            'foo',
+            'Toolbar "foo" configured in the "ezsettings.admin_group.fieldtypes.ezrichtext.toolbars" scope cannot contain Custom Tag "video". Inline Custom Tags are not allowed in Toolbars other than "text".'
+        ];
 
-        $this->load($config);
+        yield 'Inline tag in text toolbar' => [
+            'text',
+            null,
+        ];
     }
 }
