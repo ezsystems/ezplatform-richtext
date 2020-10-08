@@ -139,4 +139,25 @@ class EzPlatformRichTextExtensionTest extends AbstractExtensionTestCase
         $this->expectExceptionMessage('Toolbar "some_toolbar" configured in "ezsettings.admin_group.fieldtypes.ezrichtext.toolbars" cannot contain Custom Tag "video". Inline Custom Tags are not allowed in Toolbars other than "text".');
         $this->load($config);
     }
+
+    public function testAllowsInlineCustomTagsInTextToolbar(): void
+    {
+        $config = Yaml::parse(
+            file_get_contents(__DIR__ . '/Fixtures/ezrichtext.yaml')
+        );
+        $config['custom_tags']['video']['is_inline'] = true;
+        $this->container->setParameter('ezpublish.siteaccess.list', ['admin_group']);
+        $this->container->setParameter("ezsettings.admin_group.fieldtypes.ezrichtext.toolbars", [
+            'text' => [
+                'buttons' => [
+                    'video' => [
+                        'priority' => 5,
+                        'visible' => true,
+                    ],
+                ],
+            ],
+        ]);
+
+        $this->load($config);
+    }
 }
