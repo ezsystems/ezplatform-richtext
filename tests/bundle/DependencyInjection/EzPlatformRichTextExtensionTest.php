@@ -149,7 +149,7 @@ class EzPlatformRichTextExtensionTest extends AbstractExtensionTestCase
     {
         yield 'Inline tag in normal toolbar' => [
             'foo',
-            'Toolbar "foo" configured in the "ezsettings.admin_group.fieldtypes.ezrichtext.toolbars" scope cannot contain Custom Tag "video". Inline Custom Tags are not allowed in Toolbars other than "text".'
+            "Toolbar 'foo' configured in the 'ezsettings.admin_group.fieldtypes.ezrichtext.toolbars' scope cannot contain Custom Tag 'video'. Inline Custom Tags are not allowed in Toolbars other than 'text'."
         ];
 
         yield 'Inline tag in text toolbar' => [
