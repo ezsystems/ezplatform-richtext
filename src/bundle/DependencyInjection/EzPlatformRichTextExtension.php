@@ -222,9 +222,6 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
     }
 
     /**
-     * @param array $availableSiteAccesses
-     * @param ContainerBuilder $container
-     *
      * @return iterable<array> Iterable containing arrays with toolbars and their buttons
      */
     private function getToolbarsBySiteAccess(array $availableSiteAccesses, ContainerBuilder $container): iterable
