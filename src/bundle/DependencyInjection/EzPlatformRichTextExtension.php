@@ -98,7 +98,7 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
             'Tag',
             $container
         );
-        $this->validateCustomTagToolbars(
+        $this->validateInlineCustomTagToolbarsConfig(
             $availableSiteAccesses,
             $customTagsConfig,
             $container,
@@ -184,11 +184,23 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
         }
     }
 
-    private function validateCustomTagToolbars(array $availableSiteAccesses, array $customTagsConfig, ContainerBuilder $container): void
+    /**
+     * Validate presence of inline Custom Tags in Toolbars.
+     *
+     * @param array $availableSiteAccesses a list of available SiteAccesses
+     * @param array $customTagsConfig Custom Tags configuration
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+     */
+    private function validateInlineCustomTagToolbarsConfig(
+        array $availableSiteAccesses,
+        array $customTagsConfig,
+        ContainerBuilder $container
+    ): void
     {
         $customTags = $this->getInlineCustomTags($customTagsConfig);
         foreach ($this->getToolbarsBySiteAccess($availableSiteAccesses, $container) as $siteAccess => $toolbar) {
             foreach ($toolbar as $toolbarName => $toolbarContent) {
+                // "text" toolbar is the only one that can contain inline tags
                 if ($toolbarName === 'text') {
                     continue;
                 }
@@ -211,7 +223,12 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
         }
     }
 
-    private function getToolbarsBySiteAccess(array $availableSiteAccesses, ContainerBuilder $container): \Traversable
+    /**
+     * @param array $availableSiteAccesses
+     * @param ContainerBuilder $container
+     * @return iterable<array> Iterable containing arrays with toolbars and their buttons
+     */
+    private function getToolbarsBySiteAccess(array $availableSiteAccesses, ContainerBuilder $container): iterable
     {
         foreach ($availableSiteAccesses as $siteAccessName) {
             $paramName = "ezsettings.{$siteAccessName}.fieldtypes.ezrichtext.toolbars";
