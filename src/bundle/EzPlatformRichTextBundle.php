@@ -31,8 +31,6 @@ class EzPlatformRichTextBundle extends Bundle
 
         $container->addCompilerPass(new RichTextHtml5ConverterPass());
         $this->registerConfigParser($container);
-
-        $container->addCompilerPass(new InlineCustomTagToolbarGuardPass());
     }
 
     public function registerConfigParser(ContainerBuilder $container)

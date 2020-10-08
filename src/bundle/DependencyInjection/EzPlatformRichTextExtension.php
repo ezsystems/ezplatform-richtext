@@ -98,6 +98,11 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
             'Tag',
             $container
         );
+        $this->validateCustomTagToolbars(
+            $availableSiteAccesses,
+            $customTagsConfig,
+            $container,
+        );
         $this->validateCustomTemplatesConfig(
             $availableSiteAccesses,
             $customStylesConfig,
@@ -158,7 +163,8 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
         string $nodeName,
         string $type,
         ContainerBuilder $container
-    ) {
+    ): void
+    {
         $namespace = 'ezsettings';
         $definedCustomTemplates = array_keys($config);
         // iterate manually through available Scopes as scope context is not available
@@ -173,6 +179,57 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
                     throw new InvalidConfigurationException(
                         "Unknown RichText Custom {$type} '{$customTemplateName}' (required by the '{$siteAccessName}' SiteAccess)"
                     );
+                }
+            }
+        }
+    }
+
+    private function getToolbarsBySiteAccess(array $availableSiteAccesses, ContainerBuilder $container): \Traversable
+    {
+        foreach ($availableSiteAccesses as $siteAccessName) {
+            $paramName = "ezsettings.{$siteAccessName}.fieldtypes.ezrichtext.toolbars";
+            if (!$container->hasParameter($paramName)) {
+                continue;
+            }
+
+            yield $paramName => $container->getParameter($paramName);
+        }
+    }
+
+    /**
+     * @return string[]
+     */
+    private function getInlineCustomTags(array $customTagsConfig): array
+    {
+        $customTags = array_filter($customTagsConfig, static function (array $customTag): bool {
+            return $customTag['is_inline'] ?? false;
+        });
+
+        return array_keys($customTags);
+    }
+
+    private function validateCustomTagToolbars(array $availableSiteAccesses, array $customTagsConfig, ContainerBuilder $container): void
+    {
+        $customTags = $this->getInlineCustomTags($customTagsConfig);
+        foreach ($this->getToolbarsBySiteAccess($availableSiteAccesses, $container) as $siteAccess => $toolbar) {
+            foreach ($toolbar as $toolbarName => $toolbarContent) {
+                if ($toolbarName === 'text') {
+                    continue;
+                }
+
+                $buttons = $toolbarContent['buttons'];
+                foreach ($buttons as $buttonName => $buttonConfig) {
+                    if (in_array($buttonName, $customTags, true)) {
+                        throw new InvalidConfigurationException(
+                            sprintf(
+                                'Toolbar "%s" configured in "%s" cannot contain Custom Tag "%s". Inline Custom Tags are not allowed in Toolbars other than "%s".',
+                                $toolbarName,
+                                $siteAccess,
+                                $buttonName,
+                                'text'
+                            )
+                        );
+                    }
                 }
             }
         }
