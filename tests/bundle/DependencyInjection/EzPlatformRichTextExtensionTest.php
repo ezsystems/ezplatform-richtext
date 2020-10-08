@@ -127,7 +127,7 @@ class EzPlatformRichTextExtensionTest extends AbstractExtensionTestCase
         );
         $config['custom_tags']['video']['is_inline'] = true;
         $this->container->setParameter('ezpublish.siteaccess.list', ['admin_group']);
-        $this->container->setParameter("ezsettings.admin_group.fieldtypes.ezrichtext.toolbars", [
+        $this->container->setParameter('ezsettings.admin_group.fieldtypes.ezrichtext.toolbars', [
             $toolbarName => [
                 'buttons' => [
                     'video' => [
@@ -149,7 +149,7 @@ class EzPlatformRichTextExtensionTest extends AbstractExtensionTestCase
     {
         yield 'Inline tag in normal toolbar' => [
             'foo',
-            "Toolbar 'foo' configured in the 'ezsettings.admin_group.fieldtypes.ezrichtext.toolbars' scope cannot contain Custom Tag 'video'. Inline Custom Tags are not allowed in Toolbars other than 'text'."
+            "Toolbar 'foo' configured in the 'ezsettings.admin_group.fieldtypes.ezrichtext.toolbars' scope cannot contain Custom Tag 'video'. Inline Custom Tags are not allowed in Toolbars other than 'text'.",
         ];
 
         yield 'Inline tag in text toolbar' => [
