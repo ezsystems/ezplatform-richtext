@@ -81,7 +81,7 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
      * @param array $config
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
-    private function registerRichTextConfiguration(array $config, ContainerBuilder $container)
+    private function registerRichTextConfiguration(array $config, ContainerBuilder $container): void
     {
         $customTagsConfig = $config['custom_tags'] ?? [];
         $customStylesConfig = $config['custom_styles'] ?? [];
@@ -163,8 +163,7 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
         string $nodeName,
         string $type,
         ContainerBuilder $container
-    ): void
-    {
+    ): void {
         $namespace = 'ezsettings';
         $definedCustomTemplates = array_keys($config);
         // iterate manually through available Scopes as scope context is not available
@@ -195,8 +194,7 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
         array $availableSiteAccesses,
         array $customTagsConfig,
         ContainerBuilder $container
-    ): void
-    {
+    ): void {
         $customTags = $this->getInlineCustomTags($customTagsConfig);
         foreach ($this->getToolbarsBySiteAccess($availableSiteAccesses, $container) as $siteAccess => $toolbar) {
             foreach ($toolbar as $toolbarName => $toolbarContent) {
@@ -226,6 +224,7 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
     /**
      * @param array $availableSiteAccesses
      * @param ContainerBuilder $container
+     *
      * @return iterable<array> Iterable containing arrays with toolbars and their buttons
      */
     private function getToolbarsBySiteAccess(array $availableSiteAccesses, ContainerBuilder $container): iterable
