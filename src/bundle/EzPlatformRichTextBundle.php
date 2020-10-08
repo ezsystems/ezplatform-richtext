@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace EzSystems\EzPlatformRichTextBundle;
 
 use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\EzPublishCoreExtension;
+use EzSystems\EzPlatformRichTextBundle\DependencyInjection\Compiler\InlineCustomTagToolbarGuardPass;
 use EzSystems\EzPlatformRichTextBundle\DependencyInjection\Compiler\RichTextHtml5ConverterPass;
 use EzSystems\EzPlatformRichTextBundle\DependencyInjection\Configuration\Parser\FieldType\RichText;
 use EzSystems\EzPlatformRichTextBundle\DependencyInjection\EzPlatformRichTextExtension;
@@ -30,6 +31,8 @@ class EzPlatformRichTextBundle extends Bundle
 
         $container->addCompilerPass(new RichTextHtml5ConverterPass());
         $this->registerConfigParser($container);
+
+        $container->addCompilerPass(new InlineCustomTagToolbarGuardPass());
     }
 
     public function registerConfigParser(ContainerBuilder $container)
