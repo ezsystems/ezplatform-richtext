@@ -198,25 +198,7 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
         $customTags = $this->getInlineCustomTags($customTagsConfig);
         foreach ($this->getToolbarsBySiteAccess($availableSiteAccesses, $container) as $siteAccess => $toolbar) {
             foreach ($toolbar as $toolbarName => $toolbarContent) {
-                // "text" toolbar is the only one that can contain inline tags
-                if ($toolbarName === 'text') {
-                    continue;
-                }
-
-                $buttons = $toolbarContent['buttons'];
-                foreach ($buttons as $buttonName => $buttonConfig) {
-                    if (in_array($buttonName, $customTags, true)) {
-                        throw new InvalidConfigurationException(
-                            sprintf(
-                                'Toolbar "%s" configured in the "%s" scope cannot contain Custom Tag "%s". Inline Custom Tags are not allowed in Toolbars other than "%s".',
-                                $toolbarName,
-                                $siteAccess,
-                                $buttonName,
-                                'text'
-                            )
-                        );
-                    }
-                }
+                $this->checkForInlineTagsInToolbar($toolbarName, $toolbarContent, $customTags, $siteAccess);
             }
         }
     }
@@ -249,5 +231,31 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
         );
 
         return array_keys($customTags);
+    }
+
+    private function checkForInlineTagsInToolbar(
+        string $toolbarName,
+        array $toolbarContent,
+        array $customTags,
+        string $siteAccess
+    ): void {
+        // "text" toolbar is the only one that can contain inline tags
+        if ($toolbarName === 'text') {
+            return;
+        }
+
+        foreach ($toolbarContent['buttons'] as $buttonName => $buttonConfig) {
+            if (in_array($buttonName, $customTags, true)) {
+                throw new InvalidConfigurationException(
+                    sprintf(
+                        'Toolbar "%s" configured in the "%s" scope cannot contain Custom Tag "%s". Inline Custom Tags are not allowed in Toolbars other than "%s".',
+                        $toolbarName,
+                        $siteAccess,
+                        $buttonName,
+                        'text'
+                    )
+                );
+            }
+        }
     }
 }
