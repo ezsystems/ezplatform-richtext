@@ -28,6 +28,8 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
     const RICHTEXT_ALLOY_EDITOR_PARAMETER = 'ezplatform.ezrichtext.alloy_editor';
     public const RICHTEXT_CONFIGURATION_PROVIDER_TAG = 'ezplatform.ezrichtext.configuration.provider';
 
+    private const RICHTEXT_TEXT_TOOLBAR_NAME = 'text';
+
     public function getAlias()
     {
         return 'ezrichtext';
@@ -240,7 +242,7 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
         string $siteAccess
     ): void {
         // "text" toolbar is the only one that can contain inline tags
-        if ($toolbarName === 'text') {
+        if (self::RICHTEXT_TEXT_TOOLBAR_NAME === $toolbarName) {
             return;
         }
 
@@ -252,7 +254,7 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
                         $toolbarName,
                         $siteAccess,
                         $buttonName,
-                        'text'
+                        self::RICHTEXT_TEXT_TOOLBAR_NAME
                     )
                 );
             }
