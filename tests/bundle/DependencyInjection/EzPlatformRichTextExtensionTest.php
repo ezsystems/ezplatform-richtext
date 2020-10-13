@@ -10,31 +10,20 @@ namespace EzSystems\Tests\EzPlatformRichTextBundle\DependencyInjection;
 
 use EzSystems\EzPlatformRichTextBundle\DependencyInjection\EzPlatformRichTextExtension;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
+use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Yaml\Yaml;
 
 class EzPlatformRichTextExtensionTest extends AbstractExtensionTestCase
 {
-    /**
-     * @var \EzSystems\EzPlatformRichTextBundle\DependencyInjection\EzPlatformRichTextExtension
-     */
-    private $extension;
-
-    protected function setUp(): void
-    {
-        $this->extension = new EzPlatformRichTextExtension();
-
-        parent::setUp();
-    }
-
     protected function getContainerExtensions(): array
     {
-        return [$this->extension];
+        return [new EzPlatformRichTextExtension()];
     }
 
     /**
      * Test RichText Semantic Configuration.
      */
-    public function testRichTextConfiguration()
+    public function testRichTextConfiguration(): void
     {
         $config = Yaml::parse(
             file_get_contents(__DIR__ . '/Fixtures/ezrichtext.yaml')
@@ -43,7 +32,7 @@ class EzPlatformRichTextExtensionTest extends AbstractExtensionTestCase
 
         // Validate Custom Tags
         $this->assertTrue(
-            $this->container->hasParameter($this->extension::RICHTEXT_CUSTOM_TAGS_PARAMETER)
+            $this->container->hasParameter(EzPlatformRichTextExtension::RICHTEXT_CUSTOM_TAGS_PARAMETER)
         );
         $expectedCustomTagsConfig = [
             'video' => [
@@ -90,7 +79,7 @@ class EzPlatformRichTextExtensionTest extends AbstractExtensionTestCase
 
         $this->assertSame(
             $expectedCustomTagsConfig,
-            $this->container->getParameter($this->extension::RICHTEXT_CUSTOM_TAGS_PARAMETER)
+            $this->container->getParameter(EzPlatformRichTextExtension::RICHTEXT_CUSTOM_TAGS_PARAMETER)
         );
     }
 
@@ -99,7 +88,7 @@ class EzPlatformRichTextExtensionTest extends AbstractExtensionTestCase
      *
      * @see \EzSystems\EzPlatformRichTextBundle\DependencyInjection\EzPlatformRichTextExtension::prepend
      */
-    public function testPrepend()
+    public function testPrepend(): void
     {
         $this->load([]);
 
@@ -126,5 +115,46 @@ class EzPlatformRichTextExtensionTest extends AbstractExtensionTestCase
             $expectedPrependedConfig,
             $actualPrependedConfig['system']['default']
         );
+    }
+
+    /**
+     * @dataProvider inlineTagDataProvider
+     */
+    public function testCheckingInlineCustomTagsInToolbars(string $toolbarName, ?string $expectedException): void
+    {
+        $config = Yaml::parse(
+            file_get_contents(__DIR__ . '/Fixtures/ezrichtext.yaml')
+        );
+        $config['custom_tags']['video']['is_inline'] = true;
+        $this->container->setParameter('ezpublish.siteaccess.list', ['admin_group']);
+        $this->container->setParameter('ezsettings.admin_group.fieldtypes.ezrichtext.toolbars', [
+            $toolbarName => [
+                'buttons' => [
+                    'video' => [
+                        'priority' => 5,
+                        'visible' => true,
+                    ],
+                ],
+            ],
+        ]);
+
+        if (is_string($expectedException)) {
+            $this->expectException(InvalidConfigurationException::class);
+            $this->expectExceptionMessage($expectedException);
+        }
+        $this->load($config);
+    }
+
+    public function inlineTagDataProvider(): iterable
+    {
+        yield 'Inline tag in normal toolbar' => [
+            'foo',
+            "Toolbar 'foo' configured in the 'ezsettings.admin_group.fieldtypes.ezrichtext.toolbars' scope cannot contain Custom Tag 'video'. Inline Custom Tags are not allowed in Toolbars other than 'text'.",
+        ];
+
+        yield 'Inline tag in text toolbar' => [
+            'text',
+            null,
+        ];
     }
 }
