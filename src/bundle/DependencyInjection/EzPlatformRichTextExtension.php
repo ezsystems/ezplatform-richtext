@@ -28,6 +28,8 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
     const RICHTEXT_ALLOY_EDITOR_PARAMETER = 'ezplatform.ezrichtext.alloy_editor';
     public const RICHTEXT_CONFIGURATION_PROVIDER_TAG = 'ezplatform.ezrichtext.configuration.provider';
 
+    private const RICHTEXT_TEXT_TOOLBAR_NAME = 'text';
+
     public function getAlias()
     {
         return 'ezrichtext';
@@ -81,7 +83,7 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
      * @param array $config
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
-    private function registerRichTextConfiguration(array $config, ContainerBuilder $container)
+    private function registerRichTextConfiguration(array $config, ContainerBuilder $container): void
     {
         $customTagsConfig = $config['custom_tags'] ?? [];
         $customStylesConfig = $config['custom_styles'] ?? [];
@@ -97,6 +99,11 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
             'custom_tags',
             'Tag',
             $container
+        );
+        $this->validateInlineCustomTagToolbarsConfig(
+            $availableSiteAccesses,
+            $customTagsConfig,
+            $container,
         );
         $this->validateCustomTemplatesConfig(
             $availableSiteAccesses,
@@ -188,7 +195,7 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
         string $nodeName,
         string $type,
         ContainerBuilder $container
-    ) {
+    ): void {
         $namespace = 'ezsettings';
         $definedCustomTemplates = array_keys($config);
         // iterate manually through available Scopes as scope context is not available
@@ -204,6 +211,82 @@ class EzPlatformRichTextExtension extends Extension implements PrependExtensionI
                         "Unknown RichText Custom {$type} '{$customTemplateName}' (required by the '{$siteAccessName}' SiteAccess)"
                     );
                 }
+            }
+        }
+    }
+
+    /**
+     * Validate presence of inline Custom Tags in Toolbars.
+     *
+     * @param array $availableSiteAccesses a list of available SiteAccesses
+     * @param array $customTagsConfig Custom Tags configuration
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+     */
+    private function validateInlineCustomTagToolbarsConfig(
+        array $availableSiteAccesses,
+        array $customTagsConfig,
+        ContainerBuilder $container
+    ): void {
+        $customTags = $this->getInlineCustomTags($customTagsConfig);
+        foreach ($this->getToolbarsBySiteAccess($availableSiteAccesses, $container) as $siteAccess => $toolbar) {
+            foreach ($toolbar as $toolbarName => $toolbarContent) {
+                $this->checkForInlineTagsInToolbar($toolbarName, $toolbarContent, $customTags, $siteAccess);
+            }
+        }
+    }
+
+    /**
+     * @return iterable<array> Iterable containing arrays with toolbars and their buttons
+     */
+    private function getToolbarsBySiteAccess(array $availableSiteAccesses, ContainerBuilder $container): iterable
+    {
+        foreach ($availableSiteAccesses as $siteAccessName) {
+            $paramName = "ezsettings.{$siteAccessName}.fieldtypes.ezrichtext.toolbars";
+            if (!$container->hasParameter($paramName)) {
+                continue;
+            }
+
+            yield $paramName => $container->getParameter($paramName);
+        }
+    }
+
+    /**
+     * @return string[]
+     */
+    private function getInlineCustomTags(array $customTagsConfig): array
+    {
+        $customTags = array_filter(
+            $customTagsConfig,
+            static function (array $customTag): bool {
+                return $customTag['is_inline'] ?? false;
+            }
+        );
+
+        return array_keys($customTags);
+    }
+
+    private function checkForInlineTagsInToolbar(
+        string $toolbarName,
+        array $toolbarContent,
+        array $customTags,
+        string $siteAccess
+    ): void {
+        // "text" toolbar is the only one that can contain inline tags
+        if (self::RICHTEXT_TEXT_TOOLBAR_NAME === $toolbarName) {
+            return;
+        }
+
+        foreach ($toolbarContent['buttons'] as $buttonName => $buttonConfig) {
+            if (in_array($buttonName, $customTags, true)) {
+                throw new InvalidConfigurationException(
+                    sprintf(
+                        "Toolbar '%s' configured in the '%s' scope cannot contain Custom Tag '%s'. Inline Custom Tags are not allowed in Toolbars other than '%s'.",
+                        $toolbarName,
+                        $siteAccess,
+                        $buttonName,
+                        self::RICHTEXT_TEXT_TOOLBAR_NAME
+                    )
+                );
             }
         }
     }
