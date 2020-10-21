@@ -26,7 +26,7 @@ export default class EzBtnStrike extends AlloyEditor.ButtonStrike {
                 tabIndex={this.props.tabIndex}
                 title={AlloyEditor.Strings.strike}>
                 <svg className="ez-icon ez-btn-ae__icon">
-                    <use xlinkHref="/bundles/ezplatformadminui/img/ez-icons.svg#strikethrough" />
+                    <use xlinkHref={window.eZ.helpers.icon.getIconPath('strikethrough')} />
                 </svg>
             </button>
         );

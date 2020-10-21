@@ -52,7 +52,7 @@ export default class EzBtnImageUpdate extends EzEmbedImageButton {
         return (
             <button className={css} onClick={this.chooseContent.bind(this)} tabIndex={this.props.tabIndex}>
                 <svg className="ez-icon ez-btn-ae__icon">
-                    <use xlinkHref="/bundles/ezplatformadminui/img/ez-icons.svg#image" />
+                    <use xlinkHref={window.eZ.helpers.icon.getIconPath('image')} />
                 </svg>
             </button>
         );

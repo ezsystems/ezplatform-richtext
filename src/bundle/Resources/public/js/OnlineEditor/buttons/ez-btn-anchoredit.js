@@ -163,7 +163,7 @@ export default class EzBtnAnchorEdit extends Component {
         const container = document.createElement('div');
         const icon = `
             <svg class="ez-icon ez-icon--small ez-icon--secondary ${CLASS_ICON_ANCHOR}">
-                <use xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#link-anchor"></use>
+                <use xlink:href="${window.eZ.helpers.icon.getIconPath('link-anchor')}"></use>
             </svg>`;
 
         container.insertAdjacentHTML('afterbegin', icon);
@@ -222,7 +222,7 @@ export default class EzBtnAnchorEdit extends Component {
                         onClick={this.removeAnchor}
                         disabled={isRemoveBtnDisabled}>
                         <svg className="ez-icon ez-icon--light ez-icon--medium ez-btn-ae__icon">
-                            <use xlinkHref="/bundles/ezplatformadminui/img/ez-icons.svg#trash" />
+                            <use xlinkHref={window.eZ.helpers.icon.getIconPath('trash')} />
                         </svg>
                     </button>
                     <button
@@ -232,7 +232,7 @@ export default class EzBtnAnchorEdit extends Component {
                         onClick={this.saveAnchor}
                         disabled={isSaveBtnDisabled}>
                         <svg className="ez-icon ez-icon--light ez-icon--medium ez-btn-ae__icon">
-                            <use xlinkHref="/bundles/ezplatformadminui/img/ez-icons.svg#checkmark" />
+                            <use xlinkHref={window.eZ.helpers.icon.getIconPath('checkmark')} />
                         </svg>
                     </button>
                 </div>

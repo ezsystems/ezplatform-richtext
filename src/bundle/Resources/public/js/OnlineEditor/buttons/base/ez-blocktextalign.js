@@ -57,7 +57,7 @@ export default class EzBlockTextAlign extends Component {
      */
     render() {
         const cssClass = 'ae-button ez-btn-ae ez-btn-ae--' + this.props.cssClassSuffix + ' ' + this.getStateClasses();
-        const icon = '/bundles/ezplatformadminui/img/ez-icons.svg#' + this.props.iconName;
+        const icon = window.eZ.helpers.icon.getIconPath(this.props.iconName);
 
         return (
             <button className={cssClass} onClick={this.applyStyle.bind(this)} tabIndex={this.props.tabIndex} title={this.props.label}>

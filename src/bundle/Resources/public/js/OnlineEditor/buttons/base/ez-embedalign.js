@@ -39,12 +39,11 @@ export default class EzEmbedAlign extends WidgetButton {
      */
     render() {
         const cssClass = 'ae-button ez-btn-ae ez-btn-ae--' + this.props.cssClassSuffix + ' ' + this.getStateClasses();
-        const icon = '/bundles/ezplatformadminui/img/ez-icons.svg#' + this.props.iconName;
+        const icon = window.eZ.helpers.icon.getIconPath(this.props.iconName);
 
         return (
-            <button className={cssClass} onClick={this.applyStyle.bind(this)}
-                tabIndex={this.props.tabIndex} title={this.props.label}>
-                <svg className='ez-icon ez-btn-ae__icon'>
+            <button className={cssClass} onClick={this.applyStyle.bind(this)} tabIndex={this.props.tabIndex} title={this.props.label}>
+                <svg className="ez-icon ez-btn-ae__icon">
                     <use xlinkHref={icon}></use>
                 </svg>
             </button>

@@ -31,7 +31,7 @@ export default class EzBtnLink extends AlloyEditor.ButtonLink {
                 tabIndex={this.props.tabIndex}
                 title={AlloyEditor.Strings.link}>
                 <svg className="ez-icon ez-btn-ae__icon">
-                    <use xlinkHref="/bundles/ezplatformadminui/img/ez-icons.svg#link" />
+                    <use xlinkHref={window.eZ.helpers.icon.getIconPath('link')} />
                 </svg>
             </button>
         );

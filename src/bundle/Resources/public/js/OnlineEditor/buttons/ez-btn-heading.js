@@ -32,7 +32,7 @@ export default class EzBtnHeading extends EzButton {
         return (
             <button className={css} onClick={this.addHeading.bind(this)} tabIndex={this.props.tabIndex} title={label}>
                 <svg className="ez-icon ez-btn-ae__icon">
-                    <use xlinkHref="/bundles/ezplatformadminui/img/ez-icons.svg#h1" />
+                    <use xlinkHref={window.eZ.helpers.icon.getIconPath('h1')} />
                 </svg>
             </button>
         );

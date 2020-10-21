@@ -163,7 +163,7 @@
             const container = doc.createElement('div');
             const icon = `
                 <svg class="ez-icon ez-icon--small ez-icon--secondary ez-icon--anchor">
-                    <use xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#link-anchor"></use>
+                    <use xlink:href={window.eZ.helpers.icon.getIconPath('link-anchor')}></use>
                 </svg>`;
 
             container.insertAdjacentHTML('afterbegin', icon);
