@@ -1,4 +1,4 @@
-(function (global, doc, eZ, AlloyEditor) {
+(function(global, doc, eZ, AlloyEditor) {
     Object.entries(eZ.richText.customTags).forEach(([customTag, tagConfig]) => {
         const isInline = tagConfig.isInline;
         const componentClassName = `ezBtn${customTag.charAt(0).toUpperCase() + customTag.slice(1)}`;
@@ -25,7 +25,7 @@
                 }
 
                 this.label = tagConfig.label;
-                this.icon = tagConfig.icon || '/bundles/ezplatformadminui/img/ez-icons.svg#tag';
+                this.icon = tagConfig.icon || window.eZ.helpers.icon.getIconPath('tag');
                 this.customTagName = customTag;
                 this.values = values;
             }

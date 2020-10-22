@@ -34,7 +34,7 @@ export default class EzBtnTableCell extends AlloyEditor.ButtonTableCell {
                     tabIndex={this.props.tabIndex}
                     title={AlloyEditor.Strings.cell}>
                     <svg className="ez-icon ez-btn-ae__icon">
-                        <use xlinkHref="/bundles/ezplatformadminui/img/ez-icons.svg#table-cell" />
+                        <use xlinkHref={window.eZ.helpers.icon.getIconPath('table-cell')} />
                     </svg>
                 </button>
                 {buttonCommandsList}

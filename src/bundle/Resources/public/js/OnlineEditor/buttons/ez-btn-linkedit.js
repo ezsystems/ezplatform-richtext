@@ -265,7 +265,7 @@ export default class EzBtnLinkEdit extends Component {
                             />
                             <div className="ez-btn-ae__icon-wrapper">
                                 <svg className="ez-icon ez-btn-ae__icon">
-                                    <use xlinkHref="/bundles/ezplatformadminui/img/ez-icons.svg#open-sametab" />
+                                    <use xlinkHref={window.eZ.helpers.icon.getIconPath('open-sametab')} />
                                 </svg>
                             </div>
                         </label>
@@ -283,7 +283,7 @@ export default class EzBtnLinkEdit extends Component {
                             />
                             <div className="ez-btn-ae__icon-wrapper">
                                 <svg className="ez-icon ez-btn-ae__icon">
-                                    <use xlinkHref="/bundles/ezplatformadminui/img/ez-icons.svg#open-newtab" />
+                                    <use xlinkHref={window.eZ.helpers.icon.getIconPath('open-newtab')} />
                                 </svg>
                             </div>
                         </label>
@@ -312,7 +312,7 @@ export default class EzBtnLinkEdit extends Component {
                         onClick={this.removeLink.bind(this)}
                         title={removeLabel}>
                         <svg className="ez-icon ez-btn-ae__icon">
-                            <use xlinkHref="/bundles/ezplatformadminui/img/ez-icons.svg#link-remove" />
+                            <use xlinkHref={window.eZ.helpers.icon.getIconPath('link-remove')} />
                         </svg>
                     </button>
                     <button
@@ -321,7 +321,7 @@ export default class EzBtnLinkEdit extends Component {
                         onClick={this.saveLink.bind(this)}
                         title={saveLabel}>
                         <svg className="ez-icon ez-btn-ae__icon">
-                            <use xlinkHref="/bundles/ezplatformadminui/img/ez-icons.svg#checkmark" />
+                            <use xlinkHref={window.eZ.helpers.icon.getIconPath('checkmark')} />
                         </svg>
                     </button>
                 </div>

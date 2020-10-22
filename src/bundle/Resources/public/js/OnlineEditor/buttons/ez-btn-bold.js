@@ -26,7 +26,7 @@ export default class EzBtnBold extends AlloyEditor.ButtonBold {
                 tabIndex={this.props.tabIndex}
                 title={AlloyEditor.Strings.bold}>
                 <svg className="ez-icon ez-btn-ae__icon">
-                    <use xlinkHref="/bundles/ezplatformadminui/img/ez-icons.svg#bold" />
+                    <use xlinkHref={window.eZ.helpers.icon.getIconPath('bold')} />
                 </svg>
             </button>
         );

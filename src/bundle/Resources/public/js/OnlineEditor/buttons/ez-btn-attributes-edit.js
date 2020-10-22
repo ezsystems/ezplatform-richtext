@@ -160,20 +160,20 @@ export default class EzBtnAttributesEdit extends EzWidgetButton {
     setDefaultAttributesOnTableRows(block, attributeName, value) {
         const rows = block.$.closest('table').querySelectorAll('tr');
 
-        rows.forEach((row) => this.setAttributeValue(row,attributeName, value));
+        rows.forEach((row) => this.setAttributeValue(row, attributeName, value));
     }
 
     setDefaultAttributesOnTableCells(block, attributeName, value) {
         const cells = block.$.closest('table').querySelectorAll('td');
 
-        cells.forEach((cell) => this.setAttributeValue(cell,attributeName, value));
+        cells.forEach((cell) => this.setAttributeValue(cell, attributeName, value));
     }
 
     setDefaultAttributesOnListItems(block, attributeName, value) {
         const list = block.$.closest('ul') || block.$.closest('ol');
         const listItems = list.querySelectorAll('li');
 
-        listItems.forEach((listItem) => this.setAttributeValue(listItem,attributeName, value));
+        listItems.forEach((listItem) => this.setAttributeValue(listItem, attributeName, value));
     }
 
     getAttributesValues() {
@@ -260,7 +260,7 @@ export default class EzBtnAttributesEdit extends EzWidgetButton {
         return (
             <button className={css} onClick={this.props.requestExclusive} tabIndex={this.props.tabIndex}>
                 <svg className="ez-icon ez-btn-ae__icon">
-                    <use xlinkHref="/bundles/ezplatformadminui/img/ez-icons.svg#edit" />
+                    <use xlinkHref={window.eZ.helpers.icon.getIconPath('edit')} />
                 </svg>
             </button>
         );

@@ -33,7 +33,7 @@ export default class EzBtnMoveUp extends Component {
                 tabIndex={this.props.tabIndex}
                 title={title}>
                 <svg className="ez-icon ez-btn-ae__icon">
-                    <use xlinkHref="/bundles/ezplatformadminui/img/ez-icons.svg#circle-caret-up" />
+                    <use xlinkHref={window.eZ.helpers.icon.getIconPath('circle-caret-up')} />
                 </svg>
             </button>
         );

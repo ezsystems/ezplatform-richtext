@@ -288,7 +288,7 @@ const embedBaseDefinition = {
     createEmbedPreview: function(title) {
         return `
             <svg class="ez-icon ez-icon--medium ez-icon--secondary">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#embed"></use>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href={window.eZ.helpers.icon.getIconPath('embed')}></use>
             </svg>
             <span class="ez-embed-content__title">${title}</span>
         `;
@@ -704,7 +704,7 @@ const embedBaseDefinition = {
         const iconWrapper = new CKEDITOR.dom.element('span');
         const icon = `
             <svg class="ez-icon ez-icon--medium ez-icon--light">
-                <use xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#link"></use>
+                <use xlink:href={window.eZ.helpers.icon.getIconPath('link')}></use>
             </svg>
         `;
 

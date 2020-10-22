@@ -26,7 +26,7 @@ export default class EzBtnSuperscript extends AlloyEditor.ButtonSuperscript {
                 tabIndex={this.props.tabIndex}
                 title={AlloyEditor.Strings.superscript}>
                 <svg className="ez-icon ez-btn-ae__icon">
-                    <use xlinkHref="/bundles/ezplatformadminui/img/ez-icons.svg#superscript" />
+                    <use xlinkHref={window.eZ.helpers.icon.getIconPath('superscript')} />
                 </svg>
             </button>
         );

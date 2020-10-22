@@ -26,7 +26,7 @@ export default class EzBtnQuote extends AlloyEditor.ButtonQuote {
                 tabIndex={this.props.tabIndex}
                 title={AlloyEditor.Strings.quote}>
                 <svg className="ez-icon ez-btn-ae__icon">
-                    <use xlinkHref="/bundles/ezplatformadminui/img/ez-icons.svg#quote" />
+                    <use xlinkHref={window.eZ.helpers.icon.getIconPath('quote')} />
                 </svg>
             </button>
         );

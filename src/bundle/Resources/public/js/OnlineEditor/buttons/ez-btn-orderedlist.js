@@ -35,7 +35,7 @@ export default class EzBtnOrderedList extends EzButton {
         return (
             <button className={css} onClick={this.addList.bind(this)} tabIndex={this.props.tabIndex} title={label}>
                 <svg className="ez-icon ez-btn-ae__icon">
-                    <use xlinkHref="/bundles/ezplatformadminui/img/ez-icons.svg#list-numbered" />
+                    <use xlinkHref={window.eZ.helpers.icon.getIconPath('list-numbered')} />
                 </svg>
             </button>
         );

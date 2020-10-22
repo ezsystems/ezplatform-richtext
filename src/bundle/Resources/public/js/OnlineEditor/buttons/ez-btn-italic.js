@@ -26,7 +26,7 @@ export default class EzBtnItalic extends AlloyEditor.ButtonItalic {
                 tabIndex={this.props.tabIndex}
                 title={AlloyEditor.Strings.italic}>
                 <svg className="ez-icon ez-btn-ae__icon">
-                    <use xlinkHref="/bundles/ezplatformadminui/img/ez-icons.svg#italic" />
+                    <use xlinkHref={window.eZ.helpers.icon.getIconPath('italic')} />
                 </svg>
             </button>
         );

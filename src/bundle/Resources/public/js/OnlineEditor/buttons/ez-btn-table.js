@@ -24,7 +24,7 @@ export default class EzBtnTable extends Component {
         return (
             <button className={css} onClick={this.props.requestExclusive} tabIndex={this.props.tabIndex} title={label}>
                 <svg className="ez-icon ez-btn-ae__icon">
-                    <use xlinkHref="/bundles/ezplatformadminui/img/ez-icons.svg#table-add" />
+                    <use xlinkHref={window.eZ.helpers.icon.getIconPath('table-add')} />
                 </svg>
             </button>
         );
