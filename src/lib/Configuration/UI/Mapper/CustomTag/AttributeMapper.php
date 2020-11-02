@@ -18,11 +18,13 @@ interface AttributeMapper
     /**
      * Check if mapper supports given Custom Tag attribute type.
      *
+     * @param string $tagName
+     * @param string $attributeName
      * @param string $attributeType
      *
      * @return bool
      */
-    public function supports(string $attributeType): bool;
+    public function supports(string $tagName, string $attributeName, string $attributeType): bool;
 
     /**
      * Map Configuration for the given Custom Tag attribute type.

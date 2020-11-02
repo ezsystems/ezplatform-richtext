@@ -141,7 +141,7 @@ final class CustomTag implements CustomTemplateConfigMapper
 
         foreach ($this->customTagAttributeMappers as $attributeMapper) {
             // get first supporting, order of these mappers is controlled by 'priority' DI tag attribute
-            if ($attributeMapper->supports($attributeType)) {
+            if ($attributeMapper->supports($tagName, $attributeName, $attributeType)) {
                 return $this->supportedTagAttributeMappersCache[$attributeType] = $attributeMapper;
             }
         }

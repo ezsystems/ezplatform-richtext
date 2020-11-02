@@ -18,7 +18,7 @@ class CommonAttributeMapper implements AttributeMapper
     /**
      * {@inheritdoc}
      */
-    public function supports(string $attributeType): bool
+    public function supports(string $tagName, string $attributeName, string $attributeType): bool
     {
         return true;
     }
