@@ -194,7 +194,7 @@ export default class EzBtnCustomTagUpdate extends EzWidgetButton {
                 <div className="ez-ae-custom-tag__footer">
                     <button
                         className="ez-btn-ae btn ez-btn-ae--cancel"
-                        onClick={this.props.cancelExclusive}
+                        onClick={this.cancelCustomTagEdit.bind(this)}
                     >
                         {cancelLabel}
                     </button>
@@ -247,6 +247,19 @@ export default class EzBtnCustomTagUpdate extends EzWidgetButton {
         Object.keys(this.attributes).forEach((key) => {
             widget.setConfig(key, configValues[key].value);
         });
+    }
+
+    /**
+     * Cancels the custom tag editing in AlloyEditor.
+     *
+     * @method cancelCustomTagEdit
+     */
+    cancelCustomTagEdit() {
+        const widget = this.getWidget() || this.widget;
+
+        widget.setFocused(true);
+
+        this.props.cancelExclusive();
     }
 
     /**
