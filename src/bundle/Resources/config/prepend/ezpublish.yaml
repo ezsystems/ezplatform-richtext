@@ -298,14 +298,12 @@ system:
                     tr:
                         buttons:
                             ezmoveup:
-                                priority: 70
-                            ezmovedown:
                                 priority: 60
-                            ezattributesedit:
+                            ezmovedown:
                                 priority: 50
-                            tableHeading:
+                            ezattributesedit:
                                 priority: 40
-                            ezembedinline:
+                            tableHeading:
                                 priority: 30
                             ezanchor:
                                 priority: 20
@@ -314,14 +312,12 @@ system:
                     table:
                         buttons:
                             ezmoveup:
-                                priority: 70
-                            ezmovedown:
                                 priority: 60
-                            ezattributesedit:
+                            ezmovedown:
                                 priority: 50
-                            tableHeading:
+                            ezattributesedit:
                                 priority: 40
-                            ezembedinline:
+                            tableHeading:
                                 priority: 30
                             ezanchor:
                                 priority: 20
