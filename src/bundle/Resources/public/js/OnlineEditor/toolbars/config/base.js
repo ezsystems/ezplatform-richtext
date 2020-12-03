@@ -81,10 +81,14 @@ export default class EzConfigBase extends EzConfigButtonsBase {
         const path = editor.elementPath();
         let block = path.block;
 
-        if (!block || isWidgetElement) {
+        if (isWidgetElement) {
             const inlineCustomTag = path.elements.find((element) => element.$.dataset.ezelement === 'eztemplateinline');
 
-            block = inlineCustomTag || path.lastElement;
+            block = inlineCustomTag || targetElement;
+        }
+
+        if (!block ) {
+            block = path.lastElement;
         }
 
         if (block.is('li')) {
