@@ -263,6 +263,10 @@ system:
                                 priority: 70
                             ezembedinline:
                                 priority: 60
+                            ezembed:
+                                priority: 59
+                            ezimage:
+                                priority: 58
                             ezanchor:
                                 priority: 50
                             eztablerow:
