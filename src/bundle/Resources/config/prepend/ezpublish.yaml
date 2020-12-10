@@ -305,8 +305,6 @@ system:
                                 priority: 50
                             tableHeading:
                                 priority: 40
-                            ezembedinline:
-                                priority: 30
                             ezanchor:
                                 priority: 20
                             eztableremove:
@@ -321,8 +319,6 @@ system:
                                 priority: 50
                             tableHeading:
                                 priority: 40
-                            ezembedinline:
-                                priority: 30
                             ezanchor:
                                 priority: 20
                             eztableremove:
