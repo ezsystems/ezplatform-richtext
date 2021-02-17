@@ -18,13 +18,11 @@ customConfig.name = 'richtext';
 
 customConfig.module.rules.push({
     test: /ckeditor5-[^/\\]+[/\\]theme[/\\]icons[/\\][^/\\]+\.svg$/,
-
     use: ['raw-loader'],
 });
 
 customConfig.module.rules.push({
     test: /ckeditor5-[^/\\]+[/\\]theme[/\\].+\.css$/,
-
     use: [
         {
             loader: 'style-loader',
