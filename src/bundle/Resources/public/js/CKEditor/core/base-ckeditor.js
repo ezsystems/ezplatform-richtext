@@ -1,4 +1,11 @@
-(function(global, doc, eZ, CKEditor) {
+import CharacterCounter from '../plugins/character-counter';
+import InlineEditor from '../../../../../../../../ezplatform-admin-ui-assets/Resources/public/vendors/@ckeditor/ckeditor5-editor-inline/src/inlineeditor';
+import Essentials from '../../../../../../../../ezplatform-admin-ui-assets/Resources/public/vendors/@ckeditor/ckeditor5-essentials/src/essentials';
+import Paragraph from '../../../../../../../../ezplatform-admin-ui-assets/Resources/public/vendors/@ckeditor/ckeditor5-paragraph/src/paragraph';
+import Bold from '../../../../../../../../ezplatform-admin-ui-assets/Resources/public/vendors/@ckeditor/ckeditor5-basic-styles/src/bold';
+import Italic from '../../../../../../../../ezplatform-admin-ui-assets/Resources/public/vendors/@ckeditor/ckeditor5-basic-styles/src/italic';
+
+(function(global, doc, eZ) {
     class BaseRichText {
         constructor(config) {
             this.ezNamespace = 'http://ez.no/namespaces/ezpublish5/xhtml5/edit';
@@ -83,17 +90,19 @@
         }
 
         init(container) {
-            CKEditor.create(container).then((editor) => {
+            const wrapper = this.getHTMLDocumentFragment(container.closest('.ez-data-source').querySelector('textarea').value);
+            const section = wrapper.childNodes[0];
+
+            if (!section.hasChildNodes()) {
+                section.appendChild(doc.createElement('p'));
+            }
+
+            InlineEditor.create(container, {
+                initialData: section.innerHTML,
+                plugins: [CharacterCounter, Essentials, Paragraph, Bold, Italic],
+                toolbar: ['bold', 'italic'],
+            }).then((editor) => {
                 this.editor = editor;
-
-                const wrapper = this.getHTMLDocumentFragment(container.closest('.ez-data-source').querySelector('textarea').value);
-                const section = wrapper.childNodes[0];
-
-                if (!section.hasChildNodes()) {
-                    section.appendChild(doc.createElement('p'));
-                }
-
-                this.editor.setData(section.innerHTML);
 
                 this.editor.model.document.on('change:data', () => {
                     const data = this.getData();
@@ -108,4 +117,4 @@
     }
 
     eZ.BaseRichText = BaseRichText;
-})(window, window.document, window.eZ, window.InlineEditor);
+})(window, window.document, window.eZ);
