@@ -1,4 +1,5 @@
 import CharacterCounter from '../plugins/character-counter';
+import ElementsPath from '../plugins/elements-path';
 import InlineEditor from '../../../../../../../../ezplatform-admin-ui-assets/Resources/public/vendors/@ckeditor/ckeditor5-editor-inline/src/inlineeditor';
 import Essentials from '../../../../../../../../ezplatform-admin-ui-assets/Resources/public/vendors/@ckeditor/ckeditor5-essentials/src/essentials';
 import Alignment from '../../../../../../../../ezplatform-admin-ui-assets/Resources/public/vendors/@ckeditor/ckeditor5-alignment/src/alignment';
@@ -110,6 +111,7 @@ import BlockQuote from '../../../../../../../../ezplatform-admin-ui-assets/Resou
                 initialData: section.innerHTML,
                 plugins: [
                     CharacterCounter,
+                    ElementsPath,
                     Essentials,
                     Heading,
                     Alignment,
