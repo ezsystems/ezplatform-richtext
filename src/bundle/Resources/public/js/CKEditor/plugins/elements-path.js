@@ -7,15 +7,6 @@ class ElementsPath extends Plugin {
         this.elementsPathWrapper = null;
 
         this.updatePath = this.updatePath.bind(this);
-        this.getElementsPathWrapper = this.getElementsPathWrapper.bind(this);
-    }
-
-    getElementsPathWrapper() {
-        if (!this.elementsPathWrapper) {
-            this.elementsPathWrapper = this.editor.sourceElement.parentElement.querySelector('.ez-elements-path');
-        }
-
-        return this.elementsPathWrapper;
     }
 
     updatePath(element) {
@@ -25,7 +16,6 @@ class ElementsPath extends Plugin {
 
         const pathItem = `<li class="ez-elements-path__item">${element.name}</li>`;
         const container = document.createElement('ul');
-        const elementsPathWrapper = this.getElementsPathWrapper();
 
         container.insertAdjacentHTML('beforeend', pathItem);
 
@@ -40,14 +30,14 @@ class ElementsPath extends Plugin {
             false
         );
 
-        elementsPathWrapper.append(listItemNode);
+        this.elementsPathWrapper.append(listItemNode);
     }
 
     init() {
-        this.editor.model.document.selection.on('change:range', () => {
-            const elementsPathWrapper = this.getElementsPathWrapper();
+        this.elementsPathWrapper = this.editor.sourceElement.parentElement.querySelector('.ez-elements-path');
 
-            elementsPathWrapper.innerHTML = '';
+        this.editor.model.document.selection.on('change:range', () => {
+            this.elementsPathWrapper.innerHTML = '';
 
             this.editor.model.document.selection
                 .getFirstPosition()
