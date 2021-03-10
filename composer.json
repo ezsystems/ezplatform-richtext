@@ -29,6 +29,7 @@
         "ezsystems/ezplatform-http-cache": "^2.0@dev"
     },
     "require-dev": {
+        "ibexa/ci-scripts": "^0.1@dev",
         "ezsystems/doctrine-dbal-schema": "^1.0@dev",
         "phpunit/phpunit": "^8.5",
         "symfony/finder": "^5.0",
@@ -54,9 +55,7 @@
         "fix-cs": "@php ./vendor/bin/php-cs-fixer fix -v --show-progress=estimating"
     },
     "extra": {
-        "_ezplatform_branch_for_behat_tests": "master",
         "branch-alias": {
-            "dev-tmp_ci_branch": "2.3.x-dev",
             "dev-master": "2.3.x-dev"
         }
     }
