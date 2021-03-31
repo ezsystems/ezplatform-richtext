@@ -1,4 +1,4 @@
-import Plugin from '../../../../../../../../ezplatform-admin-ui-assets/Resources/public/vendors/@ckeditor/ckeditor5-core/src/plugin';
+import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 
 class ElementsPath extends Plugin {
     constructor(props) {
