@@ -6,6 +6,13 @@ import EmbedContentInlineCommand from './embed-inline-command';
 
 import { findContent } from '../../services/content-service';
 
+const renderPreview = (title) => {
+    return `<svg class="ez-icon ez-icon--medium ez-icon--secondary">
+        <use xlink:href="${window.eZ.helpers.icon.getIconPath('embed')}"></use>
+    </svg>
+    <span class="ez-embed-content__title">${title}</span>`;
+};
+
 class EmbedContentInlineEditing extends Plugin {
     static get requires() {
         return [Widget];
@@ -38,10 +45,7 @@ class EmbedContentInlineEditing extends Plugin {
                     const preview = downcastWriter.createUIElement('span', { class: 'ez-embed-content' }, function(domDocument) {
                         const domElement = this.toDomElement(domDocument);
 
-                        domElement.innerHTML = `<svg class="ez-icon ez-icon--medium ez-icon--secondary">
-                                <use xlink:href="${window.eZ.helpers.icon.getIconPath('embed')}"></use>
-                            </svg>
-                            <span class="ez-embed-content__title">${modelElement.getAttribute('contentName')}</span>`;
+                        domElement.innerHTML = renderPreview(modelElement.getAttribute('contentName'));
 
                         return domElement;
                     });
@@ -59,10 +63,7 @@ class EmbedContentInlineEditing extends Plugin {
                     const preview = downcastWriter.createUIElement('span', { class: 'ez-embed-content' }, function(domDocument) {
                         const domElement = this.toDomElement(domDocument);
 
-                        domElement.innerHTML = `<svg class="ez-icon ez-icon--medium ez-icon--secondary">
-                                <use xlink:href="${window.eZ.helpers.icon.getIconPath('embed')}"></use>
-                            </svg>
-                            <span class="ez-embed-content__title">${modelElement.getAttribute('contentName')}</span>`;
+                        domElement.innerHTML = renderPreview(modelElement.getAttribute('contentName'));
 
                         return domElement;
                     });

@@ -6,6 +6,13 @@ import EmbedContentCommand from './embed-command';
 
 import { findContent } from '../../services/content-service';
 
+const renderPreview = (title) => {
+    return `<svg class="ez-icon ez-icon--medium ez-icon--secondary">
+        <use xlink:href="${window.eZ.helpers.icon.getIconPath('embed')}"></use>
+    </svg>
+    <span class="ez-embed-content__title">${title}</span>`;
+};
+
 class EmbedContentEditing extends Plugin {
     static get requires() {
         return [Widget];
@@ -37,10 +44,7 @@ class EmbedContentEditing extends Plugin {
                     const preview = downcastWriter.createUIElement('p', { class: 'ez-embed-content' }, function(domDocument) {
                         const domElement = this.toDomElement(domDocument);
 
-                        domElement.innerHTML = `<svg class="ez-icon ez-icon--medium ez-icon--secondary">
-                                <use xlink:href="${window.eZ.helpers.icon.getIconPath('embed')}"></use>
-                            </svg>
-                            <span class="ez-embed-content__title">${modelElement.getAttribute('contentName')}</span>`;
+                        domElement.innerHTML = renderPreview(modelElement.getAttribute('contentName'));
 
                         return domElement;
                     });
@@ -58,10 +62,7 @@ class EmbedContentEditing extends Plugin {
                     const preview = downcastWriter.createUIElement('p', { class: 'ez-embed-content' }, function(domDocument) {
                         const domElement = this.toDomElement(domDocument);
 
-                        domElement.innerHTML = `<svg class="ez-icon ez-icon--medium ez-icon--secondary">
-                                <use xlink:href="${window.eZ.helpers.icon.getIconPath('embed')}"></use>
-                            </svg>
-                            <span class="ez-embed-content__title">${modelElement.getAttribute('contentName')}</span>`;
+                        domElement.innerHTML = renderPreview(modelElement.getAttribute('contentName'));
 
                         return domElement;
                     });
