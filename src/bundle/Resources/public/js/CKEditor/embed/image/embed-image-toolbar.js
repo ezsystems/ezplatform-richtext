@@ -1,0 +1,29 @@
+import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
+import WidgetToolbarRepository from '@ckeditor/ckeditor5-widget/src/widgettoolbarrepository';
+
+class EmbedImageToolbar extends Plugin {
+    static get requires() {
+        return [WidgetToolbarRepository];
+    }
+
+    getSelectedEmbedImageWidget(selection) {
+        const viewElement = selection.getSelectedElement();
+        const isEmbedImage = viewElement && viewElement.hasClass('ez-embed-type-image');
+
+        return isEmbedImage ? viewElement : null;
+    }
+
+    afterInit() {
+        const editor = this.editor;
+        const t = editor.t;
+        const widgetToolbarRepository = editor.plugins.get(WidgetToolbarRepository);
+
+        widgetToolbarRepository.register('embedImage', {
+            ariaLabel: t('Embed Image toolbar'),
+            items: editor.config.get('embedImage.toolbar') || [],
+            getRelatedElement: this.getSelectedEmbedImageWidget,
+        });
+    }
+}
+
+export default EmbedImageToolbar;
