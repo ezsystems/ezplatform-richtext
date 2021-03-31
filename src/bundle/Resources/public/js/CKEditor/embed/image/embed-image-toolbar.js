@@ -15,11 +15,10 @@ class EmbedImageToolbar extends Plugin {
 
     afterInit() {
         const editor = this.editor;
-        const t = editor.t;
         const widgetToolbarRepository = editor.plugins.get(WidgetToolbarRepository);
 
         widgetToolbarRepository.register('embedImage', {
-            ariaLabel: t('Embed Image toolbar'),
+            ariaLabel: editor.t('Embed Image toolbar'),
             items: editor.config.get('embedImage.toolbar') || [],
             getRelatedElement: this.getSelectedEmbedImageWidget,
         });

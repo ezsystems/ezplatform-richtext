@@ -6,7 +6,7 @@ class EmbedContentInlineUI extends EmbedBaseUI {
 
         this.configName = 'richtext_embed';
         this.commandName = 'insertEmbedInline';
-        this.buttonLabel = this.editor.t('Embed Inlnie');
+        this.buttonLabel = this.editor.t('Embed Inline');
         this.componentName = 'embedInline';
     }
 

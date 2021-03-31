@@ -4,6 +4,8 @@ import Widget from '@ckeditor/ckeditor5-widget/src/widget';
 
 import EmbedContentCommand from './embed-command';
 
+import { findContent } from '../../services/content-service';
+
 class EmbedContentEditing extends Plugin {
     static get requires() {
         return [Widget];
@@ -36,9 +38,9 @@ class EmbedContentEditing extends Plugin {
                         const domElement = this.toDomElement(domDocument);
 
                         domElement.innerHTML = `<svg class="ez-icon ez-icon--medium ez-icon--secondary">
-                        <use xlink:href="${window.eZ.helpers.icon.getIconPath('embed')}"></use>
-                        <span class="ez-embed-content__title">${modelElement.getAttribute('contentName')}</span>
-                    </>`;
+                                <use xlink:href="${window.eZ.helpers.icon.getIconPath('embed')}"></use>
+                            </svg>
+                            <span class="ez-embed-content__title">${modelElement.getAttribute('contentName')}</span>`;
 
                         return domElement;
                     });
@@ -57,9 +59,9 @@ class EmbedContentEditing extends Plugin {
                         const domElement = this.toDomElement(domDocument);
 
                         domElement.innerHTML = `<svg class="ez-icon ez-icon--medium ez-icon--secondary">
-                        <use xlink:href="${window.eZ.helpers.icon.getIconPath('embed')}"></use>
-                        <span class="ez-embed-content__title">${modelElement.getAttribute('contentName')}</span>
-                    </>`;
+                                <use xlink:href="${window.eZ.helpers.icon.getIconPath('embed')}"></use>
+                            </svg>
+                            <span class="ez-embed-content__title">${modelElement.getAttribute('contentName')}</span>`;
 
                         return domElement;
                     });
@@ -99,42 +101,14 @@ class EmbedContentEditing extends Plugin {
                 const modelElement = upcastWriter.createElement('embed', { contentId });
                 const token = document.querySelector('meta[name="CSRF-Token"]').content;
                 const siteaccess = document.querySelector('meta[name="SiteAccess"]').content;
-                const body = JSON.stringify({
-                    ViewInput: {
-                        identifier: `embed-load-content-info-${contentId}`,
-                        public: false,
-                        ContentQuery: {
-                            FacetBuilders: {},
-                            SortClauses: {},
-                            Filter: { ContentIdCriterion: `${contentId}` },
-                            limit: 1,
-                            offset: 0,
-                        },
-                    },
-                });
-                const request = new Request('/api/ezp/v2/views', {
-                    method: 'POST',
-                    headers: {
-                        Accept: 'application/vnd.ez.api.View+json; version=1.1',
-                        'Content-Type': 'application/vnd.ez.api.ViewInput+json; version=1.1',
-                        'X-Siteaccess': siteaccess,
-                        'X-CSRF-Token': token,
-                    },
-                    body,
-                    mode: 'same-origin',
-                    credentials: 'same-origin',
-                });
 
-                fetch(request)
-                    .then((response) => response.json())
-                    .then((hits) => {
-                        const contentName = hits.View.Result.searchHits.searchHit[0].value.Content.TranslatedName;
+                findContent({ token, siteaccess, contentId }, (contents) => {
+                    const contentName = contents[0].TranslatedName;
 
-                        this.editor.model.change((writer) => {
-                            writer.setAttribute('contentName', contentName, modelElement);
-                        });
-                    })
-                    .catch((error) => window.eZ.helpers.notification.showErrorNotification(error));
+                    this.editor.model.change((writer) => {
+                        writer.setAttribute('contentName', contentName, modelElement);
+                    });
+                });
 
                 return modelElement;
             },

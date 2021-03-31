@@ -4,6 +4,8 @@ import Widget from '@ckeditor/ckeditor5-widget/src/widget';
 
 import EmbedImageCommand from './embed-image-command';
 
+import { findContent } from '../../services/content-service';
+
 class EmbedImageEditing extends Plugin {
     static get requires() {
         return [Widget];
@@ -20,43 +22,15 @@ class EmbedImageEditing extends Plugin {
         const contentId = modelElement.getAttribute('contentId');
         const token = document.querySelector('meta[name="CSRF-Token"]').content;
         const siteaccess = document.querySelector('meta[name="SiteAccess"]').content;
-        const body = JSON.stringify({
-            ViewInput: {
-                identifier: `embed-load-content-info-${contentId}`,
-                public: false,
-                ContentQuery: {
-                    FacetBuilders: {},
-                    SortClauses: {},
-                    Filter: { ContentIdCriterion: `${contentId}` },
-                    limit: 1,
-                    offset: 0,
-                },
-            },
-        });
-        const request = new Request('/api/ezp/v2/views', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/vnd.ez.api.View+json; version=1.1',
-                'Content-Type': 'application/vnd.ez.api.ViewInput+json; version=1.1',
-                'X-Siteaccess': siteaccess,
-                'X-CSRF-Token': token,
-            },
-            body,
-            mode: 'same-origin',
-            credentials: 'same-origin',
-        });
 
-        fetch(request)
-            .then((response) => response.json())
-            .then((hits) => {
-                const fields = hits.View.Result.searchHits.searchHit[0].value.Content.CurrentVersion.Version.Fields.field;
-                const fieldImage = fields.find((field) => field.fieldTypeIdentifier === 'ezimage');
-                const size = modelElement.getAttribute('size');
-                const variationHref = fieldImage.fieldValue.variations[size].href;
+        findContent({ token, siteaccess, contentId }, (contents) => {
+            const fields = contents[0].CurrentVersion.Version.Fields.field;
+            const fieldImage = fields.find((field) => field.fieldTypeIdentifier === 'ezimage');
+            const size = modelElement.getAttribute('size');
+            const variationHref = fieldImage.fieldValue.variations[size].href;
 
-                this.loadImageVariation(modelElement, variationHref);
-            })
-            .catch((error) => window.eZ.helpers.notification.showErrorNotification(error));
+            this.loadImageVariation(modelElement, variationHref);
+        });
     }
 
     loadImageVariation(modelElement, variationHref) {
@@ -80,7 +54,7 @@ class EmbedImageEditing extends Plugin {
                     writer.setAttribute('previewUrl', imageData.ContentImageVariation.uri, modelElement);
                 });
             })
-            .catch((error) => window.eZ.helpers.notification.showErrorNotification(error));
+            .catch(window.eZ.helpers.notification.showErrorNotification);
     }
 
     defineSchema() {
