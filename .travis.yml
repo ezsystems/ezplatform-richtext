@@ -48,7 +48,7 @@ matrix:
         - BEHAT_OPTS="--profile=adminui --suite=richtext -c=behat_ibexa_oss.yaml"
         - APP_ENV=behat
         - APP_DEBUG=1
-        - PROJECT_VERSION=^3.3.x-dev
+        - PROJECT_VERSION=^4.0.x-dev
 # CS check
     - name: 'Code Style Check'
       php: 7.3
