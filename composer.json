@@ -29,7 +29,7 @@
         "ezsystems/ezplatform-http-cache": "^3.0@dev"
     },
     "require-dev": {
-        "ibexa/ci-scripts": "^0.1@dev",
+        "ibexa/ci-scripts": "^0.2@dev",
         "ezsystems/doctrine-dbal-schema": "^2.0@dev",
         "phpunit/phpunit": "^8.5",
         "symfony/finder": "^5.0",
