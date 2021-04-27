@@ -156,7 +156,7 @@
             const elementPreviousSibling = element.previousSibling;
             const isTableWithAnchor =
                 element.tagName.toLowerCase() === TABLE_TAG_NAME &&
-                elementPreviousSibling.tagName.toLowerCase() === SVG_TAG_NAME;
+                elementPreviousSibling?.tagName.toLowerCase() === SVG_TAG_NAME;
 
             if (isTableWithAnchor) {
                 elementPreviousSibling.remove();
