@@ -43,6 +43,7 @@ class CustomTagUI extends Plugin {
 
     createFormView() {
         const formView = new CustomTagFormView({ locale: this.editor.locale });
+
         this.listenTo(formView, 'save-custom-tag', () => {
             const modelElement = this.editor.model.document.selection.getSelectedElement();
             const values = modelElement.getAttribute('values');
