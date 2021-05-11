@@ -4,7 +4,7 @@ export default class InputNumberView extends InputTextView {
     constructor(locale) {
         super(locale);
 
-        const bind = this.bindTemplate;
+        const bindTemplate = this.bindTemplate;
 
         this.setTemplate({
             tag: 'input',
@@ -14,19 +14,19 @@ export default class InputNumberView extends InputTextView {
                     'ck',
                     'ck-input',
                     'ck-input-text',
-                    bind.if('isFocused', 'ck-input_focused'),
-                    bind.if('isEmpty', 'ck-input-text_empty'),
-                    bind.if('hasError', 'ck-error'),
+                    bindTemplate.if('isFocused', 'ck-input_focused'),
+                    bindTemplate.if('isEmpty', 'ck-input-text_empty'),
+                    bindTemplate.if('hasError', 'ck-error'),
                 ],
-                id: bind.to('id'),
-                placeholder: bind.to('placeholder'),
-                readonly: bind.to('isReadOnly'),
-                'aria-invalid': bind.if('hasError', true),
-                'aria-describedby': bind.to('ariaDescribedById'),
+                id: bindTemplate.to('id'),
+                placeholder: bindTemplate.to('placeholder'),
+                readonly: bindTemplate.to('isReadOnly'),
+                'aria-invalid': bindTemplate.if('hasError', true),
+                'aria-describedby': bindTemplate.to('ariaDescribedById'),
             },
             on: {
-                input: bind.to('input'),
-                change: bind.to(this._updateIsEmpty.bind(this)),
+                input: bindTemplate.to('input'),
+                change: bindTemplate.to(this._updateIsEmpty.bind(this)),
             },
         });
     }

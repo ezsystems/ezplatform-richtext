@@ -57,9 +57,7 @@ class CustomTagUI extends Plugin {
                     return;
                 }
 
-                const newValue = attributeView.fieldView.element.value;
-
-                newValues[name] = newValue;
+                newValues[name] = attributeView.fieldView.element.value;
             });
 
             this.editor.model.change((writer) => {

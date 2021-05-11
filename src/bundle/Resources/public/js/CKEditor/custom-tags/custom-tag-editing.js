@@ -10,7 +10,7 @@ class CustomTagEditing extends Plugin {
     }
 
     defineSchema() {
-        const schema = this.editor.model.schema;
+        const { schema } = this.editor.model;
 
         schema.register('customTag', {
             isObject: true,
@@ -26,7 +26,7 @@ class CustomTagEditing extends Plugin {
     }
 
     defineConverters() {
-        const conversion = this.editor.conversion;
+        const { conversion } = this.editor;
 
         conversion.for('editingDowncast').elementToElement({
             model: 'customTag',
@@ -52,9 +52,8 @@ class CustomTagEditing extends Plugin {
                     const domElement = this.toDomElement(domDocument);
 
                     domElement.innerHTML = Object.entries(modelElement.getAttribute('values')).reduce((total, [attribute, value]) => {
-                        const ezvalue = `<span data-ezelement="ezvalue" data-ezvalue-key="${attribute}">${
-                            value !== null ? value : ''
-                        }</span>`;
+                        const attributeValue = value !== null ? value : '';
+                        const ezvalue = `<span data-ezelement="ezvalue" data-ezvalue-key="${attribute}">${attributeValue}</span>`;
 
                         return `${total}${ezvalue}`;
                     }, '');
@@ -82,8 +81,8 @@ class CustomTagEditing extends Plugin {
                 const customTagName = viewElement.getAttribute('data-ezname');
                 const values = {};
 
-                for (let configValue of configValuesIterator) {
-                    const value = configValue.getChild(0) && configValue.getChild(0).data ? configValue.getChild(0).data : null;
+                for (const configValue of configValuesIterator) {
+                    const value = (configValue.getChild(0) && configValue.getChild(0).data) || null;
 
                     values[configValue.getAttribute('data-ezvalue-key')] = value;
                 }
