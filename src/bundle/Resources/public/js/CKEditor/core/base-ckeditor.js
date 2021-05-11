@@ -3,6 +3,7 @@ import 'regenerator-runtime';
 import CharacterCounter from '../plugins/character-counter';
 import ElementsPath from '../plugins/elements-path';
 import Embed from '../embed/embed';
+import CustomTags from '../custom-tags/custom-tags';
 
 import InlineEditor from '@ckeditor/ckeditor5-editor-inline/src/inlineeditor';
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
@@ -18,6 +19,7 @@ import Subscript from '@ckeditor/ckeditor5-basic-styles/src/subscript';
 import Superscript from '@ckeditor/ckeditor5-basic-styles/src/superscript';
 import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
 import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
+import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextualballoon';
 
 (function(global, doc, eZ) {
     class BaseRichText {
@@ -106,6 +108,7 @@ import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
         init(container) {
             const wrapper = this.getHTMLDocumentFragment(container.closest('.ez-data-source').querySelector('textarea').value);
             const section = wrapper.childNodes[0];
+            const customTags = Object.keys(window.eZ.richText.customTags);
 
             if (!section.hasChildNodes()) {
                 section.appendChild(doc.createElement('p'));
@@ -117,6 +120,7 @@ import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
                     CharacterCounter,
                     ElementsPath,
                     Embed,
+                    CustomTags,
                     Essentials,
                     Heading,
                     Alignment,
@@ -130,6 +134,7 @@ import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
                     Superscript,
                     Strikethrough,
                     BlockQuote,
+                    ContextualBalloon,
                 ],
                 toolbar: [
                     'heading',
@@ -151,6 +156,8 @@ import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
                     'embed',
                     'embedImage',
                     'embedInline',
+                    '|',
+                    ...customTags,
                 ],
                 embedImage: {
                     toolbar: ['imageVarations'],
