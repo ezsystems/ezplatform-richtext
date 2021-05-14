@@ -3,7 +3,7 @@ import { createDropdown, addListToDropdown } from '@ckeditor/ckeditor5-ui/src/dr
 import Model from '@ckeditor/ckeditor5-ui/src/model';
 import Collection from '@ckeditor/ckeditor5-utils/src/collection';
 
-class EmbedImageVariationsUI extends Plugin {
+class IbexaEmbedImageVariationsUI extends Plugin {
     constructor(props) {
         super(props);
 
@@ -67,4 +67,4 @@ class EmbedImageVariationsUI extends Plugin {
     }
 }
 
-export default EmbedImageVariationsUI;
+export default IbexaEmbedImageVariationsUI;

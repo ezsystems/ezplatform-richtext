@@ -1,9 +1,10 @@
 import 'regenerator-runtime';
 
-import CharacterCounter from '../plugins/character-counter';
-import ElementsPath from '../plugins/elements-path';
-import Embed from '../embed/embed';
-import CustomTags from '../custom-tags/custom-tags';
+import IbexaCharacterCounter from '../plugins/character-counter';
+import IbexaElementsPath from '../plugins/elements-path';
+import IbexaEmbed from '../embed/embed';
+import IbexaCustomTags from '../custom-tags/custom-tags';
+import IbexaLink from '../link/link';
 
 import InlineEditor from '@ckeditor/ckeditor5-editor-inline/src/inlineeditor';
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
@@ -117,10 +118,11 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
             InlineEditor.create(container, {
                 initialData: section.innerHTML,
                 plugins: [
-                    CharacterCounter,
-                    ElementsPath,
-                    Embed,
-                    CustomTags,
+                    IbexaCharacterCounter,
+                    IbexaElementsPath,
+                    IbexaEmbed,
+                    IbexaCustomTags,
+                    IbexaLink,
                     Essentials,
                     Heading,
                     Alignment,
@@ -152,10 +154,11 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
                     'superscript',
                     'strikethrough',
                     'blockQuote',
+                    'ibexaLink',
                     '|',
-                    'embed',
-                    'embedImage',
-                    'embedInline',
+                    'ibexaEmbed',
+                    'ibexaEmbedImage',
+                    'ibexaEmbedInline',
                     '|',
                     ...customTags,
                 ],

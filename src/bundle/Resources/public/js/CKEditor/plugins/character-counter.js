@@ -2,7 +2,7 @@ import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 
 const TEXT_NODE = 3;
 
-class CharacterCounter extends Plugin {
+class IbexaCharacterCounter extends Plugin {
     splitIntoWords(text) {
         return text.split(' ').filter((word) => word.trim());
     }
@@ -67,4 +67,4 @@ class CharacterCounter extends Plugin {
     }
 }
 
-export default CharacterCounter;
+export default IbexaCharacterCounter;

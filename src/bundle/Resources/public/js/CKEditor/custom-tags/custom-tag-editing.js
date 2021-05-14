@@ -2,9 +2,9 @@ import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 import { toWidget, toWidgetEditable } from '@ckeditor/ckeditor5-widget/src/utils';
 import Widget from '@ckeditor/ckeditor5-widget/src/widget';
 
-import CustomTagCommand from './custom-tag-command';
+import IbexaCustomTagCommand from './custom-tag-command';
 
-class CustomTagEditing extends Plugin {
+class IbexaCustomTagEditing extends Plugin {
     static get requires() {
         return [Widget];
     }
@@ -127,8 +127,8 @@ class CustomTagEditing extends Plugin {
         this.defineSchema();
         this.defineConverters();
 
-        this.editor.commands.add('insertCustomTag', new CustomTagCommand(this.editor));
+        this.editor.commands.add('insertIbexaCustomTag', new IbexaCustomTagCommand(this.editor));
     }
 }
 
-export default CustomTagEditing;
+export default IbexaCustomTagEditing;

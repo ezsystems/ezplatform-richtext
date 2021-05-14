@@ -2,7 +2,7 @@ import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 import { toWidget } from '@ckeditor/ckeditor5-widget/src/utils';
 import Widget from '@ckeditor/ckeditor5-widget/src/widget';
 
-import EmbedContentInlineCommand from './embed-inline-command';
+import IbexaEmbedContentInlineCommand from './embed-inline-command';
 
 import { findContent } from '../../services/content-service';
 
@@ -13,7 +13,7 @@ const renderPreview = (title) => {
     <span class="ez-embed-content__title">${title}</span>`;
 };
 
-class EmbedContentInlineEditing extends Plugin {
+class IbexaEmbedContentInlineEditing extends Plugin {
     static get requires() {
         return [Widget];
     }
@@ -121,8 +121,8 @@ class EmbedContentInlineEditing extends Plugin {
         this.defineSchema();
         this.defineConverters();
 
-        this.editor.commands.add('insertEmbedInline', new EmbedContentInlineCommand(this.editor));
+        this.editor.commands.add('insertIbexaEmbedInline', new IbexaEmbedContentInlineCommand(this.editor));
     }
 }
 
-export default EmbedContentInlineEditing;
+export default IbexaEmbedContentInlineEditing;

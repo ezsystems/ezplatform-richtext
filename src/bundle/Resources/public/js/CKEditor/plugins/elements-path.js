@@ -1,6 +1,6 @@
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 
-class ElementsPath extends Plugin {
+class IbexaElementsPath extends Plugin {
     constructor(props) {
         super(props);
 
@@ -47,4 +47,4 @@ class ElementsPath extends Plugin {
     }
 }
 
-export default ElementsPath;
+export default IbexaElementsPath;

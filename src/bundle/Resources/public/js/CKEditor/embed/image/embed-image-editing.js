@@ -2,11 +2,11 @@ import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 import { toWidget } from '@ckeditor/ckeditor5-widget/src/utils';
 import Widget from '@ckeditor/ckeditor5-widget/src/widget';
 
-import EmbedImageCommand from './embed-image-command';
+import IbexaEmbedImageCommand from './embed-image-command';
 
 import { findContent } from '../../services/content-service';
 
-class EmbedImageEditing extends Plugin {
+class IbexaEmbedImageEditing extends Plugin {
     static get requires() {
         return [Widget];
     }
@@ -163,8 +163,8 @@ class EmbedImageEditing extends Plugin {
         this.defineSchema();
         this.defineConverters();
 
-        this.editor.commands.add('insertEmbedImage', new EmbedImageCommand(this.editor));
+        this.editor.commands.add('insertIbexaEmbedImage', new IbexaEmbedImageCommand(this.editor));
     }
 }
 
-export default EmbedImageEditing;
+export default IbexaEmbedImageEditing;

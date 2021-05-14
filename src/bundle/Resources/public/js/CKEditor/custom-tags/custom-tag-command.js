@@ -1,6 +1,6 @@
 import Command from '@ckeditor/ckeditor5-core/src/command';
 
-class CustomTagCommand extends Command {
+class IbexaCustomTagCommand extends Command {
     execute(customTagData) {
         this.editor.model.change((writer) => {
             writer.setSelection(this.editor.model.document.selection.getFirstPosition().parent, 'end');
@@ -20,4 +20,4 @@ class CustomTagCommand extends Command {
     }
 }
 
-export default CustomTagCommand;
+export default IbexaCustomTagCommand;
