@@ -29,11 +29,11 @@ export default class EzBtnTableCell extends AlloyEditor.ButtonTableCell {
                     aria-expanded={this.props.expanded}
                     aria-label={AlloyEditor.Strings.cell}
                     aria-owns={buttonCommandsListId}
-                    className="ae-button ez-btn-ae"
+                    className="ae-button ibexa-btn-ae"
                     onClick={this.props.toggleDropdown}
                     tabIndex={this.props.tabIndex}
                     title={AlloyEditor.Strings.cell}>
-                    <svg className="ez-icon ez-btn-ae__icon">
+                    <svg className="ez-icon ibexa-btn-ae__icon">
                         <use xlinkHref={window.eZ.helpers.icon.getIconPath('table-cell')} />
                     </svg>
                 </button>

@@ -218,20 +218,20 @@ export default class EzBtnAnchorEdit extends Component {
                     <button
                         type="button"
                         title={removeBtnTitle}
-                        className="btn btn-icon ez-ae-anchor-edit__btn ez-ae-anchor-edit__btn--trash"
+                        className="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text ez-ae-anchor-edit__btn ez-ae-anchor-edit__btn--trash"
                         onClick={this.removeAnchor}
                         disabled={isRemoveBtnDisabled}>
-                        <svg className="ez-icon ez-icon--light ez-icon--medium ez-btn-ae__icon">
+                        <svg className="ez-icon ez-icon--light ez-icon--medium ibexa-btn-ae__icon">
                             <use xlinkHref={window.eZ.helpers.icon.getIconPath('trash')} />
                         </svg>
                     </button>
                     <button
                         type="button"
                         title={saveBtnTitle}
-                        className="btn btn-icon ez-ae-anchor-edit__btn ez-ae-anchor-edit__btn--save"
+                        className="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text ez-ae-anchor-edit__btn ez-ae-anchor-edit__btn--save"
                         onClick={this.saveAnchor}
                         disabled={isSaveBtnDisabled}>
-                        <svg className="ez-icon ez-icon--light ez-icon--medium ez-btn-ae__icon">
+                        <svg className="ez-icon ez-icon--light ez-icon--medium ibexa-btn-ae__icon">
                             <use xlinkHref={window.eZ.helpers.icon.getIconPath('checkmark')} />
                         </svg>
                     </button>

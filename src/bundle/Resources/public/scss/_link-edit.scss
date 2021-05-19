@@ -76,7 +76,7 @@
                         height: calculateRem(20px);
                     }
 
-                    .ez-btn-ae__icon-wrapper {
+                    .ibexa-btn-ae__icon-wrapper {
                         cursor: pointer;
                         display: flex;
                         justify-content: center;
@@ -85,7 +85,7 @@
                         height: calculateRem(36px);
                     }
 
-                    input:checked + .ez-btn-ae__icon-wrapper {
+                    input:checked + .ibexa-btn-ae__icon-wrapper {
                         background: $ibexa-color-base-dark;
 
                         .ez-icon {

@@ -42,11 +42,11 @@ export default class EzBtnCustomTagEdit extends EzWidgetButton {
             return <ButtonComponent values={this.getValues()} {...this.props} />;
         }
 
-        const css = `ae-button ez-btn-ae ez-btn-ae--${this.customTagName}-edit`;
+        const css = `ae-button ibexa-btn-ae ibexa-btn-ae--${this.customTagName}-edit`;
 
         return (
             <button className={css} onClick={this.props.requestExclusive} tabIndex={this.props.tabIndex}>
-                <svg className="ez-icon ez-btn-ae__icon">
+                <svg className="ez-icon ibexa-btn-ae__icon">
                     <use xlinkHref={window.eZ.helpers.icon.getIconPath('edit')} />
                 </svg>
             </button>

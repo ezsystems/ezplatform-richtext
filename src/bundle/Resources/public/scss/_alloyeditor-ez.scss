@@ -1126,7 +1126,7 @@ pre.ez-has-anchor > .ez-icon {
                 padding: calculateRem(16px);
                 background: $ibexa-color-base-pale;
 
-                .ez-btn-ae {
+                .ibexa-btn-ae {
                     font-size: calculateRem(14px);
                     color: $ibexa-white;
 
@@ -1229,7 +1229,7 @@ pre.ez-has-anchor > .ez-icon {
     }
 }
 
-.ez-btn-ae {
+.ibexa-btn-ae {
     &:hover {
         .ez-icon {
             fill: $ibexa-color-primary;

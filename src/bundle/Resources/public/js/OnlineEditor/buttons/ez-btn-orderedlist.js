@@ -30,11 +30,11 @@ export default class EzBtnOrderedList extends EzButton {
      */
     render() {
         const label = Translator.trans(/*@Desc("List")*/ 'ordered_list_btn.label', {}, 'alloy_editor');
-        const css = 'ae-button ez-btn-ae ez-btn-ae--ordered-list ' + this.getStateClasses();
+        const css = 'ae-button ibexa-btn-ae ibexa-btn-ae--ordered-list ' + this.getStateClasses();
 
         return (
             <button className={css} onClick={this.addList.bind(this)} tabIndex={this.props.tabIndex} title={label}>
-                <svg className="ez-icon ez-btn-ae__icon">
+                <svg className="ez-icon ibexa-btn-ae__icon">
                     <use xlinkHref={window.eZ.helpers.icon.getIconPath('list-numbered')} />
                 </svg>
             </button>

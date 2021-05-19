@@ -47,11 +47,11 @@ export default class EzBtnImageUpdate extends EzEmbedImageButton {
      * @return {Object} The content which should be rendered.
      */
     render() {
-        const css = 'ae-button ez-btn-ae ez-btn-ae--imageupdate ' + this.getStateClasses();
+        const css = 'ae-button ibexa-btn-ae ibexa-btn-ae--imageupdate ' + this.getStateClasses();
 
         return (
             <button className={css} onClick={this.chooseContent.bind(this)} tabIndex={this.props.tabIndex}>
-                <svg className="ez-icon ez-btn-ae__icon">
+                <svg className="ez-icon ibexa-btn-ae__icon">
                     <use xlinkHref={window.eZ.helpers.icon.getIconPath('image')} />
                 </svg>
             </button>

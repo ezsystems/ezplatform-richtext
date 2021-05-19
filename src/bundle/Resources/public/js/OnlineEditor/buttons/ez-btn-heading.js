@@ -26,12 +26,12 @@ export default class EzBtnHeading extends EzButton {
      * @return {Object} The content which should be rendered.
      */
     render() {
-        const css = 'ae-button ez-btn-ae ez-btn-ae--heading ' + this.getStateClasses();
+        const css = 'ae-button ibexa-btn-ae ibexa-btn-ae--heading ' + this.getStateClasses();
         const label = Translator.trans(/*@Desc("Heading")*/ 'heading_btn.label', {}, 'alloy_editor');
 
         return (
             <button className={css} onClick={this.addHeading.bind(this)} tabIndex={this.props.tabIndex} title={label}>
-                <svg className="ez-icon ez-btn-ae__icon">
+                <svg className="ez-icon ibexa-btn-ae__icon">
                     <use xlinkHref={window.eZ.helpers.icon.getIconPath('h1')} />
                 </svg>
             </button>
