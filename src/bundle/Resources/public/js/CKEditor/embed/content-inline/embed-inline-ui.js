@@ -1,13 +1,13 @@
-import EmbedBaseUI from '../embed-base-ui';
+import IbexaEmbedBaseUI from '../embed-base-ui';
 
-class EmbedContentInlineUI extends EmbedBaseUI {
+class IbexaEmbedContentInlineUI extends IbexaEmbedBaseUI {
     constructor(props) {
         super(props);
 
         this.configName = 'richtext_embed';
-        this.commandName = 'insertEmbedInline';
+        this.commandName = 'insertIbexaEmbedInline';
         this.buttonLabel = this.editor.t('Embed Inline');
-        this.componentName = 'embedInline';
+        this.componentName = 'ibexaEmbedInline';
     }
 
     getCommandOptions(items) {
@@ -18,4 +18,4 @@ class EmbedContentInlineUI extends EmbedBaseUI {
     }
 }
 
-export default EmbedContentInlineUI;
+export default IbexaEmbedContentInlineUI;

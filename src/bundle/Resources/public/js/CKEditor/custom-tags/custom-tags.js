@@ -1,12 +1,12 @@
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 
-import CustomTagsUI from './custom-tag-ui';
-import CustomTagsEditing from './custom-tag-editing';
+import IbexaCustomTagsUI from './custom-tag-ui';
+import IbexaCustomTagsEditing from './custom-tag-editing';
 
-class CustomTags extends Plugin {
+class IbexaCustomTags extends Plugin {
     static get requires() {
         const customTagsUi = Object.entries(window.eZ.richText.customTags).map(([name, config]) => {
-            return class CustomTagUI extends CustomTagsUI {
+            return class CustomTagUI extends IbexaCustomTagsUI {
                 constructor(props) {
                     super(props);
 
@@ -20,8 +20,8 @@ class CustomTags extends Plugin {
             };
         });
 
-        return [...customTagsUi, CustomTagsEditing];
+        return [...customTagsUi, IbexaCustomTagsEditing];
     }
 }
 
-export default CustomTags;
+export default IbexaCustomTags;

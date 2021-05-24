@@ -3,9 +3,9 @@ import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 import clickOutsideHandler from '@ckeditor/ckeditor5-ui/src/bindings/clickoutsidehandler';
 import ClickObserver from '@ckeditor/ckeditor5-engine/src/view/observer/clickobserver';
 
-import CustomTagFormView from './ui/custom-tag-form-view';
+import IbexaCustomTagFormView from './ui/custom-tag-form-view';
 
-class CustomTagUI extends Plugin {
+class IbexaCustomTagUI extends Plugin {
     constructor(props) {
         super(props);
 
@@ -42,7 +42,7 @@ class CustomTagUI extends Plugin {
     }
 
     createFormView() {
-        const formView = new CustomTagFormView({ locale: this.editor.locale });
+        const formView = new IbexaCustomTagFormView({ locale: this.editor.locale });
 
         this.listenTo(formView, 'save-custom-tag', () => {
             const modelElement = this.editor.model.document.selection.getSelectedElement();
@@ -119,7 +119,7 @@ class CustomTagUI extends Plugin {
         }, {});
 
         this.editor.focus();
-        this.editor.execute('insertCustomTag', { customTagName: this.componentName, values });
+        this.editor.execute('insertIbexaCustomTag', { customTagName: this.componentName, values });
 
         this.isNew = true;
 
@@ -147,4 +147,4 @@ class CustomTagUI extends Plugin {
     }
 }
 
-export default CustomTagUI;
+export default IbexaCustomTagUI;

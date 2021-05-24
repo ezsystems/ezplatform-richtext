@@ -1,7 +1,7 @@
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 import WidgetToolbarRepository from '@ckeditor/ckeditor5-widget/src/widgettoolbarrepository';
 
-class EmbedImageToolbar extends Plugin {
+class IbexaEmbedImageToolbar extends Plugin {
     static get requires() {
         return [WidgetToolbarRepository];
     }
@@ -25,4 +25,4 @@ class EmbedImageToolbar extends Plugin {
     }
 }
 
-export default EmbedImageToolbar;
+export default IbexaEmbedImageToolbar;

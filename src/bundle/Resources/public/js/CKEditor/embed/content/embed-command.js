@@ -1,6 +1,6 @@
 import Command from '@ckeditor/ckeditor5-core/src/command';
 
-class EmbedContentCommand extends Command {
+class IbexaEmbedContentCommand extends Command {
     execute(contentData) {
         this.editor.model.change((writer) => {
             writer.setSelection(this.editor.model.document.selection.getFirstPosition().parent, 'end');
@@ -14,4 +14,4 @@ class EmbedContentCommand extends Command {
     }
 }
 
-export default EmbedContentCommand;
+export default IbexaEmbedContentCommand;

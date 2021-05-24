@@ -1,6 +1,6 @@
 import Command from '@ckeditor/ckeditor5-core/src/command';
 
-class EmbedContentInlineCommand extends Command {
+class IbexaEmbedContentInlineCommand extends Command {
     execute(contentData) {
         this.editor.model.change((writer) => {
             this.editor.model.insertContent(this.createEmbed(writer, contentData));
@@ -12,4 +12,4 @@ class EmbedContentInlineCommand extends Command {
     }
 }
 
-export default EmbedContentInlineCommand;
+export default IbexaEmbedContentInlineCommand;

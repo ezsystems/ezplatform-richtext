@@ -10,7 +10,7 @@ import { addListToDropdown } from '@ckeditor/ckeditor5-ui/src/dropdown/utils';
 import { createLabeledInputNumber } from '../../common/input-number/utils';
 import { createLabeledSwitchButton } from '../../common/switch-button/utils';
 
-class CustomTagFormView extends View {
+class IbexaCustomTagFormView extends View {
     constructor(props) {
         super(props);
 
@@ -205,4 +205,4 @@ class CustomTagFormView extends View {
     }
 }
 
-export default CustomTagFormView;
+export default IbexaCustomTagFormView;

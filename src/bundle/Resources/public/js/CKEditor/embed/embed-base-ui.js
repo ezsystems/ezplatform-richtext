@@ -1,7 +1,7 @@
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 
-class EmbedBaseUI extends Plugin {
+class IbexaEmbedBaseUI extends Plugin {
     constructor(props) {
         super(props);
 
@@ -66,4 +66,4 @@ class EmbedBaseUI extends Plugin {
     }
 }
 
-export default EmbedBaseUI;
+export default IbexaEmbedBaseUI;
