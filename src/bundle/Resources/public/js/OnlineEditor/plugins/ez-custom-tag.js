@@ -64,7 +64,7 @@ CKEDITOR.dtd.$editable.span = 1;
 
                     const iconWrapper = this.getIconWrapper();
                     const icon = `
-                        <svg class="ez-icon ez-icon--small ez-icon--secondary">
+                        <svg class="ibexa-icon ibexa-icon--small ibexa-icon--secondary">
                             <use xlink:href=${customTagConfig.icon} />
                         </svg>
                     `;

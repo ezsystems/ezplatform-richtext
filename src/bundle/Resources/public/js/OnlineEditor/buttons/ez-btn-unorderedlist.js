@@ -35,7 +35,7 @@ export default class EzBtnUnorderedList extends EzButton {
 
         return (
             <button className={css} onClick={this.addList.bind(this)} tabIndex={this.props.tabIndex} title={label}>
-                <svg className="ez-icon ibexa-btn-ae__icon">
+                <svg className="ibexa-icon ibexa-btn-ae__icon">
                     <use xlinkHref={window.eZ.helpers.icon.getIconPath('list')} />
                 </svg>
             </button>

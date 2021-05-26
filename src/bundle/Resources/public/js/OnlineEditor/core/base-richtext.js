@@ -152,7 +152,7 @@
         }
 
         clearAnchor(element) {
-            const icon = element.querySelector('.ez-icon--anchor');
+            const icon = element.querySelector('.ibexa-icon--anchor');
             const elementPreviousSibling = element.previousSibling;
             const isTableWithAnchor =
                 element.tagName.toLowerCase() === TABLE_TAG_NAME &&
@@ -170,7 +170,7 @@
         appendAnchorIcon(element) {
             const container = doc.createElement('div');
             const icon = `
-                <svg class="ez-icon ez-icon--small ez-icon--secondary ez-icon--anchor">
+                <svg class="ibexa-icon ibexa-icon--small ibexa-icon--secondary ibexa-icon--anchor">
                     <use xlink:href=${window.eZ.helpers.icon.getIconPath('link-anchor')}></use>
                 </svg>`;
 

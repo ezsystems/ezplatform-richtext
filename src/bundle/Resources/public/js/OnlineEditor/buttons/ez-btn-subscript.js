@@ -25,7 +25,7 @@ export default class EzBtnSubscript extends AlloyEditor.ButtonSubscript {
                 onClick={this.execCommand}
                 tabIndex={this.props.tabIndex}
                 title={AlloyEditor.Strings.subscript}>
-                <svg className="ez-icon ibexa-btn-ae__icon">
+                <svg className="ibexa-icon ibexa-btn-ae__icon">
                     <use xlinkHref={window.eZ.helpers.icon.getIconPath('subscript')} />
                 </svg>
             </button>

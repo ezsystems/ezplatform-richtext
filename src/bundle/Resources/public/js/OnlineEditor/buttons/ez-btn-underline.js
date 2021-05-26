@@ -25,7 +25,7 @@ export default class EzBtnUnderline extends AlloyEditor.ButtonUnderline {
                 onClick={this.execCommand}
                 tabIndex={this.props.tabIndex}
                 title={AlloyEditor.Strings.underline}>
-                <svg className="ez-icon ibexa-btn-ae__icon">
+                <svg className="ibexa-icon ibexa-btn-ae__icon">
                     <use xlinkHref={window.eZ.helpers.icon.getIconPath('underscore')} />
                 </svg>
             </button>

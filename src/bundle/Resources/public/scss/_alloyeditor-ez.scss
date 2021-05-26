@@ -1053,13 +1053,13 @@
     position: relative;
 }
 
-.ez-has-anchor > .ez-icon {
+.ez-has-anchor > .ibexa-icon {
     position: absolute;
     top: 4px;
     left: -20px;
 }
 
-pre.ez-has-anchor > .ez-icon {
+pre.ez-has-anchor > .ibexa-icon {
     left: 0;
 }
 
@@ -1231,19 +1231,19 @@ pre.ez-has-anchor > .ez-icon {
 
 .ibexa-btn-ae {
     &:hover {
-        .ez-icon {
+        .ibexa-icon {
             fill: $ibexa-color-primary;
         }
     }
 
-    .ez-icon {
+    .ibexa-icon {
         width: calculateRem(24px);
         height: calculateRem(24px);
         fill: $ez-ae-color-primary-text;
     }
 
     &.ae-button-pressed {
-        .ez-icon {
+        .ibexa-icon {
             fill: $ez-ae-color-primary;
         }
     }
@@ -1314,7 +1314,7 @@ pre.ez-has-anchor > .ez-icon {
                 vertical-align: middle;
             }
 
-            .ez-icon {
+            .ibexa-icon {
                 vertical-align: middle;
                 background: $ez-embed-color-icon-ground;
                 border-radius: calculateRem(4px);
@@ -1328,7 +1328,7 @@ pre.ez-has-anchor > .ez-icon {
         font-size: calculateRem(16px);
 
         .ez-embed-content {
-            .ez-icon {
+            .ibexa-icon {
                 width: calculateRem(22px);
                 height: calculateRem(22px);
             }

@@ -264,7 +264,7 @@ export default class EzBtnLinkEdit extends Component {
                                 onChange={this.setTarget.bind(this)}
                             />
                             <div className="ibexa-btn-ae__icon-wrapper">
-                                <svg className="ez-icon ibexa-btn-ae__icon">
+                                <svg className="ibexa-icon ibexa-btn-ae__icon">
                                     <use xlinkHref={window.eZ.helpers.icon.getIconPath('open-sametab')} />
                                 </svg>
                             </div>
@@ -282,7 +282,7 @@ export default class EzBtnLinkEdit extends Component {
                                 onChange={this.setTarget.bind(this)}
                             />
                             <div className="ibexa-btn-ae__icon-wrapper">
-                                <svg className="ez-icon ibexa-btn-ae__icon">
+                                <svg className="ibexa-icon ibexa-btn-ae__icon">
                                     <use xlinkHref={window.eZ.helpers.icon.getIconPath('open-newtab')} />
                                 </svg>
                             </div>
@@ -311,7 +311,7 @@ export default class EzBtnLinkEdit extends Component {
                         disabled={this.state.isTemporary}
                         onClick={this.removeLink.bind(this)}
                         title={removeLabel}>
-                        <svg className="ez-icon ibexa-btn-ae__icon">
+                        <svg className="ibexa-icon ibexa-btn-ae__icon">
                             <use xlinkHref={window.eZ.helpers.icon.getIconPath('link-remove')} />
                         </svg>
                     </button>
@@ -320,7 +320,7 @@ export default class EzBtnLinkEdit extends Component {
                         disabled={!this.state.linkHref}
                         onClick={this.saveLink.bind(this)}
                         title={saveLabel}>
-                        <svg className="ez-icon ibexa-btn-ae__icon">
+                        <svg className="ibexa-icon ibexa-btn-ae__icon">
                             <use xlinkHref={window.eZ.helpers.icon.getIconPath('checkmark')} />
                         </svg>
                     </button>
