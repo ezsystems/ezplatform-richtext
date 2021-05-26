@@ -28,11 +28,11 @@ export default class EzBtnMoveDown extends Component {
 
         return (
             <button
-                className="ae-button ez-btn-ae ez-btn-ae--move-down"
+                className="ae-button ibexa-btn-ae ibexa-btn-ae--move-down"
                 onClick={this.moveDown.bind(this)}
                 tabIndex={this.props.tabIndex}
                 title={title}>
-                <svg className="ez-icon ez-btn-ae__icon">
+                <svg className="ez-icon ibexa-btn-ae__icon">
                     <use xlinkHref={window.eZ.helpers.icon.getIconPath('circle-caret-down')} />
                 </svg>
             </button>

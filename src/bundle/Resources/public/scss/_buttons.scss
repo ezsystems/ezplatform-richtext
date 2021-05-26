@@ -6,7 +6,7 @@
 
     .ae-toolbar {
         .ae-button {
-            &.ez-btn-ae {
+            &.ibexa-btn-ae {
                 width: calculateRem(34px);
                 height: calculateRem(34px);
                 margin: calculateRem(8px) 0;
@@ -27,7 +27,7 @@
 
     .ae-container {
         .ez-ae-edit-link {
-            .ez-btn-ae {
+            .ibexa-btn-ae {
                 color: $ibexa-white;
 
                 &--clear-link {
@@ -50,7 +50,7 @@
             }
 
             &.is-linked {
-                .ez-btn-ae {
+                .ibexa-btn-ae {
                     &--clear-link {
                         display: block;
                     }

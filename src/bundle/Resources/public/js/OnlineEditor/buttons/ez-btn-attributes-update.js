@@ -123,7 +123,7 @@ export default class EzBtnAttributesUpdate extends EzWidgetButton {
                 {this.renderClass()}
                 {Object.entries(this.attributes).map(this.renderAttribute)}
                 <button
-                    className="ez-btn-ae btn btn-secondary ez-btn-ae--attributes-save float-right"
+                    className="ibexa-btn-ae btn ibexa-btn ibexa-btn--secondary ibexa-btn-ae--attributes-save float-right"
                     onClick={this.saveValues}
                     disabled={!isValid}>
                     {saveLabel}

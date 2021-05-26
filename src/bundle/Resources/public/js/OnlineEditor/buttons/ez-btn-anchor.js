@@ -24,7 +24,7 @@ export default class EzBtnAnchor extends Component {
             return <AlloyEditor.EzBtnAnchorEdit {...this.props} />;
         }
 
-        const cssClass = `ae-button ez-btn-ae--anchor ez-btn-ae ${this.getStateClasses()}`;
+        const cssClass = `ae-button ibexa-btn-ae--anchor ibexa-btn-ae ${this.getStateClasses()}`;
         const label = Translator.trans(/*@Desc("Anchor")*/ 'anchor_btn.label', {}, 'alloy_editor');
 
         return (
@@ -34,7 +34,7 @@ export default class EzBtnAnchor extends Component {
                 onClick={this.props.requestExclusive}
                 tabIndex={this.props.tabIndex}
                 title={label}>
-                <svg className="ez-icon ez-btn-ae__icon">
+                <svg className="ez-icon ibexa-btn-ae__icon">
                     <use xlinkHref={window.eZ.helpers.icon.getIconPath('link-anchor')} />
                 </svg>
             </button>

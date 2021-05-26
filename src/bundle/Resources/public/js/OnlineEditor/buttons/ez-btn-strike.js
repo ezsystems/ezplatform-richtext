@@ -14,7 +14,7 @@ export default class EzBtnStrike extends AlloyEditor.ButtonStrike {
      * @return {Object} The content which should be rendered.
      */
     render() {
-        const cssClass = 'ae-button ez-btn-ae ' + this.getStateClasses();
+        const cssClass = 'ae-button ibexa-btn-ae ' + this.getStateClasses();
 
         return (
             <button
@@ -25,7 +25,7 @@ export default class EzBtnStrike extends AlloyEditor.ButtonStrike {
                 onClick={this.execCommand}
                 tabIndex={this.props.tabIndex}
                 title={AlloyEditor.Strings.strike}>
-                <svg className="ez-icon ez-btn-ae__icon">
+                <svg className="ez-icon ibexa-btn-ae__icon">
                     <use xlinkHref={window.eZ.helpers.icon.getIconPath('strikethrough')} />
                 </svg>
             </button>

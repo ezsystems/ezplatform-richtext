@@ -15,12 +15,12 @@ export default class EzBtnEmbedInline extends EzBtnEmbed {
      * @return {Object} The content which should be rendered.
      */
     render() {
-        const css = 'ae-button ez-btn-ae ez-btn-ae--embed-inline';
+        const css = 'ae-button ibexa-btn-ae ibexa-btn-ae--embed-inline';
         const label = Translator.trans(/*@Desc("Embed")*/ 'embed_btn.label', {}, 'alloy_editor');
 
         return (
             <button className={css} onClick={this.chooseContent.bind(this)} tabIndex={this.props.tabIndex} title={label}>
-                <svg className="ez-icon ez-btn-ae__icon">
+                <svg className="ez-icon ibexa-btn-ae__icon">
                     <use xlinkHref={window.eZ.helpers.icon.getIconPath('embed')} />
                 </svg>
             </button>

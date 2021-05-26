@@ -189,10 +189,10 @@ export default class EzBtnCustomTagUpdate extends EzWidgetButton {
                 <div className="ez-ae-custom-tag__header">{this.name}</div>
                 <div className="ez-ae-custom-tag__attributes-list">{attrs.map(this.renderAttribute.bind(this))}</div>
                 <div className="ez-ae-custom-tag__footer">
-                    <button className="btn btn-primary ez-btn-ae" onClick={this.saveCustomTag.bind(this)} disabled={!isValid}>
+                    <button className="btn ibexa-btn ibexa-btn--primary ibexa-btn-ae" onClick={this.saveCustomTag.bind(this)} disabled={!isValid}>
                         {saveLabel}
                     </button>
-                    <button className="btn btn-link ez-btn-ae ez-btn-ae--cancel" onClick={this.cancelCustomTagEdit.bind(this)}>
+                    <button className="btn ibexa-btn ibexa-btn--ghost ibexa-btn-ae ibexa-btn-ae--cancel" onClick={this.cancelCustomTagEdit.bind(this)}>
                         {cancelLabel}
                     </button>
                 </div>

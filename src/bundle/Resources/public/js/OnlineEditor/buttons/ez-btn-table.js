@@ -19,11 +19,11 @@ export default class EzBtnTable extends Component {
         }
 
         const label = Translator.trans(/*@Desc("Table")*/ 'table_btn.label', {}, 'alloy_editor');
-        const css = 'ae-button ez-btn-ae ez-btn-ae--table';
+        const css = 'ae-button ibexa-btn-ae ibexa-btn-ae--table';
 
         return (
             <button className={css} onClick={this.props.requestExclusive} tabIndex={this.props.tabIndex} title={label}>
-                <svg className="ez-icon ez-btn-ae__icon">
+                <svg className="ez-icon ibexa-btn-ae__icon">
                     <use xlinkHref={window.eZ.helpers.icon.getIconPath('table-add')} />
                 </svg>
             </button>
