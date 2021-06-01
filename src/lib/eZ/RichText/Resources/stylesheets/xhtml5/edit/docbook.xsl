@@ -259,7 +259,9 @@
         </xsl:attribute>
       </xsl:if>
       <xsl:call-template name="ezattribute"/>
-      <xsl:apply-templates/>
+      <xsl:call-template name="breakline">
+        <xsl:with-param name="node" select="node()"/>
+      </xsl:call-template>
     </link>
   </xsl:template>
 
