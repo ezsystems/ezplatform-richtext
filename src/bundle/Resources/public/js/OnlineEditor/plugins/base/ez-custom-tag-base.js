@@ -143,12 +143,12 @@ const customTagBaseDefinition = {
                 </div>
                 <div class="ez-custom-tag__header-btns">
                     <button class="btn ez-custom-tag__header-btn ez-custom-tag__header-btn--attributes" data-target="attributes">
-                        <svg class="ez-icon ez-icon--small">
+                        <svg class="ibexa-icon ibexa-icon--small">
                             <use xlink:href=${window.eZ.helpers.icon.getIconPath('list')}></use>
                         </svg>
                     </button>
                     <button class="btn ez-custom-tag__header-btn ez-custom-tag__header-btn--content" data-target="content">
-                        <svg class="ez-icon ez-icon--small">
+                        <svg class="ibexa-icon ibexa-icon--small">
                             <use xlink:href=${window.eZ.helpers.icon.getIconPath('edit')}></use>
                         </svg>
                     </button>

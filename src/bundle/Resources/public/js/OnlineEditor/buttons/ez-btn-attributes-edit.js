@@ -259,7 +259,7 @@ export default class EzBtnAttributesEdit extends EzWidgetButton {
 
         return (
             <button className={css} onClick={this.props.requestExclusive} tabIndex={this.props.tabIndex}>
-                <svg className="ez-icon ibexa-btn-ae__icon">
+                <svg className="ibexa-icon ibexa-btn-ae__icon">
                     <use xlinkHref={window.eZ.helpers.icon.getIconPath('edit')} />
                 </svg>
             </button>

@@ -19,7 +19,7 @@ export default class EzBtnTableRemove extends AlloyEditor.ButtonTableRemove {
                 }}
                 tabIndex={this.props.tabIndex}
                 title={AlloyEditor.Strings.deleteTable}>
-                <svg className="ez-icon ibexa-btn-ae__icon">
+                <svg className="ibexa-icon ibexa-btn-ae__icon">
                     <use xlinkHref={window.eZ.helpers.icon.getIconPath('trash')} />
                 </svg>
             </button>

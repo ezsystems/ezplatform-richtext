@@ -30,7 +30,7 @@ export default class EzBtnLink extends AlloyEditor.ButtonLink {
                 onClick={this._requestExclusive}
                 tabIndex={this.props.tabIndex}
                 title={AlloyEditor.Strings.link}>
-                <svg className="ez-icon ibexa-btn-ae__icon">
+                <svg className="ibexa-icon ibexa-btn-ae__icon">
                     <use xlinkHref={window.eZ.helpers.icon.getIconPath('link')} />
                 </svg>
             </button>

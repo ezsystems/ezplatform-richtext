@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AlloyEditor from 'alloyeditor';
 
 const CLASS_HAS_ANCHOR = 'ez-has-anchor';
-const CLASS_ICON_ANCHOR = 'ez-icon--anchor';
+const CLASS_ICON_ANCHOR = 'ibexa-icon--anchor';
 const ANCHOR_PATTERN = /^[A-Za-z][A-Za-z0-9\-_:\.]*$/;
 
 export default class EzBtnAnchorEdit extends Component {
@@ -162,7 +162,7 @@ export default class EzBtnAnchorEdit extends Component {
         const block = this.findBlock();
         const container = document.createElement('div');
         const icon = `
-            <svg class="ez-icon ez-icon--small ez-icon--secondary ${CLASS_ICON_ANCHOR}">
+            <svg class="ibexa-icon ibexa-icon--small ibexa-icon--secondary ${CLASS_ICON_ANCHOR}">
                 <use xlink:href="${window.eZ.helpers.icon.getIconPath('link-anchor')}"></use>
             </svg>`;
 
@@ -221,7 +221,7 @@ export default class EzBtnAnchorEdit extends Component {
                         className="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text ez-ae-anchor-edit__btn ez-ae-anchor-edit__btn--trash"
                         onClick={this.removeAnchor}
                         disabled={isRemoveBtnDisabled}>
-                        <svg className="ez-icon ez-icon--light ez-icon--medium ibexa-btn-ae__icon">
+                        <svg className="ibexa-icon ibexa-icon--medium ibexa-btn-ae__icon">
                             <use xlinkHref={window.eZ.helpers.icon.getIconPath('trash')} />
                         </svg>
                     </button>
@@ -231,7 +231,7 @@ export default class EzBtnAnchorEdit extends Component {
                         className="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text ez-ae-anchor-edit__btn ez-ae-anchor-edit__btn--save"
                         onClick={this.saveAnchor}
                         disabled={isSaveBtnDisabled}>
-                        <svg className="ez-icon ez-icon--light ez-icon--medium ibexa-btn-ae__icon">
+                        <svg className="ibexa-icon ibexa-icon--medium ibexa-btn-ae__icon">
                             <use xlinkHref={window.eZ.helpers.icon.getIconPath('checkmark')} />
                         </svg>
                     </button>

@@ -34,7 +34,7 @@ export default class EzBtnTableColumn extends AlloyEditor.ButtonTableColumn {
                     role="listbox"
                     tabIndex={this.props.tabIndex}
                     title={AlloyEditor.Strings.column}>
-                    <svg className="ez-icon ibexa-btn-ae__icon">
+                    <svg className="ibexa-icon ibexa-btn-ae__icon">
                         <use xlinkHref={window.eZ.helpers.icon.getIconPath('table-column')} />
                     </svg>
                 </button>

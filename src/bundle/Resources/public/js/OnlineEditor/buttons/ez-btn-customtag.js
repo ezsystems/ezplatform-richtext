@@ -26,7 +26,7 @@ export default class EzBtnCustomTag extends EzWidgetButton {
 
         return (
             <button className={css} onClick={this.props.requestExclusive} tabIndex={this.props.tabIndex} title={this.label}>
-                <svg className="ez-icon ibexa-btn-ae__icon">
+                <svg className="ibexa-icon ibexa-btn-ae__icon">
                     <use xlinkHref={this.icon} />
                 </svg>
             </button>

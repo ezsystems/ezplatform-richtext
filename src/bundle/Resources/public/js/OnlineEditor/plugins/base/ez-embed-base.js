@@ -287,7 +287,7 @@ const embedBaseDefinition = {
 
     createEmbedPreview: function(title) {
         return `
-            <svg class="ez-icon ez-icon--medium ez-icon--secondary">
+            <svg class="ibexa-icon ibexa-icon--medium ibexa-icon--secondary">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href={window.eZ.helpers.icon.getIconPath('embed')}></use>
             </svg>
             <span class="ez-embed-content__title">${title}</span>
@@ -477,7 +477,7 @@ const embedBaseDefinition = {
             next = element.getNext();
 
             const isEzElement = element.data && element.data('ezelement');
-            const isAnchorIcon = element.$.classList && element.$.classList.contains('ez-icon--anchor');
+            const isAnchorIcon = element.$.classList && element.$.classList.contains('ibexa-icon--anchor');
             const shouldRemove = !(isEzElement || isAnchorIcon);
 
             if (shouldRemove) {
@@ -703,7 +703,7 @@ const embedBaseDefinition = {
     renderLinkedIcon: function() {
         const iconWrapper = new CKEDITOR.dom.element('span');
         const icon = `
-            <svg class="ez-icon ez-icon--medium ez-icon--light">
+            <svg class="ibexa-icon ibexa-icon--medium ibexa-icon--light">
                 <use xlink:href={window.eZ.helpers.icon.getIconPath('link')}></use>
             </svg>
         `;

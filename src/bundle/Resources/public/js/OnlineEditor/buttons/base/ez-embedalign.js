@@ -43,7 +43,7 @@ export default class EzEmbedAlign extends WidgetButton {
 
         return (
             <button className={cssClass} onClick={this.applyStyle.bind(this)} tabIndex={this.props.tabIndex} title={this.props.label}>
-                <svg className="ez-icon ibexa-btn-ae__icon">
+                <svg className="ibexa-icon ibexa-btn-ae__icon">
                     <use xlinkHref={icon}></use>
                 </svg>
             </button>

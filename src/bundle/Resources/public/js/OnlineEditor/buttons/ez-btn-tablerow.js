@@ -34,7 +34,7 @@ export default class EzBtnTableRow extends AlloyEditor.ButtonTableRow {
                     role="combobox"
                     tabIndex={this.props.tabIndex}
                     title={AlloyEditor.Strings.row}>
-                    <svg className="ez-icon ibexa-btn-ae__icon">
+                    <svg className="ibexa-icon ibexa-btn-ae__icon">
                         <use xlinkHref={window.eZ.helpers.icon.getIconPath('table-row')} />
                     </svg>
                 </button>

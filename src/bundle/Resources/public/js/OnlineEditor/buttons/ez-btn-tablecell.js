@@ -33,7 +33,7 @@ export default class EzBtnTableCell extends AlloyEditor.ButtonTableCell {
                     onClick={this.props.toggleDropdown}
                     tabIndex={this.props.tabIndex}
                     title={AlloyEditor.Strings.cell}>
-                    <svg className="ez-icon ibexa-btn-ae__icon">
+                    <svg className="ibexa-icon ibexa-btn-ae__icon">
                         <use xlinkHref={window.eZ.helpers.icon.getIconPath('table-cell')} />
                     </svg>
                 </button>

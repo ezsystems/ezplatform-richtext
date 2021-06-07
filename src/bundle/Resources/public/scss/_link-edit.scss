@@ -70,7 +70,7 @@
                     height: calculateRem(36px);
                     margin: 0;
 
-                    .ez-icon {
+                    .ibexa-icon {
                         fill: $ibexa-color-base-dark;;
                         width: calculateRem(20px);
                         height: calculateRem(20px);
@@ -88,7 +88,7 @@
                     input:checked + .ibexa-btn-ae__icon-wrapper {
                         background: $ibexa-color-base-dark;
 
-                        .ez-icon {
+                        .ibexa-icon {
                             fill: $ez-ae-color-primary;
                         }
                     }
