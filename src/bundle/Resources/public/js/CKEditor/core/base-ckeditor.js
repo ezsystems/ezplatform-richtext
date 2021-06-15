@@ -5,6 +5,7 @@ import IbexaElementsPath from '../plugins/elements-path';
 import IbexaEmbed from '../embed/embed';
 import IbexaCustomTags from '../custom-tags/custom-tags';
 import IbexaLink from '../link/link';
+import IbexaAnchor from '../anchor/anchor';
 
 import InlineEditor from '@ckeditor/ckeditor5-editor-inline/src/inlineeditor';
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
@@ -123,6 +124,7 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
                     IbexaEmbed,
                     IbexaCustomTags,
                     IbexaLink,
+                    IbexaAnchor,
                     Essentials,
                     Heading,
                     Alignment,
@@ -155,6 +157,7 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
                     'strikethrough',
                     'blockQuote',
                     'ibexaLink',
+                    'ibexaAnchor',
                     '|',
                     'ibexaEmbed',
                     'ibexaEmbedImage',
