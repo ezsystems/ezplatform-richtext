@@ -5,10 +5,13 @@
     border-radius: calculateRem(4px);
     display: inline-block;
     width: 100%;
-    padding: calculateRem(8px) calculateRem(24px) calculateRem(24px) calculateRem(24px);
 
     &:focus {
         outline: none;
+    }
+
+    &.ck.ck-editor__editable_inline {
+        padding: calculateRem(8px) calculateRem(24px) calculateRem(24px) calculateRem(24px);
     }
 
     .is-block-focused,
@@ -123,5 +126,20 @@
 
     h6 {
         min-height: calculateRem(20px);
+    }
+
+    [id] {
+        position: relative;
+
+        &:before {
+            content: '';
+            background-image: url(/bundles/ezplatformadminui/img/icons/link-anchor.svg);
+            position: absolute;
+            left: calculateRem(-20px);
+            width: calculateRem(16px);
+            height: calculateRem(16px);
+            background-size: calculateRem(16px) calculateRem(16px);
+            background-repeat: no-repeat;
+        }
     }
 }
