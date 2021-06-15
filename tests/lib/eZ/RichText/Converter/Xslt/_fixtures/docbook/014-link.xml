@@ -21,13 +21,17 @@
     <link xlink:href="ezcontent://333" xlink:show="none" xml:id="id5" xlink:title="Content title" ezxhtml:class="linkClass5">Content name</link>
   </para>
   <para>
-    <link xlink:href="ezcontent://333" xlink:show="none" xml:id="id6" xlink:title="Content title" ezxhtml:class="linkClass5">
+    <link xlink:href="ezcontent://333" xlink:show="none" xml:id="id6" xlink:title="Content title" ezxhtml:class="linkClass6">
       <ezattribute>
         <ezvalue key="name-1">value 1</ezvalue>
         <ezvalue key="name-2">value 2</ezvalue>
-      </ezattribute>
-      Content name
-    </link>
+      </ezattribute>Content name</link>
+  </para>
+  <para>
+    <literallayout class="normal">
+      <link xlink:href="ezcontent://444" xlink:show="none" xml:id="id7" xlink:title="Content title" ezxhtml:class="linkClass7">Content name
+with some line break</link>
+    </literallayout>
   </para>
   <para><anchor xml:id="anchor"/>Some anchored content.</para>
 </section>
