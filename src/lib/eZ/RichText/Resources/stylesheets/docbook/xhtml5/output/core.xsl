@@ -229,6 +229,12 @@
     </xsl:element>
   </xsl:template>
 
+  <xsl:template match="docbook:link[@xlink:href]/text()">
+    <xsl:call-template name="breakLine">
+      <xsl:with-param name="text" select="."/>
+    </xsl:call-template>
+  </xsl:template>
+
   <xsl:template match="docbook:link[@xlink:href]">
     <xsl:choose>
       <xsl:when test="@xlink:href != '#'">

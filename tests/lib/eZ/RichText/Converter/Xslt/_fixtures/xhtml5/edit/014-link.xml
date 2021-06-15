@@ -17,9 +17,10 @@
     <a href="ezcontent://333" id="id5" title="Content title" class="linkClass5">Content name</a>
   </p>
   <p>
-    <a href="ezcontent://333" data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2" id="id6" title="Content title" class="linkClass5">
-      Content name
-    </a>
+    <a href="ezcontent://333" data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2" id="id6" title="Content title" class="linkClass6">Content name</a>
+  </p>
+  <p>
+    <a href="ezcontent://444" id="id7" title="Content title" class="linkClass7">Content name<br/>with some line break</a>
   </p>
   <p><a id="anchor"/>Some anchored content.</p>
 </section>
