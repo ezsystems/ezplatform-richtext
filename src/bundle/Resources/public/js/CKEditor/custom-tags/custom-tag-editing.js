@@ -76,6 +76,10 @@ class IbexaCustomTagEditing extends Plugin {
                 },
             },
             model: (viewElement, { writer: upcastWriter }) => {
+                if (viewElement.getAttribute('data-eztype') === 'style') {
+                    return;
+                }
+
                 const configElement = viewElement.getChild(1);
                 const configValuesIterator = configElement.getChildren();
                 const customTagName = viewElement.getAttribute('data-ezname');
