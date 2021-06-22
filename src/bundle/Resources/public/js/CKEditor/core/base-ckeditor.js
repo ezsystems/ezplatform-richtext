@@ -4,6 +4,7 @@ import IbexaCharacterCounter from '../plugins/character-counter';
 import IbexaElementsPath from '../plugins/elements-path';
 import IbexaEmbed from '../embed/embed';
 import IbexaCustomTags from '../custom-tags/custom-tags';
+import IbexaCustomStylesInline from '../custom-styles/inline/custom-styles-inline';
 import IbexaLink from '../link/link';
 import IbexaAnchor from '../anchor/anchor';
 
@@ -111,6 +112,22 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
             const wrapper = this.getHTMLDocumentFragment(container.closest('.ez-data-source').querySelector('textarea').value);
             const section = wrapper.childNodes[0];
             const customTags = Object.keys(window.eZ.richText.customTags);
+            const blockCustomStyles = Object.entries(eZ.richText.customStyles)
+                .filter(([customStyleName, customStyleConfig]) => !customStyleConfig.inline)
+                .map(([customStyleName, customStyleConfig]) => {
+                    return {
+                        model: customStyleName,
+                        view: {
+                            name: 'div',
+                            attributes: {
+                                'data-ezelement': 'eztemplate',
+                                'data-eztype': 'style',
+                                'data-ezname': customStyleName,
+                            },
+                        },
+                        title: customStyleConfig.label,
+                    };
+                });
 
             if (!section.hasChildNodes()) {
                 section.appendChild(doc.createElement('p'));
@@ -123,6 +140,7 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
                     IbexaElementsPath,
                     IbexaEmbed,
                     IbexaCustomTags,
+                    IbexaCustomStylesInline,
                     IbexaLink,
                     IbexaAnchor,
                     Essentials,
@@ -158,6 +176,7 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
                     'blockQuote',
                     'ibexaLink',
                     'ibexaAnchor',
+                    'ibexaCustomStyleInline',
                     '|',
                     'ibexaEmbed',
                     'ibexaEmbedImage',
@@ -177,6 +196,7 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
                         { model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading4' },
                         { model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5' },
                         { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' },
+                        ...blockCustomStyles,
                     ],
                 },
                 table: {
