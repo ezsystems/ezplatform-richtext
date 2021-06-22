@@ -113,11 +113,8 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
             const section = wrapper.childNodes[0];
             const customTags = Object.keys(window.eZ.richText.customTags);
             const blockCustomStyles = Object.entries(eZ.richText.customStyles)
+                .filter(([customStyleName, customStyleConfig]) => !customStyleConfig.inline)
                 .map(([customStyleName, customStyleConfig]) => {
-                    if (customStyleConfig.inline) {
-                        return;
-                    }
-
                     return {
                         model: customStyleName,
                         view: {
@@ -130,8 +127,7 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
                         },
                         title: customStyleConfig.label,
                     };
-                })
-                .filter((customStyle) => !!customStyle);
+                });
 
             if (!section.hasChildNodes()) {
                 section.appendChild(doc.createElement('p'));
