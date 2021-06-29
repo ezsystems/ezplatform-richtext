@@ -100,7 +100,7 @@ class IbexaCustomTagEditing extends Plugin {
         conversion.for('editingDowncast').elementToElement({
             model: 'customTagContent',
             view: (modelElement, { writer: downcastWriter }) => {
-                const div = downcastWriter.createEditableElement('div', { class: 'simple-box-description' });
+                const div = downcastWriter.createEditableElement('div');
 
                 return toWidgetEditable(div, downcastWriter);
             },
