@@ -53,14 +53,14 @@ moved closer to html5 supported by editors, and better suited to support wider r
 ### Storage format
 
 Storage format in RichText is [DocBook](http://docbook.org/), for further info on its schema and how we
-extend it with RELAX NG, see [Resources/schemas/docbook/](src/bundle/Resources/schemas/docbook).
+extend it with RELAX NG, see [Resources/schemas/docbook/](src/lib/eZ/RichText/Resources/schemas/docbook).
 
 ### Input/Output formats
 
 This Field Type supports several output and input formats, DocBook, ezxml _(legacy format)_, and
 two forms of HTML5 _(edit and output)_.
 
-Further reading on these formats and how they uses schemas, XSLT and DTD, see [Resources/](src/bundle/Resources).
+Further reading on these formats and how they uses schemas, XSLT and DTD, see [Resources/](src/lib/eZ/RichText/Resources).
 
 ## Migrating
 
