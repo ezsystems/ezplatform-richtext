@@ -182,7 +182,7 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
                     'ibexaAnchor',
                     'ibexaCustomStyleInline',
                     'ibexaFormatted',
-                    'IbexaCustomAttributes',
+                    'ibexaCustomAttributes',
                     '|',
                     'ibexaEmbed',
                     'ibexaEmbedImage',
