@@ -67,15 +67,14 @@ class IbexaCustomAttributesFormView extends View {
     }
 
     getValues() {
-        const values = {
-            'custom-classes': this.classesView.fieldView.element.value,
-        };
+        return Object.entries(this.attributeViews).reduce(
+            (output, [name, view]) => {
+                output[name] = view.fieldView.element.value;
 
-        Object.entries(this.attributeViews).forEach(([name, view]) => {
-            values[name] = view.fieldView.element.value;
-        });
-
-        return values;
+                return output;
+            },
+            { 'custom-classes': this.classesView.fieldView.element.value }
+        );
     }
 
     setNumberValue(attributeView, value) {

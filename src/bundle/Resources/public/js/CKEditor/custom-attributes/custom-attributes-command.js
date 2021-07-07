@@ -6,7 +6,7 @@ class IbexaCustomAttributesCommand extends Command {
         const isEnabled =
             window.eZ.richText.alloyEditor.attributes[parentElement.name] || window.eZ.richText.alloyEditor.classes[parentElement.name];
 
-        this.isEnabled = isEnabled;
+        this.isEnabled = !!isEnabled;
     }
 }
 

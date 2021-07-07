@@ -57,17 +57,17 @@ class IbexaAttributesUI extends Plugin {
 
     showForm() {
         const parentElement = this.getModelElement();
-        const attributesValues = {};
         const customAttributes = window.eZ.richText.alloyEditor.attributes[parentElement.name];
         const customClasses = window.eZ.richText.alloyEditor.classes[parentElement.name];
         const areCustomAttributesSet =
             parentElement.hasAttribute('custom-classes') ||
             Object.keys(customAttributes).some((customAttributeName) => parentElement.hasAttribute(customAttributeName));
-        let classesValue = areCustomAttributesSet ? parentElement.getAttribute('custom-classes') : customClasses.defaultValue;
+        const attributesValues = Object.entries(customAttributes).reduce((output, [name, config]) => {
+            output[name] = areCustomAttributesSet ? parentElement.getAttribute(name) : config.defaultValue;
 
-        Object.entries(customAttributes).forEach(([name, config]) => {
-            attributesValues[name] = areCustomAttributesSet ? parentElement.getAttribute(name) : config.defaultValue;
-        });
+            return output;
+        }, {});
+        let classesValue = areCustomAttributesSet ? parentElement.getAttribute('custom-classes') : customClasses.defaultValue;
 
         this.formView.destroy();
         this.formView = this.createFormView();
