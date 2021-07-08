@@ -5,6 +5,7 @@ import IbexaElementsPath from '../plugins/elements-path';
 import IbexaEmbed from '../embed/embed';
 import IbexaCustomTags from '../custom-tags/custom-tags';
 import IbexaCustomStylesInline from '../custom-styles/inline/custom-styles-inline';
+import IbexaCustomAttributes from '../custom-attributes/custom-attributes';
 import IbexaLink from '../link/link';
 import IbexaAnchor from '../anchor/anchor';
 import IbexaFormatted from '../formatted/formatted';
@@ -137,14 +138,6 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
             InlineEditor.create(container, {
                 initialData: section.innerHTML,
                 plugins: [
-                    IbexaCharacterCounter,
-                    IbexaElementsPath,
-                    IbexaEmbed,
-                    IbexaCustomTags,
-                    IbexaCustomStylesInline,
-                    IbexaLink,
-                    IbexaAnchor,
-                    IbexaFormatted,
                     Essentials,
                     Heading,
                     Alignment,
@@ -159,6 +152,15 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
                     Strikethrough,
                     BlockQuote,
                     ContextualBalloon,
+                    IbexaCharacterCounter,
+                    IbexaElementsPath,
+                    IbexaEmbed,
+                    IbexaCustomTags,
+                    IbexaCustomStylesInline,
+                    IbexaCustomAttributes,
+                    IbexaLink,
+                    IbexaAnchor,
+                    IbexaFormatted,
                 ],
                 toolbar: [
                     'heading',
@@ -180,6 +182,7 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
                     'ibexaAnchor',
                     'ibexaCustomStyleInline',
                     'ibexaFormatted',
+                    'ibexaCustomAttributes',
                     '|',
                     'ibexaEmbed',
                     'ibexaEmbedImage',
