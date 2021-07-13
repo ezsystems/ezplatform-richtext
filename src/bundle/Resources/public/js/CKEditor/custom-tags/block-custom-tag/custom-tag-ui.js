@@ -3,7 +3,7 @@ import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 import clickOutsideHandler from '@ckeditor/ckeditor5-ui/src/bindings/clickoutsidehandler';
 import ClickObserver from '@ckeditor/ckeditor5-engine/src/view/observer/clickobserver';
 
-import IbexaCustomTagFormView from './ui/custom-tag-form-view';
+import IbexaCustomTagFormView from '../ui/custom-tag-form-view';
 
 class IbexaCustomTagUI extends Plugin {
     constructor(props) {
