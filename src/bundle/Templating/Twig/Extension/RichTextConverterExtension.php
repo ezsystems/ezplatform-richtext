@@ -59,7 +59,7 @@ class RichTextConverterExtension extends AbstractExtension
      */
     public function richTextToHtml5(DOMDocument $xmlData): string
     {
-        return $this->richTextOutputConverter->convert($xmlData)->saveHTML();
+        return $this->richTextOutputConverter->convert($xmlData)->saveHTML() ?: '';
     }
 
     /**
@@ -71,6 +71,6 @@ class RichTextConverterExtension extends AbstractExtension
      */
     public function richTextToHtml5Edit(DOMDocument $xmlData): string
     {
-        return $this->richTextEditConverter->convert($xmlData)->saveHTML();
+        return $this->richTextEditConverter->convert($xmlData)->saveHTML() ?: '';
     }
 }
