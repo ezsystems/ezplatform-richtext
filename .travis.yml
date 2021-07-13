@@ -45,7 +45,7 @@ matrix:
       php: 7.3
       env:
         - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
-        - BEHAT_OPTS="--profile=adminui --suite=richtext -c=behat_ibexa_oss.yaml"
+        - BEHAT_OPTS="--profile=browser --suite=admin-ui --tags=@richtext -c=behat_ibexa_oss.yaml"
         - APP_ENV=behat
         - APP_DEBUG=1
         - PROJECT_VERSION=^3.3.x-dev
