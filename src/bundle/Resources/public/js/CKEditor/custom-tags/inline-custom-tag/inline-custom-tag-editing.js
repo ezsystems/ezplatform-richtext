@@ -1,6 +1,6 @@
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
-import { toWidget } from '@ckeditor/ckeditor5-widget/src/utils';
 import Widget from '@ckeditor/ckeditor5-widget/src/widget';
+import { toWidget } from '@ckeditor/ckeditor5-widget/src/utils';
 
 import IbexaInlineCustomTagCommand from './inline-custom-tag-command';
 
@@ -53,7 +53,7 @@ class IbexaInlineCustomTagEditing extends Plugin {
                     const domElement = this.toDomElement(domDocument);
 
                     domElement.innerHTML = Object.entries(modelElement.getAttribute('values')).reduce((total, [attribute, value]) => {
-                        const attributeValue = value !== null ? value : '';
+                        const attributeValue = value ?? '';
                         const ezvalue = `<span data-ezelement="ezvalue" data-ezvalue-key="${attribute}">${attributeValue}</span>`;
 
                         return `${total}${ezvalue}`;

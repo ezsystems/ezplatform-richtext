@@ -47,7 +47,7 @@ class IbexaInlineCustomTagUI extends Plugin {
         this.listenTo(formView, 'save-custom-tag', () => {
             const modelElement = this.editor.model.document.selection.getSelectedElement();
             const values = modelElement.getAttribute('values');
-            const newValues = Object.assign({}, values);
+            const newValues = { ...values };
 
             this.isNew = false;
 

@@ -9,7 +9,7 @@ class IbexaCustomTags extends Plugin {
     static get requires() {
         const blockCustomTags = Object.entries(window.eZ.richText.customTags).filter(([name, config]) => !config.isInline);
         const inlineCustomTags = Object.entries(window.eZ.richText.customTags).filter(([name, config]) => config.isInline);
-        const inlineCustomTagsUi = inlineCustomTags.map(([name, config]) => {
+        const inlineCustomTagsUI = inlineCustomTags.map(([name, config]) => {
             return class InlineCustomTagUI extends IbexaInlineCustomTagsUI {
                 constructor(props) {
                     super(props);
@@ -23,7 +23,7 @@ class IbexaCustomTags extends Plugin {
                 }
             };
         });
-        const blockCustomTagsUi = blockCustomTags.map(([name, config]) => {
+        const blockCustomTagsUI = blockCustomTags.map(([name, config]) => {
             return class CustomTagUI extends IbexaCustomTagsUI {
                 constructor(props) {
                     super(props);
@@ -38,7 +38,7 @@ class IbexaCustomTags extends Plugin {
             };
         });
 
-        return [...blockCustomTagsUi, ...inlineCustomTagsUi, IbexaCustomTagsEditing, IbexaInlineCustomTagsEditing];
+        return [...blockCustomTagsUI, ...inlineCustomTagsUI, IbexaCustomTagsEditing, IbexaInlineCustomTagsEditing];
     }
 }
 
