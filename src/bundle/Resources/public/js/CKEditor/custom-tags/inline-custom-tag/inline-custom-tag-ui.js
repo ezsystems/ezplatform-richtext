@@ -78,7 +78,7 @@ class IbexaInlineCustomTagUI extends Plugin {
     showForm() {
         const modelElement = this.editor.model.document.selection.getSelectedElement();
         const values = modelElement.getAttribute('values');
-        console.log('show', values);
+
         this.formView.setValues(values);
 
         this.balloon.add({
@@ -117,7 +117,7 @@ class IbexaInlineCustomTagUI extends Plugin {
 
             return values;
         }, {});
-        console.log(values);
+
         this.editor.focus();
         this.editor.execute('insertIbexaInlineCustomTag', { customTagName: this.componentName, values });
 

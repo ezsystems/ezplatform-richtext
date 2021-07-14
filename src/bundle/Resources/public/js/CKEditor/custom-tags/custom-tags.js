@@ -23,7 +23,7 @@ class IbexaCustomTags extends Plugin {
                 }
             };
         });
-        const customTagsUi = blockCustomTags.map(([name, config]) => {
+        const blockCustomTagsUi = blockCustomTags.map(([name, config]) => {
             return class CustomTagUI extends IbexaCustomTagsUI {
                 constructor(props) {
                     super(props);
@@ -38,7 +38,7 @@ class IbexaCustomTags extends Plugin {
             };
         });
 
-        return [...customTagsUi, ...inlineCustomTagsUi, IbexaCustomTagsEditing, IbexaInlineCustomTagsEditing];
+        return [...blockCustomTagsUi, ...inlineCustomTagsUi, IbexaCustomTagsEditing, IbexaInlineCustomTagsEditing];
     }
 }
 
