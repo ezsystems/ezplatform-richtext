@@ -71,7 +71,7 @@ class IbexaCustomTagFormView extends View {
     }
 
     setBooleanValue(attributeView, value) {
-        attributeView.fieldView.isOn = value === 'true';
+        attributeView.fieldView.isOn = !!value || value === 'true';
         attributeView.fieldView.element.value = value;
         attributeView.fieldView.set('value', value);
         attributeView.fieldView.set('isEmpty', false);

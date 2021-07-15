@@ -3,9 +3,9 @@ import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 import clickOutsideHandler from '@ckeditor/ckeditor5-ui/src/bindings/clickoutsidehandler';
 import ClickObserver from '@ckeditor/ckeditor5-engine/src/view/observer/clickobserver';
 
-import IbexaCustomTagFormView from './ui/custom-tag-form-view';
+import IbexaCustomTagFormView from '../ui/custom-tag-form-view';
 
-class IbexaCustomTagUI extends Plugin {
+class IbexaInlineCustomTagUI extends Plugin {
     constructor(props) {
         super(props);
 
@@ -13,22 +13,22 @@ class IbexaCustomTagUI extends Plugin {
         this.formView = this.createFormView();
 
         this.showForm = this.showForm.bind(this);
-        this.addCustomTag = this.addCustomTag.bind(this);
+        this.addInlineCustomTag = this.addInlineCustomTag.bind(this);
 
         this.isNew = false;
     }
 
-    isCustomTagSelected() {
+    isInlineCustomTagSelected() {
         const modelElement = this.editor.model.document.selection.getSelectedElement();
 
-        return modelElement && modelElement.name === 'customTag' && modelElement.getAttribute('customTagName') === this.componentName;
+        return modelElement && modelElement.name === 'inlineCustomTag' && modelElement.getAttribute('customTagName') === this.componentName;
     }
 
     enableUserBalloonInteractions() {
         const viewDocument = this.editor.editing.view.document;
 
         this.listenTo(viewDocument, 'click', () => {
-            if (this.isCustomTagSelected()) {
+            if (this.isInlineCustomTagSelected()) {
                 this.showForm();
             }
         });
@@ -47,7 +47,7 @@ class IbexaCustomTagUI extends Plugin {
         this.listenTo(formView, 'save-custom-tag', () => {
             const modelElement = this.editor.model.document.selection.getSelectedElement();
             const values = modelElement.getAttribute('values');
-            const newValues = Object.assign({}, values);
+            const newValues = { ...values };
 
             this.isNew = false;
 
@@ -111,7 +111,7 @@ class IbexaCustomTagUI extends Plugin {
         return { target: view.domConverter.viewRangeToDom(range) };
     }
 
-    addCustomTag() {
+    addInlineCustomTag() {
         const values = Object.entries(this.config.attributes).reduce((values, [attributeName, config]) => {
             values[attributeName] = config.defaultValue;
 
@@ -119,7 +119,7 @@ class IbexaCustomTagUI extends Plugin {
         }, {});
 
         this.editor.focus();
-        this.editor.execute('insertIbexaCustomTag', { customTagName: this.componentName, values });
+        this.editor.execute('insertIbexaInlineCustomTag', { customTagName: this.componentName, values });
 
         this.isNew = true;
 
@@ -136,7 +136,7 @@ class IbexaCustomTagUI extends Plugin {
                 withText: true,
             });
 
-            this.listenTo(buttonView, 'execute', this.addCustomTag);
+            this.listenTo(buttonView, 'execute', this.addInlineCustomTag);
 
             return buttonView;
         });
@@ -147,4 +147,4 @@ class IbexaCustomTagUI extends Plugin {
     }
 }
 
-export default IbexaCustomTagUI;
+export default IbexaInlineCustomTagUI;

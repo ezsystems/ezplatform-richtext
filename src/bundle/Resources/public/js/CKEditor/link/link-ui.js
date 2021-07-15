@@ -126,7 +126,6 @@ class IbexaLinkUI extends Plugin {
 
     findLinkElement() {
         const position = this.editor.editing.view.document.selection.getFirstPosition();
-
         const ancestors = position.getAncestors();
         const link = ancestors.find((ancestor) => ancestor.is('attributeElement') && !!ancestor.hasAttribute('href'));
 
