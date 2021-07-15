@@ -1,8 +1,8 @@
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
-import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 import clickOutsideHandler from '@ckeditor/ckeditor5-ui/src/bindings/clickoutsidehandler';
 
 import IbexaAnchorFormView from './ui/anchor-form-view';
+import IbexaButtonView from '../common/button-view/button-view';
 
 class IbexaAnchorUI extends Plugin {
     constructor(props) {
@@ -87,12 +87,12 @@ class IbexaAnchorUI extends Plugin {
 
     init() {
         this.editor.ui.componentFactory.add('ibexaAnchor', (locale) => {
-            const buttonView = new ButtonView(locale);
+            const buttonView = new IbexaButtonView(locale);
 
             buttonView.set({
-                label: 'anchor',
+                label: Translator.trans(/*@Desc("Anchor")*/ 'anchor_btn.label', {}, 'ck_editor'),
+                icon: window.eZ.helpers.icon.getIconPath('link-anchor'),
                 tooltip: true,
-                withText: true,
             });
 
             this.listenTo(buttonView, 'execute', this.showForm);

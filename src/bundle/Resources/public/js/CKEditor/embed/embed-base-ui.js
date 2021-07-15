@@ -1,5 +1,6 @@
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
-import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
+
+import IbexaButtonView from '../common/button-view/button-view';
 
 class IbexaEmbedBaseUI extends Plugin {
     constructor(props) {
@@ -51,12 +52,12 @@ class IbexaEmbedBaseUI extends Plugin {
 
     init() {
         this.editor.ui.componentFactory.add(this.componentName, (locale) => {
-            const buttonView = new ButtonView(locale);
+            const buttonView = new IbexaButtonView(locale);
 
             buttonView.set({
                 label: this.buttonLabel,
+                icon: this.icon,
                 tooltip: true,
-                withText: true,
             });
 
             this.listenTo(buttonView, 'execute', this.chooseContent);

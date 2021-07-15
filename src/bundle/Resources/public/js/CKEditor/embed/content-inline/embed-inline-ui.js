@@ -6,8 +6,9 @@ class IbexaEmbedContentInlineUI extends IbexaEmbedBaseUI {
 
         this.configName = 'richtext_embed';
         this.commandName = 'insertIbexaEmbedInline';
-        this.buttonLabel = this.editor.t('Embed Inline');
+        this.buttonLabel = Translator.trans(/*@Desc("Embed")*/ 'embed_btn.label', {}, 'ck_editor');
         this.componentName = 'ibexaEmbedInline';
+        this.icon = window.eZ.helpers.icon.getIconPath('embed');
     }
 
     getCommandOptions(items) {

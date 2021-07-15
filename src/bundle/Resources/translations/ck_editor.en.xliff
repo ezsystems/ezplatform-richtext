@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2021-07-15T12:37:15Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="2fec67b71cd77563c4e494477e691ba9661d95fe" resname="anchor_btn.label">
+        <source>Anchor</source>
+        <target state="new">Anchor</target>
+        <note>key: anchor_btn.label</note>
+      </trans-unit>
+      <trans-unit id="250e037cfe2d6e349e2da22428ac75e7559f1d66" resname="custom_attributes_btn.label">
+        <source>Custom attributes</source>
+        <target state="new">Custom attributes</target>
+        <note>key: custom_attributes_btn.label</note>
+      </trans-unit>
+      <trans-unit id="fb7fb71848f42499261b9e92b40f0254e730ddd4" resname="custom_styles_btn.label">
+        <source>Custom styles</source>
+        <target state="new">Custom styles</target>
+        <note>key: custom_styles_btn.label</note>
+      </trans-unit>
+      <trans-unit id="5761446626d26974269cd5f7fb428e268928932b" resname="embed_btn.label">
+        <source>Embed</source>
+        <target state="new">Embed</target>
+        <note>key: embed_btn.label</note>
+      </trans-unit>
+      <trans-unit id="13cd849924dc9b21defaf1d6905241a4eb74e71a" resname="image_btn.label">
+        <source>Image</source>
+        <target state="new">Image</target>
+        <note>key: image_btn.label</note>
+      </trans-unit>
+      <trans-unit id="111f9659ed2bb03c3009baafc54a24b0a8cab5c4" resname="link_btn.label">
+        <source>Link</source>
+        <target state="new">Link</target>
+        <note>key: link_btn.label</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
