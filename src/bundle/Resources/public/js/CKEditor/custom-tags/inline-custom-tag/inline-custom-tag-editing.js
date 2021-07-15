@@ -87,7 +87,7 @@ class IbexaInlineCustomTagEditing extends Plugin {
                 const values = {};
 
                 for (const configValue of configValuesIterator) {
-                    const value = (configValue.getChild(0) && configValue.getChild(0).data) || null;
+                    const value = configValue.getChild(0)?.data ?? null;
 
                     values[configValue.getAttribute('data-ezvalue-key')] = value;
                 }
