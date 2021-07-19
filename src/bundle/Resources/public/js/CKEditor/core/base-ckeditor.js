@@ -9,6 +9,7 @@ import IbexaCustomAttributes from '../custom-attributes/custom-attributes';
 import IbexaLink from '../link/link';
 import IbexaAnchor from '../anchor/anchor';
 import IbexaFormatted from '../formatted/formatted';
+import IbexaMove from '../move/move';
 
 import InlineEditor from '@ckeditor/ckeditor5-editor-inline/src/inlineeditor';
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
@@ -167,8 +168,11 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
                     IbexaLink,
                     IbexaAnchor,
                     IbexaFormatted,
+                    IbexaMove,
                 ],
                 toolbar: [
+                    'ibexaMoveUp',
+                    'ibexaMoveDown',
                     'heading',
                     '|',
                     'alignment',
