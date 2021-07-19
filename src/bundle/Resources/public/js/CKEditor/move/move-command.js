@@ -5,7 +5,7 @@ class IbexaMoveCommand extends Command {
         this.editor.model.change((writer) => {
             const parentElement = this.editor.model.document.selection.getFirstPosition().parent;
             const ancestors = parentElement.getAncestors();
-            const elementToMove = ancestors.length > 1 ? ancestors[1] : parentElement;
+            const elementToMove = ancestors[1] ?? parentElement;
             const elementRange = writer.createRangeOn(elementToMove);
 
             if (moveData.up && elementToMove.previousSibling) {
