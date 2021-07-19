@@ -1,8 +1,8 @@
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
-import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 import clickOutsideHandler from '@ckeditor/ckeditor5-ui/src/bindings/clickoutsidehandler';
 
 import IbexaCustomAttributesFormView from './ui/custom-attributes-form-view';
+import IbexaButtonView from '../common/button-view/button-view';
 
 class IbexaAttributesUI extends Plugin {
     constructor(props) {
@@ -93,13 +93,13 @@ class IbexaAttributesUI extends Plugin {
 
     init() {
         this.editor.ui.componentFactory.add('ibexaCustomAttributes', (locale) => {
-            const buttonView = new ButtonView(locale);
+            const buttonView = new IbexaButtonView(locale);
             const command = this.editor.commands.get('insertIbexaCustomAttributes');
 
             buttonView.set({
-                label: 'Custom attributes',
+                label: Translator.trans(/*@Desc("Custom attributes")*/ 'custom_attributes_btn.label', {}, 'ck_editor'),
+                icon: window.eZ.helpers.icon.getIconPath('edit'),
                 tooltip: true,
-                withText: true,
             });
 
             buttonView.bind('isEnabled').to(command);

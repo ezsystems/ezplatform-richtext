@@ -1,10 +1,10 @@
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
-import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 import clickOutsideHandler from '@ckeditor/ckeditor5-ui/src/bindings/clickoutsidehandler';
 import ClickObserver from '@ckeditor/ckeditor5-engine/src/view/observer/clickobserver';
 import findAttributeRange from '@ckeditor/ckeditor5-typing/src/utils/findattributerange';
 
 import IbexaLinkFormView from './ui/link-form-view';
+import IbexaButtonView from '../common/button-view/button-view';
 
 class IbexaLinkUI extends Plugin {
     constructor(props) {
@@ -138,12 +138,12 @@ class IbexaLinkUI extends Plugin {
 
     init() {
         this.editor.ui.componentFactory.add('ibexaLink', (locale) => {
-            const buttonView = new ButtonView(locale);
+            const buttonView = new IbexaButtonView(locale);
 
             buttonView.set({
-                label: 'link',
+                label: Translator.trans(/*@Desc("Link")*/ 'link_btn.label', {}, 'ck_editor'),
+                icon: window.eZ.helpers.icon.getIconPath('link'),
                 tooltip: true,
-                withText: true,
             });
 
             this.listenTo(buttonView, 'execute', this.addLink);

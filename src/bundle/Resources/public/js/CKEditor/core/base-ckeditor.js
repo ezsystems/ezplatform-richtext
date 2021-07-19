@@ -114,6 +114,9 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
             const wrapper = this.getHTMLDocumentFragment(container.closest('.ez-data-source').querySelector('textarea').value);
             const section = wrapper.childNodes[0];
             const customTags = Object.keys(window.eZ.richText.customTags);
+            const inlineCustomStyles = Object.entries(window.eZ.richText.customStyles).filter(
+                ([customStyleName, customStyleConfig]) => customStyleConfig.inline
+            );
             const blockCustomStyles = Object.entries(eZ.richText.customStyles)
                 .filter(([customStyleName, customStyleConfig]) => !customStyleConfig.inline)
                 .map(([customStyleName, customStyleConfig]) => {
@@ -130,6 +133,9 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
                         title: customStyleConfig.label,
                     };
                 });
+
+            // Temp hack - to be removed when the configuration is done
+            const customStyleInlineToolbar = inlineCustomStyles.length === 0 ? [] : ['ibexaCustomStyleInline'];
 
             if (!section.hasChildNodes()) {
                 section.appendChild(doc.createElement('p'));
@@ -180,7 +186,7 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
                     'blockQuote',
                     'ibexaLink',
                     'ibexaAnchor',
-                    'ibexaCustomStyleInline',
+                    ...customStyleInlineToolbar,
                     'ibexaFormatted',
                     'ibexaCustomAttributes',
                     '|',

@@ -1,9 +1,9 @@
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
-import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 import clickOutsideHandler from '@ckeditor/ckeditor5-ui/src/bindings/clickoutsidehandler';
 import ClickObserver from '@ckeditor/ckeditor5-engine/src/view/observer/clickobserver';
 
 import IbexaCustomTagFormView from '../ui/custom-tag-form-view';
+import IbexaButtonView from '../../common/button-view/button-view';
 
 class IbexaInlineCustomTagUI extends Plugin {
     constructor(props) {
@@ -128,12 +128,12 @@ class IbexaInlineCustomTagUI extends Plugin {
 
     init() {
         this.editor.ui.componentFactory.add(this.componentName, (locale) => {
-            const buttonView = new ButtonView(locale);
+            const buttonView = new IbexaButtonView(locale);
 
             buttonView.set({
                 label: this.config.label,
+                icon: this.config.icon,
                 tooltip: true,
-                withText: true,
             });
 
             this.listenTo(buttonView, 'execute', this.addInlineCustomTag);

@@ -40,7 +40,7 @@ class IbexaCustomStyleInlineUI extends Plugin {
             const customStylesButtons = customStylesInline.map(this.createButton);
 
             dropdownView.buttonView.set({
-                label: 'Custom Styles',
+                label: Translator.trans(/*@Desc("Custom styles")*/ 'custom_styles_btn.label', {}, 'ck_editor'),
                 tooltip: true,
                 withText: true,
             });

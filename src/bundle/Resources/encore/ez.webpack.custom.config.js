@@ -54,5 +54,4 @@ customConfig.module.rules.push({
 customConfig.module.rules[1] = {};
 customConfig.module.rules[2] = {};
 
-// Config or array of configs: [customConfig1, customConfig2];
 module.exports = customConfig;
