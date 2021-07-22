@@ -1,6 +1,6 @@
 {
-    "plugins": ["react"],
-    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "plugins": [],
+    "extends": ["eslint:recommended"],
     "env": {
         "browser": true,
         "commonjs": true,
@@ -11,6 +11,7 @@
         "ecmaFeatures": {
             "jsx": true
         },
+        "ecmaVersion": 2021,
         "sourceType": "module"
     },
     "rules": {
@@ -23,8 +24,6 @@
         "valid-typeof": "warn",
         "no-extra-semi": "error",
         "no-extra-boolean-cast": "off",
-        "react/jsx-uses-react": "error",
-        "react/jsx-uses-vars": "error",
         "jsx-quotes": ["error", "prefer-double"],
         "quotes": ["error", "single", { "allowTemplateLiterals": true }],
         "eqeqeq": ["error", "always"],
