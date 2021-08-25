@@ -484,14 +484,13 @@ export default class EzBtnLinkEdit extends Component {
                 editor.fire('actionPerformed', this);
 
                 const path = editor.elementPath();
-                const pathLastElement = path.lastElement;
 
-                if (caretToEndMovingElements.includes(pathLastElement.getName())) {
-                    editor.eZ.moveCaretToElement(editor, pathLastElement.getParent(), CKEDITOR.POSITION_AFTER_END);
+                if (path && caretToEndMovingElements.includes(path.lastElement.getName())) {
+                    editor.eZ.moveCaretToElement(editor, path.lastElement.getParent(), CKEDITOR.POSITION_AFTER_END);
                 }
 
-                if (path && pathLastElement.getName() === 'br') {
-                    const parent = pathLastElement.getParent();
+                if (path && path.lastElement.getName() === 'br') {
+                    const parent = path.lastElement.getParent();
 
                     if (parent.getName() === 'td' || parent.getName() === 'th') {
                         editor.eZ.moveCaretToElement(editor, parent);
