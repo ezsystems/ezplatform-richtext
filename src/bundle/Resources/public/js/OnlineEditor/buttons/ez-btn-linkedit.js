@@ -474,6 +474,7 @@ export default class EzBtnLinkEdit extends Component {
             'data-ez-temporary-link': this.state.isTemporary ? true : null,
         };
         const modifySelection = { advance: true };
+        const caretToEndMovingElements = ['strong', 'u', 'em', 'sup', 'sub', 's'];
 
         if (this.state.linkHref) {
             linkAttrs.href = this.state.linkHref;
@@ -483,8 +484,14 @@ export default class EzBtnLinkEdit extends Component {
                 editor.fire('actionPerformed', this);
 
                 const path = editor.elementPath();
+
+                if (path && caretToEndMovingElements.includes(path.lastElement.getName())) {
+                    editor.eZ.moveCaretToElement(editor, path.lastElement.getParent(), CKEDITOR.POSITION_AFTER_END);
+                }
+
                 if (path && path.lastElement.getName() === 'br') {
                     const parent = path.lastElement.getParent();
+
                     if (parent.getName() === 'td' || parent.getName() === 'th') {
                         editor.eZ.moveCaretToElement(editor, parent);
                     }
