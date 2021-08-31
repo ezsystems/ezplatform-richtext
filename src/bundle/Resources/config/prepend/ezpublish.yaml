@@ -11,37 +11,32 @@ system:
     admin_group:
         fieldtypes:
             ezrichtext:
-                custom_tags: [ezyoutube, eztwitter, ezfacebook]
                 toolbars:
                     group1:
-                        priority: 100
-                        visible: true
+                        priority: 60
                         buttons:
                             ibexaMoveUp:
-                                priority: 60
-                                visible: true
+                                priority: 30
                             ibexaMoveDown:
-                                priority: 40
-                                visible: true
-                            heading:
                                 priority: 20
-                                visible: true
+                            heading:
+                                priority: 10
                     group2:
-                        priority: 90
+                        priority: 50
                         buttons:
                             alignment:
-                                priority: 20
+                                priority: 10
                     group3:
-                        priority: 80
+                        priority: 40
                         buttons:
                             bulletedList:
-                                priority: 60
+                                priority: 30
                             numberedList:
-                                priority: 40
-                            insertTable:
                                 priority: 20
+                            insertTable:
+                                priority: 10
                     group4:
-                        priority: 70
+                        priority: 30
                         buttons:
                             bold:
                                 priority: 110
@@ -66,11 +61,20 @@ system:
                             ibexaCustomAttributes:
                                 priority: 10
                     group5:
-                        priority: 60
+                        priority: 20
                         buttons:
                             ibexaEmbed:
                                 priority: 30
                             ibexaEmbedImage:
                                 priority: 20
                             ibexaEmbedInline:
+                                priority: 10
+                    custom_tags_group:
+                        priority: 10
+                        buttons:
+                            ezyoutube:
+                                priority: 30
+                            eztwitter:
+                                priority: 20
+                            ezfacebook:
                                 priority: 10

@@ -20,6 +20,7 @@ use EzSystems\EzPlatformRichTextBundle\DependencyInjection\Configuration\Parser\
 final class CKEditor implements Provider
 {
     private const SEPARATOR = '|';
+    private const CUSTOM_TAGS_GROUP_KEY = 'custom_tags_group';
 
     /** @var \eZ\Publish\Core\MVC\ConfigResolverInterface */
     private $configResolver;
@@ -42,6 +43,7 @@ final class CKEditor implements Provider
     {
         return [
             'toolbars' => $this->getToolbars(),
+            'customTags' => $this->getCustomTags(),
         ];
     }
 
@@ -51,17 +53,56 @@ final class CKEditor implements Provider
     private function getToolbars(): array
     {
         $toolbarsByGroupsConfiguration = $this->getSiteAccessConfigArray(RichText::TOOLBARS_SA_SETTINGS_ID);
+
+        $toolbarsByGroupsConfiguration = array_filter(
+            $toolbarsByGroupsConfiguration,
+            static function (string $key): bool {
+                return $key !== self::CUSTOM_TAGS_GROUP_KEY;
+            },
+            ARRAY_FILTER_USE_KEY
+        );
+
+        return $this->filterToolbars($toolbarsByGroupsConfiguration);
+    }
+
+    /**
+     * @return array customTags configuration
+     */
+    private function getCustomTags(): array
+    {
+        $toolbarsByGroupsConfiguration = $this->getSiteAccessConfigArray(RichText::TOOLBARS_SA_SETTINGS_ID);
+
+        $toolbarsByGroupsConfiguration = array_filter(
+            $toolbarsByGroupsConfiguration,
+            static function (string $key): bool {
+                return $key === self::CUSTOM_TAGS_GROUP_KEY;
+            },
+            ARRAY_FILTER_USE_KEY
+        );
+
+        return $this->filterToolbars($toolbarsByGroupsConfiguration);
+    }
+
+    /**
+     * @return array filtered Toolbars configuration
+     */
+    private function filterToolbars(
+        array $toolbarsByGroupsConfiguration = []
+    ): array {
         $toolbars = [];
 
-        $toolbarsByGroupsConfiguration = array_filter($toolbarsByGroupsConfiguration, static function (array $value): bool {
-            return $value['visible'];
-        });
+        $toolbarsByGroupsConfiguration = array_filter(
+            $toolbarsByGroupsConfiguration,
+            static function (array $value): bool {
+                return $value['visible'];
+            }
+        );
 
         uasort($toolbarsByGroupsConfiguration, static function (array $a, array $b): int {
             return $b['priority'] <=> $a['priority'];
         });
 
-        foreach ($toolbarsByGroupsConfiguration as $groupName => $configuration) {
+        foreach ($toolbarsByGroupsConfiguration as $configuration) {
             $toolbarButtons = $this->getToolbarButtons($configuration['buttons'] ?? []);
 
             if (count($toolbarButtons)) {
@@ -96,10 +137,6 @@ final class CKEditor implements Provider
 
     /**
      * Get configuration array from the SiteAccess-aware configuration, checking first for its existence.
-     *
-     * @param string $paramName
-     *
-     * @return array
      */
     private function getSiteAccessConfigArray(string $paramName): array
     {
