@@ -37,7 +37,11 @@ final class CKEditor implements Provider
     }
 
     /**
-     * @return array CKEditor config
+     * Returns CKEditor configuration.
+     * @phpstan-return array<array-key, array{
+     *  toolbars: array<string>,
+     *  customTags: array<string>,
+     * }>
      */
     public function getConfiguration(): array
     {
@@ -48,7 +52,8 @@ final class CKEditor implements Provider
     }
 
     /**
-     * @return array Toolbars configuration
+     * Returns toolbars configuration.
+     * @phpstan-return array<string>
      */
     private function getToolbars(): array
     {
@@ -66,7 +71,8 @@ final class CKEditor implements Provider
     }
 
     /**
-     * @return array customTags configuration
+     * Returns customTags configuration.
+     * @phpstan-return array<string>
      */
     private function getCustomTags(): array
     {
@@ -84,7 +90,8 @@ final class CKEditor implements Provider
     }
 
     /**
-     * @return array filtered Toolbars configuration
+     * Returns filtered Toolbars configuration.
+     * @phpstan-return array<string>
      */
     private function filterToolbars(
         array $toolbarsByGroupsConfiguration = []
@@ -120,7 +127,8 @@ final class CKEditor implements Provider
     }
 
     /**
-     * @return string[] List of visible buttons
+     * Returns List of visible, sorted buttons.
+     * @phpstan-return array<string>
      */
     private function getToolbarButtons(array $buttons): array
     {
