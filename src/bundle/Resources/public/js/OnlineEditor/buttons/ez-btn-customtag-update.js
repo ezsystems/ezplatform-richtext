@@ -248,7 +248,9 @@ export default class EzBtnCustomTagUpdate extends EzWidgetButton {
     cancelCustomTagEdit() {
         const widget = this.getWidget() || this.widget;
 
-        widget.setFocused(true);
+        if (widget) {
+            widget.setFocused(true);
+        }
 
         this.props.cancelExclusive();
     }
