@@ -13,7 +13,7 @@ use EzSystems\EzPlatformRichText\Configuration\Provider\CKEditor;
 use EzSystems\EzPlatformRichText\SPI\Configuration\Provider;
 use EzSystems\EzPlatformRichTextBundle\DependencyInjection\Configuration\Parser\FieldType\RichText;
 
-class CKEditorTest extends BaseProviderTestCase
+final class CKEditorTest extends BaseProviderTestCase
 {
     public function createProvider(ConfigResolverInterface $configResolver = null): Provider
     {
@@ -35,7 +35,7 @@ class CKEditorTest extends BaseProviderTestCase
         $provider = $this->createProvider();
 
         $this->configResolver
-            ->expects($this->any())
+            ->expects($this->exactly(2))
             ->method('hasParameter')
             ->willReturn(false);
 

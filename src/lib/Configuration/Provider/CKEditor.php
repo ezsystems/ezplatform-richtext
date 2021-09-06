@@ -38,6 +38,7 @@ final class CKEditor implements Provider
 
     /**
      * Returns CKEditor configuration.
+     *
      * @phpstan-return array<array-key, array{
      *  toolbars: array<string>,
      *  customTags: array<string>,
@@ -53,6 +54,7 @@ final class CKEditor implements Provider
 
     /**
      * Returns toolbars configuration.
+     *
      * @phpstan-return array<string>
      */
     private function getToolbars(): array
@@ -72,6 +74,7 @@ final class CKEditor implements Provider
 
     /**
      * Returns customTags configuration.
+     *
      * @phpstan-return array<string>
      */
     private function getCustomTags(): array
@@ -91,6 +94,7 @@ final class CKEditor implements Provider
 
     /**
      * Returns filtered Toolbars configuration.
+     *
      * @phpstan-return array<string>
      */
     private function filterToolbars(
@@ -121,6 +125,7 @@ final class CKEditor implements Provider
             }
         }
 
+        // Removes last separator from the toolbars list.
         array_pop($toolbars);
 
         return array_values($toolbars);
@@ -128,6 +133,7 @@ final class CKEditor implements Provider
 
     /**
      * Returns List of visible, sorted buttons.
+     *
      * @phpstan-return array<string>
      */
     private function getToolbarButtons(array $buttons): array
