@@ -77,16 +77,46 @@ class IbexaCustomTagFormView extends View {
         attributeView.fieldView.set('isEmpty', false);
     }
 
-    setChildren(childrenData) {
+    setChildren(childrenData, label) {
         this.childrenData = childrenData;
         this.children = this.createFormChildren(childrenData);
 
         this.setTemplate({
-            tag: 'form',
+            tag: 'div',
             attributes: {
-                tabindex: '-1',
+                class: 'ibexa-ckeditor-balloon-form',
             },
-            children: this.children,
+            children: [
+                {
+                    tag: 'div',
+                    attributes: {
+                        class: 'ibexa-ckeditor-balloon-form__header',
+                    },
+                    children: [label],
+                },
+                {
+                    tag: 'form',
+                    attributes: {
+                        tabindex: '-1',
+                    },
+                    children: [
+                        {
+                            tag: 'div',
+                            attributes: {
+                                class: 'ibexa-ckeditor-balloon-form__fields',
+                            },
+                            children: this.children,
+                        },
+                        {
+                            tag: 'div',
+                            attributes: {
+                                class: 'ibexa-ckeditor-balloon-form__actions',
+                            },
+                            children: [this.saveButtonView, this.cancelButtonView],
+                        },
+                    ],
+                },
+            ],
         });
     }
 
@@ -96,7 +126,6 @@ class IbexaCustomTagFormView extends View {
         button.set({
             label,
             icon,
-            tooltip: true,
             withText: true,
         });
 
@@ -130,9 +159,6 @@ class IbexaCustomTagFormView extends View {
 
             children.add(attributeView);
         });
-
-        children.add(this.saveButtonView);
-        children.add(this.cancelButtonView);
 
         return children;
     }

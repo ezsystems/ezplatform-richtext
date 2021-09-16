@@ -1,0 +1,225 @@
+.ibexa-field-edit--ezrichtext {
+    .ibexa-data-source {
+        border: calculateRem(1px) solid $ibexa-color-dark-200;
+        border-radius: $ibexa-border-radius;
+
+        .ck-content {
+            min-height: calculateRem(100px);
+            padding: 0 calculateRem(16px);
+        }
+
+        .ck-widget {
+            transition: none;
+            border-radius: $ibexa-border-radius;
+
+            &:hover,
+            &.table:hover {
+                outline-color: $ibexa-color-primary;
+                outline: none;
+                border: calculateRem(1px) solid $ibexa-color-primary;
+            }
+
+            &.ck-widget_with-selection-handle .ck-widget__selection-handle,
+            &.ck-widget_with-selection-handle:hover .ck-widget__selection-handle {
+                left: calculateRem(-1px);
+            }
+
+            &.ck-widget_with-selection-handle:hover .ck-widget__selection-handle,
+            &:not(.ck-widget_selected) > .ck-widget__type-around > .ck-widget__type-around__button {
+                background: $ibexa-color-primary;
+            }
+
+            &.ck-widget_selected,
+            &.ck-widget_selected:hover {
+                outline-color: $ibexa-color-dark;
+                outline: none;
+                border: calculateRem(1px) solid $ibexa-color-dark;
+            }
+
+            &.ck-widget_with-selection-handle.ck-widget_selected .ck-widget__selection-handle,
+            &.ck-widget_with-selection-handle.ck-widget_selected:hover .ck-widget__selection-handle,
+            &.ck-widget_selected > .ck-widget__type-around > .ck-widget__type-around__button {
+                background: $ibexa-color-dark;
+            }
+
+            &.table,
+            table {
+                border-radius: 0 $ibexa-border-radius $ibexa-border-radius $ibexa-border-radius;
+                border-collapse: separate;
+                border-spacing: 0;
+                border: none;
+
+                tbody {
+                    border-radius: 0 $ibexa-border-radius $ibexa-border-radius $ibexa-border-radius;
+                }
+
+                td:not(:first-child) {
+                    border-left: 0;
+                }
+
+                tr:not(:first-child) {
+                    td {
+                        border-top: 0;
+                    }
+                }
+
+                tr:first-child {
+                    border-top-right-radius: $ibexa-border-radius;
+
+                    td:last-child {
+                        border-top-right-radius: $ibexa-border-radius;
+                    }
+                }
+
+                tr:last-child {
+                    border-bottom-left-radius: $ibexa-border-radius;
+                    border-bottom-right-radius: $ibexa-border-radius;
+
+                    td:first-child {
+                        border-bottom-left-radius: $ibexa-border-radius;
+                    }
+
+                    td:last-child {
+                        border-bottom-right-radius: $ibexa-border-radius;
+                    }
+                }
+            }
+        }
+
+        blockquote {
+            margin: calculateRem(16px) calculateRem(40px);
+        }
+
+        [data-ezalign='right'] {
+            float: right;
+        }
+
+        [data-ezalign='left'] {
+            float: left;
+        }
+
+        [data-ezalign='center'] {
+            text-align: center;
+        }
+
+        [data-ezelement='ezconfig'] {
+            display: none;
+        }
+
+        [data-ezelement='ezembed'],
+        [data-ezelement='ezembedinline'] {
+            background: $ibexa-color-light-100;
+            border: calculateRem(1px) solid $ibexa-color-light-100;
+            border-radius: calculateRem(4px);
+            font-size: calculateRem(18px);
+            display: inline-block;
+            margin: 0 calculateRem(5px);
+            padding: calculateRem(2px);
+            box-sizing: border-box;
+            line-height: 1;
+            min-height: auto;
+            font-weight: normal;
+
+            .ibexa-embed-content {
+                margin-bottom: 0;
+
+                &__title {
+                    vertical-align: middle;
+                }
+
+                .ibexa-icon {
+                    vertical-align: middle;
+                    background: $ibexa-color-light-100;
+                    border-radius: calculateRem(4px);
+                    padding: calculateRem(2px);
+                }
+            }
+        }
+
+        [data-ezelement='ezembed'] {
+            display: flex;
+            width: fit-content;
+            margin: calculateRem(8px) 0;
+        }
+
+        [data-ezelement='ezembedinline'] {
+            vertical-align: middle;
+            font-size: calculateRem(16px);
+
+            .ez-embed-content {
+                .ez-icon {
+                    width: calculateRem(22px);
+                    height: calculateRem(22px);
+                }
+            }
+        }
+
+        .ibexa-embed-type-image {
+            padding: calculateRem(8px);
+        }
+
+        p {
+            min-height: calculateRem(24px);
+        }
+
+        h1 {
+            min-height: calculateRem(33px);
+        }
+
+        h2 {
+            min-height: calculateRem(28px);
+        }
+
+        h3 {
+            min-height: calculateRem(26px);
+        }
+
+        h4 {
+            min-height: calculateRem(24px);
+        }
+
+        h5 {
+            min-height: calculateRem(21px);
+        }
+
+        h6 {
+            min-height: calculateRem(20px);
+        }
+
+        [id] {
+            position: relative;
+
+            &:before {
+                content: '';
+                background-image: url(/bundles/ezplatformadminui/img/icons/link-anchor.svg);
+                position: absolute;
+                left: calculateRem(-20px);
+                width: calculateRem(16px);
+                height: calculateRem(16px);
+                background-size: calculateRem(16px) calculateRem(16px);
+                background-repeat: no-repeat;
+            }
+        }
+    }
+}
+
+.ck {
+    &.ck-editor__editable_inline {
+        border: none;
+    }
+
+    &.ck-toolbar-container &.ck-toolbar {
+        border: none;
+        background: $ibexa-color-white;
+        border-radius: $ibexa-border-radius;
+    }
+
+    &.ck-rounded-corners &.ck-balloon-panel,
+    &.ck-balloon-panel.ck-rounded-corners {
+        border-radius: $ibexa-border-radius;
+
+        &.ck-balloon-panel_with-arrow {
+            z-index: 2000;
+        }
+    }
+}

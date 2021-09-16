@@ -16,16 +16,56 @@ class IbexaLinkFormView extends View {
         this.selectContentButtonView = this.createButton('Select content', null, 'ibexa-btn--select-content');
         this.urlInputView = this.createTextInput('Link to');
         this.titleView = this.createTextInput('Title');
-        this.targetSwitcherView = this.createBoolean('Open in');
+        this.targetSwitcherView = this.createBoolean('Open in tab');
 
         this.children = this.createFormChildren();
 
         this.setTemplate({
-            tag: 'form',
+            tag: 'div',
             attributes: {
-                tabindex: '-1',
+                class: 'ibexa-ckeditor-balloon-form',
             },
-            children: this.children,
+            children: [
+                {
+                    tag: 'div',
+                    attributes: {
+                        class: 'ibexa-ckeditor-balloon-form__header',
+                    },
+                    children: ['Link'],
+                },
+                {
+                    tag: 'form',
+                    attributes: {
+                        tabindex: '-1',
+                    },
+                    children: [
+                        {
+                            tag: 'div',
+                            attributes: {
+                                class: 'ibexa-ckeditor-balloon-form__fields',
+                            },
+                            children: [
+                                this.children.first,
+                                {
+                                    tag: 'div',
+                                    attributes: {
+                                        class: 'ibexa-ckeditor-balloon-form__separator',
+                                    },
+                                    children: ['Or'],
+                                },
+                                ...this.children.filter((child, index) => index !== 0),
+                            ],
+                        },
+                        {
+                            tag: 'div',
+                            attributes: {
+                                class: 'ibexa-ckeditor-balloon-form__actions',
+                            },
+                            children: [this.saveButtonView, this.cancelButtonView],
+                        },
+                    ],
+                },
+            ],
         });
 
         this.chooseContent = this.chooseContent.bind(this);
@@ -85,9 +125,6 @@ class IbexaLinkFormView extends View {
         children.add(this.titleView);
         children.add(this.targetSwitcherView);
 
-        children.add(this.saveButtonView);
-        children.add(this.cancelButtonView);
-
         return children;
     }
 
@@ -122,7 +159,6 @@ class IbexaLinkFormView extends View {
         button.set({
             label,
             icon,
-            tooltip: true,
             withText: true,
         });
 

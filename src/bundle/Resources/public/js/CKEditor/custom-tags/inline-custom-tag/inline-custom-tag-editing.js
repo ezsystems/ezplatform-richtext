@@ -35,7 +35,7 @@ class IbexaInlineCustomTagEditing extends Plugin {
                 const container = downcastWriter.createContainerElement('span', {
                     'data-ezelement': 'eztemplateinline',
                     'data-ezname': modelElement.getAttribute('customTagName'),
-                    class: 'ez-custom-tag',
+                    class: 'ibexa-custom-tag',
                 });
 
                 return toWidget(container, downcastWriter);

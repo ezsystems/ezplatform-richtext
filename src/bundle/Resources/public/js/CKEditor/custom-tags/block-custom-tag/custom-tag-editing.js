@@ -31,11 +31,35 @@ class IbexaCustomTagEditing extends Plugin {
         conversion.for('editingDowncast').elementToElement({
             model: 'customTag',
             view: (modelElement, { writer: downcastWriter }) => {
+                const customTagName = modelElement.getAttribute('customTagName');
                 const container = downcastWriter.createContainerElement('div', {
                     'data-ezelement': 'eztemplate',
-                    'data-ezname': modelElement.getAttribute('customTagName'),
-                    class: 'ez-custom-tag',
+                    'data-ezname': customTagName,
+                    class: 'ibexa-custom-tag',
                 });
+                const header = downcastWriter.createUIElement('div', { class: 'ibexa-custom-tag__header' }, function(domDocument) {
+                    const domElement = this.toDomElement(domDocument);
+
+                    domElement.innerHTML = `
+                        <div class="ibexa-custom-tag__header-title">${window.eZ.richText.customTags[customTagName].label}</div>
+                        <div class="ibexa-custom-tag__header-actions">
+                            <button type="button" class="ibexa-btn ibexa-btn--ghost ibexa-btn--small ibexa-btn--no-text ibexa-btn--show-custom-tag-attributes">
+                                <svg class="ibexa-icon ibexa-icon--small ibexa-icon--secondary">
+                                    <use xlink:href="${window.eZ.helpers.icon.getIconPath('settings-block')}"></use>
+                                </svg>
+                            </button>
+                            <button type="button" class="ibexa-btn ibexa-btn--ghost ibexa-btn--small ibexa-btn--no-text ibexa-btn--remove-custom-tag">
+                                <svg class="ibexa-icon ibexa-icon--small ibexa-icon--secondary">
+                                    <use xlink:href="${window.eZ.helpers.icon.getIconPath('trash')}"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    `;
+
+                    return domElement;
+                });
+
+                downcastWriter.insert(downcastWriter.createPositionAt(container, 0), header);
 
                 return toWidget(container, downcastWriter);
             },

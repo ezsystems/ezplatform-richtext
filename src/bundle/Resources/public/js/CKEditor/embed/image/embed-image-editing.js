@@ -78,7 +78,7 @@ class IbexaEmbedImageEditing extends Plugin {
                     const container = downcastWriter.createContainerElement('div', {
                         'data-ezelement': 'ezembed',
                         'data-ezview': 'embed',
-                        class: 'ez-embed-type-image',
+                        class: 'ibexa-embed-type-image',
                     });
 
                     this.loadImagePreview(modelElement);
@@ -118,7 +118,7 @@ class IbexaEmbedImageEditing extends Plugin {
                     'data-href': `ezcontent://${modelElement.getAttribute('contentId')}`,
                     'data-ezelement': 'ezembed',
                     'data-ezview': 'embed',
-                    class: 'ez-embed-type-image',
+                    class: 'ibexa-embed-type-image',
                 });
                 const config = downcastWriter.createUIElement('span', { 'data-ezelement': 'ezconfig' }, function(domDocument) {
                     const domElement = this.toDomElement(domDocument);
@@ -142,7 +142,7 @@ class IbexaEmbedImageEditing extends Plugin {
                 name: 'div',
                 attributes: {
                     'data-ezelement': 'ezembed',
-                    class: 'ez-embed-type-image',
+                    class: 'ibexa-embed-type-image',
                 },
             },
             model: (viewElement, { writer: upcastWriter }) => {

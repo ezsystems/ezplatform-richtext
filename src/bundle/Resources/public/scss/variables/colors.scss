@@ -1,73 +1,21 @@
 // Ibexa colors
-$ibexa-white: #FFF !default;
-$ibexa-black: #131C26 !default;
+$ibexa-color-black: #000000 !default;
+$ibexa-color-white: #ffffff !default;
 
-$ibexa-color-primary: #DB0032 !default;
-$ibexa-color-primary-pale: #F3E4E7 !default;
-$ibexa-color-primary-light: #E75476 !default;
+$ibexa-color-primary: #ae1164 !default;
+$ibexa-color-primary-200: #eecfe0 !default;
 
-$ibexa-color-base: #E0E0E8 !default;
-$ibexa-color-base-pale: #F5F5F5 !default;
-$ibexa-color-base-light: #F7F7F9 !default;
-$ibexa-color-base-medium: #ECECF1 !default;
-$ibexa-color-base-dark: #878B90 !default;
-$ibexa-color-base-deep-dark: #131C26 !default;
+$ibexa-color-light: #e0e0e8 !default;
+$ibexa-color-light-300: #f3f3f6 !default;
+$ibexa-color-light-100: #fbfbfc !default;
 
-$ibexa-color-font: #131C26 !default;
-$ibexa-color-font-pale: #878B90 !default;
-$ibexa-color-border-light: #ECDFD1 !default;
+$ibexa-color-dark: #131c26 !default;
+$ibexa-color-dark-400: #71767c !default;
+$ibexa-color-dark-200: #cfd1d3 !default;
 
-$ibexa-color-positive: #00825C !default;
-$ibexa-color-warning: #F7D000 !default;
-$ibexa-color-danger: #D92D42 !default;
-$ibexa-color-warning-dark: #AA0000 !default;
-$ibexa-color-warning-pale: #FCEAEC !default;
+$ibexa-color-danger: #db0032 !default;
 
-/* eZ colors: These colors are deprecated, please use colors with the "ibexa" prefix */
-$ez-white: #fff;
-$ez-black: #333;
+$ibexa-btn-focus-box-shadow: 0 0 0 calculateRem(3px) rgba($ibexa-color-primary, 0.2) !default;
+$ibexa-btn-hover-box-shadow: 0 calculateRem(22px) calculateRem(24px) 0 rgba($ibexa-color-danger, 0.2) !default;
 
-$ez-color-primary: #f15a10;
-$ez-color-secondary: #106d95;
-$ez-color-warning-pale: #fceaec;
-$ez-color-warning-dark: #aa0000;
-$ez-color-danger: #d92d42;
-$ez-color-positive: #00825c;
-$ez-color-base-pale: #dbdbdb;
-$ez-color-base-dark: #555;
-$ez-ground-base: #f3f3f3;
-$ez-ground-base-pale: #fafafa;
-$ez-ground-base-dark: #e5e3e3;
-$ez-secondary-ground: #2b84b1;
-
-// AlloyEditor
-$ez-ae-color-primary: $ibexa-white !default;
-$ez-ae-color-primary-text: $ibexa-black !default;
-$ez-ae-color-secondary: $ibexa-color-primary !default;
-$ez-ae-color-warning-pale: $ibexa-color-warning-pale !default;
-$ez-ae-color-warning: $ibexa-color-warning-dark !default;
-$ez-ae-color-positive: $ibexa-color-positive !default;
-$ez-ae-color-negative: $ibexa-color-base-medium !default;
-$ez-ae-color-ground: $ibexa-color-base-pale !default;
-$ez-ae-color-text-hover: $ibexa-color-primary !default;
-
-// Custom tag
-$ez-custom-tag-color-border: $ibexa-color-base-pale !default;
-$ez-custom-tag-color-header-ground: $ibexa-color-base-pale !default;
-$ez-custom-tag-inline-color-ground: $ibexa-color-base-medium !default;
-$ez-custom-tag-color-switcher-active: $ibexa-color-primary!default;
-$ez-custom-tag-color-switcher-inactive: $ibexa-white !default;
-$ez-custom-tag-color-switcher-ground: $ibexa-white !default;
-
-// Tools
-$ez-tools-color-ground: $ibexa-color-base-medium !default;
-$ez-tools-color-text: $ibexa-black !default;
-
-// Embed
-$ez-embed-color-ground: $ibexa-color-base-medium !default;
-$ez-embed-color-icon-ground: $ibexa-white !default;
-$ez-embed-color-border: $ibexa-color-base-medium !default;
-
-// Formatted
-$ez-formatted-color-ground: $ibexa-color-base-pale !default;
-$ez-formatted-color-border: $ibexa-color-base-medium !default;
+$ibexa-gradient-danger-primary: linear-gradient(to right, $ibexa-color-danger 0%, $ibexa-color-primary 100%);

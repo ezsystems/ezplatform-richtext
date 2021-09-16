@@ -10,7 +10,7 @@ Encore.setOutputPath('public/assets/richtext/build')
 
 Encore.addEntry('ezplatform-richtext-onlineeditor-js', [
     path.resolve(__dirname, '../public/js/CKEditor/core/base-ckeditor.js'),
-]).addStyleEntry('ezplatform-richtext-onlineeditor-css', [path.resolve(__dirname, '../public/scss/ckeditor/ckeditor.scss')]);
+]).addStyleEntry('ezplatform-richtext-onlineeditor-css', [path.resolve(__dirname, '../public/scss/ckeditor.scss')]);
 
 Encore.addAliases({
     '@ckeditor': path.resolve(__dirname, '../../../../../ezplatform-admin-ui-assets/Resources/public/vendors/@ckeditor'),
