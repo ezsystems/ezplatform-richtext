@@ -103,7 +103,7 @@ class IbexaCustomAttributesFormView extends View {
 
                 return output;
             },
-            { 'custom-classes': this.classesView ? this.classesView.fieldView.element.value : '' }
+            { 'custom-classes': this.classesView?.fieldView.element.value ?? '' }
         );
     }
 

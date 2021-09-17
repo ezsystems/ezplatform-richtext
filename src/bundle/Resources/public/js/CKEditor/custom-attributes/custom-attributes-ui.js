@@ -68,7 +68,7 @@ class IbexaAttributesUI extends Plugin {
             return output;
         }, {});
         const defaultCustomClasses = customClasses?.defaultValue ?? '';
-        let classesValue = areCustomAttributesSet ? parentElement.getAttribute('custom-classes') : defaultCustomClasses;
+        const classesValue = areCustomAttributesSet ? parentElement.getAttribute('custom-classes') : defaultCustomClasses;
 
         this.formView.destroy();
         this.formView = this.createFormView();

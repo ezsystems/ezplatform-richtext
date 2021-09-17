@@ -8,7 +8,7 @@ class IbexaEmbedImageToolbar extends Plugin {
 
     getSelectedEmbedImageWidget(selection) {
         const viewElement = selection.getSelectedElement();
-        const isEmbedImage = viewElement && viewElement.hasClass('ibexa-embed-type-image');
+        const isEmbedImage = viewElement?.hasClass('ibexa-embed-type-image');
 
         return isEmbedImage ? viewElement : null;
     }
