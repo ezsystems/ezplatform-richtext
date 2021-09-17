@@ -28,6 +28,8 @@ import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
 import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
 import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextualballoon';
 
+const VIEWPORT_TOP_OFFSET = 102;
+
 (function(global, doc, eZ) {
     class BaseRichText {
         constructor(config) {
@@ -203,7 +205,7 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
                         '|',
                         ...customTags,
                     ],
-                    viewportTopOffset: 102,
+                    viewportTopOffset: VIEWPORT_TOP_OFFSET,
                 },
                 embedImage: {
                     toolbar: ['imageVarations', 'ibexaRemoveElement'],

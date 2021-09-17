@@ -50,10 +50,6 @@
                             height: calculateRem(10px);
                             transform: translate(calculateRem(2px), calculateRem(2px));
                         }
-
-                        &:hover {
-                            background: red;
-                        }
                     }
                 }
             }
