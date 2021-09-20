@@ -1,0 +1,32 @@
+.ibexa-custom-tag-attributes {
+    .ck.ck-reset_all & {
+        min-width: calculateRem(400px);
+
+        &__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: $ibexa-color-light-100;
+            border-top-left-radius: $ibexa-border-radius;
+            border-top-right-radius: $ibexa-border-radius;
+            padding: calculateRem(2px) calculateRem(16px);
+        }
+
+        &__header-title {
+            font-weight: bold;
+        }
+
+        &__item {
+            padding: calculateRem(8px) calculateRem(16px);
+        }
+
+        &__item-label {
+            color: $ibexa-color-dark-400;
+            font-size: $ibexa-text-font-size-small;
+        }
+
+        &__item-value {
+            font-size: $ibexa-text-font-size;
+        }
+    }
+}

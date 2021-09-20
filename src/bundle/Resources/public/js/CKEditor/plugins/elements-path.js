@@ -14,7 +14,7 @@ class IbexaElementsPath extends Plugin {
             return;
         }
 
-        const pathItem = `<li class="ez-elements-path__item">${element.name}</li>`;
+        const pathItem = `<li class="ibexa-elements-path__item">${element.name}</li>`;
         const container = document.createElement('ul');
 
         container.insertAdjacentHTML('beforeend', pathItem);
@@ -34,7 +34,7 @@ class IbexaElementsPath extends Plugin {
     }
 
     init() {
-        this.elementsPathWrapper = this.editor.sourceElement.parentElement.querySelector('.ez-elements-path');
+        this.elementsPathWrapper = this.editor.sourceElement.parentElement.querySelector('.ibexa-elements-path');
 
         this.editor.model.document.selection.on('change:range', () => {
             this.elementsPathWrapper.innerHTML = '';

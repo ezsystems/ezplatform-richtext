@@ -10,17 +10,47 @@ class IbexaLinkFormView extends View {
         this.locale = props.locale;
 
         this.anchorInputView = this.createTextInput('Name');
-        this.saveButtonView = this.createButton('Save anchor', null, 'ck-button-save', 'save-anchor');
-        this.cancelButtonView = this.createButton('Remove anchor', null, 'ck-button-cancel', 'remove-anchor');
+        this.saveButtonView = this.createButton('Save', null, 'ck-button-save', 'save-anchor');
+        this.cancelButtonView = this.createButton('Remove', null, 'ck-button-cancel', 'remove-anchor');
 
         this.children = this.createFormChildren();
 
         this.setTemplate({
-            tag: 'form',
+            tag: 'div',
             attributes: {
-                tabindex: '-1',
+                class: 'ibexa-ckeditor-balloon-form',
             },
-            children: this.children,
+            children: [
+                {
+                    tag: 'div',
+                    attributes: {
+                        class: 'ibexa-ckeditor-balloon-form__header',
+                    },
+                    children: ['Anchor'],
+                },
+                {
+                    tag: 'form',
+                    attributes: {
+                        tabindex: '-1',
+                    },
+                    children: [
+                        {
+                            tag: 'div',
+                            attributes: {
+                                class: 'ibexa-ckeditor-balloon-form__fields',
+                            },
+                            children: this.children,
+                        },
+                        {
+                            tag: 'div',
+                            attributes: {
+                                class: 'ibexa-ckeditor-balloon-form__actions',
+                            },
+                            children: [this.saveButtonView, this.cancelButtonView],
+                        },
+                    ],
+                },
+            ],
         });
     }
 
@@ -40,8 +70,6 @@ class IbexaLinkFormView extends View {
         const children = this.createCollection();
 
         children.add(this.anchorInputView);
-        children.add(this.saveButtonView);
-        children.add(this.cancelButtonView);
 
         return children;
     }

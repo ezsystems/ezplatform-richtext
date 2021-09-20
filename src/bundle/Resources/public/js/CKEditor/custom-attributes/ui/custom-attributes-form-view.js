@@ -16,8 +16,8 @@ class IbexaCustomAttributesFormView extends View {
 
         this.locale = props.locale;
 
-        this.saveButtonView = this.createButton('Save custom attributes', null, 'ck-button-save', 'save-custom-attributes');
-        this.cancelButtonView = this.createButton('Remove custom attributes', null, 'ck-button-cancel', 'remove-custom-attributes');
+        this.saveButtonView = this.createButton('Save', null, 'ck-button-save', 'save-custom-attributes');
+        this.cancelButtonView = this.createButton('Remove', null, 'ck-button-cancel', 'remove-custom-attributes');
 
         this.attributeViews = {};
         this.classesView = null;
@@ -41,11 +41,41 @@ class IbexaCustomAttributesFormView extends View {
         this.children = this.createFormChildren(customAttributes, customClasses);
 
         this.setTemplate({
-            tag: 'form',
+            tag: 'div',
             attributes: {
-                tabindex: '-1',
+                class: 'ibexa-ckeditor-balloon-form',
             },
-            children: this.children,
+            children: [
+                {
+                    tag: 'div',
+                    attributes: {
+                        class: 'ibexa-ckeditor-balloon-form__header',
+                    },
+                    children: ['Custom Attributes'],
+                },
+                {
+                    tag: 'form',
+                    attributes: {
+                        tabindex: '-1',
+                    },
+                    children: [
+                        {
+                            tag: 'div',
+                            attributes: {
+                                class: 'ibexa-ckeditor-balloon-form__fields',
+                            },
+                            children: this.children,
+                        },
+                        {
+                            tag: 'div',
+                            attributes: {
+                                class: 'ibexa-ckeditor-balloon-form__actions',
+                            },
+                            children: [this.saveButtonView, this.cancelButtonView],
+                        },
+                    ],
+                },
+            ],
         });
     }
 
@@ -73,7 +103,7 @@ class IbexaCustomAttributesFormView extends View {
 
                 return output;
             },
-            { 'custom-classes': this.classesView.fieldView.element.value }
+            { 'custom-classes': this.classesView?.fieldView.element.value ?? '' }
         );
     }
 
@@ -130,9 +160,6 @@ class IbexaCustomAttributesFormView extends View {
 
             children.add(attributeView);
         });
-
-        children.add(this.saveButtonView);
-        children.add(this.cancelButtonView);
 
         return children;
     }

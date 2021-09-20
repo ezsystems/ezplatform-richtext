@@ -1,8 +1,11 @@
-.ez-richtext-tools {
-	display: flex;
-	justify-content: space-between;
-	font-size: calculateRem(10px);
-	background-color: $ez-tools-color-ground;
-	color: $ez-tools-color-text;
-	padding: 0 calculateRem(16px);
+.ibexa-richtext-tools {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: calculateRem(10px);
+    background-color: $ibexa-color-light-100;
+    padding: 0 calculateRem(16px);
+    height: calculateRem(32px);
+    border-bottom-left-radius: $ibexa-border-radius;
+    border-bottom-right-radius: $ibexa-border-radius;
 }

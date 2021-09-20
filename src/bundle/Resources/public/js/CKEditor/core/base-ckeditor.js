@@ -10,8 +10,9 @@ import IbexaLink from '../link/link';
 import IbexaAnchor from '../anchor/anchor';
 import IbexaFormatted from '../formatted/formatted';
 import IbexaMove from '../move/move';
+import IbexaRemoveElement from '../remove-element/remove-element';
 
-import InlineEditor from '@ckeditor/ckeditor5-editor-inline/src/inlineeditor';
+import CKEditor from '@ckeditor/ckeditor5-editor-inline/src/inlineeditor';
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
 import Heading from '@ckeditor/ckeditor5-heading/src/heading';
@@ -26,6 +27,8 @@ import Superscript from '@ckeditor/ckeditor5-basic-styles/src/superscript';
 import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
 import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
 import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextualballoon';
+
+const VIEWPORT_TOP_OFFSET = 102;
 
 (function(global, doc, eZ) {
     class BaseRichText {
@@ -112,7 +115,7 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
         }
 
         init(container) {
-            const wrapper = this.getHTMLDocumentFragment(container.closest('.ez-data-source').querySelector('textarea').value);
+            const wrapper = this.getHTMLDocumentFragment(container.closest('.ibexa-data-source').querySelector('textarea').value);
             const section = wrapper.childNodes[0];
             const customTags = Object.keys(window.eZ.richText.customTags);
             const inlineCustomStyles = Object.entries(window.eZ.richText.customStyles).filter(
@@ -142,7 +145,7 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
                 section.appendChild(doc.createElement('p'));
             }
 
-            InlineEditor.create(container, {
+            CKEditor.create(container, {
                 initialData: section.innerHTML,
                 plugins: [
                     Essentials,
@@ -169,39 +172,43 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
                     IbexaAnchor,
                     IbexaFormatted,
                     IbexaMove,
+                    IbexaRemoveElement,
                 ],
-                toolbar: [
-                    'ibexaMoveUp',
-                    'ibexaMoveDown',
-                    'heading',
-                    '|',
-                    'alignment',
-                    '|',
-                    'bulletedList',
-                    'numberedList',
-                    'insertTable',
-                    '|',
-                    'bold',
-                    'italic',
-                    'underline',
-                    'subscript',
-                    'superscript',
-                    'strikethrough',
-                    'blockQuote',
-                    'ibexaLink',
-                    'ibexaAnchor',
-                    ...customStyleInlineToolbar,
-                    'ibexaFormatted',
-                    'ibexaCustomAttributes',
-                    '|',
-                    'ibexaEmbed',
-                    'ibexaEmbedImage',
-                    'ibexaEmbedInline',
-                    '|',
-                    ...customTags,
-                ],
+                toolbar: {
+                    items: [
+                        'ibexaMoveUp',
+                        'ibexaMoveDown',
+                        'heading',
+                        '|',
+                        'alignment',
+                        '|',
+                        'bulletedList',
+                        'numberedList',
+                        'insertTable',
+                        '|',
+                        'bold',
+                        'italic',
+                        'underline',
+                        'subscript',
+                        'superscript',
+                        'strikethrough',
+                        'blockQuote',
+                        'ibexaLink',
+                        'ibexaAnchor',
+                        ...customStyleInlineToolbar,
+                        'ibexaFormatted',
+                        'ibexaCustomAttributes',
+                        '|',
+                        'ibexaEmbed',
+                        'ibexaEmbedImage',
+                        'ibexaEmbedInline',
+                        '|',
+                        ...customTags,
+                    ],
+                    viewportTopOffset: VIEWPORT_TOP_OFFSET,
+                },
                 embedImage: {
-                    toolbar: ['imageVarations'],
+                    toolbar: ['imageVarations', 'ibexaRemoveElement'],
                 },
                 heading: {
                     options: [
@@ -224,7 +231,7 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
                 this.editor.model.document.on('change:data', () => {
                     const data = this.getData();
 
-                    container.closest('.ez-data-source').querySelector('textarea').value = this.xhtmlify(data).replace(
+                    container.closest('.ibexa-data-source').querySelector('textarea').value = this.xhtmlify(data).replace(
                         this.xhtmlNamespace,
                         this.ezNamespace
                     );

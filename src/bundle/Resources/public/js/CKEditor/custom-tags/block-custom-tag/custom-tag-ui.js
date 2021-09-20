@@ -3,6 +3,7 @@ import clickOutsideHandler from '@ckeditor/ckeditor5-ui/src/bindings/clickoutsid
 import ClickObserver from '@ckeditor/ckeditor5-engine/src/view/observer/clickobserver';
 
 import IbexaCustomTagFormView from '../ui/custom-tag-form-view';
+import IbexaCustomTagAttributesView from '../ui/custom-tag-attributes-view';
 import IbexaButtonView from '../../common/button-view/button-view';
 
 class IbexaCustomTagUI extends Plugin {
@@ -11,6 +12,7 @@ class IbexaCustomTagUI extends Plugin {
 
         this.balloon = this.editor.plugins.get('ContextualBalloon');
         this.formView = this.createFormView();
+        this.attributesView = this.createAttributesVew();
 
         this.showForm = this.showForm.bind(this);
         this.addCustomTag = this.addCustomTag.bind(this);
@@ -24,12 +26,26 @@ class IbexaCustomTagUI extends Plugin {
         return modelElement && modelElement.name === 'customTag' && modelElement.getAttribute('customTagName') === this.componentName;
     }
 
+    isRemoveButtonClicked(eventData) {
+        return !!eventData.domTarget.closest('.ibexa-btn--remove-custom-tag');
+    }
+
+    isShowAttributesButtonClicked(eventData) {
+        return !!eventData.domTarget.closest('.ibexa-btn--show-custom-tag-attributes');
+    }
+
     enableUserBalloonInteractions() {
         const viewDocument = this.editor.editing.view.document;
 
-        this.listenTo(viewDocument, 'click', () => {
+        this.listenTo(viewDocument, 'click', (eventInfo, eventData) => {
             if (this.isCustomTagSelected()) {
-                this.showForm();
+                if (this.isRemoveButtonClicked(eventData)) {
+                    this.removeCustomTag();
+                }
+
+                if (this.isShowAttributesButtonClicked(eventData)) {
+                    this.showAttributes(eventData.domTarget);
+                }
             }
         });
 
@@ -39,6 +55,24 @@ class IbexaCustomTagUI extends Plugin {
             contextElements: [this.balloon.view.element],
             callback: () => this.hideForm(),
         });
+
+        clickOutsideHandler({
+            emitter: this.attributesView,
+            activator: () => this.balloon.hasView(this.attributesView),
+            contextElements: [this.balloon.view.element],
+            callback: () => this.hideAttributes(),
+        });
+    }
+
+    createAttributesVew() {
+        const attributesView = new IbexaCustomTagAttributesView({ locale: this.editor.locale });
+
+        this.listenTo(attributesView, 'edit-attributes', () => {
+            this.hideAttributes();
+            this.showForm();
+        });
+
+        return attributesView;
     }
 
     createFormView() {
@@ -75,6 +109,25 @@ class IbexaCustomTagUI extends Plugin {
         return formView;
     }
 
+    showAttributes(target) {
+        const modelElement = this.editor.model.document.selection.getSelectedElement();
+        const values = modelElement.getAttribute('values');
+
+        this.attributesView.setValues(values, window.eZ.richText.customTags[this.componentName].label);
+
+        this.balloon.add({
+            view: this.attributesView,
+            position: this.getBalloonPositionData(),
+        });
+
+        this.balloon.updatePosition({ target });
+    }
+
+    hideAttributes() {
+        this.balloon.remove(this.attributesView);
+        this.editor.editing.view.focus();
+    }
+
     showForm() {
         const modelElement = this.editor.model.document.selection.getSelectedElement();
         const values = modelElement.getAttribute('values');
@@ -91,16 +144,21 @@ class IbexaCustomTagUI extends Plugin {
 
     hideForm() {
         if (this.isNew) {
-            const modelElement = this.editor.model.document.selection.getSelectedElement();
-
             this.isNew = false;
-            this.editor.model.change((writer) => {
-                writer.remove(modelElement);
-            });
+
+            this.removeCustomTag();
         }
 
         this.balloon.remove(this.formView);
         this.editor.editing.view.focus();
+    }
+
+    removeCustomTag() {
+        const modelElement = this.editor.model.document.selection.getSelectedElement();
+
+        this.editor.model.change((writer) => {
+            writer.remove(modelElement);
+        });
     }
 
     getBalloonPositionData() {

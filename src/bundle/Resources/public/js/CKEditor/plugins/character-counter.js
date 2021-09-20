@@ -41,11 +41,11 @@ class IbexaCharacterCounter extends Plugin {
     }
 
     countWordsCharacters(container, editorHtml) {
-        const counterWrapper = container.parentElement.querySelector('.ez-character-counter');
+        const counterWrapper = container.parentElement.querySelector('.ibexa-character-counter');
 
         if (counterWrapper) {
-            const wordWrapper = counterWrapper.querySelector('.ez-character-counter__word-count');
-            const charactersWrapper = counterWrapper.querySelector('.ez-character-counter__character-count');
+            const wordWrapper = counterWrapper.querySelector('.ibexa-character-counter__word-count');
+            const charactersWrapper = counterWrapper.querySelector('.ibexa-character-counter__character-count');
             const words = this.getTextNodeValues(editorHtml);
 
             wordWrapper.innerText = words.length;

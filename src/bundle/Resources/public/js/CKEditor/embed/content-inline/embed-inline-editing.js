@@ -7,10 +7,10 @@ import IbexaEmbedContentInlineCommand from './embed-inline-command';
 import { findContent } from '../../services/content-service';
 
 const renderPreview = (title) => {
-    return `<svg class="ez-icon ez-icon--medium ez-icon--secondary">
+    return `<svg class="ibexa-icon ibexa-icon--medium ibexa-icon--secondary">
         <use xlink:href="${window.eZ.helpers.icon.getIconPath('embed')}"></use>
     </svg>
-    <span class="ez-embed-content__title">${title}</span>`;
+    <span class="ibexa-embed-content__title">${title}</span>`;
 };
 
 class IbexaEmbedContentInlineEditing extends Plugin {
@@ -40,9 +40,9 @@ class IbexaEmbedContentInlineEditing extends Plugin {
                     const container = downcastWriter.createContainerElement('span', {
                         'data-ezelement': 'ezembedinline',
                         'data-ezview': 'embed-inline',
-                        class: 'ez-embed-inline',
+                        class: 'ibexa-embed-inline',
                     });
-                    const preview = downcastWriter.createUIElement('span', { class: 'ez-embed-content' }, function(domDocument) {
+                    const preview = downcastWriter.createUIElement('span', { class: 'ibexa-embed-content' }, function(domDocument) {
                         const domElement = this.toDomElement(domDocument);
 
                         domElement.innerHTML = renderPreview(modelElement.getAttribute('contentName'));
@@ -60,7 +60,7 @@ class IbexaEmbedContentInlineEditing extends Plugin {
                     const downcastWriter = conversionApi.writer;
                     const modelElement = data.item;
                     const viewElement = conversionApi.mapper.toViewElement(modelElement);
-                    const preview = downcastWriter.createUIElement('span', { class: 'ez-embed-content' }, function(domDocument) {
+                    const preview = downcastWriter.createUIElement('span', { class: 'ibexa-embed-content' }, function(domDocument) {
                         const domElement = this.toDomElement(domDocument);
 
                         domElement.innerHTML = renderPreview(modelElement.getAttribute('contentName'));
@@ -94,7 +94,7 @@ class IbexaEmbedContentInlineEditing extends Plugin {
                 },
             },
             model: (viewElement, { writer: upcastWriter }) => {
-                if (viewElement.hasClass('ez-embed-type-image')) {
+                if (viewElement.hasClass('ibexa-embed-type-image')) {
                     return;
                 }
 

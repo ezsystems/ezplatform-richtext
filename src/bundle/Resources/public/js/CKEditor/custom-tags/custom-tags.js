@@ -17,9 +17,12 @@ class IbexaCustomTags extends Plugin {
                     this.componentName = name;
                     this.config = config;
 
-                    this.formView.setChildren({
-                        attributes: this.config.attributes,
-                    });
+                    this.formView.setChildren(
+                        {
+                            attributes: this.config.attributes,
+                        },
+                        window.eZ.richText.customTags[name].label
+                    );
                 }
             };
         });
@@ -31,7 +34,14 @@ class IbexaCustomTags extends Plugin {
                     this.componentName = name;
                     this.config = config;
 
-                    this.formView.setChildren({
+                    this.formView.setChildren(
+                        {
+                            attributes: this.config.attributes,
+                        },
+                        window.eZ.richText.customTags[name].label
+                    );
+
+                    this.attributesView.setChildren({
                         attributes: this.config.attributes,
                     });
                 }

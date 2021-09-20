@@ -1,15 +1,15 @@
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 
-import IbexaLinkCommand from './move-command';
+import IbexaMoveCommand from './move-command';
 
-class IbexaCustomTagEditing extends Plugin {
+class IbexaMoveEditing extends Plugin {
     static get requires() {
         return [];
     }
 
     init() {
-        this.editor.commands.add('insertIbexaMove', new IbexaLinkCommand(this.editor));
+        this.editor.commands.add('insertIbexaMove', new IbexaMoveCommand(this.editor));
     }
 }
 
-export default IbexaCustomTagEditing;
+export default IbexaMoveEditing;

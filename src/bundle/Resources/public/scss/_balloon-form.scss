@@ -1,0 +1,128 @@
+.ck.ck-reset_all {
+    .ibexa-ckeditor-balloon-form {
+        &__header {
+            background-color: $ibexa-color-light-100;
+            border-top-left-radius: $ibexa-border-radius;
+            border-top-right-radius: $ibexa-border-radius;
+            padding: calculateRem(2px) calculateRem(16px);
+            font-weight: bold;
+        }
+
+        &__fields {
+            padding: calculateRem(8px) calculateRem(16px);
+
+            .ck-labeled-field-view {
+                margin-bottom: calculateRem(12px);
+
+                .ck-input-text {
+                    border-radius: calculateRem(5px);
+                }
+
+                .ck.ck-dropdown {
+                    border: calculateRem(1px) solid $ibexa-color-dark-200;
+                    border-radius: calculateRem(5px);
+
+                    .ck-button.ck-dropdown__button {
+                        .ck-button__label {
+                            width: calculateRem(198px);
+                        }
+                    }
+                }
+
+                .ck.ck-button.ck-switchbutton {
+                    background: transparent;
+
+                    &.ck-on {
+                        .ck-button__toggle {
+                            &__inner {
+                                transform: translate(calculateRem(20px), calculateRem(2px));
+                            }
+                        }
+                    }
+
+                    .ck-button__toggle {
+                        border-radius: $ibexa-border-radius;
+                        height: calculateRem(16px);
+
+                        &__inner {
+                            border-radius: 50%;
+                            width: calculateRem(10px);
+                            height: calculateRem(10px);
+                            transform: translate(calculateRem(2px), calculateRem(2px));
+                        }
+                    }
+                }
+            }
+        }
+
+        &__separator {
+            margin-bottom: calculateRem(12px);
+            color: $ibexa-color-dark-400;
+        }
+
+        .ck.ck-button {
+            cursor: pointer;
+
+            &.ck-button-save {
+                color: $ibexa-color-white;
+                fill: $ibexa-color-white;
+                background-image: $ibexa-gradient-danger-primary;
+                border-width: 0;
+                padding: calculateRem(0px) calculateRem(16px);
+                border-radius: $ibexa-border-radius;
+                margin-right: calculateRem(8px);
+
+                &:hover {
+                    color: $ibexa-color-white;
+                    box-shadow: 0 0 0 transparent, $ibexa-btn-hover-box-shadow;
+                }
+
+                &:hover:focus {
+                    box-shadow: $ibexa-btn-focus-box-shadow, $ibexa-btn-hover-box-shadow;
+                }
+
+                &:disabled {
+                    color: $ibexa-color-dark-400;
+                    fill: $ibexa-color-dark-400;
+                    background-image: none;
+                    background-color: $ibexa-color-light;
+                    box-shadow: none;
+                }
+            }
+
+            &.ck-button-cancel,
+            &.ibexa-btn--select-content {
+                color: $ibexa-color-primary;
+                fill: $ibexa-color-primary;
+                background-color: $ibexa-color-white;
+                border-color: $ibexa-color-primary;
+                padding: calculateRem(0px) calculateRem(16px);
+                border-radius: $ibexa-border-radius;
+
+                &:hover,
+                &:focus {
+                    color: $ibexa-color-primary;
+                }
+
+                &:hover {
+                    background-color: $ibexa-color-primary-200;
+                }
+
+                &:disabled {
+                    color: $ibexa-color-dark-400;
+                    fill: $ibexa-color-dark-400;
+                    border-color: $ibexa-color-dark-200;
+                    background-color: $ibexa-color-light-300;
+                }
+            }
+
+            &.ibexa-btn--select-content {
+                margin-bottom: calculateRem(12px);
+            }
+        }
+
+        &__actions {
+            padding: 0 calculateRem(16px) calculateRem(16px);
+        }
+    }
+}
