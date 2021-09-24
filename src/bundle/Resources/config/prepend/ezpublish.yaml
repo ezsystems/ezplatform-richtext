@@ -11,7 +11,7 @@ system:
     admin_group:
         fieldtypes:
             ezrichtext:
-                toolbars:
+                toolbar:
                     group1:
                         priority: 60
                         buttons:
@@ -39,22 +39,24 @@ system:
                         priority: 30
                         buttons:
                             bold:
-                                priority: 110
+                                priority: 120
                             italic:
-                                priority: 100
+                                priority: 110
                             underline:
-                                priority: 90
+                                priority: 100
                             subscript:
-                                priority: 80
+                                priority: 90
                             superscript:
-                                priority: 70
+                                priority: 80
                             strikethrough:
-                                priority: 60
+                                priority: 70
                             blockQuote:
-                                priority: 50
+                                priority: 60
                             ibexaLink:
-                                priority: 40
+                                priority: 50
                             ibexaAnchor:
+                                priority: 40
+                            ibexaCustomStyleInline:
                                 priority: 30
                             ibexaFormatted:
                                 priority: 20

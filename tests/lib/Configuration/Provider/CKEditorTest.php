@@ -35,14 +35,13 @@ final class CKEditorTest extends BaseProviderTestCase
         $provider = $this->createProvider();
 
         $this->configResolver
-            ->expects($this->exactly(2))
+            ->expects($this->exactly(1))
             ->method('hasParameter')
             ->willReturn(false);
 
         self::assertEquals(
             [
-                'toolbars' => [],
-                'customTags' => [],
+                'toolbar' => [],
             ],
             $provider->getConfiguration()
         );
@@ -74,8 +73,7 @@ final class CKEditorTest extends BaseProviderTestCase
 
         self::assertEquals(
             [
-                'toolbars' => ['test_button'],
-                'customTags' => [],
+                'toolbar' => ['test_button'],
             ],
             $provider->getConfiguration()
         );
@@ -116,8 +114,7 @@ final class CKEditorTest extends BaseProviderTestCase
 
         self::assertEquals(
             [
-                'toolbars' => ['test_button_first', 'test_button_middle', 'test_button_last'],
-                'customTags' => [],
+                'toolbar' => ['test_button_first', 'test_button_middle', 'test_button_last'],
             ],
             $provider->getConfiguration()
         );
@@ -176,11 +173,10 @@ final class CKEditorTest extends BaseProviderTestCase
 
         self::assertEquals(
             [
-                'toolbars' => [
+                'toolbar' => [
                     'test_button_first', 'test_button_middle', 'test_button_last', '|',
                     'test2_button_first', 'test2_button_middle', 'test2_button_last',
                 ],
-                'customTags' => [],
             ],
             $provider->getConfiguration()
         );
@@ -231,8 +227,7 @@ final class CKEditorTest extends BaseProviderTestCase
 
         self::assertEquals(
             [
-                'toolbars' => ['test_button_first', 'test_button_last'],
-                'customTags' => [],
+                'toolbar' => ['test_button_first', 'test_button_last'],
             ],
             $provider->getConfiguration()
         );
@@ -319,10 +314,128 @@ final class CKEditorTest extends BaseProviderTestCase
 
         self::assertEquals(
             [
-                'toolbars' => [
+                'toolbar' => [
+                    'custom_tag_4', 'custom_tag_1', 'custom_tag_3', '|',
                     'test3_button_second', 'test3_button_first', '|', 'test_button_first', 'test_button_last',
                 ],
-                'customTags' => ['custom_tag_4', 'custom_tag_1', 'custom_tag_3'],
+            ],
+            $provider->getConfiguration()
+        );
+    }
+
+    public function testToolbarConfigurationVisibilityWithCustomStyleInline(): void
+    {
+        $configResolver = $this->createMock(ConfigResolverInterface::class);
+
+        $configResolver
+            ->method('hasParameter')
+            ->willReturn(true);
+
+        $configResolver
+            ->method('getParameter')
+            ->willReturnOnConsecutiveCalls(
+                [
+                    'test_toolbar_group_1' => [
+                        'visible' => true,
+                        'priority' => 10,
+                        'buttons' => [
+                            'test_button_first' => [
+                                'visible' => true,
+                                'priority' => 100,
+                            ],
+                            'ibexaCustomStyleInline' => [
+                                'visible' => true,
+                                'priority' => 80,
+                            ],
+                        ],
+                    ],
+                    'test_toolbar_group_2' => [
+                        'visible' => true,
+                        'priority' => 20,
+                        'buttons' => [
+                            'test2_button_first' => [
+                                'visible' => true,
+                                'priority' => 100,
+                            ],
+                        ],
+                    ],
+                ],
+                [
+                    'custom_style_1' => [
+                        'inline' => true,
+                    ],
+                    'custom_style_2' => [
+                        'inline' => false,
+                    ],
+                ],
+            );
+
+        $provider = $this->createProvider($configResolver);
+
+        self::assertEquals(
+            [
+                'toolbar' => [
+                    'test2_button_first', '|', 'test_button_first', 'ibexaCustomStyleInline',
+                ],
+            ],
+            $provider->getConfiguration()
+        );
+    }
+
+    public function testToolbarConfigurationVisibilityWithNoCustomStyleInline(): void
+    {
+        $configResolver = $this->createMock(ConfigResolverInterface::class);
+
+        $configResolver
+            ->method('hasParameter')
+            ->willReturn(true);
+
+        $configResolver
+            ->method('getParameter')
+            ->willReturnOnConsecutiveCalls(
+                [
+                    'test_toolbar_group_1' => [
+                        'visible' => true,
+                        'priority' => 10,
+                        'buttons' => [
+                            'test_button_first' => [
+                                'visible' => true,
+                                'priority' => 100,
+                            ],
+                            'ibexaCustomStyleInline' => [
+                                'visible' => true,
+                                'priority' => 80,
+                            ],
+                        ],
+                    ],
+                    'test_toolbar_group_2' => [
+                        'visible' => true,
+                        'priority' => 20,
+                        'buttons' => [
+                            'test2_button_first' => [
+                                'visible' => true,
+                                'priority' => 100,
+                            ],
+                        ],
+                    ],
+                ],
+                [
+                    'custom_style_1' => [
+                        'inline' => false,
+                    ],
+                    'custom_style_2' => [
+                        'inline' => false,
+                    ],
+                ],
+            );
+
+        $provider = $this->createProvider($configResolver);
+
+        self::assertEquals(
+            [
+                'toolbar' => [
+                    'test2_button_first', '|', 'test_button_first',
+                ],
             ],
             $provider->getConfiguration()
         );

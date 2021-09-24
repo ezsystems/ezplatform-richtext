@@ -117,7 +117,7 @@ const VIEWPORT_TOP_OFFSET = 102;
         init(container) {
             const wrapper = this.getHTMLDocumentFragment(container.closest('.ibexa-data-source').querySelector('textarea').value);
             const section = wrapper.childNodes[0];
-            const toolbars = window.eZ.richText.CKEditor.toolbars;
+            const toolbar = window.eZ.richText.CKEditor.toolbar;
             const blockCustomStyles = Object.entries(eZ.richText.customStyles)
                 .filter(([customStyleName, customStyleConfig]) => !customStyleConfig.inline)
                 .map(([customStyleName, customStyleConfig]) => {
@@ -169,9 +169,7 @@ const VIEWPORT_TOP_OFFSET = 102;
                     IbexaRemoveElement,
                 ],
                 toolbar: {
-                    items: [
-                        ...toolbars,
-                    ],
+                    items: toolbar,
                     viewportTopOffset: VIEWPORT_TOP_OFFSET,
                 },
                 embedImage: {

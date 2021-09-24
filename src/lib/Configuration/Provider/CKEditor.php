@@ -20,7 +20,7 @@ use EzSystems\EzPlatformRichTextBundle\DependencyInjection\Configuration\Parser\
 final class CKEditor implements Provider
 {
     private const SEPARATOR = '|';
-    private const CUSTOM_TAGS_GROUP_KEY = 'custom_tags_group';
+    private const CUSTOM_STYLE_INLINE = 'ibexaCustomStyleInline';
 
     /** @var \eZ\Publish\Core\MVC\ConfigResolverInterface */
     private $configResolver;
@@ -40,95 +40,69 @@ final class CKEditor implements Provider
      * Returns CKEditor configuration.
      *
      * @phpstan-return array<array-key, array{
-     *  toolbars: array<string>,
-     *  customTags: array<string>,
+     *  toolbar: array<string>,
      * }>
      */
     public function getConfiguration(): array
     {
         return [
-            'toolbars' => $this->getToolbars(),
-            'customTags' => $this->getCustomTags(),
+            'toolbar' => \array_values($this->getToolbar()),
         ];
     }
 
     /**
-     * Returns toolbars configuration.
+     * Returns toolbar buttons.
      *
      * @phpstan-return array<string>
      */
-    private function getToolbars(): array
+    private function getToolbar(): array
     {
-        $toolbarsByGroupsConfiguration = $this->getSiteAccessConfigArray(RichText::TOOLBARS_SA_SETTINGS_ID);
-
-        $toolbarsByGroupsConfiguration = array_filter(
-            $toolbarsByGroupsConfiguration,
-            static function (string $key): bool {
-                return $key !== self::CUSTOM_TAGS_GROUP_KEY;
-            },
-            ARRAY_FILTER_USE_KEY
+        $filteredButtons = $this->filterButtonsByGroups(
+            $this->getSiteAccessConfigArray(RichText::TOOLBARS_SA_SETTINGS_ID)
         );
 
-        return $this->filterToolbars($toolbarsByGroupsConfiguration);
+        if (\in_array(self::CUSTOM_STYLE_INLINE, $filteredButtons) && !$this->hasInlineCustomStyles()) {
+            return $this->removeInlineCustomStyleButton($filteredButtons);
+        }
+
+        return $filteredButtons;
     }
 
     /**
-     * Returns customTags configuration.
+     * Returns filtered Toolbar buttons configuration.
      *
      * @phpstan-return array<string>
      */
-    private function getCustomTags(): array
-    {
-        $toolbarsByGroupsConfiguration = $this->getSiteAccessConfigArray(RichText::TOOLBARS_SA_SETTINGS_ID);
-
-        $toolbarsByGroupsConfiguration = array_filter(
-            $toolbarsByGroupsConfiguration,
-            static function (string $key): bool {
-                return $key === self::CUSTOM_TAGS_GROUP_KEY;
-            },
-            ARRAY_FILTER_USE_KEY
-        );
-
-        return $this->filterToolbars($toolbarsByGroupsConfiguration);
-    }
-
-    /**
-     * Returns filtered Toolbars configuration.
-     *
-     * @phpstan-return array<string>
-     */
-    private function filterToolbars(
-        array $toolbarsByGroupsConfiguration = []
+    private function filterButtonsByGroups(
+        array $groupsConfiguration = []
     ): array {
-        $toolbars = [];
+        $buttons = [];
 
-        $toolbarsByGroupsConfiguration = array_filter(
-            $toolbarsByGroupsConfiguration,
-            static function (array $value): bool {
-                return $value['visible'];
+        $groupsConfiguration = \array_filter(
+            $groupsConfiguration,
+            static function (array $group): bool {
+                return $group['visible'];
             }
         );
 
-        uasort($toolbarsByGroupsConfiguration, static function (array $a, array $b): int {
+        \uasort($groupsConfiguration, static function (array $a, array $b): int {
             return $b['priority'] <=> $a['priority'];
         });
 
-        foreach ($toolbarsByGroupsConfiguration as $configuration) {
-            $toolbarButtons = $this->getToolbarButtons($configuration['buttons'] ?? []);
+        foreach ($groupsConfiguration as $configuration) {
+            $filteredButtons = $this->filterButtons($configuration['buttons'] ?? []);
 
-            if (count($toolbarButtons)) {
-                $toolbars = array_merge(
-                    $toolbars,
-                    $toolbarButtons,
-                    [self::SEPARATOR],
-                );
+            if (\count($filteredButtons) === 0) {
+                continue;
             }
+
+            $buttons = \array_merge($buttons, $filteredButtons, [self::SEPARATOR]);
         }
 
-        // Removes last separator from the toolbars list.
-        array_pop($toolbars);
+        // Removes last separator from the buttons list.
+        \array_pop($buttons);
 
-        return array_values($toolbars);
+        return $buttons;
     }
 
     /**
@@ -136,17 +110,42 @@ final class CKEditor implements Provider
      *
      * @phpstan-return array<string>
      */
-    private function getToolbarButtons(array $buttons): array
+    private function filterButtons(array $buttons): array
     {
-        $buttons = array_filter($buttons, static function (array $value): bool {
-            return $value['visible'];
+        $buttons = \array_filter($buttons, static function (array $button): bool {
+            return $button['visible'];
         });
 
-        uasort($buttons, static function (array $a, array $b): int {
+        \uasort($buttons, static function (array $a, array $b): int {
             return $b['priority'] <=> $a['priority'];
         });
 
-        return array_keys($buttons);
+        return \array_keys($buttons);
+    }
+
+    private function hasInlineCustomStyles(): bool
+    {
+        $customStyles = $this->getSiteAccessConfigArray('fieldtypes.ezrichtext.custom_styles');
+
+        return 0 !== \count(\array_filter(
+            $customStyles,
+            static function (array $customStyle): bool {
+                return $customStyle['inline'];
+            }
+        ));
+    }
+
+    /**
+     * @phpstan-return array<string>
+     */
+    private function removeInlineCustomStyleButton(array $filteredButtons): array
+    {
+        return \array_filter(
+            $filteredButtons,
+            static function (string $buttonValue): bool {
+                return $buttonValue !== self::CUSTOM_STYLE_INLINE;
+            },
+        );
     }
 
     /**

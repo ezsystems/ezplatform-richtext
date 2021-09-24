@@ -30,8 +30,8 @@ class RichText extends AbstractFieldTypeParser
     private const ATTRIBUTE_TYPE_STRING = 'string';
     private const ATTRIBUTE_TYPE_NUMBER = 'number';
 
-    private const TOOLBARS_NODE_KEY = 'toolbars';
-    public const TOOLBARS_SA_SETTINGS_ID = 'fieldtypes.ezrichtext.' . self::TOOLBARS_NODE_KEY;
+    private const TOOLBAR_NODE_KEY = 'toolbar';
+    public const TOOLBARS_SA_SETTINGS_ID = 'fieldtypes.ezrichtext.' . self::TOOLBAR_NODE_KEY;
 
     // constants common for OE custom classes and data attributes configuration
     private const ELEMENT_NODE_KEY = 'element';
@@ -193,7 +193,7 @@ class RichText extends AbstractFieldTypeParser
 
         // RichText Toolbars configuration (defines list of Toolbars and Buttons enabled for current SiteAccess scope)
         $nodeBuilder
-            ->arrayNode(self::TOOLBARS_NODE_KEY)
+            ->arrayNode(self::TOOLBAR_NODE_KEY)
                 ->useAttributeAsKey('group_name')
                 ->info('List of grouped Toolbars and Buttons enabled for current SiteAccess scope.')
                 ->prototype('array')
@@ -273,7 +273,7 @@ class RichText extends AbstractFieldTypeParser
             $onlineEditorSettingsMap = [
                 self::CLASSES_NODE_KEY => self::CLASSES_SA_SETTINGS_ID,
                 self::ATTRIBUTES_NODE_KEY => self::ATTRIBUTES_SA_SETTINGS_ID,
-                self::TOOLBARS_NODE_KEY => self::TOOLBARS_SA_SETTINGS_ID,
+                self::TOOLBAR_NODE_KEY => self::TOOLBARS_SA_SETTINGS_ID,
             ];
             foreach ($onlineEditorSettingsMap as $key => $settingsId) {
                 if (isset($scopeSettings['fieldtypes']['ezrichtext'][$key])) {
