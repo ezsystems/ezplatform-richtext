@@ -89,6 +89,8 @@ notifications:
 before_install:
   # Disable xdebug to speed things up as we don't currently generate coverage on travis
   - phpenv config-rm xdebug.ini
+  # Disable expired certificate
+. - sed -i '/mozilla\/DST_Root_CA_X3.crt/ s/./!&/' /etc/ca-certificates.conf \ && update-ca-certificates --verbose
   # Add custom php.ini configuration for test matrix
   - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - echo "default_charset=UTF-8" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
