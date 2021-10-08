@@ -25,10 +25,15 @@ final class CKEditor implements Provider
     /** @var \eZ\Publish\Core\MVC\ConfigResolverInterface */
     private $configResolver;
 
+    /** @var array */
+    private $customStylesConfiguration;
+
     public function __construct(
-        ConfigResolverInterface $configResolver
+        ConfigResolverInterface $configResolver,
+        array $customStylesConfiguration
     ) {
         $this->configResolver = $configResolver;
+        $this->customStylesConfiguration = $customStylesConfiguration;
     }
 
     public function getName(): string
@@ -125,13 +130,14 @@ final class CKEditor implements Provider
 
     private function hasInlineCustomStyles(): bool
     {
-        $customStyles = $this->getSiteAccessConfigArray('fieldtypes.ezrichtext.custom_styles');
+        $enabledCustomStyles = $this->getSiteAccessConfigArray('fieldtypes.ezrichtext.custom_styles');
 
         return 0 !== \count(\array_filter(
-            $customStyles,
-            static function (array $customStyle): bool {
-                return $customStyle['inline'];
-            }
+            $this->customStylesConfiguration,
+            static function (array $customStyle, string $name) use ($enabledCustomStyles): bool {
+                return \in_array($name, $enabledCustomStyles, true) && $customStyle['inline'];
+            },
+            ARRAY_FILTER_USE_BOTH
         ));
     }
 

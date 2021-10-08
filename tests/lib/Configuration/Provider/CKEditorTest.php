@@ -15,10 +15,13 @@ use EzSystems\EzPlatformRichTextBundle\DependencyInjection\Configuration\Parser\
 
 final class CKEditorTest extends BaseProviderTestCase
 {
-    public function createProvider(ConfigResolverInterface $configResolver = null): Provider
-    {
+    public function createProvider(
+        ConfigResolverInterface $configResolver = null,
+        array $customStylesConfiguration = []
+    ): Provider {
         return new CKEditor(
-            $configResolver ?? $this->configResolver
+            $configResolver ?? $this->configResolver,
+            $customStylesConfiguration
         );
     }
 
@@ -360,17 +363,19 @@ final class CKEditorTest extends BaseProviderTestCase
                         ],
                     ],
                 ],
-                [
-                    'custom_style_1' => [
-                        'inline' => true,
-                    ],
-                    'custom_style_2' => [
-                        'inline' => false,
-                    ],
-                ],
+                ['custom_style_1', 'custom_style_2'],
             );
 
-        $provider = $this->createProvider($configResolver);
+        $customStylesConfiguration = [
+            'custom_style_1' => [
+                'inline' => true,
+            ],
+            'custom_style_2' => [
+                'inline' => false,
+            ],
+        ];
+
+        $provider = $this->createProvider($configResolver, $customStylesConfiguration);
 
         self::assertEquals(
             [
@@ -419,17 +424,19 @@ final class CKEditorTest extends BaseProviderTestCase
                         ],
                     ],
                 ],
-                [
-                    'custom_style_1' => [
-                        'inline' => false,
-                    ],
-                    'custom_style_2' => [
-                        'inline' => false,
-                    ],
-                ],
+                ['custom_style_1', 'custom_style_2'],
             );
 
-        $provider = $this->createProvider($configResolver);
+        $customStylesConfiguration = [
+            'custom_style_1' => [
+                'inline' => false,
+            ],
+            'custom_style_2' => [
+                'inline' => false,
+            ],
+        ];
+
+        $provider = $this->createProvider($configResolver, $customStylesConfiguration);
 
         self::assertEquals(
             [
