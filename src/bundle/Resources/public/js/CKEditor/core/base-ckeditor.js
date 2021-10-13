@@ -117,10 +117,7 @@ const VIEWPORT_TOP_OFFSET = 102;
         init(container) {
             const wrapper = this.getHTMLDocumentFragment(container.closest('.ibexa-data-source').querySelector('textarea').value);
             const section = wrapper.childNodes[0];
-            const customTags = Object.keys(window.eZ.richText.customTags);
-            const inlineCustomStyles = Object.entries(window.eZ.richText.customStyles).filter(
-                ([customStyleName, customStyleConfig]) => customStyleConfig.inline
-            );
+            const { toolbar, extraPlugins = [] } = window.eZ.richText.CKEditor;
             const blockCustomStyles = Object.entries(eZ.richText.customStyles)
                 .filter(([customStyleName, customStyleConfig]) => !customStyleConfig.inline)
                 .map(([customStyleName, customStyleConfig]) => {
@@ -137,9 +134,6 @@ const VIEWPORT_TOP_OFFSET = 102;
                         title: customStyleConfig.label,
                     };
                 });
-
-            // Temp hack - to be removed when the configuration is done
-            const customStyleInlineToolbar = inlineCustomStyles.length === 0 ? [] : ['ibexaCustomStyleInline'];
 
             if (!section.hasChildNodes()) {
                 section.appendChild(doc.createElement('p'));
@@ -173,38 +167,10 @@ const VIEWPORT_TOP_OFFSET = 102;
                     IbexaFormatted,
                     IbexaMove,
                     IbexaRemoveElement,
+                    ...extraPlugins,
                 ],
                 toolbar: {
-                    items: [
-                        'ibexaMoveUp',
-                        'ibexaMoveDown',
-                        'heading',
-                        '|',
-                        'alignment',
-                        '|',
-                        'bulletedList',
-                        'numberedList',
-                        'insertTable',
-                        '|',
-                        'bold',
-                        'italic',
-                        'underline',
-                        'subscript',
-                        'superscript',
-                        'strikethrough',
-                        'blockQuote',
-                        'ibexaLink',
-                        'ibexaAnchor',
-                        ...customStyleInlineToolbar,
-                        'ibexaFormatted',
-                        'ibexaCustomAttributes',
-                        '|',
-                        'ibexaEmbed',
-                        'ibexaEmbedImage',
-                        'ibexaEmbedInline',
-                        '|',
-                        ...customTags,
-                    ],
+                    items: toolbar,
                     viewportTopOffset: VIEWPORT_TOP_OFFSET,
                 },
                 embedImage: {

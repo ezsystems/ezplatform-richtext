@@ -11,354 +11,69 @@ system:
     admin_group:
         fieldtypes:
             ezrichtext:
-                custom_tags: [ezyoutube, eztwitter, ezfacebook]
-                toolbars:
-                    ezyoutube:
+                toolbar:
+                    group1:
+                        priority: 60
                         buttons:
-                            ezmoveup:
-                                priority: 80
-                            ezmovedown:
-                                priority: 70
-                            ezcustomtagedit:
-                                priority: 60
-                            ezanchor:
-                                priority: 50
-                            ezembedleft:
-                                priority: 40
-                            ezembedcenter:
+                            ibexaMoveUp:
                                 priority: 30
-                            ezembedright:
+                            ibexaMoveDown:
                                 priority: 20
-                            ezblockremove:
+                            heading:
                                 priority: 10
-                    eztwitter:
+                    group2:
+                        priority: 50
                         buttons:
-                            ezmoveup:
-                                priority: 80
-                            ezmovedown:
-                                priority: 70
-                            ezcustomtagedit:
-                                priority: 60
-                            ezanchor:
-                                priority: 50
-                            ezembedleft:
-                                priority: 40
-                            ezembedcenter:
+                            alignment:
+                                priority: 10
+                    group3:
+                        priority: 40
+                        buttons:
+                            bulletedList:
                                 priority: 30
-                            ezembedright:
+                            numberedList:
                                 priority: 20
-                            ezblockremove:
+                            insertTable:
                                 priority: 10
-                    ezfacebook:
+                    group4:
+                        priority: 30
                         buttons:
-                            ezmoveup:
-                                priority: 80
-                            ezmovedown:
-                                priority: 70
-                            ezcustomtagedit:
-                                priority: 60
-                            ezanchor:
-                                priority: 50
-                            ezembedleft:
-                                priority: 40
-                            ezembedcenter:
-                                priority: 30
-                            ezembedright:
-                                priority: 20
-                            ezblockremove:
-                                priority: 10
-                    custom_style:
-                        buttons:
-                            ezmoveup:
-                                priority: 90
-                            ezmovedown:
-                                priority: 80
-                            ezstyles:
-                                priority: 70
-                            ezanchor:
-                                priority: 60
-                            ezblocktextalignleft:
-                                priority: 50
-                            ezblocktextaligncenter:
-                                priority: 40
-                            ezblocktextalignright:
-                                priority: 30
-                            ezblocktextalignjustify:
-                                priority: 20
-                            ezblockremove:
-                                priority: 10
-                    embedinline:
-                        buttons:
-                            ezattributesedit:
-                                priority: 30
-                            ezembedupdate:
-                                priority: 20
-                            ezblockremove:
-                                priority: 10
-                    embed:
-                        buttons:
-                            ezmoveup:
-                                priority: 90
-                            ezmovedown:
-                                priority: 80
-                            ezattributesedit:
-                                priority: 70
-                            ezembedupdate:
-                                priority: 60
-                            ezanchor:
-                                priority: 50
-                            ezembedleft:
-                                priority: 40
-                            ezembedcenter:
-                                priority: 30
-                            ezembedright:
-                                priority: 20
-                            ezblockremove:
-                                priority: 10
-                    formatted:
-                        buttons:
-                            ezmoveup:
-                                priority: 60
-                            ezmovedown:
-                                priority: 50
-                            ezattributesedit:
-                                priority: 40
-                            ezstyles:
-                                priority: 30
-                            ezanchor:
-                                priority: 20
-                            ezblockremove:
-                                priority: 10
-                    heading:
-                        buttons:
-                            ezmoveup:
+                            bold:
+                                priority: 120
+                            italic:
                                 priority: 110
-                            ezmovedown:
+                            underline:
                                 priority: 100
-                            ezattributesedit:
+                            subscript:
                                 priority: 90
-                            ezstyles:
+                            superscript:
                                 priority: 80
-                            ezembedinline:
+                            strikethrough:
                                 priority: 70
-                            ezanchor:
+                            blockQuote:
                                 priority: 60
-                            ezblocktextalignleft:
+                            ibexaLink:
                                 priority: 50
-                            ezblocktextaligncenter:
+                            ibexaAnchor:
                                 priority: 40
-                            ezblocktextalignright:
+                            ibexaCustomStyleInline:
                                 priority: 30
-                            ezblocktextalignjustify:
+                            ibexaFormatted:
                                 priority: 20
-                            ezblockremove:
+                            ibexaCustomAttributes:
                                 priority: 10
-                    embedimagelink:
+                    group5:
+                        priority: 20
                         buttons:
-                            ezimagelink:
-                                priority: 10
-                    embedimage:
-                        buttons:
-                            ezmoveup:
-                                priority: 110
-                            ezmovedown:
-                                priority: 100
-                            ezattributesedit:
-                                priority: 90
-                            ezimageupdate:
-                                priority: 80
-                            ezimagevariation:
-                                priority: 70
-                            ezimagelink:
-                                priority: 60
-                            ezanchor:
-                                priority: 50
-                            ezembedleft:
-                                priority: 40
-                            ezembedcenter:
+                            ibexaEmbed:
                                 priority: 30
-                            ezembedright:
+                            ibexaEmbedImage:
                                 priority: 20
-                            ezblockremove:
+                            ibexaEmbedInline:
                                 priority: 10
-                    link:
+                    custom_tags_group:
+                        priority: 10
                         buttons:
-                            ezlinkedit:
-                                priority: 10
-                    li:
-                        buttons:
-                            ezmoveup:
-                                priority: 60
-                            ezmovedown:
-                                priority: 50
-                            ezattributesedit:
-                                priority: 40
-                            ezembedinline:
-                                priority: 30
-                            ezanchor:
-                                priority: 20
-                            ezblockremove:
-                                priority: 10
-                    ol:
-                        buttons:
-                            ezmoveup:
-                                priority: 60
-                            ezmovedown:
-                                priority: 50
-                            ezattributesedit:
-                                priority: 40
-                            ezembedinline:
-                                priority: 30
-                            ezanchor:
-                                priority: 20
-                            ezblockremove:
-                                priority: 10
-                    ul:
-                        buttons:
-                            ezmoveup:
-                                priority: 60
-                            ezmovedown:
-                                priority: 50
-                            ezattributesedit:
-                                priority: 40
-                            ezembedinline:
-                                priority: 30
-                            ezanchor:
-                                priority: 20
-                            ezblockremove:
-                                priority: 10
-                    paragraph:
-                        buttons:
-                            ezmoveup:
-                                priority: 110
-                            ezmovedown:
-                                priority: 100
-                            ezattributesedit:
-                                priority: 90
-                            ezstyles:
-                                priority: 80
-                            ezembedinline:
-                                priority: 70
-                            ezanchor:
-                                priority: 60
-                            ezblocktextalignleft:
-                                priority: 50
-                            ezblocktextaligncenter:
-                                priority: 40
-                            ezblocktextalignright:
-                                priority: 30
-                            ezblocktextalignjustify:
-                                priority: 20
-                            ezblockremove:
-                                priority: 10
-                    td:
-                        buttons:
-                            ezmoveup:
-                                priority: 100
-                            ezmovedown:
-                                priority: 90
-                            ezattributesedit:
-                                priority: 80
-                            tableHeading:
-                                priority: 70
-                            ezembedinline:
-                                priority: 60
-                            ezanchor:
-                                priority: 50
-                            eztablerow:
-                                priority: 40
-                            eztablecolumn:
-                                priority: 30
-                            eztablecell:
-                                priority: 20
-                            eztableremove:
-                                priority: 10
-                    th:
-                        buttons:
-                            ezmoveup:
-                                priority: 100
-                            ezmovedown:
-                                priority: 90
-                            ezattributesedit:
-                                priority: 80
-                            tableHeading:
-                                priority: 70
-                            ezembedinline:
-                                priority: 60
-                            ezanchor:
-                                priority: 50
-                            eztablerow:
-                                priority: 40
-                            eztablecolumn:
-                                priority: 30
-                            eztablecell:
-                                priority: 20
-                            eztableremove:
-                                priority: 10
-                    tr:
-                        buttons:
-                            ezmoveup:
-                                priority: 70
-                            ezmovedown:
-                                priority: 60
-                            ezattributesedit:
-                                priority: 50
-                            tableHeading:
-                                priority: 40
-                            ezanchor:
-                                priority: 20
-                            eztableremove:
-                                priority: 10
-                    table:
-                        buttons:
-                            ezmoveup:
-                                priority: 70
-                            ezmovedown:
-                                priority: 60
-                            ezattributesedit:
-                                priority: 50
-                            tableHeading:
-                                priority: 40
-                            ezanchor:
-                                priority: 20
-                            eztableremove:
-                                priority: 10
-                    text:
-                        buttons:
-                            ezstyles:
-                                priority: 90
-                            ezbold:
-                                priority: 80
-                            ezitalic:
-                                priority: 70
-                            ezunderline:
-                                priority: 60
-                            ezsubscript:
-                                priority: 50
-                            ezsuperscript:
-                                priority: 40
-                            ezquote:
-                                priority: 30
-                            ezstrike:
-                                priority: 20
-                            ezlink:
-                                priority: 10
-                    ezadd:
-                        buttons:
-                            ezheading:
-                                priority: 100
-                            ezparagraph:
-                                priority: 90
-                            ezunorderedlist:
-                                priority: 80
-                            ezorderedlist:
-                                priority: 70
-                            ezimage:
-                                priority: 60
-                            ezembed:
-                                priority: 50
-                            eztable:
-                                priority: 40
                             ezyoutube:
                                 priority: 30
                             eztwitter:

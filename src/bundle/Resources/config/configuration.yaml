@@ -23,6 +23,10 @@ services:
         arguments:
             $alloyEditorConfiguration: '%ezplatform.ezrichtext.alloy_editor%'
 
+    EzSystems\EzPlatformRichText\Configuration\Provider\CKEditor:
+        arguments:
+            $customStylesConfiguration: '%ezplatform.ezrichtext.custom_styles%'
+
     EzSystems\EzPlatformRichText\Configuration\AggregateProvider:
         arguments:
             $providers: !tagged ezplatform.ezrichtext.configuration.provider
