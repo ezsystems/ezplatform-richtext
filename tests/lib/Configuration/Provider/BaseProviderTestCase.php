@@ -9,8 +9,8 @@ declare(strict_types=1);
 namespace EzSystems\Tests\EzPlatformRichText\Configuration\Provider;
 
 use eZ\Publish\Core\MVC\ConfigResolverInterface;
-use EzSystems\EzPlatformRestBundle\Tests\Functional\TestCase;
 use EzSystems\EzPlatformRichText\SPI\Configuration\Provider;
+use PHPUnit\Framework\TestCase;
 
 abstract class BaseProviderTestCase extends TestCase
 {
