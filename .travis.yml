@@ -25,15 +25,6 @@ matrix:
   fast_finish: true
   include:
 # 7.3
-    - name: '[PHP 7.3] Unit tests'
-      php: 7.3
-      env: TEST_CONFIG="phpunit.xml"
-    - name: '[PHP 7.3] PostgreSQL Legacy Storage Integration'
-      php: 7.3
-      env:
-        - TEST_CONFIG="phpunit-integration-legacy.xml"
-        - DB="postgresql"
-        - DATABASE="pgsql://postgres@localhost/testdb"
     - name: '[PHP 7.3] Solr Search Engine Integration'
       php: 7.3
       env:
@@ -49,10 +40,6 @@ matrix:
         - APP_ENV=behat
         - APP_DEBUG=1
         - PROJECT_VERSION=^3.3.x-dev
-# CS check
-    - name: 'Code Style Check'
-      php: 7.3
-      env: CHECK_CS=true
 
 # reduce depth (history) of git checkout
 git:
@@ -91,7 +78,6 @@ install:
 # execute phpunit or behat as the script command
 script:
   - if [ "${TEST_CONFIG}" != "" ] ; then php -d date.timezone=$TEST_TIMEZONE ./vendor/bin/phpunit -c $TEST_CONFIG ; fi
-  - if [ "${CHECK_CS}" = "true" ] ; then ./vendor/bin/check_cs.sh; fi
   - if [ "${BEHAT_OPTS}" != "" ]; then cd "$HOME/build/project"; docker-compose exec --user www-data app sh -c "./vendor/bin/ezbehat $BEHAT_OPTS" ; fi
 
 after_failure:
