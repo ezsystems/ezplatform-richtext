@@ -41,9 +41,17 @@ export default class EzLinkConfig extends EzConfigButtonsBase {
         const domElement = new CKEDITOR.dom.element(ReactDOM.findDOMNode(this));
         const region = payload.selectionData.region;
         const xy = this.getWidgetXYPoint(region.left, region.top, CKEDITOR.SELECTION_BOTTOM_TO_TOP);
+        const elementWidth = domElement.$.offsetWidth;
+        const parentWidth = domElement.$.parentElement.offsetWidth;
+        const width = elementWidth + xy[0];
+        let moveLeft = xy[0];
+
+        if (parentWidth <= width) {
+            moveLeft = (parentWidth - elementWidth) - 10;
+        }
 
         domElement.addClass('ae-toolbar-transition');
-        domElement.setStyles({ left: xy[0] + 'px', top: xy[1] + 'px' });
+        domElement.setStyles({ left: moveLeft + 'px', top: xy[1] + 'px' });
 
         return true;
     }
