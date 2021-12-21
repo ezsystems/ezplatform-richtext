@@ -31,7 +31,7 @@
     "require-dev": {
         "ibexa/ci-scripts": "^0.1@dev",
         "ezsystems/doctrine-dbal-schema": "^1.0@dev",
-        "phpunit/phpunit": "^9.1",
+        "phpunit/phpunit": "^8.5",
         "symfony/finder": "^5.0",
         "matthiasnoback/symfony-config-test": "^4.1",
         "matthiasnoback/symfony-dependency-injection-test": "^4.1",
