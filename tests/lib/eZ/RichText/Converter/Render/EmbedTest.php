@@ -628,17 +628,11 @@ class EmbedTest extends TestCase
         string $expectedXmlString,
         array $errors,
         array $renderParams
-    ) {
-        if (isset($errors)) {
-            foreach ($errors as $index => $error) {
-                $this->loggerMock
-                    ->expects($this->at($index))
-                    ->method('error')
-                    ->with($error);
-            }
-        } else {
-            $this->loggerMock->expects($this->never())->method('error');
-        }
+    ): void {
+        $this->loggerMock
+            ->expects($this->exactly(count($errors)))
+            ->method('error')
+            ->withConsecutive($errors);
 
         $this->rendererMock->expects($this->never())->method('renderTemplate');
 

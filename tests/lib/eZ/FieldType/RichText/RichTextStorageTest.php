@@ -64,7 +64,7 @@ class RichTextStorageTest extends TestCase
     /**
      * @dataProvider providerForTestGetFieldData
      */
-    public function testGetFieldData($xmlString, $updatedXmlString, $linkIds, $linkUrls)
+    public function testGetFieldData($xmlString, $updatedXmlString, $linkIds, $linkUrls): void
     {
         $gateway = $this->getGatewayMock();
         $gateway
@@ -190,54 +190,54 @@ class RichTextStorageTest extends TestCase
         $remoteIds,
         $contentIds,
         $isUpdated
-    ) {
-        $gatewayCallIndex = 0;
+    ): void {
         $versionInfo = new VersionInfo(['versionNo' => 24]);
         $value = new FieldValue(['data' => $xmlString]);
         $field = new Field(['id' => 42, 'value' => $value]);
         $gateway = $this->getGatewayMock();
+
         $gateway
-            ->expects($this->at($gatewayCallIndex++))
+            ->expects($this->once())
             ->method('getUrlIdMap')
             ->with($this->equalTo($linkUrls))
             ->willReturn($linkIds);
+
         $gateway
-            ->expects($this->at($gatewayCallIndex++))
+            ->expects($this->once())
             ->method('getContentIds')
             ->with($this->equalTo($remoteIds))
             ->willReturn($contentIds);
+
         $gateway->expects($this->never())->method('getIdUrlMap');
+
         if (empty($insertLinks)) {
             $gateway->expects($this->never())->method('insertUrl');
         }
 
-        foreach ($linkUrls as $url) {
-            if (isset($insertLinks[$url])) {
-                $id = $insertLinks[$url];
-                $gateway
-                    ->expects($this->at($gatewayCallIndex++))
-                    ->method('insertUrl')
-                    ->with($this->equalTo($url))
-                    ->willReturn($id);
-                $linkIds[$url] = $id;
-            } else {
-                $id = $linkIds[$url];
-            }
+        [$urlAssertions, $insertedIds, $idsToLink, $linkIds] = $this->groupLinks($linkUrls, $insertLinks, $linkIds);
 
-            $gateway
-                ->expects($this->at($gatewayCallIndex++))
-                ->method('linkUrl')
-                ->with($id, 42, 24);
-        }
         $gateway
-            ->expects($this->at($gatewayCallIndex))
+            ->expects($this->exactly(count($urlAssertions)))
+            ->method('insertUrl')
+            ->withConsecutive($urlAssertions)
+            ->willReturnOnConsecutiveCalls($insertedIds);
+
+        $linkUrlsArguments = array_map(static function (int $id) {
+            return [$id, 42, 24];
+        }, $idsToLink);
+
+        $gateway
+            ->expects($this->exactly(count($idsToLink)))
+            ->method('linkUrl')
+            ->withConsecutive($linkUrlsArguments);
+
+        $gateway
+            ->expects($this->once())
             ->method('unlinkUrl')
             ->with(
                 42,
                 24,
-                array_values(
-                    $linkIds
-                )
+                array_values($linkIds)
             );
 
         $storage = $this->getPartlyMockedStorage($gateway);
@@ -257,7 +257,33 @@ class RichTextStorageTest extends TestCase
         );
     }
 
-    public function providerForTestStoreFieldDataThrowsNotFoundException()
+    private function groupLinks(array $linkUrls, array $insertLinks, array $linkIds): array
+    {
+        $urlAssertions = [];
+        $insertedIds = [];
+        $idsToLink = [];
+
+        foreach ($linkUrls as $url) {
+            if (isset($insertLinks[$url])) {
+                $id = $insertLinks[$url];
+                $urlAssertions[] = $this->equalTo($url);
+                $insertedIds[] = $id;
+                $idsToLink[] = $id;
+                $linkIds[$url] = $id;
+            } else {
+                $idsToLink[] = $linkIds[$url];
+            }
+        }
+
+        return [
+            $urlAssertions,
+            $insertedIds,
+            $idsToLink,
+            $linkIds,
+        ];
+    }
+
+    public function providerForTestStoreFieldDataThrowsNotFoundException(): array
     {
         return [
             [
@@ -287,7 +313,7 @@ class RichTextStorageTest extends TestCase
         $insertLinks,
         $remoteIds,
         $contentIds
-    ) {
+    ): void {
         $this->expectException(NotFoundException::class);
 
         $gateway = $this->getGatewayMock();
@@ -326,21 +352,19 @@ class RichTextStorageTest extends TestCase
         );
     }
 
-    public function testDeleteFieldData()
+    public function testDeleteFieldData(): void
     {
         $versionInfo = new VersionInfo(['versionNo' => 42]);
         $fieldIds = [12, 23];
         $gateway = $this->getGatewayMock();
         $storage = $this->getPartlyMockedStorage($gateway);
         $gateway
-            ->expects($this->at(0))
+            ->expects($this->exactly(2))
             ->method('unlinkUrl')
-            ->with(12, 42);
-
-        $gateway
-            ->expects($this->at(1))
-            ->method('unlinkUrl')
-            ->with(23, 42);
+            ->withConsecutive(
+                [12, 42],
+                [23, 42],
+            );
 
         $storage->deleteFieldData(
             $versionInfo,

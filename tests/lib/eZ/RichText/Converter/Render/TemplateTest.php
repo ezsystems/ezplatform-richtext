@@ -113,7 +113,7 @@ class TemplateTest extends TestCase
                     ->method('renderTemplate')
                     ->with(
                         $params['name'],
-                        isset($params['type']) ? $params['type'] : 'tag',
+                        $params['type'] ?? 'tag',
                         $params['params'],
                         $params['is_inline']
                     )

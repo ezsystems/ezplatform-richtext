@@ -60,12 +60,9 @@ class RichTextValidatorTest extends TestCase
             ->with($xml)
             ->willThrowException($this->createInvalidXmlExceptionMock($expectedErrors));
 
-        foreach ($expectedErrors as $i => $error) {
-            $this->executionContext
-                ->expects($this->at($i))
-                ->method('addViolation')
-                ->with($error->message);
-        }
+        $this->executionContext
+            ->method('addViolation')
+            ->willReturnOnConsecutiveCalls($this->fetchErrorMessages($expectedErrors));
 
         $this->inputHandler
             ->expects($this->never())
@@ -112,12 +109,10 @@ class RichTextValidatorTest extends TestCase
             ->with($doc)
             ->willReturn($expectedErrors);
 
-        foreach ($expectedErrors as $i => $error) {
-            $this->executionContext
-                ->expects($this->at($i))
-                ->method('addViolation')
-                ->with($error);
-        }
+        $this->executionContext
+            ->expects($this->exactly(count($expectedErrors)))
+            ->method('addViolation')
+            ->willReturnOnConsecutiveCalls($expectedErrors);
 
         $this->validator->validate($doc, new RichText());
     }
@@ -138,5 +133,12 @@ class RichTextValidatorTest extends TestCase
         $error->message = $message;
 
         return $error;
+    }
+
+    private function fetchErrorMessages(array $errors): array
+    {
+        return array_map(static function (LibXMLError $error) {
+            return $error->message;
+        }, $errors);
     }
 }
