@@ -922,7 +922,7 @@ EOT;
             $contentUpdateStruct
         );
 
-        $contentService->publishVersion($contentDraftB->versionInfo);
+        $contentService->publishVersion($contentDraftB->versionInfo, ['eng-US']);
     }
 
     /**
