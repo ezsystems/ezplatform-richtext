@@ -72,26 +72,21 @@ class RichTextStorageTest extends TestCase
             ->method('getIdUrlMap')
             ->with($this->equalTo($linkIds))
             ->willReturn($linkUrls);
+
         $gateway->expects($this->never())->method('getUrlIdMap');
         $gateway->expects($this->never())->method('getContentIds');
         $gateway->expects($this->never())->method('insertUrl');
 
         $logger = $this->getLoggerMock();
+        $missingIds = array_diff($linkIds, array_keys($linkUrls));
+        $errorMessages = array_map(static function (int $missingId) {
+            return "URL with ID {$missingId} not found";
+        }, $missingIds);
 
-        if (count($linkIds) !== count($linkUrls)) {
-            $loggerInvocationCount = 0;
-
-            foreach ($linkIds as $linkId) {
-                if (!isset($linkUrls[$linkId])) {
-                    $logger
-                        ->expects($this->at($loggerInvocationCount))
-                        ->method('error')
-                        ->with("URL with ID {$linkId} not found");
-                }
-            }
-        } else {
-            $logger->expects($this->never())->method($this->anything());
-        }
+        $logger
+            ->expects($this->exactly(count($missingIds)))
+            ->method('error')
+            ->withConsecutive($errorMessages);
 
         $versionInfo = new VersionInfo();
         $value = new FieldValue(['data' => $xmlString]);
