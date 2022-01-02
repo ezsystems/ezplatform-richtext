@@ -76,56 +76,82 @@ class TemplateTest extends TestCase
     /**
      * @dataProvider providerForTestConvert
      */
-    public function testConvert(DOMDocument $inputDocument, DOMDocument $expectedOutputDocument, array $expectedRenderParams)
-    {
+    public function testConvert(
+        DOMDocument $inputDocument,
+        DOMDocument $expectedOutputDocument,
+        array $expectedRenderParams
+    ): void {
         $this->rendererMock->expects($this->never())->method('renderContentEmbed');
         $this->rendererMock->expects($this->never())->method('renderLocationEmbed');
 
-        if (!empty($expectedRenderParams)) {
-            $convertIndex = 0;
-            foreach ($expectedRenderParams as $index => $params) {
-                if (!empty($params['params']['content'])) {
-                    // mock simple converter
-                    $contentDoc = new DOMDocument();
+        [
+            $convertParameters,
+            $convertReturnValues,
+            $renderParameters,
+            $renderReturnValues
+        ] = $this->provideConvertRenderValues($expectedRenderParams);
 
-                    $xml = '<section xmlns="http://docbook.org/ns/docbook">';
-                    $xml .= $params['params']['content'];
-                    $xml .= '</section>';
+        $this->converterMock
+            ->expects($this->exactly(count($convertReturnValues)))
+            ->method('convert')
+            ->withConsecutive(...$convertParameters)
+            ->willReturnOnConsecutiveCalls(...$convertReturnValues);
 
-                    $params['params']['content'] = $xml;
-
-                    $fragment = $contentDoc->createDocumentFragment();
-                    $fragment->appendXML($xml);
-
-                    $contentDoc->appendChild($fragment);
-
-                    $this->converterMock
-                        ->expects($this->at($convertIndex++))
-                        ->method('convert')
-                        ->with($contentDoc)
-                        ->willReturn($contentDoc);
-                } else {
-                    $params['params']['content'] = null;
-                }
-
-                $this->rendererMock
-                    ->expects($this->at($index))
-                    ->method('renderTemplate')
-                    ->with(
-                        $params['name'],
-                        $params['type'] ?? 'tag',
-                        $params['params'],
-                        $params['is_inline']
-                    )
-                    ->willReturn($params['name']);
-            }
-        } else {
-            $this->rendererMock->expects($this->never())->method('renderTemplate');
-        }
+        $this->rendererMock
+            ->expects($this->exactly(count($renderReturnValues)))
+            ->method('renderTemplate')
+            ->withConsecutive(...$renderParameters)
+            ->willReturnOnConsecutiveCalls(...$renderReturnValues);
 
         $outputDocument = $this->getConverter()->convert($inputDocument);
 
         $this->assertEquals($expectedOutputDocument, $outputDocument);
+    }
+
+    private function provideConvertRenderValues(array $expectedValues): array
+    {
+        $convertParameters = [];
+        $convertReturnValues = [];
+        $renderParameters = [];
+        $renderReturnValues = [];
+
+        foreach ($expectedValues as $values) {
+            if (!empty($values['params']['content'])) {
+                $contentDoc = new DOMDocument();
+
+                $xml = '<section xmlns="http://docbook.org/ns/docbook">';
+                $xml .= $values['params']['content'];
+                $xml .= '</section>';
+
+                $values['params']['content'] = $xml;
+
+                $fragment = $contentDoc->createDocumentFragment();
+                $fragment->appendXML($xml);
+
+                $contentDoc->appendChild($fragment);
+
+                $convertParameters[] = [$contentDoc];
+                $convertReturnValues[] = $contentDoc;
+            } else {
+                $values['params']['content'] = null;
+            }
+
+            $renderParameters[] = [
+                $values['name'],
+                $values['type'] ?? 'tag',
+                $values['params'],
+                $values['is_inline']
+            ];
+
+            $renderReturnValues[] = $values['name'];
+        }
+
+        return [
+            $convertParameters,
+            $convertReturnValues,
+            $renderParameters,
+            $renderReturnValues,
+        ];
     }
 
     protected function getConverter()
@@ -158,7 +184,7 @@ class TemplateTest extends TestCase
     /**
      * Expected Template parameters for each test fixture (key is a fixture name).
      */
-    const FIXTURES_PARAMETERS = [
+    public const FIXTURES_PARAMETERS = [
         '00-block' => [
             [
                 'name' => 'template1',
