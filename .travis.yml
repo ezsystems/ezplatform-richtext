@@ -32,14 +32,6 @@ matrix:
         - TEST_CONFIG="phpunit-integration-legacy-solr.xml"
         - CORES_SETUP="shared"
         - SOLR_CONFIG="vendor/ezsystems/ezplatform-solr-search-engine/lib/Resources/config/solr/schema.xml vendor/ezsystems/ezplatform-solr-search-engine/lib/Resources/config/solr/custom-fields-types.xml vendor/ezsystems/ezplatform-solr-search-engine/lib/Resources/config/solr/language-fieldtypes.xml"
-    - name: '[PHP 7.3] AdminUI Behat tests'
-      php: 7.3
-      env:
-        - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
-        - BEHAT_OPTS="--profile=browser --suite=admin-ui --tags=@richtext -c=behat_ibexa_oss.yaml"
-        - APP_ENV=behat
-        - APP_DEBUG=1
-        - PROJECT_VERSION=^3.3.x-dev
 
 # reduce depth (history) of git checkout
 git:
@@ -68,24 +60,11 @@ before_install:
 
 install:
   # Prepare system
-  - if [ "${TEST_CONFIG}" != "" ] ; then ./bin/.travis/prepare_unittest.sh; fi
+  -  ./bin/.travis/prepare_unittest.sh
   - travis_retry composer install --no-progress --no-interaction --prefer-dist --no-suggest
   # Setup Solr / Elastic search if asked for
-  - if [ "${TEST_CONFIG}" = "phpunit-integration-legacy-solr.xml" ] ; then ./vendor/ezsystems/ezplatform-solr-search-engine/bin/.travis/init_solr.sh; fi
-  # Prepare Behat environment if needed
-  - if [ "${BEHAT_OPTS}" != "" ]; then ./vendor/bin/prepare_project_edition.sh oss ${PROJECT_VERSION} ${COMPOSE_FILE} ; fi
+  - ./vendor/ezsystems/ezplatform-solr-search-engine/bin/.travis/init_solr.sh
 
 # execute phpunit or behat as the script command
 script:
-  - if [ "${TEST_CONFIG}" != "" ] ; then php -d date.timezone=$TEST_TIMEZONE ./vendor/bin/phpunit -c $TEST_CONFIG ; fi
-  - if [ "${BEHAT_OPTS}" != "" ]; then cd "$HOME/build/project"; docker-compose exec --user www-data app sh -c "./vendor/bin/ezbehat $BEHAT_OPTS" ; fi
-
-after_failure:
-  # Will show us the last bit of the log of container's main processes
-  # (not counting shell process above running php and behat)
-  # NOTE: errors during docker setup of travis build won't show up here (can't output all as it is too much in debug/verbose mode)
-  - docker-compose logs -t --tail=15
-  # Will show us what is up, and how long it's been up
-  - docker ps -s
-after_script:
-  - if [ "${BEHAT_OPTS}" != "" ] ; then vendor/bin/ezreport ; fi
+  - php -d date.timezone=$TEST_TIMEZONE ./vendor/bin/phpunit -c $TEST_CONFIG
