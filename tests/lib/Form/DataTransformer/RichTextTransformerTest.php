@@ -62,7 +62,7 @@ class RichTextTransformerTest extends TestCase
             ->expects($this->once())
             ->method('convert')
             ->willReturnCallback(function (DOMDocument $doc) use ($inputXML, $outputDocument) {
-                $this->assertXmlStringEqualsXmlString($inputXML, $doc);
+                $this->assertXmlStringEqualsXmlString($inputXML, $doc->saveXML());
 
                 return $outputDocument;
             });

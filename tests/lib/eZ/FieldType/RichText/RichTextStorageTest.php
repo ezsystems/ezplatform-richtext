@@ -203,13 +203,17 @@ class RichTextStorageTest extends TestCase
             ->with($this->equalTo($remoteIds))
             ->willReturn($contentIds);
 
-        $gateway->expects($this->never())->method('getIdUrlMap');
+        $gateway
+            ->expects($this->never())
+            ->method('getIdUrlMap');
 
         if (empty($insertLinks)) {
-            $gateway->expects($this->never())->method('insertUrl');
+            $gateway
+                ->expects($this->never())
+                ->method('insertUrl');
         }
 
-        [$urlAssertions, $insertedIds, $idsToLink, $linkIds] = $this->groupLinks($linkUrls, $insertLinks, $linkIds);
+        [$urlAssertions, $insertedIds, $idsToLink] = $this->groupLinksData($linkUrls, $insertLinks, $linkIds);
 
         $gateway
             ->expects($this->exactly(count($urlAssertions)))
@@ -224,16 +228,12 @@ class RichTextStorageTest extends TestCase
         $gateway
             ->expects($this->exactly(count($idsToLink)))
             ->method('linkUrl')
-            ->withConsecutive($linkUrlsArguments);
+            ->withConsecutive(...$linkUrlsArguments);
 
         $gateway
             ->expects($this->once())
             ->method('unlinkUrl')
-            ->with(
-                42,
-                24,
-                array_values($linkIds)
-            );
+            ->with(42, 24, $idsToLink);
 
         $storage = $this->getPartlyMockedStorage($gateway);
         $result = $storage->storeFieldData(
@@ -252,7 +252,7 @@ class RichTextStorageTest extends TestCase
         );
     }
 
-    private function groupLinks(array $linkUrls, array $insertLinks, array $linkIds): array
+    private function groupLinksData(array $linkUrls, array $insertLinks, array $linkIds): array
     {
         $urlAssertions = [];
         $insertedIds = [];
@@ -264,7 +264,6 @@ class RichTextStorageTest extends TestCase
                 $urlAssertions[] = $this->equalTo($url);
                 $insertedIds[] = $id;
                 $idsToLink[] = $id;
-                $linkIds[$url] = $id;
             } else {
                 $idsToLink[] = $linkIds[$url];
             }
@@ -274,7 +273,6 @@ class RichTextStorageTest extends TestCase
             $urlAssertions,
             $insertedIds,
             $idsToLink,
-            $linkIds,
         ];
     }
 
