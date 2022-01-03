@@ -200,7 +200,7 @@ class RendererTest extends TestCase
                 ],
                 [
                     [
-                        ["Template tag '{$tagName}' configuration was not found"]
+                        ["Template tag '{$tagName}' configuration was not found"],
                     ],
                     [],
                 ],
@@ -219,7 +219,7 @@ class RendererTest extends TestCase
                     [
                         [[$namespace]],
                         [['template' => $templateName = 'templateName4']],
-                    ]
+                    ],
                 ],
                 [
                     [
@@ -250,7 +250,7 @@ class RendererTest extends TestCase
                         ["Template tag '{$tagName}' default configuration was not found"],
                     ],
                     [
-                        ["Could not render template tag '{$tagName}': no template configured"]
+                        ["Could not render template tag '{$tagName}': no template configured"],
                     ],
                 ],
                 null,

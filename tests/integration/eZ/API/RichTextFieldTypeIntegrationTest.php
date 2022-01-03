@@ -568,7 +568,7 @@ EOT;
      *
      * @dataProvider providerForTestConvertRemoteObjectIdToObjectId
      */
-    public function testConvertRemoteObjectIdToObjectId($test, $expected)
+    public function testConvertRemoteObjectIdToObjectId($test, $expected): void
     {
         $repository = $this->getRepository();
 
@@ -630,7 +630,7 @@ EOT;
         );
 
         $this->assertEquals(
-            str_replace('[ObjectId]', $objectId, $expected),
+            str_replace('[ObjectId]', (string)$objectId, $expected),
             $test->getField('description')->value->xml->saveXML()
         );
     }

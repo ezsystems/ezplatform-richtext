@@ -35,7 +35,7 @@ class RichTextStorageTest extends TestCase
                 '<?xml version="1.0" encoding="UTF-8"?>
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml" xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom" version="5.0-variant ezpublish-1.0">
     <para>
-        <link xlink:href="http://www.ez.no#fragment1">Existing external link</link>
+        <link xlink:href="https://www.ibexa.co#fragment1">Existing external link</link>
     </para>
     <para>
         <link xlink:href="#">Non-existing external link</link>
@@ -43,7 +43,7 @@ class RichTextStorageTest extends TestCase
 </section>
 ',
                 [123, 456],
-                [123 => 'http://www.ez.no'],
+                [123 => 'https://www.ibexa.co'],
             ],
             [
                 '<?xml version="1.0" encoding="UTF-8"?>
@@ -115,16 +115,16 @@ class RichTextStorageTest extends TestCase
         <link xlink:href="ezremote://abcdef789#fragment1">Content link</link>
     </para>
     <para>
-        <link xlink:href="http://www.ez.no#fragment2">Existing external link</link>
+        <link xlink:href="https://www.ibexa.co#fragment2">Existing external link</link>
     </para>
     <para>
-        <link xlink:href="http://www.ez.no#fragment2">Existing external link repeated</link>
+        <link xlink:href="https://www.ibexa.co#fragment2">Existing external link repeated</link>
     </para>
     <para>
-        <link xlink:href="http://share.ez.no#fragment3">New external link</link>
+        <link xlink:href="https://developers.ibexa.co#fragment3">New external link</link>
     </para>
     <para>
-        <link xlink:href="http://share.ez.no#fragment3">New external link repeated</link>
+        <link xlink:href="https://developers.ibexa.co#fragment3">New external link repeated</link>
     </para>
 </section>',
                 '<?xml version="1.0" encoding="UTF-8"?>
@@ -146,9 +146,9 @@ class RichTextStorageTest extends TestCase
     </para>
 </section>
 ',
-                ['http://www.ez.no', 'http://share.ez.no'],
-                ['http://www.ez.no' => 123],
-                ['http://share.ez.no' => 456],
+                ['https://www.ibexa.co', 'https://developers.ibexa.co'],
+                ['https://www.ibexa.co' => 123],
+                ['https://developers.ibexa.co' => 456],
                 ['abcdef789'],
                 ['abcdef789' => 7575],
                 true,
@@ -219,7 +219,7 @@ class RichTextStorageTest extends TestCase
             ->expects($this->exactly(count($urlAssertions)))
             ->method('insertUrl')
             ->withConsecutive($urlAssertions)
-            ->willReturnOnConsecutiveCalls($insertedIds);
+            ->willReturnOnConsecutiveCalls(...$insertedIds);
 
         $linkUrlsArguments = array_map(static function (int $id) {
             return [$id, 42, 24];

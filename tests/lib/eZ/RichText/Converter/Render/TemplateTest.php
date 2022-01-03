@@ -140,7 +140,7 @@ class TemplateTest extends TestCase
                 $values['name'],
                 $values['type'] ?? 'tag',
                 $values['params'],
-                $values['is_inline']
+                $values['is_inline'],
             ];
 
             $renderReturnValues[] = $values['name'];
