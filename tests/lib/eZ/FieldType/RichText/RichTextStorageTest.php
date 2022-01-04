@@ -252,6 +252,11 @@ class RichTextStorageTest extends TestCase
         );
     }
 
+    /**
+     * @param string[] $linkUrls
+     * @param array<string|int> $insertLinks
+     * @param array<string|int> $linkIds
+     */
     private function groupLinksData(array $linkUrls, array $insertLinks, array $linkIds): array
     {
         $urlAssertions = [];
