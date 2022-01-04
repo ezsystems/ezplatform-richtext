@@ -8,7 +8,7 @@ on:
     pull_request: ~
 
 jobs:
-    cs_fix:
+    cs-fix:
         name: Run code style check
         runs-on: "ubuntu-20.04"
         strategy:
