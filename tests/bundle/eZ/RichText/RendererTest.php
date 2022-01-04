@@ -147,14 +147,20 @@ class RendererTest extends TestCase
         );
     }
 
-    public function providerForTestRenderTagWithTemplate()
+    public function providerForTestRenderTagWithTemplate(): array
     {
         return [
             [
                 $tagName = 'tag1',
                 [
-                    ['hasParameter', $namespace = "test.name.space.tag.{$tagName}", true],
-                    ['getParameter', $namespace, ['template' => $templateName = 'templateName1']],
+                    [
+                        [[$namespace = "test.name.space.tag.{$tagName}"]],
+                        [true],
+                    ],
+                    [
+                        [[$namespace]],
+                        [['template' => $templateName = 'templateName1']],
+                    ],
                 ],
                 [],
                 $templateName,
@@ -165,8 +171,14 @@ class RendererTest extends TestCase
             [
                 $tagName = 'tag2',
                 [
-                    ['hasParameter', $namespace = "test.name.space.tag.{$tagName}", true],
-                    ['getParameter', $namespace, ['template' => $templateName = 'templateName2']],
+                    [
+                        [[$namespace = "test.name.space.tag.{$tagName}"]],
+                        [true],
+                    ],
+                    [
+                        [[$namespace]],
+                        [['template' => $templateName = 'templateName2']],
+                    ],
                 ],
                 [],
                 $templateName,
@@ -177,12 +189,20 @@ class RendererTest extends TestCase
             [
                 $tagName = 'tag3',
                 [
-                    ['hasParameter', "test.name.space.tag.{$tagName}", false],
-                    ['hasParameter', $namespace = 'test.name.space.tag.default', true],
-                    ['getParameter', $namespace, ['template' => $templateName = 'templateName3']],
+                    [
+                        [["test.name.space.tag.{$tagName}"], [$namespace = 'test.name.space.tag.default']],
+                        [false, true],
+                    ],
+                    [
+                        [[$namespace]],
+                        [['template' => $templateName = 'templateName3']],
+                    ],
                 ],
                 [
-                    ['warning', "Template tag '{$tagName}' configuration was not found"],
+                    [
+                        ["Template tag '{$tagName}' configuration was not found"],
+                    ],
+                    [],
                 ],
                 $templateName,
                 $templateName,
@@ -192,12 +212,20 @@ class RendererTest extends TestCase
             [
                 $tagName = 'tag4',
                 [
-                    ['hasParameter', "test.name.space.tag.{$tagName}", false],
-                    ['hasParameter', $namespace = 'test.name.space.tag.default_inline', true],
-                    ['getParameter', $namespace, ['template' => $templateName = 'templateName4']],
+                    [
+                        [["test.name.space.tag.{$tagName}"], [$namespace = 'test.name.space.tag.default_inline']],
+                        [false, true],
+                    ],
+                    [
+                        [[$namespace]],
+                        [['template' => $templateName = 'templateName4']],
+                    ],
                 ],
                 [
-                    ['warning', "Template tag '{$tagName}' configuration was not found"],
+                    [
+                        ["Template tag '{$tagName}' configuration was not found"],
+                    ],
+                    [],
                 ],
                 $templateName,
                 $templateName,
@@ -207,13 +235,23 @@ class RendererTest extends TestCase
             [
                 $tagName = 'tag5',
                 [
-                    ['hasParameter', "test.name.space.tag.{$tagName}", false],
-                    ['hasParameter', $namespace = 'test.name.space.tag.default', false],
+                    [
+                        [["test.name.space.tag.{$tagName}"], ['test.name.space.tag.default']],
+                        [false, false],
+                    ],
+                    [
+                        [],
+                        [],
+                    ],
                 ],
                 [
-                    ['warning', "Template tag '{$tagName}' configuration was not found"],
-                    ['warning', "Template tag '{$tagName}' default configuration was not found"],
-                    ['error', "Could not render template tag '{$tagName}': no template configured"],
+                    [
+                        ["Template tag '{$tagName}' configuration was not found"],
+                        ["Template tag '{$tagName}' default configuration was not found"],
+                    ],
+                    [
+                        ["Could not render template tag '{$tagName}': no template configured"],
+                    ],
                 ],
                 null,
                 null,
@@ -223,13 +261,23 @@ class RendererTest extends TestCase
             [
                 $tagName = 'tag6',
                 [
-                    ['hasParameter', "test.name.space.tag.{$tagName}", false],
-                    ['hasParameter', $namespace = 'test.name.space.tag.default_inline', false],
+                    [
+                        [["test.name.space.tag.{$tagName}"], ['test.name.space.tag.default_inline']],
+                        [false, false],
+                    ],
+                    [
+                        [],
+                        [],
+                    ],
                 ],
                 [
-                    ['warning', "Template tag '{$tagName}' configuration was not found"],
-                    ['warning', "Template tag '{$tagName}' default configuration was not found"],
-                    ['error', "Could not render template tag '{$tagName}': no template configured"],
+                    [
+                        ["Template tag '{$tagName}' configuration was not found"],
+                        ["Template tag '{$tagName}' default configuration was not found"],
+                    ],
+                    [
+                        ["Could not render template tag '{$tagName}': no template configured"],
+                    ],
                 ],
                 null,
                 null,
@@ -250,7 +298,7 @@ class RendererTest extends TestCase
         $renderTemplate,
         $isInline,
         $renderResult
-    ) {
+    ): void {
         $renderer = $this->getMockedRenderer(['render']);
         $parameters = ['parameters'];
 
@@ -287,17 +335,24 @@ class RendererTest extends TestCase
                 ->expects($this->never())
                 ->method($this->anything());
         } else {
-            $i = 0;
-            foreach ($configResolverParams as $params) {
-                $method = $params[0];
-                $namespace = $params[1];
-                $returnValue = $params[2];
+            [$hasParameterValues, $getParameterValues] = $configResolverParams;
+            [$hasParameterArguments, $hasParameterReturnValues] = $hasParameterValues;
+            [$getParameterArguments, $getParameterReturnValues] = $getParameterValues;
+
+            if (!empty($hasParameterArguments)) {
                 $this->configResolverMock
-                    ->expects($this->at($i))
-                    ->method($method)
-                    ->with($namespace)
-                    ->willReturn($returnValue);
-                ++$i;
+                    ->expects($this->exactly(count($hasParameterArguments)))
+                    ->method('hasParameter')
+                    ->withConsecutive($hasParameterArguments[0])
+                    ->willReturnOnConsecutiveCalls(...$hasParameterReturnValues);
+            }
+
+            if (!empty($getParameterArguments)) {
+                $this->configResolverMock
+                    ->expects($this->exactly(count($getParameterArguments)))
+                    ->method('getParameter')
+                    ->withConsecutive($getParameterArguments[0])
+                    ->willReturnOnConsecutiveCalls(...$getParameterReturnValues);
             }
         }
 
@@ -306,15 +361,20 @@ class RendererTest extends TestCase
                 ->expects($this->never())
                 ->method($this->anything());
         } else {
-            $i = 0;
-            foreach ($loggerParams as $params) {
-                $method = $params[0];
-                $message = $params[1];
+            [$warningArguments, $errorArguments] = $loggerParams;
+
+            if (!empty($warningArguments)) {
                 $this->loggerMock
-                    ->expects($this->at($i))
-                    ->method($method)
-                    ->with($message);
-                ++$i;
+                    ->expects($this->exactly(count($warningArguments)))
+                    ->method('warning')
+                    ->withConsecutive(...$warningArguments);
+            }
+
+            if (!empty($errorArguments)) {
+                $this->loggerMock
+                    ->expects($this->exactly(count($errorArguments)))
+                    ->method('error')
+                    ->withConsecutive(...$errorArguments);
             }
         }
 
@@ -587,15 +647,15 @@ class RendererTest extends TestCase
 
         $contentInfoMock = $this->createMock(ContentInfo::class);
         $contentInfoMock
-            ->expects($this->at(0))
+            ->expects($this->exactly(2))
             ->method('__get')
-            ->with('mainLocationId')
-            ->willReturn(2);
-        $contentInfoMock
-            ->expects($this->at(1))
-            ->method('__get')
-            ->with('isHidden')
-            ->willReturn(true);
+            ->withConsecutive(
+                ['mainLocationId'],
+                ['isHidden'],
+            )->willReturnOnConsecutiveCalls(
+                2,
+                true
+            );
 
         $contentMock = $this->createMock(Content::class);
         $contentMock
@@ -709,11 +769,20 @@ class RendererTest extends TestCase
                 false,
                 new AccessDeniedException(),
                 [
-                    ['hasParameter', $namespace = 'test.name.space.embed.content_denied', true],
-                    ['getParameter', $namespace, ['template' => $templateName = 'templateName1']],
+                    [
+                        [[$namespace = 'test.name.space.embed.content_denied']],
+                        [true],
+                    ],
+                    [
+                        [[$namespace]],
+                        [['template' => $templateName = 'templateName1']],
+                    ],
                 ],
                 [
-                    ['error', "Could not render embedded resource: access denied to embed Content #{$contentId}"],
+                    [],
+                    [
+                        ["Could not render embedded resource: access denied to embed Content #{$contentId}"],
+                    ],
                 ],
                 $templateName,
                 $templateName,
@@ -723,11 +792,20 @@ class RendererTest extends TestCase
                 true,
                 new AccessDeniedException(),
                 [
-                    ['hasParameter', $namespace = 'test.name.space.embed.content_inline_denied', true],
-                    ['getParameter', $namespace, ['template' => $templateName = 'templateName2']],
+                    [
+                        [[$namespace = 'test.name.space.embed.content_inline_denied']],
+                        [true],
+                    ],
+                    [
+                        [[$namespace]],
+                        [['template' => $templateName = 'templateName2']],
+                    ],
                 ],
                 [
-                    ['error', "Could not render embedded resource: access denied to embed Content #{$contentId}"],
+                    [],
+                    [
+                        ["Could not render embedded resource: access denied to embed Content #{$contentId}"],
+                    ],
                 ],
                 $templateName,
                 $templateName,
@@ -737,8 +815,14 @@ class RendererTest extends TestCase
                 false,
                 null,
                 [
-                    ['hasParameter', $namespace = 'test.name.space.embed.content', true],
-                    ['getParameter', $namespace, ['template' => $templateName = 'templateName3']],
+                    [
+                        [[$namespace = 'test.name.space.embed.content']],
+                        [true],
+                    ],
+                    [
+                        [[$namespace]],
+                        [['template' => $templateName = 'templateName3']],
+                    ],
                 ],
                 [],
                 $templateName,
@@ -749,8 +833,14 @@ class RendererTest extends TestCase
                 true,
                 null,
                 [
-                    ['hasParameter', $namespace = 'test.name.space.embed.content_inline', true],
-                    ['getParameter', $namespace, ['template' => $templateName = 'templateName4']],
+                    [
+                        [[$namespace = 'test.name.space.embed.content_inline']],
+                        [true],
+                    ],
+                    [
+                        [[$namespace]],
+                        [['template' => $templateName = 'templateName4']],
+                    ],
                 ],
                 [],
                 $templateName,
@@ -761,12 +851,21 @@ class RendererTest extends TestCase
                 false,
                 null,
                 [
-                    ['hasParameter', $namespace = 'test.name.space.embed.content', false],
-                    ['hasParameter', $namespace2 = 'test.name.space.embed.default', true],
-                    ['getParameter', $namespace2, ['template' => $templateName = 'templateName5']],
+                    [
+                        [
+                            [$namespace = 'test.name.space.embed.content'],
+                            [$namespace2 = 'test.name.space.embed.default'],
+                        ],
+                        [false, true],
+                    ],
+                    [
+                        [[$namespace2]],
+                        [['template' => $templateName = 'templateName5']],
+                    ],
                 ],
                 [
-                    ['warning', "Embed tag configuration '{$namespace}' was not found"],
+                    [["Embed tag configuration '{$namespace}' was not found"]],
+                    [],
                 ],
                 $templateName,
                 $templateName,
@@ -776,12 +875,21 @@ class RendererTest extends TestCase
                 true,
                 null,
                 [
-                    ['hasParameter', $namespace = 'test.name.space.embed.content_inline', false],
-                    ['hasParameter', $namespace2 = 'test.name.space.embed.default_inline', true],
-                    ['getParameter', $namespace2, ['template' => $templateName = 'templateName6']],
+                    [
+                        [
+                            [$namespace = 'test.name.space.embed.content_inline'],
+                            [$namespace2 = 'test.name.space.embed.default_inline'],
+                        ],
+                        [false, true],
+                    ],
+                    [
+                        [[$namespace2]],
+                        [['template' => $templateName = 'templateName6']],
+                    ],
                 ],
                 [
-                    ['warning', "Embed tag configuration '{$namespace}' was not found"],
+                    [["Embed tag configuration '{$namespace}' was not found"]],
+                    [],
                 ],
                 $templateName,
                 $templateName,
@@ -791,12 +899,24 @@ class RendererTest extends TestCase
                 false,
                 null,
                 [
-                    ['hasParameter', $namespace = 'test.name.space.embed.content', false],
-                    ['hasParameter', $namespace2 = 'test.name.space.embed.default', false],
+                    [
+                        [
+                            [$namespace = 'test.name.space.embed.content'],
+                            [$namespace2 = 'test.name.space.embed.default'],
+                        ],
+                        [false, false],
+                    ],
+                    [
+                        [],
+                        [],
+                    ],
                 ],
                 [
-                    ['warning', "Embed tag configuration '{$namespace}' was not found"],
-                    ['warning', "Embed tag default configuration '{$namespace2}' was not found"],
+                    [
+                        ["Embed tag configuration '{$namespace}' was not found"],
+                        ["Embed tag default configuration '{$namespace2}' was not found"],
+                    ],
+                    [],
                 ],
                 null,
                 null,
@@ -806,12 +926,24 @@ class RendererTest extends TestCase
                 true,
                 null,
                 [
-                    ['hasParameter', $namespace = 'test.name.space.embed.content_inline', false],
-                    ['hasParameter', $namespace2 = 'test.name.space.embed.default_inline', false],
+                    [
+                        [
+                            [$namespace = 'test.name.space.embed.content_inline'],
+                            [$namespace2 = 'test.name.space.embed.default_inline'],
+                        ],
+                        [false, false],
+                    ],
+                    [
+                        [],
+                        [],
+                    ],
                 ],
                 [
-                    ['warning', "Embed tag configuration '{$namespace}' was not found"],
-                    ['warning', "Embed tag default configuration '{$namespace2}' was not found"],
+                    [
+                        ["Embed tag configuration '{$namespace}' was not found"],
+                        ["Embed tag default configuration '{$namespace2}' was not found"],
+                    ],
+                    [],
                 ],
                 null,
                 null,
@@ -831,7 +963,7 @@ class RendererTest extends TestCase
         $templateEngineTemplate,
         $renderTemplate,
         $renderResult
-    ) {
+    ): void {
         $renderer = $this->getMockedRenderer(['render', 'checkContentPermissions']);
         $contentId = 42;
         $viewType = 'embedTest';
@@ -892,17 +1024,24 @@ class RendererTest extends TestCase
                 ->expects($this->never())
                 ->method($this->anything());
         } else {
-            $i = 0;
-            foreach ($configResolverParams as $params) {
-                $method = $params[0];
-                $namespace = $params[1];
-                $returnValue = $params[2];
+            [$hasParameterValues, $getParameterValues] = $configResolverParams;
+            [$hasParameterArguments, $hasParameterReturnValues] = $hasParameterValues;
+            [$getParameterArguments, $getParameterReturnValues] = $getParameterValues;
+
+            if (!empty($hasParameterArguments)) {
                 $this->configResolverMock
-                    ->expects($this->at($i))
-                    ->method($method)
-                    ->with($namespace)
-                    ->willReturn($returnValue);
-                ++$i;
+                    ->expects($this->exactly(count($hasParameterArguments)))
+                    ->method('hasParameter')
+                    ->withConsecutive($hasParameterArguments[0])
+                    ->willReturnOnConsecutiveCalls(...$hasParameterReturnValues);
+            }
+
+            if (!empty($getParameterArguments)) {
+                $this->configResolverMock
+                    ->expects($this->exactly(count($getParameterArguments)))
+                    ->method('getParameter')
+                    ->withConsecutive($getParameterArguments[0])
+                    ->willReturnOnConsecutiveCalls(...$getParameterReturnValues);
             }
         }
 
@@ -911,15 +1050,20 @@ class RendererTest extends TestCase
                 ->expects($this->never())
                 ->method($this->anything());
         } else {
-            $i = 0;
-            foreach ($loggerParams as $params) {
-                $method = $params[0];
-                $message = $params[1];
+            [$warningArguments, $errorArguments] = $loggerParams;
+
+            if (!empty($warningArguments)) {
                 $this->loggerMock
-                    ->expects($this->at($i))
-                    ->method($method)
-                    ->with($message);
-                ++$i;
+                    ->expects($this->exactly(count($warningArguments)))
+                    ->method('warning')
+                    ->withConsecutive(...$warningArguments);
+            }
+
+            if (!empty($errorArguments)) {
+                $this->loggerMock
+                    ->expects($this->exactly(count($errorArguments)))
+                    ->method('error')
+                    ->withConsecutive(...$errorArguments);
             }
         }
 
@@ -1253,11 +1397,18 @@ class RendererTest extends TestCase
                 false,
                 new AccessDeniedException(),
                 [
-                    ['hasParameter', $namespace = 'test.name.space.embed.location_denied', true],
-                    ['getParameter', $namespace, ['template' => $templateName = 'templateName1']],
+                    [
+                        [[$namespace = 'test.name.space.embed.location_denied']],
+                        [true],
+                    ],
+                    [
+                        [[$namespace]],
+                        [['template' => $templateName = 'templateName1']],
+                    ],
                 ],
                 [
-                    ['error', "Could not render embedded resource: access denied to embed Location #{$locationId}"],
+                    [],
+                    [["Could not render embedded resource: access denied to embed Location #{$locationId}"]],
                 ],
                 $templateName,
                 $templateName,
@@ -1267,11 +1418,18 @@ class RendererTest extends TestCase
                 true,
                 new AccessDeniedException(),
                 [
-                    ['hasParameter', $namespace = 'test.name.space.embed.location_inline_denied', true],
-                    ['getParameter', $namespace, ['template' => $templateName = 'templateName2']],
+                    [
+                        [[$namespace = 'test.name.space.embed.location_inline_denied']],
+                        [true],
+                    ],
+                    [
+                        [[$namespace]],
+                        [['template' => $templateName = 'templateName2']],
+                    ],
                 ],
                 [
-                    ['error', "Could not render embedded resource: access denied to embed Location #{$locationId}"],
+                    [],
+                    [["Could not render embedded resource: access denied to embed Location #{$locationId}"]],
                 ],
                 $templateName,
                 $templateName,
@@ -1281,8 +1439,14 @@ class RendererTest extends TestCase
                 false,
                 null,
                 [
-                    ['hasParameter', $namespace = 'test.name.space.embed.location', true],
-                    ['getParameter', $namespace, ['template' => $templateName = 'templateName3']],
+                    [
+                        [[$namespace = 'test.name.space.embed.location']],
+                        [true],
+                    ],
+                    [
+                        [[$namespace]],
+                        [['template' => $templateName = 'templateName3']],
+                    ],
                 ],
                 [],
                 $templateName,
@@ -1293,8 +1457,14 @@ class RendererTest extends TestCase
                 true,
                 null,
                 [
-                    ['hasParameter', $namespace = 'test.name.space.embed.location_inline', true],
-                    ['getParameter', $namespace, ['template' => $templateName = 'templateName4']],
+                    [
+                        [[$namespace = 'test.name.space.embed.location_inline']],
+                        [true],
+                    ],
+                    [
+                        [[$namespace]],
+                        [['template' => $templateName = 'templateName4']],
+                    ],
                 ],
                 [],
                 $templateName,
@@ -1305,12 +1475,21 @@ class RendererTest extends TestCase
                 false,
                 null,
                 [
-                    ['hasParameter', $namespace = 'test.name.space.embed.location', false],
-                    ['hasParameter', $namespace2 = 'test.name.space.embed.default', true],
-                    ['getParameter', $namespace2, ['template' => $templateName = 'templateName5']],
+                    [
+                        [
+                            [$namespace = 'test.name.space.embed.location'],
+                            [$namespace2 = 'test.name.space.embed.default'],
+                        ],
+                        [false, true],
+                    ],
+                    [
+                        [[$namespace2]],
+                        [['template' => $templateName = 'templateName5']],
+                    ],
                 ],
                 [
-                    ['warning', "Embed tag configuration '{$namespace}' was not found"],
+                    [["Embed tag configuration '{$namespace}' was not found"]],
+                    [],
                 ],
                 $templateName,
                 $templateName,
@@ -1320,12 +1499,21 @@ class RendererTest extends TestCase
                 true,
                 null,
                 [
-                    ['hasParameter', $namespace = 'test.name.space.embed.location_inline', false],
-                    ['hasParameter', $namespace2 = 'test.name.space.embed.default_inline', true],
-                    ['getParameter', $namespace2, ['template' => $templateName = 'templateName6']],
+                    [
+                        [
+                            [$namespace = 'test.name.space.embed.location_inline'],
+                            [$namespace2 = 'test.name.space.embed.default_inline'],
+                        ],
+                        [false, true],
+                    ],
+                    [
+                        [[$namespace2]],
+                        [['template' => $templateName = 'templateName6']],
+                    ],
                 ],
                 [
-                    ['warning', "Embed tag configuration '{$namespace}' was not found"],
+                    [["Embed tag configuration '{$namespace}' was not found"]],
+                    [],
                 ],
                 $templateName,
                 $templateName,
@@ -1335,12 +1523,24 @@ class RendererTest extends TestCase
                 false,
                 null,
                 [
-                    ['hasParameter', $namespace = 'test.name.space.embed.location', false],
-                    ['hasParameter', $namespace2 = 'test.name.space.embed.default', false],
+                    [
+                        [
+                            [$namespace = 'test.name.space.embed.location'],
+                            [$namespace2 = 'test.name.space.embed.default'],
+                        ],
+                        [false, false],
+                    ],
+                    [
+                        [],
+                        [],
+                    ],
                 ],
                 [
-                    ['warning', "Embed tag configuration '{$namespace}' was not found"],
-                    ['warning', "Embed tag default configuration '{$namespace2}' was not found"],
+                    [
+                        ["Embed tag configuration '{$namespace}' was not found"],
+                        ["Embed tag default configuration '{$namespace2}' was not found"],
+                    ],
+                    [],
                 ],
                 null,
                 null,
@@ -1350,12 +1550,24 @@ class RendererTest extends TestCase
                 true,
                 null,
                 [
-                    ['hasParameter', $namespace = 'test.name.space.embed.location_inline', false],
-                    ['hasParameter', $namespace2 = 'test.name.space.embed.default_inline', false],
+                    [
+                        [
+                            [$namespace = 'test.name.space.embed.location_inline'],
+                            [$namespace2 = 'test.name.space.embed.default_inline'],
+                        ],
+                        [false, false],
+                    ],
+                    [
+                        [],
+                        [],
+                    ],
                 ],
                 [
-                    ['warning', "Embed tag configuration '{$namespace}' was not found"],
-                    ['warning', "Embed tag default configuration '{$namespace2}' was not found"],
+                    [
+                        ["Embed tag configuration '{$namespace}' was not found"],
+                        ["Embed tag default configuration '{$namespace2}' was not found"],
+                    ],
+                    [],
                 ],
                 null,
                 null,
@@ -1435,17 +1647,24 @@ class RendererTest extends TestCase
                 ->expects($this->never())
                 ->method($this->anything());
         } else {
-            $i = 0;
-            foreach ($configResolverParams as $params) {
-                $method = $params[0];
-                $namespace = $params[1];
-                $returnValue = $params[2];
+            [$hasParameterValues, $getParameterValues] = $configResolverParams;
+            [$hasParameterArguments, $hasParameterReturnValues] = $hasParameterValues;
+            [$getParameterArguments, $getParameterReturnValues] = $getParameterValues;
+
+            if (!empty($hasParameterArguments)) {
                 $this->configResolverMock
-                    ->expects($this->at($i))
-                    ->method($method)
-                    ->with($namespace)
-                    ->willReturn($returnValue);
-                ++$i;
+                    ->expects($this->exactly(count($hasParameterArguments)))
+                    ->method('hasParameter')
+                    ->withConsecutive($hasParameterArguments[0])
+                    ->willReturnOnConsecutiveCalls(...$hasParameterReturnValues);
+            }
+
+            if (!empty($getParameterArguments)) {
+                $this->configResolverMock
+                    ->expects($this->exactly(count($getParameterArguments)))
+                    ->method('getParameter')
+                    ->withConsecutive($getParameterArguments[0])
+                    ->willReturnOnConsecutiveCalls(...$getParameterReturnValues);
             }
         }
 
@@ -1454,15 +1673,20 @@ class RendererTest extends TestCase
                 ->expects($this->never())
                 ->method($this->anything());
         } else {
-            $i = 0;
-            foreach ($loggerParams as $params) {
-                $method = $params[0];
-                $message = $params[1];
+            [$warningArguments, $errorArguments] = $loggerParams;
+
+            if (!empty($warningArguments)) {
                 $this->loggerMock
-                    ->expects($this->at($i))
-                    ->method($method)
-                    ->with($message);
-                ++$i;
+                    ->expects($this->exactly(count($warningArguments)))
+                    ->method('warning')
+                    ->withConsecutive(...$warningArguments);
+            }
+
+            if (!empty($errorArguments)) {
+                $this->loggerMock
+                    ->expects($this->exactly(count($errorArguments)))
+                    ->method('error')
+                    ->withConsecutive(...$errorArguments);
             }
         }
 
@@ -1578,15 +1802,15 @@ class RendererTest extends TestCase
     {
         $contentInfoMock = $this->createMock(ContentInfo::class);
         $contentInfoMock
-            ->expects($this->at(0))
+            ->expects($this->exactly(2))
             ->method('__get')
-            ->with('mainLocationId')
-            ->willReturn($mainLocationId);
-        $contentInfoMock
-            ->expects($this->at(1))
-            ->method('__get')
-            ->with('isHidden')
-            ->willReturn(false);
+            ->withConsecutive(
+                ['mainLocationId'],
+                ['isHidden'],
+            )->willReturnOnConsecutiveCalls(
+                $mainLocationId,
+                false
+            );
 
         $contentMock = $this->createMock(Content::class);
         $contentMock

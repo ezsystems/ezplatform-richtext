@@ -50,15 +50,23 @@ class EmbedTest extends TestCase
                 [],
                 [
                     [
-                        'method' => 'renderContentEmbed',
-                        'id' => '106',
-                        'viewType' => 'embed',
-                        'is_inline' => false,
-                        'embedParams' => [
+                        [
                             'id' => '106',
                             'viewType' => 'embed',
+                            [
+                                'embedParams' => [
+                                    'id' => '106',
+                                    'viewType' => 'embed',
+                                ],
+                            ],
+                            'is_inline' => false,
                         ],
                     ],
+                    ['106'],
+                ],
+                [
+                    [],
+                    [],
                 ],
             ],
             [
@@ -78,28 +86,36 @@ class EmbedTest extends TestCase
                 [],
                 [
                     [
-                        'method' => 'renderContentEmbed',
-                        'id' => '106',
-                        'viewType' => 'embed',
-                        'is_inline' => false,
-                        'embedParams' => [
+                        [
                             'id' => '106',
                             'viewType' => 'embed',
-                            'link' => [
-                                'href' => 'RESOLVED',
-                                'resourceType' => 'URL',
-                                'resourceId' => null,
-                                'wrapped' => false,
-                                'target' => '_blank',
-                                'title' => 'Link title',
-                                'id' => 'link-id-1',
-                                'class' => 'link-class',
+                            [
+                                'embedParams' => [
+                                    'id' => '106',
+                                    'viewType' => 'embed',
+                                    'link' => [
+                                        'href' => 'RESOLVED',
+                                        'resourceType' => 'URL',
+                                        'resourceId' => null,
+                                        'wrapped' => false,
+                                        'target' => '_blank',
+                                        'title' => 'Link title',
+                                        'id' => 'link-id-1',
+                                        'class' => 'link-class',
+                                    ],
+                                    'class' => 'embed-class',
+                                    'align' => 'left',
+                                    'anchor' => 'embed-id-1',
+                                ],
                             ],
-                            'class' => 'embed-class',
-                            'align' => 'left',
-                            'anchor' => 'embed-id-1',
+                            'is_inline' => false,
                         ],
                     ],
+                    ['106'],
+                ],
+                [
+                    [],
+                    [],
                 ],
             ],
             [
@@ -144,30 +160,38 @@ class EmbedTest extends TestCase
 </section>',
                 [],
                 [
+                    [],
+                    [],
+                ],
+                [
                     [
-                        'method' => 'renderLocationEmbed',
-                        'id' => '601',
-                        'viewType' => 'embed-inline',
-                        'is_inline' => false,
-                        'embedParams' => [
+                        [
                             'id' => '601',
                             'viewType' => 'embed-inline',
-                            'config' => [
-                                'size' => 'medium',
-                                'offset' => 10,
-                                'limit' => 5,
-                                'hey' => [
-                                    'look' => [
-                                        'at' => [
-                                            'this' => 'wohoo',
-                                            'that' => 'weeee',
+                            [
+                                'embedParams' => [
+                                    'id' => '601',
+                                    'viewType' => 'embed-inline',
+                                    'config' => [
+                                        'size' => 'medium',
+                                        'offset' => 10,
+                                        'limit' => 5,
+                                        'hey' => [
+                                            'look' => [
+                                                'at' => [
+                                                    'this' => 'wohoo',
+                                                    'that' => 'weeee',
+                                                ],
+                                            ],
+                                            'what' => 'get to the chopper',
                                         ],
                                     ],
-                                    'what' => 'get to the chopper',
                                 ],
                             ],
+                            'is_inline' => false,
                         ],
                     ],
+                    ['601'],
                 ],
             ],
             [
@@ -214,38 +238,46 @@ class EmbedTest extends TestCase
 </section>',
                 [],
                 [
+                    [],
+                    [],
+                ],
+                [
                     [
-                        'method' => 'renderLocationEmbed',
-                        'id' => '601',
-                        'viewType' => 'embed-inline',
-                        'is_inline' => false,
-                        'embedParams' => [
+                        [
                             'id' => '601',
                             'viewType' => 'embed-inline',
-                            'config' => [
-                                'size' => 'medium',
-                                'offset' => 10,
-                                'limit' => 5,
-                                'hey' => [
-                                    'look' => [
-                                        'at' => [
-                                            'this' => 'wohoo',
-                                            'that' => 'weeee',
+                            [
+                                'embedParams' => [
+                                    'id' => '601',
+                                    'viewType' => 'embed-inline',
+                                    'config' => [
+                                        'size' => 'medium',
+                                        'offset' => 10,
+                                        'limit' => 5,
+                                        'hey' => [
+                                            'look' => [
+                                                'at' => [
+                                                    'this' => 'wohoo',
+                                                    'that' => 'weeee',
+                                                ],
+                                            ],
+                                            'what' => 'get to the chopper',
                                         ],
                                     ],
-                                    'what' => 'get to the chopper',
+                                    'link' => [
+                                        'href' => 'RESOLVED',
+                                        'resourceType' => 'CONTENT',
+                                        'resourceId' => '95',
+                                        'resourceFragmentIdentifier' => 'fragment1',
+                                        'wrapped' => false,
+                                        'target' => '_self',
+                                    ],
                                 ],
                             ],
-                            'link' => [
-                                'href' => 'RESOLVED',
-                                'resourceType' => 'CONTENT',
-                                'resourceId' => '95',
-                                'resourceFragmentIdentifier' => 'fragment1',
-                                'wrapped' => false,
-                                'target' => '_self',
-                            ],
+                            'is_inline' => false,
                         ],
                     ],
+                    ['601'],
                 ],
             ],
             [
@@ -266,25 +298,35 @@ class EmbedTest extends TestCase
                 [],
                 [
                     [
-                        'method' => 'renderLocationEmbed',
-                        'id' => '601',
-                        'viewType' => 'embed',
-                        'is_inline' => false,
-                        'embedParams' => [
-                            'id' => '601',
-                            'viewType' => 'embed',
-                        ],
-                    ],
-                    [
-                        'method' => 'renderContentEmbed',
-                        'id' => '106',
-                        'viewType' => 'full',
-                        'is_inline' => true,
-                        'embedParams' => [
+                        [
                             'id' => '106',
                             'viewType' => 'full',
+                            [
+                                'embedParams' => [
+                                    'id' => '106',
+                                    'viewType' => 'full',
+                                ],
+                            ],
+                            'is_inline' => true,
                         ],
                     ],
+                    ['106'],
+                ],
+                [
+                    [
+                        [
+                            'id' => '601',
+                            'viewType' => 'embed',
+                            [
+                                'embedParams' => [
+                                    'id' => '601',
+                                    'viewType' => 'embed',
+                                ],
+                            ],
+                            'is_inline' => false,
+                        ],
+                    ],
+                    ['601'],
                 ],
             ],
             [
@@ -323,44 +365,54 @@ class EmbedTest extends TestCase
                 [],
                 [
                     [
-                        'method' => 'renderLocationEmbed',
-                        'id' => '601',
-                        'viewType' => 'embed',
-                        'is_inline' => true,
-                        'embedParams' => [
-                            'id' => '601',
-                            'viewType' => 'embed',
-                            'config' => [
-                                'size' => 'medium',
-                            ],
-                            'link' => [
-                                'href' => 'RESOLVED',
-                                'resourceType' => 'CONTENT',
-                                'resourceId' => '95',
-                                'wrapped' => false,
-                            ],
-                        ],
-                    ],
-                    [
-                        'method' => 'renderContentEmbed',
-                        'id' => '106',
-                        'viewType' => 'full',
-                        'is_inline' => true,
-                        'embedParams' => [
+                        [
                             'id' => '106',
                             'viewType' => 'full',
-                            'config' => [
-                                'size' => 'small',
+                            [
+                                'embedParams' => [
+                                    'id' => '106',
+                                    'viewType' => 'full',
+                                    'config' => [
+                                        'size' => 'small',
+                                    ],
+                                    'link' => [
+                                        'href' => 'RESOLVED2',
+                                        'resourceType' => 'LOCATION',
+                                        'resourceId' => '59',
+                                        'resourceFragmentIdentifier' => 'fragment',
+                                        'wrapped' => true,
+                                    ],
+                                ],
                             ],
-                            'link' => [
-                                'href' => 'RESOLVED2',
-                                'resourceType' => 'LOCATION',
-                                'resourceId' => '59',
-                                'resourceFragmentIdentifier' => 'fragment',
-                                'wrapped' => true,
-                            ],
+                            'is_inline' => true,
                         ],
                     ],
+                    ['106'],
+                ],
+                [
+                    [
+                        [
+                            'id' => '601',
+                            'viewType' => 'embed',
+                            [
+                                'embedParams' => [
+                                    'id' => '601',
+                                    'viewType' => 'embed',
+                                    'config' => [
+                                        'size' => 'medium',
+                                    ],
+                                    'link' => [
+                                        'href' => 'RESOLVED',
+                                        'resourceType' => 'CONTENT',
+                                        'resourceId' => '95',
+                                        'wrapped' => false,
+                                    ],
+                                ],
+                            ],
+                            'is_inline' => true,
+                        ],
+                    ],
+                    ['601'],
                 ],
             ],
             [
@@ -375,7 +427,14 @@ class EmbedTest extends TestCase
                 [
                     "Could not embed resource: empty 'xlink:href' attribute",
                 ],
-                [],
+                [
+                    [],
+                    [],
+                ],
+                [
+                    [],
+                    [],
+                ],
             ],
             [
                 '<?xml version="1.0" encoding="UTF-8"?>
@@ -389,7 +448,14 @@ class EmbedTest extends TestCase
                 [
                     "Could not embed resource: unhandled resource reference 'eznodeassignment://106'",
                 ],
-                [],
+                [
+                    [],
+                    [],
+                ],
+                [
+                    [],
+                    [],
+                ],
             ],
             [
                 '<?xml version="1.0" encoding="UTF-8"?>
@@ -410,15 +476,23 @@ class EmbedTest extends TestCase
                 ],
                 [
                     [
-                        'method' => 'renderContentEmbed',
-                        'id' => '106',
-                        'viewType' => 'embed',
-                        'is_inline' => false,
-                        'embedParams' => [
+                        [
                             'id' => '106',
                             'viewType' => 'embed',
+                            [
+                                'embedParams' => [
+                                    'id' => '106',
+                                    'viewType' => 'embed',
+                                ],
+                            ],
+                            'is_inline' => false,
                         ],
                     ],
+                    ['106'],
+                ],
+                [
+                    [],
+                    [],
                 ],
             ],
             [
@@ -435,15 +509,23 @@ class EmbedTest extends TestCase
                 [],
                 [
                     [
-                        'method' => 'renderContentEmbed',
-                        'id' => '106',
-                        'viewType' => 'embed',
-                        'is_inline' => false,
-                        'embedParams' => [
+                        [
                             'id' => '106',
                             'viewType' => 'embed',
+                            [
+                                'embedParams' => [
+                                    'id' => '106',
+                                    'viewType' => 'embed',
+                                ],
+                            ],
+                            'is_inline' => false,
                         ],
                     ],
+                    ['106'],
+                ],
+                [
+                    [],
+                    [],
                 ],
             ],
             [
@@ -460,15 +542,23 @@ class EmbedTest extends TestCase
                 [],
                 [
                     [
-                        'method' => 'renderContentEmbed',
-                        'id' => '106',
-                        'viewType' => 'embed-inline',
-                        'is_inline' => true,
-                        'embedParams' => [
+                        [
                             'id' => '106',
                             'viewType' => 'embed-inline',
+                            [
+                                'embedParams' => [
+                                    'id' => '106',
+                                    'viewType' => 'embed-inline',
+                                ],
+                            ],
+                            'is_inline' => true,
                         ],
                     ],
+                    ['106'],
+                ],
+                [
+                    [],
+                    [],
                 ],
             ],
             [
@@ -504,19 +594,27 @@ class EmbedTest extends TestCase
                 [],
                 [
                     [
-                        'method' => 'renderContentEmbed',
-                        'id' => '106',
-                        'viewType' => 'embed-inline',
-                        'is_inline' => true,
-                        'embedParams' => [
+                        [
                             'id' => '106',
                             'viewType' => 'embed-inline',
-                            'dataAttributes' => [
-                                'inline-choice-attr' => 'choice1',
-                                'inline-choice-mul-attr' => 'choice2,choice3',
+                            [
+                                'embedParams' => [
+                                    'id' => '106',
+                                    'viewType' => 'embed-inline',
+                                    'dataAttributes' => [
+                                        'inline-choice-attr' => 'choice1',
+                                        'inline-choice-mul-attr' => 'choice2,choice3',
+                                    ],
+                                ],
                             ],
+                            'is_inline' => true,
                         ],
                     ],
+                    ['106'],
+                ],
+                [
+                    [],
+                    [],
                 ],
             ],
             [
@@ -542,19 +640,27 @@ class EmbedTest extends TestCase
                 [],
                 [
                     [
-                        'method' => 'renderContentEmbed',
-                        'id' => '106',
-                        'viewType' => 'embed',
-                        'is_inline' => false,
-                        'embedParams' => [
+                        [
                             'id' => '106',
                             'viewType' => 'embed',
-                            'dataAttributes' => [
-                                'inline-choice-attr' => 'choice1',
-                                'inline-choice-mul-attr' => 'choice2,choice3',
+                            [
+                                'embedParams' => [
+                                    'id' => '106',
+                                    'viewType' => 'embed',
+                                    'dataAttributes' => [
+                                        'inline-choice-attr' => 'choice1',
+                                        'inline-choice-mul-attr' => 'choice2,choice3',
+                                    ],
+                                ],
                             ],
+                            'is_inline' => false,
                         ],
                     ],
+                    ['106'],
+                ],
+                [
+                    [],
+                    [],
                 ],
             ],
             [
@@ -584,6 +690,7 @@ class EmbedTest extends TestCase
         <ezconfig>
           <ezvalue key="nested">value2</ezvalue>
         </ezconfig>
+        <ezpayload><![CDATA[602]]></ezpayload>
       </ezembed>
       <ezconfig>
         <ezvalue key="parent">value1</ezvalue>
@@ -597,19 +704,41 @@ class EmbedTest extends TestCase
 </section>',
                 [],
                 [
+                    [],
+                    [],
+                ],
+                [
                     [
-                        'method' => 'renderLocationEmbed',
-                        'id' => '601',
-                        'viewType' => 'embed',
-                        'is_inline' => false,
-                        'embedParams' => [
+                        [
                             'id' => '601',
                             'viewType' => 'embed',
-                            'config' => [
-                                'parent' => 'value1',
+                            [
+                                'embedParams' => [
+                                    'id' => '601',
+                                    'viewType' => 'embed',
+                                    'config' => [
+                                        'parent' => 'value1',
+                                    ],
+                                ],
                             ],
+                            'is_inline' => false,
+                        ],
+                        [
+                            'id' => '602',
+                            'viewType' => 'embed',
+                            [
+                                'embedParams' => [
+                                    'id' => 602,
+                                    'viewType' => 'embed',
+                                    'config' => [
+                                        'nested' => 'value2',
+                                    ],
+                                ],
+                            ],
+                            'is_inline' => false,
                         ],
                     ],
+                    ['601', '602'],
                 ],
             ],
         ];
@@ -621,45 +750,40 @@ class EmbedTest extends TestCase
      * @param string $xmlString
      * @param string $expectedXmlString
      * @param array $errors
-     * @param array $renderParams
+     * @param array $renderContentEmbedParams
+     * @param array $renderLocationEmbedParams
      */
     public function testConvert(
         string $xmlString,
         string $expectedXmlString,
         array $errors,
-        array $renderParams
-    ) {
-        if (isset($errors)) {
-            foreach ($errors as $index => $error) {
-                $this->loggerMock
-                    ->expects($this->at($index))
-                    ->method('error')
-                    ->with($error);
-            }
-        } else {
-            $this->loggerMock->expects($this->never())->method('error');
-        }
+        array $renderContentEmbedParams,
+        array $renderLocationEmbedParams
+    ): void {
+        $this->loggerMock
+            ->expects($this->exactly(count($errors)))
+            ->method('error')
+            ->withConsecutive($errors);
 
         $this->rendererMock->expects($this->never())->method('renderTemplate');
 
-        if (!empty($renderParams)) {
-            foreach ($renderParams as $index => $params) {
-                $this->rendererMock
-                    ->expects($this->at($index))
-                    ->method($params['method'])
-                    ->with(
-                        $params['id'],
-                        $params['viewType'],
-                        [
-                            'embedParams' => $params['embedParams'],
-                        ],
-                        $params['is_inline']
-                    )
-                    ->willReturn($params['id']);
-            }
-        } else {
-            $this->rendererMock->expects($this->never())->method('renderContentEmbed');
-            $this->rendererMock->expects($this->never())->method('renderLocationEmbed');
+        [$embedContentParams, $embedContentReturnValues] = $renderContentEmbedParams;
+        [$embedLocationParams, $embedLocationReturnValues] = $renderLocationEmbedParams;
+
+        if (!empty($embedContentParams)) {
+            $this->rendererMock
+                ->expects($this->exactly(count($embedContentParams)))
+                ->method('renderContentEmbed')
+                ->withConsecutive(...$embedContentParams)
+                ->willReturnOnConsecutiveCalls(...$embedContentReturnValues);
+        }
+
+        if (!empty($embedLocationParams)) {
+            $this->rendererMock
+                ->expects($this->exactly(count($embedLocationParams)))
+                ->method('renderLocationEmbed')
+                ->withConsecutive(...$embedLocationParams)
+                ->willReturnOnConsecutiveCalls(...$embedLocationReturnValues);
         }
 
         $document = new DOMDocument();
