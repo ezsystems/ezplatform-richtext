@@ -1,4 +1,4 @@
-@import './public/bundles/ezplatformadminui/scss/functions/div';
+@import './public/bundles/ezplatformadminui/scss/polyfill/div';
 
 @function calculateRem($size) {
 	$remSize: div($size, 16px);
