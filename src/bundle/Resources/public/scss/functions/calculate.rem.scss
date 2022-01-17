@@ -1,4 +1,4 @@
-@import 'div';
+@import './public/bundles/ezplatformadminui/scss/functions/div';
 
 @function calculateRem($size) {
 	$remSize: div($size, 16px);
