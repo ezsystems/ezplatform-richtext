@@ -10,7 +10,7 @@
         "ext-dom": "*",
         "ext-libxml": "*",
         "symfony/symfony": "^3.4",
-        "ezsystems/ezpublish-kernel": "^7.5.11@dev",
+        "ezsystems/ezpublish-kernel": "^7.5.11",
         "ezsystems/repository-forms": "^2.0"
     },
     "require-dev": {
