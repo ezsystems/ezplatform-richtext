@@ -171,3 +171,42 @@ jobs:
                 run: composer run-script integration
                 env:
                     DATABASE: "mysql://mysql:mysql@127.0.0.1:${{ job.services.mysql.ports[3306] }}/testdb"
+    solr-integration:
+        name: "Solr integration tests"
+        runs-on: "ubuntu-20.04"
+        timeout-minutes: 30
+        permissions:
+            packages: read
+            contents: read
+        services:
+            solr:
+                image: ghcr.io/ibexa/core/solr
+                ports:
+                    - 8983:8983
+                options: >-
+                    --health-cmd "solr status"
+                    --health-interval 10s
+                    --health-timeout 5s
+                    --health-retries 10
+        steps:   
+            - uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
+
+            - name: Setup PHP Action
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: 7.4
+                  coverage: none
+            
+            - name: Add solr dependency
+              run: composer require --no-update "ezsystems/ezplatform-solr-search-engine:^3.3@dev"
+
+            - uses: "ramsey/composer-install@v1"
+              with:
+                  dependency-versions: "highest"
+
+            - name: Run integration test suite
+              run: composer integration-solr
+              env:
+                    CORES_SETUP: single
