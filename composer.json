@@ -58,7 +58,8 @@
         "integration": [
             "Composer\\Config::disableProcessTimeout",
             "phpunit -c phpunit-integration-legacy.xml"
-        ]
+        ],
+        "integration-solr": "phpunit -c phpunit-integration-legacy-solr.xml"
     },
     "extra": {
         "branch-alias": {
