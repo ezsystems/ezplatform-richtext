@@ -741,6 +741,56 @@ class EmbedTest extends TestCase
                     ['601', '602'],
                 ],
             ],
+            [
+                '<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml">
+  <paragraph>Here is paragraph with embed with empty config value
+    <ezembed xlink:href="ezlocation://601">
+      <ezconfig>
+        <ezvalue key="non-empty">value1</ezvalue>
+        <ezvalue key="empty"/>
+      </ezconfig>
+    </ezembed>
+  </paragraph>
+</section>',
+                '<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml">
+  <paragraph>Here is paragraph with embed with empty config value
+    <ezembed xlink:href="ezlocation://601">
+      <ezconfig>
+        <ezvalue key="non-empty">value1</ezvalue>
+        <ezvalue key="empty"/>
+      </ezconfig>
+      <ezpayload><![CDATA[601]]></ezpayload>
+    </ezembed>
+  </paragraph>
+</section>',
+                [],
+                [
+                    [],
+                    [],
+                ],
+                [
+                    [
+                        [
+                            'id' => '601',
+                            'viewType' => 'embed',
+                            [
+                                'embedParams' => [
+                                    'id' => '601',
+                                    'viewType' => 'embed',
+                                    'config' => [
+                                        'non-empty' => 'value1',
+                                        'empty' => null,
+                                    ],
+                                ],
+                            ],
+                            'is_inline' => false,
+                        ],
+                    ],
+                    ['601'],
+                ],
+            ],
         ];
     }
 
