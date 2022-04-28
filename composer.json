@@ -40,7 +40,8 @@
         "integration": [
             "Composer\\Config::disableProcessTimeout",
             "phpunit -c phpunit-integration-legacy.xml"
-        ]
+        ],
+        "integration-solr": "phpunit -c phpunit-integration-legacy-solr.xml"
     },
     "extra": {
         "_ezplatform_branch_for_behat_tests": "2.5",

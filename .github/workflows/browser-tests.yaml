@@ -1,0 +1,17 @@
+name: Browser tests
+
+on:
+    push:
+        branches:
+            - main
+            - "[0-9]+.[0-9]+"
+    pull_request: ~
+
+jobs:
+    richtext:
+        name: "Richtext browser tests"
+        uses: ezsystems/ezplatform/.github/workflows/callable-browser-tests.yaml@2.5
+        with:
+            test-suite: "--profile=adminui --suite=richtext"
+        secrets:
+            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
