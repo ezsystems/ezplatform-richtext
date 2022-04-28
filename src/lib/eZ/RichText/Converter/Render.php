@@ -55,11 +55,15 @@ abstract class Render
      *
      * @param \DOMNode $configHash
      *
-     * @return array
+     * @return array|null
      */
     protected function extractHash(DOMNode $configHash)
     {
         $hash = [];
+
+        if ($configHash->childNodes->count() === 0) {
+            return null;
+        }
 
         foreach ($configHash->childNodes as $node) {
             /** @var \DOMText|\DOMElement $node */

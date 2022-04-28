@@ -4,6 +4,7 @@
     <ezcontent><para>Param: value</para></ezcontent>
     <ezconfig>
         <ezvalue key="param">value</ezvalue>
+        <ezvalue key="empty"/>
     </ezconfig>
   </eztemplate>
 </section>

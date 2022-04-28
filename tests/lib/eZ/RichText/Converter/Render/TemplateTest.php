@@ -289,6 +289,7 @@ class TemplateTest extends TestCase
                     'content' => '<para>Param: value</para>',
                     'params' => [
                         'param' => 'value',
+                        'empty' => null,
                     ],
                     'align' => 'right',
                 ],

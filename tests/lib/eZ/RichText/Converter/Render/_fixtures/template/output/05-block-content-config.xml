@@ -6,6 +6,7 @@
     </ezcontent>
     <ezconfig>
       <ezvalue key="param">value</ezvalue>
+      <ezvalue key="empty"/>
     </ezconfig>
     <ezpayload>custom_tag</ezpayload>
   </eztemplate>
