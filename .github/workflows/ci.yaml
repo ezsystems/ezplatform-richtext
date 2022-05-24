@@ -157,3 +157,43 @@ jobs:
                 run: composer run-script integration
                 env:
                     DATABASE: "mysql://mysql:mysql@127.0.0.1:${{ job.services.mysql.ports[3306] }}/testdb"
+
+    integration-tests-solr:
+        name: Solr intergation tests
+        runs-on: "ubuntu-20.04"
+        timeout-minutes: 15
+        env:
+          SOLR_VERSION: "6.4.2"
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Setup PHP Action
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: 7.1
+                  coverage: none
+                  extensions: pdo_sqlite, gd
+                  tools: cs2pr
+
+            - uses: actions/setup-java@v3
+              with:
+                distribution: 'temurin'
+                java-version: '8'
+
+            - uses: "ramsey/composer-install@v1"
+              with:
+                  dependency-versions: "highest"
+
+            - name: Setup problem matchers for PHPUnit
+              run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+
+            - name: Setup Solr
+              run: |
+                composer require ezsystems/ezplatform-solr-search-engine:^1.5@dev
+                ./vendor/ezsystems/ezplatform-solr-search-engine/bin/.travis/init_solr.sh
+
+            - name: Run unit test suite
+              run: composer integration-solr
+
+
