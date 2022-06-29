@@ -13,6 +13,9 @@
     <eztemplate name="highlighted_block" type="style" ezxhtml:align="center">
         <ezcontent>Highlighted block with "center" align.</ezcontent>
     </eztemplate>
+    <eztemplate name="highlighted_block" type="style" ezxhtml:align="justify">
+        <ezcontent>Highlighted block with "justify" align.</ezcontent>
+    </eztemplate>
     <eztemplate name="highlighted_block" type="style">
         <ezcontent><literallayout>Highlighted block with multiple lines
 Highlighted block with multiple lines
