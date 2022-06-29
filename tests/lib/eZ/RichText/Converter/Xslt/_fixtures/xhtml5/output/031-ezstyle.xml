@@ -31,19 +31,13 @@
   <template-output is-inline="false" name="highlighted_block" type="style">
     <param name="name">highlighted_block</param>
     <param name="content">
-      <section>Highlighted block with multiple lines<br/>Highlighted block with multiple lines<br/>Highlighted block
-        with multiple lines
-      </section>
+      <section>Highlighted block with multiple lines<br/>Highlighted block with multiple lines<br/>Highlighted block with multiple lines</section>
     </param>
   </template-output>
   <template-output is-inline="false" name="highlighted_block" type="style">
     <param name="name">highlighted_block</param>
     <param name="content">
-      <section>Highlighted block with multiple lines and emphasis
-        <br/>
-        <strong>Highlighted block with multiple lines and emphasis</strong>
-        <br/>Highlighted block with multiple lines and emphasis
-      </section>
+      <section>Highlighted block with multiple lines and emphasis<br/><strong>Highlighted block with multiple lines and emphasis</strong><br/>Highlighted block with multiple lines and emphasis</section>
     </param>
   </template-output>
 </section>
