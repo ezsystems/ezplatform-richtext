@@ -3,6 +3,7 @@
     <div data-ezelement="eztemplate" data-eztype="style" data-ezname="highlighted_block" style="text-align:left;">Highlighted block with "left" align.</div>
     <div data-ezelement="eztemplate" data-eztype="style" data-ezname="highlighted_block" style="text-align:right;">Highlighted block with "right" align.</div>
     <div data-ezelement="eztemplate" data-eztype="style" data-ezname="highlighted_block" style="text-align:center;">Highlighted block with "center" align.</div>
+    <div data-ezelement="eztemplate" data-eztype="style" data-ezname="highlighted_block" style="text-align:justify;">Highlighted block with "justify" align.</div>
     <div data-ezelement="eztemplate" data-eztype="style" data-ezname="highlighted_block">Highlighted block with multiple lines<br/>Highlighted block with multiple lines<br/>Highlighted block with multiple lines</div>
     <div data-ezelement="eztemplate" data-eztype="style" data-ezname="highlighted_block">Highlighted block with multiple lines and emphasis<br/><strong>Highlighted block with multiple lines and emphasis</strong><br/>Highlighted block with multiple lines and emphasis</div>
 </section>

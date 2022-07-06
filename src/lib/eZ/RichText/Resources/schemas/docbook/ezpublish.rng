@@ -777,6 +777,7 @@
         <value>left</value>
         <value>center</value>
         <value>right</value>
+        <value>justify</value>
       </choice>
     </attribute>
   </define>

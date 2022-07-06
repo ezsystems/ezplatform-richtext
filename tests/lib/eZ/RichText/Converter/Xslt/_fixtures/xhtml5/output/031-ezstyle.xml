@@ -24,6 +24,13 @@
   <template-output is-inline="false" name="highlighted_block" type="style">
     <param name="name">highlighted_block</param>
     <param name="content">
+      <section>Highlighted block with "justify" align.</section>
+    </param>
+    <param name="align">justify</param>
+  </template-output>
+  <template-output is-inline="false" name="highlighted_block" type="style">
+    <param name="name">highlighted_block</param>
+    <param name="content">
       <section>Highlighted block with multiple lines<br/>Highlighted block with multiple lines<br/>Highlighted block with multiple lines</section>
     </param>
   </template-output>
