@@ -33,8 +33,16 @@ export default class EzBtnStylesListItem extends AlloyEditor.ButtonStylesListIte
         const attrsToRemove = ['ezelement', 'eztype', 'ezname'];
         const targetName = this.props.style.attributes ? this.props.style.attributes['data-ezname'] : '';
 
+        if (
+            this.props.style.attributes &&
+            this.props.style.attributes['data-ezelement'] === 'eztemplateinline' &&
+            block.$.dataset.ezelement === 'eztemplate'
+        ) {
+            return;
+        }
+
         if (block.$.dataset.eztype === 'style' && block.$.dataset.ezname !== targetName) {
-            attrsToRemove.forEach(attr => block.$.removeAttribute(`data-${attr}`));
+            attrsToRemove.forEach((attr) => block.$.removeAttribute(`data-${attr}`));
         }
     }
 
