@@ -74,8 +74,19 @@ export default class EzBtnAttributesEdit extends EzWidgetButton {
     }
 
     componentWillUnmount() {
+        this.block = null;
+
+        const block = this.findSelectedBlock();
+
         this.beforeCommandExecHandler.removeListener();
         this.afterCommandExecHandler.removeListener();
+
+        if (!block.$.getAttribute('data-ez-node-initialized')) {
+            this.removeClasses(block);
+            this.removeAttributes(block);
+
+            block.$.setAttribute('data-ez-node-initialized', true);
+        }
     }
 
     removeClasses(block) {
