@@ -1,0 +1,3011 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Compiler\\\\RichTextHtml5ConverterPass\\:\\:process\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/Compiler/RichTextHtml5ConverterPass.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Compiler\\\\RichTextHtml5ConverterPass\\:\\:setConverterDefinitions\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/Compiler/RichTextHtml5ConverterPass.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Compiler\\\\RichTextHtml5ConverterPass\\:\\:setConverterDefinitions\\(\\) has parameter \\$taggedServiceIds with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/Compiler/RichTextHtml5ConverterPass.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Compiler\\\\RichTextHtml5ConverterPass\\:\\:sortConverters\\(\\) has parameter \\$convertersByPriority with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/Compiler/RichTextHtml5ConverterPass.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\:\\:addAlloyEditorSection\\(\\) should return Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\ArrayNodeDefinition but returns Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeBuilder\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/Configuration.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\:\\:addCustomStylesSection\\(\\) should return Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\ArrayNodeDefinition but returns Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeBuilder\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/Configuration.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\:\\:addCustomTagsSection\\(\\) should return Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\ArrayNodeDefinition but returns Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeBuilder\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/Configuration.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\\\Parser\\\\FieldType\\\\RichText\\:\\:addFieldTypeSemanticConfig\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/Configuration/Parser/FieldType/RichText.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\\\Parser\\\\FieldType\\\\RichText\\:\\:mapConfig\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/Configuration/Parser/FieldType/RichText.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\\\Parser\\\\FieldType\\\\RichText\\:\\:mapConfig\\(\\) has parameter \\$scopeSettings with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/Configuration/Parser/FieldType/RichText.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\\\Parser\\\\FieldType\\\\RichText\\:\\:postMap\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/Configuration/Parser/FieldType/RichText.php
+
+		-
+			message: "#^Parameter \\#1 \\$then of method Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\ExprBuilder\\:\\:always\\(\\) expects Closure\\|null, callable\\(\\)\\: mixed given\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/Configuration/Parser/FieldType/RichText.php
+
+		-
+			message: "#^Argument of an invalid type array\\|bool\\|float\\|int\\|string\\|null supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/EzPlatformRichTextExtension.php
+
+		-
+			message: "#^Generator expects value type array, array\\|bool\\|float\\|int\\|string\\|null given\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/EzPlatformRichTextExtension.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\EzPlatformRichTextExtension\\:\\:checkForInlineTagsInToolbar\\(\\) has parameter \\$customTags with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/EzPlatformRichTextExtension.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\EzPlatformRichTextExtension\\:\\:checkForInlineTagsInToolbar\\(\\) has parameter \\$toolbarContent with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/EzPlatformRichTextExtension.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\EzPlatformRichTextExtension\\:\\:getConfiguration\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/EzPlatformRichTextExtension.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\EzPlatformRichTextExtension\\:\\:getInlineCustomTags\\(\\) has parameter \\$customTagsConfig with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/EzPlatformRichTextExtension.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\EzPlatformRichTextExtension\\:\\:getToolbarsBySiteAccess\\(\\) has parameter \\$availableSiteAccesses with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/EzPlatformRichTextExtension.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\EzPlatformRichTextExtension\\:\\:getToolbarsBySiteAccess\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/EzPlatformRichTextExtension.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\EzPlatformRichTextExtension\\:\\:load\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/EzPlatformRichTextExtension.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\EzPlatformRichTextExtension\\:\\:load\\(\\) has parameter \\$configs with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/EzPlatformRichTextExtension.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\EzPlatformRichTextExtension\\:\\:prepend\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/EzPlatformRichTextExtension.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\EzPlatformRichTextExtension\\:\\:registerRichTextConfiguration\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/EzPlatformRichTextExtension.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\EzPlatformRichTextExtension\\:\\:validateCustomTemplatesConfig\\(\\) has parameter \\$availableSiteAccesses with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/EzPlatformRichTextExtension.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\EzPlatformRichTextExtension\\:\\:validateCustomTemplatesConfig\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/EzPlatformRichTextExtension.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\EzPlatformRichTextExtension\\:\\:validateInlineCustomTagToolbarsConfig\\(\\) has parameter \\$availableSiteAccesses with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/EzPlatformRichTextExtension.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\EzPlatformRichTextExtension\\:\\:validateInlineCustomTagToolbarsConfig\\(\\) has parameter \\$customTagsConfig with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/EzPlatformRichTextExtension.php
+
+		-
+			message: "#^Parameter \\#1 \\$availableSiteAccesses of method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\EzPlatformRichTextExtension\\:\\:validateCustomTemplatesConfig\\(\\) expects array, array\\|bool\\|float\\|int\\|string\\|null given\\.$#"
+			count: 2
+			path: src/bundle/DependencyInjection/EzPlatformRichTextExtension.php
+
+		-
+			message: "#^Parameter \\#1 \\$availableSiteAccesses of method EzSystems\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\EzPlatformRichTextExtension\\:\\:validateInlineCustomTagToolbarsConfig\\(\\) expects array, array\\|bool\\|float\\|int\\|string\\|null given\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/EzPlatformRichTextExtension.php
+
+		-
+			message: "#^Parameter \\#1 \\$configuration of method Symfony\\\\Component\\\\DependencyInjection\\\\Extension\\\\Extension\\:\\:processConfiguration\\(\\) expects Symfony\\\\Component\\\\Config\\\\Definition\\\\ConfigurationInterface, Symfony\\\\Component\\\\Config\\\\Definition\\\\ConfigurationInterface\\|null given\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/EzPlatformRichTextExtension.php
+
+		-
+			message: "#^Parameter \\#1 \\$filename of static method Symfony\\\\Component\\\\Yaml\\\\Yaml\\:\\:parseFile\\(\\) expects string, string\\|false given\\.$#"
+			count: 2
+			path: src/bundle/DependencyInjection/EzPlatformRichTextExtension.php
+
+		-
+			message: "#^Parameter \\#1 \\$resource of class Symfony\\\\Component\\\\Config\\\\Resource\\\\FileResource constructor expects string, string\\|false given\\.$#"
+			count: 2
+			path: src/bundle/DependencyInjection/EzPlatformRichTextExtension.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\EzPlatformRichTextBundle\\:\\:build\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/EzPlatformRichTextBundle.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\EzPlatformRichTextBundle\\:\\:getCoreExtension\\(\\) should return eZ\\\\Bundle\\\\EzPublishCoreBundle\\\\DependencyInjection\\\\EzPublishCoreExtension but returns Symfony\\\\Component\\\\DependencyInjection\\\\Extension\\\\ExtensionInterface\\.$#"
+			count: 1
+			path: src/bundle/EzPlatformRichTextBundle.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\EzPlatformRichTextBundle\\:\\:registerConfigParser\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/EzPlatformRichTextBundle.php
+
+		-
+			message: "#^Cannot call method error\\(\\) on Psr\\\\Log\\\\LoggerInterface\\|null\\.$#"
+			count: 13
+			path: src/bundle/eZ/RichText/Renderer.php
+
+		-
+			message: "#^Cannot call method warning\\(\\) on Psr\\\\Log\\\\LoggerInterface\\|null\\.$#"
+			count: 6
+			path: src/bundle/eZ/RichText/Renderer.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\Renderer\\:\\:__construct\\(\\) has parameter \\$customStylesConfiguration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/eZ/RichText/Renderer.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\Renderer\\:\\:__construct\\(\\) has parameter \\$customTagsConfiguration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/eZ/RichText/Renderer.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\Renderer\\:\\:checkContentPermissions\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/eZ/RichText/Renderer.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\Renderer\\:\\:getEmbedTemplateName\\(\\) has parameter \\$isDenied with no type specified\\.$#"
+			count: 1
+			path: src/bundle/eZ/RichText/Renderer.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\Renderer\\:\\:getEmbedTemplateName\\(\\) has parameter \\$isInline with no type specified\\.$#"
+			count: 1
+			path: src/bundle/eZ/RichText/Renderer.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\Renderer\\:\\:getEmbedTemplateName\\(\\) has parameter \\$resourceType with no type specified\\.$#"
+			count: 1
+			path: src/bundle/eZ/RichText/Renderer.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\Renderer\\:\\:render\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/eZ/RichText/Renderer.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\Renderer\\:\\:renderContentEmbed\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/eZ/RichText/Renderer.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\Renderer\\:\\:renderContentEmbed\\(\\) should return string but returns null\\.$#"
+			count: 5
+			path: src/bundle/eZ/RichText/Renderer.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\Renderer\\:\\:renderLocationEmbed\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/eZ/RichText/Renderer.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\Renderer\\:\\:renderLocationEmbed\\(\\) should return string but returns null\\.$#"
+			count: 4
+			path: src/bundle/eZ/RichText/Renderer.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\Renderer\\:\\:renderTemplate\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/eZ/RichText/Renderer.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\Renderer\\:\\:renderTemplate\\(\\) should return string but returns null\\.$#"
+			count: 2
+			path: src/bundle/eZ/RichText/Renderer.php
+
+		-
+			message: "#^Parameter \\#1 \\$locationId of method eZ\\\\Publish\\\\API\\\\Repository\\\\LocationService\\:\\:loadLocation\\(\\) expects int, int\\|string given\\.$#"
+			count: 1
+			path: src/bundle/eZ/RichText/Renderer.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\Renderer\\:\\:\\$customStylesConfiguration type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/eZ/RichText/Renderer.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\Renderer\\:\\:\\$customTagsConfiguration type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/eZ/RichText/Renderer.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\Renderer\\:\\:\\$repository \\(eZ\\\\Publish\\\\Core\\\\Repository\\\\Repository\\) does not accept eZ\\\\Publish\\\\API\\\\Repository\\\\Repository\\.$#"
+			count: 1
+			path: src/bundle/eZ/RichText/Renderer.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\API\\\\Configuration\\\\ProviderService\\:\\:getConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/API/Configuration/ProviderService.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\AggregateProvider\\:\\:getConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/AggregateProvider.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\Provider\\\\AlloyEditor\\:\\:__construct\\(\\) has parameter \\$alloyEditorConfiguration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/Provider/AlloyEditor.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\Provider\\\\AlloyEditor\\:\\:getConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/Provider/AlloyEditor.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\Provider\\\\AlloyEditor\\:\\:getCssClasses\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/Provider/AlloyEditor.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\Provider\\\\AlloyEditor\\:\\:getDataAttributes\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/Provider/AlloyEditor.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\Provider\\\\AlloyEditor\\:\\:getExtraPlugins\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/Provider/AlloyEditor.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\Provider\\\\AlloyEditor\\:\\:getNativeAttributes\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/Provider/AlloyEditor.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\Provider\\\\AlloyEditor\\:\\:getSiteAccessConfigArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/Provider/AlloyEditor.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\Provider\\\\AlloyEditor\\:\\:getToolbarButtons\\(\\) has parameter \\$buttons with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/Provider/AlloyEditor.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\Provider\\\\AlloyEditor\\:\\:getToolbars\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/Provider/AlloyEditor.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\Provider\\\\AlloyEditor\\:\\:\\$alloyEditorConfiguration type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/Provider/AlloyEditor.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\Provider\\\\CustomStyle\\:\\:getConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/Provider/CustomStyle.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\Provider\\\\CustomStyle\\:\\:\\$customStyleConfigurationMapper \\(EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomStyle\\) does not accept EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTemplateConfigMapper\\.$#"
+			count: 1
+			path: src/lib/Configuration/Provider/CustomStyle.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\Provider\\\\CustomTag\\:\\:getConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/Provider/CustomTag.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\Provider\\\\CustomTag\\:\\:\\$customTagConfigurationMapper \\(EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTag\\) does not accept EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTemplateConfigMapper\\.$#"
+			count: 1
+			path: src/lib/Configuration/Provider/CustomTag.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomStyle\\:\\:__construct\\(\\) has parameter \\$customStylesConfiguration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/CustomStyle.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomStyle\\:\\:mapConfig\\(\\) has parameter \\$enabledCustomStyles with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/CustomStyle.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomStyle\\:\\:mapConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/CustomStyle.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomStyle\\:\\:\\$customStylesConfiguration type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/CustomStyle.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomStyle\\:\\:\\$packages is never read, only written\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/CustomStyle.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTag\\:\\:__construct\\(\\) has parameter \\$customTagAttributeMappers with no value type specified in iterable type Traversable\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/CustomTag.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTag\\:\\:__construct\\(\\) has parameter \\$customTagsConfiguration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/CustomTag.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTag\\:\\:mapConfig\\(\\) has parameter \\$enabledCustomTags with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/CustomTag.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTag\\:\\:mapConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/CustomTag.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTag\\:\\:translateLabels\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/CustomTag.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTag\\:\\:translateLabels\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/CustomTag.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTag\\:\\:\\$customTagAttributeMappers \\(array\\<EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTag\\\\AttributeMapper\\>\\) does not accept Traversable\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/CustomTag.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTag\\:\\:\\$customTagsConfiguration type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/CustomTag.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTag\\\\AttributeMapper\\:\\:mapConfig\\(\\) has parameter \\$customTagAttributeProperties with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/CustomTag/AttributeMapper.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTag\\\\AttributeMapper\\:\\:mapConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/CustomTag/AttributeMapper.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTag\\\\ChoiceAttributeMapper\\:\\:mapConfig\\(\\) has parameter \\$customTagAttributeProperties with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/CustomTag/ChoiceAttributeMapper.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTag\\\\ChoiceAttributeMapper\\:\\:mapConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/CustomTag/ChoiceAttributeMapper.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTag\\\\CommonAttributeMapper\\:\\:mapConfig\\(\\) has parameter \\$customTagAttributeProperties with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/CustomTag/CommonAttributeMapper.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTag\\\\CommonAttributeMapper\\:\\:mapConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/CustomTag/CommonAttributeMapper.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTemplateConfigMapper\\:\\:mapConfig\\(\\) has parameter \\$enabledCustomTemplates with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/CustomTemplateConfigMapper.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTemplateConfigMapper\\:\\:mapConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/CustomTemplateConfigMapper.php
+
+		-
+			message: "#^Call to method trans\\(\\) on an unknown class Symfony\\\\Component\\\\Translation\\\\TranslatorInterface\\.$#"
+			count: 2
+			path: src/lib/Configuration/UI/Mapper/OnlineEditor.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\OnlineEditor\\:\\:mapCssClassesConfiguration\\(\\) has parameter \\$semanticConfiguration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/OnlineEditor.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\OnlineEditor\\:\\:mapCssClassesConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/OnlineEditor.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\OnlineEditor\\:\\:mapDataAttributesConfiguration\\(\\) has parameter \\$semanticConfiguration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/OnlineEditor.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\OnlineEditor\\:\\:mapDataAttributesConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/OnlineEditor.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\OnlineEditor\\:\\:\\$translator \\(Symfony\\\\Component\\\\Translation\\\\TranslatorInterface\\) does not accept Symfony\\\\Contracts\\\\Translation\\\\TranslatorInterface\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/OnlineEditor.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\OnlineEditor\\:\\:\\$translator has unknown class Symfony\\\\Component\\\\Translation\\\\TranslatorInterface as its type\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/OnlineEditor.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\OnlineEditorConfigMapper\\:\\:mapCssClassesConfiguration\\(\\) has parameter \\$semanticSemanticConfiguration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/OnlineEditorConfigMapper.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\OnlineEditorConfigMapper\\:\\:mapCssClassesConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/OnlineEditorConfigMapper.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\OnlineEditorConfigMapper\\:\\:mapDataAttributesConfiguration\\(\\) has parameter \\$semanticConfiguration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/OnlineEditorConfigMapper.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\OnlineEditorConfigMapper\\:\\:mapDataAttributesConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Configuration/UI/Mapper/OnlineEditorConfigMapper.php
+
+		-
+			message: "#^Class EzSystems\\\\EzPlatformRichText\\\\Form\\\\DataTransformer\\\\RichTextTransformer implements generic interface Symfony\\\\Component\\\\Form\\\\DataTransformerInterface but does not specify its types\\: T, R$#"
+			count: 1
+			path: src/lib/Form/DataTransformer/RichTextTransformer.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Form\\\\DataTransformer\\\\RichTextTransformer\\:\\:reverseTransform\\(\\) should return string but returns string\\|false\\.$#"
+			count: 1
+			path: src/lib/Form/DataTransformer/RichTextTransformer.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Form\\\\DataTransformer\\\\RichTextTransformer\\:\\:transform\\(\\) should return string but returns string\\|false\\.$#"
+			count: 1
+			path: src/lib/Form/DataTransformer/RichTextTransformer.php
+
+		-
+			message: "#^Class EzSystems\\\\EzPlatformRichText\\\\Form\\\\DataTransformer\\\\RichTextValueTransformer implements generic interface Symfony\\\\Component\\\\Form\\\\DataTransformerInterface but does not specify its types\\: T, R$#"
+			count: 1
+			path: src/lib/Form/DataTransformer/RichTextValueTransformer.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Form\\\\DataTransformer\\\\RichTextValueTransformer\\:\\:transform\\(\\) should return string but returns string\\|false\\.$#"
+			count: 1
+			path: src/lib/Form/DataTransformer/RichTextValueTransformer.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Form\\\\Mapper\\\\RichTextFormMapper\\:\\:configureOptions\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Form/Mapper/RichTextFormMapper.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Form\\\\Mapper\\\\RichTextFormMapper\\:\\:mapFieldValueForm\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Form/Mapper/RichTextFormMapper.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Form\\\\Type\\\\RichTextFieldType\\:\\:buildForm\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Form/Type/RichTextFieldType.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\Form\\\\Type\\\\RichTextFieldType\\:\\:getName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Form/Type/RichTextFieldType.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\SPI\\\\Configuration\\\\Provider\\:\\:getConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/SPI/Configuration/Provider.php
+
+		-
+			message: "#^Parameter \\#2 \\$desc of method EzSystems\\\\EzPlatformRichText\\\\Translation\\\\Extractor\\\\OnlineEditorCustomAttributesExtractor\\:\\:createMessage\\(\\) expects string, int\\|string given\\.$#"
+			count: 1
+			path: src/lib/Translation/Extractor/OnlineEditorCustomAttributesExtractor.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\Validator\\\\Constraints\\\\RichText\\:\\:\\$message has no type specified\\.$#"
+			count: 1
+			path: src/lib/Validator/Constraints/RichText.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\\\EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\InputHandlerInterface\\)\\: Unexpected token \"\\\\n     \", expected variable at offset 81$#"
+			count: 1
+			path: src/lib/Validator/Constraints/RichTextValidator.php
+
+		-
+			message: "#^Call to an undefined method DOMNode\\:\\:setAttribute\\(\\)\\.$#"
+			count: 2
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage.php
+
+		-
+			message: "#^Class EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorage extends generic class eZ\\\\Publish\\\\SPI\\\\FieldType\\\\GatewayBasedStorage but does not specify its types\\: T$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorage\\:\\:deleteFieldData\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorage\\:\\:deleteFieldData\\(\\) has parameter \\$fieldIds with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorage\\:\\:deleteFieldData\\(\\) should return bool but return statement is missing\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorage\\:\\:getFieldData\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorage\\:\\:getFieldData\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorage\\:\\:getIndexData\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorage\\:\\:getIndexData\\(\\) should return array\\<eZ\\\\Publish\\\\SPI\\\\Search\\\\Field\\> but return statement is missing\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorage\\:\\:storeFieldData\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage.php
+
+		-
+			message: "#^Parameter \\#1 \\$source of method DOMDocument\\:\\:loadXML\\(\\) expects string, array\\|bool\\|float\\|int\\|string\\|null given\\.$#"
+			count: 2
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorage\\:\\:\\$logger \\(Psr\\\\Log\\\\LoggerInterface\\) does not accept Psr\\\\Log\\\\LoggerInterface\\|null\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorage\\:\\:\\$logger \\(Psr\\\\Log\\\\LoggerInterface\\) in isset\\(\\) is not nullable\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorage\\\\Gateway\\:\\:getContentIds\\(\\) has parameter \\$remoteIds with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage/Gateway.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorage\\\\Gateway\\:\\:getContentIds\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage/Gateway.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorage\\\\Gateway\\:\\:getIdUrlMap\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage/Gateway.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorage\\\\Gateway\\:\\:getUrlIdMap\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage/Gateway.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorage\\\\Gateway\\:\\:linkUrl\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage/Gateway.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorage\\\\Gateway\\:\\:unlinkUrl\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage/Gateway.php
+
+		-
+			message: "#^Cannot access property \\$firstChild on DOMElement\\|null\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/SearchField.php
+
+		-
+			message: "#^Cannot access property \\$textContent on DOMElement\\|null\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/SearchField.php
+
+		-
+			message: "#^Cannot access property \\$textContent on DOMNode\\|null\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/SearchField.php
+
+		-
+			message: "#^Parameter \\#1 \\$node of method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\SearchField\\:\\:extractText\\(\\) expects DOMNode, DOMElement\\|null given\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/SearchField.php
+
+		-
+			message: "#^Parameter \\#1 \\$source of method DOMDocument\\:\\:loadXML\\(\\) expects string, array\\|bool\\|float\\|int\\|string\\|null given\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/SearchField.php
+
+		-
+			message: "#^Access to an undefined property eZ\\\\Publish\\\\SPI\\\\FieldType\\\\Value\\:\\:\\$xml\\.$#"
+			count: 2
+			path: src/lib/eZ/FieldType/RichText/Type.php
+
+		-
+			message: "#^Cannot call method hasChildNodes\\(\\) on DOMElement\\|null\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/Type.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\Type\\:\\:checkValueStructure\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/Type.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\Type\\:\\:fromHash\\(\\) should return EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\Value but returns eZ\\\\Publish\\\\Core\\\\FieldType\\\\Value\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/Type.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\Type\\:\\:getRelations\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/Type.php
+
+		-
+			message: "#^Parameter \\#1 \\$xml of class EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\Value constructor expects DOMDocument\\|string\\|null, array\\|bool\\|float\\|int\\|string\\|null given\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/Type.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\Value\\:\\:\\$xml \\(DOMDocument\\) in isset\\(\\) is not nullable\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/Value.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\Persistence\\\\Legacy\\\\RichTextFieldValueConverter\\:\\:toFieldDefinition\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/eZ/Persistence/Legacy/RichTextFieldValueConverter.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\Persistence\\\\Legacy\\\\RichTextFieldValueConverter\\:\\:toFieldValue\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/eZ/Persistence/Legacy/RichTextFieldValueConverter.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\Persistence\\\\Legacy\\\\RichTextFieldValueConverter\\:\\:toStorageFieldDefinition\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/eZ/Persistence/Legacy/RichTextFieldValueConverter.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\Persistence\\\\Legacy\\\\RichTextFieldValueConverter\\:\\:toStorageValue\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/eZ/Persistence/Legacy/RichTextFieldValueConverter.php
+
+		-
+			message: "#^Property eZ\\\\Publish\\\\Core\\\\Persistence\\\\Legacy\\\\Content\\\\StorageFieldValue\\:\\:\\$dataText \\(string\\) does not accept array\\|bool\\|float\\|int\\|string\\|null\\.$#"
+			count: 1
+			path: src/lib/eZ/Persistence/Legacy/RichTextFieldValueConverter.php
+
+		-
+			message: "#^Property eZ\\\\Publish\\\\Core\\\\Persistence\\\\Legacy\\\\Content\\\\StorageFieldValue\\:\\:\\$sortKeyString \\(string\\) does not accept bool\\|float\\|int\\|string\\|null\\.$#"
+			count: 1
+			path: src/lib/eZ/Persistence/Legacy/RichTextFieldValueConverter.php
+
+		-
+			message: "#^Argument of an invalid type DOMNodeList\\<DOMNode\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Link.php
+
+		-
+			message: "#^If condition is always true\\.$#"
+			count: 4
+			path: src/lib/eZ/RichText/Converter/Link.php
+
+		-
+			message: "#^Parameter \\#1 \\$locationId of method eZ\\\\Publish\\\\API\\\\Repository\\\\LocationService\\:\\:loadLocation\\(\\) expects int, int\\|null given\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Link.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Link\\:\\:\\$logger \\(Psr\\\\Log\\\\LoggerInterface\\) does not accept Psr\\\\Log\\\\LoggerInterface\\|null\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Link.php
+
+		-
+			message: "#^Argument of an invalid type DOMNodeList\\<DOMNode\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/ProgramListing.php
+
+		-
+			message: "#^Cannot access property \\$namespaceURI on DOMElement\\|null\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/ProgramListing.php
+
+		-
+			message: "#^Parameter \\#2 \\$namespace of method DOMXPath\\:\\:registerNamespace\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/ProgramListing.php
+
+		-
+			message: "#^Access to an undefined property DOMElement\\|DOMText\\:\\:\\$wholeText\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render.php
+
+		-
+			message: "#^Call to an undefined method DOMElement\\|DOMText\\:\\:getAttribute\\(\\)\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render.php
+
+		-
+			message: "#^Call to an undefined method DOMElement\\|DOMText\\:\\:isWhitespaceInElementContent\\(\\)\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render.php
+
+		-
+			message: "#^Cannot access property \\$length on DOMNodeList\\<DOMNode\\>\\|false\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render.php
+
+		-
+			message: "#^Cannot call method item\\(\\) on DOMNodeList\\<DOMNode\\>\\|false\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\:\\:extractConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\:\\:extractConfiguration\\(\\) should return array but returns array\\|null\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\:\\:extractHash\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\:\\:extractHash\\(\\) should return array\\|null but returns string\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render.php
+
+		-
+			message: "#^Parameter \\#1 \\$configHash of method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\:\\:extractHash\\(\\) expects DOMNode, DOMNode\\|null given\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render.php
+
+		-
+			message: "#^Parameter \\#1 \\$document of class DOMXPath constructor expects DOMDocument, DOMDocument\\|null given\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render.php
+
+		-
+			message: "#^Argument of an invalid type DOMNodeList\\<DOMNode\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Embed.php
+
+		-
+			message: "#^Call to an undefined method DOMElement\\|DOMText\\:\\:isWhitespaceInElementContent\\(\\)\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Embed.php
+
+		-
+			message: "#^Cannot access property \\$childNodes on DOMNode\\|null\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Embed.php
+
+		-
+			message: "#^Cannot access property \\$localName on DOMNode\\|null\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Embed.php
+
+		-
+			message: "#^Cannot call method error\\(\\) on Psr\\\\Log\\\\LoggerInterface\\|null\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Embed.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\Embed\\:\\:extractCustomDataAttributes\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Embed.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\Embed\\:\\:extractLinkParameters\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Embed.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\Embed\\:\\:extractLinkParameters\\(\\) should return array but returns null\\.$#"
+			count: 2
+			path: src/lib/eZ/RichText/Converter/Render/Embed.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\Embed\\:\\:extractParameters\\(\\) has parameter \\$tagName with no type specified\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Embed.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\Embed\\:\\:extractParameters\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Embed.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\Embed\\:\\:mapLinkTarget\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Embed.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\Embed\\:\\:processTag\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Embed.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\Embed\\:\\:processTag\\(\\) has parameter \\$tagName with no type specified\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Embed.php
+
+		-
+			message: "#^PHPDoc tag @var has invalid value \\(\\$embed \\\\DOMElement\\)\\: Unexpected token \"\\$embed\", expected type at offset 9$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Embed.php
+
+		-
+			message: "#^Parameter \\#1 \\$element of method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\Embed\\:\\:isLinkWrapped\\(\\) expects DOMElement, DOMNode\\|null given\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Embed.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function substr expects string, string\\|false\\|null given\\.$#"
+			count: 2
+			path: src/lib/eZ/RichText/Converter/Render/Embed.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\Embed\\:\\:\\$docbookToHtmlTargetMap type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Embed.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\Embed\\:\\:\\$tagDefaultViewMap type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Embed.php
+
+		-
+			message: "#^Argument of an invalid type DOMNodeList\\<DOMNode\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 2
+			path: src/lib/eZ/RichText/Converter/Render/Template.php
+
+		-
+			message: "#^Cannot access property \\$length on DOMNodeList\\<DOMNode\\>\\|false\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Template.php
+
+		-
+			message: "#^Cannot call method createElementNS\\(\\) on DOMDocument\\|null\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Template.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\Template\\:\\:processTemplate\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Template.php
+
+		-
+			message: "#^Parameter \\#1 \\$document of class DOMXPath constructor expects DOMDocument, DOMDocument\\|null given\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Template.php
+
+		-
+			message: "#^Parameter \\#1 \\$haystack of function strpos expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Template.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|false given\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Template.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between DOMNode and false will always evaluate to false\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Template.php
+
+		-
+			message: "#^Access to an undefined property EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\:\\:\\$xsltProcessor\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Xslt.php
+
+		-
+			message: "#^Cannot access property \\$firstChild on DOMElement\\|null\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Xslt.php
+
+		-
+			message: "#^Cannot call method insertBefore\\(\\) on DOMElement\\|null\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Xslt.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\:\\:__construct\\(\\) has parameter \\$customStylesheets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Xslt.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\:\\:convert\\(\\) should return DOMDocument but returns DOMDocument\\|false\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Xslt.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\:\\:getSortedCustomStylesheets\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Xslt.php
+
+		-
+			message: "#^Parameter \\#1 \\$source of method DOMDocument\\:\\:loadXML\\(\\) expects string, string\\|false given\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Xslt.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\:\\:\\$customStylesheets type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Xslt.php
+
+		-
+			message: "#^Cannot call method lookupNamespaceURI\\(\\) on DOMElement\\|null\\.$#"
+			count: 2
+			path: src/lib/eZ/RichText/ConverterDispatcher.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\ConverterDispatcher\\:\\:addConverter\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/ConverterDispatcher.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\ConverterDispatcher\\:\\:\\$mapping \\(array\\<EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\>\\) does not accept array\\<EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\|null\\>\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/ConverterDispatcher.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter and null will always evaluate to false\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/ConverterDispatcher.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between string and null will always evaluate to false\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/ConverterDispatcher.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Exception\\\\InvalidXmlException\\:\\:__construct\\(\\) has parameter \\$errors with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Exception/InvalidXmlException.php
+
+		-
+			message: "#^Parameter \\#3 \\$previous of method eZ\\\\Publish\\\\Core\\\\Base\\\\Exceptions\\\\InvalidArgumentException\\:\\:__construct\\(\\) expects Exception\\|null, Throwable\\|null given\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Exception/InvalidXmlException.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\InputHandler\\:\\:getRelations\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/InputHandler.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\InputHandler\\:\\:validate\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/InputHandler.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\InputHandlerInterface\\:\\:getRelations\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/InputHandlerInterface.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\InputHandlerInterface\\:\\:validate\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/InputHandlerInterface.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Normalizer\\\\DocumentTypeDefinition\\:\\:__construct\\(\\) has parameter \\$documentElement with no type specified\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Normalizer/DocumentTypeDefinition.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Normalizer\\\\DocumentTypeDefinition\\:\\:__construct\\(\\) has parameter \\$dtdPath with no type specified\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Normalizer/DocumentTypeDefinition.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Normalizer\\\\DocumentTypeDefinition\\:\\:__construct\\(\\) has parameter \\$namespace with no type specified\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Normalizer/DocumentTypeDefinition.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Normalizer\\\\DocumentTypeDefinition\\:\\:normalize\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Normalizer/DocumentTypeDefinition.php
+
+		-
+			message: "#^Argument of an invalid type DOMNodeList\\<DOMNode\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/RelationProcessor.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\RelationProcessor\\:\\:getRelatedObjectIds\\(\\) has parameter \\$tagNames with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/RelationProcessor.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\RelationProcessor\\:\\:getRelatedObjectIds\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/RelationProcessor.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\RelationProcessor\\:\\:getRelations\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/RelationProcessor.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\RendererInterface\\:\\:renderContentEmbed\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/RendererInterface.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\RendererInterface\\:\\:renderLocationEmbed\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/RendererInterface.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\RendererInterface\\:\\:renderTemplate\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/RendererInterface.php
+
+		-
+			message: "#^Argument of an invalid type DOMNodeList\\<DOMNode\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 2
+			path: src/lib/eZ/RichText/Validator/CustomTagsValidator.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\CustomTagsValidator\\:\\:__construct\\(\\) has parameter \\$customTagsConfiguration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/CustomTagsValidator.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\CustomTagsValidator\\:\\:\\$customTagsConfiguration type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/CustomTagsValidator.php
+
+		-
+			message: "#^Argument of an invalid type DOMNodeList\\<DOMNode\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/InternalLinkValidator.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidator\\:\\:validateDocument\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/InternalLinkValidator.php
+
+		-
+			message: "#^Parameter \\#1 \\$locationId of method eZ\\\\Publish\\\\SPI\\\\Persistence\\\\Content\\\\Location\\\\Handler\\:\\:load\\(\\) expects int, string given\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/InternalLinkValidator.php
+
+		-
+			message: "#^Argument of an invalid type DOMNodeList\\<DOMNode\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/Validator.php
+
+		-
+			message: "#^Offset 'extension' does not exist on array\\{dirname\\?\\: string, basename\\: string, extension\\?\\: string, filename\\: string\\}\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/Validator.php
+
+		-
+			message: "#^Parameter \\#1 \\$document of class DOMXPath constructor expects DOMDocument, DOMDocument\\|false given\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/Validator.php
+
+		-
+			message: "#^Variable \\$additionalErrors in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/Validator.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\ValidatorAggregate\\:\\:__construct\\(\\) has parameter \\$validators with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/ValidatorAggregate.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\ValidatorAggregate\\:\\:\\$validators \\(array\\<EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\ValidatorInterface\\>\\) does not accept iterable\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/ValidatorAggregate.php
+
+		-
+			message: "#^Call to method validate\\(\\) on an unknown class EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/ValidatorDispatcher.php
+
+		-
+			message: "#^Cannot call method lookupNamespaceURI\\(\\) on DOMElement\\|null\\.$#"
+			count: 2
+			path: src/lib/eZ/RichText/Validator/ValidatorDispatcher.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\ValidatorDispatcher\\:\\:addValidator\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/ValidatorDispatcher.php
+
+		-
+			message: "#^PHPDoc tag @param for parameter \\$validator with type EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator is not subtype of native type EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\ValidatorInterface\\|null\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/ValidatorDispatcher.php
+
+		-
+			message: "#^Parameter \\#2 \\$validator of method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\ValidatorDispatcher\\:\\:addValidator\\(\\) expects EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\ValidatorInterface\\|null, EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator given\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/ValidatorDispatcher.php
+
+		-
+			message: "#^Parameter \\$validator of method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\ValidatorDispatcher\\:\\:addValidator\\(\\) has invalid type EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/ValidatorDispatcher.php
+
+		-
+			message: "#^Parameter \\$validatorMap of method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\ValidatorDispatcher\\:\\:__construct\\(\\) has invalid type EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/ValidatorDispatcher.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\ValidatorDispatcher\\:\\:\\$mapping \\(array\\<EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\>\\) does not accept array\\<EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\|EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\ValidatorInterface\\|null\\>\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/ValidatorDispatcher.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\ValidatorDispatcher\\:\\:\\$mapping has unknown class EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator as its type\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/ValidatorDispatcher.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator and null will always evaluate to false\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/ValidatorDispatcher.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between string and null will always evaluate to false\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/ValidatorDispatcher.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\XmlBase\\:\\:startRecordingErrors\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/XmlBase.php
+
+		-
+			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\XmlBase\\:\\:\\$errorTypes type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/XmlBase.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Compiler\\\\RichTextHtml5ConverterPassTest\\:\\:testCollectProviders\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/DependencyInjection/Compiler/RichTextHtml5ConverterPassTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\\\ConfigurationTest\\:\\:providerForTestProcessingConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/bundle/DependencyInjection/Configuration/ConfigurationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\\\ConfigurationTest\\:\\:providerForTestProcessingCustomTagsConfiguration\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/bundle/DependencyInjection/Configuration/ConfigurationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\\\ConfigurationTest\\:\\:testProcessingConfiguration\\(\\) has parameter \\$configurationValues with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/bundle/DependencyInjection/Configuration/ConfigurationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\\\ConfigurationTest\\:\\:testProcessingConfiguration\\(\\) has parameter \\$expectedProcessedConfiguration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/bundle/DependencyInjection/Configuration/ConfigurationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\\\Parser\\\\FieldType\\\\RichTextTest\\:\\:configureAndLoad\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/DependencyInjection/Configuration/Parser/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\\\Parser\\\\FieldType\\\\RichTextTest\\:\\:configureAndLoad\\(\\) has parameter \\$configurationValues with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/bundle/DependencyInjection/Configuration/Parser/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\\\Parser\\\\FieldType\\\\RichTextTest\\:\\:getExtensionsConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/bundle/DependencyInjection/Configuration/Parser/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\\\Parser\\\\FieldType\\\\RichTextTest\\:\\:getMinimalConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/bundle/DependencyInjection/Configuration/Parser/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\\\Parser\\\\FieldType\\\\RichTextTest\\:\\:getOnlineEditorInvalidSettings\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/bundle/DependencyInjection/Configuration/Parser/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\\\Parser\\\\FieldType\\\\RichTextTest\\:\\:richTextSettingsProvider\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/DependencyInjection/Configuration/Parser/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\\\Parser\\\\FieldType\\\\RichTextTest\\:\\:testDefaultContentSettings\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/DependencyInjection/Configuration/Parser/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\\\Parser\\\\FieldType\\\\RichTextTest\\:\\:testOnlineEditorInvalidSettingsThrowException\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/bundle/DependencyInjection/Configuration/Parser/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\\\Parser\\\\FieldType\\\\RichTextTest\\:\\:testRichTextCustomTagsInvalidSettings\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/DependencyInjection/Configuration/Parser/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\\\Parser\\\\FieldType\\\\RichTextTest\\:\\:testRichTextSettings\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/DependencyInjection/Configuration/Parser/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\\\Parser\\\\FieldType\\\\RichTextTest\\:\\:testRichTextSettings\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/bundle/DependencyInjection/Configuration/Parser/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\\\Parser\\\\FieldType\\\\RichTextTest\\:\\:testRichTextSettings\\(\\) has parameter \\$expected with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/bundle/DependencyInjection/Configuration/Parser/FieldType/RichTextTest.php
+
+		-
+			message: "#^Property EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\Configuration\\\\Parser\\\\FieldType\\\\RichTextTest\\:\\:\\$extensionsConfig type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/bundle/DependencyInjection/Configuration/Parser/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\DependencyInjection\\\\EzPlatformRichTextExtensionTest\\:\\:inlineTagDataProvider\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/bundle/DependencyInjection/EzPlatformRichTextExtensionTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$input of static method Symfony\\\\Component\\\\Yaml\\\\Yaml\\:\\:parse\\(\\) expects string, string\\|false given\\.$#"
+			count: 2
+			path: tests/bundle/DependencyInjection/EzPlatformRichTextExtensionTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\Templating\\\\Twig\\\\Extension\\\\YoutubeIdExtractorExtensionTest\\:\\:getYouTubeUrls\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/bundle/Templating/Twig/Extension/YoutubeIdExtractorExtensionTest.php
+
+		-
+			message: "#^Call to method expects\\(\\) on an unknown class EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Renderer\\.$#"
+			count: 51
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Call to method renderContentEmbed\\(\\) on an unknown class EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Renderer\\.$#"
+			count: 9
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Call to method renderLocationEmbed\\(\\) on an unknown class EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Renderer\\.$#"
+			count: 8
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Call to method renderTemplate\\(\\) on an unknown class EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Renderer\\.$#"
+			count: 4
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:getContentMock\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:getContentMock\\(\\) has parameter \\$mainLocationId with no type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:getMockedRenderer\\(\\) has invalid return type EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Renderer\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:getMockedRenderer\\(\\) has parameter \\$methods with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:getMockedRenderer\\(\\) should return EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Renderer&PHPUnit\\\\Framework\\\\MockObject\\\\MockObject but returns EzSystems\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\Renderer&PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:providerForTestRenderContentEmbedNotFound\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:providerForTestRenderContentWithTemplate\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:providerForTestRenderLocationEmbedNotFound\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:providerForTestRenderLocationWithTemplate\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:providerForTestRenderTagWithTemplate\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderContentEmbed\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderContentEmbedAccessDenied\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderContentEmbedHidden\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderContentEmbedNoTemplateConfigured\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderContentEmbedNoTemplateFound\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderContentEmbedNotFound\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderContentEmbedThrowsException\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderContentEmbedTrashed\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderContentWithTemplate\\(\\) has parameter \\$configResolverParams with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderContentWithTemplate\\(\\) has parameter \\$deniedException with no type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderContentWithTemplate\\(\\) has parameter \\$isInline with no type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderContentWithTemplate\\(\\) has parameter \\$loggerParams with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderContentWithTemplate\\(\\) has parameter \\$renderResult with no type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderContentWithTemplate\\(\\) has parameter \\$renderTemplate with no type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderContentWithTemplate\\(\\) has parameter \\$templateEngineTemplate with no type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderLocationEmbed\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderLocationEmbedAccessDenied\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderLocationEmbedInvisible\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderLocationEmbedNoTemplateConfigured\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderLocationEmbedNoTemplateFound\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderLocationEmbedNotFound\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderLocationEmbedThrowsException\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderLocationWithTemplate\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderLocationWithTemplate\\(\\) has parameter \\$configResolverParams with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderLocationWithTemplate\\(\\) has parameter \\$deniedException with no type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderLocationWithTemplate\\(\\) has parameter \\$isInline with no type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderLocationWithTemplate\\(\\) has parameter \\$loggerParams with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderLocationWithTemplate\\(\\) has parameter \\$renderResult with no type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderLocationWithTemplate\\(\\) has parameter \\$renderTemplate with no type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderLocationWithTemplate\\(\\) has parameter \\$templateEngineTemplate with no type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderTag\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderTagNoTemplateConfigured\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderTagNoTemplateFound\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderTagWithTemplate\\(\\) has parameter \\$configResolverParams with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderTagWithTemplate\\(\\) has parameter \\$isInline with no type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderTagWithTemplate\\(\\) has parameter \\$loggerParams with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderTagWithTemplate\\(\\) has parameter \\$renderResult with no type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderTagWithTemplate\\(\\) has parameter \\$renderTemplate with no type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderTagWithTemplate\\(\\) has parameter \\$tagName with no type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderTagWithTemplate\\(\\) has parameter \\$templateEngineTemplate with no type specified\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Property EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:\\$authorizationCheckerMock \\(PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&Symfony\\\\Component\\\\Security\\\\Core\\\\Authorization\\\\AuthorizationCheckerInterface\\) does not accept PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Property EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:\\$configResolverMock \\(PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&Psr\\\\Log\\\\LoggerInterface\\) does not accept PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Property EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:\\$loaderMock \\(PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&Twig\\\\Loader\\\\LoaderInterface\\) does not accept PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Property EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:\\$loggerMock \\(PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&Psr\\\\Log\\\\LoggerInterface\\) does not accept PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Property EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:\\$repositoryMock \\(eZ\\\\Publish\\\\API\\\\Repository\\\\Repository&PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\) does not accept PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Property EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:\\$templateEngineMock \\(PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&Symfony\\\\Component\\\\Templating\\\\EngineInterface\\) does not accept PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\.$#"
+			count: 1
+			path: tests/bundle/eZ/RichText/RendererTest.php
+
+		-
+			message: "#^Cannot access property \\$id on eZ\\\\Publish\\\\API\\\\Repository\\\\Values\\\\Content\\\\Field\\|null\\.$#"
+			count: 2
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Cannot access property \\$value on eZ\\\\Publish\\\\API\\\\Repository\\\\Values\\\\Content\\\\Field\\|null\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Cannot call method appendChild\\(\\) on DOMElement\\|null\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\ForwardCompatibility\\\\Result\\|int\\|string\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:__construct\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:__construct\\(\\) has parameter \\$name with no type specified\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:assertCopiedFieldDataLoadedCorrectly\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:assertFieldDataLoadedCorrect\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:assertUpdatedFieldDataLoadedCorrect\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:assertUpdatedFieldDataLoadedCorrect\\(\\) should return array but return statement is missing\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:checkSearchEngineSupport\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:createXmlDocumentWithExternalLink\\(\\) has parameter \\$urls with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:getFullTextIndexedFieldData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:getSettingsSchema\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:getValidUpdateFieldData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:getValidUpdateFieldData\\(\\) should return array but returns EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\Value\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:getValidatorSchema\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:prepareInternalLinkValidatorBrokenLinksTestCase\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:provideFromHashData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:provideInvalidCreationFieldData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:provideInvalidUpdateFieldData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:provideToHashData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:providerForTestConvertRemoteObjectIdToObjectId\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:providerForTestCreateContentWithInvalidCustomTag\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:providerForTestCreateContentWithValidCustomTag\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:providerForTestIsEmptyValue\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:providerForTestIsNotEmptyValue\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:testConvertRemoteObjectIdToObjectId\\(\\) has parameter \\$expected with no type specified\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:testConvertRemoteObjectIdToObjectId\\(\\) has parameter \\$test with no type specified\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:testCreateContentWithInvalidCustomTag\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:testCreateContentWithValidCustomTag\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:testFromHash\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:testFromHash\\(\\) has parameter \\$expectedValue with no type specified\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:testFromHash\\(\\) has parameter \\$hash with no type specified\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:testInternalLinkValidatorIgnoresMissingRelationOnNotUpdatedField\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\RichTextFieldTypeIntegrationTest\\:\\:testInternalLinkValidatorReturnsErrorOnMissingRelationInUpdatedField\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$parentLocationId of method eZ\\\\Publish\\\\API\\\\Repository\\\\LocationService\\:\\:newLocationCreateStruct\\(\\) expects int, int\\|null given\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$source of method DOMDocument\\:\\:loadXML\\(\\) expects string, string\\|false given\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\SetupFactory\\\\LegacySetupFactory\\:\\:externalBuildContainer\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/SetupFactory/LegacySetupFactory.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\SetupFactory\\\\LegacySetupFactory\\:\\:loadCoreSettings\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/SetupFactory/LegacySetupFactory.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\SetupFactory\\\\LegacySetupFactory\\:\\:loadRichTextSettings\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/SetupFactory/LegacySetupFactory.php
+
+		-
+			message: "#^Static property eZ\\\\Publish\\\\API\\\\Repository\\\\Tests\\\\SetupFactory\\\\Legacy\\:\\:\\$serviceContainer \\(eZ\\\\Publish\\\\Core\\\\Base\\\\ServiceContainer\\) in isset\\(\\) is not nullable\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/SetupFactory/LegacySetupFactory.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\SetupFactory\\\\SolrLegacySetupFactory\\:\\:loadCoreSettings\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/SetupFactory/SolrLegacySetupFactory.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\SetupFactory\\\\SolrLegacySetupFactory\\:\\:loadRichTextSettings\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/SetupFactory/SolrLegacySetupFactory.php
+
+		-
+			message: "#^Static property eZ\\\\Publish\\\\API\\\\Repository\\\\Tests\\\\SetupFactory\\\\Legacy\\:\\:\\$serviceContainer \\(eZ\\\\Publish\\\\Core\\\\Base\\\\ServiceContainer\\) in isset\\(\\) is not nullable\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/SetupFactory/SolrLegacySetupFactory.php
+
+		-
+			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\SPI\\\\RichTextFieldTypeIntegrationTest\\:\\:getFieldDefinitionData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/integration/eZ/SPI/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$validatorMap of class EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\ValidatorDispatcher constructor expects array\\<EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\>, array\\<string, null\\> given\\.$#"
+			count: 1
+			path: tests/integration/eZ/SPI/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Configuration\\\\AggregateProviderTest\\:\\:getConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/Configuration/AggregateProviderTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Configuration\\\\AggregateProviderTest\\:\\:testGetConfiguration\\(\\) has parameter \\$configuration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/Configuration/AggregateProviderTest.php
+
+		-
+			message: "#^Method class@anonymous/tests/lib/Configuration/AggregateProviderTest\\.php\\:31\\:\\:__construct\\(\\) has parameter \\$configuration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/Configuration/AggregateProviderTest.php
+
+		-
+			message: "#^Method class@anonymous/tests/lib/Configuration/AggregateProviderTest\\.php\\:31\\:\\:getConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/Configuration/AggregateProviderTest.php
+
+		-
+			message: "#^Property class@anonymous/tests/lib/Configuration/AggregateProviderTest\\.php\\:31\\:\\:\\$configuration has no type specified\\.$#"
+			count: 1
+			path: tests/lib/Configuration/AggregateProviderTest.php
+
+		-
+			message: "#^Property class@anonymous/tests/lib/Configuration/AggregateProviderTest\\.php\\:31\\:\\:\\$name has no type specified\\.$#"
+			count: 1
+			path: tests/lib/Configuration/AggregateProviderTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Configuration\\\\Provider\\\\AlloyEditorTest\\:\\:buildTestToolbarReturnCallback\\(\\) has parameter \\$buttonsConfig with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/Configuration/Provider/AlloyEditorTest.php
+
+		-
+			message: "#^Call to an undefined method EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomStyle\\|PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/lib/Configuration/Provider/BaseCustomTemplateProviderTestCase.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Configuration\\\\Provider\\\\BaseCustomTemplateProviderTestCase\\:\\:getExpectedCustomTemplatesConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/Configuration/Provider/BaseCustomTemplateProviderTestCase.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Configuration\\\\Provider\\\\BaseCustomTemplateProviderTestCase\\:\\:testGetConfiguration\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/Configuration/Provider/BaseCustomTemplateProviderTestCase.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Configuration\\\\Provider\\\\CustomStyleProviderTest\\:\\:getExpectedCustomTemplatesConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/Configuration/Provider/CustomStyleProviderTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$customStyleConfigurationMapper of class EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\Provider\\\\CustomStyle constructor expects EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTemplateConfigMapper, EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomStyle\\|PHPUnit\\\\Framework\\\\MockObject\\\\MockObject given\\.$#"
+			count: 1
+			path: tests/lib/Configuration/Provider/CustomStyleProviderTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Configuration\\\\Provider\\\\CustomTagProviderTest\\:\\:getExpectedCustomTemplatesConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/Configuration/Provider/CustomTagProviderTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$customTagConfigurationMapper of class EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\Provider\\\\CustomTag constructor expects EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomTemplateConfigMapper, EzSystems\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Mapper\\\\CustomStyle\\|PHPUnit\\\\Framework\\\\MockObject\\\\MockObject given\\.$#"
+			count: 1
+			path: tests/lib/Configuration/Provider/CustomTagProviderTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Config\\\\Mapper\\\\CustomTagTest\\:\\:providerForTestMapConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/Configuration/UI/Mapper/CustomTagTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Config\\\\Mapper\\\\CustomTagTest\\:\\:testMapConfig\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/Configuration/UI/Mapper/CustomTagTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Config\\\\Mapper\\\\CustomTagTest\\:\\:testMapConfig\\(\\) has parameter \\$customTagsConfiguration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/Configuration/UI/Mapper/CustomTagTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Config\\\\Mapper\\\\CustomTagTest\\:\\:testMapConfig\\(\\) has parameter \\$enabledCustomTags with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/Configuration/UI/Mapper/CustomTagTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Config\\\\Mapper\\\\CustomTagTest\\:\\:testMapConfig\\(\\) has parameter \\$expectedConfig with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/Configuration/UI/Mapper/CustomTagTest.php
+
+		-
+			message: "#^Call to an undefined method Symfony\\\\Contracts\\\\Translation\\\\TranslatorInterface\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/lib/Configuration/UI/Mapper/OnlineEditorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Config\\\\Mapper\\\\OnlineEditorTest\\:\\:getSemanticConfigurationForMapCssClassesConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/Configuration/UI/Mapper/OnlineEditorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Config\\\\Mapper\\\\OnlineEditorTest\\:\\:getSemanticConfigurationForMapDataAttributesConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/Configuration/UI/Mapper/OnlineEditorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Config\\\\Mapper\\\\OnlineEditorTest\\:\\:testMapCssClassesConfiguration\\(\\) has parameter \\$expectedMappedConfiguration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/Configuration/UI/Mapper/OnlineEditorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Config\\\\Mapper\\\\OnlineEditorTest\\:\\:testMapCssClassesConfiguration\\(\\) has parameter \\$semanticConfiguration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/Configuration/UI/Mapper/OnlineEditorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Config\\\\Mapper\\\\OnlineEditorTest\\:\\:testMapDataAttributesConfiguration\\(\\) has parameter \\$expectedMappedConfiguration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/Configuration/UI/Mapper/OnlineEditorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Configuration\\\\UI\\\\Config\\\\Mapper\\\\OnlineEditorTest\\:\\:testMapDataAttributesConfiguration\\(\\) has parameter \\$semanticConfiguration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/Configuration/UI/Mapper/OnlineEditorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Form\\\\DataTransformer\\\\RichTextTransformerTest\\:\\:dataProviderForReverseTransformTransformationFailedException\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/Form/DataTransformer/RichTextTransformerTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$actualXml of method PHPUnit\\\\Framework\\\\Assert\\:\\:assertXmlStringEqualsXmlString\\(\\) expects DOMDocument\\|string, string\\|false given\\.$#"
+			count: 1
+			path: tests/lib/Form/DataTransformer/RichTextTransformerTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Validator\\\\Constraints\\\\RichTextValidatorTest\\:\\:createInvalidXmlExceptionMock\\(\\) has parameter \\$errors with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/Validator/Constraints/RichTextValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Validator\\\\Constraints\\\\RichTextValidatorTest\\:\\:fetchErrorMessages\\(\\) has parameter \\$errors with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/Validator/Constraints/RichTextValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\Validator\\\\Constraints\\\\RichTextValidatorTest\\:\\:fetchErrorMessages\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/Validator/Constraints/RichTextValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\Gateway\\\\DoctrineStorageTest\\:\\:testGetContentIds\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/Gateway/DoctrineStorageTest.php
+
+		-
+			message: "#^Property EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\Gateway\\\\DoctrineStorageTest\\:\\:\\$storageGateway \\(EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorage\\\\Gateway\\\\DoctrineStorage\\) in isset\\(\\) is not nullable\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/Gateway/DoctrineStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:getContext\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:groupLinksData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:providerForTestGetFieldData\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:providerForTestStoreFieldData\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:providerForTestStoreFieldDataThrowsNotFoundException\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:testGetFieldData\\(\\) has parameter \\$linkIds with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:testGetFieldData\\(\\) has parameter \\$linkUrls with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:testGetFieldData\\(\\) has parameter \\$updatedXmlString with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:testGetFieldData\\(\\) has parameter \\$xmlString with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:testStoreFieldData\\(\\) has parameter \\$contentIds with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:testStoreFieldData\\(\\) has parameter \\$insertLinks with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:testStoreFieldData\\(\\) has parameter \\$isUpdated with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:testStoreFieldData\\(\\) has parameter \\$linkIds with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:testStoreFieldData\\(\\) has parameter \\$linkUrls with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:testStoreFieldData\\(\\) has parameter \\$remoteIds with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:testStoreFieldData\\(\\) has parameter \\$updatedXmlString with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:testStoreFieldData\\(\\) has parameter \\$xmlString with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:testStoreFieldDataThrowsNotFoundException\\(\\) has parameter \\$contentIds with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:testStoreFieldDataThrowsNotFoundException\\(\\) has parameter \\$insertLinks with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:testStoreFieldDataThrowsNotFoundException\\(\\) has parameter \\$linkIds with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:testStoreFieldDataThrowsNotFoundException\\(\\) has parameter \\$linkUrls with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:testStoreFieldDataThrowsNotFoundException\\(\\) has parameter \\$remoteIds with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:testStoreFieldDataThrowsNotFoundException\\(\\) has parameter \\$xmlString with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Property EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:\\$gatewayMock \\(EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorage\\\\Gateway&PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\) in isset\\(\\) is not nullable\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Property EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\RichTextStorageTest\\:\\:\\$loggerMock \\(PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&Psr\\\\Log\\\\LoggerInterface\\) in isset\\(\\) is not nullable\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/RichTextStorageTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\SearchFieldTest\\:\\:getDataForTestGetIndexData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/SearchFieldTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\SearchFieldTest\\:\\:testGetIndexData\\(\\) has parameter \\$expectedSearchFields with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichText/SearchFieldTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichTextTest\\:\\:provideDataForGetName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichTextTest\\:\\:provideFieldTypeIdentifier\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichTextTest\\:\\:providerForTestAcceptValueInvalidFormat\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichTextTest\\:\\:providerForTestAcceptValueValidFormat\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichTextTest\\:\\:providerForTestGetName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichTextTest\\:\\:providerForTestValidate\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichTextTest\\:\\:testAcceptValueInvalidFormat\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichTextTest\\:\\:testAcceptValueInvalidFormat\\(\\) has parameter \\$input with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichTextTest\\:\\:testAcceptValueInvalidType\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichTextTest\\:\\:testAcceptValueValidFormat\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichTextTest\\:\\:testAcceptValueValidFormat\\(\\) has parameter \\$input with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichTextTest\\:\\:testGetName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichTextTest\\:\\:testGetName\\(\\) has parameter \\$expectedName with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichTextTest\\:\\:testGetName\\(\\) has parameter \\$xmlString with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichTextTest\\:\\:testGetRelations\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichTextTest\\:\\:testSettingsSchema\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichTextTest\\:\\:testToPersistenceValue\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichTextTest\\:\\:testValidate\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichTextTest\\:\\:testValidate\\(\\) has parameter \\$expectedValidationErrors with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichTextTest\\:\\:testValidatorConfigurationSchema\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$converterMap of class EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\ConverterDispatcher constructor expects array\\<EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\>, array\\<string, null\\> given\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$transformationProcessor of method eZ\\\\Publish\\\\Core\\\\FieldType\\\\FieldType\\:\\:setTransformationProcessor\\(\\) expects eZ\\\\Publish\\\\Core\\\\Persistence\\\\TransformationProcessor, PHPUnit\\\\Framework\\\\MockObject\\\\MockObject given\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$validatorMap of class EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\ValidatorDispatcher constructor expects array\\<EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\>, array\\<string, null\\> given\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$value of method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\Type\\:\\:toPersistenceValue\\(\\) expects EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\Value, eZ\\\\Publish\\\\Core\\\\FieldType\\\\Value given\\.$#"
+			count: 1
+			path: tests/lib/eZ/FieldType/RichTextTest.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\Persistence\\\\Legacy\\\\Tests\\\\Content\\\\FieldValue\\\\Converter\\\\RichTextFieldValueConverterTest\\:\\:testToFieldValue\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/Persistence/Legacy/RichTextFieldValueConverterTest.php
+
+		-
+			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\Persistence\\\\Legacy\\\\Tests\\\\Content\\\\FieldValue\\\\Converter\\\\RichTextFieldValueConverterTest\\:\\:testToStorageValue\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/Persistence/Legacy/RichTextFieldValueConverterTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\REST\\\\FieldTypeProcessor\\\\RichTextProcessorTest\\:\\:testPostProcessValueHash\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/REST/FieldTypeProcessor/RichTextProcessorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\AggregateTest\\:\\:providerConvertWithLinkInCustomTag\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/AggregateTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:providerBadContentLink\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:providerBadLocationLink\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:providerContentLink\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:providerLinkXmlSample\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:providerLocationLink\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertBadContentLink\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertBadContentLink\\(\\) has parameter \\$contentId with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertBadContentLink\\(\\) has parameter \\$exception with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertBadContentLink\\(\\) has parameter \\$input with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertBadContentLink\\(\\) has parameter \\$logMessage with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertBadContentLink\\(\\) has parameter \\$logType with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertBadContentLink\\(\\) has parameter \\$output with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertBadLocationLink\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertBadLocationLink\\(\\) has parameter \\$exception with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertBadLocationLink\\(\\) has parameter \\$input with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertBadLocationLink\\(\\) has parameter \\$locationId with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertBadLocationLink\\(\\) has parameter \\$logMessage with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertBadLocationLink\\(\\) has parameter \\$logType with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertBadLocationLink\\(\\) has parameter \\$output with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertContentLink\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertContentLink\\(\\) has parameter \\$contentId with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertContentLink\\(\\) has parameter \\$input with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertContentLink\\(\\) has parameter \\$output with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertContentLink\\(\\) has parameter \\$urlResolved with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertLocationLink\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertLocationLink\\(\\) has parameter \\$input with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertLocationLink\\(\\) has parameter \\$locationId with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertLocationLink\\(\\) has parameter \\$output with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testConvertLocationLink\\(\\) has parameter \\$urlResolved with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testLink\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testLink\\(\\) has parameter \\$input with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\LinkTest\\:\\:testLink\\(\\) has parameter \\$output with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$locationService of class EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Link constructor expects eZ\\\\Publish\\\\API\\\\Repository\\\\LocationService, PHPUnit\\\\Framework\\\\MockObject\\\\MockObject given\\.$#"
+			count: 5
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$contentService of class EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Link constructor expects eZ\\\\Publish\\\\API\\\\Repository\\\\ContentService, PHPUnit\\\\Framework\\\\MockObject\\\\MockObject given\\.$#"
+			count: 5
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$function of class eZ\\\\Publish\\\\Core\\\\Base\\\\Exceptions\\\\UnauthorizedException constructor expects string, int given\\.$#"
+			count: 4
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Parameter \\#3 \\$urlAliasRouter of class EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Link constructor expects eZ\\\\Publish\\\\Core\\\\MVC\\\\Symfony\\\\Routing\\\\UrlAliasRouter, PHPUnit\\\\Framework\\\\MockObject\\\\MockObject given\\.$#"
+			count: 5
+			path: tests/lib/eZ/RichText/Converter/LinkTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\EmbedTest\\:\\:getConverter\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Render/EmbedTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\EmbedTest\\:\\:getLoggerMock\\(\\) has invalid return type LoggerInterface\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Render/EmbedTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\EmbedTest\\:\\:getLoggerMock\\(\\) should return LoggerInterface&PHPUnit\\\\Framework\\\\MockObject\\\\MockObject but returns PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&Psr\\\\Log\\\\LoggerInterface\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Render/EmbedTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\EmbedTest\\:\\:providerForTestConvert\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Render/EmbedTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\EmbedTest\\:\\:testConvert\\(\\) has parameter \\$errors with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Render/EmbedTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\EmbedTest\\:\\:testConvert\\(\\) has parameter \\$renderContentEmbedParams with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Render/EmbedTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\EmbedTest\\:\\:testConvert\\(\\) has parameter \\$renderLocationEmbedParams with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Render/EmbedTest.php
+
+		-
+			message: "#^Property EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\EmbedTest\\:\\:\\$loggerMock \\(PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&Psr\\\\Log\\\\LoggerInterface\\) does not accept LoggerInterface&PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Render/EmbedTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\TemplateTest\\:\\:getConverter\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Render/TemplateTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\TemplateTest\\:\\:provideConvertRenderValues\\(\\) has parameter \\$expectedValues with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Render/TemplateTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\TemplateTest\\:\\:provideConvertRenderValues\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Render/TemplateTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\TemplateTest\\:\\:providerForTestConvert\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Render/TemplateTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\TemplateTest\\:\\:testConvert\\(\\) has parameter \\$expectedRenderParams with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Render/TemplateTest.php
+
+		-
+			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 2
+			path: tests/lib/eZ/RichText/Converter/Xslt/BaseTest.php
+
+		-
+			message: "#^Cannot access property \\$length on DOMNodeList\\<DOMNode\\>\\|false\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/BaseTest.php
+
+		-
+			message: "#^Cannot access property \\$parentNode on DOMNode\\|null\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/BaseTest.php
+
+		-
+			message: "#^Cannot call method item\\(\\) on DOMNodeList\\<DOMNode\\>\\|false\\.$#"
+			count: 2
+			path: tests/lib/eZ/RichText/Converter/Xslt/BaseTest.php
+
+		-
+			message: "#^Cannot call method removeChild\\(\\) on DOMNode\\|null\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/BaseTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\BaseTest\\:\\:formatValidationErrors\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/BaseTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\BaseTest\\:\\:formatValidationErrors\\(\\) has parameter \\$errors with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/BaseTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\BaseTest\\:\\:formatValidationErrors\\(\\) has parameter \\$outputFile with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/BaseTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\BaseTest\\:\\:getConversionValidator\\(\\) should return EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\ValidatorInterface but returns EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/BaseTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\BaseTest\\:\\:getCustomConversionTransformationStylesheets\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/BaseTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\BaseTest\\:\\:getFixtureSubdirectories\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/BaseTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\BaseTest\\:\\:providerForTestConvert\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/BaseTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\BaseTest\\:\\:removeComments\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/BaseTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\BaseTest\\:\\:testConvert\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/BaseTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$source of method DOMDocument\\:\\:loadXML\\(\\) expects string, string\\|false given\\.$#"
+			count: 2
+			path: tests/lib/eZ/RichText/Converter/Xslt/BaseTest.php
+
+		-
+			message: "#^Property EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\BaseTest\\:\\:\\$validator \\(EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\) does not accept EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\Validator\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/BaseTest.php
+
+		-
+			message: "#^Property EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\BaseTest\\:\\:\\$validator has unknown class EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator as its type\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/BaseTest.php
+
+		-
+			message: "#^Variable \\$validator in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/BaseTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\DebugRenderer\\:\\:renderContentEmbed\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/DebugRenderer.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\DebugRenderer\\:\\:renderLocationEmbed\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/DebugRenderer.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\DebugRenderer\\:\\:renderTag\\(\\) has parameter \\$isInline with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/DebugRenderer.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\DebugRenderer\\:\\:renderTag\\(\\) has parameter \\$name with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/DebugRenderer.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\DebugRenderer\\:\\:renderTag\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/DebugRenderer.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\DebugRenderer\\:\\:renderTemplate\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/DebugRenderer.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\DebugRenderer\\:\\:serializeParameters\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/DebugRenderer.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\DocbookToXhtml5EditTest\\:\\:getCustomConversionTransformationStylesheets\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/DocbookToXhtml5EditTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\DocbookToXhtml5EditTest\\:\\:getFixtureSubdirectories\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/DocbookToXhtml5EditTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\DocbookToXhtml5OutputTest\\:\\:getCustomConversionTransformationStylesheets\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/DocbookToXhtml5OutputTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\DocbookToXhtml5OutputTest\\:\\:getFixtureSubdirectories\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/DocbookToXhtml5OutputTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\Xhtml5ToDocbookTest\\:\\:getCustomConversionTransformationStylesheets\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/Xhtml5ToDocbookTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Xslt\\\\Xhtml5ToDocbookTest\\:\\:getFixtureSubdirectories\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Converter/Xslt/Xhtml5ToDocbookTest.php
+
+		-
+			message: "#^Property EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\InputHandlerTest\\:\\:\\$inputHandler \\(EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\InputHandler&PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\) does not accept EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\InputHandler\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/InputHandlerTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Normalizer\\\\DocumentTypeDefinitionTest\\:\\:getNormalizer\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Normalizer/DocumentTypeDefinitionTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Normalizer\\\\DocumentTypeDefinitionTest\\:\\:getNormalizer\\(\\) has parameter \\$documentElement with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Normalizer/DocumentTypeDefinitionTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Normalizer\\\\DocumentTypeDefinitionTest\\:\\:getNormalizer\\(\\) has parameter \\$dtdPath with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Normalizer/DocumentTypeDefinitionTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Normalizer\\\\DocumentTypeDefinitionTest\\:\\:getNormalizer\\(\\) has parameter \\$namespace with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Normalizer/DocumentTypeDefinitionTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Normalizer\\\\DocumentTypeDefinitionTest\\:\\:providerForTestNormalize\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Normalizer/DocumentTypeDefinitionTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Normalizer\\\\DocumentTypeDefinitionTest\\:\\:providerForTestRefuse\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Normalizer/DocumentTypeDefinitionTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Normalizer\\\\DocumentTypeDefinitionTest\\:\\:testAccept\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Normalizer/DocumentTypeDefinitionTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Normalizer\\\\DocumentTypeDefinitionTest\\:\\:testAcceptNoXmlDeclaration\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Normalizer/DocumentTypeDefinitionTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Normalizer\\\\DocumentTypeDefinitionTest\\:\\:testNormalize\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Normalizer/DocumentTypeDefinitionTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Normalizer\\\\DocumentTypeDefinitionTest\\:\\:testRefuse\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Normalizer/DocumentTypeDefinitionTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\RelationProcessorTest\\:\\:dateProviderForGetRelations\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/RelationProcessorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\RelationProcessorTest\\:\\:testGetRelations\\(\\) has parameter \\$expectedRelations with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/RelationProcessorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\CustomTagsValidatorTest\\:\\:providerForTestValidateDocument\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/CustomTagsValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\CustomTagsValidatorTest\\:\\:testValidateDocument\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/CustomTagsValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\CustomTagsValidatorTest\\:\\:testValidateDocument\\(\\) has parameter \\$expectedErrors with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/CustomTagsValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\CustomTagsValidatorTest\\:\\:testValidateDocumentAcceptsLegacyTags\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/CustomTagsValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\DocbookTest\\:\\:providerForTestValidate\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/DocbookTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\DocbookTest\\:\\:testValidate\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/DocbookTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\DocbookTest\\:\\:testValidate\\(\\) has parameter \\$expectedErrors with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/DocbookTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\DocbookTest\\:\\:testValidate\\(\\) has parameter \\$input with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/DocbookTest.php
+
+		-
+			message: "#^Call to method expects\\(\\) on an unknown class EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\InternalLinkValidator\\.$#"
+			count: 7
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Call to method validate\\(\\) on an unknown class EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\InternalLinkValidator\\.$#"
+			count: 7
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Call to method validateDocument\\(\\) on an unknown class EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\InternalLinkValidator\\.$#"
+			count: 7
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:assertContainsEzContentInvalidLinkError\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:assertContainsEzContentInvalidLinkError\\(\\) has parameter \\$contentId with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:assertContainsEzContentInvalidLinkError\\(\\) has parameter \\$errors with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:assertContainsEzLocationInvalidLinkError\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:assertContainsEzLocationInvalidLinkError\\(\\) has parameter \\$errors with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:assertContainsEzLocationInvalidLinkError\\(\\) has parameter \\$locationId with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:assertContainsEzRemoteInvalidLinkError\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:assertContainsEzRemoteInvalidLinkError\\(\\) has parameter \\$contentId with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:assertContainsEzRemoteInvalidLinkError\\(\\) has parameter \\$errors with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:createInputDocument\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:createInputDocument\\(\\) has parameter \\$id with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:createInputDocument\\(\\) has parameter \\$scheme with no type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:getInternalLinkValidator\\(\\) has invalid return type EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\InternalLinkValidator\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:getInternalLinkValidator\\(\\) has parameter \\$methods with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:getInternalLinkValidator\\(\\) should return EzSystems\\\\EzPlatformRichText\\\\eZ\\\\FieldType\\\\RichText\\\\InternalLinkValidator&PHPUnit\\\\Framework\\\\MockObject\\\\MockObject but returns EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidator&PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:setupInternalLinkValidator\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:testValidateDocumentEzContentExistingContentId\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:testValidateDocumentEzContentExistingLocationId\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:testValidateDocumentEzContentNonExistingContentId\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:testValidateDocumentEzContentNonExistingLocationId\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:testValidateDocumentEzRemoteExistingId\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:testValidateDocumentEzRemoteNonExistingId\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:testValidateDocumentSkipMissingTargetId\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:testValidateEzContentNonExistingContentId\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:testValidateEzContentWithExistingContentId\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:testValidateEzLocationWithExistingLocationId\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:testValidateEzLocationWithNonExistingLocationId\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:testValidateEzRemoteWithExistingRemoteId\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:testValidateEzRemoteWithNonExistingRemoteId\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
+
+		-
+			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidatorTest\\:\\:testValidateFailOnNotSupportedSchema\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/lib/eZ/RichText/Validator/InternalLinkValidatorTest.php
