@@ -1,6 +1,7 @@
 includes:
     - vendor/phpstan/phpstan-phpunit/extension.neon
     - vendor/phpstan/phpstan-symfony/extension.neon
+    - ignore-by-php-version.neon.php
     - phpstan-baseline.neon
 
 parameters:

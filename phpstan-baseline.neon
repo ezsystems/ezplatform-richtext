@@ -931,11 +931,6 @@ parameters:
 			path: src/lib/eZ/RichText/Converter/Render/Embed.php
 
 		-
-			message: "#^Parameter \\#1 \\$string of function substr expects string, string\\|false\\|null given\\.$#"
-			count: 2
-			path: src/lib/eZ/RichText/Converter/Render/Embed.php
-
-		-
 			message: "#^Property EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\Embed\\:\\:\\$docbookToHtmlTargetMap type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/lib/eZ/RichText/Converter/Render/Embed.php
@@ -972,11 +967,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$haystack of function strpos expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/lib/eZ/RichText/Converter/Render/Template.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|false given\\.$#"
 			count: 1
 			path: src/lib/eZ/RichText/Converter/Render/Template.php
 
