@@ -1,4 +1,5 @@
-<phpunit backupGlobals="false"
+<phpunit bootstrap="tests/bootstrap.php"
+         backupGlobals="false"
          backupStaticAttributes="false"
          processIsolation="false"
          convertErrorsToExceptions="true"
@@ -12,8 +13,8 @@
         <env name="setupFactory" value="EzSystems\IntegrationTests\EzPlatformRichText\eZ\API\SetupFactory\SolrLegacySetupFactory" />
         <env name="backendVersion" value="5" />
         <env name="fixtureDir" value="Solr" />
-        <env name="solrServer" value="http://localhost:8983/" />
-        <env name="CORES_SETUP" value="dedicated" />
+        <env name="SOLR_HOST" value="localhost" />
+        <env name="CORES_SETUP" value="single" />
         <ini name="error_reporting" value="-1" />
     </php>
     <testsuites>
