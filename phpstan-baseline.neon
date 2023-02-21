@@ -1851,32 +1851,12 @@ parameters:
 			path: tests/integration/eZ/API/SetupFactory/LegacySetupFactory.php
 
 		-
-			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\SetupFactory\\\\LegacySetupFactory\\:\\:loadCoreSettings\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: tests/integration/eZ/API/SetupFactory/LegacySetupFactory.php
-
-		-
 			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\SetupFactory\\\\LegacySetupFactory\\:\\:loadRichTextSettings\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: tests/integration/eZ/API/SetupFactory/LegacySetupFactory.php
 
 		-
-			message: "#^Static property eZ\\\\Publish\\\\API\\\\Repository\\\\Tests\\\\SetupFactory\\\\Legacy\\:\\:\\$serviceContainer \\(eZ\\\\Publish\\\\Core\\\\Base\\\\ServiceContainer\\) in isset\\(\\) is not nullable\\.$#"
-			count: 1
-			path: tests/integration/eZ/API/SetupFactory/LegacySetupFactory.php
-
-		-
-			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\SetupFactory\\\\SolrLegacySetupFactory\\:\\:loadCoreSettings\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: tests/integration/eZ/API/SetupFactory/SolrLegacySetupFactory.php
-
-		-
 			message: "#^Method EzSystems\\\\IntegrationTests\\\\EzPlatformRichText\\\\eZ\\\\API\\\\SetupFactory\\\\SolrLegacySetupFactory\\:\\:loadRichTextSettings\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: tests/integration/eZ/API/SetupFactory/SolrLegacySetupFactory.php
-
-		-
-			message: "#^Static property eZ\\\\Publish\\\\API\\\\Repository\\\\Tests\\\\SetupFactory\\\\Legacy\\:\\:\\$serviceContainer \\(eZ\\\\Publish\\\\Core\\\\Base\\\\ServiceContainer\\) in isset\\(\\) is not nullable\\.$#"
 			count: 1
 			path: tests/integration/eZ/API/SetupFactory/SolrLegacySetupFactory.php
 
