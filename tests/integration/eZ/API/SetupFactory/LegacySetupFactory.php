@@ -9,7 +9,6 @@ declare(strict_types=1);
 namespace EzSystems\IntegrationTests\EzPlatformRichText\eZ\API\SetupFactory;
 
 use eZ\Publish\API\Repository\Tests\SetupFactory\Legacy as CoreLegacySetupFactory;
-use eZ\Publish\Core\Base\ServiceContainer;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
@@ -18,46 +17,12 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 class LegacySetupFactory extends CoreLegacySetupFactory
 {
-    use CoreSetupFactoryTrait;
     use RichTextSetupFactoryTrait;
 
-    /**
-     * Returns the service container used for initialization of the repository.
-     *
-     * @return \eZ\Publish\Core\Base\ServiceContainer
-     *
-     * @throws \Exception
-     */
-    public function getServiceContainer()
-    {
-        if (!isset(self::$serviceContainer)) {
-            /** @var \Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder */
-            $containerBuilder = new ContainerBuilder();
-
-            $this->externalBuildContainer($containerBuilder);
-
-            self::$serviceContainer = new ServiceContainer(
-                $containerBuilder,
-                __DIR__,
-                'var/cache',
-                true,
-                true
-            );
-        }
-
-        return self::$serviceContainer;
-    }
-
-    /**
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder
-     *
-     * @throws \Exception
-     */
     protected function externalBuildContainer(ContainerBuilder $containerBuilder)
     {
         parent::externalBuildContainer($containerBuilder);
 
-        $this->loadCoreSettings($containerBuilder);
         $this->loadRichTextSettings($containerBuilder);
     }
 }

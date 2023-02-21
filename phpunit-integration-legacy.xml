@@ -1,4 +1,5 @@
-<phpunit backupGlobals="false"
+<phpunit bootstrap="tests/bootstrap.php"
+         backupGlobals="false"
          backupStaticAttributes="false"
          processIsolation="false"
          convertErrorsToExceptions="true"
