@@ -31,6 +31,10 @@
     "require-dev": {
         "ibexa/ci-scripts": "^0.1@dev",
         "ezsystems/doctrine-dbal-schema": "^1.0@dev",
+        "ezsystems/ezplatform-solr-search-engine": "^3.3@dev",
+        "phpstan/phpstan": "^1.9",
+        "phpstan/phpstan-symfony": "^1.2",
+        "phpstan/phpstan-phpunit": "^1.3",
         "phpunit/phpunit": "^9.5",
         "symfony/finder": "^5.0",
         "matthiasnoback/symfony-config-test": "^4.1",
@@ -59,7 +63,8 @@
             "Composer\\Config::disableProcessTimeout",
             "phpunit -c phpunit-integration-legacy.xml"
         ],
-        "integration-solr": "phpunit -c phpunit-integration-legacy-solr.xml"
+        "integration-solr": "phpunit -c phpunit-integration-legacy-solr.xml",
+        "phpstan": "phpstan analyse -c phpstan.neon"
     },
     "extra": {
         "branch-alias": {

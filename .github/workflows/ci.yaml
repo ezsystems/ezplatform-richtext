@@ -65,6 +65,9 @@ jobs:
             - name: Setup problem matchers for PHPUnit
               run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
+            - name: Run PHPStan analysis
+              run: composer run-script phpstan
+
             - name: Run test suite
               run: composer run-script --timeout=600 test
 
@@ -198,9 +201,6 @@ jobs:
               with:
                   php-version: 7.4
                   coverage: none
-
-            - name: Add solr dependency
-              run: composer require --no-update "ezsystems/ezplatform-solr-search-engine:^3.3@dev"
 
             - uses: ramsey/composer-install@v2
               with:
