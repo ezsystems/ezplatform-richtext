@@ -139,6 +139,12 @@ services:
         tags:
             - {name: ezrichtext.converter.input.xhtml5, priority: 10}
 
+    # Note: should run after xsl transformation
+    ezrichtext.converter.input.xhtml5.listlinebreaks:
+        class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\ListLineBreaks
+        tags:
+            - {name: ezrichtext.converter.input.xhtml5, priority: 100}
+
     ezrichtext.converter.edit.xhtml5:
         class: EzSystems\EzPlatformRichTextBundle\eZ\RichText\Converter\Html5Edit
         arguments:

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook" xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0-variant ezpublish-1.0">
+    <para>This is a p</para>
+    <para> </para>
+    <itemizedlist>
+        <listitem>
+            <para>item 1</para>
+        </listitem>
+        <listitem>
+            <para>
+                <literallayout class="normal">item 2
+this is a line 2
+this is line 3</literallayout>
+<itemizedlist>
+                    <listitem>
+                        <para>item 3</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+    </listitem>
+</itemizedlist>
+<itemizedlist>
+        <listitem>
+            <para> </para>
+        </listitem>
+    </itemizedlist>
+</section>
