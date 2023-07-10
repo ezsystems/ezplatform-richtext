@@ -141,7 +141,7 @@ services:
 
     # Note: should run after xsl transformation
     ezrichtext.converter.input.xhtml5.listlinebreaks:
-        class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\ListLineBreaks
+        class: Ibexa\FieldTypeRichText\RichText\Converter\ListLineBreaks
         tags:
             - {name: ezrichtext.converter.input.xhtml5, priority: 100}
 

@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Converter;
 
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Link;
-use EzSystems\EzPlatformRichText\eZ\RichText\Converter\ListLineBreaks;
+use Ibexa\FieldTypeRichText\RichText\Converter\ListLineBreaks;
 use PHPUnit\Framework\TestCase;
 use DOMDocument;
 

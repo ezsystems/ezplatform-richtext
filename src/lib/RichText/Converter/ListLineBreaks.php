@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformRichText\eZ\RichText\Converter;
+namespace Ibexa\FieldTypeRichText\RichText\Converter;
 
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter;
 use DOMDocument;
@@ -57,6 +57,7 @@ class ListLineBreaks implements Converter
                 $targetNode->appendChild($node);
             }
         }
+
         return $document;
     }
 }

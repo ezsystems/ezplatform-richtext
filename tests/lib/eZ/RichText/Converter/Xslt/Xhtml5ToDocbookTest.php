@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Converter\Xslt;
 
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Aggregate;
-use EzSystems\EzPlatformRichText\eZ\RichText\Converter\ListLineBreaks;
+use Ibexa\FieldTypeRichText\RichText\Converter\ListLineBreaks;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\ProgramListing;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Xslt;
 
