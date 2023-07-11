@@ -20,9 +20,9 @@ use DOMDocument;
 class ListLineBreaksTest extends TestCase
 {
     /**
-     * @return array
+     * @return array<int, array<int, string>>
      */
-    public function providerConvert()
+    public function providerConvert() : array
     {
         return [
             [
@@ -79,7 +79,7 @@ this is line 3</literallayout>
      *
      * @dataProvider providerConvert
      */
-    public function testConvert($input, $output)
+    public function testConvert(string $input, string $output) : void
     {
         $inputDocument = new DOMDocument();
         $inputDocument->loadXML($input);

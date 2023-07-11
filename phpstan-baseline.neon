@@ -561,6 +561,11 @@ parameters:
 			path: src/lib/Form/Type/RichTextFieldType.php
 
 		-
+			message: "#^Variable \\$element in PHPDoc tag @var does not match any variable in the foreach loop\\: \\$childNode$#"
+			count: 1
+			path: src/lib/RichText/Converter/ListLineBreaks.php
+
+		-
 			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\SPI\\\\Configuration\\\\Provider\\:\\:getConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/lib/SPI/Configuration/Provider.php
