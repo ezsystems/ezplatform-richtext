@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Converter;
+namespace Ibexa\Tests\FieldTypeRichText\RichText\Converter;
 
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Link;
 use Ibexa\FieldTypeRichText\RichText\Converter\ListLineBreaks;
