@@ -30,9 +30,9 @@ class ListLineBreaks implements Converter
     {
         $xpath = new DOMXPath($document);
         $xpathExpression = '//ns:literallayout [descendant::ns:orderedlist|descendant::ns:itemizedlist]';
-        $ns = $document->documentElement ? $document->documentElement->namespaceURI ? : "" : "";
+        $ns = $document->documentElement ? $document->documentElement->namespaceURI ?: '' : '';
         $xpath->registerNamespace('ns', $ns);
-        $elements = $xpath->query($xpathExpression) ? : [];
+        $elements = $xpath->query($xpathExpression) ?: [];
 
         // elements are list of <literallayout> elements
         foreach ($elements as $element) {
