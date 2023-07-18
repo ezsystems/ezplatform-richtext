@@ -1,4 +1,8 @@
-<div class="tweet-container" data-url="{{ params.tweet_url }}"></div>
+<div
+    class="tweet-container"
+    data-url="{{ params.tweet_url }}"
+    {% if id is defined %}id="{{id}}"{% endif %}
+></div>
 <script>
     (function (global, doc) {
         global.twttr = global.twttr || (function (d, s, id) {
