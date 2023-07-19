@@ -29,10 +29,8 @@ export default class EzBtnAnchorEdit extends Component {
     componentDidMount() {
         const block = this.findBlock();
         const value = block.getId();
-        const isValueUnique = this.isValueUnique(value);
-        const isValueValid = this.isValueValid(value);
 
-        this.setState(() => ({ value, isValueUnique, isValueValid }));
+        this.checkValueIsValidAndUnique(value);
     }
 
     static get key() {
@@ -74,10 +72,8 @@ export default class EzBtnAnchorEdit extends Component {
 
     updateValue({ nativeEvent }) {
         const value = nativeEvent.target.value;
-        const isValueUnique = this.isValueUnique(value);
-        const isValueValid = this.isValueValid(value);
 
-        this.setState(() => ({ value, isValueUnique, isValueValid }));
+        this.checkValueIsValidAndUnique(value);
     }
 
     isValueUnique(value) {
@@ -188,6 +184,20 @@ export default class EzBtnAnchorEdit extends Component {
         }
 
         return <em className="ez-ae-anchor-edit__error">{errorMessage}</em>;
+    }
+
+    checkValueIsValidAndUnique(value) {
+        const isValueValid = this.isValueValid(value);
+
+        if (!isValueValid) {
+            this.setState(() => ({ value, isValueValid }));
+
+            return;
+        }
+
+        const isValueUnique = this.isValueUnique(value);
+
+        this.setState(() => ({ value, isValueUnique, isValueValid }));
     }
 
     /**
