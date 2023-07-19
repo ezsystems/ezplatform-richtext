@@ -1,7 +1,7 @@
 <div
     class="tweet-container"
     data-url="{{ params.tweet_url }}"
-    {% if id is defined %}id="{{id}}"{% endif %}
+    {% if id is defined %}id="{{ id }}"{% endif %}
 ></div>
 <script>
     (function (global, doc) {
