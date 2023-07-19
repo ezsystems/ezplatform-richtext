@@ -99,7 +99,7 @@
       </xsl:if>
       <xsl:if test="contains( @style, 'text-align:' )">
         <xsl:variable name="textAlign">
-          <xsl:call-template name="extractStyleValue">
+          <xsl:call-template name="extractTextAlignValue">
             <xsl:with-param name="style" select="@style"/>
             <xsl:with-param name="property" select="'text-align'"/>
           </xsl:call-template>
@@ -314,7 +314,7 @@
       </xsl:if>
       <xsl:if test="contains( @style, 'text-align:' )">
         <xsl:variable name="textAlign">
-          <xsl:call-template name="extractStyleValue">
+          <xsl:call-template name="extractTextAlignValue">
             <xsl:with-param name="style" select="@style"/>
             <xsl:with-param name="property" select="'text-align'"/>
           </xsl:call-template>
@@ -728,7 +728,7 @@
       </xsl:if>
       <xsl:if test="contains( @style, 'text-align:' )">
         <xsl:variable name="textAlign">
-          <xsl:call-template name="extractStyleValue">
+          <xsl:call-template name="extractTextAlignValue">
             <xsl:with-param name="style" select="@style"/>
             <xsl:with-param name="property" select="'text-align'"/>
           </xsl:call-template>
@@ -785,6 +785,24 @@
     <xsl:param name="style"/>
     <xsl:param name="property"/>
     <xsl:value-of select="translate( substring-before( substring-after( concat( substring-after( $style, $property ), ';' ), ':' ), ';' ), ' ', '' )"/>
+  </xsl:template>
+
+  <xsl:template name="extractTextAlignValue">
+    <xsl:param name="style"/>
+    <xsl:param name="property"/>
+    <xsl:variable name="alignValue">
+      <xsl:call-template name="extractStyleValue">
+        <xsl:with-param name="style" select="$style"/>
+        <xsl:with-param name="property" select="$property"/>
+      </xsl:call-template>
+    </xsl:variable>
+
+    <xsl:choose>
+      <xsl:when test="$alignValue = 'left' or $alignValue = 'center' or $alignValue = 'right' or $alignValue = 'justify'">
+        <xsl:value-of select="$alignValue"/>
+      </xsl:when>
+      <xsl:otherwise>left</xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="normalizeWidth">
