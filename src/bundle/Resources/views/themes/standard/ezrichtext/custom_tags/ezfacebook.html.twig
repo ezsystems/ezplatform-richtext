@@ -11,8 +11,9 @@
     class="fb-post"
     style="display: flex;{% if justify_content is defined %} justify-content: {{ justify_content }};{% endif %}"
     data-href="{{ params.post_url }}"
-    data-width="{{ params.width is defined ? params.width : '' }}">
-</div>
+    data-width="{{ params.width is defined ? params.width : '' }}"
+    {% if id is defined %}id="{{ id }}"{% endif %}
+></div>
 <script>
     (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
