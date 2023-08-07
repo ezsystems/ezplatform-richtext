@@ -15,7 +15,7 @@ use DOMDocument;
 /**
  * @covers \Ibexa\FieldTypeRichText\RichText\Converter\LiteralLayoutNestedList
  */
-class LiteralLayoutNestedListTest extends TestCase
+final class LiteralLayoutNestedListTest extends TestCase
 {
     /**
      * @return array<int, array<int, string>>
@@ -89,6 +89,6 @@ this is line 3</literallayout>
         $expectedOutputDocument = new DOMDocument();
         $expectedOutputDocument->loadXML($output);
 
-        $this->assertEquals($expectedOutputDocument, $outputDocument);
+        self::assertEquals($expectedOutputDocument, $outputDocument);
     }
 }
