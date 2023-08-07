@@ -8,16 +8,14 @@ declare(strict_types=1);
 
 namespace Ibexa\Tests\FieldTypeRichText\RichText\Converter;
 
-use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Link;
-use Ibexa\FieldTypeRichText\RichText\Converter\ListLineBreaks;
+use Ibexa\FieldTypeRichText\RichText\Converter\LiteralLayoutNestedList;
 use PHPUnit\Framework\TestCase;
 use DOMDocument;
 
 /**
- * Tests the Link converter
- * Class LinkTest.
+ * @covers \Ibexa\FieldTypeRichText\RichText\Converter\LiteralLayoutNestedList
  */
-class ListLineBreaksTest extends TestCase
+class LiteralLayoutNestedListTest extends TestCase
 {
     /**
      * @return array<int, array<int, string>>
@@ -75,7 +73,7 @@ this is line 3</literallayout>
     }
 
     /**
-     * Test conversion of ezurl://<id> links.
+     * Test conversion of <li> tags which containing <br/> and <ol>/<ul> tags.
      *
      * @dataProvider providerConvert
      */
@@ -84,7 +82,7 @@ this is line 3</literallayout>
         $inputDocument = new DOMDocument();
         $inputDocument->loadXML($input);
 
-        $converter = new ListLineBreaks();
+        $converter = new LiteralLayoutNestedList();
 
         $outputDocument = $converter->convert($inputDocument);
 

@@ -140,8 +140,7 @@ services:
             - {name: ezrichtext.converter.input.xhtml5, priority: 10}
 
     # Note: should run after xsl transformation
-    ezrichtext.converter.input.xhtml5.listlinebreaks:
-        class: Ibexa\FieldTypeRichText\RichText\Converter\ListLineBreaks
+    Ibexa\FieldTypeRichText\RichText\Converter\LiteralLayoutNestedList:
         tags:
             - {name: ezrichtext.converter.input.xhtml5, priority: 100}
 
