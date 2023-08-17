@@ -45,6 +45,7 @@
     "autoload": {
         "psr-4": {
             "EzSystems\\EzPlatformRichTextBundle\\": "src/bundle",
+            "Ibexa\\FieldTypeRichText\\RichText\\": "src/lib/RichText",
             "EzSystems\\EzPlatformRichText\\": "src/lib"
         }
     },
@@ -52,7 +53,8 @@
         "psr-4": {
             "EzSystems\\Tests\\EzPlatformRichText\\": "tests/lib",
             "EzSystems\\Tests\\EzPlatformRichTextBundle\\": "tests/bundle",
-            "EzSystems\\IntegrationTests\\EzPlatformRichText\\": "tests/integration"
+            "EzSystems\\IntegrationTests\\EzPlatformRichText\\": "tests/integration",
+            "Ibexa\\Tests\\FieldTypeRichText\\": "tests/lib/Richtext"
         }
     },
     "scripts": {

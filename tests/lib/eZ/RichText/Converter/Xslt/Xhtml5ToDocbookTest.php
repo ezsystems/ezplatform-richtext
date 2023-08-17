@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace EzSystems\Tests\EzPlatformRichText\eZ\RichText\Converter\Xslt;
 
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Aggregate;
+use Ibexa\FieldTypeRichText\RichText\Converter\LiteralLayoutNestedList;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\ProgramListing;
 use EzSystems\EzPlatformRichText\eZ\RichText\Converter\Xslt;
 
@@ -110,6 +111,7 @@ class Xhtml5ToDocbookTest extends BaseTest
                         $this->getConversionTransformationStylesheet(),
                         $this->getCustomConversionTransformationStylesheets()
                     ),
+                    new LiteralLayoutNestedList(),
                 ]
             );
         }
