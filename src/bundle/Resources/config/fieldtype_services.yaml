@@ -37,7 +37,7 @@ services:
             $configResolver: '@ezpublish.config.resolver'
             $templateEngine: '@twig'
             $permissionResolver: '@eZ\Publish\API\Repository\PermissionResolver'
-            $tagConfigurationNamespace: '%ezrichtext.tag.namespace%%'
+            $tagConfigurationNamespace: '%ezrichtext.tag.namespace%'
             $styleConfigurationNamespace: '%ezrichtext.style.namespace%'
             $embedConfigurationNamespace: '%ezrichtext.embed.namespace%'
             $logger: '@?logger'
