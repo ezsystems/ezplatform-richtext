@@ -8,13 +8,12 @@ declare(strict_types=1);
 
 namespace EzSystems\EzPlatformRichTextBundle\eZ\RichText;
 
+use eZ\Publish\API\Repository\PermissionResolver;
 use eZ\Publish\API\Repository\Repository;
 use eZ\Publish\API\Repository\Values\Content\Content;
 use eZ\Publish\Core\MVC\ConfigResolverInterface;
 use EzSystems\EzPlatformRichText\eZ\RichText\RendererInterface;
 use Psr\Log\NullLogger;
-use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
-use eZ\Publish\Core\MVC\Symfony\Security\Authorization\Attribute as AuthorizationAttribute;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use eZ\Publish\API\Repository\Exceptions\NotFoundException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -30,84 +29,54 @@ class Renderer implements RendererInterface
     const RESOURCE_TYPE_CONTENT = 0;
     const RESOURCE_TYPE_LOCATION = 1;
 
-    /**
-     * @var \eZ\Publish\Core\Repository\Repository
-     */
+    /** @var \eZ\Publish\Core\Repository\Repository */
     protected $repository;
 
-    /**
-     * @var \Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface
-     */
-    private $authorizationChecker;
-
-    /**
-     * @var string
-     */
-    protected $tagConfigurationNamespace;
-
-    /**
-     * @var string
-     */
-    protected $styleConfigurationNamespace;
-
-    /**
-     * @var string
-     */
-    protected $embedConfigurationNamespace;
-
-    /**
-     * @var ConfigResolverInterface
-     */
+    /** @var \eZ\Publish\Core\MVC\ConfigResolverInterface */
     protected $configResolver;
 
-    /**
-     * @var \Twig\Environment
-     */
+    /** @var \Twig\Environment */
     protected $templateEngine;
+
+    /** @var \eZ\Publish\API\Repository\PermissionResolver */
+    private $permissionResolver;
+
+    /** @var string */
+    protected $tagConfigurationNamespace;
+
+    /** @var string */
+    protected $styleConfigurationNamespace;
+
+    /** @var string */
+    protected $embedConfigurationNamespace;
 
     /**
      * @var \Psr\Log\LoggerInterface|null
      */
     protected $logger;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     private $customTagsConfiguration;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     private $customStylesConfiguration;
 
-    /**
-     * @param \eZ\Publish\API\Repository\Repository $repository
-     * @param \Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface $authorizationChecker
-     * @param \eZ\Publish\Core\MVC\ConfigResolverInterface $configResolver
-     * @param \Twig\Environment $templateEngine
-     * @param string $tagConfigurationNamespace
-     * @param string $styleConfigurationNamespace
-     * @param string $embedConfigurationNamespace
-     * @param \Psr\Log\LoggerInterface|null $logger
-     * @param array $customTagsConfiguration
-     * @param array $customStylesConfiguration
-     */
     public function __construct(
         Repository $repository,
-        AuthorizationCheckerInterface $authorizationChecker,
         ConfigResolverInterface $configResolver,
         Environment $templateEngine,
-        $tagConfigurationNamespace,
-        $styleConfigurationNamespace,
-        $embedConfigurationNamespace,
+        PermissionResolver $permissionResolver,
+        string $tagConfigurationNamespace,
+        string $styleConfigurationNamespace,
+        string $embedConfigurationNamespace,
         LoggerInterface $logger = null,
         array $customTagsConfiguration = [],
         array $customStylesConfiguration = []
     ) {
         $this->repository = $repository;
-        $this->authorizationChecker = $authorizationChecker;
         $this->configResolver = $configResolver;
         $this->templateEngine = $templateEngine;
+        $this->permissionResolver = $permissionResolver;
         $this->tagConfigurationNamespace = $tagConfigurationNamespace;
         $this->styleConfigurationNamespace = $styleConfigurationNamespace;
         $this->embedConfigurationNamespace = $embedConfigurationNamespace;
@@ -452,20 +421,15 @@ class Renderer implements RendererInterface
     /**
      * Check embed permissions for the given Content.
      *
-     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
-     *
-     * @param \eZ\Publish\API\Repository\Values\Content\Content $content
+     * @throws \eZ\Publish\API\Repository\Exceptions\BadStateException
+     * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException
      */
-    protected function checkContentPermissions(Content $content)
+    protected function checkContentPermissions(Content $content): void
     {
         // Check both 'content/read' and 'content/view_embed'.
         if (
-            !$this->authorizationChecker->isGranted(
-                new AuthorizationAttribute('content', 'read', ['valueObject' => $content])
-            )
-            && !$this->authorizationChecker->isGranted(
-                new AuthorizationAttribute('content', 'view_embed', ['valueObject' => $content])
-            )
+            !$this->permissionResolver->canUser('content', 'read', $content)
+            && !$this->permissionResolver->canUser('content', 'view_embed', $content)
         ) {
             throw new AccessDeniedException();
         }
@@ -473,9 +437,7 @@ class Renderer implements RendererInterface
         // Check that Content is published, since sudo allows loading unpublished content.
         if (
             !$content->getVersionInfo()->isPublished()
-            && !$this->authorizationChecker->isGranted(
-                new AuthorizationAttribute('content', 'versionread', ['valueObject' => $content])
-            )
+            && !$this->permissionResolver->canUser('content', 'versionread', $content)
         ) {
             throw new AccessDeniedException();
         }
@@ -484,11 +446,12 @@ class Renderer implements RendererInterface
     /**
      * Checks embed permissions for the given Location $id and returns the Location.
      *
-     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
-     *
      * @param int|string $id
      *
      * @return \eZ\Publish\API\Repository\Values\Content\Location
+     *
+     * @throws \eZ\Publish\API\Repository\Exceptions\BadStateException
+     * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException
      */
     protected function checkLocation($id)
     {
@@ -501,19 +464,17 @@ class Renderer implements RendererInterface
 
         // Check both 'content/read' and 'content/view_embed'.
         if (
-            !$this->authorizationChecker->isGranted(
-                new AuthorizationAttribute(
-                    'content',
-                    'read',
-                    ['valueObject' => $location->contentInfo, 'targets' => [$location]]
-                )
+            !$this->permissionResolver->canUser(
+                'content',
+                'read',
+                $location->contentInfo,
+                [$location]
             )
-            && !$this->authorizationChecker->isGranted(
-                new AuthorizationAttribute(
-                    'content',
-                    'view_embed',
-                    ['valueObject' => $location->contentInfo, 'targets' => [$location]]
-                )
+            && !$this->permissionResolver->canUser(
+                'content',
+                'view_embed',
+                $location->contentInfo,
+                [$location]
             )
         ) {
             throw new AccessDeniedException();

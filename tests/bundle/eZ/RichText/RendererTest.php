@@ -8,7 +8,8 @@ declare(strict_types=1);
 
 namespace EzSystems\Tests\EzPlatformRichTextBundle\eZ\RichText;
 
-use eZ\Publish\Core\Repository\Repository;
+use eZ\Publish\API\Repository\PermissionResolver;
+use eZ\Publish\API\Repository\Repository;
 use eZ\Publish\API\Repository\Values\Content\Location;
 use eZ\Publish\API\Repository\Values\Content\Content;
 use eZ\Publish\API\Repository\Values\Content\ContentInfo;
@@ -18,22 +19,39 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use eZ\Publish\Core\Base\Exceptions\NotFoundException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Exception;
 use PHPUnit\Framework\TestCase;
 use Twig\Environment;
 use Twig\Loader\LoaderInterface;
 
-class RendererTest extends TestCase
+final class RendererTest extends TestCase
 {
+    /** @var \PHPUnit\Framework\MockObject\MockObject&\eZ\Publish\API\Repository\Repository */
+    private $repositoryMock;
+
+    /** @var \eZ\Publish\Core\MVC\ConfigResolverInterface&\PHPUnit\Framework\MockObject\MockObject */
+    private $configResolverMock;
+
+    /** @var \Twig\Environment&\PHPUnit\Framework\MockObject\MockObject */
+    private $templateEngineMock;
+
+    /** @var \eZ\Publish\API\Repository\PermissionResolver&\PHPUnit\Framework\MockObject\MockObject */
+    private $permissionResolverMock;
+
+    /** @var \Psr\Log\LoggerInterface&\PHPUnit\Framework\MockObject\MockObject */
+    private $loggerMock;
+
+    /** @var \Twig\Loader\LoaderInterface&\PHPUnit\Framework\MockObject\MockObject */
+    private $loaderMock;
+
     public function setUp(): void
     {
-        $this->repositoryMock = $this->getRepositoryMock();
-        $this->authorizationCheckerMock = $this->getAuthorizationCheckerMock();
-        $this->configResolverMock = $this->getConfigResolverMock();
-        $this->templateEngineMock = $this->getTemplateEngineMock();
-        $this->loggerMock = $this->getLoggerMock();
-        $this->loaderMock = $this->getLoaderMock();
+        $this->repositoryMock = $this->createMock(Repository::class);
+        $this->configResolverMock = $this->createMock(ConfigResolverInterface::class);
+        $this->templateEngineMock = $this->createMock(Environment::class);
+        $this->permissionResolverMock = $this->createMock(PermissionResolver::class);
+        $this->loggerMock = $this->createMock(LoggerInterface::class);
+        $this->loaderMock = $this->createMock(LoaderInterface::class);
         parent::setUp();
     }
 
@@ -406,8 +424,7 @@ class RendererTest extends TestCase
         $renderer
             ->expects($this->once())
             ->method('checkContentPermissions')
-            ->with($contentMock)
-            ->willReturn($contentMock);
+            ->with($contentMock);
 
         $renderer
             ->expects($this->once())
@@ -462,8 +479,7 @@ class RendererTest extends TestCase
         $renderer
             ->expects($this->once())
             ->method('checkContentPermissions')
-            ->with($contentMock)
-            ->willReturn($contentMock);
+            ->with($contentMock);
 
         $renderer
             ->expects($this->never())
@@ -987,8 +1003,7 @@ class RendererTest extends TestCase
             $renderer
                 ->expects($this->once())
                 ->method('checkContentPermissions')
-                ->with($contentMock)
-                ->willReturn($contentMock);
+                ->with($contentMock);
         }
 
         if (!isset($renderTemplate)) {
@@ -1707,9 +1722,9 @@ class RendererTest extends TestCase
             ->setConstructorArgs(
                 [
                     $this->repositoryMock,
-                    $this->authorizationCheckerMock,
                     $this->configResolverMock,
                     $this->templateEngineMock,
+                    $this->permissionResolverMock,
                     'test.name.space.tag',
                     'test.name.space.style',
                     'test.name.space.embed',
@@ -1718,84 +1733,6 @@ class RendererTest extends TestCase
             )
             ->setMethods($methods)
             ->getMock();
-    }
-
-    /**
-     * @var \eZ\Publish\API\Repository\Repository|\PHPUnit\Framework\MockObject\MockObject
-     */
-    protected $repositoryMock;
-
-    /**
-     * @return \PHPUnit\Framework\MockObject\MockObject
-     */
-    protected function getRepositoryMock()
-    {
-        return $this->createMock(Repository::class);
-    }
-
-    /**
-     * @var \Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface|\PHPUnit\Framework\MockObject\MockObject
-     */
-    protected $authorizationCheckerMock;
-
-    /**
-     * @return \PHPUnit\Framework\MockObject\MockObject
-     */
-    protected function getAuthorizationCheckerMock()
-    {
-        return $this->createMock(AuthorizationCheckerInterface::class);
-    }
-
-    /**
-     * @var \Psr\Log\LoggerInterface|\PHPUnit\Framework\MockObject\MockObject
-     */
-    protected $configResolverMock;
-
-    /**
-     * @return \PHPUnit\Framework\MockObject\MockObject
-     */
-    protected function getConfigResolverMock()
-    {
-        return $this->createMock(ConfigResolverInterface::class);
-    }
-
-    /**
-     * @var \Symfony\Component\Templating\EngineInterface|\PHPUnit\Framework\MockObject\MockObject
-     */
-    protected $templateEngineMock;
-
-    /**
-     * @return \PHPUnit\Framework\MockObject\MockObject
-     */
-    protected function getTemplateEngineMock()
-    {
-        return $this->createMock(Environment::class);
-    }
-
-    /**
-     * @var \Psr\Log\LoggerInterface|\PHPUnit\Framework\MockObject\MockObject
-     */
-    protected $loggerMock;
-
-    /**
-     * @return \PHPUnit\Framework\MockObject\MockObject
-     */
-    protected function getLoggerMock()
-    {
-        return $this->createMock(LoggerInterface::class);
-    }
-
-    /**
-     * @var \Twig\Loader\LoaderInterface|\PHPUnit\Framework\MockObject\MockObject
-     */
-    protected $loaderMock;
-
-    /**
-     * @return \PHPUnit\Framework\MockObject\MockObject
-     */
-    protected function getLoaderMock()
-    {
-        return $this->createMock(LoaderInterface::class);
     }
 
     protected function getContentMock($mainLocationId)
