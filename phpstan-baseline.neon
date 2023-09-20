@@ -1662,9 +1662,12 @@ parameters:
 
 		-
 			message: "#^Cannot access property \\$id on eZ\\\\Publish\\\\API\\\\Repository\\\\Values\\\\Content\\\\Field\\|null\\.$#"
-			count: 2
+			count: 1
 			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
-
+		-
+			message: "#^Cannot call method fetchOne\\(\\) on Doctrine\\\\DBAL\\\\ForwardCompatibility\\\\Result\\|int\\|string\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
 		-
 			message: "#^Cannot access property \\$value on eZ\\\\Publish\\\\API\\\\Repository\\\\Values\\\\Content\\\\Field\\|null\\.$#"
 			count: 1

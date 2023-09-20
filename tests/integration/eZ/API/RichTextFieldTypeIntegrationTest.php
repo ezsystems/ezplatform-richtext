@@ -16,6 +16,8 @@ use eZ\Publish\API\Repository\Repository;
 use eZ\Publish\API\Repository\Tests\FieldType\RelationSearchBaseIntegrationTestTrait;
 use eZ\Publish\API\Repository\Tests\FieldType\SearchBaseIntegrationTest;
 use eZ\Publish\API\Repository\Values\Content\Location;
+use eZ\Publish\Core\Base\Exceptions\NotFoundException;
+use eZ\Publish\Core\Persistence\Legacy\URL\Gateway\DoctrineDatabase;
 use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value as RichTextValue;
 use eZ\Publish\API\Repository\Values\Content\Field;
 use DOMDocument;
@@ -636,14 +638,15 @@ EOT;
     }
 
     /**
+     * @throws \Doctrine\DBAL\Driver\Exception
+     * @throws \Doctrine\DBAL\Exception
      * @throws \ErrorException
-     * @throws \eZ\Publish\API\Repository\Exceptions\ForbiddenException
-     * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
-     * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException
+     * @throws \eZ\Publish\API\Repository\Exceptions\Exception
      */
     public function testExternalLinkStoringAfterUpdate(): void
     {
-        $xmlDocument = $this->createXmlDocumentWithExternalLink(['https://ez.no/', 'https://support.ez.no/']);
+        $testLink = 'https://support.ez.no/';
+        $xmlDocument = $this->createXmlDocumentWithExternalLink(['https://ez.no/', $testLink]);
         $repository = $this->getRepository();
         $contentService = $repository->getContentService();
 
@@ -663,12 +666,8 @@ EOT;
         $content = $contentService->publishVersion(
             $content->versionInfo
         );
-        $urlIds = $this->getUrlIdsForContentObjectAttributeIdAndVersionNo(
-            $content->getField('description')->id,
-            $content->contentInfo->currentVersionNo
-        );
 
-        $xmlDocument = $this->createXmlDocumentWithExternalLink(['https://support.ez.no/']);
+        $xmlDocument = $this->createXmlDocumentWithExternalLink([$testLink]);
         $contentUpdateStruct = $contentService->newContentUpdateStruct();
         $contentUpdateStruct->setField('description', $xmlDocument, 'eng-GB');
         $contentDraft = $contentService->updateContent(
@@ -681,7 +680,37 @@ EOT;
             $content->contentInfo->currentVersionNo
         );
 
-        $this->assertNotContains(reset($urlIds), $urlIdsAfterUpdate);
+        $urlId = $this->getUrlIdForLink($testLink);
+
+        self::assertContains($urlId, $urlIdsAfterUpdate);
+    }
+
+    /**
+     * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException
+     * @throws \Doctrine\DBAL\Driver\Exception
+     * @throws \Doctrine\DBAL\Exception
+     * @throws \ErrorException
+     */
+    private function getUrlIdForLink(string $link): int
+    {
+        $connection = $this->getRawDatabaseConnection();
+        $query = $connection->createQueryBuilder();
+        $query
+            ->select(
+                $connection->quoteIdentifier('id')
+            )
+            ->from(DoctrineDatabase::URL_TABLE)
+            ->where('url = :url')
+            ->setParameter(':url', $link, ParameterType::STRING)
+        ;
+
+        $id = $query->execute()->fetchOne();
+
+        if ($id === false) {
+            throw new NotFoundException('ezurl', $link);
+        }
+
+        return (int)$id;
     }
 
     /**
@@ -911,7 +940,7 @@ EOT;
         $repository = $this->getRepository();
         $contentService = $repository->getContentService();
 
-        list(, $contentB) = $this->prepareInternalLinkValidatorBrokenLinksTestCase($repository);
+        [, $contentB] = $this->prepareInternalLinkValidatorBrokenLinksTestCase($repository);
 
         // update field w/o erroneous link to trigger validation
         $contentUpdateStruct = $contentService->newContentUpdateStruct();
@@ -939,7 +968,7 @@ EOT;
         $repository = $this->getRepository();
         $contentService = $repository->getContentService();
 
-        list($deletedLocation, $brokenContent) = $this->prepareInternalLinkValidatorBrokenLinksTestCase(
+        [$deletedLocation, $brokenContent] = $this->prepareInternalLinkValidatorBrokenLinksTestCase(
             $repository
         );
 
