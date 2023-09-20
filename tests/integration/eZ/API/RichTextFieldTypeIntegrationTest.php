@@ -17,6 +17,7 @@ use eZ\Publish\API\Repository\Tests\FieldType\RelationSearchBaseIntegrationTestT
 use eZ\Publish\API\Repository\Tests\FieldType\SearchBaseIntegrationTest;
 use eZ\Publish\API\Repository\Values\Content\Location;
 use eZ\Publish\Core\Base\Exceptions\NotFoundException;
+use eZ\Publish\Core\Persistence\Legacy\URL\Gateway\DoctrineDatabase;
 use EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value as RichTextValue;
 use eZ\Publish\API\Repository\Values\Content\Field;
 use DOMDocument;
@@ -637,10 +638,10 @@ EOT;
     }
 
     /**
+     * @throws \Doctrine\DBAL\Driver\Exception
+     * @throws \Doctrine\DBAL\Exception
      * @throws \ErrorException
-     * @throws \eZ\Publish\API\Repository\Exceptions\ForbiddenException
-     * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
-     * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException
+     * @throws \eZ\Publish\API\Repository\Exceptions\Exception
      */
     public function testExternalLinkStoringAfterUpdate(): void
     {
@@ -681,7 +682,7 @@ EOT;
 
         $urlId = $this->getUrlIdForLink($testLink);
 
-        $this->assertContains($urlId, $urlIdsAfterUpdate);
+        self::assertContains($urlId, $urlIdsAfterUpdate);
     }
 
     /**
@@ -698,7 +699,7 @@ EOT;
             ->select(
                 $connection->quoteIdentifier('id')
             )
-            ->from('ezurl')
+            ->from(DoctrineDatabase::URL_TABLE)
             ->where('url = :url')
             ->setParameter(':url', $link, ParameterType::STRING)
         ;
