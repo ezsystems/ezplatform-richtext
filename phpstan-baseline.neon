@@ -201,11 +201,6 @@ parameters:
 			path: src/bundle/eZ/RichText/Renderer.php
 
 		-
-			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\Renderer\\:\\:checkContentPermissions\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/bundle/eZ/RichText/Renderer.php
-
-		-
 			message: "#^Method EzSystems\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\Renderer\\:\\:getEmbedTemplateName\\(\\) has parameter \\$isDenied with no type specified\\.$#"
 			count: 1
 			path: src/bundle/eZ/RichText/Renderer.php
@@ -1627,36 +1622,6 @@ parameters:
 
 		-
 			message: "#^Method EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:testRenderTagWithTemplate\\(\\) has parameter \\$templateEngineTemplate with no type specified\\.$#"
-			count: 1
-			path: tests/bundle/eZ/RichText/RendererTest.php
-
-		-
-			message: "#^Property EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:\\$authorizationCheckerMock \\(PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&Symfony\\\\Component\\\\Security\\\\Core\\\\Authorization\\\\AuthorizationCheckerInterface\\) does not accept PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\.$#"
-			count: 1
-			path: tests/bundle/eZ/RichText/RendererTest.php
-
-		-
-			message: "#^Property EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:\\$configResolverMock \\(PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&Psr\\\\Log\\\\LoggerInterface\\) does not accept PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\.$#"
-			count: 1
-			path: tests/bundle/eZ/RichText/RendererTest.php
-
-		-
-			message: "#^Property EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:\\$loaderMock \\(PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&Twig\\\\Loader\\\\LoaderInterface\\) does not accept PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\.$#"
-			count: 1
-			path: tests/bundle/eZ/RichText/RendererTest.php
-
-		-
-			message: "#^Property EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:\\$loggerMock \\(PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&Psr\\\\Log\\\\LoggerInterface\\) does not accept PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\.$#"
-			count: 1
-			path: tests/bundle/eZ/RichText/RendererTest.php
-
-		-
-			message: "#^Property EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:\\$repositoryMock \\(eZ\\\\Publish\\\\API\\\\Repository\\\\Repository&PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\) does not accept PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\.$#"
-			count: 1
-			path: tests/bundle/eZ/RichText/RendererTest.php
-
-		-
-			message: "#^Property EzSystems\\\\Tests\\\\EzPlatformRichTextBundle\\\\eZ\\\\RichText\\\\RendererTest\\:\\:\\$templateEngineMock \\(PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&Symfony\\\\Component\\\\Templating\\\\EngineInterface\\) does not accept PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\.$#"
 			count: 1
 			path: tests/bundle/eZ/RichText/RendererTest.php
 

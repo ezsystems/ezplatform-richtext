@@ -33,16 +33,16 @@ services:
     ezrichtext.renderer:
         class: EzSystems\EzPlatformRichTextBundle\eZ\RichText\Renderer
         arguments:
-            - '@ezpublish.api.repository'
-            - '@security.authorization_checker'
-            - '@ezpublish.config.resolver'
-            - '@twig'
-            - '%ezrichtext.tag.namespace%'
-            - '%ezrichtext.style.namespace%'
-            - '%ezrichtext.embed.namespace%'
-            - '@?logger'
-            - '%ezplatform.ezrichtext.custom_tags%'
-            - '%ezplatform.ezrichtext.custom_styles%'
+            $repository: '@ezpublish.api.repository'
+            $configResolver: '@ezpublish.config.resolver'
+            $templateEngine: '@twig'
+            $permissionResolver: '@eZ\Publish\API\Repository\PermissionResolver'
+            $tagConfigurationNamespace: '%ezrichtext.tag.namespace%'
+            $styleConfigurationNamespace: '%ezrichtext.style.namespace%'
+            $embedConfigurationNamespace: '%ezrichtext.embed.namespace%'
+            $logger: '@?logger'
+            $customTagsConfiguration: '%ezplatform.ezrichtext.custom_tags%'
+            $customStylesConfiguration: '%ezplatform.ezrichtext.custom_styles%'
 
     ezrichtext.converter.link:
         class: EzSystems\EzPlatformRichText\eZ\RichText\Converter\Link
