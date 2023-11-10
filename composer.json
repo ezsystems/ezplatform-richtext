@@ -54,7 +54,7 @@
             "EzSystems\\Tests\\EzPlatformRichText\\": "tests/lib",
             "EzSystems\\Tests\\EzPlatformRichTextBundle\\": "tests/bundle",
             "EzSystems\\IntegrationTests\\EzPlatformRichText\\": "tests/integration",
-            "Ibexa\\Tests\\FieldTypeRichText\\": "tests/lib/Richtext"
+            "Ibexa\\Tests\\FieldTypeRichText\\": "tests/lib/RichText"
         }
     },
     "scripts": {
