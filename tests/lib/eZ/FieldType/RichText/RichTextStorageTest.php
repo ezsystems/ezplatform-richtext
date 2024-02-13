@@ -325,6 +325,13 @@ class RichTextStorageTest extends TestCase
             ->method('getContentIds')
             ->with($this->equalTo($remoteIds))
             ->willReturn($contentIds);
+
+        $gateway
+            ->expects($this->once())
+            ->method('getUrlsFromUrlLink')
+            ->with($this->equalTo(42), $this->equalTo(1))
+            ->willReturn([]);
+
         $gateway->expects($this->never())->method('getIdUrlMap');
         if (empty($insertLinks)) {
             $gateway->expects($this->never())->method('insertUrl');
@@ -338,9 +345,12 @@ class RichTextStorageTest extends TestCase
                 ->willReturn($linkMap['id']);
         }
 
-        $versionInfo = new VersionInfo();
+        $versionInfo = new VersionInfo(['versionNo' => 1]);
         $value = new FieldValue(['data' => $xmlString]);
-        $field = new Field(['value' => $value]);
+        $field = new Field([
+            'value' => $value,
+            'id' => 42,
+        ]);
 
         $storage = $this->getPartlyMockedStorage($gateway);
         $storage->storeFieldData(

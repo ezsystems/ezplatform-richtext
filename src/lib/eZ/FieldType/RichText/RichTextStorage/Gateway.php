@@ -79,6 +79,16 @@ abstract class Gateway extends StorageGateway
     }
 
     /**
+     * Return a list of URLs used by the given field and version.
+     *
+     * @return bool[] An array of URLs, with urls as keys
+     */
+    public function getUrlsFromUrlLink(int $fieldId, int $versionNo): array
+    {
+        return $this->urlGateway->getUrlsFromUrlLink($fieldId, $versionNo);
+    }
+
+    /**
      * Creates link to URL with $urlId for field with $fieldId in $versionNo.
      *
      * @param int|string $urlId
