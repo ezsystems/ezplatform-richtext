@@ -83,7 +83,10 @@ class RichTextStorage extends GatewayBasedStorage
 
         $urlIdMap = $this->gateway->getUrlIdMap(array_keys($urlSet));
         $contentIds = $this->gateway->getContentIds(array_keys($remoteIdSet));
-        $urlLinkSet = [];
+        $urlLinkSet = $this->gateway->getUrlsFromUrlLink(
+            $field->id,
+            $versionInfo->versionNo
+        );
 
         foreach ($links as $index => $link) {
             list(, $scheme, $url, $fragment) = $linksInfo[$index];
