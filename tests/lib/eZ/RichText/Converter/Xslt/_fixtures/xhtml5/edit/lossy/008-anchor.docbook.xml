@@ -6,6 +6,6 @@
         xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom"
         version="5.0-variant ezpublish-1.0">
     <para><anchor xml:id="top"/>some anchor with a name attribute.</para>
-    <para><anchor xml:id="bottom"/>some anchor with a name attribute.</para>
-    <para>another anchor that should be removed due to lack of name uniqueness.</para>
+    <para><anchor xml:id="bottom_idm5"/>some anchor with a name attribute.</para>
+    <para><anchor xml:id="bottom_idm7"/>another anchor with the same name attribute.</para>
 </section>

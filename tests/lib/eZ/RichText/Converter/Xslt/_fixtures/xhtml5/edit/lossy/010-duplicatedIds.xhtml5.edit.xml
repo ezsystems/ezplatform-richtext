@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5/edit">
+    <p id="lipsum">Lorem ipsum</p>
+    <p id="lipsum">Nunc in dignissim ex</p>
+    <pre id="lipsum">Literal with CNAME end sequence here : ]]&gt; and some more text here</pre>
+    <pre id="programlisting">Literal with CNAME end sequence here : ]]&gt; and some more text here</pre>
+    <pre id="programlistingdup">Literal with CNAME end sequence here : ]]&gt; and some more text here</pre>
+    <pre id="programlistingdup">Literal with CNAME end sequence here : ]]&gt; and some more text here</pre>
+    <p>The anchor element<a id="lipsum"/> is empty and contributes nothing to the flow of the content in which it occurs. It is only useful as a target.</p>
+    <p>The anchor element<a id="anchor"/> is empty and contributes nothing to the flow of the content in which it occurs. It is only useful as a target.</p>
+    <p>The anchor element<a id="anchordup"/> is empty and contributes nothing to the flow of the content in which it occurs. It is only useful as a target.</p>
+    <p>The anchor element<a id="anchordup"/> is empty and contributes nothing to the flow of the content in which it occurs. It is only useful as a target.</p>
+    <p><a href="#anchor" target="_blank" id="lipsum" title="Anchor link title" class="linkClass1">Jump to content</a></p>
+    <p><a href="#anchor" target="_blank" id="link" title="Anchor link title" class="linkClass1">Jump to content</a></p>
+    <p><a href="#anchor" target="_blank" id="linkdup" title="Anchor link title" class="linkClass1">Jump to content</a></p>
+    <p><a href="#anchor" target="_blank" id="linkdup" title="Anchor link title" class="linkClass1">Jump to content</a></p>
+    <h1 class="titleClass" id="lipsum">This is a heading.</h1>
+    <h1 class="titleClass" id="title">This is a heading.</h1>
+    <h1 class="titleClass" id="titledup">This is a heading.</h1>
+    <h1 class="titleClass" id="titledup">This is a heading.</h1>
+    <ol class="orderedListClass" data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2" data-ezattribute-name-3="value 3" id="lipsum">
+        <li class="listItemClass" data-ezattribute-name-2="value 2">This is a list item.</li>
+        <li class="listItemClass" data-ezattribute-name-3="value 3">This is a list item 2.</li>
+    </ol>
+    <ol class="orderedListClass" data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2" data-ezattribute-name-3="value 3" id="orderedlist">
+        <li class="listItemClass" data-ezattribute-name-2="value 2">This is a list item.</li>
+        <li class="listItemClass" data-ezattribute-name-3="value 3">This is a list item 2.</li>
+    </ol>
+    <ol class="orderedListClass" data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2" data-ezattribute-name-3="value 3" id="orderedlistdup">
+        <li class="listItemClass" data-ezattribute-name-2="value 2">This is a list item.</li>
+        <li class="listItemClass" data-ezattribute-name-3="value 3">This is a list item 2.</li>
+    </ol>
+    <ol class="orderedListClass" data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2" data-ezattribute-name-3="value 3" id="orderedlistdup">
+        <li class="listItemClass" data-ezattribute-name-2="value 2">This is a list item.</li>
+        <li class="listItemClass" data-ezattribute-name-3="value 3">This is a list item 2.</li>
+    </ol>
+    <ul data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2" data-ezattribute-name-3="value 3" id="lipsum">
+        <li class="listItemClass" data-ezattribute-name-2="value 2">This is a list item.</li>
+        <li class="listItemClass" data-ezattribute-name-3="value 3">This is a list item 2.</li>
+    </ul>
+    <ul data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2" data-ezattribute-name-3="value 3" id="itemizedList">
+        <li class="listItemClass" data-ezattribute-name-2="value 2">This is a list item.</li>
+        <li class="listItemClass" data-ezattribute-name-3="value 3">This is a list item 2.</li>
+    </ul>
+    <ul data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2" data-ezattribute-name-3="value 3" id="itemizedListdup">
+        <li class="listItemClass" data-ezattribute-name-2="value 2">This is a list item.</li>
+        <li class="listItemClass" data-ezattribute-name-3="value 3">This is a list item 2.</li>
+    </ul>
+    <ul data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2" data-ezattribute-name-3="value 3" id="itemizedListdup">
+        <li class="listItemClass" data-ezattribute-name-2="value 2">This is a list item.</li>
+        <li class="listItemClass" data-ezattribute-name-3="value 3">This is a list item 2.</li>
+    </ul>
+    <table class="tableClass" title="tableTitle" style="width:24%;" id="lipsum">
+        <caption>Table caption.</caption>
+        <tbody>
+            <tr class="rowClass1">
+                <th class="headingClass1" colspan="1" rowspan="5" abbr="XSLT" scope="col" style="width:102px;vertical-align:top;">11</th>
+                <th class="headingClass2" colspan="2" rowspan="6" abbr="XSD" scope="row" style="width:37%;vertical-align:middle;">12</th>
+            </tr>
+        </tbody>
+    </table>
+    <table class="tableClass" title="tableTitle" style="width:24%;" id="table">
+        <caption>Table caption.</caption>
+        <tbody>
+            <tr class="rowClass1">
+                <th class="headingClass1" colspan="1" rowspan="5" abbr="XSLT" scope="col" style="width:102px;vertical-align:top;">11</th>
+                <th class="headingClass2" colspan="2" rowspan="6" abbr="XSD" scope="row" style="width:37%;vertical-align:middle;">12</th>
+            </tr>
+        </tbody>
+    </table>
+    <table class="tableClass" title="tableTitle" style="width:24%;" id="tabledup">
+        <caption>Table caption.</caption>
+        <tbody>
+            <tr class="rowClass1">
+                <th class="headingClass1" colspan="1" rowspan="5" abbr="XSLT" scope="col" style="width:102px;vertical-align:top;">11</th>
+                <th class="headingClass2" colspan="2" rowspan="6" abbr="XSD" scope="row" style="width:37%;vertical-align:middle;">12</th>
+            </tr>
+        </tbody>
+    </table>
+    <table class="tableClass" title="tableTitle" style="width:24%;" id="tabledup">
+        <caption>Table caption.</caption>
+        <tbody>
+            <tr class="rowClass1">
+                <th class="headingClass1" colspan="1" rowspan="5" abbr="XSLT" scope="col" style="width:102px;vertical-align:top;">11</th>
+                <th class="headingClass2" colspan="2" rowspan="6" abbr="XSD" scope="row" style="width:37%;vertical-align:middle;">12</th>
+            </tr>
+        </tbody>
+    </table>
+    <div data-ezelement="ezembed" data-href="ezlocation://601" id="lipsum" data-ezview="line" class="embedClass2" data-ezalign="right"/>
+    <div data-ezelement="ezembed" data-href="ezlocation://601" id="embed" data-ezview="line" class="embedClass2" data-ezalign="right"/>
+    <div data-ezelement="ezembed" data-href="ezlocation://601" id="embeddup" data-ezview="line" class="embedClass2" data-ezalign="right"/>
+    <div data-ezelement="ezembed" data-href="ezlocation://601" id="embeddup" data-ezview="line" class="embedClass2" data-ezalign="right"/>
+    <p>Some<span data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2" data-ezelement="ezembedinline" id="lipsum" data-href="ezcontent://601">oe-upcast-placeholder</span> content.</p>
+    <p>Some<span data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2" data-ezelement="ezembedinline" id="embedInline" data-href="ezcontent://601">oe-upcast-placeholder</span> content.</p>
+    <p>Some<span data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2" data-ezelement="ezembedinline" id="embedInlinedup" data-href="ezcontent://601">oe-upcast-placeholder</span> content.</p>
+    <p>Some<span data-ezattribute-name-1="value 1" data-ezattribute-name-2="value 2" data-ezelement="ezembedinline" id="embedInlinedup" data-href="ezcontent://601">oe-upcast-placeholder</span> content.</p>
+    <div itemscope="itemscope" data-ezelement="ezembed" data-href="ezlocation://601" a-ezview="line" class="embedClass2" data-ezalign="right">
+        <a data-ezelement="ezlink" href="ezlocation://202" class="linkClass2" id="lipsum" > </a>
+    </div>
+    <div itemscope="itemscope" data-ezelement="ezembed" data-href="ezlocation://601" a-ezview="line" class="embedClass2" data-ezalign="right">
+        <a data-ezelement="ezlink" href="ezlocation://202" class="linkClass2" id="ezlink" > </a>
+    </div>
+    <div itemscope="itemscope" data-ezelement="ezembed" data-href="ezlocation://601" a-ezview="line" class="embedClass2" data-ezalign="right">
+        <a data-ezelement="ezlink" href="ezlocation://202" class="linkClass2" id="ezlinkdup" > </a>
+    </div>
+    <div itemscope="itemscope" data-ezelement="ezembed" data-href="ezlocation://601" a-ezview="line" class="embedClass2" data-ezalign="right">
+        <a data-ezelement="ezlink" href="ezlocation://202" class="linkClass2" id="ezlinkdup" > </a>
+    </div>
+    <p>Some <span itemscope="itemscope" data-ezelement="ezembedinline" id="id3" data-href="ezcontent://601" data-ezview="embed-inline-custom" class="embedClass" data-ezalign="left">
+        <a data-ezelement="ezlink" href="ezcontent://106" id="lipsum" target="_blank" title="Link title" class="linkClass"> </a></span></p>
+    <p>Some <span itemscope="itemscope" data-ezelement="ezembedinline" id="id3" data-href="ezcontent://601" data-ezview="embed-inline-custom" class="embedClass" data-ezalign="left">
+        <a data-ezelement="ezlink" href="ezcontent://106" id="ezlinkembed" target="_blank" title="Link title" class="linkClass"> </a></span></p>
+    <p>Some <span itemscope="itemscope" data-ezelement="ezembedinline" id="id3" data-href="ezcontent://601" data-ezview="embed-inline-custom" class="embedClass" data-ezalign="left">
+        <a data-ezelement="ezlink" href="ezcontent://106" id="ezlinkembeddup" target="_blank" title="Link title" class="linkClass"> </a></span></p>
+    <p>Some <span itemscope="itemscope" data-ezelement="ezembedinline" id="id3" data-href="ezcontent://601" data-ezview="embed-inline-custom" class="embedClass" data-ezalign="left">
+        <a data-ezelement="ezlink" href="ezcontent://106" id="ezlinkembeddup" target="_blank" title="Link title" class="linkClass"> </a></span></p>
+    <div data-ezelement="eztemplate" data-ezname="factoidbox" class="templateClass4" data-ezalign="center" id="ipsum"/>
+    <div data-ezelement="eztemplate" data-ezname="factoidbox" class="templateClass4" data-ezalign="center" id="template"/>
+    <div data-ezelement="eztemplate" data-ezname="factoidbox" class="templateClass4" data-ezalign="center" id="templatedup"/>
+    <div data-ezelement="eztemplate" data-ezname="factoidbox" class="templateClass4" data-ezalign="center" id="templatedup"/>
+    <p>Some <span data-ezelement="eztemplateinline" data-ezname="emojicake" id="foo"/> for the otherwise unremarkable paragraph.</p>
+</section>

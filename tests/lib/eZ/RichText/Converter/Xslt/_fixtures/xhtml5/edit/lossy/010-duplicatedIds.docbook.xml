@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml"
+         xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom"
+         version="5.0-variant ezpublish-1.0">
+    <para xml:id="lipsum_idm2">Lorem ipsum</para>
+    <para xml:id="lipsum_idm3">Nunc in dignissim ex</para>
+    <programlisting xml:id="lipsum_idm4"><![CDATA[Literal with CNAME end sequence here : ]]]]><![CDATA[> and some more text here]]></programlisting>
+    <programlisting xml:id="programlisting"><![CDATA[Literal with CNAME end sequence here : ]]]]><![CDATA[> and some more text here]]></programlisting>
+    <programlisting xml:id="programlistingdup_idm6"><![CDATA[Literal with CNAME end sequence here : ]]]]><![CDATA[> and some more text here]]></programlisting>
+    <programlisting xml:id="programlistingdup_idm7"><![CDATA[Literal with CNAME end sequence here : ]]]]><![CDATA[> and some more text here]]></programlisting>
+    <para>The anchor element<anchor xml:id="lipsum_idm9"/> is empty and contributes nothing to the flow of the content in which it occurs. It is only useful as a target.</para>
+    <para>The anchor element<anchor xml:id="anchor"/> is empty and contributes nothing to the flow of the content in which it occurs. It is only useful as a target.</para>
+    <para>The anchor element<anchor xml:id="anchordup_idm13"/> is empty and contributes nothing to the flow of the content in which it occurs. It is only useful as a target.</para>
+    <para>The anchor element<anchor xml:id="anchordup_idm15"/> is empty and contributes nothing to the flow of the content in which it occurs. It is only useful as a target.</para>
+    <para><link ezxhtml:class="linkClass1" xlink:href="#anchor" xlink:show="new" xlink:title="Anchor link title" xml:id="lipsum_idm17">Jump to content</link></para>
+    <para><link ezxhtml:class="linkClass1" xlink:href="#anchor" xlink:show="new" xlink:title="Anchor link title" xml:id="link">Jump to content</link></para>
+    <para><link ezxhtml:class="linkClass1" xlink:href="#anchor" xlink:show="new" xlink:title="Anchor link title" xml:id="linkdup_idm21">Jump to content</link></para>
+    <para><link ezxhtml:class="linkClass1" xlink:href="#anchor" xlink:show="new" xlink:title="Anchor link title" xml:id="linkdup_idm23">Jump to content</link></para>
+    <title ezxhtml:class="titleClass" ezxhtml:level="1" xml:id="lipsum_idm24">This is a heading.</title>
+    <title ezxhtml:class="titleClass" ezxhtml:level="1" xml:id="title">This is a heading.</title>
+    <title ezxhtml:class="titleClass" ezxhtml:level="1" xml:id="titledup_idm26">This is a heading.</title>
+    <title ezxhtml:class="titleClass" ezxhtml:level="1" xml:id="titledup_idm27">This is a heading.</title>
+    <orderedlist xml:id="lipsum_idm28" ezxhtml:class="orderedListClass">
+        <ezattribute>
+            <ezvalue key="name-1">value 1</ezvalue>
+            <ezvalue key="name-2">value 2</ezvalue>
+            <ezvalue key="name-3">value 3</ezvalue>
+        </ezattribute>
+        <listitem ezxhtml:class="listItemClass">
+            <ezattribute>
+                <ezvalue key="name-2">value 2</ezvalue>
+            </ezattribute>
+            <para ezxhtml:class="listItemClass">
+                <ezattribute>
+                    <ezvalue key="name-2">value 2</ezvalue>
+                </ezattribute>This is a list item.</para>
+        </listitem>
+        <listitem ezxhtml:class="listItemClass">
+            <ezattribute>
+                <ezvalue key="name-3">value 3</ezvalue>
+            </ezattribute>
+            <para ezxhtml:class="listItemClass">
+                <ezattribute>
+                    <ezvalue key="name-3">value 3</ezvalue>
+                </ezattribute>This is a list item 2.</para>
+        </listitem>
+    </orderedlist>
+    <orderedlist xml:id="orderedlist" ezxhtml:class="orderedListClass">
+        <ezattribute>
+            <ezvalue key="name-1">value 1</ezvalue>
+            <ezvalue key="name-2">value 2</ezvalue>
+            <ezvalue key="name-3">value 3</ezvalue>
+        </ezattribute>
+        <listitem ezxhtml:class="listItemClass">
+            <ezattribute>
+                <ezvalue key="name-2">value 2</ezvalue>
+            </ezattribute>
+            <para ezxhtml:class="listItemClass">
+                <ezattribute>
+                    <ezvalue key="name-2">value 2</ezvalue>
+                </ezattribute>This is a list item.</para>
+        </listitem>
+        <listitem ezxhtml:class="listItemClass">
+            <ezattribute>
+                <ezvalue key="name-3">value 3</ezvalue>
+            </ezattribute>
+            <para ezxhtml:class="listItemClass">
+                <ezattribute>
+                    <ezvalue key="name-3">value 3</ezvalue>
+                </ezattribute>This is a list item 2.</para>
+        </listitem>
+    </orderedlist>
+    <orderedlist xml:id="orderedlistdup_idm34" ezxhtml:class="orderedListClass">
+        <ezattribute>
+            <ezvalue key="name-1">value 1</ezvalue>
+            <ezvalue key="name-2">value 2</ezvalue>
+            <ezvalue key="name-3">value 3</ezvalue>
+        </ezattribute>
+        <listitem ezxhtml:class="listItemClass">
+            <ezattribute>
+                <ezvalue key="name-2">value 2</ezvalue>
+            </ezattribute>
+            <para ezxhtml:class="listItemClass">
+                <ezattribute>
+                    <ezvalue key="name-2">value 2</ezvalue>
+                </ezattribute>This is a list item.</para>
+        </listitem>
+        <listitem ezxhtml:class="listItemClass">
+            <ezattribute>
+                <ezvalue key="name-3">value 3</ezvalue>
+            </ezattribute>
+            <para ezxhtml:class="listItemClass">
+                <ezattribute>
+                    <ezvalue key="name-3">value 3</ezvalue>
+                </ezattribute>This is a list item 2.</para>
+        </listitem>
+    </orderedlist>
+    <orderedlist xml:id="orderedlistdup_idm37" ezxhtml:class="orderedListClass">
+        <ezattribute>
+            <ezvalue key="name-1">value 1</ezvalue>
+            <ezvalue key="name-2">value 2</ezvalue>
+            <ezvalue key="name-3">value 3</ezvalue>
+        </ezattribute>
+        <listitem ezxhtml:class="listItemClass">
+            <ezattribute>
+                <ezvalue key="name-2">value 2</ezvalue>
+            </ezattribute>
+            <para ezxhtml:class="listItemClass">
+                <ezattribute>
+                    <ezvalue key="name-2">value 2</ezvalue>
+                </ezattribute>This is a list item.</para>
+        </listitem>
+        <listitem ezxhtml:class="listItemClass">
+            <ezattribute>
+                <ezvalue key="name-3">value 3</ezvalue>
+            </ezattribute>
+            <para ezxhtml:class="listItemClass">
+                <ezattribute>
+                    <ezvalue key="name-3">value 3</ezvalue>
+                </ezattribute>This is a list item 2.</para>
+        </listitem>
+    </orderedlist>
+    <itemizedlist xml:id="lipsum_idm40" >
+        <ezattribute>
+            <ezvalue key="name-1">value 1</ezvalue>
+            <ezvalue key="name-2">value 2</ezvalue>
+            <ezvalue key="name-3">value 3</ezvalue>
+        </ezattribute>
+        <listitem ezxhtml:class="listItemClass">
+            <ezattribute>
+                <ezvalue key="name-2">value 2</ezvalue>
+            </ezattribute>
+            <para ezxhtml:class="listItemClass">
+                <ezattribute>
+                    <ezvalue key="name-2">value 2</ezvalue>
+                </ezattribute>This is a list item.</para>
+        </listitem>
+        <listitem ezxhtml:class="listItemClass">
+            <ezattribute>
+                <ezvalue key="name-3">value 3</ezvalue>
+            </ezattribute>
+            <para ezxhtml:class="listItemClass">
+                <ezattribute>
+                    <ezvalue key="name-3">value 3</ezvalue>
+                </ezattribute>This is a list item 2.</para>
+        </listitem>
+    </itemizedlist>
+    <itemizedlist xml:id="itemizedList" >
+        <ezattribute>
+            <ezvalue key="name-1">value 1</ezvalue>
+            <ezvalue key="name-2">value 2</ezvalue>
+            <ezvalue key="name-3">value 3</ezvalue>
+        </ezattribute>
+        <listitem ezxhtml:class="listItemClass">
+            <ezattribute>
+                <ezvalue key="name-2">value 2</ezvalue>
+            </ezattribute>
+            <para ezxhtml:class="listItemClass">
+                <ezattribute>
+                    <ezvalue key="name-2">value 2</ezvalue>
+                </ezattribute>This is a list item.</para>
+        </listitem>
+        <listitem ezxhtml:class="listItemClass">
+            <ezattribute>
+                <ezvalue key="name-3">value 3</ezvalue>
+            </ezattribute>
+            <para ezxhtml:class="listItemClass">
+                <ezattribute>
+                    <ezvalue key="name-3">value 3</ezvalue>
+                </ezattribute>This is a list item 2.</para>
+        </listitem>
+    </itemizedlist>
+    <itemizedlist xml:id="itemizedListdup_idm46" >
+        <ezattribute>
+            <ezvalue key="name-1">value 1</ezvalue>
+            <ezvalue key="name-2">value 2</ezvalue>
+            <ezvalue key="name-3">value 3</ezvalue>
+        </ezattribute>
+        <listitem ezxhtml:class="listItemClass">
+            <ezattribute>
+                <ezvalue key="name-2">value 2</ezvalue>
+            </ezattribute>
+            <para ezxhtml:class="listItemClass">
+                <ezattribute>
+                    <ezvalue key="name-2">value 2</ezvalue>
+                </ezattribute>This is a list item.</para>
+        </listitem>
+        <listitem ezxhtml:class="listItemClass">
+            <ezattribute>
+                <ezvalue key="name-3">value 3</ezvalue>
+            </ezattribute>
+            <para ezxhtml:class="listItemClass">
+                <ezattribute>
+                    <ezvalue key="name-3">value 3</ezvalue>
+                </ezattribute>This is a list item 2.</para>
+        </listitem>
+    </itemizedlist>
+    <itemizedlist xml:id="itemizedListdup_idm49" >
+        <ezattribute>
+            <ezvalue key="name-1">value 1</ezvalue>
+            <ezvalue key="name-2">value 2</ezvalue>
+            <ezvalue key="name-3">value 3</ezvalue>
+        </ezattribute>
+        <listitem ezxhtml:class="listItemClass">
+            <ezattribute>
+                <ezvalue key="name-2">value 2</ezvalue>
+            </ezattribute>
+            <para ezxhtml:class="listItemClass">
+                <ezattribute>
+                    <ezvalue key="name-2">value 2</ezvalue>
+                </ezattribute>This is a list item.</para>
+        </listitem>
+        <listitem ezxhtml:class="listItemClass">
+            <ezattribute>
+                <ezvalue key="name-3">value 3</ezvalue>
+            </ezattribute>
+            <para ezxhtml:class="listItemClass">
+                <ezattribute>
+                    <ezvalue key="name-3">value 3</ezvalue>
+                </ezattribute>This is a list item 2.</para>
+        </listitem>
+    </itemizedlist>
+    <table class="tableClass" width="24%" title="tableTitle" xml:id="lipsum_idm52">
+        <caption>Table caption.</caption>
+        <tbody>
+            <tr class="rowClass1">
+                <th class="headingClass1" ezxhtml:width="102" valign="top" colspan="1" rowspan="5" abbr="XSLT" scope="col">11</th>
+                <th class="headingClass2" ezxhtml:width="37%" valign="middle" colspan="2" rowspan="6" abbr="XSD" scope="row">12</th>
+            </tr>
+        </tbody>
+    </table>
+    <table class="tableClass" width="24%" title="tableTitle" xml:id="table">
+        <caption>Table caption.</caption>
+        <tbody>
+            <tr class="rowClass1">
+                <th class="headingClass1" ezxhtml:width="102" valign="top" colspan="1" rowspan="5" abbr="XSLT" scope="col">11</th>
+                <th class="headingClass2" ezxhtml:width="37%" valign="middle" colspan="2" rowspan="6" abbr="XSD" scope="row">12</th>
+            </tr>
+        </tbody>
+    </table>
+    <table class="tableClass" width="24%" title="tableTitle" xml:id="tabledup_idm64">
+        <caption>Table caption.</caption>
+        <tbody>
+            <tr class="rowClass1">
+                <th class="headingClass1" ezxhtml:width="102" valign="top" colspan="1" rowspan="5" abbr="XSLT" scope="col">11</th>
+                <th class="headingClass2" ezxhtml:width="37%" valign="middle" colspan="2" rowspan="6" abbr="XSD" scope="row">12</th>
+            </tr>
+        </tbody>
+    </table>
+    <table class="tableClass" width="24%" title="tableTitle" xml:id="tabledup_idm70">
+        <caption>Table caption.</caption>
+        <tbody>
+            <tr class="rowClass1">
+                <th class="headingClass1" ezxhtml:width="102" valign="top" colspan="1" rowspan="5" abbr="XSLT" scope="col">11</th>
+                <th class="headingClass2" ezxhtml:width="37%" valign="middle" colspan="2" rowspan="6" abbr="XSD" scope="row">12</th>
+            </tr>
+        </tbody>
+    </table>
+    <ezembed view="line" ezxhtml:align="right" ezxhtml:class="embedClass2" xlink:href="ezlocation://601" xml:id="lipsum_idm76"/>
+    <ezembed view="line" ezxhtml:align="right" ezxhtml:class="embedClass2" xlink:href="ezlocation://601" xml:id="embed"/>
+    <ezembed view="line" ezxhtml:align="right" ezxhtml:class="embedClass2" xlink:href="ezlocation://601" xml:id="embeddup_idm78"/>
+    <ezembed view="line" ezxhtml:align="right" ezxhtml:class="embedClass2" xlink:href="ezlocation://601" xml:id="embeddup_idm79"/>
+    <para>Some<ezembedinline xlink:href="ezcontent://601" xml:id="lipsum_idm81"><ezattribute><ezvalue key="name-1">value 1</ezvalue><ezvalue key="name-2">value 2</ezvalue></ezattribute></ezembedinline> content.</para>
+    <para>Some<ezembedinline xlink:href="ezcontent://601" xml:id="embedInline"><ezattribute><ezvalue key="name-1">value 1</ezvalue><ezvalue key="name-2">value 2</ezvalue></ezattribute></ezembedinline> content.</para>
+    <para>Some<ezembedinline xlink:href="ezcontent://601" xml:id="embedInlinedup_idm85"><ezattribute><ezvalue key="name-1">value 1</ezvalue><ezvalue key="name-2">value 2</ezvalue></ezattribute></ezembedinline> content.</para>
+    <para>Some<ezembedinline xlink:href="ezcontent://601" xml:id="embedInlinedup_idm87"><ezattribute><ezvalue key="name-1">value 1</ezvalue><ezvalue key="name-2">value 2</ezvalue></ezattribute></ezembedinline> content.</para>
+    <ezembed ezxhtml:align="right" ezxhtml:class="embedClass2" xlink:href="ezlocation://601">
+        <ezlink ezxhtml:class="linkClass2" xlink:href="ezlocation://202" xlink:show="none" xml:id="lipsum_idm89"/>
+    </ezembed>
+    <ezembed ezxhtml:align="right" ezxhtml:class="embedClass2" xlink:href="ezlocation://601">
+        <ezlink ezxhtml:class="linkClass2" xlink:href="ezlocation://202" xlink:show="none" xml:id="ezlink"/>
+    </ezembed>
+    <ezembed ezxhtml:align="right" ezxhtml:class="embedClass2" xlink:href="ezlocation://601">
+        <ezlink ezxhtml:class="linkClass2" xlink:href="ezlocation://202" xlink:show="none" xml:id="ezlinkdup_idm93"/>
+    </ezembed>
+    <ezembed ezxhtml:align="right" ezxhtml:class="embedClass2" xlink:href="ezlocation://601">
+        <ezlink ezxhtml:class="linkClass2" xlink:href="ezlocation://202" xlink:show="none" xml:id="ezlinkdup_idm95"/>
+    </ezembed>
+    <para>Some <ezembedinline view="embed-inline-custom" ezxhtml:align="left" ezxhtml:class="embedClass" xlink:href="ezcontent://601" xml:id="id3_idm97"><ezlink ezxhtml:class="linkClass" xlink:href="ezcontent://106" xlink:show="new" xlink:title="Link title" xml:id="lipsum_idm98"/></ezembedinline></para>
+    <para>Some <ezembedinline view="embed-inline-custom" ezxhtml:align="left" ezxhtml:class="embedClass" xlink:href="ezcontent://601" xml:id="id3_idm100"><ezlink ezxhtml:class="linkClass" xlink:href="ezcontent://106" xlink:show="new" xlink:title="Link title" xml:id="ezlinkembed"/></ezembedinline></para>
+    <para>Some <ezembedinline view="embed-inline-custom" ezxhtml:align="left" ezxhtml:class="embedClass" xlink:href="ezcontent://601" xml:id="id3_idm103"><ezlink ezxhtml:class="linkClass" xlink:href="ezcontent://106" xlink:show="new" xlink:title="Link title" xml:id="ezlinkembeddup_idm104"/></ezembedinline></para>
+    <para>Some <ezembedinline view="embed-inline-custom" ezxhtml:align="left" ezxhtml:class="embedClass" xlink:href="ezcontent://601" xml:id="id3_idm106"><ezlink ezxhtml:class="linkClass" xlink:href="ezcontent://106" xlink:show="new" xlink:title="Link title" xml:id="ezlinkembeddup_idm107"/></ezembedinline></para>
+    <eztemplate name="factoidbox" ezxhtml:align="center" ezxhtml:class="templateClass4" xml:id="ipsum"/>
+    <eztemplate name="factoidbox" ezxhtml:align="center" ezxhtml:class="templateClass4" xml:id="template"/>
+    <eztemplate name="factoidbox" ezxhtml:align="center" ezxhtml:class="templateClass4" xml:id="templatedup_idm110"/>
+    <eztemplate name="factoidbox" ezxhtml:align="center" ezxhtml:class="templateClass4" xml:id="templatedup_idm111"/>
+    <para>Some <eztemplateinline name="emojicake"/> for the otherwise unremarkable paragraph.</para>
+</section>
