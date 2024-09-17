@@ -6,6 +6,7 @@
          xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom"
          xmlns:a="http://ez.no/xmlns/annotation"
          xmlns:m="http://ez.no/xmlns/module"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
          ns="http://docbook.org/ns/docbook"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
 
@@ -116,6 +117,16 @@
           </oneOrMore>
         </choice>
       </interleave>
+    </define>
+    <define name="db.xlink.href.attribute">
+      <attribute name="xlink:href">
+        <a:documentation>Identifies a link target with a URI</a:documentation>
+        <choice>
+          <data type="string">
+            <param name="pattern">(https?://|mailto:|ezcontent://|ezlocation://|ezremote://|ezurl://|tel:|/|#).+</param>
+          </data>
+        </choice>
+      </attribute>
     </define>
     <define name="db.abbrev"><notAllowed/></define>
     <define name="db.abstract"><notAllowed/></define>
