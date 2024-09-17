@@ -249,24 +249,8 @@
     </s:rule>
   </s:pattern>
   <s:pattern name="Element contents validation">
-    <s:let name="upperCase" value="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
-    <s:let name="lowerCase" value="'abcdefghijklmnopqrstuvwxyz'"/>
     <s:rule context="db:link">
-      <!-- Using translate() because we don't have XPath 2, so we can't use lower-case(). -->
-      <s:assert test="starts-with(translate(@*[name()='xlink:href'], $upperCase, $lowerCase), 'http://') or
-                      starts-with(translate(@*[name()='xlink:href'], $upperCase, $lowerCase), 'https://') or
-                      starts-with(translate(@*[name()='xlink:href'], $upperCase, $lowerCase), 'mailto:') or
-                      starts-with(translate(@*[name()='xlink:href'], $upperCase, $lowerCase), 'ezcontent://') or
-                      starts-with(translate(@*[name()='xlink:href'], $upperCase, $lowerCase), 'ezlocation://') or
-                      starts-with(translate(@*[name()='xlink:href'], $upperCase, $lowerCase), 'ezremote://') or
-                      starts-with(translate(@*[name()='xlink:href'], $upperCase, $lowerCase), 'ezurl://') or
-                      starts-with(translate(@*[name()='xlink:href'], $upperCase, $lowerCase), '/') or
-                      starts-with(translate(@*[name()='xlink:href'], $upperCase, $lowerCase), '#')"
-                mode="schematron-get-full-path-2">links must start with one of: http://, https://, mailto:, ezcontent://, ezlocation://, ezremote://, ezurl://, /, #</s:assert>
-      <s:assert test="not(contains(@*[name()='xlink:href'], '&lt;') or
-                          contains(@*[name()='xlink:href'], '&gt;') or
-                          contains(@*[name()='xlink:href'], '&quot;'))"
-                mode="schematron-get-full-path-2">using characters [&lt; &gt; &quot;] in links is not allowed</s:assert>
+      <s:assert test="not(contains(@*[name()='xlink:href'], 'javascript:') or contains(@*[name()='xlink:href'], 'vbscript:'))" mode="schematron-get-full-path-2">using scripts in links is not allowed</s:assert>
     </s:rule>
   </s:pattern>
 </s:schema>
