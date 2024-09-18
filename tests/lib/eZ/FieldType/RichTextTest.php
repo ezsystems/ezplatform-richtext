@@ -224,7 +224,14 @@ class RichTextTest extends TestCase
                 [
                     new ValidationError(
                         "Validation of XML content failed:\n" .
-                        '/section/para/link: links must start with one of: http://, https://, mailto:, ezcontent://, ezlocation://, ezremote://, ezurl://, /, #',
+                        'Error in 3:0: Element section has extra content: para',
+                        null,
+                        [],
+                        'xml'
+                    ),
+                    new ValidationError(
+                        "Validation of XML content failed:\n" .
+                        '/section/para/link: using scripts in links is not allowed',
                         null,
                         [],
                         'xml'
@@ -239,7 +246,7 @@ class RichTextTest extends TestCase
                 [
                     new ValidationError(
                         "Validation of XML content failed:\n" .
-                        '/section/para/link: links must start with one of: http://, https://, mailto:, ezcontent://, ezlocation://, ezremote://, ezurl://, /, #',
+                        'Error in 3:0: Element section has extra content: para',
                         null,
                         [],
                         'xml'
@@ -269,7 +276,14 @@ class RichTextTest extends TestCase
                 [
                     new ValidationError(
                         "Validation of XML content failed:\n" .
-                        '/section/para/link: links must start with one of: http://, https://, mailto:, ezcontent://, ezlocation://, ezremote://, ezurl://, /, #',
+                        'Error in 3:0: Element section has extra content: para',
+                        null,
+                        [],
+                        'xml'
+                    ),
+                    new ValidationError(
+                        "Validation of XML content failed:\n" .
+                        '/section/para/link: using scripts in links is not allowed',
                         null,
                         [],
                         'xml'
