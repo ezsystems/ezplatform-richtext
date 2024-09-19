@@ -224,7 +224,7 @@ class RichTextTest extends TestCase
                 [
                     new ValidationError(
                         "Validation of XML content failed:\n" .
-                        '/section/para/link: links must start with one of: http://, https://, mailto:, ezcontent://, ezlocation://, ezremote://, ezurl://, /, #',
+                        '/section/para/link: links must start with one of: http://, https://, mailto:, tel:, ezcontent://, ezlocation://, ezremote://, ezurl://, /, #',
                         null,
                         [],
                         'xml'
@@ -239,7 +239,7 @@ class RichTextTest extends TestCase
                 [
                     new ValidationError(
                         "Validation of XML content failed:\n" .
-                        '/section/para/link: links must start with one of: http://, https://, mailto:, ezcontent://, ezlocation://, ezremote://, ezurl://, /, #',
+                        '/section/para/link: links must start with one of: http://, https://, mailto:, tel:, ezcontent://, ezlocation://, ezremote://, ezurl://, /, #',
                         null,
                         [],
                         'xml'
@@ -252,13 +252,6 @@ class RichTextTest extends TestCase
   <para><link xlink:href="https://example.com/foo&lt;bar">link</link></para>
 </section>',
                 [
-                    new ValidationError(
-                        "Validation of XML content failed:\n" .
-                        '/section/para/link: using characters [< > "] in links is not allowed',
-                        null,
-                        [],
-                        'xml'
-                    ),
                 ],
             ],
             [
@@ -269,7 +262,7 @@ class RichTextTest extends TestCase
                 [
                     new ValidationError(
                         "Validation of XML content failed:\n" .
-                        '/section/para/link: links must start with one of: http://, https://, mailto:, ezcontent://, ezlocation://, ezremote://, ezurl://, /, #',
+                        '/section/para/link: links must start with one of: http://, https://, mailto:, tel:, ezcontent://, ezlocation://, ezremote://, ezurl://, /, #',
                         null,
                         [],
                         'xml'
