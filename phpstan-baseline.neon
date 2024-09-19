@@ -626,6 +626,36 @@ parameters:
 			path: src/lib/eZ/FieldType/RichText/RichTextStorage.php
 
 		-
+			message: "#^Offset 1 does not exist on array\\{0\\?\\: string, 1\\?\\: ''\\|'ezremote\\://', 2\\?\\: string, 3\\?\\: string\\}\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage.php
+
+		-
+			message: "#^Offset 1 does not exist on array\\{0\\?\\: string, 1\\?\\: string, 2\\?\\: string\\}\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage.php
+
+		-
+			message: "#^Offset 2 does not exist on array\\{0\\?\\: string, 1\\: 'ezremote\\://', 2\\?\\: string, 3\\?\\: string\\}\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage.php
+
+		-
+			message: "#^Offset 2 does not exist on array\\{0\\?\\: string, 1\\?\\: ''\\|'ezremote\\://', 2\\?\\: string, 3\\?\\: string\\}\\.$#"
+			count: 2
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage.php
+
+		-
+			message: "#^Offset 2 does not exist on array\\{0\\?\\: string, 1\\?\\: string, 2\\?\\: string\\}\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage.php
+
+		-
+			message: "#^Offset 3 does not exist on array\\{0\\?\\: string, 1\\?\\: ''\\|'ezremote\\://', 2\\?\\: string, 3\\?\\: string\\}\\.$#"
+			count: 1
+			path: src/lib/eZ/FieldType/RichText/RichTextStorage.php
+
+		-
 			message: "#^Parameter \\#1 \\$source of method DOMDocument\\:\\:loadXML\\(\\) expects string, array\\|bool\\|float\\|int\\|string\\|null given\\.$#"
 			count: 2
 			path: src/lib/eZ/FieldType/RichText/RichTextStorage.php
@@ -771,6 +801,21 @@ parameters:
 			path: src/lib/eZ/RichText/Converter/Link.php
 
 		-
+			message: "#^Offset 1 does not exist on array\\{0\\?\\: string, 1\\?\\: string, 2\\?\\: string, 3\\?\\: string\\}\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Link.php
+
+		-
+			message: "#^Offset 2 does not exist on array\\{0\\?\\: string, 1\\?\\: string, 2\\?\\: string, 3\\?\\: string\\}\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Link.php
+
+		-
+			message: "#^Offset 3 does not exist on array\\{0\\?\\: string, 1\\?\\: string, 2\\?\\: string, 3\\?\\: string\\}\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Link.php
+
+		-
 			message: "#^Parameter \\#1 \\$locationId of method eZ\\\\Publish\\\\API\\\\Repository\\\\LocationService\\:\\:loadLocation\\(\\) expects int, int\\|null given\\.$#"
 			count: 1
 			path: src/lib/eZ/RichText/Converter/Link.php
@@ -912,6 +957,21 @@ parameters:
 
 		-
 			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Converter\\\\Render\\\\Embed\\:\\:processTag\\(\\) has parameter \\$tagName with no type specified\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Embed.php
+
+		-
+			message: "#^Offset 1 does not exist on array\\{0\\?\\: string, 1\\?\\: 'ezcontent'\\|'ezlocation', 2\\?\\: numeric\\-string\\}\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Embed.php
+
+		-
+			message: "#^Offset 2 does not exist on array\\{0\\?\\: string, 1\\: 'ezcontent', 2\\?\\: numeric\\-string\\}\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Converter/Render/Embed.php
+
+		-
+			message: "#^Offset 2 does not exist on array\\{0\\?\\: string, 1\\: 'ezlocation', 2\\?\\: numeric\\-string\\}\\.$#"
 			count: 1
 			path: src/lib/eZ/RichText/Converter/Render/Embed.php
 
@@ -1106,6 +1166,16 @@ parameters:
 			path: src/lib/eZ/RichText/RelationProcessor.php
 
 		-
+			message: "#^Offset 1 does not exist on array\\{0\\?\\: string, 1\\?\\: non\\-empty\\-string, 2\\?\\: string, 3\\?\\: string\\}\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/RelationProcessor.php
+
+		-
+			message: "#^Offset 2 does not exist on array\\{0\\?\\: string, 1\\?\\: non\\-empty\\-string, 2\\?\\: string, 3\\?\\: string\\}\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/RelationProcessor.php
+
+		-
 			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\RendererInterface\\:\\:renderContentEmbed\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/lib/eZ/RichText/RendererInterface.php
@@ -1147,6 +1217,16 @@ parameters:
 
 		-
 			message: "#^Method EzSystems\\\\EzPlatformRichText\\\\eZ\\\\RichText\\\\Validator\\\\InternalLinkValidator\\:\\:validateDocument\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/InternalLinkValidator.php
+
+		-
+			message: "#^Offset 1 does not exist on array\\{0\\?\\: string, 1\\?\\: non\\-empty\\-string, 2\\?\\: string, 3\\?\\: string\\}\\.$#"
+			count: 1
+			path: src/lib/eZ/RichText/Validator/InternalLinkValidator.php
+
+		-
+			message: "#^Offset 2 does not exist on array\\{0\\?\\: string, 1\\?\\: non\\-empty\\-string, 2\\?\\: string, 3\\?\\: string\\}\\.$#"
 			count: 1
 			path: src/lib/eZ/RichText/Validator/InternalLinkValidator.php
 
@@ -1629,10 +1709,7 @@ parameters:
 			message: "#^Cannot access property \\$id on eZ\\\\Publish\\\\API\\\\Repository\\\\Values\\\\Content\\\\Field\\|null\\.$#"
 			count: 1
 			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
-		-
-			message: "#^Cannot call method fetchOne\\(\\) on Doctrine\\\\DBAL\\\\ForwardCompatibility\\\\Result\\|int\\|string\\.$#"
-			count: 1
-			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
 		-
 			message: "#^Cannot access property \\$value on eZ\\\\Publish\\\\API\\\\Repository\\\\Values\\\\Content\\\\Field\\|null\\.$#"
 			count: 1
@@ -1645,6 +1722,11 @@ parameters:
 
 		-
 			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\ForwardCompatibility\\\\Result\\|int\\|string\\.$#"
+			count: 1
+			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
+
+		-
+			message: "#^Cannot call method fetchOne\\(\\) on Doctrine\\\\DBAL\\\\ForwardCompatibility\\\\Result\\|int\\|string\\.$#"
 			count: 1
 			path: tests/integration/eZ/API/RichTextFieldTypeIntegrationTest.php
 
