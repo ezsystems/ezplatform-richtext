@@ -42,7 +42,8 @@ final class DOMDocumentFactory
         // - substitute entities
         // - disable network access
         // - relax parser limits for document size/complexity
-        $success = $document->loadXML($this->xmlSanitizer->sanitizeXMLString($xmlString), LIBXML_NOENT | LIBXML_DTDLOAD | LIBXML_NONET | LIBXML_PARSEHUGE);
+        $xmlString = $this->xmlSanitizer->sanitizeXMLString($xmlString);
+        $success = $document->loadXML($xmlString, LIBXML_NOENT | LIBXML_DTDLOAD | LIBXML_NONET | LIBXML_PARSEHUGE);
         if (!$success) {
             throw new InvalidXmlException('$xmlString', libxml_get_errors());
         }

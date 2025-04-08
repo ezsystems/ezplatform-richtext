@@ -20,7 +20,6 @@ final class XMLSanitizer
 {
     public function sanitizeXMLString(string $xmlString): string
     {
-        $xmlString = $this->decodeHTMLEntities($xmlString);
         $xmlString = $this->removeComments($xmlString);
         $xmlString = $this->removeDangerousTags($xmlString);
         $xmlString = $this->sanitizeDocType($xmlString);
@@ -43,11 +42,6 @@ final class XMLSanitizer
         }
 
         return $document;
-    }
-
-    private function decodeHTMLEntities(string $xmlString): string
-    {
-        return html_entity_decode($xmlString, ENT_XML1, 'UTF-8');
     }
 
     private function removeComments(string $xmlString): string
@@ -124,6 +118,7 @@ final class XMLSanitizer
         $entityDefinitions = [];
 
         foreach ($lines as $line) {
+            $line = html_entity_decode($line, ENT_XML1, 'UTF-8');
             $line = trim($line);
 
             if (preg_match('/<!ENTITY\s+(\S+)\s+(SYSTEM|PUBLIC)\s+/i', $line, $matches)) {

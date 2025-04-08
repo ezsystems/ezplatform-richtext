@@ -71,6 +71,20 @@ EOT;
         $this->domDocumentFactory->loadXMLString($xml);
     }
 
+    public function testEncodedTagContentIsLeftAlone(): void
+    {
+        $xml = <<<EOT
+<?xml version="1.0"?>
+<para>By placing your order you agree to our <link>data &amp; privacy regulations</link>.</para>
+
+EOT;
+
+        $doc = $this->domDocumentFactory->loadXMLString($xml);
+        $docXMLString = $doc->saveXML();
+
+        self::assertSame($xml, $docXMLString);
+    }
+
     public function testRemoveEncodedEntities(): void
     {
         $xml = <<<EOT
@@ -114,7 +128,6 @@ EOT;
      */
     public function testHandleDoctype(string $xml, string $stringNotContainsString): void
     {
-        $xml =
         $doc = $this->domDocumentFactory->loadXMLString($xml);
         $docXMLString = $doc->saveXML();
         self::assertIsString($docXMLString);
